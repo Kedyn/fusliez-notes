@@ -1,0 +1,96 @@
+body {
+  font-family: "Titillium Web", sans-serif;
+  font-size: 20px;
+}
+
+.dark-input,
+.dark-input:focus {
+  color: var(--white);
+}
+
+.dark-input::placeholder {
+  color: var(--gray) !important;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="text"]:focus,
+input[type="number"]:focus {
+  background: transparent;
+  appearance: none;
+  border: none;
+  box-shadow: none;
+}
+
+#main {
+  min-width: 320px;
+  max-width: 320px;
+}
+
+#controls {
+  min-width: 320px;
+  max-width: 320px;
+  padding: 0 1rem;
+}
+
+#maps {
+  flex-grow: 1;
+}
+
+#title {
+  text-align: center;
+  padding: 0;
+  font-size: 2rem;
+  color: inherit !important;
+}
+
+.progress {
+  position: relative;
+  height: 1.75rem;
+}
+
+.progress #win-rate {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+}
+
+.counter {
+  height: 3rem;
+  font-size: 2rem;
+  line-height: 1.2;
+  -moz-appearance: textfield !important;
+  padding: 0 0.3rem;
+  border-radius: 0.25rem;
+  text-align: center;
+}
+
+.players {
+  min-height: 2rem;
+  width: 100%;
+}
+
+.player-wrapper {
+  cursor: grab;
+}
+
+.player-img {
+  height: 2rem;
+  min-height: 2rem;
+  width: 2rem;
+}
+
+.not-active {
+  opacity: 0.5;
+}
+
+#controls-wrap {
+  margin-top: 0;
+}
+
+.map-name {
+  height: 4rem;
+  cursor: pointer;
+}
