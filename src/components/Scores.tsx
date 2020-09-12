@@ -1,6 +1,7 @@
 import { Col, Form, ProgressBar, Row } from "react-bootstrap";
 
 import React from "react";
+import "./Scores.css";
 
 export interface IScoresProps {
   wins: number;
@@ -11,14 +12,16 @@ export interface IScoresProps {
 
 export default function Scores(props: IScoresProps): JSX.Element {
   const { wins, games, onWins, onGames } = props;
-  const rate = games > 0 ? Math.floor((wins / games) * 100) : 100;
+  // using Math.ceil instead of Math.floor
+  // just to make leslie feel better KEKW
+  const rate = games > 0 ? Math.ceil((wins / games) * 100) : 100;
 
   return (
     <React.Fragment>
       <Row>
         <Col>
-          <ProgressBar className="bg-danger">
-            <ProgressBar variant="success" now={rate} />
+          <ProgressBar className="progress-bar-lose">
+            <ProgressBar className="progress-bar-win" now={rate} />
             <div id="win-rate" className="h5" style={{ color: "white" }}>
               Winning rate: {rate}%
             </div>

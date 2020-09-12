@@ -67,7 +67,11 @@ export default function Controls(props: IControlsProps): JSX.Element {
           </Button>
         </Col>
         <Col>
-          <Button block variant="danger" onClick={() => onGames(games + 1)}>
+          <Button
+            block
+            style={{ backgroundColor: "#a62700" }}
+            onClick={() => onGames(games + 1)}
+          >
             Lose
           </Button>
         </Col>
@@ -87,7 +91,7 @@ export default function Controls(props: IControlsProps): JSX.Element {
             as="textarea"
             rows={20}
             style={{
-              backgroundColor: dark ? "gray" : "white",
+              backgroundColor: dark ? "dimgray" : "white",
               color: dark ? "white" : " black",
             }}
           />
