@@ -143,7 +143,7 @@ export default function MainContent(props: IMainContentProps): JSX.Element {
                       <Form.Control
                         type="text"
                         placeholder="Player name"
-                        size="md"
+                        size="sm"
                         className={`my-1 px-3 ${dark ? "dark-input" : ""}`}
                         defaultValue={name}
                         onChange={(
@@ -151,7 +151,7 @@ export default function MainContent(props: IMainContentProps): JSX.Element {
                         ) => handleChange(section, index, event)}
                         style={{
                           color: dark ? "white" : "black",
-                          fontWeight: "600",
+                          fontWeight: 600,
                           textShadow: dark
                             ? "-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000"
                             : "-1px -1px 0 #FFF, 1px -1px 0 #FFF, -1px 1px 0 #FFF, 1px 1px 0 #FFF",
