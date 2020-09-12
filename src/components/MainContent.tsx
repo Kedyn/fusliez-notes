@@ -116,13 +116,16 @@ export default function MainContent(props: IMainContentProps): JSX.Element {
                 <Row
                   className={`border ${
                     dark ? `border-secondary` : "border-dark"
-                  } rounded ${index % 2 ? "ml-0" : "mr-0"} pl-1`}
+                  } rounded ${index % 2 ? "ml-0" : "mr-0"} ${
+                    names ? "pl-1" : ""
+                  }`}
                   style={{
-                    backgroundColor: name
-                      ? color === "brown"
+                    backgroundColor:
+                      !name || !names
+                        ? "transparent"
+                        : color === "brown"
                         ? "	saddlebrown"
-                        : color
-                      : "transparent",
+                        : color,
                   }}
                 >
                   <Col
@@ -133,7 +136,7 @@ export default function MainContent(props: IMainContentProps): JSX.Element {
                       src={`assets/${color}.png`}
                       alt={color}
                       className={`${names ? "player-img" : ""} ${
-                        name != "" ? "" : "not-active"
+                        name != "" || !names ? "" : "not-active"
                       }`}
                     />
                   </Col>
