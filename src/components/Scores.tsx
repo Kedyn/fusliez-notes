@@ -19,7 +19,7 @@ export default function Scores(props: IScoresProps): JSX.Element {
         <Col>
           <ProgressBar className="bg-danger">
             <ProgressBar variant="success" now={rate} />
-            <div id="win-rate" className="h5">
+            <div id="win-rate" className="h5" style={{ color: "white" }}>
               Winning rate: {rate}%
             </div>
           </ProgressBar>
