@@ -83,7 +83,14 @@ export default function Controls(props: IControlsProps): JSX.Element {
         <Col>
           <h2>notes:</h2>
 
-          <Form.Control as="textarea" rows={20} />
+          <Form.Control
+            as="textarea"
+            rows={20}
+            style={{
+              backgroundColor: dark ? "gray" : "white",
+              color: dark ? "white" : " black",
+            }}
+          />
         </Col>
       </Row>
     </React.Fragment>
