@@ -105,9 +105,9 @@ export default function MainContent(props: IMainContentProps): JSX.Element {
             className="mx-0 justify-content-center align-items-center align-content-start players h-100"
             options={{ handle: ".player-handle" }}
           >
-            {lists[section][0].map((player, index) => (
+            {lists[section][0].map(({ id, color, name }, index) => (
               <Col
-                key={player.id}
+                key={id}
                 xs={names ? 6 : 3}
                 className={`${names ? "mb-2" : "m-1"} ${
                   index % 2 ? "pl-1" : "pr-1"
@@ -115,22 +115,25 @@ export default function MainContent(props: IMainContentProps): JSX.Element {
               >
                 <Row
                   className={`border ${
-                    dark
-                      ? `border-secondary ${
-                          player.name != "" ? "bg-secondary" : "bg-dark"
-                        }`
-                      : "border-dark"
-                  } rounded ${index % 2 ? "ml-0" : "mr-0"}`}
+                    dark ? `border-secondary` : "border-dark"
+                  } rounded ${index % 2 ? "ml-0" : "mr-0"} pl-1`}
+                  style={{
+                    backgroundColor: name
+                      ? color === "brown"
+                        ? "	saddlebrown"
+                        : color
+                      : "transparent",
+                  }}
                 >
                   <Col
                     xs={names ? 1 : false}
                     className="d-flex justify-content-center align-items-center player-wrapper player-handle"
                   >
                     <Image
-                      src={`assets/${player.color}.png`}
-                      alt={player.color}
+                      src={`assets/${color}.png`}
+                      alt={color}
                       className={`${names ? "player-img" : ""} ${
-                        player.name != "" ? "" : "not-active"
+                        name != "" ? "" : "not-active"
                       }`}
                     />
                   </Col>
@@ -140,12 +143,19 @@ export default function MainContent(props: IMainContentProps): JSX.Element {
                       <Form.Control
                         type="text"
                         placeholder="Player name"
-                        size="sm"
-                        className={`my-1 ${dark ? "dark-input" : ""}`}
-                        defaultValue={player.name}
+                        size="md"
+                        className={`my-1 px-3 ${dark ? "dark-input" : ""}`}
+                        defaultValue={name}
                         onChange={(
                           event: React.ChangeEvent<HTMLInputElement>
                         ) => handleChange(section, index, event)}
+                        style={{
+                          color: dark ? "white" : "black",
+                          fontWeight: "600",
+                          textShadow: dark
+                            ? "-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000"
+                            : "-1px -1px 0 #FFF, 1px -1px 0 #FFF, -1px 1px 0 #FFF, 1px 1px 0 #FFF",
+                        }}
                       />
                     </Col>
                   )}
