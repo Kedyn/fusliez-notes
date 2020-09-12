@@ -11,8 +11,10 @@ export interface IMainContentProps {
   names: boolean;
   wins: number;
   games: number;
+  reset: boolean;
   onWins(wins: number): void;
   onGames(games: number): void;
+  onReset(): void;
 }
 
 export default function MainContent(props: IMainContentProps): JSX.Element {
@@ -37,7 +39,7 @@ export default function MainContent(props: IMainContentProps): JSX.Element {
     { id: "yellow", name: "", color: "yellow" },
   ]);
 
-  const { dark, names } = props;
+  const { dark, names, reset, onReset } = props;
 
   const sections = ["innocent", "sus", "evil", "dead", "unknown"];
 
@@ -65,6 +67,26 @@ export default function MainContent(props: IMainContentProps): JSX.Element {
 
     lists[list][1](players);
   };
+
+  React.useEffect(() => {
+    if (reset == true) {
+      const players = [
+        ...innocent_players,
+        ...sus_players,
+        ...evil_players,
+        ...dead_players,
+        ...unknown_players,
+      ];
+
+      setInnocentPlayers([]);
+      setSusPlayers([]);
+      setEvilPlayers([]);
+      setDeadPlayers([]);
+      setUnknownPlayers(players);
+
+      onReset();
+    }
+  }, [reset]);
 
   return (
     <React.Fragment>

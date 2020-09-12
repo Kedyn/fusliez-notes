@@ -11,6 +11,7 @@ export default function App(props: IAppProps): JSX.Element {
   const [theme, setTheme] = React.useState(false);
   const [wins, setWins] = React.useState(0);
   const [games, setGames] = React.useState(0);
+  const [reset, setReset] = React.useState(false);
   const [names, setNames] = React.useState(true);
   const [theme_class, setThemeClass] = React.useState(
     "bg-light text-dark vh-100 h-100"
@@ -34,8 +35,10 @@ export default function App(props: IAppProps): JSX.Element {
               names={names}
               wins={wins}
               games={games}
+              reset={reset}
               onWins={(wins: number) => setWins(wins)}
               onGames={(games: number) => setGames(games)}
+              onReset={() => setReset(false)}
             />
           </div>
           <div id="controls">
@@ -48,6 +51,7 @@ export default function App(props: IAppProps): JSX.Element {
               onNames={(show: boolean) => setNames(show)}
               onWins={(wins: number) => setWins(wins)}
               onGames={(games: number) => setGames(games)}
+              onReset={() => setReset(true)}
             />
           </div>
           <div id="maps" className="d-lg-block d-none">

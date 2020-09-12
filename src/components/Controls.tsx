@@ -11,6 +11,7 @@ export interface IControlsProps {
   onNames(show: boolean): void;
   onWins(wins: number): void;
   onGames(games: number): void;
+  onReset(): void;
 }
 
 export default function Controls(props: IControlsProps): JSX.Element {
@@ -23,6 +24,7 @@ export default function Controls(props: IControlsProps): JSX.Element {
     onNames,
     onWins,
     onGames,
+    onReset,
   } = props;
 
   const handleWin = () => {
@@ -72,7 +74,7 @@ export default function Controls(props: IControlsProps): JSX.Element {
       </Row>
       <Row>
         <Col>
-          <Button block variant="secondary">
+          <Button block variant="secondary" onClick={() => onReset()}>
             Reset Players
           </Button>
         </Col>
