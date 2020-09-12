@@ -1,69 +1,53 @@
-import { Col, Container, Row } from "react-bootstrap";
+import { JssProvider, ThemeProvider } from "react-jss";
 
-import Controls from "./Controls";
+import { ITheme } from "utils/types";
 import MainContent from "./MainContent";
-import Maps from "./Maps";
 import React from "react";
+import { Themes } from "themes/themes";
+import jssSetUp from "utils/jssSetUp";
+import { useMediaQuery } from "beautiful-react-hooks";
 
 export interface IAppProps {}
 
 export default function App(props: IAppProps): JSX.Element {
-  const [theme, setTheme] = React.useState(false);
-  const [wins, setWins] = React.useState(0);
-  const [games, setGames] = React.useState(0);
-  const [reset, setReset] = React.useState(false);
-  const [names, setNames] = React.useState(true);
-  const [theme_class, setThemeClass] = React.useState(
-    "bg-light text-dark vh-100 h-100"
+  const prefers_dark = useMediaQuery("(prefers-color-scheme: dark)");
+
+  const [theme, setTheme] = React.useState<ITheme>(
+    localStorage.getItem("theme") === "light"
+      ? Themes.light
+      : prefers_dark
+      ? Themes.dark
+      : Themes.light
   );
 
-  React.useEffect(() => {
-    if (theme) {
-      setThemeClass("bg-dark text-white vh-100 h-100");
-    } else {
-      setThemeClass("bg-light text-dark vh-100 h-100");
-    }
-  }, [theme]);
+  const changeTheme = (): void => {
+    localStorage.setItem("theme", theme === Themes.dark ? "light" : "dark");
+
+    setTheme(theme === Themes.dark ? Themes.light : Themes.dark);
+  };
 
   return (
     <React.Fragment>
-      <Container fluid className={theme_class}>
-        <div className="d-flex">
-          <div id="main">
-            <MainContent
-              dark={theme}
-              names={names}
-              wins={wins}
-              games={games}
-              reset={reset}
-              onWins={(wins: number) => setWins(wins)}
-              onGames={(games: number) => setGames(games)}
-              onReset={() => setReset(false)}
-            />
-          </div>
-          <div id="controls">
-            <Controls
-              dark={theme}
-              names={names}
-              wins={wins}
-              games={games}
-              onThemeDark={(set: boolean) => setTheme(set)}
-              onNames={(show: boolean) => setNames(show)}
-              onWins={(wins: number) => setWins(wins)}
-              onGames={(games: number) => setGames(games)}
-              onReset={() => setReset(true)}
-            />
-          </div>
-          <div id="maps" className="d-lg-block d-none">
-            <Maps />
-          </div>
-        </div>
-        <Row className="mt-auto d-none">
-          <Col className="text-center">
-            <small>Created by Kedyn Macedonio (AKA SykO).</small>
-          </Col>
-        </Row>
-      </Container>
+      <JssProvider registry={jssSetUp(theme)}>
+        <ThemeProvider theme={theme}>
+          <React.Suspense fallback="loading">
+            <main>
+              <div id="main">
+                <MainContent />
+              </div>
+              <div id="controls"></div>
+              <div id="maps"></div>
+            </main>
+            <footer>
+              Made with &#10084; by the{" "}
+              <a href="https://github.com/Kedyn/fusliez-notes#authors">
+                fuslie fam
+              </a>
+              .
+            </footer>
+          </React.Suspense>
+        </ThemeProvider>
+      </JssProvider>
     </React.Fragment>
   );
 }
