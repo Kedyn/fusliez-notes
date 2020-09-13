@@ -17,6 +17,7 @@ export default createUseStyles((theme: ITheme) => ({
     height: "2rem",
     borderRadius: "0.5rem",
     width: (props) => (props.progress ? `${props.progress}%` : "0%"),
+    maxWidth: "100%",
   },
   title: {
     color: "#ffffff",

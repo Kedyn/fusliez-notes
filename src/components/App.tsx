@@ -1,6 +1,8 @@
 import { JssProvider, ThemeProvider } from "react-jss";
 
+import ControlsContent from "./ControlsContent";
 import MainContent from "./MainContent";
+import MapsContent from "./MapsContent";
 import React from "react";
 import jssSetUp from "utils/jssSetUp";
 import { useData } from "context";
@@ -19,8 +21,12 @@ export default function App(props: IAppProps): JSX.Element {
               <div id="main">
                 <MainContent />
               </div>
-              <div id="controls"></div>
-              <div id="maps"></div>
+              <div id="controls">
+                <ControlsContent />
+              </div>
+              <div id="maps">
+                <MapsContent />
+              </div>
             </main>
             <footer>
               Made with &#10084; by the{" "}

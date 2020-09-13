@@ -7,7 +7,7 @@ import { useMediaQuery } from "beautiful-react-hooks";
 const DataContext = React.createContext<IDataContext | undefined>(undefined);
 
 export interface IDataProviderProps {
-  children: JSX.Element;
+  children: React.ReactNode;
 }
 
 export const DataProvider = ({ children }: IDataProviderProps) => {
@@ -42,6 +42,9 @@ export const DataProvider = ({ children }: IDataProviderProps) => {
   React.useEffect(() => {
     // Get data from local storage and set appropiate stuff
     const local_theme = localStorage.getItem("theme");
+    const local_wins = localStorage.getItem("wins");
+    const local_games = localStorage.getItem("games");
+    const local_names = localStorage.getItem("names");
 
     if (local_theme != null) {
       setTheme(Themes[local_theme]);
@@ -49,6 +52,15 @@ export const DataProvider = ({ children }: IDataProviderProps) => {
       if (prefers_dark) {
         setTheme(Themes.dark);
       }
+    }
+    if (local_wins != null) {
+      setWins(parseInt(local_wins));
+    }
+    if (local_games != null) {
+      setGames(parseInt(local_games));
+    }
+    if (local_names != null) {
+      setNames(local_names === "true");
     }
   }, []);
 

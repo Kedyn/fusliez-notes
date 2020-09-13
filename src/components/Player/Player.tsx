@@ -40,6 +40,8 @@ export default function Player(props: IPlayerProps): JSX.Element {
     if (name != "") {
       container_classs += ` ${color}`;
     }
+  } else {
+    container_classs += ` ${color}`;
   }
 
   const handleChange = (
