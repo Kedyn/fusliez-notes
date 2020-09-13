@@ -55,6 +55,7 @@ export default class DefaultTheme implements ITheme {
         appearance: "none",
         border: "none",
         boxShadow: "none",
+        color: this.text_primary,
       },
       main: {
         flexGrow: 1,
@@ -72,6 +73,10 @@ export default class DefaultTheme implements ITheme {
       footer: {
         textAlign: "center",
         fontSize: "smaller",
+      },
+      a: {
+        textDecoration: "none",
+        color: "orange",
       },
     };
   }
