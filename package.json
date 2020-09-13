@@ -33,6 +33,7 @@
   },
   "alias": {
     "components": "./src/components",
+    "context": "./src/context",
     "themes": "./src/themes",
     "utils": "./src/utils"
   },

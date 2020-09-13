@@ -14,12 +14,11 @@ export default function Header(props: IHeaderProps): JSX.Element {
           <img src="assets/amongNotes.gif" alt="Notes logo" />
         </div>
         <div className={classes.title}>
-          <h1 className={classes.h2}>
-            <Input
-              placeholder="fuesliez notes title"
-              defaultValue="fusliez notes"
-            />
-          </h1>
+          <Input
+            placeholder="fuesliez notes title"
+            defaultValue="fusliez notes"
+            classNames={classes.titleInput}
+          />
         </div>
         <div className={classes.logo}>
           <img src="assets/amongNotes.gif" alt="Notes logo" />

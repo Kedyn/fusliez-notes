@@ -14,6 +14,8 @@ export default function MainContent(props: IMainContentProps): JSX.Element {
         <Header />
 
         <Scores />
+
+        <PlayersSection />
       </div>
     </React.Fragment>
   );

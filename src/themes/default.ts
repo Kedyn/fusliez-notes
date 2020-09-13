@@ -50,9 +50,24 @@ export default class DefaultTheme implements ITheme {
         height: "auto",
         verticalAlign: "middle",
       },
+      'input[type="text"],input[type="number"],input[type="text"]:focus,input[type="number"]:focus': {
+        background: "transparent",
+        appearance: "none",
+        border: "none",
+        boxShadow: "none",
+      },
       main: {
         flexGrow: 1,
         display: "flex",
+      },
+      "#main": {
+        maxWidth: 320,
+      },
+      "#controls": {
+        maxWidth: 320,
+      },
+      "#maps": {
+        flexGrow: 1,
       },
       footer: {
         textAlign: "center",

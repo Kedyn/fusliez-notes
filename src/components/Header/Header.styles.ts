@@ -10,8 +10,11 @@ export default createUseStyles((theme: ITheme) => ({
   },
   title: {
     flexGrow: 1,
+    display: "flex",
+    justifyContent: "center",
   },
-  h2: {
+  titleInput: {
     fontSize: "2rem",
+    padding: "0 0.25rem",
   },
 }));
