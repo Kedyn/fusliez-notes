@@ -144,14 +144,16 @@ export default function MainContent(props: IMainContentProps): JSX.Element {
                         type="text"
                         placeholder="Player name"
                         size="sm"
-                        className={`my-1 px-3 ${dark ? "dark-input" : ""}`}
+                        className={`my-1 px-2 ${dark ? "dark-input" : ""}`}
                         defaultValue={name}
                         onChange={(
                           event: React.ChangeEvent<HTMLInputElement>
                         ) => handleChange(section, index, event)}
                         style={{
                           color: dark ? "white" : "black",
-                          fontWeight: 600,
+                          fontWeight: 700,
+                          letterSpacing: "0.05em",
+                          fontSize: "1rem",
                           textShadow: dark
                             ? "-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000"
                             : "-1px -1px 0 #FFF, 1px -1px 0 #FFF, -1px 1px 0 #FFF, 1px 1px 0 #FFF",
