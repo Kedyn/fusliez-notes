@@ -62,7 +62,12 @@ export default function Controls(props: IControlsProps): JSX.Element {
       </Row>
       <Row className="my-2">
         <Col>
-          <Button block variant="success" onClick={handleWin}>
+          <Button
+            block
+            style={{ backgroundColor: "seagreen" }}
+            variant="success"
+            onClick={handleWin}
+          >
             Win
           </Button>
         </Col>

@@ -12,7 +12,7 @@ export default function Header(props: IHeaderProps): JSX.Element {
           <Image src="assets/amongNotes.gif" alt="Notes logo" fluid />
         </Col>
         <Col className="px-1 d-flex justify-content-center align-items-center">
-          <h1 className="h2">
+          <h1 title="Click to edit" className="h2">
             <Form.Control id="title" type="text" defaultValue="fusliez notes" />
           </h1>
         </Col>

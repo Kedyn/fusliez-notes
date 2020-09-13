@@ -145,7 +145,7 @@ export default function MainContent(props: IMainContentProps): JSX.Element {
                     <Col className="p-0 pr-1">
                       <Form.Control
                         type="text"
-                        placeholder="Player name"
+                        placeholder="Name"
                         size="sm"
                         className={`my-1 px-3 ${dark ? "dark-input" : ""}`}
                         defaultValue={name}
@@ -153,11 +153,9 @@ export default function MainContent(props: IMainContentProps): JSX.Element {
                           event: React.ChangeEvent<HTMLInputElement>
                         ) => handleChange(section, index, event)}
                         style={{
-                          color: dark ? "white" : "black",
+                          color: "black",
+                          fontSize: "18px",
                           fontWeight: 600,
-                          textShadow: dark
-                            ? "-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000"
-                            : "-1px -1px 0 #FFF, 1px -1px 0 #FFF, -1px 1px 0 #FFF, 1px 1px 0 #FFF",
                         }}
                       />
                     </Col>
