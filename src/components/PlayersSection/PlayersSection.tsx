@@ -1,4 +1,5 @@
 import { IPlayer } from "utils/types";
+import Player from "components/Player/Player";
 import React from "react";
 import { ReactSortable } from "react-sortablejs";
 import { useData } from "context";
@@ -9,8 +10,6 @@ export interface IPlayersSectionProps {}
 export default function PlayersSection(
   props: IPlayersSectionProps
 ): JSX.Element {
-  const classes = useStyles();
-
   const {
     names,
     innocent_players,
@@ -24,6 +23,8 @@ export default function PlayersSection(
     setDeadPlayers,
     setUnknownPlayers,
   } = useData()!;
+
+  const classes = useStyles({ names });
 
   const sections = ["innocent", "sus", "evil", "dead", "unknown"];
 
@@ -48,18 +49,18 @@ export default function PlayersSection(
               group="players"
               list={lists[section][0]}
               setList={lists[section][1]}
+              handle=".player-handle"
+              className={classes.players}
             >
               {lists[section][0].map(({ id, color, name }, index) => (
-                <div>
-                  <img
-                    src={`assets/${color}.png`}
-                    alt={color}
-                    className={`player-handle ${names ? "player-img" : ""} ${
-                      name != "" ? "" : "not-active"
-                    }`}
-                  />
-                  xd
-                </div>
+                <Player
+                  key={id}
+                  id={id}
+                  color={color}
+                  name={name}
+                  section={section}
+                  index={index}
+                />
               ))}
             </ReactSortable>
           </div>

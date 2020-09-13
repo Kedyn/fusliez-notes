@@ -25,7 +25,6 @@ export interface IDataContext {
   wins: number;
   games: number;
   names: boolean;
-  reset: boolean;
   innocent_players: Array<IPlayer>;
   sus_players: Array<IPlayer>;
   evil_players: Array<IPlayer>;
@@ -35,7 +34,6 @@ export interface IDataContext {
   setWins: (value: number) => void;
   setGames: (value: number) => void;
   setNames: (value: boolean) => void;
-  setReset: (value: boolean) => void;
   setInnocentPlayers: (value: Array<IPlayer>) => void;
   setSusPlayers: (value: Array<IPlayer>) => void;
   setEvilPlayers: (value: Array<IPlayer>) => void;

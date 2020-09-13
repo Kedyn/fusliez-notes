@@ -11,7 +11,7 @@ export default createUseStyles((theme: ITheme) => ({
   },
   input: {
     backgroundColor: `${theme.background_secondary} !important`,
-    fontSize: "3rem",
+    fontSize: "2.5rem",
     width: "100%",
     textAlign: "center",
     borderRadius: "0.25rem",

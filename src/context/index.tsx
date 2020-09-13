@@ -15,7 +15,6 @@ export const DataProvider = ({ children }: IDataProviderProps) => {
   const [wins, setWins] = React.useState(0);
   const [games, setGames] = React.useState(0);
   const [names, setNames] = React.useState(true);
-  const [reset, setReset] = React.useState(false);
 
   const [innocent_players, setInnocentPlayers] = React.useState<Array<IPlayer>>(
     []
@@ -60,7 +59,6 @@ export const DataProvider = ({ children }: IDataProviderProps) => {
         wins,
         games,
         names,
-        reset,
         innocent_players,
         sus_players,
         evil_players,
@@ -70,7 +68,6 @@ export const DataProvider = ({ children }: IDataProviderProps) => {
         setWins,
         setGames,
         setNames,
-        setReset,
         setInnocentPlayers,
         setSusPlayers,
         setEvilPlayers,

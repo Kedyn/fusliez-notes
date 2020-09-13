@@ -61,6 +61,12 @@ export default class DefaultTheme implements ITheme {
         flexGrow: 1,
         display: "flex",
       },
+      h2: {
+        fontSize: "2rem",
+        margin: ".5rem 0",
+        fontWeight: "500",
+        lineHeight: "1.2",
+      },
       "#main": {
         maxWidth: 320,
       },
@@ -69,6 +75,49 @@ export default class DefaultTheme implements ITheme {
       },
       "#maps": {
         flexGrow: 1,
+      },
+      ".player-handle": {
+        cursor: "grab",
+
+        "&:active": {
+          cursor: "grabbing",
+        },
+      },
+      ".blue": {
+        backgroundColor: "blue",
+      },
+      ".brown": {
+        backgroundColor: "brown",
+      },
+      ".gray": {
+        backgroundColor: "gray",
+      },
+      ".green": {
+        backgroundColor: "green",
+      },
+      ".lightGreen": {
+        backgroundColor: "lightGreen",
+      },
+      ".orange": {
+        backgroundColor: "orange",
+      },
+      ".pink": {
+        backgroundColor: "pink",
+      },
+      ".purple": {
+        backgroundColor: "purple",
+      },
+      ".red": {
+        backgroundColor: "red",
+      },
+      ".teal": {
+        backgroundColor: "teal",
+      },
+      ".white": {
+        backgroundColor: "white",
+      },
+      ".yellow": {
+        backgroundColor: "yellow",
       },
       footer: {
         textAlign: "center",
