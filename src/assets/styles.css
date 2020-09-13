@@ -82,10 +82,6 @@ input[type="number"]:focus {
   width: 2rem;
 }
 
-.not-active {
-  opacity: 0.5;
-}
-
 #controls-wrap {
   margin-top: 0;
 }
