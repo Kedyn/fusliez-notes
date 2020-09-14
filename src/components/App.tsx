@@ -29,11 +29,15 @@ export default function App(props: IAppProps): JSX.Element {
               </div>
             </main>
             <footer>
-              Made with &#10084; by the{" "}
-              <a href="https://github.com/Kedyn/fusliez-notes#authors">
-                fuslie fam
-              </a>
-              .
+              <div>
+                <small>
+                  fusliez notes v0.7.0 made with &#10084; by the{" "}
+                  <a href="https://github.com/Kedyn/fusliez-notes#authors-and-acknowledgment">
+                    fuslie fam
+                  </a>
+                  .
+                </small>
+              </div>
             </footer>
           </React.Suspense>
         </ThemeProvider>

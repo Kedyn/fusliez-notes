@@ -45,17 +45,15 @@ export default function MapsContent(props: IMapsContentProps): JSX.Element {
           />
         </div>
         <div className={classes.wrapper}>
-          <Draggable bounds="parent" position={{ x: 0, y: 0 }} disabled>
-            <img
-              src={`assets/${
-                map == "skeld" ? "TheSkeld" : map == "mira" ? "Mirahq" : "Polus"
-              }.png`}
-            />
-          </Draggable>
+          <img
+            src={`assets/${
+              map == "skeld" ? "TheSkeld" : map == "mira" ? "Mirahq" : "Polus"
+            }.png`}
+          />
 
           {players.map((player) => (
             <Draggable key={player} bounds="parent">
-              <img src={`assets/${player}.png`} />
+              <img className="player-handle" src={`assets/${player}.png`} />
             </Draggable>
           ))}
         </div>
