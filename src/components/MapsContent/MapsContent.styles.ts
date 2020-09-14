@@ -7,7 +7,7 @@ export default createUseStyles((theme: ITheme) => ({
   },
   mapNames: {
     display: "flex",
-    justifyContent: "space-between",
+    justifyContent: "space-around",
     marginBottom: "0.5rem",
   },
   mapName: {
