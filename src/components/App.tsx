@@ -31,7 +31,7 @@ export default function App(props: IAppProps): JSX.Element {
             <footer>
               <div>
                 <small>
-                  fusliez notes v0.7.0 made with &#10084; by the{" "}
+                  fusliez notes v0.7.0 [9/14/2020] made with &#10084; by the{" "}
                   <a href="https://github.com/Kedyn/fusliez-notes#authors-and-acknowledgment">
                     fuslie fam
                   </a>

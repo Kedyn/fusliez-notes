@@ -17,7 +17,7 @@ export default createUseStyles((theme: ITheme) => ({
     borderRadius: "0.25rem",
     appearance: "textfield !important",
     "-moz-appearance": "textfield !important",
-    color: "#ffffff",
+    color: "#ffffff !important",
   },
   title: {
     width: "100%",

@@ -55,15 +55,18 @@ Removed bootstrap dependencies, added JSS.
 #### Added
 
 - Configuration data saved on localStorage.
+- Visible version and date.
 
 #### Changed
 
 - Players can only be dragged by clicking and hold on the image not the input.
 - Player background color changes as soon as a character is inputted on the field.
+- Mouse is changed when is by a character map.
 
 #### Fixed
 
 - Player background color visible when names not being used.
+- Map characters no longer have to be double clicked to be dropped.
 
 ### [v0.1.0] - 8/24/2020
 

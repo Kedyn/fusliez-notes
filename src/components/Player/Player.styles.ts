@@ -20,7 +20,7 @@ export default createUseStyles((theme: ITheme) => ({
   },
   name: {
     flexGrow: 1,
-    padding: "0.5rem",
+    padding: "0.25rem",
   },
   input: {
     width: "100%",

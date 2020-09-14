@@ -69,7 +69,7 @@ export default function ControlsContent(
         </Button>
         <Button>Reset Players</Button>
         <h2>notes</h2>
-        <textarea rows={30}></textarea>
+        <textarea rows={30} className={classes.notes}></textarea>
       </div>
     </React.Fragment>
   );
