@@ -11,8 +11,10 @@ export default class DefaultTheme implements ITheme {
   public background_danger: string;
   public text_primary: string;
   public text_secondary: string;
+  public text_shadow: string;
   public font_family: string;
   public font_size: number;
+  public border: string;
 
   public global: JssStyle;
 
@@ -26,8 +28,11 @@ export default class DefaultTheme implements ITheme {
     this.background_danger = "rgba(220, 53, 69, 0.5)";
     this.text_primary = "#000000";
     this.text_secondary = "#343a40";
+    this.text_shadow =
+      "rgb(255, 255, 255) -1px -1px 0px, rgb(255, 255, 255) 1px -1px 0px, rgb(255, 255, 255) -1px 1px 0px, rgb(255, 255, 255) 1px 1px 0px";
     this.font_family = "Titillium Web, sans-serif";
     this.font_size = 20;
+    this.border = "#000000";
 
     this.global = {
       html: {
@@ -60,6 +65,24 @@ export default class DefaultTheme implements ITheme {
         border: "none",
         boxShadow: "none",
         color: this.text_primary,
+      },
+      textarea: {
+        fontFamily: "inherit",
+        padding: ".375rem .75rem",
+        border: `1px solid ${this.border}`,
+        borderRadius: "0.25rem",
+      },
+      button: {
+        textAlign: "center",
+        border: "1px solid transparent",
+        padding: ".375rem .75rem",
+        fontFamily: "inherit",
+        borderRadius: "0.25rem",
+        transition:
+          "color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out",
+        display: "block",
+        width: "100%",
+        cursor: "pointer",
       },
       main: {
         flexGrow: 1,

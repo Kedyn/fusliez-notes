@@ -16,8 +16,10 @@ export interface ITheme {
   background_danger: string;
   text_primary: string;
   text_secondary: string;
+  text_shadow: string;
   font_family: string;
   font_size: number;
+  border: string;
 
   global: JssStyle;
 }
