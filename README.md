@@ -26,7 +26,7 @@ If you would like to contribute in any way please read our
 [Kedyn Macedonio](https://github.com/Kedyn) (A.K.A. SykO)  
 [Daniel Singer](https://github.com/chilblane) (A.K.A. chilblane)  
 [Francis Tse](https://github.com/francistse23) (A.K.A. Furanki)  
-[Kevin Han](https://github.com/kevinydhan) (A.K.A. khany)
+[Kevin Han](https://github.com/kevinydhan) (A.K.A. khany)  
 [Charlie Chai](https://github.com/charlie-808)
 
 Thanks to everyone who has suggested enhancements, reported bugs, are or any
