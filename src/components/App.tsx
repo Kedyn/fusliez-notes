@@ -16,7 +16,7 @@ export default function App(): JSX.Element {
       <JssProvider registry={jssSetUp(theme)}>
         <ThemeProvider theme={theme}>
           <React.Suspense fallback="loading">
-            <main>
+            <main style={{ maxWidth: "1600px", margin: "0 auto" }}>
               <div id="main">
                 <MainContent />
               </div>

@@ -1,4 +1,5 @@
 import { IPlayer } from "utils/types";
+import colorNameToRGB from "utils/colorConverter";
 import Input from "components/common/Input";
 import React from "react";
 import { useData } from "context";
@@ -48,26 +49,20 @@ export default function Player(props: IPlayerProps): JSX.Element {
 
   return (
     <React.Fragment>
-      <div className={classes.root}>
-        <div className={container_class}>
-          <img
-            src={`assets/${color}.png`}
-            alt={color}
-            className={player_class}
-          />
-          {names && (
-            <div className={classes.name}>
-              <Input
-                placeholder="Player name"
-                classNames={classes.input}
-                onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
-                  handleChange(index, event)
-                }
-                value={name}
-              />
-            </div>
-          )}
-        </div>
+      <div className={container_class}>
+        <img src={`assets/${color}.png`} alt={color} className={player_class} />
+        {names && (
+          <div className={classes.name}>
+            <Input
+              placeholder="Player name"
+              classNames={classes.input}
+              onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
+                handleChange(index, event)
+              }
+              value={name}
+            />
+          </div>
+        )}
       </div>
     </React.Fragment>
   );

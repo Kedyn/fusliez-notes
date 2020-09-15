@@ -2,8 +2,7 @@ import { ITheme } from "utils/types";
 import { createUseStyles } from "react-jss";
 
 export default createUseStyles((theme: ITheme) => ({
-  root: {},
-  container: {
+  container: (props) => ({
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
@@ -11,7 +10,8 @@ export default createUseStyles((theme: ITheme) => ({
     border: `1px solid ${theme.border}`,
     padding: "0 0.25rem",
     marginBottom: "0.5rem",
-  },
+    // backgroundColor: `rgba(${props.backgroundColor}, 0.75)`,
+  }),
   nonActive: {
     opacity: 0.6,
   },
