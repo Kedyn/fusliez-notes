@@ -20,7 +20,7 @@ export default function Scores(): JSX.Element {
       <div className={classes.root}>
         <ProgressBar
           progress={rate}
-          text={`Win rate ${rate}%`}
+          text={`Winning rate ${rate}%`}
           background_color={theme.background_danger}
           progress_color={theme.background_success}
           classNames={classes.progress}

@@ -8,7 +8,7 @@ export default createUseStyles((theme: ITheme) => ({
     justifyContent: "center",
     alignItems: "center",
     borderRadius: "0.25rem",
-    border: `1px solid ${theme.background_secondary}`,
+    border: `1px solid ${theme.border}`,
     padding: "0 0.25rem",
     marginBottom: "0.5rem",
   },
@@ -34,5 +34,6 @@ export default createUseStyles((theme: ITheme) => ({
     lineHeight: 1.5,
     borderRadius: ".2rem",
     textAlign: "left",
+    textShadow: theme.text_shadow,
   },
 }));

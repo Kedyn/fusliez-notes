@@ -14,8 +14,8 @@ export default createUseStyles((theme: ITheme) => ({
   progressBar: {
     background: (props) =>
       props.progressColor ? props.progressColor : theme.background_tertiary,
-    height: "2rem",
-    borderRadius: "0.5rem",
+    height: "1.75rem",
+    borderRadius: "0.25rem",
     width: (props) => (props.progress ? `${props.progress}%` : "0%"),
     maxWidth: "100%",
   },
@@ -26,5 +26,6 @@ export default createUseStyles((theme: ITheme) => ({
     left: 0,
     textAlign: "center",
     width: "100%",
+    lineHeight: 1.2,
   },
 }));
