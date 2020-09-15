@@ -6,6 +6,8 @@ import { useMediaQuery } from "beautiful-react-hooks";
 
 const DataContext = React.createContext<IDataContext | undefined>(undefined);
 
+const namespace = "fusliez-notes-";
+
 export interface IDataProviderProps {
   children: React.ReactNode;
 }
@@ -17,7 +19,7 @@ function playerLists(): {
   dead_players: Array<IPlayer>;
   unknown_players: Array<IPlayer>;
 } {
-  const local_data = localStorage.getItem("data");
+  const local_data = localStorage.getItem(`${namespace}data`);
 
   if (local_data != null) {
     const data: IData = JSON.parse(local_data);
@@ -81,7 +83,7 @@ export const DataProvider = ({ children }: IDataProviderProps): JSX.Element => {
   const prefers_dark = useMediaQuery("(prefers-color-scheme: dark)");
 
   React.useEffect(() => {
-    const local_data = localStorage.getItem("data");
+    const local_data = localStorage.getItem(`${namespace}data`);
 
     if (local_data != null) {
       const data: IData = JSON.parse(local_data);
@@ -166,7 +168,7 @@ export const DataProvider = ({ children }: IDataProviderProps): JSX.Element => {
         data.theme = "dark";
       }
 
-      localStorage.setItem("data", JSON.stringify(data));
+      localStorage.setItem(`${namespace}data`, JSON.stringify(data));
     }
   }, []);
 
@@ -184,59 +186,59 @@ export const DataProvider = ({ children }: IDataProviderProps): JSX.Element => {
         unknown_players,
         notes,
         setTheme: (value: ITheme) => {
-          const local_data = localStorage.getItem("data");
+          const local_data = localStorage.getItem(`${namespace}data`);
 
           if (local_data != null) {
             const data: IData = JSON.parse(local_data);
 
             data.theme = value.name;
 
-            localStorage.setItem("data", JSON.stringify(data));
+            localStorage.setItem(`${namespace}data`, JSON.stringify(data));
 
             setLocalTheme(value);
           }
         },
         setWins: (value: number) => {
-          const local_data = localStorage.getItem("data");
+          const local_data = localStorage.getItem(`${namespace}data`);
 
           if (local_data != null) {
             const data: IData = JSON.parse(local_data);
 
             data.wins = value;
 
-            localStorage.setItem("data", JSON.stringify(data));
+            localStorage.setItem(`${namespace}data`, JSON.stringify(data));
 
             setLocalWins(value);
           }
         },
         setGames: (value: number) => {
-          const local_data = localStorage.getItem("data");
+          const local_data = localStorage.getItem(`${namespace}data`);
 
           if (local_data != null) {
             const data: IData = JSON.parse(local_data);
 
             data.games = value;
 
-            localStorage.setItem("data", JSON.stringify(data));
+            localStorage.setItem(`${namespace}data`, JSON.stringify(data));
 
             setLocalGames(value);
           }
         },
         setNames: (value: boolean) => {
-          const local_data = localStorage.getItem("data");
+          const local_data = localStorage.getItem(`${namespace}data`);
 
           if (local_data != null) {
             const data: IData = JSON.parse(local_data);
 
             data.names = value;
 
-            localStorage.setItem("data", JSON.stringify(data));
+            localStorage.setItem(`${namespace}data`, JSON.stringify(data));
 
             setLocalNames(value);
           }
         },
         setInnocentPlayers: (value: Array<IPlayer>) => {
-          const local_data = localStorage.getItem("data");
+          const local_data = localStorage.getItem(`${namespace}data`);
 
           if (local_data != null) {
             const data: IData = JSON.parse(local_data);
@@ -245,13 +247,13 @@ export const DataProvider = ({ children }: IDataProviderProps): JSX.Element => {
               return { id, name, color };
             });
 
-            localStorage.setItem("data", JSON.stringify(data));
+            localStorage.setItem(`${namespace}data`, JSON.stringify(data));
 
             setLocalInnocentPlayers(value);
           }
         },
         setSusPlayers: (value: Array<IPlayer>) => {
-          const local_data = localStorage.getItem("data");
+          const local_data = localStorage.getItem(`${namespace}data`);
 
           if (local_data != null) {
             const data: IData = JSON.parse(local_data);
@@ -260,13 +262,13 @@ export const DataProvider = ({ children }: IDataProviderProps): JSX.Element => {
               return { id, name, color };
             });
 
-            localStorage.setItem("data", JSON.stringify(data));
+            localStorage.setItem(`${namespace}data`, JSON.stringify(data));
 
             setLocalSusPlayers(value);
           }
         },
         setEvilPlayers: (value: Array<IPlayer>) => {
-          const local_data = localStorage.getItem("data");
+          const local_data = localStorage.getItem(`${namespace}data`);
 
           if (local_data != null) {
             const data: IData = JSON.parse(local_data);
@@ -275,13 +277,13 @@ export const DataProvider = ({ children }: IDataProviderProps): JSX.Element => {
               return { id, name, color };
             });
 
-            localStorage.setItem("data", JSON.stringify(data));
+            localStorage.setItem(`${namespace}data`, JSON.stringify(data));
 
             setLocalEvilPlayers(value);
           }
         },
         setDeadPlayers: (value: Array<IPlayer>) => {
-          const local_data = localStorage.getItem("data");
+          const local_data = localStorage.getItem(`${namespace}data`);
 
           if (local_data != null) {
             const data: IData = JSON.parse(local_data);
@@ -290,13 +292,13 @@ export const DataProvider = ({ children }: IDataProviderProps): JSX.Element => {
               return { id, name, color };
             });
 
-            localStorage.setItem("data", JSON.stringify(data));
+            localStorage.setItem(`${namespace}data`, JSON.stringify(data));
 
             setLocalDeadPlayers(value);
           }
         },
         setUnknownPlayers: (value: Array<IPlayer>) => {
-          const local_data = localStorage.getItem("data");
+          const local_data = localStorage.getItem(`${namespace}data`);
 
           if (local_data != null) {
             const data: IData = JSON.parse(local_data);
@@ -305,20 +307,20 @@ export const DataProvider = ({ children }: IDataProviderProps): JSX.Element => {
               return { id, name, color };
             });
 
-            localStorage.setItem("data", JSON.stringify(data));
+            localStorage.setItem(`${namespace}data`, JSON.stringify(data));
 
             setLocalUnknownPlayers(value);
           }
         },
         setNotes: (value: string) => {
-          const local_data = localStorage.getItem("data");
+          const local_data = localStorage.getItem(`${namespace}data`);
 
           if (local_data != null) {
             const data: IData = JSON.parse(local_data);
 
             data.notes = value;
 
-            localStorage.setItem("data", JSON.stringify(data));
+            localStorage.setItem(`${namespace}data`, JSON.stringify(data));
 
             setLocalNotes(value);
           }
