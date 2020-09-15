@@ -7,6 +7,28 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Released]
 
+### [v0.7.0] - 9/15/2020
+
+Code refactoring / project restructuring.
+
+Removed bootstrap dependencies, added JSS.
+
+#### Added
+
+- Configuration data saved on localStorage.
+- Visible version and date.
+
+#### Changed
+
+- Players can only be dragged by clicking and hold on the image not the input.
+- Player background color changes as soon as a character is inputted on the field.
+- Mouse is changed when is by a character map.
+
+#### Fixed
+
+- Player background color visible when names not being used.
+- Map characters no longer have to be double clicked to be dropped.
+
 ### [v0.6.0] - 9/12/2020
 
 #### Added
@@ -45,28 +67,6 @@ Project fusliez notes begins, prototype release.
 Features included draggable players and progress bar for score.
 
 ## [Unreleased]
-
-### [v0.7.0] - 9/14/2020 (tentative date)
-
-Code refactoring / project restructuring.
-
-Removed bootstrap dependencies, added JSS.
-
-#### Added
-
-- Configuration data saved on localStorage.
-- Visible version and date.
-
-#### Changed
-
-- Players can only be dragged by clicking and hold on the image not the input.
-- Player background color changes as soon as a character is inputted on the field.
-- Mouse is changed when is by a character map.
-
-#### Fixed
-
-- Player background color visible when names not being used.
-- Map characters no longer have to be double clicked to be dropped.
 
 ### [v0.1.0] - 8/24/2020
 
