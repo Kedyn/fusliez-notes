@@ -1,17 +1,10 @@
-import { IPlayer } from "utils/types";
-import Player from "components/Player/Player";
 import React from "react";
-import { ReactSortable } from "react-sortablejs";
+import Section from "components/Section";
 import { useData } from "context";
 import useStyles from "./PlayersSection.styles";
 
-export interface IPlayersSectionProps {}
-
-export default function PlayersSection(
-  props: IPlayersSectionProps
-): JSX.Element {
+export default function PlayersSection(): JSX.Element {
   const {
-    names,
     innocent_players,
     sus_players,
     evil_players,
@@ -22,49 +15,34 @@ export default function PlayersSection(
     setEvilPlayers,
     setDeadPlayers,
     setUnknownPlayers,
-  } = useData()!;
+  } = useData()!; // eslint-disable-line
 
-  const classes = useStyles({ names });
-
-  const sections = ["innocent", "sus", "evil", "dead", "unknown"];
-
-  const lists: {
-    [key: string]: [Array<IPlayer>, (value: IPlayer[]) => void];
-  } = {
-    innocent: [innocent_players, setInnocentPlayers],
-    sus: [sus_players, setSusPlayers],
-    evil: [evil_players, setEvilPlayers],
-    dead: [dead_players, setDeadPlayers],
-    unknown: [unknown_players, setUnknownPlayers],
-  };
+  const classes = useStyles();
 
   return (
     <React.Fragment>
       <div className={classes.root}>
-        {sections.map((section) => (
-          <div key={section}>
-            <h2>{section != "evil" ? section : "evil / hit list"}</h2>
-
-            <ReactSortable
-              group="players"
-              list={lists[section][0]}
-              setList={lists[section][1]}
-              handle=".player-handle"
-              className={classes.players}
-            >
-              {lists[section][0].map(({ id, color, name }, index) => (
-                <Player
-                  key={id}
-                  id={id}
-                  color={color}
-                  name={name}
-                  section={section}
-                  index={index}
-                />
-              ))}
-            </ReactSortable>
-          </div>
-        ))}
+        <Section
+          title="Innocent"
+          list={innocent_players}
+          setList={setInnocentPlayers}
+        />
+        <Section
+          title="Suspicious"
+          list={sus_players}
+          setList={setSusPlayers}
+        />
+        <Section
+          title="Evil / Hit list"
+          list={evil_players}
+          setList={setEvilPlayers}
+        />
+        <Section title="Dead" list={dead_players} setList={setDeadPlayers} />
+        <Section
+          title="Unknown"
+          list={unknown_players}
+          setList={setUnknownPlayers}
+        />
       </div>
     </React.Fragment>
   );

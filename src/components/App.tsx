@@ -7,9 +7,8 @@ import React from "react";
 import jssSetUp from "utils/jssSetUp";
 import { useData } from "context";
 
-export interface IAppProps {}
-
-export default function App(props: IAppProps): JSX.Element {
+export default function App(): JSX.Element {
+  // eslint-disable-next-line
   const { theme } = useData()!;
 
   return (
@@ -31,7 +30,11 @@ export default function App(props: IAppProps): JSX.Element {
             <footer>
               <div>
                 <small>
-                  fusliez notes v0.7.0 [9/14/2020] made with &#10084; by the{" "}
+                  fusliez notes{" "}
+                  <a href="https://github.com/Kedyn/fusliez-notes/releases/tag/v0.7.0">
+                    v0.7.0
+                  </a>{" "}
+                  [9/14/2020] made with &#10084; by the{" "}
                   <a href="https://github.com/Kedyn/fusliez-notes#authors-and-acknowledgment">
                     fuslie fam
                   </a>

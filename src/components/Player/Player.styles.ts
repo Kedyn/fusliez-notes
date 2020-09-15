@@ -12,6 +12,9 @@ export default createUseStyles((theme: ITheme) => ({
     padding: "0 0.25rem",
     marginBottom: "0.5rem",
   },
+  nonActive: {
+    opacity: 0.6,
+  },
   player: {
     height: "2rem",
     width: "2rem",

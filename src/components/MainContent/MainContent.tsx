@@ -4,9 +4,7 @@ import React from "react";
 import Scores from "components/Scores";
 import useStyles from "./MainContent.styles";
 
-export interface IMainContentProps {}
-
-export default function MainContent(props: IMainContentProps): JSX.Element {
+export default function MainContent(): JSX.Element {
   const classes = useStyles();
 
   return (

@@ -5,11 +5,7 @@ import { Themes } from "themes/themes";
 import { useData } from "context";
 import useStyles from "./ControlsContent.styles";
 
-export interface IControlsContentProps {}
-
-export default function ControlsContent(
-  props: IControlsContentProps
-): JSX.Element {
+export default function ControlsContent(): JSX.Element {
   const classes = useStyles();
   const {
     names,
@@ -20,7 +16,7 @@ export default function ControlsContent(
     setTheme,
     setWins,
     setGames,
-  } = useData()!;
+  } = useData()!; // eslint-disable-line
 
   return (
     <React.Fragment>
@@ -30,10 +26,8 @@ export default function ControlsContent(
           onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
             if (event.currentTarget.checked) {
               setTheme(Themes.dark);
-              localStorage.setItem("theme", "dark");
             } else {
               setTheme(Themes.light);
-              localStorage.setItem("theme", "light");
             }
           }}
           checked={theme === Themes.dark}
@@ -42,9 +36,7 @@ export default function ControlsContent(
         <Switch
           label="Use player names"
           onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-            const checked = event.currentTarget.checked;
-            setNames(checked);
-            localStorage.setItem("names", checked ? "true" : " false");
+            setNames(event.currentTarget.checked);
           }}
           checked={names}
         />
@@ -53,8 +45,6 @@ export default function ControlsContent(
           onClick={() => {
             setWins(wins + 1);
             setGames(games + 1);
-            localStorage.setItem("wins", (wins + 1).toString());
-            localStorage.setItem("games", (games + 1).toString());
           }}
         >
           Win
@@ -62,7 +52,6 @@ export default function ControlsContent(
         <Button
           onClick={() => {
             setGames(games + 1);
-            localStorage.setItem("games", (games + 1).toString());
           }}
         >
           Lose

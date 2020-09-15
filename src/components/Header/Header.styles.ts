@@ -1,7 +1,6 @@
-import { ITheme } from "utils/types";
 import { createUseStyles } from "react-jss";
 
-export default createUseStyles((theme: ITheme) => ({
+export default createUseStyles({
   root: {
     display: "flex",
   },
@@ -17,4 +16,4 @@ export default createUseStyles((theme: ITheme) => ({
     fontSize: "2rem",
     padding: "0 0.25rem",
   },
-}));
+});

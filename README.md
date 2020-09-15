@@ -23,7 +23,21 @@ If you would like to contribute in any way please read our
 
 ## Authors and acknowledgment
 
-[Kedyn Macedonio](https://github.com/Kedyn) (A.K.A. SykO)
+[Kedyn Macedonio](https://github.com/Kedyn) (A.K.A. SykO)  
+[Daniel Singer](https://github.com/chilblane) (A.K.A. chilblane)  
+[Francis Tse](https://github.com/francistse23) (A.K.A. Furanki)  
+[Kevin Han](https://github.com/kevinydhan) (A.K.A. khany)
+[Charlie Chai](https://github.com/charlie-808)
+
+Thanks to everyone who has suggested enhancements, reported bugs, are or any
+other support on this project such as:
+
+[Adam Gausmann](https://github.com/agausmann)  
+Pedro / Dian\_\_  
+Rydannn (twitch handle)
+
+Please if you would not like to be mentioned here or your information is wrong
+let me know so I can remove it or fix it, thank you!
 
 ## License
 

@@ -1,7 +1,6 @@
-import { ITheme } from "utils/types";
 import { createUseStyles } from "react-jss";
 
-export default createUseStyles((theme: ITheme) => ({
+export default createUseStyles({
   root: {
     minWidth: 320,
     padding: "0.5rem",
@@ -9,4 +8,4 @@ export default createUseStyles((theme: ITheme) => ({
   notes: {
     width: "100%",
   },
-}));
+});

@@ -2,9 +2,7 @@ import Draggable from "react-draggable";
 import React from "react";
 import useStyles from "./MapsContent.styles";
 
-export interface IMapsContentProps {}
-
-export default function MapsContent(props: IMapsContentProps): JSX.Element {
+export default function MapsContent(): JSX.Element {
   const [map, setMap] = React.useState("skeld");
 
   const players = [

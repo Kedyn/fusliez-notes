@@ -1,7 +1,6 @@
-import { ITheme } from "utils/types";
 import { createUseStyles } from "react-jss";
 
-export default createUseStyles((theme: ITheme) => ({
+export default createUseStyles({
   root: {
     margin: "0.5rem 0",
   },
@@ -11,4 +10,4 @@ export default createUseStyles((theme: ITheme) => ({
   scores: {
     display: "flex",
   },
-}));
+});
