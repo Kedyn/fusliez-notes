@@ -3,7 +3,7 @@ import useStyles from "./Switch.styles";
 
 export interface ISwitchProps {
   label: string;
-  [unknown: string]: any;
+  [unknown: string]: any; // eslint-disable-line
 }
 
 export default function Switch(props: ISwitchProps): JSX.Element {

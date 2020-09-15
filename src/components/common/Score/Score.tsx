@@ -4,13 +4,13 @@ import useStyles from "./Score.styles";
 export interface IScoreProps {
   title: string;
   classNames?: string;
-  [unknown: string]: any;
+  [unknown: string]: any; // eslint-disable-line
 }
 
 export default function Score(props: IScoreProps): JSX.Element {
   const classes = useStyles();
 
-  const { title, classNames, ...other } = props;
+  const { classNames, ...other } = props;
 
   return (
     <React.Fragment>

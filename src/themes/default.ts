@@ -2,6 +2,8 @@ import { ITheme } from "utils/types";
 import { JssStyle } from "jss";
 
 export default class DefaultTheme implements ITheme {
+  public name: string;
+
   public background_primary: string;
   public background_secondary: string;
   public background_tertiary: string;
@@ -15,6 +17,8 @@ export default class DefaultTheme implements ITheme {
   public global: JssStyle;
 
   public constructor() {
+    this.name = "default";
+
     this.background_primary = "#ffffff";
     this.background_secondary = "#6c757d";
     this.background_tertiary = "#343a40";
@@ -60,6 +64,10 @@ export default class DefaultTheme implements ITheme {
       main: {
         flexGrow: 1,
         display: "flex",
+      },
+      h1: {
+        fontSize: "2rem",
+        margin: 0,
       },
       h2: {
         fontSize: "2rem",

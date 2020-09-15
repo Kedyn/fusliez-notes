@@ -12,6 +12,9 @@ export default createUseStyles((theme: ITheme) => ({
     padding: "0 0.25rem",
     marginBottom: "0.5rem",
   },
+  nonActive: {
+    opacity: 0.6,
+  },
   player: {
     height: "2rem",
     width: "2rem",
@@ -20,7 +23,7 @@ export default createUseStyles((theme: ITheme) => ({
   },
   name: {
     flexGrow: 1,
-    padding: "0.5rem",
+    padding: "0.25rem",
   },
   input: {
     width: "100%",

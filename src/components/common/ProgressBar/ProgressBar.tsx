@@ -1,6 +1,5 @@
 import React from "react";
 import useStyles from "./ProgressBar.styles";
-import { useTheme } from "react-jss";
 
 export interface IProgressBarProps {
   progress: number;
@@ -13,7 +12,6 @@ export interface IProgressBarProps {
 export default function ProgressBar(props: IProgressBarProps): JSX.Element {
   const { progress, background_color, progress_color, text } = props;
 
-  const theme = useTheme();
   const classes = useStyles({
     backgroundColor: background_color,
     progressColor: progress_color,

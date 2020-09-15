@@ -7,6 +7,8 @@ export interface IPlayer extends ItemInterface {
 }
 
 export interface ITheme {
+  name: string;
+
   background_primary: string;
   background_secondary: string;
   background_tertiary: string;
@@ -30,6 +32,7 @@ export interface IDataContext {
   evil_players: Array<IPlayer>;
   dead_players: Array<IPlayer>;
   unknown_players: Array<IPlayer>;
+  notes: string;
   setTheme: (value: ITheme) => void;
   setWins: (value: number) => void;
   setGames: (value: number) => void;
@@ -39,4 +42,18 @@ export interface IDataContext {
   setEvilPlayers: (value: Array<IPlayer>) => void;
   setDeadPlayers: (value: Array<IPlayer>) => void;
   setUnknownPlayers: (value: Array<IPlayer>) => void;
+  setNotes: (value: string) => void;
+}
+
+export interface IData {
+  theme: string;
+  wins: number;
+  games: number;
+  names: boolean;
+  innocent_players: Array<IPlayer>;
+  sus_players: Array<IPlayer>;
+  evil_players: Array<IPlayer>;
+  dead_players: Array<IPlayer>;
+  unknown_players: Array<IPlayer>;
+  notes: string;
 }
