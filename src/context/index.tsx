@@ -109,11 +109,19 @@ export const DataProvider = ({ children }: IDataProviderProps): JSX.Element => {
   const prefers_dark = useMediaQuery("(prefers-color-scheme: dark)");
 
   function resetPlayers() {
+    setLocalUnknownPlayers((prevState) => {
+      return [
+        ...prevState,
+        ...innocent_players,
+        ...sus_players,
+        ...evil_players,
+        ...dead_players,
+      ];
+    });
     setLocalInnocentPlayers([]);
     setLocalSusPlayers([]);
     setLocalEvilPlayers([]);
     setLocalDeadPlayers([]);
-    setLocalUnknownPlayers(initialData.unknown_players);
   }
 
   function resetAll() {
