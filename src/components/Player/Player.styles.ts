@@ -9,7 +9,7 @@ export default createUseStyles((theme: ITheme) => ({
     borderRadius: "0.25rem",
     border: `1px solid ${theme.border}`,
     padding: "0 0.25rem",
-    marginBottom: "0.5rem",
+    margin: "0.25rem",
     // backgroundColor: `rgba(${props.backgroundColor}, 0.75)`,
   }),
   nonActive: {
