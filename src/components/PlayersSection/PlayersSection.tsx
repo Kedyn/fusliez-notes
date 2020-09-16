@@ -19,6 +19,14 @@ export default function PlayersSection(): JSX.Element {
 
   const classes = useStyles();
 
+  // const sections = [
+  //   {title: "Innocent", list: innocent_players, setList: setInnocentPlayers},
+  //   {title: "Innocent", list: innocent_players, setList: setInnocentPlayers},
+  //   {title: "Innocent", list: innocent_players, setList: setInnocentPlayers},
+  //   {title: "Innocent", list: innocent_players, setList: setInnocentPlayers},
+  //   {title: "Innocent", list: innocent_players, setList: setInnocentPlayers},
+  // ]
+
   return (
     <React.Fragment>
       <div className={classes.root}>

@@ -6,6 +6,11 @@ export default createUseStyles((theme: ITheme) => ({
     minWidth: 320,
     padding: "0.5rem",
   },
+  buttonContainer: {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "space-between",
+  },
   scoreButtons: {
     display: "flex",
     marginBottom: "0.5rem",
@@ -34,12 +39,14 @@ export default createUseStyles((theme: ITheme) => ({
     backgroundColor: theme.background_secondary,
     color: "#ffffff",
     fontSize: "1rem",
-
+    margin: "0.25rem 0",
     "&:hover": {
       backgroundColor: "#5a6268", // should not be hard coded but just for now
     },
   },
   notes: {
+    fontSize: "1.5rem",
     width: "100%",
+    backgroundColor: "lightgray",
   },
 }));

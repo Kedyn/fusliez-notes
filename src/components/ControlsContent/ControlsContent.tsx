@@ -12,22 +12,14 @@ export default function ControlsContent(): JSX.Element {
     theme,
     wins,
     games,
-    innocent_players,
-    sus_players,
-    evil_players,
-    dead_players,
-    unknown_players,
     notes,
+    resetPlayers,
+    resetAll,
     setNames,
     setTheme,
     setWins,
     setGames,
     setNotes,
-    setInnocentPlayers,
-    setSusPlayers,
-    setEvilPlayers,
-    setDeadPlayers,
-    setUnknownPlayers,
   } = useData()!; // eslint-disable-line
 
   return (
@@ -72,26 +64,15 @@ export default function ControlsContent(): JSX.Element {
             Lose
           </Button>
         </div>
-        <Button
-          classNames={classes.reset}
-          onClick={() => {
-            const players = [
-              ...innocent_players,
-              ...sus_players,
-              ...evil_players,
-              ...dead_players,
-              ...unknown_players,
-            ];
 
-            setInnocentPlayers([]);
-            setSusPlayers([]);
-            setEvilPlayers([]);
-            setDeadPlayers([]);
-            setUnknownPlayers(players);
-          }}
-        >
-          Reset Players
-        </Button>
+        <div className={classes.buttonContainer}>
+          <Button classNames={classes.reset} onClick={() => resetPlayers()}>
+            Reset Players
+          </Button>
+          <Button classNames={classes.reset} onClick={() => resetAll()}>
+            Reset Everything
+          </Button>
+        </div>
         <h2>Notes</h2>
         <textarea
           rows={20}

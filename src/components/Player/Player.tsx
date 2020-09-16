@@ -1,5 +1,5 @@
 import { IPlayer } from "utils/types";
-import colorNameToRGB from "utils/colorConverter";
+// import colorNameToRGB from "utils/colorConverter";
 import Input from "components/common/Input";
 import React from "react";
 import { useData } from "context";
