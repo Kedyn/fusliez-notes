@@ -164,7 +164,7 @@ export const DataProvider = ({ children }: IDataProviderProps): JSX.Element => {
 
       localStorage.setItem(`${namespace}data`, JSON.stringify(initialData));
     }
-  }, [localStorage]);
+  }, []);
 
   return (
     <DataContext.Provider
