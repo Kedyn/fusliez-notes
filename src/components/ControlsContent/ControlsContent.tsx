@@ -14,7 +14,7 @@ export default function ControlsContent(): JSX.Element {
     wins,
     games,
     notes,
-    resetPlayers,
+    resetRound,
     resetAll,
     setNames,
     setTheme,
@@ -67,11 +67,11 @@ export default function ControlsContent(): JSX.Element {
         </div>
 
         <div className={classes.buttonContainer}>
-          <Button classNames={classes.reset} onClick={() => resetPlayers()}>
-            Reset Players
+          <Button classNames={classes.reset} onClick={() => resetRound()}>
+            Reset Round
           </Button>
           <Button classNames={classes.reset} onClick={() => resetAll()}>
-            Reset Everything
+            Reset Everything (literally EVERYTHING)
           </Button>
         </div>
         <h2>Notes</h2>

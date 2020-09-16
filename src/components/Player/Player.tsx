@@ -53,7 +53,7 @@ export default function Player(props: IPlayerProps): JSX.Element {
       {names && (
         <div className={classes.name}>
           <Input
-            placeholder="Player name"
+            placeholder="Player Name"
             classNames={classes.input}
             onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
               handleChange(index, event)
