@@ -40,7 +40,8 @@ other support on this project such as:
 [Adam Gausmann](https://github.com/agausmann)  
 Pedro / Dian\_\_  
 Rydannn (twitch handle)
-GeneralMitch (twitch handle)
+GeneralMitch (twitch handle)  
+Kermitigated (twitch handle)
 
 Please if you would not like to be mentioned here or your information is wrong
 let me know so I can remove it or fix it, thank you!

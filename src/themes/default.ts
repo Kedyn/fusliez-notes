@@ -65,6 +65,7 @@ export default class DefaultTheme implements ITheme {
         border: "none",
         boxShadow: "none",
         color: this.text_primary,
+        fontFamily: "inherit",
       },
       textarea: {
         fontFamily: "inherit",
