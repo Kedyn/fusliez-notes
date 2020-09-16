@@ -3,8 +3,8 @@ import { createUseStyles } from "react-jss";
 
 export default createUseStyles((theme: ITheme) => ({
   root: {
-    minWidth: 320,
     padding: "0.5rem",
+    flex: 1,
   },
   buttonContainer: {
     display: "flex",
@@ -47,6 +47,7 @@ export default createUseStyles((theme: ITheme) => ({
   notes: {
     fontSize: "1.5rem",
     width: "100%",
+    maxHeight: "400px",
     backgroundColor: "lightgray",
   },
 }));

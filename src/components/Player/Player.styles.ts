@@ -9,7 +9,7 @@ export default createUseStyles((theme: ITheme) => ({
     borderRadius: "0.25rem",
     border: `1px solid ${theme.border}`,
     padding: "0 0.25rem",
-    margin: "0.25rem",
+    margin: "0.25rem 0",
     // backgroundColor: `rgba(${props.backgroundColor}, 0.75)`,
   }),
   nonActive: {
@@ -19,7 +19,6 @@ export default createUseStyles((theme: ITheme) => ({
     height: "2rem",
     width: "2rem",
     minHeight: "2rem",
-    minWidth: "2rem",
   },
   name: {
     flexGrow: 1,
@@ -29,7 +28,7 @@ export default createUseStyles((theme: ITheme) => ({
     width: "100%",
     fontWeight: 700,
     letterSpacing: "0.05rem",
-    fontSize: "1rem",
+    fontSize: "1.5rem",
     padding: "0",
     lineHeight: 1.5,
     borderRadius: ".2rem",

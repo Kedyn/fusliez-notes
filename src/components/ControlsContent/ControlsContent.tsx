@@ -4,6 +4,7 @@ import Switch from "components/common/Switch";
 import { Themes } from "themes/themes";
 import { useData } from "context";
 import useStyles from "./ControlsContent.styles";
+import MapsContent from "../MapsContent";
 
 export default function ControlsContent(): JSX.Element {
   const classes = useStyles();
@@ -82,6 +83,7 @@ export default function ControlsContent(): JSX.Element {
           }
           value={notes}
         />
+        <MapsContent />
       </div>
     </React.Fragment>
   );

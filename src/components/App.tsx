@@ -2,7 +2,7 @@ import { JssProvider, ThemeProvider } from "react-jss";
 
 import ControlsContent from "./ControlsContent";
 import MainContent from "./MainContent";
-// import MapsContent from "./MapsContent";
+import MapsContent from "./MapsContent";
 import React from "react";
 import jssSetUp from "utils/jssSetUp";
 import { useData } from "context";
@@ -20,20 +20,13 @@ export default function App(): JSX.Element {
               style={{
                 display: "flex",
                 justifyContent: "space-around",
-                maxWidth: "1600px",
+                maxWidth: "1200px",
                 margin: "0 auto",
                 width: "100%",
               }}
             >
-              <div id="main">
-                <MainContent />
-              </div>
-              <div id="controls">
-                <ControlsContent />
-              </div>
-              {/* <div id="maps">
-                <MapsContent />
-              </div> */}
+              <MainContent />
+              <ControlsContent />
             </main>
             <footer>
               <div>
