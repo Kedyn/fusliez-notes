@@ -100,9 +100,11 @@ export default class DefaultTheme implements ITheme {
       },
       "#main": {
         maxWidth: 320,
+        minWidth: 320,
       },
       "#controls": {
         maxWidth: 320,
+        minWidth: 320,
       },
       "#maps": {
         flexGrow: 1,
@@ -157,6 +159,9 @@ export default class DefaultTheme implements ITheme {
       a: {
         textDecoration: "none",
         color: "orange",
+      },
+      [`@media (max-width: 1200px)`]: {
+        "#maps": { display: "none" },
       },
     };
   }
