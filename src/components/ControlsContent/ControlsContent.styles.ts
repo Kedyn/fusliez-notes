@@ -4,7 +4,7 @@ import { createUseStyles } from "react-jss";
 export default createUseStyles((theme: ITheme) => ({
   root: {
     padding: "0.5rem",
-    flex: 1,
+    flex: 3,
   },
   buttonContainer: {
     display: "flex",
@@ -53,7 +53,7 @@ export default createUseStyles((theme: ITheme) => ({
   notes: {
     fontSize: "1.25rem",
     width: "100%",
-    maxHeight: "300px",
+    maxHeight: "350px",
     backgroundColor: "lightgray",
   },
 }));

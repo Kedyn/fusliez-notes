@@ -29,5 +29,6 @@ export default createUseStyles((theme: ITheme) => ({
   },
   map: {
     width: "100%",
+    borderRadius: "12px",
   },
 }));

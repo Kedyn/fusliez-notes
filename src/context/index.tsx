@@ -88,7 +88,6 @@ export const DataProvider = ({ children }: IDataProviderProps): JSX.Element => {
   }
 
   function resetAll() {
-    console.log(unknown_players, initialData.unknown_players, initialData);
     setLocalWins(0);
     setLocalGames(0);
     setLocalTheme(Themes.dark);
