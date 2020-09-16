@@ -45,9 +45,9 @@ export default createUseStyles((theme: ITheme) => ({
     },
   },
   notes: {
-    fontSize: "1.5rem",
+    fontSize: "1.25rem",
     width: "100%",
-    maxHeight: "400px",
+    maxHeight: "300px",
     backgroundColor: "lightgray",
   },
 }));

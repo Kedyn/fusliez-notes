@@ -10,15 +10,14 @@ export default createUseStyles((theme: ITheme) => ({
     border: `1px solid ${theme.border}`,
     padding: "0 0.25rem",
     margin: "0.25rem 0",
+    maxWidth: "90%",
     // backgroundColor: `rgba(${props.backgroundColor}, 0.75)`,
   }),
   nonActive: {
-    opacity: 0.6,
+    opacity: 0.5,
   },
   player: {
-    height: "2rem",
-    width: "2rem",
-    minHeight: "2rem",
+    padding: "0.25rem",
   },
   name: {
     flexGrow: 1,
@@ -29,7 +28,6 @@ export default createUseStyles((theme: ITheme) => ({
     fontWeight: 700,
     letterSpacing: "0.05rem",
     fontSize: "1.5rem",
-    padding: "0",
     lineHeight: 1.5,
     borderRadius: ".2rem",
     textAlign: "left",

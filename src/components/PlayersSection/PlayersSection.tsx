@@ -37,7 +37,7 @@ export default function PlayersSection(): JSX.Element {
   return (
     <div className={classes.root}>
       {sections.map(({ title, list, setList }) => (
-        <Section title={title} list={list} setList={setList} />
+        <Section key={title} title={title} list={list} setList={setList} />
       ))}
     </div>
   );
