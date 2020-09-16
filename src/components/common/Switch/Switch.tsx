@@ -12,14 +12,12 @@ export default function Switch(props: ISwitchProps): JSX.Element {
   const { label, ...other } = props;
 
   return (
-    <React.Fragment>
-      <div className={classes.root}>
-        <label>
-          <input className={classes.toggle} type="checkbox" {...other} />
-          {label}
-        </label>
-      </div>
-    </React.Fragment>
+    <div className={classes.root}>
+      <label>
+        <input className={classes.toggle} type="checkbox" {...other} />
+        {label}
+      </label>
+    </div>
   );
 }
 

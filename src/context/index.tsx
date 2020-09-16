@@ -109,7 +109,15 @@ export const DataProvider = ({ children }: IDataProviderProps): JSX.Element => {
   const prefers_dark = useMediaQuery("(prefers-color-scheme: dark)");
 
   function resetRound() {
-    setLocalUnknownPlayers(initialData.unknown_players);
+    const currentPlayers = [
+      ...unknown_players,
+      ...innocent_players,
+      ...sus_players,
+      ...evil_players,
+      ...dead_players,
+    ];
+
+    setLocalUnknownPlayers(currentPlayers);
     setLocalInnocentPlayers([]);
     setLocalSusPlayers([]);
     setLocalEvilPlayers([]);
@@ -119,7 +127,7 @@ export const DataProvider = ({ children }: IDataProviderProps): JSX.Element => {
       `${namespace}data`,
       JSON.stringify({
         ...initialData,
-        unknown_players: initialData.unknown_players,
+        unknown_players: currentPlayers,
       })
     );
   }
@@ -130,7 +138,11 @@ export const DataProvider = ({ children }: IDataProviderProps): JSX.Element => {
     setLocalTheme(Themes.dark);
     setLocalNames(true);
     setLocalNotes("");
-    resetRound();
+    setLocalUnknownPlayers(initialData.unknown_players);
+    setLocalInnocentPlayers([]);
+    setLocalSusPlayers([]);
+    setLocalEvilPlayers([]);
+    setLocalDeadPlayers([]);
 
     localStorage.setItem(`${namespace}data`, JSON.stringify(initialData));
   }

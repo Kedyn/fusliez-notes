@@ -15,6 +15,12 @@ export default createUseStyles((theme: ITheme) => ({
     display: "flex",
     marginBottom: "0.5rem",
   },
+  switchesContainer: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-around",
+    padding: "0.5rem 0",
+  },
   win: {
     backgroundColor: "#28a745", // should not be hard coded but just for now
     color: "#ffffff",

@@ -10,7 +10,6 @@ export default createUseStyles((theme: ITheme) => ({
     border: `1px solid ${theme.border}`,
     padding: "0 0.25rem",
     margin: "0.25rem 0",
-    maxWidth: "90%",
     // backgroundColor: `rgba(${props.backgroundColor}, 0.75)`,
   }),
   nonActive: {

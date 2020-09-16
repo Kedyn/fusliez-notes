@@ -26,25 +26,27 @@ export default function ControlsContent(): JSX.Element {
   return (
     <React.Fragment>
       <div className={classes.root}>
-        <Switch
-          label="Dark theme"
-          onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-            if (event.currentTarget.checked) {
-              setTheme(Themes.dark);
-            } else {
-              setTheme(Themes.light);
-            }
-          }}
-          checked={theme === Themes.dark}
-        />
+        <div className={classes.switchesContainer}>
+          <Switch
+            label="Dark theme"
+            onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+              if (event.currentTarget.checked) {
+                setTheme(Themes.dark);
+              } else {
+                setTheme(Themes.light);
+              }
+            }}
+            checked={theme === Themes.dark}
+          />
 
-        <Switch
-          label="Use player names"
-          onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-            setNames(event.currentTarget.checked);
-          }}
-          checked={names}
-        />
+          <Switch
+            label="Use player names"
+            onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+              setNames(event.currentTarget.checked);
+            }}
+            checked={names}
+          />
+        </div>
 
         <div className={classes.scoreButtons}>
           <Button
