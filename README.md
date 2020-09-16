@@ -23,7 +23,7 @@ If you would like to contribute in any way please read our
 
 ## Authors and acknowledgment
 
-Thanks to the one who inspired the note app:
+Thanks to the one who inspired the note app:  
 [Leslie](https://www.twitch.tv/fuslie) (AKA fuslie)
 
 Thanks to the developer team:
