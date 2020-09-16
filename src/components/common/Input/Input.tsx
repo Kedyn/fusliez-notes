@@ -13,13 +13,11 @@ export default function Input(props: IInputProps): JSX.Element {
   const { placeholder, classNames, ...other } = props;
 
   return (
-    <React.Fragment>
-      <input
-        type="text"
-        placeholder={placeholder}
-        className={`${classNames ? classNames : ""} ${classes.root}`}
-        {...other}
-      />
-    </React.Fragment>
+    <input
+      type="text"
+      placeholder={placeholder}
+      className={`${classNames ? classNames : ""} ${classes.root}`}
+      {...other}
+    />
   );
 }

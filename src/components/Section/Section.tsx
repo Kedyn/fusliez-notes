@@ -4,6 +4,7 @@ import React from "react";
 import { ReactSortable } from "react-sortablejs";
 import { useData } from "context";
 import useStyles from "./Section.styles";
+import colorNameToRGB from "utils/colorConverter";
 
 export interface ISectionProps {
   title: string;
@@ -33,6 +34,15 @@ export default function Section(props: ISectionProps): JSX.Element {
             <Player
               key={id}
               id={id}
+              backgroundColor={colorNameToRGB(
+                color === "brown"
+                  ? "saddlebrown"
+                  : color === "blue"
+                  ? "cornflowerblue"
+                  : color === "purple"
+                  ? "darkorchid"
+                  : color
+              )}
               color={color}
               name={name}
               list={list}

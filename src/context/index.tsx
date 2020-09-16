@@ -12,49 +12,6 @@ export interface IDataProviderProps {
   children: React.ReactNode;
 }
 
-function playerLists(): {
-  innocent_players: Array<IPlayer>;
-  sus_players: Array<IPlayer>;
-  evil_players: Array<IPlayer>;
-  dead_players: Array<IPlayer>;
-  unknown_players: Array<IPlayer>;
-} {
-  const local_data = localStorage.getItem(`${namespace}data`);
-
-  if (local_data != null) {
-    const data: IData = JSON.parse(local_data);
-
-    return {
-      innocent_players: data.innocent_players,
-      sus_players: data.sus_players,
-      evil_players: data.evil_players,
-      dead_players: data.dead_players,
-      unknown_players: data.unknown_players,
-    };
-  } else {
-    return {
-      innocent_players: [],
-      sus_players: [],
-      evil_players: [],
-      dead_players: [],
-      unknown_players: [
-        { id: "blue", name: "", color: "blue" },
-        { id: "brown", name: "", color: "brown" },
-        { id: "gray", name: "", color: "gray" },
-        { id: "green", name: "", color: "green" },
-        { id: "lightGreen", name: "", color: "lightGreen" },
-        { id: "orange", name: "fuslie", color: "orange" },
-        { id: "pink", name: "", color: "pink" },
-        { id: "purple", name: "", color: "purple" },
-        { id: "red", name: "", color: "red" },
-        { id: "teal", name: "", color: "teal" },
-        { id: "white", name: "", color: "white" },
-        { id: "yellow", name: "", color: "yellow" },
-      ],
-    };
-  }
-}
-
 const initialData: IData = {
   theme: "dark",
   wins: 0,
@@ -82,8 +39,6 @@ const initialData: IData = {
 };
 
 export const DataProvider = ({ children }: IDataProviderProps): JSX.Element => {
-  // const [state, dispatch] = React.useReducer(reducer, initialData);
-  const players = playerLists();
   const [theme, setLocalTheme] = React.useState<ITheme>(Themes.default);
   const [wins, setLocalWins] = React.useState(0);
   const [games, setLocalGames] = React.useState(0);
@@ -92,19 +47,19 @@ export const DataProvider = ({ children }: IDataProviderProps): JSX.Element => {
 
   const [innocent_players, setLocalInnocentPlayers] = React.useState<
     Array<IPlayer>
-  >(players.innocent_players);
+  >(initialData.innocent_players);
   const [sus_players, setLocalSusPlayers] = React.useState<Array<IPlayer>>(
-    players.sus_players
+    initialData.sus_players
   );
   const [evil_players, setLocalEvilPlayers] = React.useState<Array<IPlayer>>(
-    players.evil_players
+    initialData.evil_players
   );
   const [dead_players, setLocalDeadPlayers] = React.useState<Array<IPlayer>>(
-    players.dead_players
+    initialData.dead_players
   );
   const [unknown_players, setLocalUnknownPlayers] = React.useState<
     Array<IPlayer>
-  >(players.unknown_players);
+  >(initialData.unknown_players);
 
   const prefers_dark = useMediaQuery("(prefers-color-scheme: dark)");
 
@@ -133,6 +88,7 @@ export const DataProvider = ({ children }: IDataProviderProps): JSX.Element => {
   }
 
   function resetAll() {
+    console.log(unknown_players, initialData.unknown_players, initialData);
     setLocalWins(0);
     setLocalGames(0);
     setLocalTheme(Themes.dark);

@@ -10,11 +10,10 @@ export default createUseStyles((theme: ITheme) => ({
     border: `1px solid ${theme.border}`,
     padding: "0 0.25rem",
     margin: "0.25rem 0",
-    // backgroundColor: `rgba(${props.backgroundColor}, 0.75)`,
+    backgroundColor: props.name
+      ? `rgba(${props.backgroundColor}, 0.75)`
+      : "transparent",
   }),
-  nonActive: {
-    opacity: 0.5,
-  },
   player: {
     padding: "0.25rem",
   },
@@ -23,6 +22,7 @@ export default createUseStyles((theme: ITheme) => ({
     padding: "0.25rem",
   },
   input: {
+    color: "black !important",
     width: "100%",
     fontWeight: 700,
     letterSpacing: "0.05rem",
@@ -30,6 +30,5 @@ export default createUseStyles((theme: ITheme) => ({
     lineHeight: 1.5,
     borderRadius: ".2rem",
     textAlign: "left",
-    textShadow: theme.text_shadow,
   },
 }));
