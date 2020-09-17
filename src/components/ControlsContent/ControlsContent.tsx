@@ -72,7 +72,7 @@ export default function ControlsContent(): JSX.Element {
             Reset Round
           </Button>
           <Button classNames={classes.reset} onClick={() => resetAll()}>
-            Reset Everything (literally EVERYTHING)
+            Reset Everything (Player names, wins, losses, notes)
           </Button>
         </div>
         <h2>Notes</h2>

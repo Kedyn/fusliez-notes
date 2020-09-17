@@ -21,14 +21,13 @@ export default createUseStyles((theme: ITheme) => ({
     flexGrow: 1,
     padding: "0.25rem",
   },
-  input: {
-    color: "black !important",
+  input: (props) => ({
     width: "100%",
     fontWeight: 700,
     letterSpacing: "0.05rem",
-    fontSize: "1.5rem",
+    fontSize: props.name ? "1.5rem" : "1.25rem",
     lineHeight: 1.5,
     borderRadius: ".2rem",
     textAlign: "left",
-  },
+  }),
 }));

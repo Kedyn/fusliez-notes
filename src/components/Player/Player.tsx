@@ -44,6 +44,7 @@ export default function Player(props: IPlayerProps): JSX.Element {
               handleChange(index, event)
             }
             value={name}
+            style={{ color: "black" }}
           />
         </div>
       )}
