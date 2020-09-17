@@ -6,6 +6,20 @@ export default createUseStyles((theme: ITheme) => ({
     flex: 3,
     padding: "0.5rem",
   },
+  button: {
+    backgroundColor: theme.background_secondary,
+    color: "#ffffff",
+    fontSize: "1rem",
+    margin: "0.25rem",
+    "&:hover": {
+      backgroundColor: "#5a6268", // should not be hard coded but just for now
+    },
+  },
+  buttonsContainer: {
+    display: "flex",
+    justifyContent: "space-between",
+    margin: "0.5rem 0",
+  },
   mapNames: {
     display: "flex",
     justifyContent: "space-between",

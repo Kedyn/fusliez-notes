@@ -8,9 +8,5 @@ export default function ComponentExample(
 ): JSX.Element {
   const classes = useStyles();
 
-  return (
-    <React.Fragment>
-      <div className={classes.root}></div>
-    </React.Fragment>
-  );
+  return <div className={classes.root}></div>;
 }
