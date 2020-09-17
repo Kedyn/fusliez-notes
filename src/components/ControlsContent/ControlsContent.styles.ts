@@ -53,7 +53,6 @@ export default createUseStyles((theme: ITheme) => ({
   notes: {
     fontSize: "1.25rem",
     width: "100%",
-    maxHeight: "350px",
     backgroundColor: "lightgray",
   },
 }));
