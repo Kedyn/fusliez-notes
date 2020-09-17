@@ -3,7 +3,7 @@ import { createUseStyles } from "react-jss";
 
 export default createUseStyles((theme: ITheme) => ({
   root: {
-    flex: 1,
+    flex: 3,
     padding: "0.5rem",
   },
   mapNames: {

@@ -20,13 +20,14 @@ export default function App(): JSX.Element {
               style={{
                 display: "flex",
                 justifyContent: "space-around",
-                maxWidth: "1200px",
+                maxWidth: "1600px",
                 margin: "0 auto",
                 width: "100%",
               }}
             >
               <MainContent />
               <ControlsContent />
+              <MapsContent />
             </main>
             <footer>
               <div>
