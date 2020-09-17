@@ -29,11 +29,11 @@ export interface IDataContext {
   wins: number;
   games: number;
   names: boolean;
-  innocent_players: Array<IPlayer>;
-  sus_players: Array<IPlayer>;
-  evil_players: Array<IPlayer>;
-  dead_players: Array<IPlayer>;
-  unknown_players: Array<IPlayer>;
+  innocentPlayers: Array<IPlayer>;
+  susPlayers: Array<IPlayer>;
+  evilPlayers: Array<IPlayer>;
+  deadPlayers: Array<IPlayer>;
+  unknownPlayers: Array<IPlayer>;
   notes: string;
   resetRound: () => void;
   resetAll: () => void;
@@ -54,10 +54,10 @@ export interface IData {
   wins: number;
   games: number;
   names: boolean;
-  innocent_players: Array<IPlayer>;
-  sus_players: Array<IPlayer>;
-  evil_players: Array<IPlayer>;
-  dead_players: Array<IPlayer>;
-  unknown_players: Array<IPlayer>;
+  innocentPlayers: Array<IPlayer>;
+  susPlayers: Array<IPlayer>;
+  evilPlayers: Array<IPlayer>;
+  deadPlayers: Array<IPlayer>;
+  unknownPlayers: Array<IPlayer>;
   notes: string;
 }

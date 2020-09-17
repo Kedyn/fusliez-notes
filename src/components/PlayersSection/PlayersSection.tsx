@@ -6,11 +6,11 @@ import useStyles from "./PlayersSection.styles";
 
 export default function PlayersSection(): JSX.Element {
   const {
-    innocent_players,
-    sus_players,
-    evil_players,
-    dead_players,
-    unknown_players,
+    innocentPlayers,
+    susPlayers,
+    evilPlayers,
+    deadPlayers,
+    unknownPlayers,
     setInnocentPlayers,
     setSusPlayers,
     setEvilPlayers,
@@ -27,11 +27,15 @@ export default function PlayersSection(): JSX.Element {
   }
 
   const sections: Array<Section> = [
-    { title: "Innocent", list: innocent_players, setList: setInnocentPlayers },
-    { title: "Suspicious", list: sus_players, setList: setSusPlayers },
-    { title: "Evil / Hit List", list: evil_players, setList: setEvilPlayers },
-    { title: "Dead", list: dead_players, setList: setDeadPlayers },
-    { title: "Unknown", list: unknown_players, setList: setUnknownPlayers },
+    { title: "Innocent", list: innocentPlayers, setList: setInnocentPlayers },
+    {
+      title: "Suspicious / Hit List",
+      list: susPlayers,
+      setList: setSusPlayers,
+    },
+    { title: "Evil", list: evilPlayers, setList: setEvilPlayers },
+    { title: "Dead", list: deadPlayers, setList: setDeadPlayers },
+    { title: "Unknown", list: unknownPlayers, setList: setUnknownPlayers },
   ];
 
   return (
