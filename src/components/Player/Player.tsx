@@ -38,17 +38,13 @@ export default function Player(props: IPlayerProps): JSX.Element {
       {names && (
         <div className={classes.name}>
           <Input
+            id="player-input"
             placeholder="Player Name"
             classNames={classes.input}
             onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
               handleChange(index, event)
             }
             value={name}
-            // keeping this inline to override it
-            // changing the input color in theme file
-            // will change other Input as well
-            // producing unwanted result
-            style={{ color: "black" }}
           />
         </div>
       )}
