@@ -1,5 +1,6 @@
 .cache/
 build/
 dist/
+docs/
 node_modules/
 .eslintcache

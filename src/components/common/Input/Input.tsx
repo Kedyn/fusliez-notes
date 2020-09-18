@@ -3,23 +3,21 @@ import useStyles from "./Input.styles";
 
 export interface IInputProps {
   placeholder: string;
-  classNames?: string;
+  className?: string;
   [unknown: string]: any; // eslint-disable-line
 }
 
 export default function Input(props: IInputProps): JSX.Element {
   const classes = useStyles();
 
-  const { placeholder, classNames, ...other } = props;
+  const { placeholder, className, ...other } = props;
 
   return (
-    <React.Fragment>
-      <input
-        type="text"
-        placeholder={placeholder}
-        className={`${classNames ? classNames : ""} ${classes.root}`}
-        {...other}
-      />
-    </React.Fragment>
+    <input
+      type="text"
+      placeholder={placeholder}
+      className={`${className ? className : ""} ${classes.root}`}
+      {...other}
+    />
   );
 }

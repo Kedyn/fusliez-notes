@@ -1,8 +1,11 @@
 import { createUseStyles } from "react-jss";
+import { ITheme } from "utils/types";
 
-export default createUseStyles({
+export default createUseStyles((theme: ITheme) => ({
   root: {
     display: "flex",
+    borderBottom: `2px solid ${theme.text_secondary}`,
+    padding: "0.25rem 0.5rem",
   },
   logo: {
     width: 60,
@@ -16,4 +19,4 @@ export default createUseStyles({
     fontSize: "2rem",
     padding: "0 0.25rem",
   },
-});
+}));
