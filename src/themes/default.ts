@@ -85,8 +85,12 @@ export default class DefaultTheme implements ITheme {
         cursor: "pointer",
       },
       main: {
-        flexGrow: 1,
         display: "flex",
+        flexGrow: 1,
+        maxWidth: "1600px",
+        margin: "0 auto",
+        padding: "0.5rem",
+        width: "100%",
       },
       h1: {
         fontSize: "2rem",
