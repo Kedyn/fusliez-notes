@@ -34,8 +34,10 @@ export default createUseStyles((theme: ITheme) => ({
     height: "100%",
     borderRadius: "50rem",
   },
+  activeButton: {
+    border: `2px solid ${theme.text_primary}`,
+  },
   activeMap: {
-    // border: `0.5rem solid ${theme.background_tertiary}`,
     border: `0.5rem solid seagreen`,
   },
   wrapper: {

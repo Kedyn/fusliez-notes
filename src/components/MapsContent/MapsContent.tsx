@@ -34,10 +34,11 @@ export default function MapsContent(): JSX.Element {
       <div className={classes.buttonsContainer}>
         {buttons.map((tab) => (
           <Button
-            className={classes.button}
+            className={`${classes.button} ${
+              currentTab === tab ? classes.activeButton : ""
+            }`}
             key={tab}
             onClick={() => setCurrentTab(tab)}
-            style={currentTab === tab ? { border: "2px solid white" } : {}}
           >
             {tab}
           </Button>

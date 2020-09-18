@@ -44,6 +44,10 @@ export default function Player(props: IPlayerProps): JSX.Element {
               handleChange(index, event)
             }
             value={name}
+            // keeping this inline to override it
+            // changing the input color in theme file
+            // will change other Input as well
+            // producing unwanted result
             style={{ color: "black" }}
           />
         </div>

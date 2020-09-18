@@ -24,7 +24,7 @@ export default class DarkTheme extends DefaultTheme {
         fontSize: this.font_size,
       },
       'input[type="text"],input[type="number"],input[type="text"]:focus,input[type="number"]:focus': {
-        color: this.text_primary,
+        color: this.text_secondary,
       },
     };
   }
