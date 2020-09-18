@@ -96,6 +96,7 @@ export const DataProvider = ({ children }: IDataProviderProps): JSX.Element => {
     setLocalSusPlayers([]);
     setLocalEvilPlayers([]);
     setLocalDeadPlayers([]);
+    setLocalNotes("");
 
     localStorage.setItem(
       `${namespace}data`,
