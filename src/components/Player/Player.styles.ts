@@ -22,7 +22,6 @@ export default createUseStyles((theme: ITheme) => ({
     padding: "0.25rem",
   },
   input: (props) => ({
-    color: props.name ? "black" : theme.text_primary,
     width: "100%",
     fontWeight: 700,
     letterSpacing: "0.05rem",

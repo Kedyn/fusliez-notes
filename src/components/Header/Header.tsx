@@ -15,7 +15,8 @@ export default function Header(): JSX.Element {
           <Input
             placeholder="fuesliez notes title"
             defaultValue="fusliez notes"
-            classNames={classes.titleInput}
+            className={classes.titleInput}
+            id="title-input"
           />
         </h1>
       </div>

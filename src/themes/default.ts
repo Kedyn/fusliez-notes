@@ -59,9 +59,6 @@ export default class DefaultTheme implements ITheme {
         height: "auto",
         verticalAlign: "middle",
       },
-      "#player-input": {
-        color: "#000000",
-      },
       'input[type="text"],input[type="number"],input[type="text"]:focus,input[type="number"]:focus': {
         background: "transparent",
         appearance: "none",

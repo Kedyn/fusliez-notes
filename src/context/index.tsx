@@ -61,7 +61,7 @@ export const DataProvider = ({ children }: IDataProviderProps): JSX.Element => {
     Array<IPlayer>
   >(initialData.unknownPlayers);
 
-  const prefers_dark = useMediaQuery("(prefers-color-scheme: dark)");
+  const prefersDark = useMediaQuery("(prefers-color-scheme: dark)");
 
   function resetRound() {
     const currentPlayers = [
@@ -103,19 +103,21 @@ export const DataProvider = ({ children }: IDataProviderProps): JSX.Element => {
   }
 
   React.useEffect(() => {
-    const local_data = localStorage.getItem(`${namespace}data`);
+    const localData = localStorage.getItem(`${namespace}data`);
 
-    if (local_data != null) {
-      const data: IData = JSON.parse(local_data);
+    if (localData != null) {
+      const data: IData = JSON.parse(localData);
+
+      console.log(data);
 
       if (data.theme) {
-        const local_theme = Themes[data.theme];
+        const localTheme = Themes[data.theme];
 
-        if (local_theme) {
-          setLocalTheme(local_theme);
+        if (localTheme) {
+          setLocalTheme(localTheme);
         }
       } else {
-        if (prefers_dark) {
+        if (prefersDark) {
           setLocalTheme(Themes.dark);
         }
       }
@@ -156,7 +158,7 @@ export const DataProvider = ({ children }: IDataProviderProps): JSX.Element => {
         setLocalNotes(data.notes);
       }
     } else {
-      if (prefers_dark) {
+      if (prefersDark) {
         setLocalTheme(Themes.dark);
 
         initialData.theme = "dark";
@@ -182,10 +184,10 @@ export const DataProvider = ({ children }: IDataProviderProps): JSX.Element => {
         resetRound,
         resetAll,
         setTheme: (value: ITheme) => {
-          const local_data = localStorage.getItem(`${namespace}data`);
+          const localData = localStorage.getItem(`${namespace}data`);
 
-          if (local_data != null) {
-            const data: IData = JSON.parse(local_data);
+          if (localData != null) {
+            const data: IData = JSON.parse(localData);
 
             data.theme = value.name;
 
@@ -195,10 +197,10 @@ export const DataProvider = ({ children }: IDataProviderProps): JSX.Element => {
           }
         },
         setWins: (value: number) => {
-          const local_data = localStorage.getItem(`${namespace}data`);
+          const localData = localStorage.getItem(`${namespace}data`);
 
-          if (local_data != null) {
-            const data: IData = JSON.parse(local_data);
+          if (localData != null) {
+            const data: IData = JSON.parse(localData);
 
             data.wins = value;
 
@@ -208,10 +210,10 @@ export const DataProvider = ({ children }: IDataProviderProps): JSX.Element => {
           }
         },
         setGames: (value: number) => {
-          const local_data = localStorage.getItem(`${namespace}data`);
+          const localData = localStorage.getItem(`${namespace}data`);
 
-          if (local_data != null) {
-            const data: IData = JSON.parse(local_data);
+          if (localData != null) {
+            const data: IData = JSON.parse(localData);
 
             data.games = value;
 
@@ -221,10 +223,10 @@ export const DataProvider = ({ children }: IDataProviderProps): JSX.Element => {
           }
         },
         setNames: (value: boolean) => {
-          const local_data = localStorage.getItem(`${namespace}data`);
+          const localData = localStorage.getItem(`${namespace}data`);
 
-          if (local_data != null) {
-            const data: IData = JSON.parse(local_data);
+          if (localData != null) {
+            const data: IData = JSON.parse(localData);
 
             data.names = value;
 
@@ -234,10 +236,10 @@ export const DataProvider = ({ children }: IDataProviderProps): JSX.Element => {
           }
         },
         setInnocentPlayers: (value: Array<IPlayer>) => {
-          const local_data = localStorage.getItem(`${namespace}data`);
+          const localData = localStorage.getItem(`${namespace}data`);
 
-          if (local_data != null) {
-            const data: IData = JSON.parse(local_data);
+          if (localData != null) {
+            const data: IData = JSON.parse(localData);
 
             data.innocentPlayers = value.map(({ id, name, color }) => {
               return { id, name, color };
@@ -249,10 +251,10 @@ export const DataProvider = ({ children }: IDataProviderProps): JSX.Element => {
           }
         },
         setSusPlayers: (value: Array<IPlayer>) => {
-          const local_data = localStorage.getItem(`${namespace}data`);
+          const localData = localStorage.getItem(`${namespace}data`);
 
-          if (local_data != null) {
-            const data: IData = JSON.parse(local_data);
+          if (localData != null) {
+            const data: IData = JSON.parse(localData);
 
             data.susPlayers = value.map(({ id, name, color }) => {
               return { id, name, color };
@@ -264,10 +266,10 @@ export const DataProvider = ({ children }: IDataProviderProps): JSX.Element => {
           }
         },
         setEvilPlayers: (value: Array<IPlayer>) => {
-          const local_data = localStorage.getItem(`${namespace}data`);
+          const localData = localStorage.getItem(`${namespace}data`);
 
-          if (local_data != null) {
-            const data: IData = JSON.parse(local_data);
+          if (localData != null) {
+            const data: IData = JSON.parse(localData);
 
             data.evilPlayers = value.map(({ id, name, color }) => {
               return { id, name, color };
@@ -279,10 +281,10 @@ export const DataProvider = ({ children }: IDataProviderProps): JSX.Element => {
           }
         },
         setDeadPlayers: (value: Array<IPlayer>) => {
-          const local_data = localStorage.getItem(`${namespace}data`);
+          const localData = localStorage.getItem(`${namespace}data`);
 
-          if (local_data != null) {
-            const data: IData = JSON.parse(local_data);
+          if (localData != null) {
+            const data: IData = JSON.parse(localData);
 
             data.deadPlayers = value.map(({ id, name, color }) => {
               return { id, name, color };
@@ -294,10 +296,10 @@ export const DataProvider = ({ children }: IDataProviderProps): JSX.Element => {
           }
         },
         setUnknownPlayers: (value: Array<IPlayer>) => {
-          const local_data = localStorage.getItem(`${namespace}data`);
+          const localData = localStorage.getItem(`${namespace}data`);
 
-          if (local_data != null) {
-            const data: IData = JSON.parse(local_data);
+          if (localData != null) {
+            const data: IData = JSON.parse(localData);
 
             data.unknownPlayers = value.map(({ id, name, color }) => {
               return { id, name, color };
@@ -309,10 +311,10 @@ export const DataProvider = ({ children }: IDataProviderProps): JSX.Element => {
           }
         },
         setNotes: (value: string) => {
-          const local_data = localStorage.getItem(`${namespace}data`);
+          const localData = localStorage.getItem(`${namespace}data`);
 
-          if (local_data != null) {
-            const data: IData = JSON.parse(local_data);
+          if (localData != null) {
+            const data: IData = JSON.parse(localData);
 
             data.notes = value;
 
