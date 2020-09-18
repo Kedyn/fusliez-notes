@@ -6,19 +6,17 @@ import MapsContent from "./MapsContent";
 import React from "react";
 import jssSetUp from "utils/jssSetUp";
 import { useData } from "context";
-import useStyles from "./App.styles";
 
 export default function App(): JSX.Element {
   // eslint-disable-next-line
   const { theme } = useData()!;
-  const classes = useStyles();
 
   return (
     <React.Fragment>
       <JssProvider registry={jssSetUp(theme)}>
         <ThemeProvider theme={theme}>
           <React.Suspense fallback="loading">
-            <main className={classes.container}>
+            <main>
               <MainContent />
               <ControlsContent />
               <MapsContent />

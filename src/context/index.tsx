@@ -22,12 +22,12 @@ const initialData: IData = {
   evilPlayers: [],
   deadPlayers: [],
   unknownPlayers: [
+    { id: "orange", name: "fuslie", color: "orange" },
     { id: "blue", name: "", color: "blue" },
     { id: "brown", name: "", color: "brown" },
     { id: "gray", name: "", color: "gray" },
     { id: "green", name: "", color: "green" },
     { id: "lightGreen", name: "", color: "lightGreen" },
-    { id: "orange", name: "fuslie", color: "orange" },
     { id: "pink", name: "", color: "pink" },
     { id: "purple", name: "", color: "purple" },
     { id: "red", name: "", color: "red" },
@@ -38,38 +38,57 @@ const initialData: IData = {
   notes: "",
 };
 
+const localData = localStorage.getItem(`${namespace}data`);
+const data = JSON.parse(localData);
+
 export const DataProvider = ({ children }: IDataProviderProps): JSX.Element => {
   const [theme, setLocalTheme] = React.useState<ITheme>(Themes.default);
-  const [wins, setLocalWins] = React.useState(0);
-  const [games, setLocalGames] = React.useState(0);
-  const [names, setLocalNames] = React.useState(true);
-  const [notes, setLocalNotes] = React.useState("");
+  const [wins, setLocalWins] = React.useState(
+    data?.wins ? data.wins : initialData.wins
+  );
+  const [games, setLocalGames] = React.useState(
+    data?.games ? data.games : initialData.games
+  );
+  const [names, setLocalNames] = React.useState(
+    data?.names ? data.names : initialData.names
+  );
+  const [notes, setLocalNotes] = React.useState(
+    data?.notes ? data.notes : initialData.notes
+  );
 
   const [innocentPlayers, setLocalInnocentPlayers] = React.useState<
     Array<IPlayer>
-  >(initialData.innocentPlayers);
+  >(
+    data?.innocentPlayers.length
+      ? data.innocentPlayers
+      : initialData.innocentPlayers
+  );
   const [susPlayers, setLocalSusPlayers] = React.useState<Array<IPlayer>>(
-    initialData.susPlayers
+    data?.susPlayers.length ? data.susPlayers : initialData.susPlayers
   );
   const [evilPlayers, setLocalEvilPlayers] = React.useState<Array<IPlayer>>(
-    initialData.evilPlayers
+    data?.evilPlayers.length ? data.evilPlayers : initialData.evilPlayers
   );
   const [deadPlayers, setLocalDeadPlayers] = React.useState<Array<IPlayer>>(
-    initialData.deadPlayers
+    data?.deadPlayers.length ? data.deadPlayers : initialData.deadPlayers
   );
   const [unknownPlayers, setLocalUnknownPlayers] = React.useState<
     Array<IPlayer>
-  >(initialData.unknownPlayers);
+  >(
+    data?.unknownPlayers.length
+      ? data.unknownPlayers
+      : initialData.unknownPlayers
+  );
 
   const prefersDark = useMediaQuery("(prefers-color-scheme: dark)");
 
   function resetRound() {
     const currentPlayers = [
-      ...unknownPlayers,
       ...innocentPlayers,
       ...susPlayers,
       ...evilPlayers,
       ...deadPlayers,
+      ...unknownPlayers,
     ];
 
     setLocalUnknownPlayers(currentPlayers);
@@ -103,13 +122,7 @@ export const DataProvider = ({ children }: IDataProviderProps): JSX.Element => {
   }
 
   React.useEffect(() => {
-    const localData = localStorage.getItem(`${namespace}data`);
-
-    if (localData != null) {
-      const data: IData = JSON.parse(localData);
-
-      console.log(data);
-
+    if (Object.keys(data)?.length) {
       if (data.theme) {
         const localTheme = Themes[data.theme];
 
@@ -120,42 +133,6 @@ export const DataProvider = ({ children }: IDataProviderProps): JSX.Element => {
         if (prefersDark) {
           setLocalTheme(Themes.dark);
         }
-      }
-
-      if (data.wins) {
-        setLocalWins(data.wins);
-      }
-
-      if (data.games) {
-        setLocalGames(data.games);
-      }
-
-      if (data.names) {
-        setLocalNames(data.names);
-      }
-
-      if (data.innocentPlayers) {
-        setLocalInnocentPlayers([...data.innocentPlayers]);
-      }
-
-      if (data.susPlayers) {
-        setLocalSusPlayers([...data.susPlayers]);
-      }
-
-      if (data.evilPlayers) {
-        setLocalEvilPlayers([...data.evilPlayers]);
-      }
-
-      if (data.deadPlayers) {
-        setLocalDeadPlayers([...data.deadPlayers]);
-      }
-
-      if (data.unknownPlayers) {
-        setLocalUnknownPlayers([...data.unknownPlayers]);
-      }
-
-      if (data.notes) {
-        setLocalNotes(data.notes);
       }
     } else {
       if (prefersDark) {
@@ -186,7 +163,7 @@ export const DataProvider = ({ children }: IDataProviderProps): JSX.Element => {
         setTheme: (value: ITheme) => {
           const localData = localStorage.getItem(`${namespace}data`);
 
-          if (localData != null) {
+          if (localData) {
             const data: IData = JSON.parse(localData);
 
             data.theme = value.name;
@@ -199,7 +176,7 @@ export const DataProvider = ({ children }: IDataProviderProps): JSX.Element => {
         setWins: (value: number) => {
           const localData = localStorage.getItem(`${namespace}data`);
 
-          if (localData != null) {
+          if (localData) {
             const data: IData = JSON.parse(localData);
 
             data.wins = value;
@@ -212,7 +189,7 @@ export const DataProvider = ({ children }: IDataProviderProps): JSX.Element => {
         setGames: (value: number) => {
           const localData = localStorage.getItem(`${namespace}data`);
 
-          if (localData != null) {
+          if (localData) {
             const data: IData = JSON.parse(localData);
 
             data.games = value;
@@ -225,7 +202,7 @@ export const DataProvider = ({ children }: IDataProviderProps): JSX.Element => {
         setNames: (value: boolean) => {
           const localData = localStorage.getItem(`${namespace}data`);
 
-          if (localData != null) {
+          if (localData) {
             const data: IData = JSON.parse(localData);
 
             data.names = value;
@@ -238,7 +215,7 @@ export const DataProvider = ({ children }: IDataProviderProps): JSX.Element => {
         setInnocentPlayers: (value: Array<IPlayer>) => {
           const localData = localStorage.getItem(`${namespace}data`);
 
-          if (localData != null) {
+          if (localData) {
             const data: IData = JSON.parse(localData);
 
             data.innocentPlayers = value.map(({ id, name, color }) => {
@@ -253,7 +230,7 @@ export const DataProvider = ({ children }: IDataProviderProps): JSX.Element => {
         setSusPlayers: (value: Array<IPlayer>) => {
           const localData = localStorage.getItem(`${namespace}data`);
 
-          if (localData != null) {
+          if (localData) {
             const data: IData = JSON.parse(localData);
 
             data.susPlayers = value.map(({ id, name, color }) => {
@@ -268,7 +245,7 @@ export const DataProvider = ({ children }: IDataProviderProps): JSX.Element => {
         setEvilPlayers: (value: Array<IPlayer>) => {
           const localData = localStorage.getItem(`${namespace}data`);
 
-          if (localData != null) {
+          if (localData) {
             const data: IData = JSON.parse(localData);
 
             data.evilPlayers = value.map(({ id, name, color }) => {
@@ -283,7 +260,7 @@ export const DataProvider = ({ children }: IDataProviderProps): JSX.Element => {
         setDeadPlayers: (value: Array<IPlayer>) => {
           const localData = localStorage.getItem(`${namespace}data`);
 
-          if (localData != null) {
+          if (localData) {
             const data: IData = JSON.parse(localData);
 
             data.deadPlayers = value.map(({ id, name, color }) => {
@@ -298,7 +275,7 @@ export const DataProvider = ({ children }: IDataProviderProps): JSX.Element => {
         setUnknownPlayers: (value: Array<IPlayer>) => {
           const localData = localStorage.getItem(`${namespace}data`);
 
-          if (localData != null) {
+          if (localData) {
             const data: IData = JSON.parse(localData);
 
             data.unknownPlayers = value.map(({ id, name, color }) => {
@@ -313,7 +290,7 @@ export const DataProvider = ({ children }: IDataProviderProps): JSX.Element => {
         setNotes: (value: string) => {
           const localData = localStorage.getItem(`${namespace}data`);
 
-          if (localData != null) {
+          if (localData) {
             const data: IData = JSON.parse(localData);
 
             data.notes = value;
