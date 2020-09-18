@@ -122,7 +122,7 @@ export const DataProvider = ({ children }: IDataProviderProps): JSX.Element => {
   }
 
   React.useEffect(() => {
-    if (Object.keys(data)?.length) {
+    if (data && Object.keys(data)?.length) {
       if (data.theme) {
         const localTheme = Themes[data.theme];
 
