@@ -4,14 +4,18 @@ import React from "react";
 import Scores from "components/Scores";
 import useStyles from "./MainContent.styles";
 
-export default function MainContent(): JSX.Element {
+export default function MainContent({
+  isMobile,
+}: {
+  isMobile: boolean;
+}): JSX.Element {
   const classes = useStyles();
 
   return (
     <div className={classes.root}>
       <Header />
 
-      <Scores />
+      {!isMobile && <Scores />}
 
       <PlayersSection />
     </div>

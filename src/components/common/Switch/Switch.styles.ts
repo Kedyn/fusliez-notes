@@ -8,7 +8,7 @@ export default createUseStyles((theme: ITheme) => ({
     "-moz-appearance": "none",
     appearance: "none",
     width: "3rem",
-    height: "1rem",
+    height: "1.1rem",
     display: "inline-block",
     position: "relative",
     borderRadius: "2rem",
@@ -29,6 +29,7 @@ export default createUseStyles((theme: ITheme) => ({
       width: "1rem",
       height: "1rem",
       background: "#fff",
+      border: "1px solid black",
       borderRadius: "50%",
       textTransform: "uppercase",
       fontWeight: "bold",
@@ -46,5 +47,9 @@ export default createUseStyles((theme: ITheme) => ({
     "&:checked:before": {
       left: "2rem",
     },
+  },
+  toggleContainer: {
+    display: "flex",
+    alignItems: "center",
   },
 }));
