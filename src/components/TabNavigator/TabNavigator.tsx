@@ -13,7 +13,6 @@ export default function TabNavigator({
   const tabs = ["Players", "Notes", "Record", "Maps"];
 
   function Tab({ name }: { name: string }): JSX.Element {
-    console.log(name, currentTab);
     return (
       <button
         className={`${classes.tab} ${name === currentTab && classes.activeTab}`}

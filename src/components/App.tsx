@@ -24,7 +24,7 @@ export default function App(): JSX.Element {
     return () => {
       window.removeEventListener("resize", handleResize);
     };
-  }, []);
+  }, [width]);
 
   const breakpoint = 768;
 
@@ -39,34 +39,55 @@ export default function App(): JSX.Element {
               <>
                 {currentTab === "Players" ? (
                   <MainContent isMobile={isMobile} />
+                ) : currentTab === "Maps" ? (
+                  <MapsContent isMobile={isMobile} />
                 ) : null}
-                <TabNavigator
-                  currentTab={currentTab}
-                  setCurrentTab={setCurrentTab}
-                />
+                <>
+                  <TabNavigator
+                    currentTab={currentTab}
+                    setCurrentTab={setCurrentTab}
+                  />
+                  <footer>
+                    <div>
+                      <small>
+                        fusliez notes{" "}
+                        <a href="https://github.com/Kedyn/fusliez-notes/releases/tag/v0.7.0">
+                          v0.7.0
+                        </a>{" "}
+                        [9/14/2020] made with &#10084; by the{" "}
+                        <a href="https://github.com/Kedyn/fusliez-notes#authors-and-acknowledgment">
+                          fuslie fam
+                        </a>
+                        .
+                      </small>
+                    </div>
+                  </footer>
+                </>
               </>
             ) : (
-              <main>
-                <MainContent isMobile={isMobile} />
-                <ControlsContent />
-                <MapsContent />
-              </main>
+              <>
+                <main>
+                  <MainContent isMobile={isMobile} />
+                  <ControlsContent />
+                  <MapsContent />
+                </main>
+                <footer>
+                  <div>
+                    <small>
+                      fusliez notes{" "}
+                      <a href="https://github.com/Kedyn/fusliez-notes/releases/tag/v0.7.0">
+                        v0.7.0
+                      </a>{" "}
+                      [9/14/2020] made with &#10084; by the{" "}
+                      <a href="https://github.com/Kedyn/fusliez-notes#authors-and-acknowledgment">
+                        fuslie fam
+                      </a>
+                      .
+                    </small>
+                  </div>
+                </footer>
+              </>
             )}
-            <footer>
-              <div>
-                <small>
-                  fusliez notes{" "}
-                  <a href="https://github.com/Kedyn/fusliez-notes/releases/tag/v0.7.0">
-                    v0.7.0
-                  </a>{" "}
-                  [9/14/2020] made with &#10084; by the{" "}
-                  <a href="https://github.com/Kedyn/fusliez-notes#authors-and-acknowledgment">
-                    fuslie fam
-                  </a>
-                  .
-                </small>
-              </div>
-            </footer>
           </React.Suspense>
         </ThemeProvider>
       </JssProvider>

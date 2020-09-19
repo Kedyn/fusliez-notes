@@ -4,7 +4,11 @@ import useStyles from "./MapsContent.styles";
 import FeedbackForm from "../FeedbackForm";
 import Button from "components/common/Button";
 
-export default function MapsContent(): JSX.Element {
+export interface IMapsContentProps {
+  isMobile: boolean;
+}
+
+export default function MapsContent(props: IMapsContentProps): JSX.Element {
   const [map, setMap] = React.useState("skeld");
   const [currentTab, setCurrentTab] = React.useState("Maps");
 
@@ -25,25 +29,28 @@ export default function MapsContent(): JSX.Element {
 
   const classes = useStyles({
     map: map == "skeld" ? "TheSkeld" : map == "mira" ? "Mirahq" : "Polus",
+    ...props,
   });
 
   const buttons = ["Maps", "Feedback"];
 
   return (
     <div className={classes.root}>
-      <div className={classes.buttonsContainer}>
-        {buttons.map((tab) => (
-          <Button
-            className={`${classes.button} ${
-              currentTab === tab ? classes.activeButton : ""
-            }`}
-            key={tab}
-            onClick={() => setCurrentTab(tab)}
-          >
-            {tab}
-          </Button>
-        ))}
-      </div>
+      {!props.isMobile && (
+        <div className={classes.buttonsContainer}>
+          {buttons.map((tab) => (
+            <Button
+              className={`${classes.button} ${
+                currentTab === tab ? classes.activeButton : ""
+              }`}
+              key={tab}
+              onClick={() => setCurrentTab(tab)}
+            >
+              {tab}
+            </Button>
+          ))}
+        </div>
+      )}
       {currentTab === "Maps" ? (
         <>
           <div className={classes.mapNames}>

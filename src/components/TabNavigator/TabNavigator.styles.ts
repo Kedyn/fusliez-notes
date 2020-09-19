@@ -4,7 +4,8 @@ import { createUseStyles } from "react-jss";
 export default createUseStyles((theme: ITheme) => ({
   root: {
     display: "flex",
-    flex: 4,
+    position: "sticky",
+    bottom: 0,
   },
   activeTab: {
     borderBottom: `5px solid ${theme.text_primary}`,
@@ -22,5 +23,6 @@ export default createUseStyles((theme: ITheme) => ({
     flex: 1,
     flexDirection: "column",
     fontSize: "1.25rem",
+    padding: "0.25rem",
   },
 }));

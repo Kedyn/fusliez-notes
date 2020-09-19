@@ -25,21 +25,21 @@ export default createUseStyles((theme: ITheme) => ({
     justifyContent: "space-between",
     alignItems: "center",
     marginBottom: "0.5rem",
+    width: "100%",
   },
   mapName: {
+    borderRadius: "50rem",
     boxSizing: "border-box",
     cursor: "pointer",
     flex: 1,
-    width: "33%",
-    height: "100%",
-    borderRadius: "50rem",
+    width: "33.3%",
   },
   activeButton: {
     border: `2px solid ${theme.text_primary}`,
   },
-  activeMap: {
-    border: `0.5rem solid seagreen`,
-  },
+  activeMap: (props) => ({
+    border: `${props.isMobile ? "0.5rem" : "0.15rem"} solid seagreen`,
+  }),
   wrapper: {
     position: "relative",
   },
