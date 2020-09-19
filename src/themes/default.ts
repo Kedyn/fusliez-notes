@@ -21,7 +21,7 @@ export default class DefaultTheme implements ITheme {
   public constructor() {
     this.name = "default";
 
-    this.background_primary = "#ffffff";
+    this.background_primary = "#dcddde";
     this.background_secondary = "#6c757d";
     this.background_tertiary = "#343a40";
     this.background_success = "#28a745";
@@ -64,6 +64,9 @@ export default class DefaultTheme implements ITheme {
         appearance: "none",
         border: "none",
         boxShadow: "none",
+        color: this.text_primary,
+      },
+      "#title-input": {
         color: this.text_primary,
       },
       textarea: {

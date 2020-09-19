@@ -33,7 +33,7 @@ export default function Player(props: IPlayerProps): JSX.Element {
   };
 
   return (
-    <div className={classes.container}>
+    <div className={`${classes.container} ${player_class}`}>
       <img src={`assets/${color}.png`} alt={color} className={player_class} />
       {names && (
         <div className={classes.name}>
