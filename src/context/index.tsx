@@ -6,167 +6,143 @@ import { useMediaQuery } from "beautiful-react-hooks";
 
 const DataContext = React.createContext<IDataContext | undefined>(undefined);
 
+export const namespace = "fusliez-notes-";
+
 export interface IDataProviderProps {
   children: React.ReactNode;
 }
 
-function playerLists(): {
-  innocent_players: Array<IPlayer>;
-  sus_players: Array<IPlayer>;
-  evil_players: Array<IPlayer>;
-  dead_players: Array<IPlayer>;
-  unknown_players: Array<IPlayer>;
-} {
-  const local_data = localStorage.getItem("data");
+const initialData: IData = {
+  theme: "dark",
+  wins: 0,
+  games: 0,
+  names: true,
+  innocentPlayers: [],
+  susPlayers: [],
+  evilPlayers: [],
+  deadPlayers: [],
+  unknownPlayers: [
+    { id: "orange", name: "fuslie", color: "orange" },
+    { id: "blue", name: "", color: "blue" },
+    { id: "brown", name: "", color: "brown" },
+    { id: "gray", name: "", color: "gray" },
+    { id: "green", name: "", color: "green" },
+    { id: "lightGreen", name: "", color: "lightGreen" },
+    { id: "pink", name: "", color: "pink" },
+    { id: "purple", name: "", color: "purple" },
+    { id: "red", name: "", color: "red" },
+    { id: "teal", name: "", color: "teal" },
+    { id: "white", name: "", color: "white" },
+    { id: "yellow", name: "", color: "yellow" },
+  ],
+  notes: "",
+};
 
-  if (local_data != null) {
-    const data: IData = JSON.parse(local_data);
-
-    return {
-      innocent_players: data.innocent_players,
-      sus_players: data.sus_players,
-      evil_players: data.evil_players,
-      dead_players: data.dead_players,
-      unknown_players: data.unknown_players,
-    };
-  } else {
-    return {
-      innocent_players: [],
-      sus_players: [],
-      evil_players: [],
-      dead_players: [],
-      unknown_players: [
-        { id: "blue", name: "", color: "blue" },
-        { id: "brown", name: "", color: "brown" },
-        { id: "gray", name: "", color: "gray" },
-        { id: "green", name: "", color: "green" },
-        { id: "lightGreen", name: "", color: "lightGreen" },
-        { id: "orange", name: "fuslie", color: "orange" },
-        { id: "pink", name: "", color: "pink" },
-        { id: "purple", name: "", color: "purple" },
-        { id: "red", name: "", color: "red" },
-        { id: "teal", name: "", color: "teal" },
-        { id: "white", name: "", color: "white" },
-        { id: "yellow", name: "", color: "yellow" },
-      ],
-    };
-  }
-}
+const localData = localStorage.getItem(`${namespace}data`);
+const data = JSON.parse(localData);
 
 export const DataProvider = ({ children }: IDataProviderProps): JSX.Element => {
-  const players = playerLists();
   const [theme, setLocalTheme] = React.useState<ITheme>(Themes.default);
-  const [wins, setLocalWins] = React.useState(0);
-  const [games, setLocalGames] = React.useState(0);
-  const [names, setLocalNames] = React.useState(true);
+  const [wins, setLocalWins] = React.useState(
+    data?.wins ? data.wins : initialData.wins
+  );
+  const [games, setLocalGames] = React.useState(
+    data?.games ? data.games : initialData.games
+  );
+  const [names, setLocalNames] = React.useState(
+    data?.names ? data.names : initialData.names
+  );
+  const [notes, setLocalNotes] = React.useState(
+    data?.notes ? data.notes : initialData.notes
+  );
 
-  const [innocent_players, setLocalInnocentPlayers] = React.useState<
+  const [innocentPlayers, setLocalInnocentPlayers] = React.useState<
     Array<IPlayer>
-  >(players.innocent_players);
-  const [sus_players, setLocalSusPlayers] = React.useState<Array<IPlayer>>(
-    players.sus_players
+  >(
+    data?.innocentPlayers.length
+      ? data.innocentPlayers
+      : initialData.innocentPlayers
   );
-  const [evil_players, setLocalEvilPlayers] = React.useState<Array<IPlayer>>(
-    players.evil_players
+  const [susPlayers, setLocalSusPlayers] = React.useState<Array<IPlayer>>(
+    data?.susPlayers.length ? data.susPlayers : initialData.susPlayers
   );
-  const [dead_players, setLocalDeadPlayers] = React.useState<Array<IPlayer>>(
-    players.dead_players
+  const [evilPlayers, setLocalEvilPlayers] = React.useState<Array<IPlayer>>(
+    data?.evilPlayers.length ? data.evilPlayers : initialData.evilPlayers
   );
-  const [unknown_players, setLocalUnknownPlayers] = React.useState<
+  const [deadPlayers, setLocalDeadPlayers] = React.useState<Array<IPlayer>>(
+    data?.deadPlayers.length ? data.deadPlayers : initialData.deadPlayers
+  );
+  const [unknownPlayers, setLocalUnknownPlayers] = React.useState<
     Array<IPlayer>
-  >(players.unknown_players);
+  >(
+    data?.unknownPlayers.length
+      ? data.unknownPlayers
+      : initialData.unknownPlayers
+  );
 
-  const [notes, setLocalNotes] = React.useState("");
+  const prefersDark = useMediaQuery("(prefers-color-scheme: dark)");
 
-  const prefers_dark = useMediaQuery("(prefers-color-scheme: dark)");
+  function resetRound() {
+    const currentPlayers = [
+      ...innocentPlayers,
+      ...susPlayers,
+      ...evilPlayers,
+      ...deadPlayers,
+      ...unknownPlayers,
+    ];
+
+    setLocalUnknownPlayers(currentPlayers);
+    setLocalInnocentPlayers([]);
+    setLocalSusPlayers([]);
+    setLocalEvilPlayers([]);
+    setLocalDeadPlayers([]);
+    setLocalNotes("");
+
+    localStorage.setItem(
+      `${namespace}data`,
+      JSON.stringify({
+        ...initialData,
+        unknownPlayers: currentPlayers,
+      })
+    );
+  }
+
+  function resetAll() {
+    setLocalWins(0);
+    setLocalGames(0);
+    setLocalTheme(Themes.dark);
+    setLocalNames(true);
+    setLocalNotes("");
+    setLocalUnknownPlayers(initialData.unknownPlayers);
+    setLocalInnocentPlayers([]);
+    setLocalSusPlayers([]);
+    setLocalEvilPlayers([]);
+    setLocalDeadPlayers([]);
+
+    localStorage.setItem(`${namespace}data`, JSON.stringify(initialData));
+  }
 
   React.useEffect(() => {
-    const local_data = localStorage.getItem("data");
+    if (data && Object.keys(data)?.length) {
+      if (data.theme) {
+        const localTheme = Themes[data.theme];
 
-    if (local_data != null) {
-      const data: IData = JSON.parse(local_data);
-
-      if (data.theme != undefined) {
-        const local_theme = Themes[data.theme];
-
-        if (local_theme != undefined) {
-          setLocalTheme(local_theme);
+        if (localTheme) {
+          setLocalTheme(localTheme);
         }
       } else {
-        if (prefers_dark) {
+        if (prefersDark) {
           setLocalTheme(Themes.dark);
         }
       }
-
-      if (data.wins != undefined) {
-        setLocalWins(data.wins);
-      }
-
-      if (data.games != undefined) {
-        setLocalGames(data.games);
-      }
-
-      if (data.names != undefined) {
-        setLocalNames(data.names);
-      }
-
-      if (data.innocent_players != undefined) {
-        setLocalInnocentPlayers([...data.innocent_players]);
-      }
-
-      if (data.sus_players != undefined) {
-        setLocalSusPlayers([...data.sus_players]);
-      }
-
-      if (data.evil_players != undefined) {
-        setLocalEvilPlayers([...data.evil_players]);
-      }
-
-      if (data.dead_players != undefined) {
-        setLocalDeadPlayers([...data.dead_players]);
-      }
-
-      if (data.unknown_players != undefined) {
-        setLocalUnknownPlayers([...data.unknown_players]);
-      }
-
-      if (data.notes != undefined) {
-        setLocalNotes(data.notes);
-      }
     } else {
-      const data: IData = {
-        theme: "default",
-        wins: 0,
-        games: 0,
-        names: true,
-        innocent_players: [],
-        sus_players: [],
-        evil_players: [],
-        dead_players: [],
-        unknown_players: [
-          { id: "blue", name: "", color: "blue" },
-          { id: "brown", name: "", color: "brown" },
-          { id: "gray", name: "", color: "gray" },
-          { id: "green", name: "", color: "green" },
-          { id: "lightGreen", name: "", color: "lightGreen" },
-          { id: "orange", name: "fuslie", color: "orange" },
-          { id: "pink", name: "", color: "pink" },
-          { id: "purple", name: "", color: "purple" },
-          { id: "red", name: "", color: "red" },
-          { id: "teal", name: "", color: "teal" },
-          { id: "white", name: "", color: "white" },
-          { id: "yellow", name: "", color: "yellow" },
-        ],
-        notes: "",
-      };
-
-      if (prefers_dark) {
+      if (prefersDark) {
         setLocalTheme(Themes.dark);
 
-        data.theme = "dark";
+        initialData.theme = "dark";
       }
 
-      localStorage.setItem("data", JSON.stringify(data));
+      localStorage.setItem(`${namespace}data`, JSON.stringify(initialData));
     }
   }, []);
 
@@ -177,148 +153,150 @@ export const DataProvider = ({ children }: IDataProviderProps): JSX.Element => {
         wins,
         games,
         names,
-        innocent_players,
-        sus_players,
-        evil_players,
-        dead_players,
-        unknown_players,
+        innocentPlayers,
+        susPlayers,
+        evilPlayers,
+        deadPlayers,
+        unknownPlayers,
         notes,
+        resetRound,
+        resetAll,
         setTheme: (value: ITheme) => {
-          const local_data = localStorage.getItem("data");
+          const localData = localStorage.getItem(`${namespace}data`);
 
-          if (local_data != null) {
-            const data: IData = JSON.parse(local_data);
+          if (localData) {
+            const data: IData = JSON.parse(localData);
 
             data.theme = value.name;
 
-            localStorage.setItem("data", JSON.stringify(data));
+            localStorage.setItem(`${namespace}data`, JSON.stringify(data));
 
             setLocalTheme(value);
           }
         },
         setWins: (value: number) => {
-          const local_data = localStorage.getItem("data");
+          const localData = localStorage.getItem(`${namespace}data`);
 
-          if (local_data != null) {
-            const data: IData = JSON.parse(local_data);
+          if (localData) {
+            const data: IData = JSON.parse(localData);
 
             data.wins = value;
 
-            localStorage.setItem("data", JSON.stringify(data));
+            localStorage.setItem(`${namespace}data`, JSON.stringify(data));
 
             setLocalWins(value);
           }
         },
         setGames: (value: number) => {
-          const local_data = localStorage.getItem("data");
+          const localData = localStorage.getItem(`${namespace}data`);
 
-          if (local_data != null) {
-            const data: IData = JSON.parse(local_data);
+          if (localData) {
+            const data: IData = JSON.parse(localData);
 
             data.games = value;
 
-            localStorage.setItem("data", JSON.stringify(data));
+            localStorage.setItem(`${namespace}data`, JSON.stringify(data));
 
             setLocalGames(value);
           }
         },
         setNames: (value: boolean) => {
-          const local_data = localStorage.getItem("data");
+          const localData = localStorage.getItem(`${namespace}data`);
 
-          if (local_data != null) {
-            const data: IData = JSON.parse(local_data);
+          if (localData) {
+            const data: IData = JSON.parse(localData);
 
             data.names = value;
 
-            localStorage.setItem("data", JSON.stringify(data));
+            localStorage.setItem(`${namespace}data`, JSON.stringify(data));
 
             setLocalNames(value);
           }
         },
         setInnocentPlayers: (value: Array<IPlayer>) => {
-          const local_data = localStorage.getItem("data");
+          const localData = localStorage.getItem(`${namespace}data`);
 
-          if (local_data != null) {
-            const data: IData = JSON.parse(local_data);
+          if (localData) {
+            const data: IData = JSON.parse(localData);
 
-            data.innocent_players = value.map(({ id, name, color }) => {
+            data.innocentPlayers = value.map(({ id, name, color }) => {
               return { id, name, color };
             });
 
-            localStorage.setItem("data", JSON.stringify(data));
+            localStorage.setItem(`${namespace}data`, JSON.stringify(data));
 
             setLocalInnocentPlayers(value);
           }
         },
         setSusPlayers: (value: Array<IPlayer>) => {
-          const local_data = localStorage.getItem("data");
+          const localData = localStorage.getItem(`${namespace}data`);
 
-          if (local_data != null) {
-            const data: IData = JSON.parse(local_data);
+          if (localData) {
+            const data: IData = JSON.parse(localData);
 
-            data.sus_players = value.map(({ id, name, color }) => {
+            data.susPlayers = value.map(({ id, name, color }) => {
               return { id, name, color };
             });
 
-            localStorage.setItem("data", JSON.stringify(data));
+            localStorage.setItem(`${namespace}data`, JSON.stringify(data));
 
             setLocalSusPlayers(value);
           }
         },
         setEvilPlayers: (value: Array<IPlayer>) => {
-          const local_data = localStorage.getItem("data");
+          const localData = localStorage.getItem(`${namespace}data`);
 
-          if (local_data != null) {
-            const data: IData = JSON.parse(local_data);
+          if (localData) {
+            const data: IData = JSON.parse(localData);
 
-            data.evil_players = value.map(({ id, name, color }) => {
+            data.evilPlayers = value.map(({ id, name, color }) => {
               return { id, name, color };
             });
 
-            localStorage.setItem("data", JSON.stringify(data));
+            localStorage.setItem(`${namespace}data`, JSON.stringify(data));
 
             setLocalEvilPlayers(value);
           }
         },
         setDeadPlayers: (value: Array<IPlayer>) => {
-          const local_data = localStorage.getItem("data");
+          const localData = localStorage.getItem(`${namespace}data`);
 
-          if (local_data != null) {
-            const data: IData = JSON.parse(local_data);
+          if (localData) {
+            const data: IData = JSON.parse(localData);
 
-            data.dead_players = value.map(({ id, name, color }) => {
+            data.deadPlayers = value.map(({ id, name, color }) => {
               return { id, name, color };
             });
 
-            localStorage.setItem("data", JSON.stringify(data));
+            localStorage.setItem(`${namespace}data`, JSON.stringify(data));
 
             setLocalDeadPlayers(value);
           }
         },
         setUnknownPlayers: (value: Array<IPlayer>) => {
-          const local_data = localStorage.getItem("data");
+          const localData = localStorage.getItem(`${namespace}data`);
 
-          if (local_data != null) {
-            const data: IData = JSON.parse(local_data);
+          if (localData) {
+            const data: IData = JSON.parse(localData);
 
-            data.unknown_players = value.map(({ id, name, color }) => {
+            data.unknownPlayers = value.map(({ id, name, color }) => {
               return { id, name, color };
             });
 
-            localStorage.setItem("data", JSON.stringify(data));
+            localStorage.setItem(`${namespace}data`, JSON.stringify(data));
 
             setLocalUnknownPlayers(value);
           }
         },
         setNotes: (value: string) => {
-          const local_data = localStorage.getItem("data");
+          const localData = localStorage.getItem(`${namespace}data`);
 
-          if (local_data != null) {
-            const data: IData = JSON.parse(local_data);
+          if (localData) {
+            const data: IData = JSON.parse(localData);
 
             data.notes = value;
 
-            localStorage.setItem("data", JSON.stringify(data));
+            localStorage.setItem(`${namespace}data`, JSON.stringify(data));
 
             setLocalNotes(value);
           }

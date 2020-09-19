@@ -10,7 +10,7 @@ export default createUseStyles({
     "&>div": {
       flex: (props) => `0 0 ${props.names ? "50%" : "25%"}`,
       maxWidth: "50%",
-      paddingRight: "0.5rem",
+      padding: "0.25rem",
     },
   },
 });

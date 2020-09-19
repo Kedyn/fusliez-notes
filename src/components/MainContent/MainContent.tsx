@@ -8,14 +8,12 @@ export default function MainContent(): JSX.Element {
   const classes = useStyles();
 
   return (
-    <React.Fragment>
-      <div className={classes.root}>
-        <Header />
+    <div className={classes.root}>
+      <Header />
 
-        <Scores />
+      <Scores />
 
-        <PlayersSection />
-      </div>
-    </React.Fragment>
+      <PlayersSection />
+    </div>
   );
 }

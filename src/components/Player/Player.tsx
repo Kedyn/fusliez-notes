@@ -14,26 +14,12 @@ export interface IPlayerProps {
 }
 
 export default function Player(props: IPlayerProps): JSX.Element {
-  const classes = useStyles();
-
+  const classes = useStyles(props);
   const { names } = useData()!; // eslint-disable-line
 
   const { color, name, list, setList, index } = props;
 
-  let container_class = classes.container;
-  let player_class = "player-handle";
-
-  if (names) {
-    player_class += ` ${classes.player}`;
-
-    if (name != "") {
-      container_class += ` ${color}`;
-    } else {
-      container_class += ` ${classes.nonActive}`;
-    }
-  } else {
-    container_class += ` ${color}`;
-  }
+  const player_class = "player-handle";
 
   const handleChange = (
     player: number,
@@ -47,28 +33,20 @@ export default function Player(props: IPlayerProps): JSX.Element {
   };
 
   return (
-    <React.Fragment>
-      <div className={classes.root}>
-        <div className={container_class}>
-          <img
-            src={`assets/${color}.png`}
-            alt={color}
-            className={player_class}
+    <div className={classes.container}>
+      <img src={`assets/${color}.png`} alt={color} className={player_class} />
+      {names && (
+        <div className={classes.name}>
+          <Input
+            placeholder="Player Name"
+            className={classes.input}
+            onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
+              handleChange(index, event)
+            }
+            value={name}
           />
-          {names && (
-            <div className={classes.name}>
-              <Input
-                placeholder="Player name"
-                classNames={classes.input}
-                onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
-                  handleChange(index, event)
-                }
-                value={name}
-              />
-            </div>
-          )}
         </div>
-      </div>
-    </React.Fragment>
+      )}
+    </div>
   );
 }

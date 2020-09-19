@@ -17,15 +17,9 @@ export default function App(): JSX.Element {
         <ThemeProvider theme={theme}>
           <React.Suspense fallback="loading">
             <main>
-              <div id="main">
-                <MainContent />
-              </div>
-              <div id="controls">
-                <ControlsContent />
-              </div>
-              <div id="maps">
-                <MapsContent />
-              </div>
+              <MainContent />
+              <ControlsContent />
+              <MapsContent />
             </main>
             <footer>
               <div>

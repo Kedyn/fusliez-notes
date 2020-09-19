@@ -3,12 +3,23 @@ import { createUseStyles } from "react-jss";
 
 export default createUseStyles((theme: ITheme) => ({
   root: {
-    minWidth: 320,
     padding: "0.5rem",
+    flex: 2,
+  },
+  buttonContainer: {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "space-between",
   },
   scoreButtons: {
     display: "flex",
     marginBottom: "0.5rem",
+  },
+  switchesContainer: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-around",
+    padding: "0.5rem 0",
   },
   win: {
     backgroundColor: "#28a745", // should not be hard coded but just for now
@@ -34,12 +45,14 @@ export default createUseStyles((theme: ITheme) => ({
     backgroundColor: theme.background_secondary,
     color: "#ffffff",
     fontSize: "1rem",
-
+    margin: "0.25rem 0",
     "&:hover": {
       backgroundColor: "#5a6268", // should not be hard coded but just for now
     },
   },
   notes: {
+    fontSize: "1.25rem",
     width: "100%",
+    backgroundColor: "lightgray",
   },
 }));

@@ -1,15 +1,16 @@
 import React from "react";
 import Section from "components/Section";
 import { useData } from "context";
+import { IPlayer } from "utils/types";
 import useStyles from "./PlayersSection.styles";
 
 export default function PlayersSection(): JSX.Element {
   const {
-    innocent_players,
-    sus_players,
-    evil_players,
-    dead_players,
-    unknown_players,
+    innocentPlayers,
+    susPlayers,
+    evilPlayers,
+    deadPlayers,
+    unknownPlayers,
     setInnocentPlayers,
     setSusPlayers,
     setEvilPlayers,
@@ -19,31 +20,29 @@ export default function PlayersSection(): JSX.Element {
 
   const classes = useStyles();
 
+  interface Section {
+    title: string;
+    list: Array<IPlayer>;
+    setList: (value: Array<IPlayer>) => void;
+  }
+
+  const sections: Array<Section> = [
+    { title: "Innocent", list: innocentPlayers, setList: setInnocentPlayers },
+    {
+      title: "Suspicious / Hit List",
+      list: susPlayers,
+      setList: setSusPlayers,
+    },
+    { title: "Evil", list: evilPlayers, setList: setEvilPlayers },
+    { title: "Dead", list: deadPlayers, setList: setDeadPlayers },
+    { title: "Unknown", list: unknownPlayers, setList: setUnknownPlayers },
+  ];
+
   return (
-    <React.Fragment>
-      <div className={classes.root}>
-        <Section
-          title="Innocent"
-          list={innocent_players}
-          setList={setInnocentPlayers}
-        />
-        <Section
-          title="Suspicious"
-          list={sus_players}
-          setList={setSusPlayers}
-        />
-        <Section
-          title="Evil / Hit list"
-          list={evil_players}
-          setList={setEvilPlayers}
-        />
-        <Section title="Dead" list={dead_players} setList={setDeadPlayers} />
-        <Section
-          title="Unknown"
-          list={unknown_players}
-          setList={setUnknownPlayers}
-        />
-      </div>
-    </React.Fragment>
+    <div className={classes.root}>
+      {sections.map(({ title, list, setList }) => (
+        <Section key={title} title={title} list={list} setList={setList} />
+      ))}
+    </div>
   );
 }

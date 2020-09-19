@@ -12,46 +12,40 @@ export default function ControlsContent(): JSX.Element {
     theme,
     wins,
     games,
-    innocent_players,
-    sus_players,
-    evil_players,
-    dead_players,
-    unknown_players,
     notes,
+    resetRound,
+    resetAll,
     setNames,
     setTheme,
     setWins,
     setGames,
     setNotes,
-    setInnocentPlayers,
-    setSusPlayers,
-    setEvilPlayers,
-    setDeadPlayers,
-    setUnknownPlayers,
   } = useData()!; // eslint-disable-line
 
   return (
     <React.Fragment>
       <div className={classes.root}>
-        <Switch
-          label="Dark theme"
-          onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-            if (event.currentTarget.checked) {
-              setTheme(Themes.dark);
-            } else {
-              setTheme(Themes.light);
-            }
-          }}
-          checked={theme === Themes.dark}
-        />
+        <div className={classes.switchesContainer}>
+          <Switch
+            label="Dark theme"
+            onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+              if (event.currentTarget.checked) {
+                setTheme(Themes.dark);
+              } else {
+                setTheme(Themes.light);
+              }
+            }}
+            checked={theme === Themes.dark}
+          />
 
-        <Switch
-          label="Use player names"
-          onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-            setNames(event.currentTarget.checked);
-          }}
-          checked={names}
-        />
+          <Switch
+            label="Use player names"
+            onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+              setNames(event.currentTarget.checked);
+            }}
+            checked={names}
+          />
+        </div>
 
         <div className={classes.scoreButtons}>
           <Button
@@ -72,26 +66,15 @@ export default function ControlsContent(): JSX.Element {
             Lose
           </Button>
         </div>
-        <Button
-          classNames={classes.reset}
-          onClick={() => {
-            const players = [
-              ...innocent_players,
-              ...sus_players,
-              ...evil_players,
-              ...dead_players,
-              ...unknown_players,
-            ];
 
-            setInnocentPlayers([]);
-            setSusPlayers([]);
-            setEvilPlayers([]);
-            setDeadPlayers([]);
-            setUnknownPlayers(players);
-          }}
-        >
-          Reset Players
-        </Button>
+        <div className={classes.buttonContainer}>
+          <Button classNames={classes.reset} onClick={() => resetRound()}>
+            Reset Round
+          </Button>
+          <Button classNames={classes.reset} onClick={() => resetAll()}>
+            Reset Everything (Player names, wins, losses, notes)
+          </Button>
+        </div>
         <h2>Notes</h2>
         <textarea
           rows={20}
