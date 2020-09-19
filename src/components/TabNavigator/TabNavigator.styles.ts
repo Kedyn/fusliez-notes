@@ -15,7 +15,6 @@ export default createUseStyles((theme: ITheme) => ({
   },
   tab: {
     alignItems: "center",
-    border: "none",
     boxSizing: "border-box",
     backgroundColor: theme.background_secondary,
     color: theme.text_primary,
