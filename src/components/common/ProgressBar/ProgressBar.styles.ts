@@ -20,7 +20,7 @@ export default createUseStyles((theme: ITheme) => ({
     maxWidth: "100%",
   },
   title: {
-    color: "#ffffff",
+    color: theme.background_primary,
     position: "absolute",
     top: 0,
     left: 0,

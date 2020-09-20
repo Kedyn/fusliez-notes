@@ -14,6 +14,10 @@ export interface ITheme {
   background_tertiary: string;
   background_success: string;
   background_danger: string;
+  background_crewmate_success: string;
+  background_crewmate_danger: string;
+  background_impostor_success: string;
+  background_impostor_danger: string;
   text_primary: string;
   text_secondary: string;
   text_shadow: string;
@@ -28,6 +32,10 @@ export interface IDataContext {
   theme: ITheme;
   wins: number;
   games: number;
+  crewmateWins: number;
+  crewmateGames: number;
+  impostorWins: number;
+  impostorGames: number;
   names: boolean;
   innocentPlayers: Array<IPlayer>;
   susPlayers: Array<IPlayer>;
@@ -53,6 +61,10 @@ export interface IData {
   theme: string;
   wins: number;
   games: number;
+  crewmateWins: number;
+  crewmateGames: number;
+  impostorWins: number;
+  impostorGames: number;
   names: boolean;
   innocentPlayers: Array<IPlayer>;
   susPlayers: Array<IPlayer>;

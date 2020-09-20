@@ -18,13 +18,29 @@ export default function Scores(): JSX.Element {
   return (
     <React.Fragment>
       <div className={classes.root}>
-        <ProgressBar
-          progress={rate}
-          text={`Winning rate ${rate}%`}
-          background_color={theme.background_danger}
-          progress_color={theme.background_success}
-          classNames={classes.progress}
-        />
+        <div>
+          <ProgressBar
+            progress={rate}
+            text={`Winning rate ${rate}%`}
+            backgroundColor={theme.background_danger}
+            progressColor={theme.background_success}
+            classNames={classes.progress}
+          />
+          <ProgressBar
+            progress={rate}
+            text={`Crewmate win rate ${rate}%`}
+            backgroundColor={theme.background_crewmate_danger}
+            progressColor={theme.background_crewmate_success}
+            classNames={classes.progress}
+          />
+          <ProgressBar
+            progress={rate}
+            text={`Impostor win rate ${rate}%`}
+            backgroundColor={theme.background_impostor_danger}
+            progressColor={theme.background_impostor_success}
+            classNames={classes.progress}
+          />
+        </div>
 
         <div className={classes.scores}>
           <Score

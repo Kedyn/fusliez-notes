@@ -1,3 +1,4 @@
+import colorNameToRGB from "utils/colorConverter";
 import { ITheme } from "utils/types";
 import { JssStyle } from "jss";
 
@@ -9,6 +10,10 @@ export default class DefaultTheme implements ITheme {
   public background_tertiary: string;
   public background_success: string;
   public background_danger: string;
+  public background_crewmate_success: string;
+  public background_crewmate_danger: string;
+  public background_impostor_success: string;
+  public background_impostor_danger: string;
   public text_primary: string;
   public text_secondary: string;
   public text_shadow: string;
@@ -24,8 +29,16 @@ export default class DefaultTheme implements ITheme {
     this.background_primary = "#dcddde";
     this.background_secondary = "#6c757d";
     this.background_tertiary = "#343a40";
-    this.background_success = "#28a745";
-    this.background_danger = "rgba(220, 53, 69, 0.5)";
+    this.background_success = `rgba(${colorNameToRGB("chateaugreen")}, 1)`;
+    this.background_danger = `rgba(${colorNameToRGB("chateaugreen")}, 0.5)`;
+    this.background_crewmate_success = `rgba(${colorNameToRGB(
+      "electricblue"
+    )}, 1)`;
+    this.background_crewmate_danger = `rgba(${colorNameToRGB(
+      "electricblue"
+    )}, 0.5)`;
+    this.background_impostor_success = `rgba(${colorNameToRGB("scarlet")}, 1)`;
+    this.background_impostor_danger = `rgba(${colorNameToRGB("scarlet")}, 0.5)`;
     this.text_primary = "#000000";
     this.text_secondary = "#343a40";
     this.text_shadow =

@@ -12,10 +12,28 @@ export interface IDataProviderProps {
   children: React.ReactNode;
 }
 
-const initialData: IData = {
+enum ReducerActionTypes {
+  RESET_ALL,
+  RESET_ROUND,
+}
+
+const createReducer = (state, action) => {
+  switch (action.type) {
+    case ReducerActionTypes.RESET_ALL:
+      return initialState;
+    default:
+      break;
+  }
+};
+
+const initialState: IData = {
   theme: "dark",
   wins: 0,
   games: 0,
+  crewmateWins: 0,
+  crewmateGames: 0,
+  impostorWins: 0,
+  impostorGames: 0,
   names: true,
   innocentPlayers: [],
   susPlayers: [],
@@ -42,18 +60,31 @@ const localData = localStorage.getItem(`${namespace}data`);
 const data = JSON.parse(localData);
 
 export const DataProvider = ({ children }: IDataProviderProps): JSX.Element => {
+  const [state, dispatch] = React.useReducer(createReducer, initialState);
   const [theme, setLocalTheme] = React.useState<ITheme>(Themes.default);
   const [wins, setLocalWins] = React.useState(
-    data?.wins ? data.wins : initialData.wins
+    data?.wins ? data.wins : initialState.wins
   );
   const [games, setLocalGames] = React.useState(
-    data?.games ? data.games : initialData.games
+    data?.games ? data.games : initialState.games
+  );
+  const [crewmateWins, setLocalCrewmateWins] = React.useState(
+    data?.crewmateWins ? data.crewmateWins : initialState.crewmateWins
+  );
+  const [crewmateGames, setLocalCrewmateGames] = React.useState(
+    data?.crewmateGames ? data.crewmateGames : initialState.crewmateGames
+  );
+  const [impostorWins, setLocalImpostorWins] = React.useState(
+    data?.impostorWins ? data.impostorWins : initialState.impostorWins
+  );
+  const [impostorGames, setLocalImpostorGames] = React.useState(
+    data?.impostorGames ? data.impostorGames : initialState.impostorGames
   );
   const [names, setLocalNames] = React.useState(
-    data?.names ? data.names : initialData.names
+    data?.names ? data.names : initialState.names
   );
   const [notes, setLocalNotes] = React.useState(
-    data?.notes ? data.notes : initialData.notes
+    data?.notes ? data.notes : initialState.notes
   );
 
   const [innocentPlayers, setLocalInnocentPlayers] = React.useState<
@@ -61,23 +92,23 @@ export const DataProvider = ({ children }: IDataProviderProps): JSX.Element => {
   >(
     data?.innocentPlayers.length
       ? data.innocentPlayers
-      : initialData.innocentPlayers
+      : initialState.innocentPlayers
   );
   const [susPlayers, setLocalSusPlayers] = React.useState<Array<IPlayer>>(
-    data?.susPlayers.length ? data.susPlayers : initialData.susPlayers
+    data?.susPlayers.length ? data.susPlayers : initialState.susPlayers
   );
   const [evilPlayers, setLocalEvilPlayers] = React.useState<Array<IPlayer>>(
-    data?.evilPlayers.length ? data.evilPlayers : initialData.evilPlayers
+    data?.evilPlayers.length ? data.evilPlayers : initialState.evilPlayers
   );
   const [deadPlayers, setLocalDeadPlayers] = React.useState<Array<IPlayer>>(
-    data?.deadPlayers.length ? data.deadPlayers : initialData.deadPlayers
+    data?.deadPlayers.length ? data.deadPlayers : initialState.deadPlayers
   );
   const [unknownPlayers, setLocalUnknownPlayers] = React.useState<
     Array<IPlayer>
   >(
     data?.unknownPlayers.length
       ? data.unknownPlayers
-      : initialData.unknownPlayers
+      : initialState.unknownPlayers
   );
 
   const prefersDark = useMediaQuery("(prefers-color-scheme: dark)");
@@ -101,7 +132,7 @@ export const DataProvider = ({ children }: IDataProviderProps): JSX.Element => {
     localStorage.setItem(
       `${namespace}data`,
       JSON.stringify({
-        ...initialData,
+        ...initialState,
         unknownPlayers: currentPlayers,
       })
     );
@@ -110,16 +141,20 @@ export const DataProvider = ({ children }: IDataProviderProps): JSX.Element => {
   function resetAll() {
     setLocalWins(0);
     setLocalGames(0);
+    setLocalCrewmateWins(0);
+    setLocalCrewmateGames(0);
+    setLocalImpostorWins(0);
+    setLocalImpostorGames(0);
     setLocalTheme(Themes.dark);
     setLocalNames(true);
     setLocalNotes("");
-    setLocalUnknownPlayers(initialData.unknownPlayers);
+    setLocalUnknownPlayers(initialState.unknownPlayers);
     setLocalInnocentPlayers([]);
     setLocalSusPlayers([]);
     setLocalEvilPlayers([]);
     setLocalDeadPlayers([]);
 
-    localStorage.setItem(`${namespace}data`, JSON.stringify(initialData));
+    localStorage.setItem(`${namespace}data`, JSON.stringify(initialState));
   }
 
   React.useEffect(() => {
@@ -139,10 +174,10 @@ export const DataProvider = ({ children }: IDataProviderProps): JSX.Element => {
       if (prefersDark) {
         setLocalTheme(Themes.dark);
 
-        initialData.theme = "dark";
+        initialState.theme = "dark";
       }
 
-      localStorage.setItem(`${namespace}data`, JSON.stringify(initialData));
+      localStorage.setItem(`${namespace}data`, JSON.stringify(initialState));
     }
   }, []);
 
@@ -152,6 +187,10 @@ export const DataProvider = ({ children }: IDataProviderProps): JSX.Element => {
         theme,
         wins,
         games,
+        crewmateWins,
+        crewmateGames,
+        impostorWins,
+        impostorGames,
         names,
         innocentPlayers,
         susPlayers,
