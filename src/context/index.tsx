@@ -72,7 +72,6 @@ const useReducer = (state: IData, action: Action) => {
         [payload.key]: payload.value,
       };
     case ReducerActionTypes.SET_THEME:
-      console.log(payload);
       return {
         ...state,
         theme: payload,
@@ -88,7 +87,7 @@ const useReducer = (state: IData, action: Action) => {
 };
 
 const initialState: IData = {
-  theme: "dark",
+  theme: "default",
   wins: 0,
   games: 0,
   crewmateWins: 0,
@@ -124,22 +123,24 @@ const data = JSON.parse(localData);
 export const DataProvider = ({ children }: IDataProviderProps): JSX.Element => {
   const [state, dispatch] = React.useReducer(useReducer, initialState);
 
-  const {
-    wins,
-    games,
-    crewmateWins,
-    crewmateGames,
-    impostorWins,
-    impostorGames,
-    names,
-    innocentPlayers,
-    susPlayers,
-    evilPlayers,
-    deadPlayers,
-    unknownPlayers,
-    unusedPlayers,
-    notes,
-  } = state;
+  console.log(Themes[state.theme]);
+
+  // const {
+  //   wins,
+  //   games,
+  //   crewmateWins,
+  //   crewmateGames,
+  //   impostorWins,
+  //   impostorGames,
+  //   names,
+  //   innocentPlayers,
+  //   susPlayers,
+  //   evilPlayers,
+  //   deadPlayers,
+  //   unknownPlayers,
+  //   unusedPlayers,
+  //   notes,
+  // } = state;
 
   // console.log(Themes, state.theme);
 
@@ -243,7 +244,6 @@ export const DataProvider = ({ children }: IDataProviderProps): JSX.Element => {
       switch (key) {
         case "theme":
           data.theme = value.name;
-          console.log(data, value);
           dispatch({ type: ReducerActionTypes.SET_THEME, payload: value.name });
 
           break;
@@ -303,22 +303,10 @@ export const DataProvider = ({ children }: IDataProviderProps): JSX.Element => {
     <DataContext.Provider
       value={{
         ...state,
-        theme: Themes[`${state.theme}`],
+        theme: Themes[state.theme],
         resetRound,
         resetAll,
         setTheme: (value: ITheme) => {
-          // const localData = localStorage.getItem(`${namespace}data`);
-
-          // if (localData) {
-          //   const data: IData = JSON.parse(localData);
-
-          //   data.theme = value.name;
-
-          //   localStorage.setItem(`${namespace}data`, JSON.stringify(data));
-
-          //   dispatch({ type: ReducerActionTypes.SET_THEME, payload: value });
-          // }
-          console.log(value);
           setState("theme", value);
         },
         setWinsAndGames: (key: string, value: number) => {
