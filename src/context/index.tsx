@@ -53,6 +53,7 @@ const initialState: IData = {
     { id: "white", name: "", color: "white" },
     { id: "yellow", name: "", color: "yellow" },
   ],
+  unusedPlayers: [],
   notes: "",
 };
 

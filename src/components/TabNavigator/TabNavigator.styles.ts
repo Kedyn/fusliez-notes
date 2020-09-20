@@ -23,6 +23,6 @@ export default createUseStyles((theme: ITheme) => ({
     flex: 1,
     flexDirection: "column",
     fontSize: "1.25rem",
-    padding: "0.25rem",
+    padding: "0.5rem",
   },
 }));

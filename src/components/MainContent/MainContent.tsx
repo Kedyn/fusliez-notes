@@ -15,7 +15,7 @@ export default function MainContent({
     <div className={classes.root}>
       <Header />
 
-      {!isMobile && <Scores />}
+      {!isMobile && <Scores isMobile={isMobile} />}
 
       <PlayersSection />
     </div>

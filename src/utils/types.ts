@@ -42,6 +42,7 @@ export interface IDataContext {
   evilPlayers: Array<IPlayer>;
   deadPlayers: Array<IPlayer>;
   unknownPlayers: Array<IPlayer>;
+  unusedPlayers: Array<IPlayer>;
   notes: string;
   resetRound: () => void;
   resetAll: () => void;
@@ -71,5 +72,6 @@ export interface IData {
   evilPlayers: Array<IPlayer>;
   deadPlayers: Array<IPlayer>;
   unknownPlayers: Array<IPlayer>;
+  unusedPlayers: Array<IPlayer>;
   notes: string;
 }

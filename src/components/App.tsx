@@ -4,6 +4,7 @@ import ControlsContent from "./ControlsContent";
 import MainContent from "./MainContent";
 import MapsContent from "./MapsContent";
 import TabNavigator from "./TabNavigator";
+import Scores from "./Scores";
 import React from "react";
 import jssSetUp from "utils/jssSetUp";
 import { useData } from "context";
@@ -16,7 +17,7 @@ export default function App(): JSX.Element {
 
   const [width, setWidth] = React.useState(window.innerWidth);
   // const [useDesktop, setUseDesktop] = React.useState(false);
-  const [currentTab, setCurrentTab] = React.useState("Players");
+  const [currentTab, setCurrentTab] = React.useState("Record");
 
   const breakpoint = 768;
 
@@ -44,6 +45,8 @@ export default function App(): JSX.Element {
                     <MainContent isMobile={isMobile} />
                   ) : currentTab === "Maps" ? (
                     <MapsContent isMobile={isMobile} />
+                  ) : currentTab === "Record" ? (
+                    <Scores isMobile={isMobile} />
                   ) : null}
                   <>
                     <TabNavigator
