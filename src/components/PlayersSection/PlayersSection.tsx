@@ -22,56 +22,58 @@ export default function PlayersSection(): JSX.Element {
   interface Section {
     title: string;
     list: Array<IPlayer>;
-    setList: (key: string, value: Array<IPlayer>) => void;
+    listName: string;
+    // setList: (key: string, value: Array<IPlayer>) => void;
   }
 
   const sections: Array<Section> = [
     {
       title: "Innocent",
       list: innocentPlayers,
-      setList: setPlayers,
+      listName: "innocentPlayers",
       // setList: setPlayers("innocentPlayers", innocentPlayers),
     },
     {
       title: "Suspicious / Hit List",
       list: susPlayers,
-      setList: setPlayers,
+      listName: "susPlayers",
       // setList: setPlayers("susPlayers", susPlayers),
     },
     {
       title: "Evil",
       list: evilPlayers,
-      setList: setPlayers,
+      listName: "evilPlayers",
       // setList: setPlayers("evilPlayers", evilPlayers),
     },
     {
       title: "Dead",
       list: deadPlayers,
-      setList: setPlayers,
+      listName: "deadPlayers",
       // setList: setPlayers("deadPlayers", deadPlayers),
     },
     {
       title: "Unknown",
       list: unknownPlayers,
-      setList: setPlayers,
+      listName: "unknownPlayers",
       // setList: setPlayers("unknownPlayers", unknownPlayers),
     },
     {
       title: "Unused",
       list: unusedPlayers,
+      listName: "unusedPlayers",
       // setList: setPlayers("unusedPlayers", unusedPlayers),
-      setList: setPlayers,
     },
   ];
 
   return (
     <div className={classes.root}>
-      {sections.map(({ title, list, setList }) => (
+      {sections.map(({ title, list, listName }) => (
         <Section
           key={title}
           title={title}
           list={list}
-          setList={setList}
+          listName={listName}
+          setList={() => setPlayers(listName, list)}
           isMobile={isMobile}
         />
       ))}

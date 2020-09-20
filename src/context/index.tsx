@@ -18,6 +18,7 @@ interface Action {
 }
 
 enum ReducerActionTypes {
+  LOAD_DATA = "LOAD_DATA",
   RESET_ALL = "RESET_ALL",
   RESET_ROUND = "RESET_ROUND",
   SET_PLAYERS = "SET_PLAYERS",
@@ -34,9 +35,13 @@ const useReducer = (state: IData, action: Action) => {
   const { payload } = action;
 
   switch (action.type) {
+    case ReducerActionTypes.LOAD_DATA:
+      return {
+        ...payload.state,
+      };
     case ReducerActionTypes.RESET_ALL:
       localStorage.setItem(`${namespace}data`, JSON.stringify(initialState));
-      return initialState;
+      return { ...initialState, theme: state.theme };
     case ReducerActionTypes.RESET_ROUND:
       const currentPlayers = [
         ...state.innocentPlayers,
@@ -67,6 +72,7 @@ const useReducer = (state: IData, action: Action) => {
         notes: payload.value,
       };
     case ReducerActionTypes.SET_PLAYERS:
+      console.log(payload);
       return {
         ...state,
         [payload.key]: payload.value,
@@ -122,9 +128,6 @@ const data = JSON.parse(localData);
 
 export const DataProvider = ({ children }: IDataProviderProps): JSX.Element => {
   const [state, dispatch] = React.useReducer(useReducer, initialState);
-
-  console.log(Themes[state.theme]);
-
   // const {
   //   wins,
   //   games,
@@ -141,12 +144,6 @@ export const DataProvider = ({ children }: IDataProviderProps): JSX.Element => {
   //   unusedPlayers,
   //   notes,
   // } = state;
-
-  // console.log(Themes, state.theme);
-
-  // const theme = Themes[state.theme];
-
-  // console.log(theme);
 
   // const [wins, setLocalWins] = React.useState(
   //   data?.wins ? data.wins : initialState.wins
@@ -210,29 +207,25 @@ export const DataProvider = ({ children }: IDataProviderProps): JSX.Element => {
     dispatch({ type: ReducerActionTypes.RESET_ALL });
   }
 
-  // React.useEffect(() => {
-  //   if (data && Object.keys(data)?.length) {
-  //     if (data.theme) {
-  //       const localTheme = Themes[data.theme];
+  React.useEffect(() => {
+    if (data && Object.keys(data)?.length) {
+      console.log(data);
 
-  //       if (localTheme) {
-  //         dispatch({ type: ReducerActionTypes.SET_THEME, payload: localTheme});
-  //       }
-  //     } else {
-  //       if (prefersDark) {
-  //         dispatch({ type: ReducerActionTypes.SET_THEME, payload:(Themes.dark);
-  //       }
-  //     }
-  //   } else {
-  //     if (prefersDark) {
-  //       dispatch({ type: ReducerActionTypes.SET_THEME, payload:(Themes.dark);
+      dispatch({
+        type: ReducerActionTypes.LOAD_DATA,
+        payload: { state: data },
+      });
+      if (prefersDark) {
+        dispatch({ type: ReducerActionTypes.SET_THEME, payload: "dark" });
+      }
+    } else {
+      if (prefersDark) {
+        dispatch({ type: ReducerActionTypes.SET_THEME, payload: "dark" });
+      }
 
-  //       initialState.theme = "dark";
-  //     }
-
-  //     localStorage.setItem(`${namespace}data`, JSON.stringify(initialState));
-  //   }
-  // }, []);
+      localStorage.setItem(`${namespace}data`, JSON.stringify(initialState));
+    }
+  }, []);
 
   function setState(
     key: string,
@@ -264,7 +257,6 @@ export const DataProvider = ({ children }: IDataProviderProps): JSX.Element => {
         case "deadPlayers":
         case "unknownPlayers":
         case "unusedPlayers":
-          // console.log(key, value);
           data[key] = value.map(
             ({
               id,
@@ -279,6 +271,7 @@ export const DataProvider = ({ children }: IDataProviderProps): JSX.Element => {
             }
           );
 
+          console.log(data);
           dispatch({
             type: ReducerActionTypes.SET_PLAYERS,
             payload: { key, value: data[key] },
@@ -294,7 +287,7 @@ export const DataProvider = ({ children }: IDataProviderProps): JSX.Element => {
         default:
           break;
       }
-
+      console.log(data);
       localStorage.setItem(`${namespace}data`, JSON.stringify(data));
     }
   }

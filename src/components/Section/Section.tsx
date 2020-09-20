@@ -9,6 +9,7 @@ import colorNameToRGB from "utils/colorConverter";
 export interface ISectionProps {
   title: string;
   list: Array<IPlayer>;
+  listName: string;
   setList: (key: string, value: IPlayer[]) => void;
   isMobile: boolean;
 }
@@ -17,7 +18,7 @@ export default function Section(props: ISectionProps): JSX.Element {
   const { names } = useData()!; // eslint-disable-line
   const classes = useStyles({ names });
 
-  const { title, list, setList } = props;
+  const { title, list, listName, setList } = props;
 
   return (
     <React.Fragment>
@@ -52,6 +53,7 @@ export default function Section(props: ISectionProps): JSX.Element {
               color={color}
               name={name}
               list={list}
+              listName={listName}
               setList={setList}
               index={index}
             />

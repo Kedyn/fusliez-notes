@@ -9,6 +9,7 @@ export interface IPlayerProps {
   color: string;
   name: string;
   list: Array<IPlayer>;
+  listName: string;
   setList: (key: string, value: IPlayer[]) => void;
   index: number;
 }
@@ -17,7 +18,7 @@ export default function Player(props: IPlayerProps): JSX.Element {
   const classes = useStyles(props);
   const { names } = useData()!; // eslint-disable-line
 
-  const { color, name, list, setList, index } = props;
+  const { color, name, list, listName, setList, index } = props;
 
   const player_class = "player-handle";
 
@@ -27,11 +28,9 @@ export default function Player(props: IPlayerProps): JSX.Element {
   ) => {
     const players: Array<IPlayer> = [...list];
 
-    console.log(event.currentTarget.value);
-
     players[player].name = event.currentTarget.value;
 
-    setList(players);
+    setList(listName, players);
   };
 
   return (
