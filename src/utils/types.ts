@@ -49,6 +49,8 @@ export interface IDataContext {
   setTheme: (value: ITheme) => void;
   setWins: (value: number) => void;
   setGames: (value: number) => void;
+  setWinsAndGames: (key: string, value: number) => void;
+  setPlayers: (key: string, value: Array<IPlayer>) => void;
   setNames: (value: boolean) => void;
   setInnocentPlayers: (value: Array<IPlayer>) => void;
   setSusPlayers: (value: Array<IPlayer>) => void;

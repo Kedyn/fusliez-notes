@@ -12,15 +12,64 @@ export interface IDataProviderProps {
   children: React.ReactNode;
 }
 
-enum ReducerActionTypes {
-  RESET_ALL,
-  RESET_ROUND,
+export enum ReducerActionTypes {
+  RESET_ALL = "RESET_ALL",
+  RESET_ROUND = "RESET_ROUND",
+  SET_PLAYERS = "SET_PLAYERS",
+  SET_THEME = "SET_THEME",
+  SET_WINS_AND_GAMES = "SET_WINS_AND_GAMES",
+  SET_CREWMATE_WIN = "SET_CREWMATE_WIN",
+  SET_CREWMATE_LOSE = "SET_CREWMATE_LOSE",
+  SET_IMPOSTOR_WIN = "SET_IMPOSTOR_WIN",
+  SET_IMPOSTOR_LOSE = "SET_IMPOSTOR_LOSE",
 }
 
-const createReducer = (state, action) => {
+const createReducer = (state: IData, action: any) => {
+  const { payload } = action;
+
   switch (action.type) {
     case ReducerActionTypes.RESET_ALL:
+      localStorage.setItem(`${namespace}data`, JSON.stringify(initialState));
       return initialState;
+    case ReducerActionTypes.RESET_ROUND:
+      const currentPlayers = [
+        ...state.innocentPlayers,
+        ...state.susPlayers,
+        ...state.evilPlayers,
+        ...state.deadPlayers,
+        ...state.unknownPlayers,
+      ];
+
+      localStorage.setItem(
+        `${namespace}data`,
+        JSON.stringify({
+          ...state,
+          unknownPlayers: currentPlayers,
+        })
+      );
+      return {
+        ...state,
+        innocentPlayers: [],
+        susPlayers: [],
+        evilPlayers: [],
+        deadPlayers: [],
+        unknownPlayers: currentPlayers,
+      };
+    case ReducerActionTypes.SET_PLAYERS:
+      return {
+        ...state,
+        [payload.key]: payload.value,
+      };
+    case ReducerActionTypes.SET_THEME:
+      return {
+        ...state,
+        theme: payload,
+      };
+    case ReducerActionTypes.SET_WINS_AND_GAMES:
+      return {
+        ...state,
+        [payload.key]: payload.value,
+      };
     default:
       break;
   }
@@ -62,128 +111,153 @@ const data = JSON.parse(localData);
 
 export const DataProvider = ({ children }: IDataProviderProps): JSX.Element => {
   const [state, dispatch] = React.useReducer(createReducer, initialState);
-  const [theme, setLocalTheme] = React.useState<ITheme>(Themes.default);
-  const [wins, setLocalWins] = React.useState(
-    data?.wins ? data.wins : initialState.wins
-  );
-  const [games, setLocalGames] = React.useState(
-    data?.games ? data.games : initialState.games
-  );
-  const [crewmateWins, setLocalCrewmateWins] = React.useState(
-    data?.crewmateWins ? data.crewmateWins : initialState.crewmateWins
-  );
-  const [crewmateGames, setLocalCrewmateGames] = React.useState(
-    data?.crewmateGames ? data.crewmateGames : initialState.crewmateGames
-  );
-  const [impostorWins, setLocalImpostorWins] = React.useState(
-    data?.impostorWins ? data.impostorWins : initialState.impostorWins
-  );
-  const [impostorGames, setLocalImpostorGames] = React.useState(
-    data?.impostorGames ? data.impostorGames : initialState.impostorGames
-  );
-  const [names, setLocalNames] = React.useState(
-    data?.names ? data.names : initialState.names
-  );
-  const [notes, setLocalNotes] = React.useState(
-    data?.notes ? data.notes : initialState.notes
-  );
 
-  const [innocentPlayers, setLocalInnocentPlayers] = React.useState<
-    Array<IPlayer>
-  >(
-    data?.innocentPlayers.length
-      ? data.innocentPlayers
-      : initialState.innocentPlayers
-  );
-  const [susPlayers, setLocalSusPlayers] = React.useState<Array<IPlayer>>(
-    data?.susPlayers.length ? data.susPlayers : initialState.susPlayers
-  );
-  const [evilPlayers, setLocalEvilPlayers] = React.useState<Array<IPlayer>>(
-    data?.evilPlayers.length ? data.evilPlayers : initialState.evilPlayers
-  );
-  const [deadPlayers, setLocalDeadPlayers] = React.useState<Array<IPlayer>>(
-    data?.deadPlayers.length ? data.deadPlayers : initialState.deadPlayers
-  );
-  const [unknownPlayers, setLocalUnknownPlayers] = React.useState<
-    Array<IPlayer>
-  >(
-    data?.unknownPlayers.length
-      ? data.unknownPlayers
-      : initialState.unknownPlayers
-  );
-  const [unusedPlayers, setLocalUnusedPlayers] = React.useState<Array<IPlayer>>(
-    data?.unusedPlayers.length ? data.unusedPlayers : initialState.unusedPlayers
-  );
+  const {
+    wins,
+    games,
+    crewmateWins,
+    crewmateGames,
+    impostorWins,
+    impostorGames,
+    names,
+    innocentPlayers,
+    susPlayers,
+    evilPlayers,
+    deadPlayers,
+    unknownPlayers,
+    unusedPlayers,
+    notes,
+  } = state;
+
+  const theme = Themes[state.theme];
+
+  // const [wins, setLocalWins] = React.useState(
+  //   data?.wins ? data.wins : initialState.wins
+  // );
+  // const [games, setLocalGames] = React.useState(
+  //   data?.games ? data.games : initialState.games
+  // );
+  // const [crewmateWins, setLocalCrewmateWins] = React.useState(
+  //   data?.crewmateWins ? data.crewmateWins : initialState.crewmateWins
+  // );
+  // const [crewmateGames, setLocalCrewmateGames] = React.useState(
+  //   data?.crewmateGames ? data.crewmateGames : initialState.crewmateGames
+  // );
+  // const [impostorWins, setLocalImpostorWins] = React.useState(
+  //   data?.impostorWins ? data.impostorWins : initialState.impostorWins
+  // );
+  // const [impostorGames, setLocalImpostorGames] = React.useState(
+  //   data?.impostorGames ? data.impostorGames : initialState.impostorGames
+  // );
+  // const [names, setLocalNames] = React.useState(
+  //   data?.names ? data.names : initialState.names
+  // );
+  // const [notes, setLocalNotes] = React.useState(
+  //   data?.notes ? data.notes : initialState.notes
+  // );
+
+  // const [innocentPlayers, setLocalInnocentPlayers] = React.useState<
+  //   Array<IPlayer>
+  // >(
+  //   data?.innocentPlayers.length
+  //     ? data.innocentPlayers
+  //     : initialState.innocentPlayers
+  // );
+  // const [susPlayers, setLocalSusPlayers] = React.useState<Array<IPlayer>>(
+  //   data?.susPlayers.length ? data.susPlayers : initialState.susPlayers
+  // );
+  // const [evilPlayers, setLocalEvilPlayers] = React.useState<Array<IPlayer>>(
+  //   data?.evilPlayers.length ? data.evilPlayers : initialState.evilPlayers
+  // );
+  // const [deadPlayers, setLocalDeadPlayers] = React.useState<Array<IPlayer>>(
+  //   data?.deadPlayers.length ? data.deadPlayers : initialState.deadPlayers
+  // );
+  // const [unknownPlayers, setLocalUnknownPlayers] = React.useState<
+  //   Array<IPlayer>
+  // >(
+  //   data?.unknownPlayers.length
+  //     ? data.unknownPlayers
+  //     : initialState.unknownPlayers
+  // );
+  // const [unusedPlayers, setLocalUnusedPlayers] = React.useState<Array<IPlayer>>(
+  //   data?.unusedPlayers.length ? data.unusedPlayers : initialState.unusedPlayers
+  // );
 
   const prefersDark = useMediaQuery("(prefers-color-scheme: dark)");
 
   function resetRound() {
-    const currentPlayers = [
-      ...innocentPlayers,
-      ...susPlayers,
-      ...evilPlayers,
-      ...deadPlayers,
-      ...unknownPlayers,
-    ];
-
-    setLocalUnknownPlayers(currentPlayers);
-    setLocalInnocentPlayers([]);
-    setLocalSusPlayers([]);
-    setLocalEvilPlayers([]);
-    setLocalDeadPlayers([]);
-    setLocalNotes("");
-
-    localStorage.setItem(
-      `${namespace}data`,
-      JSON.stringify({
-        ...initialState,
-        unknownPlayers: currentPlayers,
-      })
-    );
+    dispatch({ type: ReducerActionTypes.RESET_ROUND });
   }
 
   function resetAll() {
-    setLocalWins(0);
-    setLocalGames(0);
-    setLocalCrewmateWins(0);
-    setLocalCrewmateGames(0);
-    setLocalImpostorWins(0);
-    setLocalImpostorGames(0);
-    setLocalTheme(Themes.dark);
-    setLocalNames(true);
-    setLocalNotes("");
-    setLocalUnknownPlayers(initialState.unknownPlayers);
-    setLocalInnocentPlayers([]);
-    setLocalSusPlayers([]);
-    setLocalEvilPlayers([]);
-    setLocalDeadPlayers([]);
-
-    localStorage.setItem(`${namespace}data`, JSON.stringify(initialState));
+    dispatch({ type: ReducerActionTypes.RESET_ALL });
   }
 
-  React.useEffect(() => {
-    if (data && Object.keys(data)?.length) {
-      if (data.theme) {
-        const localTheme = Themes[data.theme];
+  // React.useEffect(() => {
+  //   if (data && Object.keys(data)?.length) {
+  //     if (data.theme) {
+  //       const localTheme = Themes[data.theme];
 
-        if (localTheme) {
-          setLocalTheme(localTheme);
-        }
-      } else {
-        if (prefersDark) {
-          setLocalTheme(Themes.dark);
-        }
+  //       if (localTheme) {
+  //         dispatch({ type: ReducerActionTypes.SET_THEME, payload: localTheme});
+  //       }
+  //     } else {
+  //       if (prefersDark) {
+  //         dispatch({ type: ReducerActionTypes.SET_THEME, payload:(Themes.dark);
+  //       }
+  //     }
+  //   } else {
+  //     if (prefersDark) {
+  //       dispatch({ type: ReducerActionTypes.SET_THEME, payload:(Themes.dark);
+
+  //       initialState.theme = "dark";
+  //     }
+
+  //     localStorage.setItem(`${namespace}data`, JSON.stringify(initialState));
+  //   }
+  // }, []);
+
+  function setState(
+    key: string,
+    value: string | number | boolean | Array<IPlayer> | ITheme
+  ) {
+    if (localData) {
+      const data = JSON.parse(localData);
+
+      switch (key) {
+        case "theme":
+          data.theme = value.name;
+          dispatch({ type: ReducerActionTypes.SET_THEME, payload: value.name });
+        case "crewmateWins" ||
+          "crewmateGames" ||
+          "impostorWins" ||
+          "impostorGames":
+          data[key] = value;
+          dispatch({
+            type: ReducerActionTypes.SET_WINS_AND_GAMES,
+            payload: { key, value },
+          });
+        case "innocentPlayers" ||
+          "susPlayers" ||
+          "evilPlayers" ||
+          "deadPlayers" ||
+          "unknownPlayers" ||
+          "unusedPlayers":
+          data[key] = value.map(({ id, name, color }) => {
+            return { id, name, color };
+          });
+
+          dispatch({
+            type: ReducerActionTypes.SET_PLAYERS,
+            payload: { key, value },
+          });
+        default:
+          break;
       }
-    } else {
-      if (prefersDark) {
-        setLocalTheme(Themes.dark);
 
-        initialState.theme = "dark";
-      }
-
-      localStorage.setItem(`${namespace}data`, JSON.stringify(initialState));
+      localStorage.setItem(`${namespace}data`, JSON.stringify(data));
     }
-  }, []);
+  }
 
   return (
     <DataContext.Provider
@@ -206,17 +280,18 @@ export const DataProvider = ({ children }: IDataProviderProps): JSX.Element => {
         resetRound,
         resetAll,
         setTheme: (value: ITheme) => {
-          const localData = localStorage.getItem(`${namespace}data`);
+          // const localData = localStorage.getItem(`${namespace}data`);
 
-          if (localData) {
-            const data: IData = JSON.parse(localData);
+          // if (localData) {
+          //   const data: IData = JSON.parse(localData);
 
-            data.theme = value.name;
+          //   data.theme = value.name;
 
-            localStorage.setItem(`${namespace}data`, JSON.stringify(data));
+          //   localStorage.setItem(`${namespace}data`, JSON.stringify(data));
 
-            setLocalTheme(value);
-          }
+          //   dispatch({ type: ReducerActionTypes.SET_THEME, payload: value });
+          // }
+          setState("theme", value);
         },
         setWins: (value: number) => {
           const localData = localStorage.getItem(`${namespace}data`);
@@ -230,6 +305,12 @@ export const DataProvider = ({ children }: IDataProviderProps): JSX.Element => {
 
             setLocalWins(value);
           }
+        },
+        setWinsAndGames: (key: string, value: number) => {
+          setState(key, value);
+        },
+        setPlayers: (key: string, value: Array<IPlayer>) => {
+          setState(key, value);
         },
         setGames: (value: number) => {
           const localData = localStorage.getItem(`${namespace}data`);
