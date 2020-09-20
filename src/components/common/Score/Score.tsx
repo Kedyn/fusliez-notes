@@ -16,6 +16,7 @@ export default function Score(props: IScoreProps): JSX.Element {
     <React.Fragment>
       <div className={classes.root}>
         <input
+          disabled
           type="number"
           className={`${classNames ? classNames : ""} ${classes.input}`}
           {...other}

@@ -12,6 +12,7 @@ export default function PlayersSection(): JSX.Element {
     evilPlayers,
     deadPlayers,
     unknownPlayers,
+    unusedPlayers,
     setInnocentPlayers,
     setSusPlayers,
     setEvilPlayers,
@@ -38,6 +39,7 @@ export default function PlayersSection(): JSX.Element {
     { title: "Evil", list: evilPlayers, setList: setEvilPlayers },
     { title: "Dead", list: deadPlayers, setList: setDeadPlayers },
     { title: "Unknown", list: unknownPlayers, setList: setUnknownPlayers },
+    { title: "Unused", list: unusedPlayers, setList: setUnknownPlayers },
   ];
 
   return (

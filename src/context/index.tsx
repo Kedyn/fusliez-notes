@@ -39,7 +39,8 @@ const initialState: IData = {
   susPlayers: [],
   evilPlayers: [],
   deadPlayers: [],
-  unknownPlayers: [
+  unknownPlayers: [],
+  unusedPlayers: [
     { id: "orange", name: "fuslie", color: "orange" },
     { id: "blue", name: "", color: "blue" },
     { id: "brown", name: "", color: "brown" },
@@ -53,7 +54,6 @@ const initialState: IData = {
     { id: "white", name: "", color: "white" },
     { id: "yellow", name: "", color: "yellow" },
   ],
-  unusedPlayers: [],
   notes: "",
 };
 
@@ -110,6 +110,9 @@ export const DataProvider = ({ children }: IDataProviderProps): JSX.Element => {
     data?.unknownPlayers.length
       ? data.unknownPlayers
       : initialState.unknownPlayers
+  );
+  const [unusedPlayers, setLocalUnusedPlayers] = React.useState<Array<IPlayer>>(
+    data?.unusedPlayers.length ? data.unusedPlayers : initialState.unusedPlayers
   );
 
   const prefersDark = useMediaQuery("(prefers-color-scheme: dark)");
@@ -198,6 +201,7 @@ export const DataProvider = ({ children }: IDataProviderProps): JSX.Element => {
         evilPlayers,
         deadPlayers,
         unknownPlayers,
+        unusedPlayers,
         notes,
         resetRound,
         resetAll,
