@@ -12,7 +12,12 @@ export interface IDataProviderProps {
   children: React.ReactNode;
 }
 
-export enum ReducerActionTypes {
+interface Action {
+  type: string;
+  payload: any;
+}
+
+enum ReducerActionTypes {
   RESET_ALL = "RESET_ALL",
   RESET_ROUND = "RESET_ROUND",
   SET_PLAYERS = "SET_PLAYERS",
@@ -22,9 +27,10 @@ export enum ReducerActionTypes {
   SET_CREWMATE_LOSE = "SET_CREWMATE_LOSE",
   SET_IMPOSTOR_WIN = "SET_IMPOSTOR_WIN",
   SET_IMPOSTOR_LOSE = "SET_IMPOSTOR_LOSE",
+  SET_NOTES = "SET_NOTES",
 }
 
-const createReducer = (state: IData, action: any) => {
+const useReducer = (state: IData, action: Action) => {
   const { payload } = action;
 
   switch (action.type) {
@@ -55,12 +61,18 @@ const createReducer = (state: IData, action: any) => {
         deadPlayers: [],
         unknownPlayers: currentPlayers,
       };
+    case ReducerActionTypes.SET_NOTES:
+      return {
+        ...state,
+        notes: payload.value,
+      };
     case ReducerActionTypes.SET_PLAYERS:
       return {
         ...state,
         [payload.key]: payload.value,
       };
     case ReducerActionTypes.SET_THEME:
+      console.log(payload);
       return {
         ...state,
         theme: payload,
@@ -110,7 +122,7 @@ const localData = localStorage.getItem(`${namespace}data`);
 const data = JSON.parse(localData);
 
 export const DataProvider = ({ children }: IDataProviderProps): JSX.Element => {
-  const [state, dispatch] = React.useReducer(createReducer, initialState);
+  const [state, dispatch] = React.useReducer(useReducer, initialState);
 
   const {
     wins,
@@ -129,7 +141,11 @@ export const DataProvider = ({ children }: IDataProviderProps): JSX.Element => {
     notes,
   } = state;
 
-  const theme = Themes[state.theme];
+  // console.log(Themes, state.theme);
+
+  // const theme = Themes[state.theme];
+
+  // console.log(theme);
 
   // const [wins, setLocalWins] = React.useState(
   //   data?.wins ? data.wins : initialState.wins
@@ -227,30 +243,54 @@ export const DataProvider = ({ children }: IDataProviderProps): JSX.Element => {
       switch (key) {
         case "theme":
           data.theme = value.name;
+          console.log(data, value);
           dispatch({ type: ReducerActionTypes.SET_THEME, payload: value.name });
-        case "crewmateWins" ||
-          "crewmateGames" ||
-          "impostorWins" ||
-          "impostorGames":
+
+          break;
+        case "crewmateWins":
+        case "crewmateGames":
+        case "impostorWins":
+        case "impostorGames":
           data[key] = value;
           dispatch({
             type: ReducerActionTypes.SET_WINS_AND_GAMES,
             payload: { key, value },
           });
-        case "innocentPlayers" ||
-          "susPlayers" ||
-          "evilPlayers" ||
-          "deadPlayers" ||
-          "unknownPlayers" ||
-          "unusedPlayers":
-          data[key] = value.map(({ id, name, color }) => {
-            return { id, name, color };
-          });
+
+          break;
+        case "innocentPlayers":
+        case "susPlayers":
+        case "evilPlayers":
+        case "deadPlayers":
+        case "unknownPlayers":
+        case "unusedPlayers":
+          // console.log(key, value);
+          data[key] = value.map(
+            ({
+              id,
+              name,
+              color,
+            }: {
+              id: string;
+              name: string;
+              color: string;
+            }) => {
+              return { id, name, color };
+            }
+          );
 
           dispatch({
             type: ReducerActionTypes.SET_PLAYERS,
-            payload: { key, value },
+            payload: { key, value: data[key] },
           });
+
+          break;
+        case "notes":
+          data.notes = value;
+
+          dispatch({ type: ReducerActionTypes.SET_NOTES, payload: value });
+
+          break;
         default:
           break;
       }
@@ -262,21 +302,8 @@ export const DataProvider = ({ children }: IDataProviderProps): JSX.Element => {
   return (
     <DataContext.Provider
       value={{
-        theme,
-        wins,
-        games,
-        crewmateWins,
-        crewmateGames,
-        impostorWins,
-        impostorGames,
-        names,
-        innocentPlayers,
-        susPlayers,
-        evilPlayers,
-        deadPlayers,
-        unknownPlayers,
-        unusedPlayers,
-        notes,
+        ...state,
+        theme: Themes[`${state.theme}`],
         resetRound,
         resetAll,
         setTheme: (value: ITheme) => {
@@ -291,20 +318,8 @@ export const DataProvider = ({ children }: IDataProviderProps): JSX.Element => {
 
           //   dispatch({ type: ReducerActionTypes.SET_THEME, payload: value });
           // }
+          console.log(value);
           setState("theme", value);
-        },
-        setWins: (value: number) => {
-          const localData = localStorage.getItem(`${namespace}data`);
-
-          if (localData) {
-            const data: IData = JSON.parse(localData);
-
-            data.wins = value;
-
-            localStorage.setItem(`${namespace}data`, JSON.stringify(data));
-
-            setLocalWins(value);
-          }
         },
         setWinsAndGames: (key: string, value: number) => {
           setState(key, value);
@@ -312,119 +327,139 @@ export const DataProvider = ({ children }: IDataProviderProps): JSX.Element => {
         setPlayers: (key: string, value: Array<IPlayer>) => {
           setState(key, value);
         },
-        setGames: (value: number) => {
-          const localData = localStorage.getItem(`${namespace}data`);
+        // setWins: (value: number) => {
+        //   const localData = localStorage.getItem(`${namespace}data`);
 
-          if (localData) {
-            const data: IData = JSON.parse(localData);
+        //   if (localData) {
+        //     const data: IData = JSON.parse(localData);
 
-            data.games = value;
+        //     data.wins = value;
 
-            localStorage.setItem(`${namespace}data`, JSON.stringify(data));
+        //     localStorage.setItem(`${namespace}data`, JSON.stringify(data));
 
-            setLocalGames(value);
-          }
-        },
-        setNames: (value: boolean) => {
-          const localData = localStorage.getItem(`${namespace}data`);
+        //     setLocalWins(value);
+        //   }
+        // },
+        // setGames: (value: number) => {
+        //   const localData = localStorage.getItem(`${namespace}data`);
 
-          if (localData) {
-            const data: IData = JSON.parse(localData);
+        //   if (localData) {
+        //     const data: IData = JSON.parse(localData);
 
-            data.names = value;
+        //     data.games = value;
 
-            localStorage.setItem(`${namespace}data`, JSON.stringify(data));
+        //     localStorage.setItem(`${namespace}data`, JSON.stringify(data));
 
-            setLocalNames(value);
-          }
-        },
-        setInnocentPlayers: (value: Array<IPlayer>) => {
-          const localData = localStorage.getItem(`${namespace}data`);
+        //     setLocalGames(value);
+        //   }
+        // },
+        // setNames: (value: boolean) => {
+        //   const localData = localStorage.getItem(`${namespace}data`);
 
-          if (localData) {
-            const data: IData = JSON.parse(localData);
+        //   if (localData) {
+        //     const data: IData = JSON.parse(localData);
 
-            data.innocentPlayers = value.map(({ id, name, color }) => {
-              return { id, name, color };
-            });
+        //     data.names = value;
 
-            localStorage.setItem(`${namespace}data`, JSON.stringify(data));
+        //     localStorage.setItem(`${namespace}data`, JSON.stringify(data));
 
-            setLocalInnocentPlayers(value);
-          }
-        },
-        setSusPlayers: (value: Array<IPlayer>) => {
-          const localData = localStorage.getItem(`${namespace}data`);
+        //     setLocalNames(value);
+        //   }
+        // },
+        // setInnocentPlayers: (value: Array<IPlayer>) => {
+        //   setState("innocentPlayers", value);
+        //   // const localData = localStorage.getItem(`${namespace}data`);
 
-          if (localData) {
-            const data: IData = JSON.parse(localData);
+        //   // if (localData) {
+        //   //   const data: IData = JSON.parse(localData);
 
-            data.susPlayers = value.map(({ id, name, color }) => {
-              return { id, name, color };
-            });
+        //   //   data.innocentPlayers = value.map(({ id, name, color }) => {
+        //   //     return { id, name, color };
+        //   //   });
 
-            localStorage.setItem(`${namespace}data`, JSON.stringify(data));
+        //   //   localStorage.setItem(`${namespace}data`, JSON.stringify(data));
 
-            setLocalSusPlayers(value);
-          }
-        },
-        setEvilPlayers: (value: Array<IPlayer>) => {
-          const localData = localStorage.getItem(`${namespace}data`);
+        //   //   setLocalInnocentPlayers(value);
+        //   // }
+        // },
+        // setSusPlayers: (value: Array<IPlayer>) => {
+        //   setState("susPlayers", value);
+        //   // const localData = localStorage.getItem(`${namespace}data`);
 
-          if (localData) {
-            const data: IData = JSON.parse(localData);
+        //   // if (localData) {
+        //   //   const data: IData = JSON.parse(localData);
 
-            data.evilPlayers = value.map(({ id, name, color }) => {
-              return { id, name, color };
-            });
+        //   //   data.susPlayers = value.map(({ id, name, color }) => {
+        //   //     return { id, name, color };
+        //   //   });
 
-            localStorage.setItem(`${namespace}data`, JSON.stringify(data));
+        //   //   localStorage.setItem(`${namespace}data`, JSON.stringify(data));
 
-            setLocalEvilPlayers(value);
-          }
-        },
-        setDeadPlayers: (value: Array<IPlayer>) => {
-          const localData = localStorage.getItem(`${namespace}data`);
+        //   //   setLocalSusPlayers(value);
+        //   // }
+        // },
+        // setEvilPlayers: (value: Array<IPlayer>) => {
+        //   setState("evilPlayers", value);
+        //   // const localData = localStorage.getItem(`${namespace}data`);
 
-          if (localData) {
-            const data: IData = JSON.parse(localData);
+        //   // if (localData) {
+        //   //   const data: IData = JSON.parse(localData);
 
-            data.deadPlayers = value.map(({ id, name, color }) => {
-              return { id, name, color };
-            });
+        //   //   data.evilPlayers = value.map(({ id, name, color }) => {
+        //   //     return { id, name, color };
+        //   //   });
 
-            localStorage.setItem(`${namespace}data`, JSON.stringify(data));
+        //   //   localStorage.setItem(`${namespace}data`, JSON.stringify(data));
 
-            setLocalDeadPlayers(value);
-          }
-        },
-        setUnknownPlayers: (value: Array<IPlayer>) => {
-          const localData = localStorage.getItem(`${namespace}data`);
+        //   //   setLocalEvilPlayers(value);
+        //   // }
+        // },
+        // setDeadPlayers: (value: Array<IPlayer>) => {
+        //   setState("deadPlayers", value);
+        //   // const localData = localStorage.getItem(`${namespace}data`);
 
-          if (localData) {
-            const data: IData = JSON.parse(localData);
+        //   // if (localData) {
+        //   //   const data: IData = JSON.parse(localData);
 
-            data.unknownPlayers = value.map(({ id, name, color }) => {
-              return { id, name, color };
-            });
+        //   //   data.deadPlayers = value.map(({ id, name, color }) => {
+        //   //     return { id, name, color };
+        //   //   });
 
-            localStorage.setItem(`${namespace}data`, JSON.stringify(data));
+        //   //   localStorage.setItem(`${namespace}data`, JSON.stringify(data));
 
-            setLocalUnknownPlayers(value);
-          }
-        },
+        //   //   setLocalDeadPlayers(value);
+        //   // }
+        // },
+        // setUnknownPlayers: (value: Array<IPlayer>) => {
+        //   setState("unknownPlayers", value);
+        //   // const localData = localStorage.getItem(`${namespace}data`);
+
+        //   // if (localData) {
+        //   //   const data: IData = JSON.parse(localData);
+
+        //   //   data.unknownPlayers = value.map(({ id, name, color }) => {
+        //   //     return { id, name, color };
+        //   //   });
+
+        //   //   localStorage.setItem(`${namespace}data`, JSON.stringify(data));
+
+        //   //   setLocalUnknownPlayers(value);
+        //   // }
+        // },
+        // setUnusedPlayers: (value: Array<IPlayer>)
         setNotes: (value: string) => {
-          const localData = localStorage.getItem(`${namespace}data`);
+          // const localData = localStorage.getItem(`${namespace}data`);
 
-          if (localData) {
-            const data: IData = JSON.parse(localData);
+          // if (localData) {
+          //   const data: IData = JSON.parse(localData);
 
-            data.notes = value;
+          //   data.notes = value;
 
-            localStorage.setItem(`${namespace}data`, JSON.stringify(data));
+          //   localStorage.setItem(`${namespace}data`, JSON.stringify(data));
 
-            setLocalNotes(value);
-          }
+          //   setLocalNotes(value);
+          // }
+          setState("notes", value);
         },
       }}
     >

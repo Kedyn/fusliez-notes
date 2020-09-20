@@ -9,7 +9,7 @@ export interface IPlayerProps {
   color: string;
   name: string;
   list: Array<IPlayer>;
-  setList: (value: IPlayer[]) => void;
+  setList: (key: string, value: IPlayer[]) => void;
   index: number;
 }
 
@@ -26,6 +26,8 @@ export default function Player(props: IPlayerProps): JSX.Element {
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
     const players: Array<IPlayer> = [...list];
+
+    console.log(event.currentTarget.value);
 
     players[player].name = event.currentTarget.value;
 

@@ -9,7 +9,7 @@ import colorNameToRGB from "utils/colorConverter";
 export interface ISectionProps {
   title: string;
   list: Array<IPlayer>;
-  setList: (value: IPlayer[]) => void;
+  setList: (key: string, value: IPlayer[]) => void;
   isMobile: boolean;
 }
 

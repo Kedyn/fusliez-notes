@@ -15,10 +15,10 @@ export default function ControlsContent(): JSX.Element {
     notes,
     resetRound,
     resetAll,
-    setNames,
+    // setNames,
     setTheme,
-    setWins,
-    setGames,
+    // setWins,
+    // setGames,
     setNotes,
   } = useData()!; // eslint-disable-line
 
