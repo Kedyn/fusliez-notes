@@ -11,9 +11,20 @@ export default function Scores(): JSX.Element {
   const classes = useStyles();
 
   // eslint-disable-next-line
-  const { wins, games, setWins, setGames } = useData()!;
+  const {
+    wins,
+    games,
+    setWins,
+    setGames,
+    crewmateGames,
+    crewmateWins,
+    impostorGames,
+    impostorWins,
+  } = useData()!;
 
   const rate = games > 0 ? Math.floor((wins / games) * 100) : 100;
+
+  console.log(theme);
 
   return (
     <React.Fragment>
@@ -21,21 +32,24 @@ export default function Scores(): JSX.Element {
         <div>
           <ProgressBar
             progress={rate}
-            text={`Winning rate ${rate}%`}
+            text="Overall"
+            winsAndGames={`${wins}W-${games - wins}L`}
             backgroundColor={theme.background_danger}
             progressColor={theme.background_success}
             classNames={classes.progress}
           />
           <ProgressBar
             progress={rate}
-            text={`Crewmate win rate ${rate}%`}
+            text="Crewmate"
+            winsAndGames={`${crewmateWins}W-${crewmateGames - crewmateWins}L`}
             backgroundColor={theme.background_crewmate_danger}
             progressColor={theme.background_crewmate_success}
             classNames={classes.progress}
           />
           <ProgressBar
             progress={rate}
-            text={`Impostor win rate ${rate}%`}
+            text="Impostor"
+            winsAndGames={`${impostorWins}W-${impostorGames - impostorWins}L`}
             backgroundColor={theme.background_impostor_danger}
             progressColor={theme.background_impostor_success}
             classNames={classes.progress}

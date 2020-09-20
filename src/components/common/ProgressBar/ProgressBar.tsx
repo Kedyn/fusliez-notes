@@ -7,25 +7,35 @@ export interface IProgressBarProps {
   progressColor?: string;
   text?: string;
   classNames?: string;
+  winsAndGames: string;
 }
 
 export default function ProgressBar(props: IProgressBarProps): JSX.Element {
-  const { progress, backgroundColor, progressColor, text } = props;
+  const {
+    progress,
+    backgroundColor,
+    progressColor,
+    text,
+    winsAndGames,
+  } = props;
 
   const classes = useStyles({
-    backgroundColor: backgroundColor,
-    progressColor: progressColor,
+    backgroundColor,
+    progressColor,
     progress,
   });
-
-  console.log(backgroundColor);
 
   return (
     <div
       className={`${classes.root} ${props.classNames ? props.classNames : ""}`}
     >
-      <div className={classes.progressBar} />
-      <div className={classes.title}>{text}</div>
+      <div className={classes.titleContainer}>
+        <span>{text}</span>
+        <span>{winsAndGames}</span>
+      </div>
+      <div className={classes.progressBarContainer}>
+        <div className={classes.progressBar} />
+      </div>
     </div>
   );
 }

@@ -9,7 +9,6 @@ export default class DarkTheme extends DefaultTheme {
     this.background_primary = "#202225";
     this.background_secondary = "#6c757d";
     this.background_tertiary = "#44484f";
-    this.background_danger = "rgba(220, 53, 69, 0.5)";
     this.text_primary = "#dcddde";
     this.text_secondary = "#6c757d";
     this.text_shadow =
