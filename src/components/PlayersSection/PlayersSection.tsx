@@ -3,6 +3,7 @@ import Section from "components/Section";
 import { useData } from "context";
 import { IPlayer } from "utils/types";
 import useStyles from "./PlayersSection.styles";
+import { MobileContext } from "components/App";
 
 export default function PlayersSection(): JSX.Element {
   const {
@@ -19,6 +20,7 @@ export default function PlayersSection(): JSX.Element {
   } = useData()!; // eslint-disable-line
 
   const classes = useStyles();
+  const isMobile = React.useContext(MobileContext);
 
   interface Section {
     title: string;
@@ -41,7 +43,13 @@ export default function PlayersSection(): JSX.Element {
   return (
     <div className={classes.root}>
       {sections.map(({ title, list, setList }) => (
-        <Section key={title} title={title} list={list} setList={setList} />
+        <Section
+          key={title}
+          title={title}
+          list={list}
+          setList={setList}
+          isMobile={isMobile}
+        />
       ))}
     </div>
   );

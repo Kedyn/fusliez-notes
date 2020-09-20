@@ -10,6 +10,7 @@ export interface ISectionProps {
   title: string;
   list: Array<IPlayer>;
   setList: (value: IPlayer[]) => void;
+  isMobile: boolean;
 }
 
 export default function Section(props: ISectionProps): JSX.Element {
@@ -26,6 +27,8 @@ export default function Section(props: ISectionProps): JSX.Element {
         <ReactSortable
           group="players"
           handle=".player-handle"
+          delayOnTouchStart={props.isMobile}
+          delay={props.isMobile ? 100 : 0}
           list={list}
           setList={setList}
           className={classes.players}
