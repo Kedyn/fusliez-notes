@@ -16,8 +16,8 @@ export default class DefaultTheme implements ITheme {
   public innocentBackgroundColor: string;
   public innocentTextColor: string;
 
-  public imposterBackgroundColor: string;
-  public imposterTextColor: string;
+  public impostorBackgroundColor: string;
+  public impostorTextColor: string;
 
   public buttonBackgroundColor: string;
   public buttonTextColor: string;
@@ -38,10 +38,8 @@ export default class DefaultTheme implements ITheme {
     this.textColor = "#202225";
 
     this.inputBackgroundColor = "#fdfdfd";
-    this.inputTextColor = "#202225";
-
-    this.inputBackgroundColor = "#fdfdfd";
-    this.inputTextColor = "#202225";
+    // this.inputTextColor = "#202225";
+    this.inputTextColor = "#000000";
 
     this.neutralBackgroundColor = "#ee54bb";
     this.neutralTextColor = "#fdfdfd";
@@ -71,16 +69,19 @@ export default class DefaultTheme implements ITheme {
       },
       body: {
         margin: 0,
+
         backgroundColor: this.backgroundColor,
         color: this.textColor,
         fontFamily: this.fontFamily,
         fontSize: this.fontSize,
       },
       "#root": {
-        height: "100vh",
-        width: "100vw",
         display: "flex",
         flexDirection: "column",
+        height: "100vh",
+        maxWidth: "1600px",
+        margin: "0 auto",
+        width: "100vw",
       },
       main: {
         flexGrow: 1,
@@ -115,7 +116,7 @@ export default class DefaultTheme implements ITheme {
         height: "auto",
       },
       'input[type="text"],input[type="number"],input[type="text"]:focus,input[type="number"]:focus': {
-        backgroundColor: this.inputBackgroundColor,
+        backgroundColor: "transparent",
         color: this.inputTextColor,
         appearance: "none",
         border: "none",

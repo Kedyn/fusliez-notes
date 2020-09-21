@@ -4,6 +4,7 @@ import { createUseStyles } from "react-jss";
 export default createUseStyles((theme: ITheme) => ({
   root: {
     padding: "0.5rem",
+    flex: 3,
   },
   button: {
     backgroundColor: theme.backgroundSecondary,

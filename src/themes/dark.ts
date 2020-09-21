@@ -31,10 +31,10 @@ export default class DarkTheme extends DefaultTheme {
         backgroundColor: this.backgroundColor,
         color: this.textColor,
       },
-      'input[type="text"],input[type="number"],input[type="text"]:focus,input[type="number"]:focus': {
-        backgroundColor: this.inputBackgroundColor,
-        color: this.inputTextColor,
-      },
+      // 'input[type="text"],input[type="number"],input[type="text"]:focus,input[type="number"]:focus': {
+      //   backgroundColor: this.inputBackgroundColor,
+      //   color: this.inputTextColor,
+      // },
       textarea: {
         backgroundColor: this.inputBackgroundColor,
         color: this.inputTextColor,

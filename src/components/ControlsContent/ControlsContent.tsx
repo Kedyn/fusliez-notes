@@ -10,15 +10,15 @@ export default function ControlsContent(): JSX.Element {
   const {
     names,
     theme,
-    wins,
-    games,
+    // wins,
+    // games,
     notes,
-    resetRound,
+    resetPlayersPositions,
     resetAll,
     setNames,
     setTheme,
-    setWins,
-    setGames,
+    // setWins,
+    // setGames,
     setNotes,
   } = useData()!; // eslint-disable-line
 
@@ -47,7 +47,7 @@ export default function ControlsContent(): JSX.Element {
       </div>
 
       <div className={classes.scoreButtons}>
-        <Button
+        {/* <Button
           onClick={() => {
             setWins(wins + 1);
             setGames(games + 1);
@@ -63,11 +63,14 @@ export default function ControlsContent(): JSX.Element {
           classNames={classes.lose}
         >
           Lose
-        </Button>
+        </Button> */}
       </div>
 
       <div className={classes.buttonContainer}>
-        <Button classNames={classes.reset} onClick={() => resetRound()}>
+        <Button
+          classNames={classes.reset}
+          onClick={() => resetPlayersPositions()}
+        >
           Reset Round
         </Button>
         <Button classNames={classes.reset} onClick={() => resetAll()}>

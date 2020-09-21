@@ -6,6 +6,7 @@ export default createUseStyles((theme: ITheme) => ({
     padding: "0.5rem",
     display: "flex",
     flexDirection: "column",
+    flex: 2,
   },
   buttonContainer: {
     display: "flex",
