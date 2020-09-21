@@ -53,11 +53,11 @@ export default function Scores(): JSX.Element {
         <div className={classes.title}>
           <span>Innocent</span>
           <span>
-            {wins}W - {games - wins}L
+            {innocentWins}W - {innocentGames - innocentWins}L
           </span>
         </div>
         <ProgressBar
-          progress={rate}
+          progress={innocentRate}
           backgroundColor={theme.innocentBackgroundColor}
           progressColor={theme.innocentTextColor}
           className={classes.progress}
@@ -66,11 +66,11 @@ export default function Scores(): JSX.Element {
         <div className={classes.title}>
           <span>Impostor</span>
           <span>
-            {impostorWins}W - {games - impostorWins}L
+            {impostorWins}W - {impostorGames - impostorWins}L
           </span>
         </div>
         <ProgressBar
-          progress={rate}
+          progress={impostorRate}
           backgroundColor={theme.impostorBackgroundColor}
           progressColor={theme.impostorTextColor}
           className={classes.progress}

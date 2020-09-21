@@ -43,6 +43,28 @@ const INITIAL_DATA: IData = {
 const localData = localStorage.getItem(`${namespace}data`);
 const data = localData ? JSON.parse(localData) : INITIAL_DATA;
 
+// this function helps to check if we updated the state store
+// it compares if it has the same number of keys
+// if it does, further checks it if there are new keys added
+const updatedVersion = () => {
+  const currentDataKeys = Object.keys(data);
+  const localDataKeys = Object.keys(INITIAL_DATA);
+
+  if (currentDataKeys.length !== localDataKeys.length) {
+    return true;
+  } else {
+    if (
+      localDataKeys.filter((element) => {
+        if (currentDataKeys.includes(element)) {
+          return false;
+        } else return true;
+      }).length
+    )
+      return true;
+    return false;
+  }
+};
+
 export function DataProvider({ children }: IDataProviderProps): JSX.Element {
   const [theme, setLocalTheme] = React.useState<ITheme>(Themes.default);
   const [innocentWins, setLocalInnocentWins] = React.useState(
@@ -126,15 +148,25 @@ export function DataProvider({ children }: IDataProviderProps): JSX.Element {
 
   React.useEffect(() => {
     if (data && Object.keys(data)?.length) {
-      if (data.theme) {
-        const localTheme = Themes[data.theme];
-
-        if (localTheme) {
-          setLocalTheme(localTheme);
-        }
-      } else {
+      if (updatedVersion()) {
         if (prefersDark) {
           setLocalTheme(Themes.dark);
+
+          INITIAL_DATA.theme = "dark";
+        }
+
+        localStorage.setItem(`${namespace}data`, JSON.stringify(INITIAL_DATA));
+      } else {
+        if (data.theme) {
+          const localTheme = Themes[data.theme];
+
+          if (localTheme) {
+            setLocalTheme(localTheme);
+          }
+        } else {
+          if (prefersDark) {
+            setLocalTheme(Themes.dark);
+          }
         }
       }
     } else {
