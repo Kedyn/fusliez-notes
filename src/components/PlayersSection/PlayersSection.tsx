@@ -13,7 +13,12 @@ export default function PlayersSection(): JSX.Element {
     deadPlayers,
     unknownPlayers,
     unusedPlayers,
-    setPlayers,
+    setInnocentPlayers,
+    setSusPlayers,
+    setEvilPlayers,
+    setDeadPlayers,
+    setUnknownPlayers,
+    setUnusedPlayers,
   } = useData()!; // eslint-disable-line
 
   const classes = useStyles();
@@ -22,58 +27,57 @@ export default function PlayersSection(): JSX.Element {
   interface Section {
     title: string;
     list: Array<IPlayer>;
-    listName: string;
-    // setList: (key: string, value: Array<IPlayer>) => void;
+    // listName: string;
+    setList: (value: Array<IPlayer>) => void;
   }
 
   const sections: Array<Section> = [
     {
       title: "Innocent",
       list: innocentPlayers,
-      listName: "innocentPlayers",
-      // setList: setPlayers("innocentPlayers", innocentPlayers),
+      // listName: "innocentPlayers",
+      setList: setInnocentPlayers,
     },
     {
       title: "Suspicious / Hit List",
       list: susPlayers,
-      listName: "susPlayers",
-      // setList: setPlayers("susPlayers", susPlayers),
+      // listName: "susPlayers",
+      setList: setSusPlayers,
     },
     {
       title: "Evil",
       list: evilPlayers,
-      listName: "evilPlayers",
-      // setList: setPlayers("evilPlayers", evilPlayers),
+      // listName: "evilPlayers",
+      setList: setEvilPlayers,
     },
     {
       title: "Dead",
       list: deadPlayers,
-      listName: "deadPlayers",
-      // setList: setPlayers("deadPlayers", deadPlayers),
+      // listName: "deadPlayers",
+      setList: setDeadPlayers,
     },
     {
       title: "Unknown",
       list: unknownPlayers,
-      listName: "unknownPlayers",
-      // setList: setPlayers("unknownPlayers", unknownPlayers),
+      // listName: "unknownPlayers",
+      setList: setUnknownPlayers,
     },
     {
       title: "Unused",
       list: unusedPlayers,
-      listName: "unusedPlayers",
-      // setList: setPlayers("unusedPlayers", unusedPlayers),
+      // listName: "unusedPlayers",
+      setList: setUnusedPlayers,
     },
   ];
 
   return (
     <div className={classes.root}>
-      {sections.map(({ title, list, listName }) => (
+      {sections.map(({ title, list, setList }) => (
         <Section
           key={title}
           title={title}
           list={list}
-          listName={listName}
-          setList={() => setPlayers(listName, list)}
+          setList={setList}
           isMobile={isMobile}
         />
       ))}

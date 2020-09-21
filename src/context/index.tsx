@@ -1,4 +1,10 @@
-import { IData, IDataContext, IPlayer, ITheme } from "utils/types";
+import {
+  IData,
+  IPlayersData,
+  IDataContext,
+  IPlayer,
+  ITheme,
+} from "utils/types";
 
 import React from "react";
 import { Themes } from "themes/themes";
@@ -43,40 +49,42 @@ const useReducer = (state: IData, action: Action) => {
       localStorage.setItem(`${namespace}data`, JSON.stringify(initialState));
       return { ...initialState, theme: state.theme };
     case ReducerActionTypes.RESET_ROUND:
-      const currentPlayers = [
-        ...state.innocentPlayers,
-        ...state.susPlayers,
-        ...state.evilPlayers,
-        ...state.deadPlayers,
-        ...state.unknownPlayers,
-      ];
+    // const currentPlayers = [
+    //   ...state.innocentPlayers,
+    //   ...state.susPlayers,
+    //   ...state.evilPlayers,
+    //   ...state.deadPlayers,
+    //   ...state.unknownPlayers,
+    // ];
 
-      localStorage.setItem(
-        `${namespace}data`,
-        JSON.stringify({
-          ...state,
-          unknownPlayers: currentPlayers,
-        })
-      );
-      return {
-        ...state,
-        innocentPlayers: [],
-        susPlayers: [],
-        evilPlayers: [],
-        deadPlayers: [],
-        unknownPlayers: currentPlayers,
-      };
+    // localStorage.setItem(
+    //   `${namespace}data`,
+    //   JSON.stringify({
+    //     ...state,
+    //     unknownPlayers: currentPlayers,
+    //   })
+    // );
+    // return {
+    //   ...state,
+    //   innocentPlayers: [],
+    //   susPlayers: [],
+    //   evilPlayers: [],
+    //   deadPlayers: [],
+    //   unknownPlayers: currentPlayers,
+    // };
     case ReducerActionTypes.SET_NOTES:
       return {
         ...state,
         notes: payload.value,
       };
     case ReducerActionTypes.SET_PLAYERS:
-      console.log(payload);
-      return {
+      const { key, value } = payload;
+      const newState = {
         ...state,
-        [payload.key]: payload.value,
+        [key]: value,
       };
+
+      return newState;
     case ReducerActionTypes.SET_THEME:
       return {
         ...state,
@@ -101,6 +109,10 @@ const initialState: IData = {
   impostorWins: 0,
   impostorGames: 0,
   names: true,
+  notes: "",
+};
+
+const initialPlayersState: IPlayersData = {
   innocentPlayers: [],
   susPlayers: [],
   evilPlayers: [],
@@ -120,7 +132,6 @@ const initialState: IData = {
     { id: "white", name: "", color: "white" },
     { id: "yellow", name: "", color: "yellow" },
   ],
-  notes: "",
 };
 
 const localData = localStorage.getItem(`${namespace}data`);
@@ -128,22 +139,6 @@ const data = JSON.parse(localData);
 
 export const DataProvider = ({ children }: IDataProviderProps): JSX.Element => {
   const [state, dispatch] = React.useReducer(useReducer, initialState);
-  // const {
-  //   wins,
-  //   games,
-  //   crewmateWins,
-  //   crewmateGames,
-  //   impostorWins,
-  //   impostorGames,
-  //   names,
-  //   innocentPlayers,
-  //   susPlayers,
-  //   evilPlayers,
-  //   deadPlayers,
-  //   unknownPlayers,
-  //   unusedPlayers,
-  //   notes,
-  // } = state;
 
   // const [wins, setLocalWins] = React.useState(
   //   data?.wins ? data.wins : initialState.wins
@@ -169,48 +164,71 @@ export const DataProvider = ({ children }: IDataProviderProps): JSX.Element => {
   // const [notes, setLocalNotes] = React.useState(
   //   data?.notes ? data.notes : initialState.notes
   // );
-
-  // const [innocentPlayers, setLocalInnocentPlayers] = React.useState<
-  //   Array<IPlayer>
-  // >(
-  //   data?.innocentPlayers.length
-  //     ? data.innocentPlayers
-  //     : initialState.innocentPlayers
-  // );
-  // const [susPlayers, setLocalSusPlayers] = React.useState<Array<IPlayer>>(
-  //   data?.susPlayers.length ? data.susPlayers : initialState.susPlayers
-  // );
-  // const [evilPlayers, setLocalEvilPlayers] = React.useState<Array<IPlayer>>(
-  //   data?.evilPlayers.length ? data.evilPlayers : initialState.evilPlayers
-  // );
-  // const [deadPlayers, setLocalDeadPlayers] = React.useState<Array<IPlayer>>(
-  //   data?.deadPlayers.length ? data.deadPlayers : initialState.deadPlayers
-  // );
-  // const [unknownPlayers, setLocalUnknownPlayers] = React.useState<
-  //   Array<IPlayer>
-  // >(
-  //   data?.unknownPlayers.length
-  //     ? data.unknownPlayers
-  //     : initialState.unknownPlayers
-  // );
-  // const [unusedPlayers, setLocalUnusedPlayers] = React.useState<Array<IPlayer>>(
-  //   data?.unusedPlayers.length ? data.unusedPlayers : initialState.unusedPlayers
-  // );
+  const [innocentPlayers, setLocalInnocentPlayers] = React.useState<
+    Array<IPlayer>
+  >(
+    data?.innocentPlayers.length
+      ? data.innocentPlayers
+      : initialPlayersState.innocentPlayers
+  );
+  const [susPlayers, setLocalSusPlayers] = React.useState<Array<IPlayer>>(
+    data?.susPlayers.length ? data.susPlayers : initialPlayersState.susPlayers
+  );
+  const [evilPlayers, setLocalEvilPlayers] = React.useState<Array<IPlayer>>(
+    data?.evilPlayers.length
+      ? data.evilPlayers
+      : initialPlayersState.evilPlayers
+  );
+  const [deadPlayers, setLocalDeadPlayers] = React.useState<Array<IPlayer>>(
+    data?.deadPlayers.length
+      ? data.deadPlayers
+      : initialPlayersState.deadPlayers
+  );
+  const [unknownPlayers, setLocalUnknownPlayers] = React.useState<
+    Array<IPlayer>
+  >(
+    data?.unknownPlayers.length
+      ? data.unknownPlayers
+      : initialPlayersState.unknownPlayers
+  );
+  const [unusedPlayers, setLocalUnusedPlayers] = React.useState<Array<IPlayer>>(
+    data?.unknownPlayers.length
+      ? data.unusedPlayers
+      : initialPlayersState.unusedPlayers
+  );
 
   const prefersDark = useMediaQuery("(prefers-color-scheme: dark)");
 
   function resetRound() {
-    dispatch({ type: ReducerActionTypes.RESET_ROUND });
+    const currentPlayers = [
+      ...innocentPlayers,
+      ...susPlayers,
+      ...evilPlayers,
+      ...deadPlayers,
+      ...unknownPlayers,
+    ];
+
+    setLocalUnknownPlayers(currentPlayers);
+    setLocalInnocentPlayers([]);
+    setLocalSusPlayers([]);
+    setLocalEvilPlayers([]);
+    setLocalDeadPlayers([]);
+
+    dispatch({ type: ReducerActionTypes.SET_NOTES, value: "" });
   }
 
   function resetAll() {
+    setLocalUnknownPlayers(initialPlayersState.unknownPlayers);
+    setLocalInnocentPlayers([]);
+    setLocalSusPlayers([]);
+    setLocalEvilPlayers([]);
+    setLocalDeadPlayers([]);
+    setLocalUnusedPlayers([]);
     dispatch({ type: ReducerActionTypes.RESET_ALL });
   }
 
   React.useEffect(() => {
     if (data && Object.keys(data)?.length) {
-      console.log(data);
-
       dispatch({
         type: ReducerActionTypes.LOAD_DATA,
         payload: { state: data },
@@ -223,7 +241,10 @@ export const DataProvider = ({ children }: IDataProviderProps): JSX.Element => {
         dispatch({ type: ReducerActionTypes.SET_THEME, payload: "dark" });
       }
 
-      localStorage.setItem(`${namespace}data`, JSON.stringify(initialState));
+      localStorage.setItem(
+        `${namespace}data`,
+        JSON.stringify({ initialState, initialPlayersState })
+      );
     }
   }, []);
 
@@ -251,33 +272,32 @@ export const DataProvider = ({ children }: IDataProviderProps): JSX.Element => {
           });
 
           break;
-        case "innocentPlayers":
-        case "susPlayers":
-        case "evilPlayers":
-        case "deadPlayers":
-        case "unknownPlayers":
-        case "unusedPlayers":
-          data[key] = value.map(
-            ({
-              id,
-              name,
-              color,
-            }: {
-              id: string;
-              name: string;
-              color: string;
-            }) => {
-              return { id, name, color };
-            }
-          );
+        // case "innocentPlayers":
+        // case "susPlayers":
+        // case "evilPlayers":
+        // case "deadPlayers":
+        // case "unknownPlayers":
+        // case "unusedPlayers":
+        //   data[key] = value.map(
+        //     ({
+        //       id,
+        //       name,
+        //       color,
+        //     }: {
+        //       id: string;
+        //       name: string;
+        //       color: string;
+        //     }) => {
+        //       return { id, name, color };
+        //     }
+        //   );
 
-          console.log(data);
-          dispatch({
-            type: ReducerActionTypes.SET_PLAYERS,
-            payload: { key, value: data[key] },
-          });
+        //   dispatch({
+        //     type: ReducerActionTypes.SET_PLAYERS,
+        //     payload: { key, value: data[key] },
+        //   });
 
-          break;
+        //   break;
         case "notes":
           data.notes = value;
 
@@ -287,7 +307,7 @@ export const DataProvider = ({ children }: IDataProviderProps): JSX.Element => {
         default:
           break;
       }
-      console.log(data);
+
       localStorage.setItem(`${namespace}data`, JSON.stringify(data));
     }
   }
@@ -296,6 +316,12 @@ export const DataProvider = ({ children }: IDataProviderProps): JSX.Element => {
     <DataContext.Provider
       value={{
         ...state,
+        innocentPlayers,
+        susPlayers,
+        evilPlayers,
+        deadPlayers,
+        unknownPlayers,
+        unusedPlayers,
         theme: Themes[state.theme],
         resetRound,
         resetAll,
@@ -305,8 +331,95 @@ export const DataProvider = ({ children }: IDataProviderProps): JSX.Element => {
         setWinsAndGames: (key: string, value: number) => {
           setState(key, value);
         },
-        setPlayers: (key: string, value: Array<IPlayer>) => {
-          setState(key, value);
+        setInnocentPlayers: (value: Array<IPlayer>) => {
+          const localData = localStorage.getItem(`${namespace}data`);
+
+          if (localData) {
+            const data: IData = JSON.parse(localData);
+
+            data.innocentPlayers = value.map(({ id, name, color }) => {
+              return { id, name, color };
+            });
+
+            localStorage.setItem(`${namespace}data`, JSON.stringify(data));
+
+            setLocalInnocentPlayers(value);
+          }
+        },
+        setSusPlayers: (value: Array<IPlayer>) => {
+          const localData = localStorage.getItem(`${namespace}data`);
+
+          if (localData) {
+            const data: IData = JSON.parse(localData);
+
+            data.susPlayers = value.map(({ id, name, color }) => {
+              return { id, name, color };
+            });
+
+            localStorage.setItem(`${namespace}data`, JSON.stringify(data));
+
+            setLocalSusPlayers(value);
+          }
+        },
+        setEvilPlayers: (value: Array<IPlayer>) => {
+          const localData = localStorage.getItem(`${namespace}data`);
+
+          if (localData) {
+            const data: IData = JSON.parse(localData);
+
+            data.evilPlayers = value.map(({ id, name, color }) => {
+              return { id, name, color };
+            });
+
+            localStorage.setItem(`${namespace}data`, JSON.stringify(data));
+
+            setLocalEvilPlayers(value);
+          }
+        },
+        setDeadPlayers: (value: Array<IPlayer>) => {
+          const localData = localStorage.getItem(`${namespace}data`);
+
+          if (localData) {
+            const data: IData = JSON.parse(localData);
+
+            data.deadPlayers = value.map(({ id, name, color }) => {
+              return { id, name, color };
+            });
+
+            localStorage.setItem(`${namespace}data`, JSON.stringify(data));
+
+            setLocalDeadPlayers(value);
+          }
+        },
+        setUnknownPlayers: (value: Array<IPlayer>) => {
+          const localData = localStorage.getItem(`${namespace}data`);
+
+          if (localData) {
+            const data: IData = JSON.parse(localData);
+
+            data.unknownPlayers = value.map(({ id, name, color }) => {
+              return { id, name, color };
+            });
+
+            localStorage.setItem(`${namespace}data`, JSON.stringify(data));
+
+            setLocalUnknownPlayers(value);
+          }
+        },
+        setUnusedPlayers: (value: Array<IPlayer>) => {
+          const localData = localStorage.getItem(`${namespace}data`);
+
+          if (localData) {
+            const data: IData = JSON.parse(localData);
+
+            data.unusedPlayers = value.map(({ id, name, color }) => {
+              return { id, name, color };
+            });
+
+            localStorage.setItem(`${namespace}data`, JSON.stringify(data));
+
+            setLocalUnusedPlayers(value);
+          }
         },
         // setWins: (value: number) => {
         //   const localData = localStorage.getItem(`${namespace}data`);
@@ -347,99 +460,7 @@ export const DataProvider = ({ children }: IDataProviderProps): JSX.Element => {
         //     setLocalNames(value);
         //   }
         // },
-        // setInnocentPlayers: (value: Array<IPlayer>) => {
-        //   setState("innocentPlayers", value);
-        //   // const localData = localStorage.getItem(`${namespace}data`);
-
-        //   // if (localData) {
-        //   //   const data: IData = JSON.parse(localData);
-
-        //   //   data.innocentPlayers = value.map(({ id, name, color }) => {
-        //   //     return { id, name, color };
-        //   //   });
-
-        //   //   localStorage.setItem(`${namespace}data`, JSON.stringify(data));
-
-        //   //   setLocalInnocentPlayers(value);
-        //   // }
-        // },
-        // setSusPlayers: (value: Array<IPlayer>) => {
-        //   setState("susPlayers", value);
-        //   // const localData = localStorage.getItem(`${namespace}data`);
-
-        //   // if (localData) {
-        //   //   const data: IData = JSON.parse(localData);
-
-        //   //   data.susPlayers = value.map(({ id, name, color }) => {
-        //   //     return { id, name, color };
-        //   //   });
-
-        //   //   localStorage.setItem(`${namespace}data`, JSON.stringify(data));
-
-        //   //   setLocalSusPlayers(value);
-        //   // }
-        // },
-        // setEvilPlayers: (value: Array<IPlayer>) => {
-        //   setState("evilPlayers", value);
-        //   // const localData = localStorage.getItem(`${namespace}data`);
-
-        //   // if (localData) {
-        //   //   const data: IData = JSON.parse(localData);
-
-        //   //   data.evilPlayers = value.map(({ id, name, color }) => {
-        //   //     return { id, name, color };
-        //   //   });
-
-        //   //   localStorage.setItem(`${namespace}data`, JSON.stringify(data));
-
-        //   //   setLocalEvilPlayers(value);
-        //   // }
-        // },
-        // setDeadPlayers: (value: Array<IPlayer>) => {
-        //   setState("deadPlayers", value);
-        //   // const localData = localStorage.getItem(`${namespace}data`);
-
-        //   // if (localData) {
-        //   //   const data: IData = JSON.parse(localData);
-
-        //   //   data.deadPlayers = value.map(({ id, name, color }) => {
-        //   //     return { id, name, color };
-        //   //   });
-
-        //   //   localStorage.setItem(`${namespace}data`, JSON.stringify(data));
-
-        //   //   setLocalDeadPlayers(value);
-        //   // }
-        // },
-        // setUnknownPlayers: (value: Array<IPlayer>) => {
-        //   setState("unknownPlayers", value);
-        //   // const localData = localStorage.getItem(`${namespace}data`);
-
-        //   // if (localData) {
-        //   //   const data: IData = JSON.parse(localData);
-
-        //   //   data.unknownPlayers = value.map(({ id, name, color }) => {
-        //   //     return { id, name, color };
-        //   //   });
-
-        //   //   localStorage.setItem(`${namespace}data`, JSON.stringify(data));
-
-        //   //   setLocalUnknownPlayers(value);
-        //   // }
-        // },
-        // setUnusedPlayers: (value: Array<IPlayer>)
         setNotes: (value: string) => {
-          // const localData = localStorage.getItem(`${namespace}data`);
-
-          // if (localData) {
-          //   const data: IData = JSON.parse(localData);
-
-          //   data.notes = value;
-
-          //   localStorage.setItem(`${namespace}data`, JSON.stringify(data));
-
-          //   setLocalNotes(value);
-          // }
           setState("notes", value);
         },
       }}

@@ -52,11 +52,12 @@ export interface IDataContext {
   setWinsAndGames: (key: string, value: number) => void;
   setPlayers: (key: string, value: Array<IPlayer>) => void;
   // setNames: (value: boolean) => void;
-  // setInnocentPlayers: (value: Array<IPlayer>) => void;
-  // setSusPlayers: (value: Array<IPlayer>) => void;
-  // setEvilPlayers: (value: Array<IPlayer>) => void;
-  // setDeadPlayers: (value: Array<IPlayer>) => void;
-  // setUnknownPlayers: (value: Array<IPlayer>) => void;
+  setInnocentPlayers: (value: Array<IPlayer>) => void;
+  setSusPlayers: (value: Array<IPlayer>) => void;
+  setEvilPlayers: (value: Array<IPlayer>) => void;
+  setDeadPlayers: (value: Array<IPlayer>) => void;
+  setUnknownPlayers: (value: Array<IPlayer>) => void;
+  setUnusedPlayers: (value: Array<IPlayer>) => void;
   setNotes: (value: string) => void;
 }
 
@@ -69,11 +70,14 @@ export interface IData {
   impostorWins: number;
   impostorGames: number;
   names: boolean;
+  notes: string;
+}
+
+export interface IPlayersData {
   innocentPlayers: Array<IPlayer>;
   susPlayers: Array<IPlayer>;
   evilPlayers: Array<IPlayer>;
   deadPlayers: Array<IPlayer>;
   unknownPlayers: Array<IPlayer>;
   unusedPlayers: Array<IPlayer>;
-  notes: string;
 }
