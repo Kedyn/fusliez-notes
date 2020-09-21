@@ -8,18 +8,16 @@ export default createUseStyles((theme: ITheme) => ({
     alignItems: "center",
     borderRadius: "0.25rem",
     border: `1px solid ${theme.border}`,
-    padding: "0 0.25rem",
     margin: "0.25rem 0",
     backgroundColor: props.name
-      ? `rgba(${props.backgroundColor}, 0.75)`
+      ? `rgba(${props.backgroundColor}, 0.5)`
       : "transparent",
   }),
   player: {
-    padding: "0.25rem",
+    padding: " 00.25rem",
   },
   name: {
     flexGrow: 1,
-    padding: "0.25rem",
   },
   input: (props) => ({
     width: "100%",

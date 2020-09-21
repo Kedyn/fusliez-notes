@@ -1,7 +1,7 @@
+import { IPlayer } from "utils/types";
 import React from "react";
 import Section from "components/Section";
 import { useData } from "context";
-import { IPlayer } from "utils/types";
 import useStyles from "./PlayersSection.styles";
 
 export default function PlayersSection(): JSX.Element {
@@ -29,11 +29,11 @@ export default function PlayersSection(): JSX.Element {
   const sections: Array<Section> = [
     { title: "Innocent", list: innocentPlayers, setList: setInnocentPlayers },
     {
-      title: "Suspicious / Hit List",
+      title: "Suspicious",
       list: susPlayers,
       setList: setSusPlayers,
     },
-    { title: "Evil", list: evilPlayers, setList: setEvilPlayers },
+    { title: "Evil / Hit List", list: evilPlayers, setList: setEvilPlayers },
     { title: "Dead", list: deadPlayers, setList: setDeadPlayers },
     { title: "Unknown", list: unknownPlayers, setList: setUnknownPlayers },
   ];

@@ -22,19 +22,17 @@ export default function App(): JSX.Element {
               <MapsContent />
             </main>
             <footer>
-              <div>
-                <small>
-                  fusliez notes{" "}
-                  <a href="https://github.com/Kedyn/fusliez-notes/releases/tag/v0.7.0">
-                    v0.7.0
-                  </a>{" "}
-                  [9/14/2020] made with &#10084; by the{" "}
-                  <a href="https://github.com/Kedyn/fusliez-notes#authors-and-acknowledgment">
-                    fuslie fam
-                  </a>
-                  .
-                </small>
-              </div>
+              <small>
+                fusliez notes{" "}
+                <a href="https://github.com/Kedyn/fusliez-notes/releases/tag/v0.7.0">
+                  v0.7.0
+                </a>{" "}
+                [9/15/2020] made with &#10084; by the{" "}
+                <a href="https://github.com/Kedyn/fusliez-notes#authors-and-acknowledgment">
+                  fuslie fam
+                </a>
+                .
+              </small>
             </footer>
           </React.Suspense>
         </ThemeProvider>

@@ -11,6 +11,7 @@ export interface IPlayerProps {
   list: Array<IPlayer>;
   setList: (value: IPlayer[]) => void;
   index: number;
+  backgroundColor: string;
 }
 
 export default function Player(props: IPlayerProps): JSX.Element {
@@ -18,8 +19,6 @@ export default function Player(props: IPlayerProps): JSX.Element {
   const { names } = useData()!; // eslint-disable-line
 
   const { color, name, list, setList, index } = props;
-
-  const player_class = "player-handle";
 
   const handleChange = (
     player: number,
@@ -33,20 +32,26 @@ export default function Player(props: IPlayerProps): JSX.Element {
   };
 
   return (
-    <div className={classes.container}>
-      <img src={`assets/${color}.png`} alt={color} className={player_class} />
-      {names && (
-        <div className={classes.name}>
-          <Input
-            placeholder="Player Name"
-            className={classes.input}
-            onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
-              handleChange(index, event)
-            }
-            value={name}
-          />
-        </div>
-      )}
+    <div>
+      <div className={classes.container}>
+        <img
+          src={`assets/${color}.png`}
+          alt={color}
+          className="player-handle"
+        />
+        {names && (
+          <div className={classes.name}>
+            <Input
+              placeholder="Player Name"
+              className={classes.input}
+              onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
+                handleChange(index, event)
+              }
+              value={name}
+            />
+          </div>
+        )}
+      </div>
     </div>
   );
 }

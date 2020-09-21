@@ -68,6 +68,12 @@ Features included draggable players and progress bar for score.
 
 ## [Unreleased]
 
+### [v0.8.0] - 9/20/2020
+
+#### Added
+
+- Reset all button, resets to default.
+
 ### [v0.1.0] - 8/24/2020
 
 fuslie adds notepad ftw on the stream

@@ -3,30 +3,26 @@ import useStyles from "./ProgressBar.styles";
 
 export interface IProgressBarProps {
   progress: number;
-  background_color?: string;
-  progress_color?: string;
-  text?: string;
-  classNames?: string;
+  backgroundColor?: string;
+  progressColor?: string;
+  className?: string;
 }
 
 export default function ProgressBar(props: IProgressBarProps): JSX.Element {
-  const { progress, background_color, progress_color, text } = props;
+  const { progress, backgroundColor, progressColor } = props;
 
   const classes = useStyles({
-    backgroundColor: background_color,
-    progressColor: progress_color,
+    backgroundColor,
+    progressColor,
     progress,
   });
 
   return (
     <React.Fragment>
       <div
-        className={`${classes.root} ${
-          props.classNames ? props.classNames : ""
-        }`}
+        className={`${classes.root} ${props.className ? props.className : ""}`}
       >
         <div className={classes.progressBar}></div>
-        {text && <div className={classes.title}>{text}</div>}
       </div>
     </React.Fragment>
   );

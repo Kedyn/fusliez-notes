@@ -6,28 +6,45 @@ export default class DarkTheme extends DefaultTheme {
 
     this.name = "dark";
 
-    this.background_primary = "#202225";
-    this.background_secondary = "#6c757d";
-    this.background_tertiary = "#44484f";
-    this.background_danger = "rgba(220, 53, 69, 0.5)";
-    this.text_primary = "#dcddde";
-    this.text_secondary = "#6c757d";
-    this.text_shadow =
-      "rgb(0, 0, 0) -1px -1px 0px, rgb(0, 0, 0) 1px -1px 0px, rgb(0, 0, 0) -1px 1px 0px, rgb(0, 0, 0) 1px 1px 0px";
+    this.backgroundColor = "#202225";
+    this.textColor = "#f6edf6";
+
+    this.inputBackgroundColor = "#f6edf6";
+    this.inputTextColor = "#202225";
+
+    this.neutralBackgroundColor = "#f0c5e2";
+    this.neutralTextColor = "#ee54bb";
+
+    this.innocentBackgroundColor = "#ccbed3";
+    this.innocentTextColor = "#905da9";
+
+    this.impostorBackgroundColor = "#c9cfe7";
+    this.impostorTextColor = "#7289da";
+
+    this.buttonBackgroundColor = "#6b2fbc";
+    this.buttonTextColor = "#f6df6";
+
+    this.borderColor = "#000000";
 
     this.global = {
       body: {
-        margin: 0,
-        backgroundColor: this.background_primary,
-        color: this.text_primary,
-        fontFamily: this.font_family,
-        fontSize: this.font_size,
+        backgroundColor: this.backgroundColor,
+        color: this.textColor,
       },
       'input[type="text"],input[type="number"],input[type="text"]:focus,input[type="number"]:focus': {
-        color: "#000000",
+        backgroundColor: this.inputBackgroundColor,
+        color: this.inputTextColor,
       },
-      "#title-input": {
-        color: this.text_primary,
+      textarea: {
+        backgroundColor: this.inputBackgroundColor,
+        color: this.inputTextColor,
+      },
+      button: {
+        backgroundColor: this.buttonBackgroundColor,
+        color: this.buttonTextColor,
+      },
+      a: {
+        color: this.linkColor,
       },
     };
   }

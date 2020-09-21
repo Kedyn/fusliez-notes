@@ -1,4 +1,4 @@
-export default function colorNameToRGB(color: string) {
+export default function colorNameToRGB(color: string): string {
   interface Color {
     [key: string]: string;
   }
@@ -161,8 +161,9 @@ export default function colorNameToRGB(color: string) {
     return `${r},${g},${b}`;
   }
 
-  if (typeof colors[color.toLowerCase()] != "undefined")
+  if (typeof colors[color.toLowerCase()] != "undefined") {
     return hexToRGB(colors[color.toLowerCase()]);
+  }
 
-  return false;
+  return "0, 0, 0";
 }

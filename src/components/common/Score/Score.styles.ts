@@ -10,7 +10,7 @@ export default createUseStyles((theme: ITheme) => ({
     },
   },
   input: {
-    backgroundColor: `${theme.background_secondary} !important`,
+    backgroundColor: `${theme.backgroundSecondary} !important`,
     fontSize: "2.5rem",
     width: "100%",
     textAlign: "center",
@@ -22,7 +22,7 @@ export default createUseStyles((theme: ITheme) => ({
   title: {
     width: "100%",
     textAlign: "center",
-    color: theme.text_secondary,
+    color: theme.textSecondary,
     fontSize: "1rem",
   },
 }));

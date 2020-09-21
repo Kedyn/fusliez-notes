@@ -39,7 +39,7 @@ other support on this project such as:
 
 [Adam Gausmann](https://github.com/agausmann)  
 Pedro / Dian\_\_  
-Rydannn (twitch handle)
+Rydannn (twitch handle)  
 GeneralMitch (twitch handle)  
 Kermitigated (twitch handle)
 

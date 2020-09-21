@@ -8,5 +8,8 @@
     "plugin:prettier/recommended",
     "prettier/@typescript-eslint"
   ],
+  "rules": {
+    "camelcase": "error"
+  },
   "parser": "@typescript-eslint/parser"
 }

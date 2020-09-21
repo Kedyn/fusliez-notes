@@ -4,7 +4,8 @@ import { createUseStyles } from "react-jss";
 export default createUseStyles((theme: ITheme) => ({
   root: {
     padding: "0.5rem",
-    flex: 2,
+    display: "flex",
+    flexDirection: "column",
   },
   buttonContainer: {
     display: "flex",
@@ -42,7 +43,7 @@ export default createUseStyles((theme: ITheme) => ({
     },
   },
   reset: {
-    backgroundColor: theme.background_secondary,
+    backgroundColor: theme.backgroundSecondary,
     color: "#ffffff",
     fontSize: "1rem",
     margin: "0.25rem 0",

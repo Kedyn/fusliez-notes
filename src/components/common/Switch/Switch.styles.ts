@@ -16,7 +16,7 @@ export default createUseStyles((theme: ITheme) => ({
     outline: "none",
     border: "none",
     cursor: "pointer",
-    backgroundColor: theme.background_tertiary,
+    backgroundColor: theme.backgroundTertiary,
     transition: "background-color ease 0.3s",
     margin: "auto",
     marginRight: "0.5rem",
@@ -41,7 +41,7 @@ export default createUseStyles((theme: ITheme) => ({
       transition: "all cubic-bezier(0.3, 1.5, 0.7, 1) 0.3s",
     },
     "&:checked": {
-      backgroundColor: theme.background_secondary,
+      backgroundColor: theme.backgroundSecondary,
     },
     "&:checked:before": {
       left: "2rem",

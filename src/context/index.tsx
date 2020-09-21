@@ -12,10 +12,12 @@ export interface IDataProviderProps {
   children: React.ReactNode;
 }
 
-const initialData: IData = {
+const INITIAL_DATA: IData = {
   theme: "dark",
-  wins: 0,
-  games: 0,
+  innocentWins: 0,
+  innocentLosses: 0,
+  impostorWins: 0,
+  impostorLosses: 0,
   names: true,
   innocentPlayers: [],
   susPlayers: [],
@@ -39,50 +41,44 @@ const initialData: IData = {
 };
 
 const localData = localStorage.getItem(`${namespace}data`);
-const data = JSON.parse(localData);
+const data = localData ? JSON.parse(localData) : INITIAL_DATA;
 
-export const DataProvider = ({ children }: IDataProviderProps): JSX.Element => {
+export function DataProvider({ children }: IDataProviderProps): JSX.Element {
   const [theme, setLocalTheme] = React.useState<ITheme>(Themes.default);
-  const [wins, setLocalWins] = React.useState(
-    data?.wins ? data.wins : initialData.wins
+  const [innocentWins, setLocalInnocentWins] = React.useState(
+    data.innocentWins
   );
-  const [games, setLocalGames] = React.useState(
-    data?.games ? data.games : initialData.games
+  const [innocentLosses, setLocalInnocentLosses] = React.useState(
+    data.innocentLosses
   );
-  const [names, setLocalNames] = React.useState(
-    data?.names ? data.names : initialData.names
+  const [impostorWins, setLocalImpostorWins] = React.useState(
+    data.impostorWins
   );
-  const [notes, setLocalNotes] = React.useState(
-    data?.notes ? data.notes : initialData.notes
+  const [impostorLosses, setLocalImpostorLosses] = React.useState(
+    data.impostorLosses
   );
+  const [names, setLocalNames] = React.useState(data.names);
+  const [notes, setLocalNotes] = React.useState(data.notes);
 
   const [innocentPlayers, setLocalInnocentPlayers] = React.useState<
     Array<IPlayer>
-  >(
-    data?.innocentPlayers.length
-      ? data.innocentPlayers
-      : initialData.innocentPlayers
-  );
+  >(data.innocentPlayers);
   const [susPlayers, setLocalSusPlayers] = React.useState<Array<IPlayer>>(
-    data?.susPlayers.length ? data.susPlayers : initialData.susPlayers
+    data.susPlayers
   );
   const [evilPlayers, setLocalEvilPlayers] = React.useState<Array<IPlayer>>(
-    data?.evilPlayers.length ? data.evilPlayers : initialData.evilPlayers
+    data.evilPlayers
   );
   const [deadPlayers, setLocalDeadPlayers] = React.useState<Array<IPlayer>>(
-    data?.deadPlayers.length ? data.deadPlayers : initialData.deadPlayers
+    data.deadPlayers
   );
   const [unknownPlayers, setLocalUnknownPlayers] = React.useState<
     Array<IPlayer>
-  >(
-    data?.unknownPlayers.length
-      ? data.unknownPlayers
-      : initialData.unknownPlayers
-  );
+  >(data.unknownPlayers);
 
   const prefersDark = useMediaQuery("(prefers-color-scheme: dark)");
 
-  function resetRound() {
+  const resetPlayersPositions = () => {
     const currentPlayers = [
       ...innocentPlayers,
       ...susPlayers,
@@ -101,26 +97,32 @@ export const DataProvider = ({ children }: IDataProviderProps): JSX.Element => {
     localStorage.setItem(
       `${namespace}data`,
       JSON.stringify({
-        ...initialData,
+        ...INITIAL_DATA,
         unknownPlayers: currentPlayers,
       })
     );
-  }
+  };
 
-  function resetAll() {
-    setLocalWins(0);
-    setLocalGames(0);
+  const resetGames = () => {
+    setLocalInnocentWins(0);
+    setLocalInnocentLosses(0);
+    setLocalImpostorWins(0);
+    setLocalImpostorLosses(0);
+  };
+
+  const resetAll = () => {
+    resetGames();
     setLocalTheme(Themes.dark);
     setLocalNames(true);
     setLocalNotes("");
-    setLocalUnknownPlayers(initialData.unknownPlayers);
+    setLocalUnknownPlayers(INITIAL_DATA.unknownPlayers);
     setLocalInnocentPlayers([]);
     setLocalSusPlayers([]);
     setLocalEvilPlayers([]);
     setLocalDeadPlayers([]);
 
-    localStorage.setItem(`${namespace}data`, JSON.stringify(initialData));
-  }
+    localStorage.setItem(`${namespace}data`, JSON.stringify(INITIAL_DATA));
+  };
 
   React.useEffect(() => {
     if (data && Object.keys(data)?.length) {
@@ -139,10 +141,10 @@ export const DataProvider = ({ children }: IDataProviderProps): JSX.Element => {
       if (prefersDark) {
         setLocalTheme(Themes.dark);
 
-        initialData.theme = "dark";
+        INITIAL_DATA.theme = "dark";
       }
 
-      localStorage.setItem(`${namespace}data`, JSON.stringify(initialData));
+      localStorage.setItem(`${namespace}data`, JSON.stringify(INITIAL_DATA));
     }
   }, []);
 
@@ -150,8 +152,10 @@ export const DataProvider = ({ children }: IDataProviderProps): JSX.Element => {
     <DataContext.Provider
       value={{
         theme,
-        wins,
-        games,
+        innocentWins,
+        innocentLosses,
+        impostorWins,
+        impostorLosses,
         names,
         innocentPlayers,
         susPlayers,
@@ -159,7 +163,8 @@ export const DataProvider = ({ children }: IDataProviderProps): JSX.Element => {
         deadPlayers,
         unknownPlayers,
         notes,
-        resetRound,
+        resetPlayersPositions,
+        resetGames,
         resetAll,
         setTheme: (value: ITheme) => {
           const localData = localStorage.getItem(`${namespace}data`);
@@ -174,30 +179,56 @@ export const DataProvider = ({ children }: IDataProviderProps): JSX.Element => {
             setLocalTheme(value);
           }
         },
-        setWins: (value: number) => {
+        setInnocentWins: (value: number) => {
           const localData = localStorage.getItem(`${namespace}data`);
 
           if (localData) {
             const data: IData = JSON.parse(localData);
 
-            data.wins = value;
+            data.innocentWins = value;
 
             localStorage.setItem(`${namespace}data`, JSON.stringify(data));
 
-            setLocalWins(value);
+            setLocalInnocentWins(value);
           }
         },
-        setGames: (value: number) => {
+        setInnocentLosses: (value: number) => {
           const localData = localStorage.getItem(`${namespace}data`);
 
           if (localData) {
             const data: IData = JSON.parse(localData);
 
-            data.games = value;
+            data.innocentLosses = value;
 
             localStorage.setItem(`${namespace}data`, JSON.stringify(data));
 
-            setLocalGames(value);
+            setLocalInnocentLosses(value);
+          }
+        },
+        setImpostorWins: (value: number) => {
+          const localData = localStorage.getItem(`${namespace}data`);
+
+          if (localData) {
+            const data: IData = JSON.parse(localData);
+
+            data.impostorWins = value;
+
+            localStorage.setItem(`${namespace}data`, JSON.stringify(data));
+
+            setLocalImpostorWins(value);
+          }
+        },
+        setImpostorLosses: (value: number) => {
+          const localData = localStorage.getItem(`${namespace}data`);
+
+          if (localData) {
+            const data: IData = JSON.parse(localData);
+
+            data.impostorLosses = value;
+
+            localStorage.setItem(`${namespace}data`, JSON.stringify(data));
+
+            setLocalImpostorLosses(value);
           }
         },
         setNames: (value: boolean) => {
@@ -219,9 +250,11 @@ export const DataProvider = ({ children }: IDataProviderProps): JSX.Element => {
           if (localData) {
             const data: IData = JSON.parse(localData);
 
-            data.innocentPlayers = value.map(({ id, name, color }) => {
-              return { id, name, color };
-            });
+            data.innocentPlayers = value.map(({ id, name, color }) => ({
+              id,
+              name,
+              color,
+            }));
 
             localStorage.setItem(`${namespace}data`, JSON.stringify(data));
 
@@ -234,9 +267,11 @@ export const DataProvider = ({ children }: IDataProviderProps): JSX.Element => {
           if (localData) {
             const data: IData = JSON.parse(localData);
 
-            data.susPlayers = value.map(({ id, name, color }) => {
-              return { id, name, color };
-            });
+            data.susPlayers = value.map(({ id, name, color }) => ({
+              id,
+              name,
+              color,
+            }));
 
             localStorage.setItem(`${namespace}data`, JSON.stringify(data));
 
@@ -249,9 +284,11 @@ export const DataProvider = ({ children }: IDataProviderProps): JSX.Element => {
           if (localData) {
             const data: IData = JSON.parse(localData);
 
-            data.evilPlayers = value.map(({ id, name, color }) => {
-              return { id, name, color };
-            });
+            data.evilPlayers = value.map(({ id, name, color }) => ({
+              id,
+              name,
+              color,
+            }));
 
             localStorage.setItem(`${namespace}data`, JSON.stringify(data));
 
@@ -264,9 +301,11 @@ export const DataProvider = ({ children }: IDataProviderProps): JSX.Element => {
           if (localData) {
             const data: IData = JSON.parse(localData);
 
-            data.deadPlayers = value.map(({ id, name, color }) => {
-              return { id, name, color };
-            });
+            data.deadPlayers = value.map(({ id, name, color }) => ({
+              id,
+              name,
+              color,
+            }));
 
             localStorage.setItem(`${namespace}data`, JSON.stringify(data));
 
@@ -279,9 +318,11 @@ export const DataProvider = ({ children }: IDataProviderProps): JSX.Element => {
           if (localData) {
             const data: IData = JSON.parse(localData);
 
-            data.unknownPlayers = value.map(({ id, name, color }) => {
-              return { id, name, color };
-            });
+            data.unknownPlayers = value.map(({ id, name, color }) => ({
+              id,
+              name,
+              color,
+            }));
 
             localStorage.setItem(`${namespace}data`, JSON.stringify(data));
 
@@ -306,7 +347,7 @@ export const DataProvider = ({ children }: IDataProviderProps): JSX.Element => {
       {children}
     </DataContext.Provider>
   );
-};
+}
 
 export const useData = (): IDataContext | undefined =>
   React.useContext(DataContext);
