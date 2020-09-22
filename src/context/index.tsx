@@ -24,7 +24,7 @@ const INITIAL_DATA: IData = {
   evilPlayers: [],
   deadPlayers: [],
   unknownPlayers: [
-    { id: "orange", name: "fuslie", color: "orange" },
+    { id: "orange", name: "", color: "orange" },
     { id: "blue", name: "", color: "blue" },
     { id: "brown", name: "", color: "brown" },
     { id: "gray", name: "", color: "gray" },

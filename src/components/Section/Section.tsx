@@ -44,6 +44,8 @@ export default function Section(props: ISectionProps): JSX.Element {
                   ? "cornflowerblue"
                   : color === "purple"
                   ? "darkorchid"
+                  : color === "red"
+                  ? "scarlet"
                   : color
               )}
               color={color}

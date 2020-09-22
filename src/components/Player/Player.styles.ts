@@ -1,31 +1,11 @@
 import colorNameToRGB from "utils/colorConverter";
 import { ITheme } from "utils/types";
 import { createUseStyles } from "react-jss";
-// .player-color-change-menu span:hover,
-// .player-color-change-menu span:active {
-//   transform: scale(1.1);
-// }
-
-export const ColorSwatchUseStyles = createUseStyles({
-  playerColorChangeMenuIcon: (props) => ({
-    width: "30px",
-    height: "30px",
-    borderRadius: "15px",
-    flex: "1 1 calc(25% - 10px)",
-    backgroundColor: props.color,
-    margin: "0.15rem",
-
-    "&:hover": {
-      backgroundColor: `rgba(${colorNameToRGB(props.color)}, 0.5)`,
-    },
-  }),
-});
-
 export default createUseStyles((theme: ITheme) => ({
   container: (props) => ({
     alignItems: "center",
     backgroundColor: props.name
-      ? `rgba(${props.backgroundColor}, 0.75)`
+      ? `rgba(${props.backgroundColor}, 0.7)`
       : "transparent",
     borderRadius: "0.25rem",
     display: "flex",
