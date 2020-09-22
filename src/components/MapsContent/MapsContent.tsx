@@ -31,7 +31,7 @@ export default function MapsContent(): JSX.Element {
 
   return (
     <div className={classes.root}>
-      <div className={classes.buttonsContainer}>
+      {/* <div className={classes.buttonsContainer}>
         {buttons.map((tab) => (
           <Button
             className={`${classes.button} ${
@@ -43,7 +43,7 @@ export default function MapsContent(): JSX.Element {
             {tab}
           </Button>
         ))}
-      </div>
+      </div> */}
       {currentTab === "Maps" ? (
         <>
           <div className={classes.mapNames}>

@@ -27,16 +27,41 @@ export default function PlayersSection(): JSX.Element {
   }
 
   const sections: Array<Section> = [
-    { title: "Innocent", list: innocentPlayers, setList: setInnocentPlayers },
+    {
+      title: "Innocent",
+      list: innocentPlayers,
+      setList: setInnocentPlayers,
+    },
     {
       title: "Suspicious",
       list: susPlayers,
       setList: setSusPlayers,
     },
-    { title: "Evil / Hit List", list: evilPlayers, setList: setEvilPlayers },
-    { title: "Dead", list: deadPlayers, setList: setDeadPlayers },
-    { title: "Unknown", list: unknownPlayers, setList: setUnknownPlayers },
+    {
+      title: "Evil / Hit List",
+      list: evilPlayers,
+      setList: setEvilPlayers,
+    },
+    {
+      title: "Dead",
+      list: deadPlayers,
+      setList: setDeadPlayers,
+    },
+    {
+      title: "Unknown",
+      list: unknownPlayers,
+      setList: setUnknownPlayers,
+    },
   ];
+
+  // function swapPlayersColors(
+  //   currentPlayerColor: string,
+  //   targetPlayerColor: string,
+  //   currentPlayerList: Array<IPlayer>
+  // ) {
+  //   // const currentPlayer = currentPlayerList.filter()
+  //   console.log(currentPlayerList);
+  // }
 
   return (
     <div className={classes.root}>

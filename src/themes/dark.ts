@@ -12,7 +12,7 @@ export default class DarkTheme extends DefaultTheme {
     this.inputBackgroundColor = "#f6edf6";
     this.inputTextColor = "#202225";
 
-    this.neutralBackgroundColor = "#f0c5e2";
+    this.neutralBackgroundColor = "#BEBEBE";
     this.neutralTextColor = "#ee54bb";
 
     this.innocentBackgroundColor = "#ccbed3";
@@ -22,7 +22,7 @@ export default class DarkTheme extends DefaultTheme {
     this.impostorTextColor = "#7289da";
 
     this.buttonBackgroundColor = "#6b2fbc";
-    this.buttonTextColor = "#f6df6";
+    this.buttonTextColor = "#f6edf6";
 
     this.borderColor = "#000000";
 
@@ -30,10 +30,6 @@ export default class DarkTheme extends DefaultTheme {
       body: {
         backgroundColor: this.backgroundColor,
         color: this.textColor,
-      },
-      'input[type="text"],input[type="number"],input[type="text"]:focus,input[type="number"]:focus': {
-        backgroundColor: this.inputBackgroundColor,
-        color: this.inputTextColor,
       },
       textarea: {
         backgroundColor: this.inputBackgroundColor,

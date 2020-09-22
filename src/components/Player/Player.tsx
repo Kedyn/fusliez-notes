@@ -3,22 +3,27 @@ import Input from "components/common/Input";
 import React from "react";
 import { useData } from "context";
 import useStyles from "./Player.styles";
+import ColorsMenu from "../ColorsMenu";
 
 export interface IPlayerProps {
   id: string | number;
   color: string;
   name: string;
   list: Array<IPlayer>;
+  listName: string;
   setList: (value: IPlayer[]) => void;
   index: number;
-  backgroundColor: string;
 }
 
 export default function Player(props: IPlayerProps): JSX.Element {
+  const [isMenuShowing, setIsMenuShowing] = React.useState(false);
+
   const classes = useStyles(props);
   const { names } = useData()!; // eslint-disable-line
 
-  const { color, name, list, setList, index } = props;
+  const { id, color, name, list, setList, index } = props;
+
+  const playerClass = "player-handle";
 
   const handleChange = (
     player: number,
@@ -32,26 +37,32 @@ export default function Player(props: IPlayerProps): JSX.Element {
   };
 
   return (
-    <div>
-      <div className={classes.container}>
-        <img
-          src={`assets/${color}.png`}
-          alt={color}
-          className="player-handle"
+    <div className={`${classes.container} ${playerClass}`}>
+      {isMenuShowing && (
+        <ColorsMenu
+          isMenuShowing={isMenuShowing}
+          setIsMenuShowing={setIsMenuShowing}
+          currentColor={id}
         />
-        {names && (
-          <div className={classes.name}>
-            <Input
-              placeholder="Player Name"
-              className={classes.input}
-              onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
-                handleChange(index, event)
-              }
-              value={name}
-            />
-          </div>
-        )}
-      </div>
+      )}
+      <img
+        onClick={() => setIsMenuShowing((state) => !state)}
+        src={`assets/${color}.png`}
+        alt={color}
+        className={`${playerClass} ${classes.icon}`}
+      />
+      {names && (
+        <div className={classes.name}>
+          <Input
+            placeholder="Player Name"
+            className={classes.input}
+            onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
+              handleChange(index, event)
+            }
+            value={name}
+          />
+        </div>
+      )}
     </div>
   );
 }
