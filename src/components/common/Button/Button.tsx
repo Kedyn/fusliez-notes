@@ -12,11 +12,9 @@ export default function Button(props: IButtonProps): JSX.Element {
   const { classNames, ...other } = props;
 
   return (
-    <React.Fragment>
-      <button
-        className={`${classNames ? classNames : ""} ${classes.root}`}
-        {...other}
-      ></button>
-    </React.Fragment>
+    <button
+      className={`${classNames ? classNames : ""} ${classes.root}`}
+      {...other}
+    />
   );
 }

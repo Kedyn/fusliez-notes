@@ -41,7 +41,7 @@ const INITIAL_DATA: IData = {
 };
 
 const localData = localStorage.getItem(`${namespace}data`);
-const data = localData ? JSON.parse(localData) : INITIAL_DATA;
+const data = JSON.parse(localData);
 
 // this function helps to check if we updated the state store
 // it compares if it has the same number of keys
@@ -68,35 +68,41 @@ const updatedVersion = () => {
 export function DataProvider({ children }: IDataProviderProps): JSX.Element {
   const [theme, setLocalTheme] = React.useState<ITheme>(Themes.default);
   const [innocentWins, setLocalInnocentWins] = React.useState(
-    data.innocentWins
+    data?.innocentWins ? data.innocentWins : INITIAL_DATA.innocentWins
   );
   const [innocentLosses, setLocalInnocentLosses] = React.useState(
-    data.innocentLosses
+    data?.innocentLosses ? data.innocentLosses : INITIAL_DATA.innocentLosses
   );
   const [impostorWins, setLocalImpostorWins] = React.useState(
-    data.impostorWins
+    data?.impostorWins ? data.impostorWins : INITIAL_DATA.impostorWins
   );
   const [impostorLosses, setLocalImpostorLosses] = React.useState(
-    data.impostorLosses
+    data?.impostorLosses ? data.impostorLosses : INITIAL_DATA.impostorLosses
   );
-  const [names, setLocalNames] = React.useState(data.names);
-  const [notes, setLocalNotes] = React.useState(data.notes);
+  const [names, setLocalNames] = React.useState(
+    data?.names ? data.names : INITIAL_DATA.names
+  );
+  const [notes, setLocalNotes] = React.useState(
+    data?.notes ? data.notes : INITIAL_DATA.notes
+  );
 
   const [innocentPlayers, setLocalInnocentPlayers] = React.useState<
     Array<IPlayer>
-  >(data.innocentPlayers);
+  >(
+    data?.innocentPlayers ? data.innocentPlayers : INITIAL_DATA.innocentPlayers
+  );
   const [susPlayers, setLocalSusPlayers] = React.useState<Array<IPlayer>>(
-    data.susPlayers
+    data?.susPlayers ? data.susPlayers : INITIAL_DATA.susPlayers
   );
   const [evilPlayers, setLocalEvilPlayers] = React.useState<Array<IPlayer>>(
-    data.evilPlayers
+    data?.evilPlayers ? data.evilPlayers : INITIAL_DATA.evilPlayers
   );
   const [deadPlayers, setLocalDeadPlayers] = React.useState<Array<IPlayer>>(
-    data.deadPlayers
+    data?.deadPlayers ? data.deadPlayers : INITIAL_DATA.deadPlayers
   );
   const [unknownPlayers, setLocalUnknownPlayers] = React.useState<
     Array<IPlayer>
-  >(data.unknownPlayers);
+  >(data?.unknownPlayers ? data.unknownPlayers : INITIAL_DATA.unknownPlayers);
 
   const prefersDark = useMediaQuery("(prefers-color-scheme: dark)");
 
@@ -214,7 +220,7 @@ export function DataProvider({ children }: IDataProviderProps): JSX.Element {
         setInnocentWins: (value: number) => {
           const localData = localStorage.getItem(`${namespace}data`);
 
-          if (localData) {
+          if (localData && value >= 0) {
             const data: IData = JSON.parse(localData);
 
             data.innocentWins = value;
@@ -227,7 +233,7 @@ export function DataProvider({ children }: IDataProviderProps): JSX.Element {
         setInnocentLosses: (value: number) => {
           const localData = localStorage.getItem(`${namespace}data`);
 
-          if (localData) {
+          if (localData && value >= 0) {
             const data: IData = JSON.parse(localData);
 
             data.innocentLosses = value;
@@ -240,7 +246,7 @@ export function DataProvider({ children }: IDataProviderProps): JSX.Element {
         setImpostorWins: (value: number) => {
           const localData = localStorage.getItem(`${namespace}data`);
 
-          if (localData) {
+          if (localData && value >= 0) {
             const data: IData = JSON.parse(localData);
 
             data.impostorWins = value;
@@ -253,7 +259,7 @@ export function DataProvider({ children }: IDataProviderProps): JSX.Element {
         setImpostorLosses: (value: number) => {
           const localData = localStorage.getItem(`${namespace}data`);
 
-          if (localData) {
+          if (localData && value >= 0) {
             const data: IData = JSON.parse(localData);
 
             data.impostorLosses = value;

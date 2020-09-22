@@ -1,84 +1,91 @@
 import Button from "components/common/Button";
 import React from "react";
-import Switch from "components/common/Switch";
-import { Themes } from "themes/themes";
+import WinsLossesButton from "../WinsLossesButton";
 import { useData } from "context";
 import useStyles from "./ControlsContent.styles";
 
 export default function ControlsContent(): JSX.Element {
   const classes = useStyles();
   const {
-    names,
     theme,
-    // wins,
-    // games,
     notes,
+    innocentWins,
+    innocentLosses,
+    impostorWins,
+    impostorLosses,
     resetPlayersPositions,
     resetAll,
-    setNames,
-    setTheme,
-    // setWins,
-    // setGames,
+    setImpostorWins,
+    setImpostorLosses,
+    setInnocentWins,
+    setInnocentLosses,
     setNotes,
   } = useData()!; // eslint-disable-line
 
+  function resetScores() {
+    setInnocentWins(0);
+    setInnocentLosses(0);
+    setImpostorWins(0);
+    setImpostorLosses(0);
+  }
+
   return (
     <div id="controls" className={classes.root}>
-      <div className={classes.switchesContainer}>
-        <Switch
-          label="Dark theme"
-          onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-            if (event.currentTarget.checked) {
-              setTheme(Themes.dark);
-            } else {
-              setTheme(Themes.light);
-            }
-          }}
-          checked={theme === Themes.dark}
-        />
-
-        <Switch
-          label="Use player names"
-          onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-            setNames(event.currentTarget.checked);
-          }}
-          checked={names}
-        />
-      </div>
-
       <div className={classes.scoreButtons}>
-        {/* <Button
-          onClick={() => {
-            setWins(wins + 1);
-            setGames(games + 1);
-          }}
-          classNames={classes.win}
-        >
-          Win
-        </Button>
-        <Button
-          onClick={() => {
-            setGames(games + 1);
-          }}
-          classNames={classes.lose}
-        >
-          Lose
-        </Button> */}
+        <div className={classes.titleContainer}>
+          <h4 className={classes.title} />
+          <h4 className={classes.title}>Wins</h4>
+          <h4 className={classes.title}>Losses</h4>
+        </div>
+
+        <div className={classes.scoreButtonsSection}>
+          <h4>Innocent</h4>
+          <WinsLossesButton
+            buttonBackgroundColor={theme.innocentTextColor}
+            decrement={() => setInnocentWins(innocentWins - 1)}
+            increment={() => setInnocentWins(innocentWins + 1)}
+          />
+          <WinsLossesButton
+            buttonBackgroundColor={theme.innocentTextColor}
+            decrement={() => setInnocentLosses(innocentLosses - 1)}
+            increment={() => setInnocentLosses(innocentLosses + 1)}
+          />
+        </div>
+
+        <div className={classes.scoreButtonsSection}>
+          <h4>Impostor</h4>
+          <WinsLossesButton
+            buttonBackgroundColor={theme.impostorTextColor}
+            decrement={() => setImpostorWins(impostorWins - 1)}
+            increment={() => setImpostorWins(impostorWins + 1)}
+          />
+          <WinsLossesButton
+            buttonBackgroundColor={theme.impostorTextColor}
+            decrement={() => setImpostorLosses(impostorLosses - 1)}
+            increment={() => setImpostorLosses(impostorLosses + 1)}
+          />
+        </div>
       </div>
 
       <div className={classes.buttonContainer}>
+        <Button classNames={classes.reset} onClick={() => resetScores()}>
+          Reset Scores
+        </Button>
         <Button
           classNames={classes.reset}
           onClick={() => resetPlayersPositions()}
         >
           Reset Round
         </Button>
-        <Button classNames={classes.reset} onClick={() => resetAll()}>
+        <Button
+          classNames={`${classes.reset} ${classes.dangerButton}`}
+          onClick={() => resetAll()}
+        >
           Reset All
         </Button>
       </div>
       <h2>Notes</h2>
-      <div style={{ height: "100%" }}>
+      <div>
         <textarea
           className={classes.notes}
           onChange={(event: React.ChangeEvent<HTMLTextAreaElement>) =>

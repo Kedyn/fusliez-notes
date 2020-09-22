@@ -79,7 +79,7 @@ export default class DefaultTheme implements ITheme {
         display: "flex",
         flexDirection: "column",
         height: "100vh",
-        maxWidth: "1600px",
+        maxWidth: "1400px",
         margin: "0 auto",
         width: "100vw",
       },
