@@ -9,3 +9,11 @@ ReactDOM.render(
   </DataProvider>,
   document.getElementById("root")
 );
+
+const requestWakeLock = async () => {
+  try {
+    await navigator.wakeLock.request("screen");
+  } catch (err) {}
+};
+
+requestWakeLock();
