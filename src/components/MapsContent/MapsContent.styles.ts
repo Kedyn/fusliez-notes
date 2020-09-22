@@ -7,7 +7,6 @@ export default createUseStyles((theme: ITheme) => ({
     flex: 3,
   },
   button: {
-    backgroundColor: theme.backgroundSecondary,
     color: "#ffffff",
     fontSize: "1rem",
     margin: "0.25rem",
@@ -20,12 +19,19 @@ export default createUseStyles((theme: ITheme) => ({
     justifyContent: "space-between",
     margin: "0.5rem 0",
   },
-  mapNames: {
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center",
-    marginBottom: "0.5rem",
-    height: "2rem",
+
+  // activeButton: {
+  //   border: `2px solid ${theme.textPrimary}`,
+  // },
+  activeMap: {
+    border: `0.25rem solid ${theme.buttonTextColor}`,
+  },
+  wrapper: {
+    position: "relative",
+  },
+  map: {
+    width: "100%",
+    borderRadius: "12px",
   },
   mapName: {
     boxSizing: "border-box",
@@ -35,17 +41,10 @@ export default createUseStyles((theme: ITheme) => ({
     height: "100%",
     borderRadius: "50rem",
   },
-  activeButton: {
-    border: `2px solid ${theme.textPrimary}`,
-  },
-  activeMap: {
-    border: `0.5rem solid seagreen`,
-  },
-  wrapper: {
-    position: "relative",
-  },
-  map: {
-    width: "100%",
-    borderRadius: "12px",
+  mapNames: {
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    marginBottom: "0.5rem",
   },
 }));
