@@ -38,11 +38,13 @@ export default function Player(props: IPlayerProps): JSX.Element {
 
   return (
     <div className={`${classes.container} ${playerClass}`}>
-      <ColorsMenu
-        isMenuShowing={isMenuShowing}
-        setIsMenuShowing={setIsMenuShowing}
-        currentColor={id}
-      />
+      {isMenuShowing && (
+        <ColorsMenu
+          isMenuShowing={isMenuShowing}
+          setIsMenuShowing={setIsMenuShowing}
+          currentColor={id}
+        />
+      )}
       <img
         onClick={() => setIsMenuShowing((state) => !state)}
         src={`assets/${color}.png`}
