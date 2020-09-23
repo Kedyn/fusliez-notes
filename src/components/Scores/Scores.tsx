@@ -9,17 +9,12 @@ export default function Scores(): JSX.Element {
   const theme = useTheme<ITheme>();
   const classes = useStyles();
 
-  // eslint-disable-next-line
   const {
     innocentWins,
     innocentLosses,
     impostorWins,
     impostorLosses,
-    setInnocentWins,
-    setInnocentLosses,
-    setImpostorWins,
-    setImpostorLosses,
-  } = useData()!;
+  } = useData()!; // eslint-disable-line
 
   const getRate = (wins: number, games: number): number => {
     return games > 0 ? Math.floor((wins / games) * 100) : 100;

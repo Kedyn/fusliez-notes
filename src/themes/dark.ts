@@ -12,7 +12,7 @@ export default class DarkTheme extends DefaultTheme {
     this.inputBackgroundColor = "#f6edf6";
     this.inputTextColor = "#202225";
 
-    this.neutralBackgroundColor = "#BEBEBE";
+    this.neutralBackgroundColor = "#f0c5e2";
     this.neutralTextColor = "#ee54bb";
 
     this.innocentBackgroundColor = "#ccbed3";
@@ -32,8 +32,8 @@ export default class DarkTheme extends DefaultTheme {
         color: this.textColor,
       },
       textarea: {
-        backgroundColor: this.inputBackgroundColor,
-        color: this.inputTextColor,
+        backgroundColor: `${this.inputBackgroundColor} !important`,
+        color: `${this.inputTextColor} !important`,
       },
       button: {
         backgroundColor: this.buttonBackgroundColor,

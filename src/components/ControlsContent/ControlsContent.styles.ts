@@ -1,60 +1,76 @@
+import colorNameToRGB, { hexToRGB } from "utils/colorConverter";
+
 import { ITheme } from "utils/types";
 import { createUseStyles } from "react-jss";
 
 export default createUseStyles((theme: ITheme) => ({
   root: {
-    padding: "0.5rem",
     display: "flex",
     flexDirection: "column",
-    flex: 2,
-  },
-  buttonContainer: {
-    display: "flex",
-    justifyContent: "space-between",
-  },
-  notes: {
-    fontSize: "1.25rem",
-    width: "100%",
-    minHeight: "350px",
-    backgroundColor: theme.neutralBackgroundColor,
-  },
-  dangerButton: {
-    backgroundColor: "darkred",
-  },
-  reset: {
-    color: "#ffffff",
-    fontSize: "1rem",
-    margin: "0.5rem",
-    "&:hover": {
-      backgroundColor: "#5a6268", // should not be hard coded but just for now
-    },
   },
   scoreButtons: {
     display: "flex",
     flexDirection: "column",
     marginBottom: "0.5rem",
   },
-  scoreButtonsSection: {
-    alignItems: "center",
+  titleContainer: {
     display: "flex",
-    justifyContent: "space-between",
-    padding: "0 1rem",
-    width: "100%",
-  },
-  switchesContainer: {
-    display: "flex",
-    alignItems: "center",
     justifyContent: "space-around",
-    padding: "0.5rem 0",
+    lineHeight: "0.5rem",
   },
   title: {
     flex: 1,
     width: "100%",
     textAlign: "center",
   },
-  titleContainer: {
+  scoreButtonsSection: {
+    alignItems: "center",
     display: "flex",
-    justifyContent: "space-around",
-    lineHeight: "0.5rem",
+    justifyContent: "space-between",
+    width: "100%",
+  },
+  buttonContainer: {
+    display: "flex",
+  },
+  reset: {
+    color: "#ffffff",
+    fontSize: "1rem",
+
+    "&:hover": {
+      backgroundColor: `rgba(${hexToRGB(theme.buttonBackgroundColor)},0.75)`,
+    },
+
+    "&+button": {
+      marginLeft: "0.5rem",
+    },
+  },
+  dangerButton: {
+    marginTop: "0.5rem",
+    backgroundColor: "darkred",
+
+    "&:hover": {
+      backgroundColor: `rgba(${colorNameToRGB("darkred")},0.75)`,
+    },
+  },
+  settingsButton: {
+    marginTop: "0.5rem",
+    backgroundColor: "slategray",
+
+    "&:hover": {
+      backgroundColor: `rgba(${colorNameToRGB("slategray")},0.75)`,
+    },
+  },
+  notesContainer: {
+    flexGrow: 1,
+  },
+  notes: {
+    fontSize: "1.25rem",
+    width: "100%",
+    minHeight: "350px",
+    height: "100%",
+    backgroundColor: theme.neutralBackgroundColor,
+  },
+  resetNotes: {
+    marginTop: "0.5rem",
   },
 }));

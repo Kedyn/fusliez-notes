@@ -1,6 +1,7 @@
-import colorNameToRGB from "utils/colorConverter";
 import { ITheme } from "utils/types";
+import colorNameToRGB from "utils/colorConverter";
 import { createUseStyles } from "react-jss";
+
 export default createUseStyles((theme: ITheme) => ({
   container: (props) => ({
     alignItems: "center",
@@ -10,28 +11,31 @@ export default createUseStyles((theme: ITheme) => ({
     borderRadius: "0.25rem",
     display: "flex",
     justifyContent: "center",
-    padding: "0 0.25rem",
     position: "relative",
     margin: "0.25rem 0",
+    border: `1px solid ${theme.borderColor}`,
   }),
   player: {
     padding: "0.25rem",
   },
   name: {
     flexGrow: 1,
-    padding: "0.25rem",
   },
-  icon: {
-    height: "36px",
-    width: "36px",
+  icon: (props) => ({
     borderRadius: "6px",
     padding: "0.25rem",
+    display: "flex",
+    justifyContent: "center",
 
     "&:hover": {
-      backgroundColor: "rgba(255,255,255, 0.7)",
+      backgroundColor: `rgba(${colorNameToRGB(props.color)}, 0.7)`,
       cursor: "pointer",
     },
-  },
+    "& img": {
+      minWidth: "2rem",
+      minHeight: "2rem",
+    },
+  }),
   input: (props) => ({
     width: "100%",
     fontWeight: 700,
@@ -40,6 +44,10 @@ export default createUseStyles((theme: ITheme) => ({
     lineHeight: 1.5,
     borderRadius: ".2rem",
     textAlign: "left",
+
+    "&::placeholder": {
+      color: theme.textColor,
+    },
   }),
 
   playerColorChangeMenu: {

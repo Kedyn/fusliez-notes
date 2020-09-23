@@ -1,6 +1,7 @@
-import React from "react";
 import useStyles, { useColorSwatchStyles } from "./ColorsMenu.styles";
+
 import { IPlayer } from "utils/types";
+import React from "react";
 import { useData } from "context";
 
 // renders each individual color
@@ -77,7 +78,10 @@ export default function ColorsMenu({
   ) {
     // dont need to do anything
     // if the ids/colors are the same
-    if (currentPlayerColor === targetPlayerColor) return;
+    if (currentPlayerColor === targetPlayerColor) {
+      setIsMenuShowing(false);
+      return;
+    }
 
     // [list_name, player_object]
     const currentPlayer = ["", {}];
@@ -206,9 +210,11 @@ export default function ColorsMenu({
     }
 
     document.addEventListener("click", handleHideMenu, true);
+    document.addEventListener("drag", handleHideMenu, true);
 
     return () => {
       document.removeEventListener("click", handleHideMenu, true);
+      document.addEventListener("drag", handleHideMenu, true);
     };
   }, [ref]);
 

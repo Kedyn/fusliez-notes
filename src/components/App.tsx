@@ -25,9 +25,9 @@ export default function App(): JSX.Element {
               <small>
                 fusliez notes{" "}
                 <a href="https://github.com/Kedyn/fusliez-notes/releases/tag/v0.7.0">
-                  v0.7.0
+                  v0.8.0 (Preview)
                 </a>{" "}
-                [9/15/2020] made with &#10084; by the{" "}
+                [9/22/2020] made with &#10084; by the{" "}
                 <a href="https://github.com/Kedyn/fusliez-notes#authors-and-acknowledgment">
                   fuslie fam
                 </a>

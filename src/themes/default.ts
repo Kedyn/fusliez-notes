@@ -79,7 +79,7 @@ export default class DefaultTheme implements ITheme {
         display: "flex",
         flexDirection: "column",
         height: "100vh",
-        maxWidth: "1400px",
+        maxWidth: "1920px",
         margin: "0 auto",
         width: "100vw",
       },
@@ -111,6 +111,12 @@ export default class DefaultTheme implements ITheme {
         fontWeight: "500",
         lineHeight: "1.2",
       },
+      h3: {
+        margin: 0,
+      },
+      h4: {
+        margin: ".5rem 0",
+      },
       img: {
         maxWidth: "100%",
         height: "auto",
@@ -121,6 +127,13 @@ export default class DefaultTheme implements ITheme {
         appearance: "none",
         border: "none",
         boxShadow: "none",
+      },
+      "input::-webkit-outer-spin-button,input::-webkit-inner-spin-button": {
+        "-webkit-appearance": "none",
+        margin: 0,
+      },
+      "input[type=number]": {
+        "-moz-appearance": "textfield",
       },
       textarea: {
         backgroundColor: this.inputBackgroundColor,

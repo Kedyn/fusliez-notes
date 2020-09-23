@@ -1,17 +1,29 @@
-import React from "react";
-import useStyles from "./WinsLossesButton.styles";
 import Button from "components/common/Button";
+import React from "react";
+import Score from "components/common/Score";
+import useStyles from "./WinsLossesButton.styles";
 
-export default function WinsLossesButton({
-  buttonBackgroundColor,
-  decrement,
-  increment,
-}: {
+export interface IWinsLossesButtonProps {
   buttonBackgroundColor: string;
   decrement: () => void;
   increment: () => void;
-}): JSX.Element {
+  score: number;
+  setScore: (value: number) => void;
+}
+
+export default function WinsLossesButton(
+  props: IWinsLossesButtonProps
+): JSX.Element {
+  const {
+    buttonBackgroundColor,
+    decrement,
+    increment,
+    score,
+    setScore,
+  } = props;
+
   const classes = useStyles({ buttonBackgroundColor });
+
   return (
     <div className={classes.winsLossesButtonContainer}>
       <Button
@@ -20,7 +32,12 @@ export default function WinsLossesButton({
       >
         -
       </Button>
-      <div className={classes.placeholder} />
+      <Score
+        value={score}
+        onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
+          setScore(parseInt(event.currentTarget.value))
+        }
+      />
       <Button
         onClick={() => increment()}
         className={`${classes.winsLossesButton} ${classes.winsLossesButtonRight}`}

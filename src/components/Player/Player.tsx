@@ -1,9 +1,9 @@
+import ColorsMenu from "../ColorsMenu";
 import { IPlayer } from "utils/types";
 import Input from "components/common/Input";
 import React from "react";
 import { useData } from "context";
 import useStyles from "./Player.styles";
-import ColorsMenu from "../ColorsMenu";
 
 export interface IPlayerProps {
   id: string | number;
@@ -23,8 +23,6 @@ export default function Player(props: IPlayerProps): JSX.Element {
 
   const { id, color, name, list, setList, index } = props;
 
-  const playerClass = "player-handle";
-
   const handleChange = (
     player: number,
     event: React.ChangeEvent<HTMLInputElement>
@@ -37,7 +35,7 @@ export default function Player(props: IPlayerProps): JSX.Element {
   };
 
   return (
-    <div className={`${classes.container} ${playerClass}`}>
+    <div className={classes.container}>
       {isMenuShowing && (
         <ColorsMenu
           isMenuShowing={isMenuShowing}
@@ -45,12 +43,14 @@ export default function Player(props: IPlayerProps): JSX.Element {
           currentColor={id}
         />
       )}
-      <img
-        onClick={() => setIsMenuShowing((state) => !state)}
-        src={`assets/${color}.png`}
-        alt={color}
-        className={`${playerClass} ${classes.icon}`}
-      />
+      <div className={classes.icon}>
+        <img
+          onClick={() => setIsMenuShowing(!isMenuShowing)}
+          src={`assets/${color}.png`}
+          alt={color}
+          className="player-handle"
+        />
+      </div>
       {names && (
         <div className={classes.name}>
           <Input
