@@ -35,7 +35,7 @@ export default function Scores(): JSX.Element {
         <div className={classes.title}>
           <span>Overall</span>
           <span>
-            {overallGames}W - {overallLosses}L
+            {overallWins}W - {overallLosses}L
           </span>
         </div>
         <ProgressBar
@@ -48,7 +48,7 @@ export default function Scores(): JSX.Element {
         <div className={classes.title}>
           <span>Innocent</span>
           <span>
-            {innocentWins}W - {innocentGames - innocentWins}L
+            {innocentWins}W - {innocentLosses}L
           </span>
         </div>
         <ProgressBar
@@ -61,7 +61,7 @@ export default function Scores(): JSX.Element {
         <div className={classes.title}>
           <span>Impostor</span>
           <span>
-            {impostorWins}W - {impostorGames - impostorWins}L
+            {impostorWins}W - {impostorLosses}L
           </span>
         </div>
         <ProgressBar
