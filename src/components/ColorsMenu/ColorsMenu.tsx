@@ -214,7 +214,7 @@ export default function ColorsMenu({
 
     return () => {
       document.removeEventListener("click", handleHideMenu, true);
-      document.addEventListener("drag", handleHideMenu, true);
+      document.removeEventListener("drag", handleHideMenu, true);
     };
   }, [ref]);
 
