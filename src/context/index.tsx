@@ -142,7 +142,6 @@ export function DataProvider({ children }: IDataProviderProps): JSX.Element {
     resetGames();
     setLocalTheme(Themes.dark);
     setLocalNames(true);
-    setLocalNotes("");
     setLocalUnknownPlayers(INITIAL_DATA.unknownPlayers);
     setLocalInnocentPlayers([]);
     setLocalSusPlayers([]);
