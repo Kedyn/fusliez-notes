@@ -38,6 +38,7 @@ export interface ITheme {
 }
 
 export interface IDataContext {
+  version: string;
   theme: ITheme;
   innocentWins: number;
   innocentLosses: number;
@@ -68,6 +69,7 @@ export interface IDataContext {
 }
 
 export interface IData {
+  version: string;
   theme: string;
   innocentWins: number;
   innocentLosses: number;

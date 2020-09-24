@@ -12,7 +12,8 @@ export interface IDataProviderProps {
   children: React.ReactNode;
 }
 
-const INITIAL_DATA: IData = {
+export const INITIAL_DATA: IData = {
+  version: "0.8.0",
   theme: "dark",
   innocentWins: 0,
   innocentLosses: 0,
@@ -41,68 +42,64 @@ const INITIAL_DATA: IData = {
 };
 
 const localData = localStorage.getItem(`${namespace}data`);
-const data = JSON.parse(localData);
+let data: IData = localData ? JSON.parse(localData) : INITIAL_DATA;
 
-// this function helps to check if we updated the state store
-// it compares if it has the same number of keys
-// if it does, further checks it if there are new keys added
-const updatedVersion = () => {
-  const currentDataKeys = Object.keys(data);
-  const localDataKeys = Object.keys(INITIAL_DATA);
+const checkUpdate = (): void => {
+  if (localData && data.version != INITIAL_DATA.version) {
+    console.log("here");
+    const currentDataKeys = Object.keys(data);
+    const localDataKeys = Object.keys(INITIAL_DATA);
+    const newData: { [unknown: string]: any } = {}; // eslint-disable-line
 
-  if (currentDataKeys.length !== localDataKeys.length) {
-    return true;
-  } else {
-    if (
-      localDataKeys.filter((element) => {
-        if (currentDataKeys.includes(element)) {
-          return false;
-        } else return true;
-      }).length
-    )
-      return true;
-    return false;
+    localDataKeys.forEach((element: string) => {
+      if (!currentDataKeys.includes(element)) {
+        newData[element] = INITIAL_DATA[element as keyof IData];
+      } else {
+        newData[element] = data[element as keyof IData];
+      }
+    });
+
+    newData.version = INITIAL_DATA.version;
+
+    localStorage.setItem(`${namespace}data`, JSON.stringify(newData));
+
+    data = newData as IData;
   }
 };
 
 export function DataProvider({ children }: IDataProviderProps): JSX.Element {
+  const version = data.version;
   const [theme, setLocalTheme] = React.useState<ITheme>(Themes.default);
   const [innocentWins, setLocalInnocentWins] = React.useState(
-    data?.innocentWins ? data.innocentWins : INITIAL_DATA.innocentWins
+    data.innocentWins
   );
   const [innocentLosses, setLocalInnocentLosses] = React.useState(
-    data?.innocentLosses ? data.innocentLosses : INITIAL_DATA.innocentLosses
+    data.innocentLosses
   );
   const [impostorWins, setLocalImpostorWins] = React.useState(
-    data?.impostorWins ? data.impostorWins : INITIAL_DATA.impostorWins
+    data.impostorWins
   );
   const [impostorLosses, setLocalImpostorLosses] = React.useState(
-    data?.impostorLosses ? data.impostorLosses : INITIAL_DATA.impostorLosses
+    data.impostorLosses
   );
-  const [names, setLocalNames] = React.useState(
-    data?.names ? data.names : INITIAL_DATA.names
-  );
-  const [notes, setLocalNotes] = React.useState(
-    data?.notes ? data.notes : INITIAL_DATA.notes
-  );
+  const [names, setLocalNames] = React.useState(data.names);
+  const [notes, setLocalNotes] = React.useState(data.notes);
 
   const [innocentPlayers, setLocalInnocentPlayers] = React.useState<
     Array<IPlayer>
-  >(
-    data?.innocentPlayers ? data.innocentPlayers : INITIAL_DATA.innocentPlayers
-  );
+  >(data.innocentPlayers);
   const [susPlayers, setLocalSusPlayers] = React.useState<Array<IPlayer>>(
-    data?.susPlayers ? data.susPlayers : INITIAL_DATA.susPlayers
+    data.susPlayers
   );
   const [evilPlayers, setLocalEvilPlayers] = React.useState<Array<IPlayer>>(
-    data?.evilPlayers ? data.evilPlayers : INITIAL_DATA.evilPlayers
+    data.evilPlayers
   );
   const [deadPlayers, setLocalDeadPlayers] = React.useState<Array<IPlayer>>(
-    data?.deadPlayers ? data.deadPlayers : INITIAL_DATA.deadPlayers
+    data.deadPlayers
   );
   const [unknownPlayers, setLocalUnknownPlayers] = React.useState<
     Array<IPlayer>
-  >(data?.unknownPlayers ? data.unknownPlayers : INITIAL_DATA.unknownPlayers);
+  >(data.unknownPlayers);
 
   const prefersDark = useMediaQuery("(prefers-color-scheme: dark)");
 
@@ -141,7 +138,6 @@ export function DataProvider({ children }: IDataProviderProps): JSX.Element {
   const resetAll = () => {
     resetGames();
     setLocalTheme(Themes.dark);
-    setLocalNames(true);
     setLocalUnknownPlayers(INITIAL_DATA.unknownPlayers);
     setLocalInnocentPlayers([]);
     setLocalSusPlayers([]);
@@ -152,26 +148,18 @@ export function DataProvider({ children }: IDataProviderProps): JSX.Element {
   };
 
   React.useEffect(() => {
-    if (data && Object.keys(data)?.length) {
-      if (updatedVersion()) {
+    if (localData) {
+      checkUpdate();
+
+      if (data.theme) {
+        const localTheme = Themes[data.theme];
+
+        if (localTheme) {
+          setLocalTheme(localTheme);
+        }
+      } else {
         if (prefersDark) {
           setLocalTheme(Themes.dark);
-
-          INITIAL_DATA.theme = "dark";
-        }
-
-        localStorage.setItem(`${namespace}data`, JSON.stringify(INITIAL_DATA));
-      } else {
-        if (data.theme) {
-          const localTheme = Themes[data.theme];
-
-          if (localTheme) {
-            setLocalTheme(localTheme);
-          }
-        } else {
-          if (prefersDark) {
-            setLocalTheme(Themes.dark);
-          }
         }
       }
     } else {
@@ -188,6 +176,7 @@ export function DataProvider({ children }: IDataProviderProps): JSX.Element {
   return (
     <DataContext.Provider
       value={{
+        version,
         theme,
         innocentWins,
         innocentLosses,

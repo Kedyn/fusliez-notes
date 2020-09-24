@@ -1,11 +1,13 @@
 import Button from "components/common/Button";
 import React from "react";
+import Settings from "components/common/Settings";
 import WinsLossesButton from "../WinsLossesButton";
 import { useData } from "context";
 import useStyles from "./ControlsContent.styles";
 
 export default function ControlsContent(): JSX.Element {
   const classes = useStyles();
+  const [showSettings, setShowSettings] = React.useState(false);
   const {
     theme,
     notes,
@@ -93,10 +95,6 @@ export default function ControlsContent(): JSX.Element {
         >
           Reset All
         </Button>
-
-        {/* <Button classNames={`${classes.reset} ${classes.settingsButton}`}>
-          Settings (WIP)
-        </Button> */}
       </div>
       <h2>Notes</h2>
       <div className={classes.notesContainer}>
@@ -108,12 +106,17 @@ export default function ControlsContent(): JSX.Element {
           value={notes}
         />
       </div>
-      <Button
-        classNames={`${classes.reset} ${classes.resetNotes}`}
-        onClick={() => setNotes("")}
-      >
+      <Button classNames={`${classes.resetNotes}`} onClick={() => setNotes("")}>
         Reset Notes
       </Button>
+      <Button
+        classNames={`${classes.dangerButton}`}
+        onClick={() => setShowSettings(true)}
+      >
+        Settings
+      </Button>
+
+      <Settings show={showSettings} onClose={() => setShowSettings(false)} />
     </div>
   );
 }

@@ -19,6 +19,7 @@ export default createUseStyles((theme: ITheme) => ({
     backgroundColor: theme.backgroundColor,
     borderRadius: "10px",
     maxWidth: 1600,
+    padding: "0 2rem",
   },
   header: {
     borderBottom: `1px solid ${theme.borderColor}`,

@@ -1,4 +1,5 @@
 import DefaultTheme from "./default";
+import { hexToRGB } from "utils/colorConverter";
 
 export default class DarkTheme extends DefaultTheme {
   public constructor() {
@@ -7,7 +8,7 @@ export default class DarkTheme extends DefaultTheme {
     this.name = "dark";
 
     this.backgroundColor = "#202225";
-    this.textColor = "#f6edf6";
+    this.textColor = "#ffffff";
 
     this.inputBackgroundColor = "#f6edf6";
     this.inputTextColor = "#202225";
@@ -24,7 +25,7 @@ export default class DarkTheme extends DefaultTheme {
     this.buttonBackgroundColor = "#6b2fbc";
     this.buttonTextColor = "#f6edf6";
 
-    this.borderColor = "#000000";
+    this.borderColor = "#36383a";
 
     this.global = {
       body: {
@@ -38,6 +39,10 @@ export default class DarkTheme extends DefaultTheme {
       button: {
         backgroundColor: this.buttonBackgroundColor,
         color: this.buttonTextColor,
+
+        "&:hover": {
+          backgroundColor: `rgba(${hexToRGB(this.buttonBackgroundColor)},0.75)`,
+        },
       },
       a: {
         color: this.linkColor,

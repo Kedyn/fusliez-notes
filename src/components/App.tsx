@@ -4,14 +4,43 @@ import ControlsContent from "./ControlsContent";
 import MainContent from "./MainContent";
 import MapsContent from "./MapsContent";
 import Modal from "./common/Modal";
+import FeedbackForm from "./FeedbackForm";
 import React from "react";
 import jssSetUp from "utils/jssSetUp";
-import { useData } from "context";
+import { useData, INITIAL_DATA } from "context";
 
 export default function App(): JSX.Element {
   // eslint-disable-next-line
   const { theme } = useData()!;
   const [showNotes, setShowNotes] = React.useState(false);
+  const [showForm, setShowForm] = React.useState(false);
+  const { version } = useData()!;
+
+  React.useEffect(() => {
+    if (version !== INITIAL_DATA.version) {
+      setShowNotes(true);
+    }
+  }, []);
+
+  const patchNotes = [
+    {
+      title: "Added",
+      items: [
+        "Separate Scores for impostors and innocents",
+        "Color change menu for players",
+        "Reset Scores",
+        "Reset Round (players positions)",
+        "Reset all button, resets to default.",
+        "Reset Notes",
+        "Settings Modal",
+        "Recovery Notes Modal",
+        "Change log Modal",
+      ],
+    },
+    { title: "Fixed", items: ["Player background color contrast"] },
+    { title: "Changed", items: ["Use names to the settings modal."] },
+    { title: "Removed", items: ["Light theme", "Draggable map characters"] },
+  ];
 
   return (
     <React.Fragment>
@@ -41,17 +70,32 @@ export default function App(): JSX.Element {
                 <a href="https://github.com/Kedyn/fusliez-notes#authors-and-acknowledgment">
                   fuslie fam
                 </a>
-                .
+                . <a onClick={() => setShowForm(true)}>Feedback</a>
+                <Modal
+                  title="Feedback Form"
+                  show={showForm}
+                  onClose={() => setShowForm(false)}
+                >
+                  <FeedbackForm />
+                </Modal>
               </small>
             </footer>
             {/* CHANGE LOG */}
             <Modal
-              title="Developer Notes"
+              title="Change Log v0.8.0"
               show={showNotes}
               onClose={() => setShowNotes(false)}
             >
-              This is only a preview version. Although the current does not
-              allow theme color changes, it will be on the full 0.8.0 version
+              {patchNotes.map(({ title, items }) => (
+                <div>
+                  <h3>{title}</h3>
+                  <ul>
+                    {items.map((item) => (
+                      <li>{item}</li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
             </Modal>
           </React.Suspense>
         </ThemeProvider>

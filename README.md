@@ -4,13 +4,10 @@ A web to help keep track of among us game.
 
 ## Features
 
-- Editable title
 - Score tracking
 - Draggable players between innocent/sus/hit list/evil/dead/unknown sections
-- Themes
 - Notes
 - Maps
-- Map draggable players
 
 ## Usage
 

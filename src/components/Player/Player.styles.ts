@@ -30,8 +30,10 @@ export default createUseStyles((theme: ITheme) => ({
     justifyContent: "center",
 
     "&:hover": {
-      backgroundColor: `rgba(${colorNameToRGB(props.color)}, 0.7)`,
-      cursor: "pointer",
+      backgroundColor: props.names
+        ? `rgba(${colorNameToRGB(props.color)}, 0.7)`
+        : props.backgroundColor,
+      cursor: props.names ? "pointer" : "grab",
     },
     "& img": {
       minWidth: "1.5rem",
