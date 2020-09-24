@@ -24,7 +24,7 @@ export default class DarkTheme extends DefaultTheme {
     this.buttonBackgroundColor = "#6b2fbc";
     this.buttonTextColor = "#f6edf6";
 
-    this.borderColor = "#000000";
+    this.borderColor = "#36383a";
 
     this.global = {
       body: {
