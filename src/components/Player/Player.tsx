@@ -35,7 +35,7 @@ export default function Player(props: IPlayerProps): JSX.Element {
   };
 
   return (
-    <div className={classes.container}>
+    <div className={`${classes.container} player-handle`}>
       {isMenuShowing && (
         <ColorsMenu
           isMenuShowing={isMenuShowing}
@@ -54,7 +54,7 @@ export default function Player(props: IPlayerProps): JSX.Element {
       {names && (
         <div className={classes.name}>
           <Input
-            placeholder="Player Name"
+            placeholder="Player"
             className={classes.input}
             onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
               handleChange(index, event)

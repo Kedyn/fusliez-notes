@@ -69,7 +69,6 @@ export default class DefaultTheme implements ITheme {
       },
       body: {
         margin: 0,
-
         backgroundColor: this.backgroundColor,
         color: this.textColor,
         fontFamily: this.fontFamily,
@@ -82,10 +81,12 @@ export default class DefaultTheme implements ITheme {
         maxWidth: "1920px",
         margin: "0 auto",
         width: "100vw",
+        overflowX: "hidden",
       },
       main: {
         flexGrow: 1,
         display: "flex",
+        margin: "0 1rem",
       },
       footer: {
         textAlign: "center",

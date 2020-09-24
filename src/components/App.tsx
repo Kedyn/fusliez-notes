@@ -37,13 +37,14 @@ export default function App(): JSX.Element {
                 >
                   v0.8.0 (Preview)
                 </a>{" "}
-                [9/22/2020] made with &#10084; by the{" "}
+                [9/24/2020] made with &#10084; by the{" "}
                 <a href="https://github.com/Kedyn/fusliez-notes#authors-and-acknowledgment">
                   fuslie fam
                 </a>
                 .
               </small>
             </footer>
+            {/* CHANGE LOG */}
             <Modal
               title="Developer Notes"
               show={showNotes}

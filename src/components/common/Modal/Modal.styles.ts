@@ -3,25 +3,26 @@ import { createUseStyles } from "react-jss";
 
 export default createUseStyles((theme: ITheme) => ({
   root: {
-    position: "fixed",
-    zIndex: 1,
+    alignItems: "center",
+    backgroundColor: "rgba(0, 0, 0, 0.75)",
+    display: "flex",
+    height: "100vh",
     left: 0,
+    justifyContent: "center",
+    overflow: "auto",
+    position: "fixed",
     top: 0,
     width: "100vw",
-    height: "100vh",
-    overflow: "auto",
-    backgroundColor: "rgba(255, 255, 255, 0.4)",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
+    zIndex: 1,
   },
   content: {
-    maxWidth: 1600,
     backgroundColor: theme.backgroundColor,
+    borderRadius: "10px",
+    maxWidth: 1600,
   },
   header: {
-    display: "flex",
     borderBottom: `1px solid ${theme.borderColor}`,
+    display: "flex",
   },
   title: {
     flexGrow: 1,

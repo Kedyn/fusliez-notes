@@ -17,27 +17,25 @@ export default function Modal(props: IModalProps): JSX.Element {
     const classes = useStyles();
 
     return (
-      <React.Fragment>
-        <div className={classes.root} onClick={() => onClose()}>
-          <div
-            className={classes.content}
-            onClick={(event: React.MouseEvent<HTMLDivElement, MouseEvent>) =>
-              event.stopPropagation()
-            }
-          >
-            <div className={classes.header}>
-              <div className={classes.title}>{title}</div>
-              <div className={classes.close} onClick={() => onClose()}>
-                x
-              </div>
+      <div className={classes.root} onClick={() => onClose()}>
+        <div
+          className={classes.content}
+          onClick={(event: React.MouseEvent<HTMLDivElement, MouseEvent>) =>
+            event.stopPropagation()
+          }
+        >
+          <div className={classes.header}>
+            <div className={classes.title}>{title}</div>
+            <div className={classes.close} onClick={() => onClose()}>
+              x
             </div>
-            <div className={classes.body}>{children}</div>
-            {footer !== undefined && (
-              <div className={classes.footer}>{footer}</div>
-            )}
           </div>
+          <div className={classes.body}>{children}</div>
+          {footer !== undefined && (
+            <div className={classes.footer}>{footer}</div>
+          )}
         </div>
-      </React.Fragment>
+      </div>
     );
   }
 

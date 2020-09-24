@@ -8,12 +8,13 @@ export default createUseStyles((theme: ITheme) => ({
     backgroundColor: props.name
       ? `rgba(${props.backgroundColor}, 0.7)`
       : "transparent",
+    border: `1px solid ${theme.borderColor}`,
     borderRadius: "0.25rem",
     display: "flex",
     justifyContent: "center",
-    position: "relative",
     margin: "0.25rem 0",
-    border: `1px solid ${theme.borderColor}`,
+    padding: "0.25rem 0.1rem",
+    position: "relative",
   }),
   player: {
     padding: "0.25rem",
@@ -23,7 +24,8 @@ export default createUseStyles((theme: ITheme) => ({
   },
   icon: (props) => ({
     borderRadius: "6px",
-    padding: "0.25rem",
+    padding: "0.15rem",
+    margin: "0 0.15rem",
     display: "flex",
     justifyContent: "center",
 
@@ -32,18 +34,20 @@ export default createUseStyles((theme: ITheme) => ({
       cursor: "pointer",
     },
     "& img": {
-      minWidth: "2rem",
-      minHeight: "2rem",
+      minWidth: "1.5rem",
+      minHeight: "1.5rem",
     },
   }),
   input: (props) => ({
-    width: "100%",
-    fontWeight: 700,
-    letterSpacing: "0.05rem",
-    fontSize: props.name ? "1.5rem" : "1rem",
-    lineHeight: 1.5,
     borderRadius: ".2rem",
+    fontSize: props.name ? "1.15rem" : "1rem",
+    fontWeight: 700,
+    letterSpacing: "0.025rem",
+    lineHeight: 1.5,
+    marginRight: "0.25rem",
+    padding: 0,
     textAlign: "left",
+    width: "100%",
 
     "&::placeholder": {
       color: theme.textColor,
