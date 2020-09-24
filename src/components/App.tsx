@@ -5,12 +5,13 @@ import MainContent from "./MainContent";
 import MapsContent from "./MapsContent";
 import Modal from "./common/Modal";
 import React from "react";
+import Recovery from "./Recovery";
 import jssSetUp from "utils/jssSetUp";
 import { useData } from "context";
 
 export default function App(): JSX.Element {
   // eslint-disable-next-line
-  const { theme } = useData()!;
+  const { version, theme } = useData()!;
   const [showNotes, setShowNotes] = React.useState(false);
 
   return (
@@ -27,7 +28,7 @@ export default function App(): JSX.Element {
               <small>
                 fusliez notes{" "}
                 <a
-                  href="https://github.com/Kedyn/fusliez-notes/releases/tag/v0.7.0"
+                  href="https://github.com/Kedyn/fusliez-notes/releases/latest"
                   onClick={(
                     event: React.MouseEvent<HTMLAnchorElement, MouseEvent>
                   ) => {
@@ -35,9 +36,9 @@ export default function App(): JSX.Element {
                     setShowNotes(!showNotes);
                   }}
                 >
-                  v0.8.0 (Preview)
+                  {version}
                 </a>{" "}
-                [9/22/2020] made with &#10084; by the{" "}
+                made with &#10084; by the{" "}
                 <a href="https://github.com/Kedyn/fusliez-notes#authors-and-acknowledgment">
                   fuslie fam
                 </a>
@@ -52,6 +53,8 @@ export default function App(): JSX.Element {
               This is only a preview version. Although the current does not
               allow theme color changes, it will be on the full 0.8.0 version
             </Modal>
+
+            <Recovery />
           </React.Suspense>
         </ThemeProvider>
       </JssProvider>

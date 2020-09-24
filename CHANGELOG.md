@@ -7,6 +7,35 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Released]
 
+### [v0.8.0] - 9/24/2020
+
+Switched to Kevin Han's (@khany) UI design.
+
+#### Added
+
+- Separate Scores for impostors and innocents.
+- Color change menu for players
+- Reset Scores
+- Reset Round (players positions)
+- Reset all button, resets to default.
+- Reset Notes
+- Settings Modal
+- Recovery Notes Modal
+- Changelog Modal
+
+#### Fixed
+
+- Player background color contrast
+
+#### Changed
+
+- Use names to the settings modal.
+
+#### Removed
+
+- Light theme
+- Draggable map characters
+
 ### [v0.7.0] - 9/15/2020
 
 Code refactoring / project restructuring.
@@ -67,12 +96,6 @@ Project fusliez notes begins, prototype release.
 Features included draggable players and progress bar for score.
 
 ## [Unreleased]
-
-### [v0.8.0] - 9/20/2020
-
-#### Added
-
-- Reset all button, resets to default.
 
 ### [v0.1.0] - 8/24/2020
 

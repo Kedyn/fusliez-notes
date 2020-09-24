@@ -1,6 +1,5 @@
-import colorNameToRGB, { hexToRGB } from "utils/colorConverter";
-
 import { ITheme } from "utils/types";
+import colorNameToRGB from "utils/colorConverter";
 import { createUseStyles } from "react-jss";
 
 export default createUseStyles((theme: ITheme) => ({
@@ -33,12 +32,7 @@ export default createUseStyles((theme: ITheme) => ({
     display: "flex",
   },
   reset: {
-    color: "#ffffff",
     fontSize: "1rem",
-
-    "&:hover": {
-      backgroundColor: `rgba(${hexToRGB(theme.buttonBackgroundColor)},0.75)`,
-    },
 
     "&+button": {
       marginLeft: "0.5rem",

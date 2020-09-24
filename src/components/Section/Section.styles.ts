@@ -6,7 +6,7 @@ export default createUseStyles({
     display: "flex",
     flexWrap: "wrap",
     minHeight: "2rem",
-    justifyContent: "space-between",
+    justifyContent: "space-around",
 
     "&>div": {
       flex: (props) => `0 0 ${props.names ? "49%" : "24%"}`,

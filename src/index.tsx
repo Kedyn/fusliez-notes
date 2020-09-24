@@ -11,9 +11,9 @@ ReactDOM.render(
 );
 
 const requestWakeLock = async () => {
-  try {
+  if ("wakeLock" in navigator) {
     await navigator.wakeLock.request("screen");
-  } catch (err) {}
+  }
 };
 
 requestWakeLock();

@@ -18,8 +18,8 @@ export interface IPlayerProps {
 export default function Player(props: IPlayerProps): JSX.Element {
   const [isMenuShowing, setIsMenuShowing] = React.useState(false);
 
-  const classes = useStyles(props);
   const { names } = useData()!; // eslint-disable-line
+  const classes = useStyles({ names, ...props });
 
   const { id, color, name, list, setList, index } = props;
 
@@ -45,7 +45,11 @@ export default function Player(props: IPlayerProps): JSX.Element {
       )}
       <div className={classes.icon}>
         <img
-          onClick={() => setIsMenuShowing(!isMenuShowing)}
+          onClick={() => {
+            if (names) {
+              setIsMenuShowing(!isMenuShowing);
+            }
+          }}
           src={`assets/${color}.png`}
           alt={color}
           className="player-handle"

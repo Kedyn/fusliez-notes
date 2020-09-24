@@ -5,9 +5,10 @@ import { createUseStyles } from "react-jss";
 export default createUseStyles((theme: ITheme) => ({
   container: (props) => ({
     alignItems: "center",
-    backgroundColor: props.name
-      ? `rgba(${props.backgroundColor}, 0.7)`
-      : "transparent",
+    backgroundColor:
+      props.name || !props.names
+        ? `rgba(${props.backgroundColor}, 0.7)`
+        : "transparent",
     borderRadius: "0.25rem",
     display: "flex",
     justifyContent: "center",
@@ -28,8 +29,10 @@ export default createUseStyles((theme: ITheme) => ({
     justifyContent: "center",
 
     "&:hover": {
-      backgroundColor: `rgba(${colorNameToRGB(props.color)}, 0.7)`,
-      cursor: "pointer",
+      backgroundColor: props.names
+        ? `rgba(${colorNameToRGB(props.color)}, 0.7)`
+        : props.backgroundColor,
+      cursor: props.names ? "pointer" : "grab",
     },
     "& img": {
       minWidth: "2rem",
