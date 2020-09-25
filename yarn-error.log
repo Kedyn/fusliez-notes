@@ -1,0 +1,100 @@
+Arguments: 
+  C:\Program Files\nodejs\node.exe C:\Users\Francis\.yarn\releases\yarn-1.22.4.js add i18next-http-backend
+
+PATH: 
+  C:\Program Files\nodejs\node_modules\npm\node_modules\npm-lifecycle\node-gyp-bin;C:\Users\Francis\Documents\fusliez-notes\node_modules\.bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\Francis\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\program files\common files\microsoft shared\windows live;C:\program files (x86)\common files\microsoft shared\windows live;C:\program files (x86)\intel\icls client;C:\program files\intel\icls client;C:\windows\system32;C:\windows;C:\windows\system32\wbem;C:\windows\system32\windowspowershell\v1.0;C:\program files (x86)\intel\opencl sdk\2.0\bin\x86;C:\program files (x86)\intel\opencl sdk\2.0\bin\x64;C:\program files\intel\intel(r) management engine components\dal;C:\program files\intel\intel(r) management engine components\ipt;C:\program files (x86)\intel\intel(r) management engine components\dal;C:\program files (x86)\intel\intel(r) management engine components\ipt;C:\program files (x86)\ati technologies\ati.ace\core-static;C:\program files (x86)\windows live\shared;C:\program files (x86)\amd\ati.ace\core-static;C:\program files (x86)\gtksharp\2.12\bin;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0;C:\WINDOWS\System32\OpenSSH;C:\Program Files\Microsoft VS Code\bin;C:\Users\Francis\AppData\Local\Programs\Python\Python37-32;C:\Users\Francis\AppData\Local\Programs\Python\Python37-32\Scripts;C:\Users\Francis\AppData\Roaming\Python\Python37\scripts;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0;C:\WINDOWS\System32\OpenSSH;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files (x86)\Yarn\bin;C:\Program Files\nodejs;E:\Android\platform-tools;C:\Users\Francis\AppData\Roaming\npm;C:\Program Files\heroku\bin
+
+Yarn version: 
+  1.22.4
+
+Node version: 
+  12.16.1
+
+Platform: 
+  win32 x64
+
+Trace: 
+  Error: EPERM: operation not permitted, unlink 'C:\Users\Francis\Documents\fusliez-notes\node_modules\deasync\bin\win32-x64-node-12\deasync.node'
+
+npm manifest: 
+  {
+    "name": "fusliez-notes",
+    "version": "0.8.1",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+      "start": "parcel serve ./src/index.html --open",
+      "build": "parcel build ./src/index.html --no-source-maps -d ./build --public-url ./",
+      "predeploy": "npm run build",
+      "deploy": "gh-pages -d build",
+      "lint": "eslint ./src/ --cache --fix --ext .ts,.tsx"
+    },
+    "homepage": "http://kedyn.github.io/fuesliez-notes",
+    "author": "Kedyn Macedonio",
+    "license": "MIT",
+    "dependencies": {
+      "beautiful-react-hooks": "^0.30.1",
+      "i18next": "^19.7.0",
+      "i18next-browser-languagedetector": "^6.0.1",
+      "i18next-http-backend": "^1.0.21",
+      "jss-preset-default": "^10.4.0",
+      "react": "^16.13.1",
+      "react-dom": "^16.13.1",
+      "react-draggable": "^4.4.3",
+      "react-i18next": "^11.7.3",
+      "react-jss": "^10.4.0",
+      "react-sortablejs": "^2.0.11"
+    },
+    "devDependencies": {
+      "@types/react": "^16.9.49",
+      "@types/react-dom": "^16.9.8",
+      "@typescript-eslint/eslint-plugin": "^4.1.1",
+      "@typescript-eslint/parser": "^4.1.1",
+      "eslint": "^7.9.0",
+      "eslint-config-prettier": "^6.11.0",
+      "eslint-plugin-prettier": "^3.1.4",
+      "gh-pages": "^3.1.0",
+      "husky": "^4.3.0",
+      "lint-staged": "^10.3.0",
+      "parcel": "^1.12.4",
+      "parcel-plugin-static-files-copy": "^2.5.0",
+      "prettier": "^2.1.1",
+      "typescript": "^4.0.2"
+    },
+    "alias": {
+      "components": "./src/components",
+      "context": "./src/context",
+      "themes": "./src/themes",
+      "utils": "./src/utils"
+    },
+    "staticFiles": {
+      "staticPath": [
+        {
+          "staticPath": "./src/assets",
+          "staticOutDir": "assets"
+        }
+      ]
+    },
+    "husky": {
+      "hooks": {
+        "pre-commit": "lint-staged"
+      }
+    },
+    "lint-staged": {
+      "*.{ts,tsx}": "eslint --cache --fix",
+      "*.{ts,tsx,md,html}": "prettier --write"
+    },
+    "browserslist": [
+      "last 3 and_chr versions",
+      "last 3 chrome versions",
+      "last 3 opera versions",
+      "last 3 ios_saf versions",
+      "last 3 safari versions"
+    ]
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

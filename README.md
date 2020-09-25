@@ -8,6 +8,7 @@ A web to help keep track of among us game.
 - Draggable players between innocent/sus/hit list/evil/dead/unknown sections
 - Notes
 - Maps
+- Draggable players on the map
 
 ## Usage
 
