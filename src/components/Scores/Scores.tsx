@@ -4,9 +4,11 @@ import React from "react";
 import { useData } from "context";
 import useStyles from "./Scores.styles";
 import { useTheme } from "react-jss";
+import { useTranslation } from "react-i18next";
 
 export default function Scores(): JSX.Element {
   const theme = useTheme<ITheme>();
+  const { t } = useTranslation();
   const classes = useStyles();
 
   const {
@@ -33,9 +35,11 @@ export default function Scores(): JSX.Element {
     <React.Fragment>
       <div className={classes.root}>
         <div className={classes.title}>
-          <span>Overall</span>
+          <span>{t("main.overall")}</span>
           <span>
-            {overallWins}W - {overallLosses}L
+            {overallWins}
+            {t("main.w")} - {overallLosses}
+            {t("main.l")}
           </span>
         </div>
         <ProgressBar
@@ -46,9 +50,11 @@ export default function Scores(): JSX.Element {
         />
 
         <div className={classes.title}>
-          <span>Innocent</span>
+          <span>{t("main.innocent")}</span>
           <span>
-            {innocentWins}W - {innocentLosses}L
+            {innocentWins}
+            {t("main.w")} - {innocentLosses}
+            {t("main.l")}
           </span>
         </div>
         <ProgressBar
@@ -59,9 +65,11 @@ export default function Scores(): JSX.Element {
         />
 
         <div className={classes.title}>
-          <span>Impostor</span>
+          <span>{t("main.impostor")}</span>
           <span>
-            {impostorWins}W - {impostorLosses}L
+            {impostorWins}
+            {t("main.w")} - {impostorLosses}
+            {t("main.l")}
           </span>
         </div>
         <ProgressBar
