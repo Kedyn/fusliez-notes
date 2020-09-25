@@ -2,7 +2,7 @@ import { ITheme } from "utils/types";
 import { createUseStyles } from "react-jss";
 
 export default createUseStyles((theme: ITheme) => ({
-  root: {
+  modalContainer: {
     alignItems: "center",
     backgroundColor: "rgba(0, 0, 0, 0.75)",
     display: "flex",
@@ -10,7 +10,7 @@ export default createUseStyles((theme: ITheme) => ({
     left: 0,
     justifyContent: "center",
     overflow: "auto",
-    position: "fixed",
+    position: "absolute",
     top: 0,
     width: "100vw",
     zIndex: 1,

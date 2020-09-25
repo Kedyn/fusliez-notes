@@ -17,7 +17,7 @@ export default function Modal(props: IModalProps): JSX.Element {
     const classes = useStyles();
 
     return (
-      <div className={classes.root} onClick={() => onClose()}>
+      <div className={classes.modalContainer} onClick={() => onClose()}>
         <div
           className={classes.content}
           onClick={(event: React.MouseEvent<HTMLDivElement, MouseEvent>) =>

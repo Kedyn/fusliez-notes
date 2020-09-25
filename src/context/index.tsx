@@ -46,7 +46,6 @@ let data: IData = localData ? JSON.parse(localData) : INITIAL_DATA;
 
 const checkUpdate = (): void => {
   if (localData && data.version != INITIAL_DATA.version) {
-    console.log("here");
     const currentDataKeys = Object.keys(data);
     const localDataKeys = Object.keys(INITIAL_DATA);
     const newData: { [unknown: string]: any } = {}; // eslint-disable-line

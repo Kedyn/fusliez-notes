@@ -64,7 +64,7 @@ export default function App(): JSX.Element {
                     setShowNotes(!showNotes);
                   }}
                 >
-                  v0.8.0 (Preview)
+                  {version}
                 </a>{" "}
                 [9/24/2020] made with &#10084; by the{" "}
                 <a href="https://github.com/Kedyn/fusliez-notes#authors-and-acknowledgment">
@@ -87,11 +87,11 @@ export default function App(): JSX.Element {
               onClose={() => setShowNotes(false)}
             >
               {patchNotes.map(({ title, items }) => (
-                <div>
+                <div key={title}>
                   <h3>{title}</h3>
                   <ul>
                     {items.map((item) => (
-                      <li>{item}</li>
+                      <li key={item}>{item}</li>
                     ))}
                   </ul>
                 </div>

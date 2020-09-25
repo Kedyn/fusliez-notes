@@ -4,7 +4,7 @@ import { createUseStyles } from "react-jss";
 export default createUseStyles((theme: ITheme) => ({
   root: {
     padding: "0.5rem",
-    flexGrow: 1,
+    flex: 1,
   },
   mapNames: {
     display: "flex",
