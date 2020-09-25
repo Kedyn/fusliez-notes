@@ -14,6 +14,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Draggable players on Map
 - Button to reset players on map
 
+### [v0.8.1] - 9/25/2020
+
 #### Fixed
 
 - Minor fix on theme danger button
