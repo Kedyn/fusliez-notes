@@ -35,6 +35,7 @@ export default function App(): JSX.Element {
         "Recovery Notes Modal",
         "Change log Modal",
         "Feedback Modal",
+        "Draggable Players on Map",
       ],
     },
     {
@@ -42,7 +43,7 @@ export default function App(): JSX.Element {
       items: ["Player background color contrast", "Danger theme button"],
     },
     { title: "Changed", items: ["Use names to the settings modal."] },
-    { title: "Removed", items: ["Light theme", "Draggable map characters"] },
+    { title: "Removed", items: ["Light theme"] },
     {
       title: "Developer Notes",
       items: [
