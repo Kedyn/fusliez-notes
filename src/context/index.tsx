@@ -13,7 +13,7 @@ export interface IDataProviderProps {
 }
 
 export const INITIAL_DATA: IData = {
-  version: "0.8.0",
+  version: "0.8.2",
   theme: "dark",
   innocentWins: 0,
   innocentLosses: 0,
@@ -394,7 +394,7 @@ export function DataProvider({ children }: IDataProviderProps): JSX.Element {
           }
         },
         setNotes: (value: string) => {
-          setState("notes", value);
+          setLocalNotes(value);
         },
       }}
     >

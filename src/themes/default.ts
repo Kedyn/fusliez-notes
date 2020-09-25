@@ -22,6 +22,9 @@ export default class DefaultTheme implements ITheme {
   public buttonBackgroundColor: string;
   public buttonTextColor: string;
 
+  public buttonDangerBackgroundColor: string;
+  public buttonDangerTextColor: string;
+
   public borderColor: string;
 
   public linkColor: string;
@@ -52,6 +55,9 @@ export default class DefaultTheme implements ITheme {
 
     this.buttonBackgroundColor = "#6b2fbc";
     this.buttonTextColor = "#fdfdfd";
+
+    this.buttonDangerBackgroundColor = "#8B0000";
+    this.buttonDangerTextColor = "#fdfdfd";
 
     this.borderColor = "#000000";
 
@@ -162,15 +168,11 @@ export default class DefaultTheme implements ITheme {
         textDecoration: "none",
         color: this.linkColor,
       },
-
-      ".far": {
-        fontSize: "2rem",
-        color: this.neutralTextColor,
+      ul: {
+        marginTop: 0,
       },
-
-      ".fas": {
-        fontSize: "2rem",
-        color: this.neutralBackgroundColor,
+      li: {
+        fontSize: "1rem",
       },
     };
   }

@@ -4,12 +4,12 @@ import React from "react";
 import { useData } from "context";
 import useStyles from "./Scores.styles";
 import { useTheme } from "react-jss";
-import { MobileContext } from "components/App";
+import { useTranslation } from "react-i18next";
 
 export default function Scores(): JSX.Element {
   const theme = useTheme<ITheme>();
-  const isMobile = React.useContext(MobileContext);
-  const classes = useStyles({ isMobile });
+  const { t } = useTranslation();
+  const classes = useStyles();
 
   const {
     innocentWins,

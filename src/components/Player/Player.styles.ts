@@ -5,9 +5,10 @@ import { createUseStyles } from "react-jss";
 export default createUseStyles((theme: ITheme) => ({
   container: (props) => ({
     alignItems: "center",
-    backgroundColor: props.name
-      ? `rgba(${props.backgroundColor}, 0.7)`
-      : "transparent",
+    backgroundColor:
+      props.name || !props.names
+        ? `rgba(${props.backgroundColor}, 0.7)`
+        : "transparent",
     border: `1px solid ${theme.borderColor}`,
     borderRadius: "0.25rem",
     display: "flex",

@@ -1,0 +1,80 @@
+{
+  "main": {
+    "overall": "Overall",
+    "innocent": "Innocent",
+    "impostor": "Impostor",
+    "w": "W",
+    "l": "L",
+    "player": "Player",
+    "lists": {
+      "innocent": "Innocent",
+      "suspicious": "Suspicious",
+      "evil": "Evil",
+      "hitList": "Hit List",
+      "dead": "Dead",
+      "unknown": "Unknown"
+    }
+  },
+  "controls": {
+    "wins": "Wins",
+    "losses": "Losses",
+    "innocent": "Innocent",
+    "impostor": "Impostor",
+    "resetScores": "Reset Scores",
+    "resetRound": "Reset Round",
+    "resetAll": "Reset All",
+    "notes": "Notes",
+    "resetNotes": "Reset Notes",
+    "settings": "Settings"
+  },
+  "maps": {
+    "vents": "Vents",
+    "commonTasks": "Common Tasks",
+    "wiringTasks": "Wiring Tasks",
+    "ventConnections": "Vent Connections",
+    "securityCameras": "Security Cameras",
+    "cameraZones": "Camera Zones",
+    "reactor": "Reactor",
+    "upperEngine": "Upper Engine",
+    "lowerEngine": "Lower Engine",
+    "security": "Security",
+    "medBay": "MedBay",
+    "electrical": "Electrical",
+    "storage": "Storage",
+    "cafeteria": "Cafeteria",
+    "admin": "Admin",
+    "communications": "Communications",
+    "shields": "Shields",
+    "o2": "O2",
+    "weapons": "Weapons",
+    "navigation": "Navigation",
+    "launchpad": "Launchpad",
+    "laboratory": "Laboratory",
+    "lockerRoom": "Locker Room",
+    "office": "Office",
+    "greenhouse": "Greenhouse",
+    "balcony": "Balcony",
+    "specimenRoom": "Specimen Room",
+    "east": "1. East",
+    "central": "2. Central",
+    "northeast": "3. Northeast",
+    "south": "4. South",
+    "southwest": "5. Southwest",
+    "northwest": "6. Northwest"
+  },
+  "settings": {
+    "title": "Settings",
+    "usePlayerNames": "Use player names",
+    "language": "Language"
+  },
+  "recovery": {
+    "title": "Recover old Notes",
+    "recover": "Recover",
+    "ignore": "Ignore",
+    "message": {
+      "1": "It seems that you have old notes that can be recovered.",
+      "2": "Click Recover to add this notes to your current notes.",
+      "3": "Click Ignore to delete the old notes and keep your current ones."
+    }
+  }
+}

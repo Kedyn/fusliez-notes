@@ -1,6 +1,6 @@
 {
   "name": "fusliez-notes",
-  "version": "0.7.0",
+  "version": "0.8.2",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -15,12 +15,16 @@
   "license": "MIT",
   "dependencies": {
     "beautiful-react-hooks": "^0.30.1",
+    "i18next": "^19.7.0",
+    "i18next-browser-languagedetector": "^6.0.1",
+    "i18next-http-backend": "^1.0.21",
     "jss-preset-default": "^10.4.0",
     "react": "^16.13.1",
     "react-circular-progressbar": "^2.0.3",
     "react-dom": "^16.13.1",
     "react-draggable": "^4.4.3",
     "react-icons": "^3.11.0",
+    "react-i18next": "^11.7.3",
     "react-jss": "^10.4.0",
     "react-sortablejs": "^2.0.11"
   },

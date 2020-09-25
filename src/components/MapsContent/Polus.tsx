@@ -1,8 +1,11 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 export default function Polus(
   props: React.SVGProps<SVGSVGElement>
 ): JSX.Element {
+  const { t } = useTranslation();
+
   return (
     <svg viewBox="0 0 1366 768" {...props}>
       <title>{"Polus"}</title>
@@ -22,7 +25,7 @@ export default function Polus(
         fill="#fff"
         preserveAspectRatio="xMidYMid meet"
       >
-        {"Electrical"}
+        {t("maps.electrical")}
       </text>
       <text
         fontWeight="bold"
@@ -35,7 +38,7 @@ export default function Polus(
         fill="#fff"
         preserveAspectRatio="xMidYMid meet"
       >
-        {"Security"}
+        {t("maps.security")}
       </text>
       <text
         fontWeight="bold"
@@ -48,7 +51,7 @@ export default function Polus(
         fill="#fff"
         preserveAspectRatio="xMidYMid meet"
       >
-        {"1. EAST"}
+        {t("maps.east")}
       </text>
       <text
         fontWeight="bold"
@@ -62,7 +65,7 @@ export default function Polus(
         fill="#fff"
         preserveAspectRatio="xMidYMid meet"
       >
-        {"Storage"}
+        {t("maps.storage")}
       </text>
       <text
         fontWeight="bold"
@@ -76,7 +79,7 @@ export default function Polus(
         fill="#fff"
         preserveAspectRatio="xMidYMid meet"
       >
-        {"Laboratory"}
+        {t("maps.laboratory")}
       </text>
       <text
         fontWeight="bold"
@@ -90,7 +93,7 @@ export default function Polus(
         fill="#fff"
         preserveAspectRatio="xMidYMid meet"
       >
-        {"Specimen Room"}
+        {t("maps.specimenRoom")}
       </text>
       <text
         transform="rotate(45 684.608 655)"
@@ -105,7 +108,7 @@ export default function Polus(
         fill="#fff"
         preserveAspectRatio="xMidYMid meet"
       >
-        {"Admin"}
+        {t("maps.admin")}
       </text>
       <text
         fontWeight="bold"
@@ -119,7 +122,7 @@ export default function Polus(
         fill="#fff"
         preserveAspectRatio="xMidYMid meet"
       >
-        {"Weapons"}
+        {t("maps.weapons")}
       </text>
       <text
         transform="rotate(45 434.608 494)"
@@ -134,7 +137,7 @@ export default function Polus(
         fill="#fff"
         preserveAspectRatio="xMidYMid meet"
       >
-        {"Communications"}
+        {t("maps.communications")}
       </text>
       <text
         fontWeight="bold"
@@ -148,7 +151,7 @@ export default function Polus(
         fill="#fff"
         preserveAspectRatio="xMidYMid meet"
       >
-        {"Office"}
+        {t("maps.office")}
       </text>
       <text
         fontWeight="bold"
@@ -162,7 +165,7 @@ export default function Polus(
         fill="#fff"
         preserveAspectRatio="xMidYMid meet"
       >
-        {"O2"}
+        {t("maps.o2")}
       </text>
       <text
         fontWeight="bold"
@@ -176,7 +179,7 @@ export default function Polus(
         fill="#fff"
         preserveAspectRatio="xMidYMid meet"
       >
-        {"2. CENTRAL"}
+        {t("maps.central")}
       </text>
       <text
         fontWeight="bold"
@@ -190,7 +193,7 @@ export default function Polus(
         fill="#fff"
         preserveAspectRatio="xMidYMid meet"
       >
-        {"3. NORTHEAST"}
+        {t("maps.northeast")}
       </text>
       <text
         fontWeight="bold"
@@ -204,7 +207,7 @@ export default function Polus(
         fill="#fff"
         preserveAspectRatio="xMidYMid meet"
       >
-        {"4. SOUTH"}
+        {t("maps.south")}
       </text>
       <text
         fontWeight="bold"
@@ -218,7 +221,7 @@ export default function Polus(
         fill="#fff"
         preserveAspectRatio="xMidYMid meet"
       >
-        {"5. SOUTHWEST"}
+        {t("maps.southwest")}
       </text>
       <text
         fontWeight="bold"
@@ -232,7 +235,7 @@ export default function Polus(
         fill="#fff"
         preserveAspectRatio="xMidYMid meet"
       >
-        {"6. NORTHWEST"}
+        {t("maps.northwest")}
       </text>
       <text
         fontFamily="Titillium Web, sans-serif"
@@ -245,7 +248,7 @@ export default function Polus(
         fill="#fff"
         preserveAspectRatio="xMidYMid meet"
       >
-        {"Vents"}
+        {t("maps.vents")}
       </text>
       <text
         fontFamily="Titillium Web, sans-serif"
@@ -258,7 +261,7 @@ export default function Polus(
         fill="#fff"
         preserveAspectRatio="xMidYMid meet"
       >
-        {"Common Tasks"}
+        {t("maps.commonTasks")}
       </text>
       <text
         fontFamily="Titillium Web, sans-serif"
@@ -271,7 +274,7 @@ export default function Polus(
         fill="#fff"
         preserveAspectRatio="xMidYMid meet"
       >
-        {"Wiring Tasks"}
+        {t("maps.wiringTasks")}
       </text>
       <text
         fontFamily="Titillium Web, sans-serif"
@@ -284,7 +287,7 @@ export default function Polus(
         fill="#fff"
         preserveAspectRatio="xMidYMid meet"
       >
-        {"Vent Connections"}
+        {t("maps.ventConnections")}
       </text>
       <text
         fontFamily="Titillium Web, sans-serif"
@@ -297,7 +300,7 @@ export default function Polus(
         fill="#fff"
         preserveAspectRatio="xMidYMid meet"
       >
-        {"Security Cameras"}
+        {t("maps.securityCameras")}
       </text>
       <text
         fontFamily="Titillium Web, sans-serif"
@@ -310,7 +313,7 @@ export default function Polus(
         fill="#fff"
         preserveAspectRatio="xMidYMid meet"
       >
-        {"Camera Zones"}
+        {t("maps.cameraZones")}
       </text>
       <ellipse
         ry={3}

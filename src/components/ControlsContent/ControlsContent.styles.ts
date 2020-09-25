@@ -1,6 +1,6 @@
 import { ITheme } from "utils/types";
-import colorNameToRGB from "utils/colorConverter";
 import { createUseStyles } from "react-jss";
+import { hexToRGB } from "utils/colorConverter";
 
 export default createUseStyles((theme: ITheme) => ({
   root: {
@@ -40,10 +40,13 @@ export default createUseStyles((theme: ITheme) => ({
   },
   dangerButton: {
     marginTop: "0.5rem",
-    backgroundColor: "darkred",
+    backgroundColor: theme.buttonDangerBackgroundColor,
+    color: theme.buttonDangerTextColor,
 
     "&:hover": {
-      backgroundColor: `rgba(${colorNameToRGB("darkred")},0.75)`,
+      backgroundColor: `rgba(${hexToRGB(
+        theme.buttonDangerBackgroundColor
+      )}, 0.75)`,
     },
   },
   settingsButton: {
@@ -51,7 +54,7 @@ export default createUseStyles((theme: ITheme) => ({
     backgroundColor: "slategray",
 
     "&:hover": {
-      backgroundColor: `rgba(${colorNameToRGB("slategray")},0.75)`,
+      backgroundColor: `rgba(${hexToRGB("slategray")},0.75)`,
     },
   },
   notesContainer: {

@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Released]
 
+### [v0.8.2] - 9/25/2020
+
+#### Fixed
+
+- Minor fix on theme danger button
+
 ### [v0.8.0] - 9/24/2020
 
 Switched to Kevin Han's (@khany) UI design.
@@ -22,6 +28,7 @@ Switched to Kevin Han's (@khany) UI design.
 - Settings Modal
 - Recovery Notes Modal
 - Changelog Modal
+- Draggable players on Map
 
 #### Fixed
 
@@ -34,7 +41,6 @@ Switched to Kevin Han's (@khany) UI design.
 #### Removed
 
 - Light theme
-- Draggable map characters
 
 ### [v0.7.0] - 9/15/2020
 
@@ -96,6 +102,12 @@ Project fusliez notes begins, prototype release.
 Features included draggable players and progress bar for score.
 
 ## [Unreleased]
+
+### [v0.9.0]
+
+#### Added
+
+- Multiple language support
 
 ### [v0.1.0] - 8/24/2020
 

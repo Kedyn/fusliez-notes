@@ -23,7 +23,10 @@ export default class DarkTheme extends DefaultTheme {
     this.impostorTextColor = "#7289da";
 
     this.buttonBackgroundColor = "#6b2fbc";
-    this.buttonTextColor = "#f6edf6";
+    this.buttonTextColor = "#ffffff";
+
+    this.buttonDangerBackgroundColor = "#8B0000";
+    this.buttonDangerTextColor = "#ffffff";
 
     this.borderColor = "#36383a";
 
