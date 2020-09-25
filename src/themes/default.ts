@@ -162,6 +162,12 @@ export default class DefaultTheme implements ITheme {
         textDecoration: "none",
         color: this.linkColor,
       },
+      ul: {
+        marginTop: 0,
+      },
+      li: {
+        fontSize: "1rem",
+      },
     };
   }
 }
