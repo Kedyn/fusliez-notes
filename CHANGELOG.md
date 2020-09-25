@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Released]
 
+### [v0.8.1] - 9/25/2020
+
+#### Fixed
+
+- Minor fix on theme danger button
+
 ### [v0.8.0] - 9/24/2020
 
 Switched to Kevin Han's (@khany) UI design.

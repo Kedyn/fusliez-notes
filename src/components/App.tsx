@@ -37,7 +37,10 @@ export default function App(): JSX.Element {
         "Feedback Modal",
       ],
     },
-    { title: "Fixed", items: ["Player background color contrast"] },
+    {
+      title: "Fixed",
+      items: ["Player background color contrast", "Danger theme button"],
+    },
     { title: "Changed", items: ["Use names to the settings modal."] },
     { title: "Removed", items: ["Light theme", "Draggable map characters"] },
     {
@@ -101,7 +104,7 @@ export default function App(): JSX.Element {
             <Recovery />
             {/* CHANGE LOG */}
             <Modal
-              title="Change Log v0.8.0"
+              title={`Change Log v${version}`}
               show={showNotes}
               onClose={() => setShowNotes(false)}
             >
