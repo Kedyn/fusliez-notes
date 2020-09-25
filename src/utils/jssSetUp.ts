@@ -6,15 +6,15 @@ import preset from "jss-preset-default";
 export default function jssSetUp(theme: ITheme): SheetsRegistry {
   jss.setup(preset());
 
-  const sheets_registry = new SheetsRegistry();
+  const sheetsRegistry = new SheetsRegistry();
 
-  const global_style_sheet = jss
+  const globalStyleSheet = jss
     .createStyleSheet({
       "@global": theme.global,
     })
     .attach();
 
-  sheets_registry.add(global_style_sheet);
+  sheetsRegistry.add(globalStyleSheet);
 
-  return sheets_registry;
+  return sheetsRegistry;
 }

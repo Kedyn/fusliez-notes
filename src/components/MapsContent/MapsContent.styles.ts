@@ -3,48 +3,25 @@ import { createUseStyles } from "react-jss";
 
 export default createUseStyles((theme: ITheme) => ({
   root: {
-    flex: 3,
     padding: "0.5rem",
-  },
-  button: {
-    backgroundColor: theme.background_secondary,
-    color: "#ffffff",
-    fontSize: "1rem",
-    margin: "0.25rem",
-    "&:hover": {
-      backgroundColor: "#5a6268", // should not be hard coded but just for now
-    },
-  },
-  buttonsContainer: {
-    display: "flex",
-    justifyContent: "space-between",
-    margin: "0.5rem 0",
+    flex: 1,
   },
   mapNames: {
     display: "flex",
-    justifyContent: "space-between",
+    justifyContent: "space-around",
     alignItems: "center",
     marginBottom: "0.5rem",
   },
   mapName: {
     boxSizing: "border-box",
     cursor: "pointer",
-    flex: 1,
-    width: "33%",
-    height: "100%",
+    maxHeight: "4rem",
     borderRadius: "50rem",
   },
-  activeButton: {
-    border: `2px solid ${theme.text_primary}`,
-  },
   activeMap: {
-    border: `0.5rem solid seagreen`,
+    border: `0.25rem solid ${theme.buttonTextColor}`,
   },
   wrapper: {
     position: "relative",
-  },
-  map: {
-    width: "100%",
-    borderRadius: "12px",
   },
 }));

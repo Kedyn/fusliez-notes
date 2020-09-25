@@ -4,93 +4,103 @@ import { JssStyle } from "jss";
 export default class DefaultTheme implements ITheme {
   public name: string;
 
-  public background_primary: string;
-  public background_secondary: string;
-  public background_tertiary: string;
-  public background_success: string;
-  public background_danger: string;
-  public text_primary: string;
-  public text_secondary: string;
-  public text_shadow: string;
-  public font_family: string;
-  public font_size: number;
-  public border: string;
+  public backgroundColor: string;
+  public textColor: string;
+
+  public inputBackgroundColor: string;
+  public inputTextColor: string;
+
+  public neutralBackgroundColor: string;
+  public neutralTextColor: string;
+
+  public innocentBackgroundColor: string;
+  public innocentTextColor: string;
+
+  public impostorBackgroundColor: string;
+  public impostorTextColor: string;
+
+  public buttonBackgroundColor: string;
+  public buttonTextColor: string;
+
+  public borderColor: string;
+
+  public linkColor: string;
+
+  public fontFamily: string;
+  public fontSize: number;
 
   public global: JssStyle;
 
   public constructor() {
     this.name = "default";
 
-    this.background_primary = "#ffffff";
-    this.background_secondary = "#6c757d";
-    this.background_tertiary = "#343a40";
-    this.background_success = "#28a745";
-    this.background_danger = "rgba(220, 53, 69, 0.5)";
-    this.text_primary = "#000000";
-    this.text_secondary = "#343a40";
-    this.text_shadow =
-      "rgb(255, 255, 255) -1px -1px 0px, rgb(255, 255, 255) 1px -1px 0px, rgb(255, 255, 255) -1px 1px 0px, rgb(255, 255, 255) 1px 1px 0px";
-    this.font_family = "Titillium Web, sans-serif";
-    this.font_size = 20;
-    this.border = "#000000";
+    this.backgroundColor = "#fdfdfd";
+    this.textColor = "#202225";
+
+    this.inputBackgroundColor = "#fdfdfd";
+    // this.inputTextColor = "#202225";
+    this.inputTextColor = "#000000";
+
+    this.neutralBackgroundColor = "#ee54bb";
+    this.neutralTextColor = "#fdfdfd";
+
+    this.innocentBackgroundColor = "#905da9";
+    this.innocentTextColor = "#fdfdfd";
+
+    this.impostorBackgroundColor = "#7289da";
+    this.impostorTextColor = "#fdfdfd";
+
+    this.buttonBackgroundColor = "#6b2fbc";
+    this.buttonTextColor = "#fdfdfd";
+
+    this.borderColor = "#000000";
+
+    this.linkColor = "#ee54bb";
+
+    this.fontFamily = "Titillium Web, sans-serif";
+    this.fontSize = 20;
 
     this.global = {
-      html: {
-        boxSizing: "border-box",
-      },
       "*, *:before, *:after": {
         boxSizing: "inherit",
       },
+      html: {
+        boxSizing: "border-box",
+      },
       body: {
         margin: 0,
-        backgroundColor: this.background_primary,
-        color: this.text_primary,
-        fontFamily: this.font_family,
-        fontSize: this.font_size,
+        backgroundColor: this.backgroundColor,
+        color: this.textColor,
+        fontFamily: this.fontFamily,
+        fontSize: this.fontSize,
       },
       "#root": {
-        minHeight: "100vh",
-        maxWidth: "100vw",
         display: "flex",
         flexDirection: "column",
-      },
-      img: {
-        maxWidth: "100%",
-        height: "auto",
-        verticalAlign: "middle",
-      },
-      'input[type="text"],input[type="number"],input[type="text"]:focus,input[type="number"]:focus': {
-        background: "transparent",
-        appearance: "none",
-        border: "none",
-        boxShadow: "none",
-        color: this.text_primary,
-      },
-      textarea: {
-        fontFamily: "inherit",
-        padding: ".375rem .75rem",
-        border: `1px solid ${this.border}`,
-        borderRadius: "0.25rem",
-      },
-      button: {
-        textAlign: "center",
-        border: "1px solid transparent",
-        padding: ".375rem .75rem",
-        fontFamily: "inherit",
-        borderRadius: "0.25rem",
-        transition:
-          "color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out",
-        display: "block",
-        width: "100%",
-        cursor: "pointer",
+        height: "100vh",
+        maxWidth: "1920px",
+        margin: "0 auto",
+        width: "100vw",
+        overflowX: "hidden",
       },
       main: {
-        display: "flex",
         flexGrow: 1,
-        maxWidth: "1600px",
-        margin: "0 auto",
-        padding: "0.5rem",
-        width: "100%",
+        display: "flex",
+        margin: "0 1rem",
+      },
+      footer: {
+        textAlign: "center",
+        fontSize: "smaller",
+      },
+      "#main": {
+        width: 320,
+        minWidth: 320,
+        padding: "1rem",
+      },
+      "#controls": {
+        width: 320,
+        minWidth: 320,
+        padding: "1rem",
       },
       h1: {
         fontSize: "2rem",
@@ -102,70 +112,61 @@ export default class DefaultTheme implements ITheme {
         fontWeight: "500",
         lineHeight: "1.2",
       },
-      "#main": {
-        maxWidth: 320,
-        minWidth: 320,
+      h3: {
+        margin: 0,
       },
-      "#controls": {
-        maxWidth: 320,
-        minWidth: 320,
+      h4: {
+        margin: ".5rem 0",
       },
-      "#maps": {
-        flexGrow: 1,
+      img: {
+        maxWidth: "100%",
+        height: "auto",
       },
-      ".player-handle": {
-        cursor: "grab",
-
-        "&:active": {
-          cursor: "grabbing",
-        },
+      'input[type="text"],input[type="number"],input[type="text"]:focus,input[type="number"]:focus': {
+        backgroundColor: "transparent",
+        color: this.inputTextColor,
+        appearance: "none",
+        border: "none",
+        boxShadow: "none",
       },
-      ".blue": {
-        backgroundColor: "blue",
+      "input::-webkit-outer-spin-button,input::-webkit-inner-spin-button": {
+        "-webkit-appearance": "none",
+        margin: 0,
       },
-      ".brown": {
-        backgroundColor: "brown",
+      "input[type=number]": {
+        "-moz-appearance": "textfield",
       },
-      ".gray": {
-        backgroundColor: "gray",
+      textarea: {
+        backgroundColor: this.inputBackgroundColor,
+        color: this.inputTextColor,
+        fontFamily: "inherit",
+        padding: ".375rem .75rem",
+        border: `1px solid ${this.borderColor}`,
+        borderRadius: "0.5rem",
       },
-      ".green": {
-        backgroundColor: "green",
-      },
-      ".lightGreen": {
-        backgroundColor: "lightGreen",
-      },
-      ".orange": {
-        backgroundColor: "orange",
-      },
-      ".pink": {
-        backgroundColor: "pink",
-      },
-      ".purple": {
-        backgroundColor: "purple",
-      },
-      ".red": {
-        backgroundColor: "red",
-      },
-      ".teal": {
-        backgroundColor: "teal",
-      },
-      ".white": {
-        backgroundColor: "white",
-      },
-      ".yellow": {
-        backgroundColor: "yellow",
-      },
-      footer: {
+      button: {
         textAlign: "center",
-        fontSize: "smaller",
+        border: "1px solid transparent",
+        padding: ".375rem .75rem",
+        fontFamily: "inherit",
+        borderRadius: "0.5rem",
+        transition:
+          "color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out",
+        display: "block",
+        width: "100%",
+        cursor: "pointer",
+        backgroundColor: this.buttonBackgroundColor,
+        color: this.buttonTextColor,
       },
       a: {
         textDecoration: "none",
-        color: "orange",
+        color: this.linkColor,
       },
-      [`@media (max-width: 1200px)`]: {
-        "#maps": { display: "none" },
+      ul: {
+        marginTop: 0,
+      },
+      li: {
+        fontSize: "1rem",
       },
     };
   }

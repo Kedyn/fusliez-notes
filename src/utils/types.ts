@@ -9,25 +9,41 @@ export interface IPlayer extends ItemInterface {
 export interface ITheme {
   name: string;
 
-  background_primary: string;
-  background_secondary: string;
-  background_tertiary: string;
-  background_success: string;
-  background_danger: string;
-  text_primary: string;
-  text_secondary: string;
-  text_shadow: string;
-  font_family: string;
-  font_size: number;
-  border: string;
+  backgroundColor: string;
+  textColor: string;
+
+  inputBackgroundColor: string;
+  inputTextColor: string;
+
+  neutralBackgroundColor: string;
+  neutralTextColor: string;
+
+  innocentBackgroundColor: string;
+  innocentTextColor: string;
+
+  impostorBackgroundColor: string;
+  impostorTextColor: string;
+
+  buttonBackgroundColor: string;
+  buttonTextColor: string;
+
+  fontFamily: string;
+  fontSize: number;
+
+  borderColor: string;
+
+  linkColor: string;
 
   global: JssStyle;
 }
 
 export interface IDataContext {
+  version: string;
   theme: ITheme;
-  wins: number;
-  games: number;
+  innocentWins: number;
+  innocentLosses: number;
+  impostorWins: number;
+  impostorLosses: number;
   names: boolean;
   innocentPlayers: Array<IPlayer>;
   susPlayers: Array<IPlayer>;
@@ -35,11 +51,14 @@ export interface IDataContext {
   deadPlayers: Array<IPlayer>;
   unknownPlayers: Array<IPlayer>;
   notes: string;
-  resetRound: () => void;
+  resetPlayersPositions: () => void;
+  resetGames: () => void;
   resetAll: () => void;
   setTheme: (value: ITheme) => void;
-  setWins: (value: number) => void;
-  setGames: (value: number) => void;
+  setInnocentWins: (value: number) => void;
+  setInnocentLosses: (value: number) => void;
+  setImpostorWins: (value: number) => void;
+  setImpostorLosses: (value: number) => void;
   setNames: (value: boolean) => void;
   setInnocentPlayers: (value: Array<IPlayer>) => void;
   setSusPlayers: (value: Array<IPlayer>) => void;
@@ -50,9 +69,12 @@ export interface IDataContext {
 }
 
 export interface IData {
+  version: string;
   theme: string;
-  wins: number;
-  games: number;
+  innocentWins: number;
+  innocentLosses: number;
+  impostorWins: number;
+  impostorLosses: number;
   names: boolean;
   innocentPlayers: Array<IPlayer>;
   susPlayers: Array<IPlayer>;

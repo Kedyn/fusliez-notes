@@ -2,9 +2,9 @@ import { IPlayer } from "utils/types";
 import Player from "components/Player";
 import React from "react";
 import { ReactSortable } from "react-sortablejs";
+import colorNameToRGB from "utils/colorConverter";
 import { useData } from "context";
 import useStyles from "./Section.styles";
-import colorNameToRGB from "utils/colorConverter";
 
 export interface ISectionProps {
   title: string;
@@ -44,6 +44,8 @@ export default function Section(props: ISectionProps): JSX.Element {
                   ? "cornflowerblue"
                   : color === "purple"
                   ? "darkorchid"
+                  : color === "red"
+                  ? "scarlet"
                   : color
               )}
               color={color}

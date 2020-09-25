@@ -1,4 +1,3 @@
-import Header from "components/Header";
 import PlayersSection from "components/PlayersSection";
 import React from "react";
 import Scores from "components/Scores";
@@ -8,9 +7,7 @@ export default function MainContent(): JSX.Element {
   const classes = useStyles();
 
   return (
-    <div className={classes.root}>
-      <Header />
-
+    <div id="main" className={classes.root}>
       <Scores />
 
       <PlayersSection />

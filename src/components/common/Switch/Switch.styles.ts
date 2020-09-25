@@ -1,5 +1,6 @@
 import { ITheme } from "utils/types";
 import { createUseStyles } from "react-jss";
+import { hexToRGB } from "utils/colorConverter";
 
 export default createUseStyles((theme: ITheme) => ({
   root: {},
@@ -16,7 +17,7 @@ export default createUseStyles((theme: ITheme) => ({
     outline: "none",
     border: "none",
     cursor: "pointer",
-    backgroundColor: theme.background_tertiary,
+    backgroundColor: `rgba(${hexToRGB(theme.buttonBackgroundColor)}, 0.5)`,
     transition: "background-color ease 0.3s",
     margin: "auto",
     marginRight: "0.5rem",
@@ -28,20 +29,20 @@ export default createUseStyles((theme: ITheme) => ({
       zIndex: "2",
       width: "1rem",
       height: "1rem",
-      background: "#fff",
+      background: theme.buttonTextColor,
       borderRadius: "50%",
       textTransform: "uppercase",
-      fontWeight: "bold",
-      textIndent: "-1.5rem",
-      wordSpacing: "1.5rem",
-      color: "#ffffff",
-      textShadow: "-1px -1px rgba(0,0,0,0.15)",
+      textIndent: "-1.6rem",
+      wordSpacing: "1.4rem",
+      color: theme.buttonTextColor,
+      fontSize: "0.75rem",
+      padding: "0.125rem 0",
       whiteSpace: "nowrap",
       boxShadow: "0 1px 2px rgba(0,0,0,0.2)",
       transition: "all cubic-bezier(0.3, 1.5, 0.7, 1) 0.3s",
     },
     "&:checked": {
-      backgroundColor: theme.background_secondary,
+      backgroundColor: theme.buttonBackgroundColor,
     },
     "&:checked:before": {
       left: "2rem",
