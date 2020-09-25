@@ -4,6 +4,7 @@ import Input from "components/common/Input";
 import React from "react";
 import { useData } from "context";
 import useStyles from "./Player.styles";
+import { useTranslation } from "react-i18next";
 
 export interface IPlayerProps {
   id: string | number;
@@ -19,6 +20,7 @@ export default function Player(props: IPlayerProps): JSX.Element {
   const [isMenuShowing, setIsMenuShowing] = React.useState(false);
 
   const { names } = useData()!; // eslint-disable-line
+  const { t } = useTranslation();
   const classes = useStyles({ names, ...props });
 
   const { id, color, name, list, setList, index } = props;
@@ -58,7 +60,7 @@ export default function Player(props: IPlayerProps): JSX.Element {
       {names && (
         <div className={classes.name}>
           <Input
-            placeholder="Player"
+            placeholder={t("main.player")}
             className={classes.input}
             onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
               handleChange(index, event)

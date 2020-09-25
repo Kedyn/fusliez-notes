@@ -3,6 +3,7 @@ import React from "react";
 import Section from "components/Section";
 import { useData } from "context";
 import useStyles from "./PlayersSection.styles";
+import { useTranslation } from "react-i18next";
 
 export default function PlayersSection(): JSX.Element {
   const {
@@ -18,6 +19,7 @@ export default function PlayersSection(): JSX.Element {
     setUnknownPlayers,
   } = useData()!; // eslint-disable-line
 
+  const { t } = useTranslation();
   const classes = useStyles();
 
   interface Section {
@@ -28,27 +30,27 @@ export default function PlayersSection(): JSX.Element {
 
   const sections: Array<Section> = [
     {
-      title: "Innocent",
+      title: t("main.lists.innocent"),
       list: innocentPlayers,
       setList: setInnocentPlayers,
     },
     {
-      title: "Suspicious",
+      title: t("main.lists.suspicious"),
       list: susPlayers,
       setList: setSusPlayers,
     },
     {
-      title: "Evil / Hit List",
+      title: `${t("main.lists.evil")} / ${t("main.lists.hitList")}`,
       list: evilPlayers,
       setList: setEvilPlayers,
     },
     {
-      title: "Dead",
+      title: t("main.lists.dead"),
       list: deadPlayers,
       setList: setDeadPlayers,
     },
     {
-      title: "Unknown",
+      title: t("main.lists.unknown"),
       list: unknownPlayers,
       setList: setUnknownPlayers,
     },
