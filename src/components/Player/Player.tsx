@@ -1,3 +1,4 @@
+import ColorsMenu from "../ColorsMenu";
 import { IPlayer } from "utils/types";
 import Input from "components/common/Input";
 import React from "react";
@@ -15,12 +16,12 @@ export interface IPlayerProps {
 }
 
 export default function Player(props: IPlayerProps): JSX.Element {
-  const classes = useStyles(props);
+  const [isMenuShowing, setIsMenuShowing] = React.useState(false);
+
   const { names } = useData()!; // eslint-disable-line
+  const classes = useStyles({ names, ...props });
 
-  const { color, name, list, setList, index } = props;
-
-  const player_class = "player-handle";
+  const { id, color, name, list, setList, index } = props;
 
   const handleChange = (
     player: number,
@@ -34,12 +35,30 @@ export default function Player(props: IPlayerProps): JSX.Element {
   };
 
   return (
-    <div className={`${classes.container} ${player_class}`}>
-      <img src={`assets/${color}.png`} alt={color} className={player_class} />
+    <div className={`${classes.container} player-handle`}>
+      {isMenuShowing && (
+        <ColorsMenu
+          isMenuShowing={isMenuShowing}
+          setIsMenuShowing={setIsMenuShowing}
+          currentColor={id}
+        />
+      )}
+      <div className={classes.icon}>
+        <img
+          onClick={() => {
+            if (names) {
+              setIsMenuShowing(!isMenuShowing);
+            }
+          }}
+          src={`assets/${color}.png`}
+          alt={color}
+          className="player-handle"
+        />
+      </div>
       {names && (
         <div className={classes.name}>
           <Input
-            placeholder="Player Name"
+            placeholder="Player"
             className={classes.input}
             onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
               handleChange(index, event)

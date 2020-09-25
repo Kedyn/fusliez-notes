@@ -1,4 +1,4 @@
-export default function colorNameToRGB(color: string) {
+export default function colorNameToRGB(color: string): string {
   interface Color {
     [key: string]: string;
   }
@@ -126,7 +126,7 @@ export default function colorNameToRGB(color: string) {
     saddlebrown: "#8b4513",
     salmon: "#fa8072",
     sandybrown: "#f4a460",
-    scarlet: "#fc1a17",
+    scarlet: "#ff2400",
     seagreen: "#2e8b57",
     seashell: "#fff5ee",
     sienna: "#a0522d",
@@ -150,22 +150,23 @@ export default function colorNameToRGB(color: string) {
     yellowgreen: "#9acd32",
   };
 
-  function hexToRGB(hex: string) {
-    let r = 0,
-      g = 0,
-      b = 0;
-
-    hex = hex.replace("#", "");
-
-    r = parseInt(hex.slice(0, 2), 16);
-    g = parseInt(hex.slice(2, 4), 16);
-    b = parseInt(hex.slice(4, 6), 16);
-
-    return `${r},${g},${b}`;
+  if (typeof colors[color.toLowerCase()] != "undefined") {
+    return hexToRGB(colors[color.toLowerCase()]);
   }
 
-  if (typeof colors[color.toLowerCase()] != "undefined")
-    return hexToRGB(colors[color.toLowerCase()]);
+  return "0, 0, 0";
+}
 
-  return false;
+export function hexToRGB(hex: string): string {
+  let r = 0,
+    g = 0,
+    b = 0;
+
+  hex = hex.replace("#", "");
+
+  r = parseInt(hex.slice(0, 2), 16);
+  g = parseInt(hex.slice(2, 4), 16);
+  b = parseInt(hex.slice(4, 6), 16);
+
+  return `${r},${g},${b}`;
 }

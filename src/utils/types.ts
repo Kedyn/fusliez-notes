@@ -9,75 +9,77 @@ export interface IPlayer extends ItemInterface {
 export interface ITheme {
   name: string;
 
-  background_primary: string;
-  background_secondary: string;
-  background_tertiary: string;
-  background_success: string;
-  background_danger: string;
-  background_crewmate_success: string;
-  background_crewmate_danger: string;
-  background_impostor_success: string;
-  background_impostor_danger: string;
-  text_primary: string;
-  text_secondary: string;
-  text_shadow: string;
-  font_family: string;
-  font_size: number;
-  border: string;
+  backgroundColor: string;
+  textColor: string;
+
+  inputBackgroundColor: string;
+  inputTextColor: string;
+
+  neutralBackgroundColor: string;
+  neutralTextColor: string;
+
+  innocentBackgroundColor: string;
+  innocentTextColor: string;
+
+  impostorBackgroundColor: string;
+  impostorTextColor: string;
+
+  buttonBackgroundColor: string;
+  buttonTextColor: string;
+
+  fontFamily: string;
+  fontSize: number;
+
+  borderColor: string;
+
+  linkColor: string;
 
   global: JssStyle;
 }
 
 export interface IDataContext {
+  version: string;
   theme: ITheme;
-  wins: number;
-  games: number;
-  crewmateWins: number;
-  crewmateGames: number;
+  innocentWins: number;
+  innocentLosses: number;
   impostorWins: number;
-  impostorGames: number;
+  impostorLosses: number;
   names: boolean;
   innocentPlayers: Array<IPlayer>;
   susPlayers: Array<IPlayer>;
   evilPlayers: Array<IPlayer>;
   deadPlayers: Array<IPlayer>;
   unknownPlayers: Array<IPlayer>;
-  unusedPlayers: Array<IPlayer>;
   notes: string;
-  resetRound: () => void;
+  resetPlayersPositions: () => void;
+  resetGames: () => void;
   resetAll: () => void;
   setTheme: (value: ITheme) => void;
-  // setWins: (value: number) => void;
-  // setGames: (value: number) => void;
-  setWinsAndGames: (key: string, value: number) => void;
-  setPlayers: (key: string, value: Array<IPlayer>) => void;
-  // setNames: (value: boolean) => void;
+  setInnocentWins: (value: number) => void;
+  setInnocentLosses: (value: number) => void;
+  setImpostorWins: (value: number) => void;
+  setImpostorLosses: (value: number) => void;
+  setNames: (value: boolean) => void;
   setInnocentPlayers: (value: Array<IPlayer>) => void;
   setSusPlayers: (value: Array<IPlayer>) => void;
   setEvilPlayers: (value: Array<IPlayer>) => void;
   setDeadPlayers: (value: Array<IPlayer>) => void;
   setUnknownPlayers: (value: Array<IPlayer>) => void;
-  setUnusedPlayers: (value: Array<IPlayer>) => void;
   setNotes: (value: string) => void;
 }
 
 export interface IData {
+  version: string;
   theme: string;
-  wins: number;
-  games: number;
-  crewmateWins: number;
-  crewmateGames: number;
+  innocentWins: number;
+  innocentLosses: number;
   impostorWins: number;
-  impostorGames: number;
-  names: boolean;
-  notes: string;
-}
-
-export interface IPlayersData {
+  impostorLosses: number;
   innocentPlayers: Array<IPlayer>;
   susPlayers: Array<IPlayer>;
   evilPlayers: Array<IPlayer>;
   deadPlayers: Array<IPlayer>;
   unknownPlayers: Array<IPlayer>;
-  unusedPlayers: Array<IPlayer>;
+  names: boolean;
+  notes: string;
 }

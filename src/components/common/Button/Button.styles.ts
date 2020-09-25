@@ -1,5 +1,9 @@
 import { createUseStyles } from "react-jss";
 
 export default createUseStyles({
-  root: {},
+  root: {
+    "&:focus": {
+      outline: "none",
+    },
+  },
 });

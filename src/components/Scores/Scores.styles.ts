@@ -5,13 +5,12 @@ export default createUseStyles({
     margin: "0.5rem 0",
     flex: 1,
   },
+  title: {
+    display: "flex",
+    justifyContent: "space-between",
+    fontSize: "1.25rem",
+  },
   progress: {
     marginBottom: "0.5rem",
-  },
-  progressBarsContainer: (props) => ({
-    padding: props.isMobile ? "1rem 2rem" : "0",
-  }),
-  scores: {
-    display: "flex",
   },
 });

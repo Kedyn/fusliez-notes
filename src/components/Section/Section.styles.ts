@@ -6,11 +6,10 @@ export default createUseStyles({
     display: "flex",
     flexWrap: "wrap",
     minHeight: "2rem",
+    justifyContent: "space-around",
 
     "&>div": {
-      flex: (props) => `0 0 ${props.names ? "50%" : "25%"}`,
-      maxWidth: "50%",
-      padding: "0.25rem",
+      flex: (props) => `0 0 ${props.names ? "49%" : "24%"}`,
     },
   },
 });

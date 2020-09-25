@@ -1,7 +1,7 @@
+import { IPlayer } from "utils/types";
 import React from "react";
 import Section from "components/Section";
 import { useData } from "context";
-import { IPlayer } from "utils/types";
 import useStyles from "./PlayersSection.styles";
 import { MobileContext } from "components/App";
 
@@ -12,13 +12,11 @@ export default function PlayersSection(): JSX.Element {
     evilPlayers,
     deadPlayers,
     unknownPlayers,
-    unusedPlayers,
     setInnocentPlayers,
     setSusPlayers,
     setEvilPlayers,
     setDeadPlayers,
     setUnknownPlayers,
-    setUnusedPlayers,
   } = useData()!; // eslint-disable-line
 
   const classes = useStyles();
@@ -27,7 +25,6 @@ export default function PlayersSection(): JSX.Element {
   interface Section {
     title: string;
     list: Array<IPlayer>;
-    // listName: string;
     setList: (value: Array<IPlayer>) => void;
   }
 
@@ -35,40 +32,38 @@ export default function PlayersSection(): JSX.Element {
     {
       title: "Innocent",
       list: innocentPlayers,
-      // listName: "innocentPlayers",
       setList: setInnocentPlayers,
     },
     {
-      title: "Suspicious / Hit List",
+      title: "Suspicious",
       list: susPlayers,
-      // listName: "susPlayers",
       setList: setSusPlayers,
     },
     {
-      title: "Evil",
+      title: "Evil / Hit List",
       list: evilPlayers,
-      // listName: "evilPlayers",
       setList: setEvilPlayers,
     },
     {
       title: "Dead",
       list: deadPlayers,
-      // listName: "deadPlayers",
       setList: setDeadPlayers,
     },
     {
       title: "Unknown",
       list: unknownPlayers,
-      // listName: "unknownPlayers",
       setList: setUnknownPlayers,
     },
-    {
-      title: "Unused",
-      list: unusedPlayers,
-      // listName: "unusedPlayers",
-      setList: setUnusedPlayers,
-    },
   ];
+
+  // function swapPlayersColors(
+  //   currentPlayerColor: string,
+  //   targetPlayerColor: string,
+  //   currentPlayerList: Array<IPlayer>
+  // ) {
+  //   // const currentPlayer = currentPlayerList.filter()
+  //   console.log(currentPlayerList);
+  // }
 
   return (
     <div className={classes.root}>
