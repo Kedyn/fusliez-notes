@@ -36,6 +36,7 @@ export default function App(): JSX.Element {
         "Change log Modal",
         "Feedback Modal",
         "Draggable Players on Map",
+        "Button to reset draggable players on Map",
       ],
     },
     {

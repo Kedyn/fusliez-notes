@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 #### Added
 
 - Draggable players on Map
+- Button to reset players on map
 
 #### Fixed
 
