@@ -50,7 +50,7 @@ export default function App(): JSX.Element {
   // const [useDesktop, setUseDesktop] = React.useState(false);
   const [currentTab, setCurrentTab] = React.useState("Record");
 
-  const breakpoint = 768;
+  const breakpoint = 846;
 
   const isMobile = width <= breakpoint;
 

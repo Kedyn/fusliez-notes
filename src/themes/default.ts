@@ -136,9 +136,6 @@ export default class DefaultTheme implements ITheme {
       "input[type=number]": {
         "-moz-appearance": "textfield",
       },
-      "#title-input": {
-        color: this.text_primary,
-      },
       textarea: {
         backgroundColor: this.inputBackgroundColor,
         color: this.inputTextColor,
@@ -164,6 +161,16 @@ export default class DefaultTheme implements ITheme {
       a: {
         textDecoration: "none",
         color: this.linkColor,
+      },
+
+      ".far": {
+        fontSize: "2rem",
+        color: this.neutralTextColor,
+      },
+
+      ".fas": {
+        fontSize: "2rem",
+        color: this.neutralBackgroundColor,
       },
     };
   }

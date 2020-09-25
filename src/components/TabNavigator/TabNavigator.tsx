@@ -1,5 +1,9 @@
 import React from "react";
 import useStyles from "./TabNavigator.styles";
+import { FaStickyNote, FaRegStickyNote, FaMap } from "react-icons/fa";
+import { FiMap } from "react-icons/fi";
+import { BiDoughnutChart } from "react-icons/bi";
+import { RiDonutChartFill } from "react-icons/ri";
 
 export default function TabNavigator({
   currentTab,
@@ -10,19 +14,61 @@ export default function TabNavigator({
 }): JSX.Element {
   const classes = useStyles();
 
-  const tabs = ["Players", "Notes", "Record", "Maps"];
+  const tabs = [
+    {
+      name: "Players",
+      icon: (
+        <img
+          src="../assets/Players.png"
+          alt="player-icon"
+          className={classes.icon}
+        />
+      ),
+      iconSelected: (
+        <img
+          src="../assets/Players-Selected.png"
+          alt="player-selected-icon"
+          className={classes.icon}
+        />
+      ),
+    },
+    {
+      name: "Notes",
+      icon: <FaRegStickyNote className={classes.icon} />,
+      iconSelected: <FaStickyNote className={classes.icon} />,
+    },
+    {
+      name: "Record",
+      icon: <BiDoughnutChart className={classes.icon} />,
+      iconSelected: <RiDonutChartFill className={classes.icon} />,
+    },
+    {
+      name: "Maps",
+      icon: <FiMap className={classes.icon} />,
+      iconSelected: <FaMap className={classes.icon} />,
+    },
+  ];
 
-  function Tab({ name }: { name: string }): JSX.Element {
+  function Tab({
+    name,
+    icon,
+    iconSelected,
+  }: {
+    name: string;
+    icon: JSX.Element;
+    iconSelected: JSX.Element;
+  }): JSX.Element {
+    // <img
+    //   src={`assets/${name}.png`}
+    //   alt={`${name}-icon`}
+    //   className={classes.icon}
+    // />
     return (
       <button
         className={`${classes.tab} ${name === currentTab && classes.activeTab}`}
         onClick={() => setCurrentTab(name)}
       >
-        <img
-          src={`assets/${name}.png`}
-          alt={`${name}-icon`}
-          className={classes.icon}
-        />
+        {currentTab === name ? iconSelected : icon}
         {name}
       </button>
     );
@@ -30,8 +76,8 @@ export default function TabNavigator({
 
   return (
     <div className={classes.root}>
-      {tabs.map((tab) => (
-        <Tab key={tab} name={tab} />
+      {tabs.map(({ name, icon, iconSelected }) => (
+        <Tab key={name} name={name} icon={icon} iconSelected={iconSelected} />
       ))}
     </div>
   );
