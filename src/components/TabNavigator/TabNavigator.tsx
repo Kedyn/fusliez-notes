@@ -58,11 +58,6 @@ export default function TabNavigator({
     icon: JSX.Element;
     iconSelected: JSX.Element;
   }): JSX.Element {
-    // <img
-    //   src={`assets/${name}.png`}
-    //   alt={`${name}-icon`}
-    //   className={classes.icon}
-    // />
     return (
       <button
         className={`${classes.tab} ${name === currentTab && classes.activeTab}`}

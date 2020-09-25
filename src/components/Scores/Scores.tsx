@@ -4,10 +4,12 @@ import React from "react";
 import { useData } from "context";
 import useStyles from "./Scores.styles";
 import { useTheme } from "react-jss";
+import { MobileContext } from "components/App";
 
 export default function Scores(): JSX.Element {
   const theme = useTheme<ITheme>();
-  const classes = useStyles();
+  const isMobile = React.useContext(MobileContext);
+  const classes = useStyles({ isMobile });
 
   const {
     innocentWins,
@@ -30,47 +32,45 @@ export default function Scores(): JSX.Element {
   const impostorRate = getRate(impostorWins, impostorGames);
 
   return (
-    <React.Fragment>
-      <div className={classes.root}>
-        <div className={classes.title}>
-          <span>Overall</span>
-          <span>
-            {overallWins}W - {overallLosses}L
-          </span>
-        </div>
-        <ProgressBar
-          progress={overallRate}
-          backgroundColor={theme.neutralBackgroundColor}
-          progressColor={theme.neutralTextColor}
-          className={classes.progress}
-        />
-
-        <div className={classes.title}>
-          <span>Innocent</span>
-          <span>
-            {innocentWins}W - {innocentLosses}L
-          </span>
-        </div>
-        <ProgressBar
-          progress={innocentRate}
-          backgroundColor={theme.innocentBackgroundColor}
-          progressColor={theme.innocentTextColor}
-          className={classes.progress}
-        />
-
-        <div className={classes.title}>
-          <span>Impostor</span>
-          <span>
-            {impostorWins}W - {impostorLosses}L
-          </span>
-        </div>
-        <ProgressBar
-          progress={impostorRate}
-          backgroundColor={theme.impostorBackgroundColor}
-          progressColor={theme.impostorTextColor}
-          className={classes.progress}
-        />
+    <div className={classes.root}>
+      <div className={classes.title}>
+        <span>Overall</span>
+        <span>
+          {overallWins}W - {overallLosses}L
+        </span>
       </div>
-    </React.Fragment>
+      <ProgressBar
+        progress={overallRate}
+        backgroundColor={theme.neutralBackgroundColor}
+        progressColor={theme.neutralTextColor}
+        className={classes.progress}
+      />
+
+      <div className={classes.title}>
+        <span>Innocent</span>
+        <span>
+          {innocentWins}W - {innocentLosses}L
+        </span>
+      </div>
+      <ProgressBar
+        progress={innocentRate}
+        backgroundColor={theme.innocentBackgroundColor}
+        progressColor={theme.innocentTextColor}
+        className={classes.progress}
+      />
+
+      <div className={classes.title}>
+        <span>Impostor</span>
+        <span>
+          {impostorWins}W - {impostorLosses}L
+        </span>
+      </div>
+      <ProgressBar
+        progress={impostorRate}
+        backgroundColor={theme.impostorBackgroundColor}
+        progressColor={theme.impostorTextColor}
+        className={classes.progress}
+      />
+    </div>
   );
 }

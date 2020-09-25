@@ -12,7 +12,7 @@ export default function MainContent({
 
   return (
     <div id="main" className={classes.root}>
-      {!isMobile && <Scores isMobile={isMobile} />}
+      {!isMobile && <Scores />}
       <PlayersSection />
     </div>
   );

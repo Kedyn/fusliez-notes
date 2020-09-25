@@ -4,6 +4,7 @@ export default createUseStyles({
   root: {
     margin: "0.5rem 0",
     flex: 1,
+    display: "flex",
   },
   title: {
     display: "flex",

@@ -18,4 +18,9 @@ export default createUseStyles((theme: ITheme) => ({
     width: props.progress ? `${props.progress}%` : "0%",
     maxWidth: "100%",
   }),
+  circularBar: {
+    fontSize: "1rem",
+    width: "10rem",
+    height: "10rem",
+  },
 }));
