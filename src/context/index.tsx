@@ -13,7 +13,7 @@ export interface IDataProviderProps {
 }
 
 export const INITIAL_DATA: IData = {
-  version: "0.8.0",
+  version: "0.8.1",
   theme: "dark",
   innocentWins: 0,
   innocentLosses: 0,

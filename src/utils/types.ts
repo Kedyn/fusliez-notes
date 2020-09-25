@@ -27,6 +27,9 @@ export interface ITheme {
   buttonBackgroundColor: string;
   buttonTextColor: string;
 
+  buttonDangerBackgroundColor: string;
+  buttonDangerTextColor: string;
+
   fontFamily: string;
   fontSize: number;
 

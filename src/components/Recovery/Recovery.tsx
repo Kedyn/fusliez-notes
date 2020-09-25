@@ -46,7 +46,7 @@ export default function Recovery(): JSX.Element {
               Recover
             </Button>
             <Button
-              classNames={classes.left}
+              classNames={`${classes.left} ${classes.dangerButton}`}
               onClick={() => {
                 localStorage.removeItem("data");
                 setShowRecover(false);
