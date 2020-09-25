@@ -9,6 +9,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [v0.8.2] - 9/25/2020
 
+#### Added
+
+- Draggable players on Map
+
 #### Fixed
 
 - Minor fix on theme danger button
@@ -28,7 +32,6 @@ Switched to Kevin Han's (@khany) UI design.
 - Settings Modal
 - Recovery Notes Modal
 - Changelog Modal
-- Draggable players on Map
 
 #### Fixed
 
@@ -41,6 +44,7 @@ Switched to Kevin Han's (@khany) UI design.
 #### Removed
 
 - Light theme
+- Draggable map characters
 
 ### [v0.7.0] - 9/15/2020
 
