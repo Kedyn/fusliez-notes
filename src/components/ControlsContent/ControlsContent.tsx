@@ -1,13 +1,11 @@
 import Button from "components/common/Button";
 import React from "react";
-import Settings from "components/Settings";
+import Settings from "components/common/Settings";
 import WinsLossesButton from "../WinsLossesButton";
 import { useData } from "context";
 import useStyles from "./ControlsContent.styles";
-import { useTranslation } from "react-i18next";
 
 export default function ControlsContent(): JSX.Element {
-  const { t } = useTranslation();
   const classes = useStyles();
   const [showSettings, setShowSettings] = React.useState(false);
   const {
@@ -38,12 +36,12 @@ export default function ControlsContent(): JSX.Element {
       <div className={classes.scoreButtons}>
         <div className={classes.titleContainer}>
           <h4 className={classes.title} />
-          <h4 className={classes.title}>{t("controls.wins")}</h4>
-          <h4 className={classes.title}>{t("controls.losses")}</h4>
+          <h4 className={classes.title}>Wins</h4>
+          <h4 className={classes.title}>Losses</h4>
         </div>
 
         <div className={classes.scoreButtonsSection}>
-          <h4>{t("controls.innocent")}</h4>
+          <h4>Innocent</h4>
           <WinsLossesButton
             buttonBackgroundColor={theme.innocentTextColor}
             decrement={() => setInnocentWins(innocentWins - 1)}
@@ -61,7 +59,7 @@ export default function ControlsContent(): JSX.Element {
         </div>
 
         <div className={classes.scoreButtonsSection}>
-          <h4>{t("controls.impostor")}</h4>
+          <h4>Impostor</h4>
           <WinsLossesButton
             buttonBackgroundColor={theme.impostorTextColor}
             decrement={() => setImpostorWins(impostorWins - 1)}
@@ -81,13 +79,13 @@ export default function ControlsContent(): JSX.Element {
 
       <div className={classes.buttonContainer}>
         <Button classNames={classes.reset} onClick={() => resetScores()}>
-          {t("controls.resetScores")}
+          Reset Scores
         </Button>
         <Button
           classNames={classes.reset}
           onClick={() => resetPlayersPositions()}
         >
-          {t("controls.resetRound")}
+          Reset Round
         </Button>
       </div>
       <div className={classes.buttonContainer}>
@@ -95,10 +93,10 @@ export default function ControlsContent(): JSX.Element {
           classNames={`${classes.reset} ${classes.dangerButton}`}
           onClick={() => resetAll()}
         >
-          {t("controls.resetAll")}
+          Reset All
         </Button>
       </div>
-      <h2>{t("controls.notes")}</h2>
+      <h2>Notes</h2>
       <div className={classes.notesContainer}>
         <textarea
           className={classes.notes}
@@ -109,13 +107,13 @@ export default function ControlsContent(): JSX.Element {
         />
       </div>
       <Button classNames={`${classes.resetNotes}`} onClick={() => setNotes("")}>
-        {t("controls.resetNotes")}
+        Reset Notes
       </Button>
       <Button
         classNames={`${classes.dangerButton}`}
         onClick={() => setShowSettings(true)}
       >
-        {t("controls.settings")}
+        Settings
       </Button>
 
       <Settings show={showSettings} onClose={() => setShowSettings(false)} />
