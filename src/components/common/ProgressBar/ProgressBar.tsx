@@ -26,11 +26,6 @@ export default function ProgressBar(props: IProgressBarProps): JSX.Element {
   });
 
   return (
-    // <div
-    //   className={`${classes.root} ${props.className ? props.className : ""}`}
-    // >
-    //   <div className={classes.progressBar}></div>
-    // </div>
     <CircularProgressbarWithChildren
       value={progress}
       className={classes.circularBar}
