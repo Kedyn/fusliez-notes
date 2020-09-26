@@ -31,44 +31,43 @@ export default function Scores(): JSX.Element {
 
   return (
     <div className={classes.root}>
-      <div className={classes.title}>
-        <span>Overall</span>
-        <span>
-          {overallWins}W - {overallLosses}L
-        </span>
-      </div>
-      <ProgressBar
-        progress={overallRate}
-        backgroundColor={theme.neutralBackgroundColor}
-        progressColor={theme.neutralTextColor}
-        className={classes.progress}
-      />
+      <div className={classes.progressBarContainer}>
+        <span className={classes.title}>Overall</span>
 
-      <div className={classes.title}>
-        <span>Innocent</span>
-        <span>
-          {innocentWins}W - {innocentLosses}L
-        </span>
+        <ProgressBar
+          progress={overallRate}
+          backgroundColor={theme.neutralBackgroundColor}
+          progressColor={theme.neutralTextColor}
+          className={classes.progress}
+          wins={overallWins}
+          losses={overallLosses}
+        />
       </div>
-      <ProgressBar
-        progress={innocentRate}
-        backgroundColor={theme.innocentBackgroundColor}
-        progressColor={theme.innocentTextColor}
-        className={classes.progress}
-      />
 
-      <div className={classes.title}>
-        <span>Impostor</span>
-        <span>
-          {impostorWins}W - {impostorLosses}L
-        </span>
+      <div className={classes.progressBarContainer}>
+        <span className={classes.title}>Innocent</span>
+        <ProgressBar
+          progress={innocentRate}
+          backgroundColor={theme.innocentBackgroundColor}
+          progressColor={theme.innocentTextColor}
+          className={classes.progress}
+          wins={innocentWins}
+          losses={innocentLosses}
+        />
       </div>
-      <ProgressBar
-        progress={impostorRate}
-        backgroundColor={theme.impostorBackgroundColor}
-        progressColor={theme.impostorTextColor}
-        className={classes.progress}
-      />
+
+      <div className={classes.progressBarContainer}>
+        <span className={classes.title}>Impostor</span>
+
+        <ProgressBar
+          progress={impostorRate}
+          backgroundColor={theme.impostorBackgroundColor}
+          progressColor={theme.impostorTextColor}
+          className={classes.progress}
+          wins={impostorWins}
+          losses={impostorLosses}
+        />
+      </div>
     </div>
   );
 }

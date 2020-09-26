@@ -101,7 +101,7 @@ export default class DefaultTheme implements ITheme {
       "#main": {
         width: 320,
         minWidth: 320,
-        padding: "1rem",
+        padding: "0.25rem",
       },
       "#controls": {
         width: 320,

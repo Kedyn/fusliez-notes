@@ -394,7 +394,17 @@ export function DataProvider({ children }: IDataProviderProps): JSX.Element {
           }
         },
         setNotes: (value: string) => {
-          setLocalNotes(value);
+          const localData = localStorage.getItem(`${namespace}data`);
+
+          if (localData) {
+            const data: IData = JSON.parse(localData);
+
+            data.notes = value;
+
+            localStorage.setItem(`${namespace}data`, JSON.stringify(data));
+
+            setLocalNotes(value);
+          }
         },
       }}
     >

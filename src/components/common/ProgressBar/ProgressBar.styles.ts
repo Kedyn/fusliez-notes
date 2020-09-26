@@ -9,6 +9,11 @@ export default createUseStyles((theme: ITheme) => ({
     borderRadius: "0.5rem",
     width: "100%",
   }),
+  circularBar: {
+    fontSize: "1rem",
+    width: "5.5rem",
+    height: "5.5rem",
+  },
   progressBar: (props) => ({
     backgroundColor: props.progressColor
       ? props.progressColor
@@ -18,9 +23,7 @@ export default createUseStyles((theme: ITheme) => ({
     width: props.progress ? `${props.progress}%` : "0%",
     maxWidth: "100%",
   }),
-  circularBar: {
+  title: {
     fontSize: "1rem",
-    width: "10rem",
-    height: "10rem",
   },
 }));

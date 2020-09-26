@@ -31,6 +31,20 @@ export default function ControlsContent(): JSX.Element {
     setImpostorLosses(0);
   }
 
+  // const debounce = (func: Function, wait: number) => {
+  //   let timeout: ReturnType<typeof setTimeout>;
+
+  //   return function executedFunction(...args) {
+  //     const later = () => {
+  //       clearTimeout(timeout);
+  //       func(...args);
+  //     };
+
+  //     clearTimeout(timeout);
+  //     timeout = setTimeout(later, wait);
+  //   };
+  // };
+
   return (
     <div id="controls" className={classes.root}>
       <div className={classes.scoreButtons}>
