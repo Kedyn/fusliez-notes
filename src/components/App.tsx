@@ -78,7 +78,7 @@ export default function App(): JSX.Element {
                 >
                   {version}
                 </a>{" "}
-                [9/24/2020] made with &#10084; by the{" "}
+                [9/25/2020] made with &#10084; by the{" "}
                 <a href="https://github.com/Kedyn/fusliez-notes#authors-and-acknowledgment">
                   fuslie fam
                 </a>
