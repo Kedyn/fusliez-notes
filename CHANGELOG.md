@@ -110,12 +110,6 @@ Features included draggable players and progress bar for score.
 
 ## [Unreleased]
 
-### [v0.9.0]
-
-#### Added
-
-- Multiple language support
-
 ### [v0.1.0] - 8/24/2020
 
 fuslie adds notepad ftw on the stream
