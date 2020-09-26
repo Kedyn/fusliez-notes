@@ -1,11 +1,29 @@
+import Draggable from "react-draggable";
 import MiraHq from "./MiraHq";
 import Polus from "./Polus";
 import React from "react";
 import TheSkeld from "./TheSkeld";
 import useStyles from "./MapsContent.styles";
+import Button from "components/common/Button";
 
 export default function MapsContent(): JSX.Element {
   const [map, setMap] = React.useState("skeld");
+  const [resetState, setResetState] = React.useState(false);
+
+  const players = [
+    "blue",
+    "brown",
+    "gray",
+    "green",
+    "lightGreen",
+    "orange",
+    "pink",
+    "purple",
+    "red",
+    "teal",
+    "white",
+    "yellow",
+  ];
 
   const classes = useStyles({
     map: map === "skeld" ? "TheSkeld" : map === "mira" ? "Mirahq" : "Polus",
@@ -18,6 +36,10 @@ export default function MapsContent(): JSX.Element {
   } else if (map === "polus") {
     currentMap = <Polus />;
   }
+
+  React.useEffect(() => {
+    if (resetState) setResetState(false);
+  }, [resetState]);
 
   return (
     <div className={classes.root}>
@@ -47,7 +69,24 @@ export default function MapsContent(): JSX.Element {
           }`}
         />
       </div>
-      <div className={classes.wrapper}>{currentMap}</div>
+      <div className={classes.wrapper}>
+        <Draggable bounds="parent" position={{ x: 0, y: 0 }} disabled>
+          {currentMap}
+        </Draggable>
+        {!resetState &&
+          players.map((player) => (
+            <Draggable key={player} bounds="parent">
+              <img
+                src={`assets/${player}.png`}
+                className={classes.playerIcon}
+              />
+            </Draggable>
+          ))}
+
+        <Button className={classes.button} onClick={() => setResetState(true)}>
+          Reset Players
+        </Button>
+      </div>
     </div>
   );
 }
