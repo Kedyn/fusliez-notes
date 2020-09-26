@@ -1,11 +1,8 @@
 import React from "react";
-import { useTranslation } from "react-i18next";
 
 export default function MiraHq(
   props: React.SVGProps<SVGSVGElement>
 ): JSX.Element {
-  const { t } = useTranslation();
-
   return (
     <svg viewBox="0 0 1366 768" {...props}>
       <title>{"MiraHq"}</title>
@@ -24,7 +21,7 @@ export default function MiraHq(
         fill="#fff"
         preserveAspectRatio="xMidYMid meet"
       >
-        {t("maps.greenhouse")}
+        {"Greenhouse"}
       </text>
       <text
         fontWeight="bold"
@@ -36,7 +33,7 @@ export default function MiraHq(
         fill="#fff"
         preserveAspectRatio="xMidYMid meet"
       >
-        {t("maps.admin")}
+        {"Admin"}
       </text>
       <text
         fontWeight="bold"
@@ -48,7 +45,7 @@ export default function MiraHq(
         fill="#fff"
         preserveAspectRatio="xMidYMid meet"
       >
-        {t("maps.office")}
+        {"Office"}
       </text>
       <text
         transform="rotate(45.439 727.06 812.293) scale(.78224 1)"
@@ -62,7 +59,7 @@ export default function MiraHq(
         fill="#fff"
         preserveAspectRatio="xMidYMid meet"
       >
-        {t("maps.communications")}
+        {"Communications"}
       </text>
       <text
         transform="rotate(67.008 640.961 672.111) scale(.83183 1)"
@@ -77,7 +74,7 @@ export default function MiraHq(
         fill="#fff"
         preserveAspectRatio="xMidYMid meet"
       >
-        {t("maps.lockerRoom")}
+        {"Locker Room"}
       </text>
       <text
         fontWeight="bold"
@@ -90,7 +87,7 @@ export default function MiraHq(
         fill="#fff"
         preserveAspectRatio="xMidYMid meet"
       >
-        {t("maps.medBay")}
+        {"MedBay"}
       </text>
       <text
         fontWeight="bold"
@@ -104,7 +101,7 @@ export default function MiraHq(
         fill="#fff"
         preserveAspectRatio="xMidYMid meet"
       >
-        {t("maps.cafeteria")}
+        {"Cafeteria"}
       </text>
       <text
         transform="rotate(45 938.725 548.208)"
@@ -119,7 +116,7 @@ export default function MiraHq(
         fill="#fff"
         preserveAspectRatio="xMidYMid meet"
       >
-        {t("maps.storage")}
+        {"Storage"}
       </text>
       <text
         fontWeight="bold"
@@ -133,7 +130,7 @@ export default function MiraHq(
         fill="#fff"
         preserveAspectRatio="xMidYMid meet"
       >
-        {t("maps.balcony")}
+        {"Balcony"}
       </text>
       <text
         fontWeight="bold"
@@ -147,7 +144,7 @@ export default function MiraHq(
         fill="#fff"
         preserveAspectRatio="xMidYMid meet"
       >
-        {t("maps.launchpad")}
+        {"Launchpad"}
       </text>
       <text
         fontWeight="bold"
@@ -161,7 +158,7 @@ export default function MiraHq(
         fill="#fff"
         preserveAspectRatio="xMidYMid meet"
       >
-        {t("maps.reactor")}
+        {"Reactor"}
       </text>
       <text
         transform="rotate(45 705.725 339.208)"
@@ -176,7 +173,7 @@ export default function MiraHq(
         fill="#fff"
         preserveAspectRatio="xMidYMid meet"
       >
-        {t("maps.laboratory")}
+        {"Laboratory"}
       </text>
       <text
         fontWeight="bold"
@@ -190,7 +187,7 @@ export default function MiraHq(
         fill="#fff"
         preserveAspectRatio="xMidYMid meet"
       >
-        {t("maps.vents")}
+        {"Vents"}
       </text>
       <text
         fontWeight="bold"
@@ -204,7 +201,7 @@ export default function MiraHq(
         fill="#fff"
         preserveAspectRatio="xMidYMid meet"
       >
-        {t("maps.ventConnections")}
+        {"Vent Connections"}
       </text>
       <text
         fontWeight="bold"
@@ -218,7 +215,7 @@ export default function MiraHq(
         fill="#fff"
         preserveAspectRatio="xMidYMid meet"
       >
-        {t("maps.wiringTasks")}
+        {"Wiring Tasks"}
       </text>
       <text
         fontWeight="bold"
@@ -232,7 +229,7 @@ export default function MiraHq(
         fill="#fff"
         preserveAspectRatio="xMidYMid meet"
       >
-        {t("maps.commonTasks")}
+        {"Common Tasks"}
       </text>
     </svg>
   );

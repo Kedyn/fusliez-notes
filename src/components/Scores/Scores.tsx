@@ -4,11 +4,9 @@ import React from "react";
 import { useData } from "context";
 import useStyles from "./Scores.styles";
 import { useTheme } from "react-jss";
-import { useTranslation } from "react-i18next";
 
 export default function Scores(): JSX.Element {
   const theme = useTheme<ITheme>();
-  const { t } = useTranslation();
   const classes = useStyles();
 
   const {

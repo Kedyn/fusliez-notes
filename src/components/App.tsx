@@ -40,6 +40,7 @@ export default function App(): JSX.Element {
         "Change log Modal",
         "Feedback Modal",
         "Draggable Players on Map",
+        "Button to reset draggable players on Map",
       ],
     },
     {
@@ -208,6 +209,13 @@ export default function App(): JSX.Element {
                         </ul>
                       </div>
                     ))}
+                  </Modal>
+                  <Modal
+                    title="Feedback Form"
+                    show={showForm}
+                    onClose={() => setShowForm(false)}
+                  >
+                    <FeedbackForm />
                   </Modal>
                 </>
               )}

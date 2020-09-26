@@ -3,13 +3,11 @@ import Modal from "components/common/Modal";
 import React from "react";
 import { useData } from "context";
 import useStyles from "./Recovery.styles";
-import { useTranslation } from "react-i18next";
 
 export default function Recovery(): JSX.Element {
   const [showRecover, setShowRecover] = React.useState(false);
   const [oldNotes, setOldNotes] = React.useState("");
   const classes = useStyles();
-  const { t } = useTranslation();
   const { notes, setNotes } = useData()!; // eslint-disable-line
 
   React.useEffect(() => {
@@ -32,7 +30,7 @@ export default function Recovery(): JSX.Element {
   if (showRecover) {
     return (
       <Modal
-        title={t("recovery.title")}
+        title="Recover old notes"
         show={showRecover}
         onClose={() => setShowRecover(true)}
         footer={
@@ -45,7 +43,7 @@ export default function Recovery(): JSX.Element {
                 setShowRecover(false);
               }}
             >
-              {t("recovery.recover")}
+              Recover
             </Button>
             <Button
               classNames={`${classes.left} ${classes.dangerButton}`}
@@ -54,18 +52,18 @@ export default function Recovery(): JSX.Element {
                 setShowRecover(false);
               }}
             >
-              {t("recovery.ignore")}
+              Ignore
             </Button>
           </div>
         }
       >
         <p>
-          {t("recovery.message.1")}
+          It seems that you have old notes that can be recovered.
           <br />
           <br />
-          {t("recovery.message.2")}
+          Click Recover to add this notes to your current notes.
           <br />
-          {t("recovery.message.3")}
+          Click Ignore to delete the old notes and keep your current ones.
         </p>
       </Modal>
     );

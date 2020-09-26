@@ -1,10 +1,10 @@
+import Button from "components/common/Button";
 import Draggable from "react-draggable";
 import MiraHq from "./MiraHq";
 import Polus from "./Polus";
 import React from "react";
 import TheSkeld from "./TheSkeld";
 import useStyles from "./MapsContent.styles";
-import Button from "components/common/Button";
 
 // export interface IMapsContentProps {
 //   isMobile: boolean;
@@ -74,15 +74,18 @@ export default function MapsContent(): JSX.Element {
         />
       </div>
       <div className={classes.wrapper}>
-        <Draggable bounds="parent" position={{ x: 0, y: 0 }} disabled>
-          {currentMap}
-        </Draggable>
+        {currentMap}
+
         {!resetState &&
           players.map((player) => (
             <Draggable key={player} bounds="parent">
               <img
                 src={`assets/${player}.png`}
                 className={classes.playerIcon}
+                onDrag={(event: React.DragEvent<HTMLImageElement>) =>
+                  event.stopPropagation()
+                }
+                draggable={false}
               />
             </Draggable>
           ))}

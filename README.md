@@ -39,7 +39,9 @@ other support on this project such as:
 Pedro / Dian\_\_  
 Rydannn (twitch handle)  
 GeneralMitch (twitch handle)  
-Kermitigated (twitch handle)
+Kermitigated (twitch handle)  
+[Kinishina](https://github.com/Kinishina)  
+[Federico Gaston Ramadan](https://github.com/federamadan)
 
 Please if you would not like to be mentioned here or your information is wrong
 let me know so I can remove it or fix it, thank you!
