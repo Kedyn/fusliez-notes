@@ -4,8 +4,12 @@ import Button from "components/common/Button";
 import WinsLossesButton from "../WinsLossesButton";
 import { useData } from "context";
 
-export default function ScoresPanel(): JSX.Element {
-  const classes = useStyles();
+export default function ScoresPanel({
+  isMobile,
+}: {
+  isMobile: boolean;
+}): JSX.Element {
+  const classes = useStyles({ isMobile });
 
   const {
     theme,

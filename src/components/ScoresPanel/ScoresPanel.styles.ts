@@ -26,13 +26,12 @@ export default createUseStyles((theme: ITheme) => ({
       marginLeft: "0.5rem",
     },
   },
-  scoreButtons: {
+  scoreButtons: (props) => ({
     display: "flex",
     flexDirection: "column",
-
-    marginTop: "3rem",
+    marginTop: props.isMobile ? "3rem" : "0",
     marginBottom: "0.5rem",
-  },
+  }),
   scoreButtonsSection: {
     alignItems: "center",
     display: "flex",

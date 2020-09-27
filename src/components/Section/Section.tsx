@@ -18,8 +18,7 @@ export default function Section(props: ISectionProps): JSX.Element {
   const { names } = useData()!; // eslint-disable-line
   const classes = useStyles({ names });
 
-  const { title, list, setList } = props;
-
+  const { isMobile, title, list, setList } = props;
   return (
     <React.Fragment>
       <div className={classes.root}>
@@ -28,8 +27,8 @@ export default function Section(props: ISectionProps): JSX.Element {
         <ReactSortable
           group="players"
           handle=".player-handle"
-          delayOnTouchStart={props.isMobile}
-          delay={props.isMobile ? 100 : 0}
+          delayOnTouchStart={isMobile}
+          delay={isMobile ? 100 : 0}
           list={list}
           setList={setList}
           className={classes.players}

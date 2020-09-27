@@ -4,6 +4,7 @@ import Input from "components/common/Input";
 import React from "react";
 import { useData } from "context";
 import useStyles from "./Player.styles";
+import { MobileContext } from "components/App";
 
 export interface IPlayerProps {
   id: string | number;
@@ -17,9 +18,10 @@ export interface IPlayerProps {
 
 export default function Player(props: IPlayerProps): JSX.Element {
   const [isMenuShowing, setIsMenuShowing] = React.useState(false);
+  const isMobile = React.useContext(MobileContext);
 
   const { names } = useData()!; // eslint-disable-line
-  const classes = useStyles({ names, ...props });
+  const classes = useStyles({ names, isMobile, ...props });
 
   const { id, color, name, list, setList, index } = props;
 

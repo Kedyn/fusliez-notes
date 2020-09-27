@@ -53,7 +53,7 @@ export default function App(): JSX.Element {
   const [showNotes, setShowNotes] = React.useState(false);
   const [showForm, setShowForm] = React.useState(false);
   const [width, setWidth] = React.useState(window.innerWidth);
-  const [currentTab, setCurrentTab] = React.useState("Record");
+  const [currentTab, setCurrentTab] = React.useState("Players");
 
   const breakpoint = 846;
 
@@ -92,7 +92,7 @@ export default function App(): JSX.Element {
                   ) : currentTab === "Record" ? (
                     <div className={classes.recordContainer}>
                       <Scores />
-                      <ScoresPanel />
+                      <ScoresPanel isMobile={isMobile} />
                     </div>
                   ) : null}
                   <>
