@@ -65,7 +65,8 @@
   "settings": {
     "title": "Settings",
     "usePlayerNames": "Use player names",
-    "language": "Language"
+    "language": "Language",
+    "close": "Close"
   },
   "recovery": {
     "title": "Recover old Notes",

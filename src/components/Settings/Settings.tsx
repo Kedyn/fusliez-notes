@@ -32,7 +32,7 @@ export default function Settings(props: ISettingsProps): JSX.Element {
       show={show}
       onClose={onClose}
       title={t("settings.title")}
-      footer={<Button onClick={() => onClose()}>Close</Button>}
+      footer={<Button onClick={() => onClose()}>{t("settings.close")}</Button>}
     >
       <div className={classes.container}>
         <Switch
@@ -54,7 +54,8 @@ export default function Settings(props: ISettingsProps): JSX.Element {
           }}
         >
           <option value="en-US">English (US)</option>
-          <option value="es-MX">Español (MX)</option>
+          <option value="es-MX">Spanish (MX)</option>
+          <option value="ru-RU">Russian (RU)</option>
         </select>
       </div>
     </Modal>
