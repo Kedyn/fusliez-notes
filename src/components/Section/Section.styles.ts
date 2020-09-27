@@ -7,6 +7,6 @@ export default createUseStyles({
     flex: 1,
     flexWrap: "wrap",
     minHeight: "2rem",
-    justifyContent: "space-around",
+    justifyContent: "flex-start",
   },
 });
