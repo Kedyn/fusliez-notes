@@ -3,7 +3,6 @@ import { IPlayer } from "utils/types";
 import React from "react";
 import { useData } from "context";
 import usePlayerStyles from "./Player.styles";
-import useInputStyles from "../common/Input/Input.styles";
 
 export interface IPlayerProps {
   id: string | number;
@@ -21,7 +20,6 @@ export default function Player(props: IPlayerProps): JSX.Element {
 
   const { names } = useData()!; // eslint-disable-line
   const playerStyles = usePlayerStyles({ names, ...props });
-  const inputStyles = useInputStyles();
 
   const { id, color, name, list, setList, index } = props;
 
@@ -72,7 +70,7 @@ export default function Player(props: IPlayerProps): JSX.Element {
           <input
             type="text"
             placeholder="Player"
-            className={`${playerStyles.input} ${inputStyles.root}`}
+            className={playerStyles.input}
             onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
               handleChange(index, event)
             }
