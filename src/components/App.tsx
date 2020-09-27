@@ -1,57 +1,24 @@
-import { INITIAL_DATA, useData } from "context";
+import { useData } from "context";
 import { JssProvider, ThemeProvider } from "react-jss";
 import useStyles from "./App.styles";
 import ControlsContent from "./ControlsContent";
-import FeedbackForm from "./FeedbackForm";
+// import FeedbackForm from "./FeedbackForm";
 import MainContent from "./MainContent";
 import MapsContent from "./MapsContent";
-import Modal from "./common/Modal";
 import React from "react";
 import Recovery from "./Recovery";
 import jssSetUp from "utils/jssSetUp";
+import Footer from "./Footer";
+import Notes from "./Notes";
 import Scores from "./Scores";
 import ScoresPanel from "./ScoresPanel";
 import TabNavigator from "./TabNavigator";
 
-export const MobileContext = React.createContext();
-
-const patchNotes = [
-  {
-    title: "Added",
-    items: [
-      "Separate Scores for impostors and innocents",
-      "Color change menu for players (click player icon to open)",
-      "Reset Scores",
-      "Reset Round (players positions)",
-      "Reset all button, resets players positions and scores.",
-      "Reset Notes",
-      "Settings Modal",
-      "Recovery Notes Modal",
-      "Change log Modal",
-      "Feedback Modal",
-      "Draggable Players on Map",
-      "Button to reset draggable players on Map",
-    ],
-  },
-  {
-    title: "Fixed",
-    items: ["Player background color contrast", "Danger theme button"],
-  },
-  { title: "Changed", items: ["Use names to the settings modal."] },
-  { title: "Removed", items: ["Light theme"] },
-  {
-    title: "Developer Notes",
-    items: [
-      "We are working in allowing custom theme colors.",
-      "We added a feedback link at the bottom at the page, we love to hear from all of you.",
-    ],
-  },
-];
+export const MobileContext = React.createContext(false);
 
 export default function App(): JSX.Element {
-  const { version, theme } = useData()!; // eslint-disable-line
-  const [showNotes, setShowNotes] = React.useState(false);
-  const [showForm, setShowForm] = React.useState(false);
+  const { theme } = useData()!; // eslint-disable-line
+
   const [width, setWidth] = React.useState(window.innerWidth);
   const [currentTab, setCurrentTab] = React.useState("Players");
 
@@ -60,12 +27,6 @@ export default function App(): JSX.Element {
   const isMobile = width <= breakpoint;
 
   const classes = useStyles();
-
-  React.useEffect(() => {
-    if (version !== INITIAL_DATA.version) {
-      setShowNotes(true);
-    }
-  }, []);
 
   React.useEffect(() => {
     const handleResize = () => {
@@ -83,71 +44,27 @@ export default function App(): JSX.Element {
         <ThemeProvider theme={theme}>
           <MobileContext.Provider value={isMobile}>
             <React.Suspense fallback="loading">
+              <Recovery />
               {isMobile ? (
                 <>
                   {currentTab === "Players" ? (
                     <MainContent isMobile={isMobile} />
-                  ) : currentTab === "Maps" ? (
-                    <MapsContent />
+                  ) : currentTab === "Notes" ? (
+                    <Notes isMobile={isMobile} />
                   ) : currentTab === "Record" ? (
                     <div className={classes.recordContainer}>
                       <Scores />
                       <ScoresPanel isMobile={isMobile} />
                     </div>
+                  ) : currentTab === "Maps" ? (
+                    <MapsContent />
                   ) : null}
                   <>
                     <TabNavigator
                       currentTab={currentTab}
                       setCurrentTab={setCurrentTab}
+                      children={<Footer />}
                     />
-                    <footer>
-                      <small>
-                        fusliez notes{" "}
-                        <a
-                          href="https://github.com/Kedyn/fusliez-notes/releases/tag/v0.7.0"
-                          onClick={(
-                            event: React.MouseEvent<
-                              HTMLAnchorElement,
-                              MouseEvent
-                            >
-                          ) => {
-                            event.preventDefault();
-                            setShowNotes(!showNotes);
-                          }}
-                        >
-                          {version}
-                        </a>{" "}
-                        [9/24/2020] made with &#10084; by the{" "}
-                        <a href="https://github.com/Kedyn/fusliez-notes#authors-and-acknowledgment">
-                          fuslie fam
-                        </a>
-                        . <a onClick={() => setShowForm(true)}>Feedback</a>
-                        <Modal
-                          title="Feedback Form"
-                          show={showForm}
-                          onClose={() => setShowForm(false)}
-                        >
-                          <FeedbackForm />
-                        </Modal>
-                      </small>
-                      {/* CHANGE LOG */}
-                      <Modal
-                        title="Change Log v0.8.0"
-                        show={showNotes}
-                        onClose={() => setShowNotes(false)}
-                      >
-                        {patchNotes.map(({ title, items }) => (
-                          <div key={title}>
-                            <h3>{title}</h3>
-                            <ul>
-                              {items.map((item) => (
-                                <li key={item}>{item}</li>
-                              ))}
-                            </ul>
-                          </div>
-                        ))}
-                      </Modal>
-                    </footer>
                   </>
                 </>
               ) : (
@@ -157,7 +74,8 @@ export default function App(): JSX.Element {
                     <ControlsContent />
                     <MapsContent isMobile={false} />
                   </main>
-                  <footer>
+                  <Footer />
+                  {/* <footer>
                     <small>
                       fusliez notes{" "}
                       <a
@@ -196,9 +114,9 @@ export default function App(): JSX.Element {
                       </Modal>
                     </small>
                   </footer>
-                  <Recovery />
-                  {/* CHANGE LOG */}
-                  <Modal
+    
+                  // {/* CHANGE LOG */}
+                  {/* <Modal
                     title={`Change Log v${version}`}
                     show={showNotes}
                     onClose={() => setShowNotes(false)}
@@ -220,7 +138,7 @@ export default function App(): JSX.Element {
                     onClose={() => setShowForm(false)}
                   >
                     <FeedbackForm />
-                  </Modal>
+                  </Modal> */}
                 </>
               )}
             </React.Suspense>

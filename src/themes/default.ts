@@ -113,7 +113,7 @@ export default class DefaultTheme implements ITheme {
         margin: 0,
       },
       h2: {
-        fontSize: "2rem",
+        fontSize: "1.75rem",
         margin: ".5rem 0",
         fontWeight: "500",
         lineHeight: "1.2",

@@ -4,6 +4,7 @@ import { createUseStyles } from "react-jss";
 export default createUseStyles((theme: ITheme) => ({
   root: {
     display: "flex",
+    flexDirection: "column",
     position: "sticky",
     bottom: 0,
     maxHeight: "20vh",
@@ -26,5 +27,8 @@ export default createUseStyles((theme: ITheme) => ({
     flexDirection: "column",
     fontSize: "1.25rem",
     padding: "0.5rem",
+  },
+  tabsContainer: {
+    display: "flex",
   },
 }));

@@ -3,23 +3,20 @@ import useStyles from "./Notes.styles";
 import { namespace } from "context";
 import Button from "components/common/Button";
 
-export default function Notes(): JSX.Element {
-  const classes = useStyles();
+export default function Notes({
+  isMobile,
+}: {
+  isMobile: boolean;
+}): JSX.Element {
+  const classes = useStyles({ isMobile });
   const [notes, setNotes] = React.useState("");
 
   // load notes if it is in localStorage
   React.useEffect(() => {
     const localNotes = localStorage.getItem(`${namespace}notes`);
-    console.log(localNotes);
     if (localNotes) {
       setNotes(localNotes);
     }
-
-    window.addEventListener("beforeunload", () => saveData(notes));
-
-    return () => {
-      window.removeEventListener("beforeunload", () => saveData(notes));
-    };
   }, []);
 
   // data will be saved
@@ -41,6 +38,10 @@ export default function Notes(): JSX.Element {
           onBlur={() => saveData(notes)}
           onChange={(event: React.ChangeEvent<HTMLTextAreaElement>) => {
             setNotes(event.target.value);
+            // calling the save function on change because
+            // there seems to be some delay
+            // this ensures all data is saved properly
+            // tried to test it and doesn't show any performance impact
             saveData(event.target.value);
           }}
           value={notes}
@@ -58,3 +59,7 @@ export default function Notes(): JSX.Element {
     </div>
   );
 }
+
+Notes.defaultProps = {
+  isMobile: false,
+};

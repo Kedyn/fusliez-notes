@@ -8,9 +8,11 @@ import { RiDonutChartFill } from "react-icons/ri";
 export default function TabNavigator({
   currentTab,
   setCurrentTab,
+  children,
 }: {
   currentTab: string;
   setCurrentTab: (text: string) => void;
+  children: JSX.Element;
 }): JSX.Element {
   const classes = useStyles();
 
@@ -71,9 +73,13 @@ export default function TabNavigator({
 
   return (
     <div className={classes.root}>
-      {tabs.map(({ name, icon, iconSelected }) => (
-        <Tab key={name} name={name} icon={icon} iconSelected={iconSelected} />
-      ))}
+      <div className={classes.tabsContainer}>
+        {tabs.map(({ name, icon, iconSelected }) => (
+          <Tab key={name} name={name} icon={icon} iconSelected={iconSelected} />
+        ))}
+      </div>
+
+      {children}
     </div>
   );
 }
