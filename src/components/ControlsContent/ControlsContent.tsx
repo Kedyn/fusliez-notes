@@ -4,6 +4,7 @@ import Settings from "components/common/Settings";
 import { useData } from "context";
 import useStyles from "./ControlsContent.styles";
 import ScoresPanel from "../ScoresPanel";
+import Notes from "../Notes";
 
 export default function ControlsContent(): JSX.Element {
   const classes = useStyles();
@@ -27,16 +28,7 @@ export default function ControlsContent(): JSX.Element {
   return (
     <div id="controls" className={classes.root}>
       <ScoresPanel />
-      <h2>Notes</h2>
-      <div className={classes.notesContainer}>
-        <textarea
-          className={classes.notes}
-          onChange={(event: React.ChangeEvent<HTMLTextAreaElement>) =>
-            setNotes(event.currentTarget.value)
-          }
-          value={notes}
-        />
-      </div>
+      <Notes />
       <Button classNames={`${classes.resetNotes}`} onClick={() => setNotes("")}>
         Reset Notes
       </Button>

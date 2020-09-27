@@ -12,7 +12,7 @@ export default createUseStyles((theme: ITheme) => ({
     border: `1px solid ${theme.borderColor}`,
     borderRadius: "0.25rem",
     display: "flex",
-    flex: `0 0 ${props.isMobile ? "100%" : "50%"}`,
+    flex: `0 1 ${props.isMobile ? "100%" : props.names ? "50%" : "25%"}`,
     justifyContent: "center",
     margin: "0.25rem 0",
     padding: "0.25rem 0.1rem",

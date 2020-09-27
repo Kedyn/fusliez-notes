@@ -98,3 +98,7 @@ export default function ScoresPanel({
     </div>
   );
 }
+
+ScoresPanel.defaultProps = {
+  isMobile: false,
+};

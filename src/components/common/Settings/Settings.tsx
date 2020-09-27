@@ -25,8 +25,8 @@ export default function Settings(props: ISettingsProps): JSX.Element {
       <div className={classes.container}>
         <Switch
           label="Use player names"
-          onChange={() => {
-            setNames((state) => !state);
+          onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+            setNames(event.currentTarget.checked);
           }}
           checked={names}
         />
