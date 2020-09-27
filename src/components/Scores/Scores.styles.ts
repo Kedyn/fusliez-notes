@@ -5,7 +5,7 @@ export default createUseStyles({
     alignItems: "center",
     display: "flex",
     flex: 1,
-    justifyContent: "center",
+    justifyContent: "space-between",
     margin: "0.5rem 0",
   },
   progressBarContainer: {

@@ -37,7 +37,7 @@ export default function ScoresPanel(): JSX.Element {
       </div>
 
       <div className={classes.scoreButtonsSection}>
-        <h4>Innocent</h4>
+        <h4 className={classes.title}>Innocent</h4>
         <WinsLossesButton
           buttonBackgroundColor={theme.innocentTextColor}
           decrement={() => setInnocentWins(innocentWins - 1)}
@@ -55,7 +55,7 @@ export default function ScoresPanel(): JSX.Element {
       </div>
 
       <div className={classes.scoreButtonsSection}>
-        <h4>Impostor</h4>
+        <h4 className={classes.title}>Impostor</h4>
         <WinsLossesButton
           buttonBackgroundColor={theme.impostorTextColor}
           decrement={() => setImpostorWins(impostorWins - 1)}

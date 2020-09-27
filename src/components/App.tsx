@@ -1,6 +1,6 @@
 import { INITIAL_DATA, useData } from "context";
 import { JssProvider, ThemeProvider } from "react-jss";
-
+import useStyles from "./App.styles";
 import ControlsContent from "./ControlsContent";
 import FeedbackForm from "./FeedbackForm";
 import MainContent from "./MainContent";
@@ -15,57 +15,57 @@ import TabNavigator from "./TabNavigator";
 
 export const MobileContext = React.createContext();
 
+const patchNotes = [
+  {
+    title: "Added",
+    items: [
+      "Separate Scores for impostors and innocents",
+      "Color change menu for players (click player icon to open)",
+      "Reset Scores",
+      "Reset Round (players positions)",
+      "Reset all button, resets players positions and scores.",
+      "Reset Notes",
+      "Settings Modal",
+      "Recovery Notes Modal",
+      "Change log Modal",
+      "Feedback Modal",
+      "Draggable Players on Map",
+      "Button to reset draggable players on Map",
+    ],
+  },
+  {
+    title: "Fixed",
+    items: ["Player background color contrast", "Danger theme button"],
+  },
+  { title: "Changed", items: ["Use names to the settings modal."] },
+  { title: "Removed", items: ["Light theme"] },
+  {
+    title: "Developer Notes",
+    items: [
+      "We are working in allowing custom theme colors.",
+      "We added a feedback link at the bottom at the page, we love to hear from all of you.",
+    ],
+  },
+];
+
 export default function App(): JSX.Element {
   const { version, theme } = useData()!; // eslint-disable-line
   const [showNotes, setShowNotes] = React.useState(false);
   const [showForm, setShowForm] = React.useState(false);
+  const [width, setWidth] = React.useState(window.innerWidth);
+  const [currentTab, setCurrentTab] = React.useState("Record");
+
+  const breakpoint = 846;
+
+  const isMobile = width <= breakpoint;
+
+  const classes = useStyles();
 
   React.useEffect(() => {
     if (version !== INITIAL_DATA.version) {
       setShowNotes(true);
     }
   }, []);
-
-  const patchNotes = [
-    {
-      title: "Added",
-      items: [
-        "Separate Scores for impostors and innocents",
-        "Color change menu for players (click player icon to open)",
-        "Reset Scores",
-        "Reset Round (players positions)",
-        "Reset all button, resets players positions and scores.",
-        "Reset Notes",
-        "Settings Modal",
-        "Recovery Notes Modal",
-        "Change log Modal",
-        "Feedback Modal",
-        "Draggable Players on Map",
-        "Button to reset draggable players on Map",
-      ],
-    },
-    {
-      title: "Fixed",
-      items: ["Player background color contrast", "Danger theme button"],
-    },
-    { title: "Changed", items: ["Use names to the settings modal."] },
-    { title: "Removed", items: ["Light theme"] },
-    {
-      title: "Developer Notes",
-      items: [
-        "We are working in allowing custom theme colors.",
-        "We added a feedback link at the bottom at the page, we love to hear from all of you.",
-      ],
-    },
-  ];
-
-  const [width, setWidth] = React.useState(window.innerWidth);
-  // const [useDesktop, setUseDesktop] = React.useState(false);
-  const [currentTab, setCurrentTab] = React.useState("Record");
-
-  const breakpoint = 846;
-
-  const isMobile = width <= breakpoint;
 
   React.useEffect(() => {
     const handleResize = () => {
@@ -90,10 +90,10 @@ export default function App(): JSX.Element {
                   ) : currentTab === "Maps" ? (
                     <MapsContent />
                   ) : currentTab === "Record" ? (
-                    <>
+                    <div className={classes.recordContainer}>
                       <Scores />
                       <ScoresPanel />
-                    </>
+                    </div>
                   ) : null}
                   <>
                     <TabNavigator

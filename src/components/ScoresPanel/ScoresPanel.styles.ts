@@ -6,6 +6,7 @@ export default createUseStyles((theme: ITheme) => ({
   root: {},
   buttonContainer: {
     display: "flex",
+    marginTop: "1rem",
   },
   dangerButton: {
     marginTop: "0.5rem",
@@ -28,12 +29,20 @@ export default createUseStyles((theme: ITheme) => ({
   scoreButtons: {
     display: "flex",
     flexDirection: "column",
-    margin: "0.5rem",
+
+    marginTop: "3rem",
+    marginBottom: "0.5rem",
   },
   scoreButtonsSection: {
     alignItems: "center",
     display: "flex",
     justifyContent: "space-between",
+    width: "100%",
+  },
+  title: {
+    marginBottom: "0.5rem",
+    flex: 1,
+    textAlign: "center",
     width: "100%",
   },
   titleContainer: {

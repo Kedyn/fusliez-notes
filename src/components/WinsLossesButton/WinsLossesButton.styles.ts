@@ -5,12 +5,14 @@ export default createUseStyles((theme: ITheme) => ({
   winsLossesButtonContainer: {
     alignItems: "center",
     display: "flex",
+    flex: 1,
     position: "relative",
     justifyContent: "space-between",
     width: "100px",
     marginLeft: "0.5rem",
   },
   winsLossesButton: {
+    margin: 0,
     "&:hover": {
       backgroundColor: theme.innocentBackgroundColor,
     },
