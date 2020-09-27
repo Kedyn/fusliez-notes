@@ -10,6 +10,7 @@ import React from "react";
 import Recovery from "./Recovery";
 import jssSetUp from "utils/jssSetUp";
 import Scores from "./Scores";
+import ScoresPanel from "./ScoresPanel";
 import TabNavigator from "./TabNavigator";
 
 export const MobileContext = React.createContext();
@@ -89,7 +90,10 @@ export default function App(): JSX.Element {
                   ) : currentTab === "Maps" ? (
                     <MapsContent />
                   ) : currentTab === "Record" ? (
-                    <Scores />
+                    <>
+                      <Scores />
+                      <ScoresPanel />
+                    </>
                   ) : null}
                   <>
                     <TabNavigator

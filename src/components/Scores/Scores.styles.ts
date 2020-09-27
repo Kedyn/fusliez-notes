@@ -2,8 +2,10 @@ import { createUseStyles } from "react-jss";
 
 export default createUseStyles({
   root: {
+    alignItems: "center",
     display: "flex",
     flex: 1,
+    justifyContent: "center",
     margin: "0.5rem 0",
   },
   progressBarContainer: {

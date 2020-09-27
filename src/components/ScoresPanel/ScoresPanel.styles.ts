@@ -28,7 +28,7 @@ export default createUseStyles((theme: ITheme) => ({
   scoreButtons: {
     display: "flex",
     flexDirection: "column",
-    marginBottom: "0.5rem",
+    margin: "0.5rem",
   },
   scoreButtonsSection: {
     alignItems: "center",
