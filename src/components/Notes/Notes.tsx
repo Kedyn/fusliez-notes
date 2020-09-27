@@ -15,10 +15,10 @@ export default function Notes(): JSX.Element {
       setNotes(localNotes);
     }
 
-    window.addEventListener("onbeforeunload", saveData);
+    window.addEventListener("beforeunload", () => saveData(notes));
 
     return () => {
-      window.removeEventListener("onbeforeunload", saveData);
+      window.removeEventListener("beforeunload", () => saveData(notes));
     };
   }, []);
 
@@ -27,7 +27,7 @@ export default function Notes(): JSX.Element {
   // or when the user leaves the page
   // however, if they do it too soon after the last entry
   // the notes won't be saved properly (a few chars off)
-  function saveData(notes) {
+  function saveData(notes: string) {
     localStorage.setItem(`${namespace}notes`, notes);
   }
 
