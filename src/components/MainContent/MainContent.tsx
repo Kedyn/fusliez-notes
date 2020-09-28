@@ -8,7 +8,7 @@ export default function MainContent({
 }: {
   isMobile: boolean;
 }): JSX.Element {
-  const classes = useStyles();
+  const classes = useStyles({ isMobile });
 
   return (
     <div id="main" className={classes.root}>
