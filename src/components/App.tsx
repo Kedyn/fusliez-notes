@@ -1,24 +1,47 @@
-import { useData } from "context";
+import React from "react";
+import { INITIAL_DATA, useData } from "context";
 import { JssProvider, ThemeProvider } from "react-jss";
 import useStyles from "./App.styles";
 import ControlsContent from "./ControlsContent";
-// import FeedbackForm from "./FeedbackForm";
+import FeedbackForm from "./FeedbackForm";
+import Footer from "./Footer";
 import MainContent from "./MainContent";
 import MapsContent from "./MapsContent";
-import React from "react";
+import Modal from "components/common/Modal";
+import Notes from "./Notes";
 import Recovery from "./Recovery";
 import jssSetUp from "utils/jssSetUp";
-import Footer from "./Footer";
-import Notes from "./Notes";
 import Scores from "./Scores";
 import ScoresPanel from "./ScoresPanel";
 import TabNavigator from "./TabNavigator";
 
 export const MobileContext = React.createContext(false);
 
-export default function App(): JSX.Element {
-  const { theme } = useData()!; // eslint-disable-line
+const patchNotes = [
+  {
+    title: "Added",
+    items: ["Mobile Support"],
+  },
+  {
+    title: "Fixed",
+    items: ["Player background color contrast", "Danger theme button"],
+  },
+  { title: "Changed", items: ["Use names to the settings modal."] },
+  { title: "Removed", items: ["Light theme"] },
+  {
+    title: "Developer Notes",
+    items: [
+      "We are working in allowing custom theme colors.",
+      "We added a feedback link at the bottom at the page, we love to hear from all of you.",
+    ],
+  },
+];
 
+export default function App(): JSX.Element {
+  const { version, theme } = useData()!; // eslint-disable-line
+
+  const [showNotes, setShowNotes] = React.useState(false);
+  const [showForm, setShowForm] = React.useState(false);
   const [width, setWidth] = React.useState(window.innerWidth);
   const [currentTab, setCurrentTab] = React.useState("Players");
 
@@ -27,6 +50,12 @@ export default function App(): JSX.Element {
   const isMobile = width <= breakpoint;
 
   const classes = useStyles();
+
+  React.useEffect(() => {
+    if (version !== INITIAL_DATA.version) {
+      setShowNotes(true);
+    }
+  }, []);
 
   React.useEffect(() => {
     const handleResize = () => {
@@ -63,7 +92,13 @@ export default function App(): JSX.Element {
                     <TabNavigator
                       currentTab={currentTab}
                       setCurrentTab={setCurrentTab}
-                      children={<Footer />}
+                      children={
+                        <Footer
+                          showNotes={showNotes}
+                          setShowNotes={setShowNotes}
+                          setShowForm={setShowForm}
+                        />
+                      }
                     />
                   </>
                 </>
@@ -74,73 +109,37 @@ export default function App(): JSX.Element {
                     <ControlsContent />
                     <MapsContent isMobile={false} />
                   </main>
-                  <Footer />
-                  {/* <footer>
-                    <small>
-                      fusliez notes{" "}
-                      <a
-                        href="https://github.com/Kedyn/fusliez-notes/releases/tag/v0.7.0"
-                        onClick={(
-                          event: React.MouseEvent<HTMLAnchorElement, MouseEvent>
-                        ) => {
-                          event.preventDefault();
-                          setShowNotes(!showNotes);
-                        }}
-                      >
-                        {version}
-                      </a>{" "}
-                      [9/24/2020] made with &#10084; by the{" "}
-                      <a href="https://github.com/Kedyn/fusliez-notes#authors-and-acknowledgment">
-                        fuslie fam
-                      </a>
-                      .{" "}
-                      <a
-                        href="#"
-                        onClick={(
-                          event: React.MouseEvent<HTMLAnchorElement, MouseEvent>
-                        ) => {
-                          event.preventDefault();
-                          setShowForm(true);
-                        }}
-                      >
-                        Feedback
-                      </a>
-                      <Modal
-                        title="Feedback Form"
-                        show={showForm}
-                        onClose={() => setShowForm(false)}
-                      >
-                        <FeedbackForm />
-                      </Modal>
-                    </small>
-                  </footer>
-    
-                  // {/* CHANGE LOG */}
-                  {/* <Modal
-                    title={`Change Log v${version}`}
-                    show={showNotes}
-                    onClose={() => setShowNotes(false)}
-                  >
-                    {patchNotes.map(({ title, items }) => (
-                      <div key={title}>
-                        <h4>{title}</h4>
-                        <ul>
-                          {items.map((item) => (
-                            <li key={item}>{item}</li>
-                          ))}
-                        </ul>
-                      </div>
-                    ))}
-                  </Modal>
-                  <Modal
-                    title="Feedback Form"
-                    show={showForm}
-                    onClose={() => setShowForm(false)}
-                  >
-                    <FeedbackForm />
-                  </Modal> */}
+                  <Footer
+                    showNotes={showNotes}
+                    setShowNotes={setShowNotes}
+                    setShowForm={setShowForm}
+                  />
                 </>
               )}
+              <Modal
+                title="Feedback Form"
+                show={showForm}
+                onClose={() => setShowForm(false)}
+              >
+                <FeedbackForm />
+              </Modal>
+              {/* CHANGE LOG */}
+              <Modal
+                title={`Change Log v${version}`}
+                show={showNotes}
+                onClose={() => setShowNotes(false)}
+              >
+                {patchNotes.map(({ title, items }) => (
+                  <div key={title}>
+                    <h3>{title}</h3>
+                    <ul>
+                      {items.map((item) => (
+                        <li key={item}>{item}</li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              </Modal>
             </React.Suspense>
           </MobileContext.Provider>
         </ThemeProvider>
