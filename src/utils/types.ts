@@ -37,6 +37,9 @@ export interface ITheme {
 
   linkColor: string;
 
+  oneColumn: string;
+  twoColumn: string;
+
   global: JssStyle;
 }
 

@@ -4,12 +4,11 @@ import { createUseStyles } from "react-jss";
 export default createUseStyles((theme: ITheme) => ({
   root: {
     padding: "0.5rem",
-    flex: 1,
   },
   button: {
     fontSize: "1rem",
     margin: "1rem 0",
-    width: "20%",
+    width: "160px",
   },
   mapNames: {
     display: "flex",
@@ -21,6 +20,7 @@ export default createUseStyles((theme: ITheme) => ({
     boxSizing: "border-box",
     cursor: "pointer",
     maxHeight: "4rem",
+    maxWidth: "33%",
     borderRadius: "50rem",
   },
   playerIcon: {

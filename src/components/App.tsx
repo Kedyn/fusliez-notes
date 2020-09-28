@@ -23,33 +23,29 @@ export default function App(): JSX.Element {
 
   const patchNotes = [
     {
-      title: "Added",
+      title: "Highlights",
       items: [
-        "Separate Scores for impostors and innocents",
-        "Color change menu for players (click player icon to open)",
-        "Reset Scores",
-        "Reset Round (players positions)",
-        "Reset all button, resets players positions and scores.",
-        "Reset Notes",
-        "Settings Modal",
-        "Recovery Notes Modal",
-        "Change log Modal",
-        "Feedback Modal",
-        "Draggable Players on Map",
-        "Button to reset draggable players on Map",
+        <>Color change menu for players. (click player icon to open)</>,
+        <>Better support for different screen sizes.</>,
+        <>"Use player names options." moved to settings.</>,
+        <>You can now use the ENTER key to move to the next player name.</>,
       ],
     },
     {
-      title: "Fixed",
-      items: ["Player background color contrast", "Danger theme button"],
-    },
-    { title: "Changed", items: ["Use names to the settings modal."] },
-    { title: "Removed", items: ["Light theme"] },
-    {
-      title: "Developer Notes",
+      title: "Development Notes",
       items: [
-        "We are working in allowing custom theme colors.",
-        "We added a feedback link at the bottom at the page, we love to hear from all of you.",
+        <>We are working in allowing custom theme colors.</>,
+        <>
+          We added a feedback link at the bottom at the page, we love to hear
+          from all of you.
+        </>,
+        <>
+          If you would like to see all the changes we have made please read our{" "}
+          <a href="https://github.com/Kedyn/fusliez-notes/blob/master/CHANGELOG.md">
+            CHANGELOG.md
+          </a>{" "}
+          file.
+        </>,
       ],
     },
   ];
@@ -78,7 +74,7 @@ export default function App(): JSX.Element {
                 >
                   {version}
                 </a>{" "}
-                [9/25/2020] made with &#10084; by the{" "}
+                [9/27/2020] made with &#10084; by the{" "}
                 <a href="https://github.com/Kedyn/fusliez-notes#authors-and-acknowledgment">
                   fuslie fam
                 </a>
@@ -114,8 +110,8 @@ export default function App(): JSX.Element {
                 <div key={title}>
                   <h4>{title}</h4>
                   <ul>
-                    {items.map((item) => (
-                      <li key={item}>{item}</li>
+                    {items.map((item, index) => (
+                      <li key={index}>{item}</li>
                     ))}
                   </ul>
                 </div>
