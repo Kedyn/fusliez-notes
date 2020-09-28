@@ -27,7 +27,7 @@ export default createUseStyles((theme: ITheme) => ({
   icon: (props) => ({
     borderRadius: "6px",
     padding: "0.15rem",
-    margin: "0 0.15rem",
+    margin: props.isMobile ? "0 0.5rem" : "0 0.15rem",
     display: "flex",
     justifyContent: "center",
 
@@ -44,7 +44,7 @@ export default createUseStyles((theme: ITheme) => ({
   }),
   input: (props) => ({
     borderRadius: ".2rem",
-    fontSize: props.name ? "1.15rem" : "1rem",
+    fontSize: props.isMobile ? "1.5rem" : props.name ? "1.15rem" : "1rem",
     fontWeight: 700,
     letterSpacing: "0.025rem",
     lineHeight: 1.5,
