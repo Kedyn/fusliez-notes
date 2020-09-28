@@ -30,7 +30,8 @@ Thanks to the developer team:
 [Daniel Singer](https://github.com/chilblane) (A.K.A. chilblane)  
 [Francis Tse](https://github.com/francistse23) (A.K.A. Furanki)  
 [Kevin Han](https://github.com/kevinydhan) (A.K.A. khany)  
-[Charlie Chai](https://github.com/charlie-808)
+[Charlie Chai](https://github.com/charlie-808)  
+[Griffin Suparto](https://github.com/Viou)
 
 Thanks to everyone who has suggested enhancements, reported bugs, are or any
 other support on this project such as:
