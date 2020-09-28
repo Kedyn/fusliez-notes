@@ -38,7 +38,6 @@ export const INITIAL_DATA: IData = {
     { id: "yellow", name: "", color: "yellow" },
   ],
   names: true,
-  // notes: "",
 };
 
 const localData = localStorage.getItem(`${namespace}data`);
@@ -82,7 +81,6 @@ export function DataProvider({ children }: IDataProviderProps): JSX.Element {
     data.impostorLosses
   );
   const [names, setLocalNames] = React.useState(data.names);
-  // const [notes, setLocalNotes] = React.useState(data.notes);
 
   const [innocentPlayers, setLocalInnocentPlayers] = React.useState<
     Array<IPlayer>
@@ -116,7 +114,6 @@ export function DataProvider({ children }: IDataProviderProps): JSX.Element {
     setLocalSusPlayers([]);
     setLocalEvilPlayers([]);
     setLocalDeadPlayers([]);
-    // setLocalNotes("");
 
     localStorage.setItem(
       `${namespace}data`,
@@ -393,19 +390,6 @@ export function DataProvider({ children }: IDataProviderProps): JSX.Element {
             setLocalUnknownPlayers(value);
           }
         },
-        // setNotes: (value: string) => {
-        //   const localData = localStorage.getItem(`${namespace}data`);
-
-        //   if (localData) {
-        //     const data: IData = JSON.parse(localData);
-
-        //     data.notes = value;
-
-        //     localStorage.setItem(`${namespace}data`, JSON.stringify(data));
-
-        //     setLocalNotes(value);
-        //   }
-        // },
       }}
     >
       {children}

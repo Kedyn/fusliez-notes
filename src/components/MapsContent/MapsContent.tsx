@@ -10,7 +10,11 @@ import useStyles from "./MapsContent.styles";
 //   isMobile: boolean;
 // }props: IMapsContentProps
 
-export default function MapsContent(): JSX.Element {
+export default function MapsContent({
+  isMobile,
+}: {
+  isMobile: boolean;
+}): JSX.Element {
   const [map, setMap] = React.useState("skeld");
   const [resetState, setResetState] = React.useState(false);
 
@@ -31,6 +35,7 @@ export default function MapsContent(): JSX.Element {
 
   const classes = useStyles({
     map: map === "skeld" ? "TheSkeld" : map === "mira" ? "Mirahq" : "Polus",
+    isMobile,
   });
 
   let currentMap = <TheSkeld />;
@@ -89,11 +94,14 @@ export default function MapsContent(): JSX.Element {
               />
             </Draggable>
           ))}
-
-        <Button className={classes.button} onClick={() => setResetState(true)}>
-          Reset Players
-        </Button>
       </div>
+      <Button className={classes.button} onClick={() => setResetState(true)}>
+        Reset Players
+      </Button>
     </div>
   );
 }
+
+MapsContent.defaultProps = {
+  isMobile: false,
+};

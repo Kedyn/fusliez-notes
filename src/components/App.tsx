@@ -43,7 +43,7 @@ export default function App(): JSX.Element {
   const [showNotes, setShowNotes] = React.useState(false);
   const [showForm, setShowForm] = React.useState(false);
   const [width, setWidth] = React.useState(window.innerWidth);
-  const [currentTab, setCurrentTab] = React.useState("Players");
+  const [currentTab, setCurrentTab] = React.useState("Maps");
 
   const breakpoint = 846;
 
@@ -86,7 +86,7 @@ export default function App(): JSX.Element {
                       <ScoresPanel isMobile={isMobile} />
                     </div>
                   ) : currentTab === "Maps" ? (
-                    <MapsContent />
+                    <MapsContent isMobile={isMobile} />
                   ) : null}
                   <>
                     <TabNavigator
