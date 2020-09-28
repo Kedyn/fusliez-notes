@@ -26,8 +26,8 @@ export default createUseStyles((theme: ITheme) => ({
     borderRadius: "25rem",
     boxSizing: "border-box",
     cursor: "pointer",
-    height: "50%",
-    margin: "0 1rem",
+    maxHeight: "40%",
+    margin: "0 1%",
     width: "30%",
   },
   playerIcon: (props) => ({
