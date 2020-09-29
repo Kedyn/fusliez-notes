@@ -20,24 +20,32 @@ export const MobileContext = React.createContext(false);
 
 const patchNotes = [
   {
-    title: "Added",
-    items: ["Mobile Support"],
-  },
-  {
-    title: "Fixed",
-    items: ["Player background color contrast", "Danger theme button"],
-  },
-  { title: "Changed", items: ["Use names to the settings modal."] },
-  { title: "Removed", items: ["Light theme"] },
-  {
-    title: "Developer Notes",
+    title: "Highlights",
     items: [
-      "We are working in allowing custom theme colors.",
-      "We added a feedback link at the bottom at the page, we love to hear from all of you.",
+      <>Color change menu for players. (click player icon to open)</>,
+      <>Better support for different screen sizes.</>,
+      <>"Use player names options." moved to settings.</>,
+      <>You can now use the ENTER key to move to the next player name.</>,
+    ],
+  },
+  {
+    title: "Development Notes",
+    items: [
+      <>We are working in allowing custom theme colors.</>,
+      <>
+        We added a feedback link at the bottom at the page, we love to hear from
+        all of you.
+      </>,
+      <>
+        If you would like to see all the changes we have made please read our{" "}
+        <a href="https://github.com/Kedyn/fusliez-notes/blob/master/CHANGELOG.md">
+          CHANGELOG.md
+        </a>{" "}
+        file.
+      </>,
     ],
   },
 ];
-
 export default function App(): JSX.Element {
   const { version, theme } = useData()!; // eslint-disable-line
 

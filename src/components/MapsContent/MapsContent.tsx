@@ -51,7 +51,7 @@ export default function MapsContent({
   }, [resetState]);
 
   return (
-    <div className={classes.root}>
+    <div id="maps" className={classes.root}>
       <div className={classes.mapNames}>
         <img
           src="assets/The_Skeld.png"
