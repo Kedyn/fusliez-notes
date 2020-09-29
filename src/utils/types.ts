@@ -53,7 +53,7 @@ export interface IDataContext {
   evilPlayers: Array<IPlayer>;
   deadPlayers: Array<IPlayer>;
   unknownPlayers: Array<IPlayer>;
-  notes: string;
+  // notes: string;
   resetPlayersPositions: () => void;
   resetGames: () => void;
   resetAll: () => void;
@@ -68,7 +68,7 @@ export interface IDataContext {
   setEvilPlayers: (value: Array<IPlayer>) => void;
   setDeadPlayers: (value: Array<IPlayer>) => void;
   setUnknownPlayers: (value: Array<IPlayer>) => void;
-  setNotes: (value: string) => void;
+  // setNotes: (value: string) => void;
 }
 
 export interface IData {
@@ -78,11 +78,11 @@ export interface IData {
   innocentLosses: number;
   impostorWins: number;
   impostorLosses: number;
-  names: boolean;
   innocentPlayers: Array<IPlayer>;
   susPlayers: Array<IPlayer>;
   evilPlayers: Array<IPlayer>;
   deadPlayers: Array<IPlayer>;
   unknownPlayers: Array<IPlayer>;
-  notes: string;
+  names: boolean;
+  //   notes: string;
 }

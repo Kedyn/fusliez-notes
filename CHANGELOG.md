@@ -114,7 +114,7 @@ Features included draggable players and progress bar for score.
 
 #### Added
 
-- Multiple language support
+- Focus on next input element when pressing Enter
 
 ### [v0.1.0] - 8/24/2020
 

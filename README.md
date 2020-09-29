@@ -30,7 +30,8 @@ Thanks to the developer team:
 [Daniel Singer](https://github.com/chilblane) (A.K.A. chilblane)  
 [Francis Tse](https://github.com/francistse23) (A.K.A. Furanki)  
 [Kevin Han](https://github.com/kevinydhan) (A.K.A. khany)  
-[Charlie Chai](https://github.com/charlie-808)
+[Charlie Chai](https://github.com/charlie-808)  
+[Griffin Suparto](https://github.com/Viou)
 
 Thanks to everyone who has suggested enhancements, reported bugs, are or any
 other support on this project such as:
@@ -39,7 +40,9 @@ other support on this project such as:
 Pedro / Dian\_\_  
 Rydannn (twitch handle)  
 GeneralMitch (twitch handle)  
-Kermitigated (twitch handle)
+Kermitigated (twitch handle)  
+[Kinishina](https://github.com/Kinishina)  
+[Federico Gaston Ramadan](https://github.com/federamadan)
 
 Please if you would not like to be mentioned here or your information is wrong
 let me know so I can remove it or fix it, thank you!

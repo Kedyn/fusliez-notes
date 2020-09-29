@@ -3,6 +3,7 @@ import React from "react";
 import Section from "components/Section";
 import { useData } from "context";
 import useStyles from "./PlayersSection.styles";
+import { MobileContext } from "components/App";
 import { useTranslation } from "react-i18next";
 
 export default function PlayersSection(): JSX.Element {
@@ -19,8 +20,8 @@ export default function PlayersSection(): JSX.Element {
     setUnknownPlayers,
   } = useData()!; // eslint-disable-line
 
-  const { t } = useTranslation();
   const classes = useStyles();
+  const isMobile = React.useContext(MobileContext);
 
   interface Section {
     title: string;
@@ -30,45 +31,42 @@ export default function PlayersSection(): JSX.Element {
 
   const sections: Array<Section> = [
     {
-      title: t("main.lists.innocent"),
+      title: "Innocent",
       list: innocentPlayers,
       setList: setInnocentPlayers,
     },
     {
-      title: t("main.lists.suspicious"),
+      title: "Suspicious",
       list: susPlayers,
       setList: setSusPlayers,
     },
     {
-      title: `${t("main.lists.evil")} / ${t("main.lists.hitList")}`,
+      title: "Evil / Hit List",
       list: evilPlayers,
       setList: setEvilPlayers,
     },
     {
-      title: t("main.lists.dead"),
+      title: "Dead",
       list: deadPlayers,
       setList: setDeadPlayers,
     },
     {
-      title: t("main.lists.unknown"),
+      title: "Unknown",
       list: unknownPlayers,
       setList: setUnknownPlayers,
     },
   ];
 
-  // function swapPlayersColors(
-  //   currentPlayerColor: string,
-  //   targetPlayerColor: string,
-  //   currentPlayerList: Array<IPlayer>
-  // ) {
-  //   // const currentPlayer = currentPlayerList.filter()
-  //   console.log(currentPlayerList);
-  // }
-
   return (
     <div className={classes.root}>
       {sections.map(({ title, list, setList }) => (
-        <Section key={title} title={title} list={list} setList={setList} />
+        <Section
+          key={title}
+          title={title}
+          list={list}
+          setList={setList}
+          isMobile={isMobile}
+        />
       ))}
     </div>
   );

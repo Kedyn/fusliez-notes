@@ -99,9 +99,7 @@ export default class DefaultTheme implements ITheme {
         fontSize: "smaller",
       },
       "#main": {
-        width: 320,
-        minWidth: 320,
-        padding: "1rem",
+        padding: "0.25rem",
       },
       "#controls": {
         width: 320,
@@ -113,7 +111,7 @@ export default class DefaultTheme implements ITheme {
         margin: 0,
       },
       h2: {
-        fontSize: "2rem",
+        fontSize: "1.75rem",
         margin: ".5rem 0",
         fontWeight: "500",
         lineHeight: "1.2",
