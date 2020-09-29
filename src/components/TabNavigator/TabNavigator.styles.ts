@@ -7,7 +7,9 @@ export default createUseStyles((theme: ITheme) => ({
     flexDirection: "column",
     position: "sticky",
     bottom: 0,
-    height: window.screen.orientation.type.includes("portrait") ? "19%" : "25%",
+    height: window?.screen?.orientation?.type?.includes("portrait")
+      ? "19%"
+      : "25%",
   },
   activeTab: {
     borderBottom: `6px solid ${theme.buttonTextColor}`,
