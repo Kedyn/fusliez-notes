@@ -21,6 +21,7 @@ export default createUseStyles((theme: ITheme) => ({
     }`,
     justifyContent: "center",
     margin: "0.25rem 0",
+    opacity: props.longPressed ? "0.5" : 1,
     padding: "0.25rem 0.1rem",
     position: "relative",
   }),

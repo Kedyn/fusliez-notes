@@ -2,7 +2,6 @@ import Button from "../Button";
 import Modal from "../Modal";
 import React from "react";
 import SettingsContent from "./SettingsContent";
-import useStyles from "./Settings.styles";
 
 export interface ISettingsProps {
   show: boolean;

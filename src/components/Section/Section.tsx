@@ -28,7 +28,7 @@ export default function Section(props: ISectionProps): JSX.Element {
           group="players"
           handle=".player-handle"
           delayOnTouchStart={isMobile}
-          delay={isMobile ? 100 : 0}
+          delay={isMobile ? 150 : 0}
           list={list}
           setList={setList}
           className={classes.players}

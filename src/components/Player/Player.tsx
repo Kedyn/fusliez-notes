@@ -8,21 +8,27 @@ import usePlayerStyles from "./Player.styles";
 export interface IPlayerProps {
   id: string | number;
   color: string;
+  backgroundColor: string;
   name: string;
   list: Array<IPlayer>;
-  listName: string;
   setList: (value: IPlayer[]) => void;
   index: number;
 }
 
 export default function Player(props: IPlayerProps): JSX.Element {
   const [isMenuShowing, setIsMenuShowing] = React.useState(false);
+  const [longPressed, setLongPressed] = React.useState(false);
   const isMobile = React.useContext(MobileContext);
 
   const { names } = useData()!; // eslint-disable-line
   const htmlElRef = React.useRef(null);
 
-  const playerStyles = usePlayerStyles({ names, isMobile, ...props });
+  const playerStyles = usePlayerStyles({
+    names,
+    isMobile,
+    longPressed,
+    ...props,
+  });
 
   const { id, color, name, list, setList, index } = props;
 
@@ -47,8 +53,41 @@ export default function Player(props: IPlayerProps): JSX.Element {
     }
   };
 
+  // put this in for mobile only
+  // so users know they are interacting with the object
+  const useLongPress = (ms = 150) => {
+    const [startLongPress, setStartLongPress] = React.useState(false);
+
+    React.useEffect(() => {
+      let timerId: number;
+      if (startLongPress) {
+        timerId = setTimeout(() => setLongPressed(true), ms);
+      } else {
+        setLongPressed(false);
+        clearTimeout(timerId);
+      }
+
+      return () => {
+        clearTimeout(timerId);
+      };
+    }, [ms, startLongPress]);
+
+    return {
+      onMouseDown: () => setStartLongPress(true),
+      onMouseUp: () => setStartLongPress(false),
+      onMouseLeave: () => setStartLongPress(false),
+      onTouchStart: () => setStartLongPress(true),
+      onTouchEnd: () => setStartLongPress(false),
+    };
+  };
+
+  const longPressEvents = useLongPress();
+
   return (
-    <div className={`${playerStyles.container} player-handle`}>
+    <div
+      className={`${playerStyles.container} player-handle`}
+      {...longPressEvents}
+    >
       {isMenuShowing && (
         <ColorsMenu
           isMenuShowing={isMenuShowing}

@@ -1,7 +1,6 @@
-import { ITheme } from "utils/types";
 import { createUseStyles } from "react-jss";
 
-export default createUseStyles((theme: ITheme) => ({
+export default createUseStyles({
   root: {},
   recordContainer: {
     alignSelf: "center",
@@ -12,4 +11,4 @@ export default createUseStyles((theme: ITheme) => ({
     justifyContent: "space-between",
     minWidth: "70%",
   },
-}));
+});

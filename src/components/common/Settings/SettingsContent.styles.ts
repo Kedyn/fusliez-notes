@@ -1,9 +1,6 @@
-import { ITheme } from "utils/types";
 import { createUseStyles } from "react-jss";
 
-export default createUseStyles((theme: ITheme) => ({
+export default createUseStyles({
   root: {},
-  container: {
-    // minWidth: 320,
-  },
-}));
+  container: {},
+});
