@@ -5,6 +5,7 @@ export default createUseStyles((theme: ITheme) => ({
   root: (props) => ({
     margin: props.isMobile ? "0.5rem 1rem" : "",
     height: "100%",
+    width: props.isMobile ? window.innerWidth * 0.925 : "100%",
   }),
   notes: (props) => ({
     fontSize: "1.25rem",

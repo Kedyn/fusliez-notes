@@ -6,6 +6,7 @@ export default createUseStyles((theme: ITheme) => ({
   root: {
     display: "flex",
     flexDirection: "column",
+    alignItems: "center",
   },
 
   buttonContainer: {

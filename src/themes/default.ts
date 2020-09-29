@@ -99,8 +99,6 @@ export default class DefaultTheme implements ITheme {
         fontSize: "smaller",
       },
       "#main": {
-        width: 320,
-        minWidth: 320,
         padding: "0.25rem",
       },
       "#controls": {

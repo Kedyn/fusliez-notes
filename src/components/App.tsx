@@ -10,6 +10,7 @@ import MapsContent from "./MapsContent";
 import Modal from "components/common/Modal";
 import Notes from "./Notes";
 import Recovery from "./Recovery";
+import SlideDrawer from "./SlideDrawer";
 import jssSetUp from "utils/jssSetUp";
 import Scores from "./Scores";
 import ScoresPanel from "./ScoresPanel";
@@ -42,8 +43,9 @@ export default function App(): JSX.Element {
 
   const [showNotes, setShowNotes] = React.useState(false);
   const [showForm, setShowForm] = React.useState(false);
+  const [isDrawerOpen, setIsDrawerOpen] = React.useState(false);
   const [width, setWidth] = React.useState(window.innerWidth);
-  const [currentTab, setCurrentTab] = React.useState("Maps");
+  const [currentTab, setCurrentTab] = React.useState("Players");
 
   const breakpoint = 846;
 
@@ -76,6 +78,13 @@ export default function App(): JSX.Element {
               <Recovery />
               {isMobile ? (
                 <>
+                  {isDrawerOpen && (
+                    <SlideDrawer
+                      isDrawerOpen={isDrawerOpen}
+                      setIsDrawerOpen={setIsDrawerOpen}
+                    />
+                  )}
+
                   {currentTab === "Players" ? (
                     <MainContent isMobile={isMobile} />
                   ) : currentTab === "Notes" ? (
@@ -92,6 +101,7 @@ export default function App(): JSX.Element {
                     <TabNavigator
                       currentTab={currentTab}
                       setCurrentTab={setCurrentTab}
+                      setIsDrawerOpen={setIsDrawerOpen}
                       children={
                         <Footer
                           showNotes={showNotes}

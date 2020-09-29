@@ -4,19 +4,27 @@ import { FaStickyNote, FaRegStickyNote, FaMap } from "react-icons/fa";
 import { FiMap } from "react-icons/fi";
 import { BiDoughnutChart } from "react-icons/bi";
 import { RiDonutChartFill } from "react-icons/ri";
+import { GiHamburgerMenu } from "react-icons/gi";
 
 export default function TabNavigator({
   currentTab,
   setCurrentTab,
+  setIsDrawerOpen,
   children,
 }: {
   currentTab: string;
   setCurrentTab: (text: string) => void;
+  setIsDrawerOpen: (state: boolean) => void;
   children: JSX.Element;
 }): JSX.Element {
   const classes = useStyles();
 
   const tabs = [
+    {
+      name: "Menu",
+      icon: <GiHamburgerMenu className={classes.icon} />,
+      iconSelected: <GiHamburgerMenu className={classes.icon} />,
+    },
     {
       name: "Players",
       icon: (
@@ -63,7 +71,9 @@ export default function TabNavigator({
     return (
       <button
         className={`${classes.tab} ${name === currentTab && classes.activeTab}`}
-        onClick={() => setCurrentTab(name)}
+        onClick={() =>
+          name === "Menu" ? setIsDrawerOpen(true) : setCurrentTab(name)
+        }
       >
         {currentTab === name ? iconSelected : icon}
         {name}

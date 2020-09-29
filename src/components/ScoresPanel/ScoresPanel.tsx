@@ -80,21 +80,25 @@ export default function ScoresPanel({
         <Button classNames={classes.reset} onClick={() => resetScores()}>
           Reset Scores
         </Button>
-        <Button
-          classNames={classes.reset}
-          onClick={() => resetPlayersPositions()}
-        >
-          Reset Round
-        </Button>
+        {!isMobile && (
+          <Button
+            classNames={classes.reset}
+            onClick={() => resetPlayersPositions()}
+          >
+            Reset Round
+          </Button>
+        )}
       </div>
-      <div className={classes.buttonContainer}>
-        <Button
-          classNames={`${classes.reset} ${classes.dangerButton}`}
-          onClick={() => resetAll()}
-        >
-          Reset All
-        </Button>
-      </div>
+      {!isMobile && (
+        <div className={classes.buttonContainer}>
+          <Button
+            classNames={`${classes.reset} ${classes.dangerButton}`}
+            onClick={() => resetAll()}
+          >
+            Reset All
+          </Button>
+        </div>
+      )}
     </div>
   );
 }

@@ -8,7 +8,7 @@ export default createUseStyles((theme: ITheme) => ({
     "-webkit-appearance": "none",
     "-moz-appearance": "none",
     appearance: "none",
-    width: "3rem",
+    minWidth: "3rem",
     height: "1.1rem",
     display: "inline-block",
     position: "relative",
@@ -19,7 +19,6 @@ export default createUseStyles((theme: ITheme) => ({
     cursor: "pointer",
     backgroundColor: `rgba(${hexToRGB(theme.buttonBackgroundColor)}, 0.5)`,
     transition: "background-color ease 0.3s",
-    margin: "auto",
     marginRight: "0.5rem",
 
     "&:before": {
@@ -51,5 +50,8 @@ export default createUseStyles((theme: ITheme) => ({
   toggleContainer: {
     display: "flex",
     alignItems: "center",
+    fontSize: "1rem",
+    justifyContent: "center",
+    margin: "0.5rem 0",
   },
 }));
