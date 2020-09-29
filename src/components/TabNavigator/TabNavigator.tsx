@@ -29,14 +29,14 @@ export default function TabNavigator({
       name: "Players",
       icon: (
         <img
-          src="~/assets/Players.png"
+          src="assets/Players.png"
           alt="player-icon"
           className={classes.icon}
         />
       ),
       iconSelected: (
         <img
-          src="~/assets/Players-Selected.png"
+          src="assets/Players-selected.png"
           alt="player-selected-icon"
           className={classes.icon}
         />
