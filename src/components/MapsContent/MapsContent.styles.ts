@@ -5,8 +5,8 @@ export default createUseStyles((theme: ITheme) => ({
   root: (props) => ({
     flex: 1,
     justifyContent: "center",
-    minHeight:
-      props.orientation === "portrait" || props.isMobile ? "100%" : "165%",
+    // minHeight:
+    //   props.orientation === "portrait" || props.isMobile ? "100%" : "165%",
     margin: "0 0.5rem",
     padding: "0.5rem",
     paddingBottom: props.isMobile ? "10rem" : "0.5rem",

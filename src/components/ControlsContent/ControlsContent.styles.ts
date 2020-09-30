@@ -7,6 +7,7 @@ export default createUseStyles((theme: ITheme) => ({
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
+    justifyContent: "flex-start",
   },
 
   buttonContainer: {

@@ -2,15 +2,14 @@ import { ITheme } from "utils/types";
 import { createUseStyles } from "react-jss";
 
 export default createUseStyles((theme: ITheme) => ({
-  root: (props) => ({
+  root: {
     display: "flex",
     flexDirection: "column",
     position: "fixed",
-    bottom: props.orientation === "portrait" ? "-5%" : "1%",
-    height: props.orientation === "portrait" ? "19%" : "25%",
-    marginTop: "10rem",
+    bottom: 0,
+    maxHeight: "195px",
     width: "100%",
-  }),
+  },
   activeTab: {
     borderBottom: `4px solid ${theme.buttonTextColor}`,
   },

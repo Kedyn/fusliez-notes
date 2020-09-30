@@ -64,4 +64,5 @@ export default function Notes({
 
 Notes.defaultProps = {
   isMobile: false,
+  orientation: "portrait",
 };

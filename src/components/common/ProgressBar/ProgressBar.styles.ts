@@ -11,8 +11,8 @@ export default createUseStyles((theme: ITheme) => ({
   }),
   circularBar: (props) => ({
     fontSize: props.isMobile ? "0.5rem" : "1rem",
-    width: props.isMobile ? "5rem" : "5.5rem",
-    height: props.isMobile ? "5rem" : "5.5rem",
+    width: props.orientation === "portrait" ? "5rem" : "5.5rem",
+    height: props.orientation === "portrait" ? "5rem" : "5.5rem",
   }),
   progressBar: (props) => ({
     backgroundColor: props.progressColor

@@ -64,7 +64,7 @@ export default function App(): JSX.Element {
       : "landscape"
   );
   const [width, setWidth] = React.useState(window.innerWidth);
-  const [currentTab, setCurrentTab] = React.useState("Record");
+  const [currentTab, setCurrentTab] = React.useState("Notes");
 
   const breakpoint = 846;
 

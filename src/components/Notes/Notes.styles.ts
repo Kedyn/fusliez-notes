@@ -6,25 +6,25 @@ export default createUseStyles((theme: ITheme) => ({
     alignItems: "center",
     height: "100%",
     justifyContent: "center",
-    padding: props.isMobile ? "2rem" : "",
+    padding: props.isMobile ? "1rem" : "0",
     width: "100%",
   }),
   notes: (props) => ({
     fontSize: "1.25rem",
-    flex: 1,
+    flex: "4 1 auto",
     width: "100%",
-    height: "100%",
-    minHeight: props.isMobile
-      ? "55vh"
+    height: !props.isMobile
+      ? "350px"
       : props.orientation === "landscape"
-      ? "40vh"
-      : "350px",
+      ? window.innerHeight * 0.55
+      : window.innerHeight * 0.65,
     backgroundColor: theme.neutralBackgroundColor,
   }),
   notesContainer: {
-    flexGrow: 1,
+    flexGrow: 5,
   },
   resetNotes: {
+    flex: 1,
     marginTop: "0.5rem",
   },
 }));

@@ -18,13 +18,14 @@ export interface IProgressBarProps {
 
 export default function ProgressBar(props: IProgressBarProps): JSX.Element {
   const { progress, backgroundColor, progressColor, wins, losses } = props;
-  const { isMobile } = React.useContext(MobileContext);
+  const { isMobile, orientation } = React.useContext(MobileContext);
 
   const classes = useStyles({
     backgroundColor,
     progressColor,
     progress,
     isMobile,
+    orientation,
   });
 
   return (

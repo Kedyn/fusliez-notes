@@ -124,8 +124,8 @@ export default class DefaultTheme implements ITheme {
         // },
       },
       "#controls": {
-        width: 320,
-        minWidth: 320,
+        // width: 320,
+        // minWidth: 320,
         padding: "1rem",
 
         // [this.oneColumn]: {
