@@ -9,7 +9,8 @@ export default createUseStyles((theme: ITheme) => ({
     boxShadow: "5px 0px 7px rgba(255,255,255,0.5)",
     display: "flex",
     flexDirection: "column",
-    height: "100%",
+    height: window.innerHeight,
+    "-webkit-overflow-scrolling": "touch",
     left: "0",
     overflowY: "scroll",
     padding: "1rem",
@@ -27,13 +28,12 @@ export default createUseStyles((theme: ITheme) => ({
     borderStyle: "solid",
     display: "flex",
     flexDirection: "column",
-    justifyContent: "space-between",
+    justifyContent: "flex-start",
     margin: "0 0.25rem",
-    padding: "1rem 0",
+    padding: "0.25rem 0",
     width: "100%",
   },
   dangerButton: {
-    margin: "1rem 0",
     backgroundColor: theme.buttonDangerBackgroundColor,
     color: theme.buttonDangerTextColor,
 
@@ -51,7 +51,11 @@ export default createUseStyles((theme: ITheme) => ({
     width: "50px",
     marginBottom: "1rem",
   },
+  nonLastSection: {
+    borderBottom: "none",
+  },
   reset: {
     fontSize: "1rem",
+    margin: "0.5rem 0",
   },
 }));

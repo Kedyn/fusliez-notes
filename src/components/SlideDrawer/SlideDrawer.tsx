@@ -42,7 +42,7 @@ export default function SlideDrawer({
             className={classes.icon}
           />
 
-          <div className={classes.container} style={{ borderBottom: "none" }}>
+          <div className={`${classes.container} ${classes.nonLastSection}`}>
             <Button
               classNames={classes.reset}
               onClick={() => resetPlayersPositions()}
