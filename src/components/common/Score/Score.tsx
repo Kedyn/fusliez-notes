@@ -12,12 +12,10 @@ export default function Score(props: IScoreProps): JSX.Element {
   const { className, ...other } = props;
 
   return (
-    <React.Fragment>
-      <input
-        type="number"
-        className={`${className ? className : ""} ${classes.input}`}
-        {...other}
-      />
-    </React.Fragment>
+    <input
+      type="number"
+      className={`${className ? className : ""} ${classes.input}`}
+      {...other}
+    />
   );
 }

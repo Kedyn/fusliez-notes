@@ -25,9 +25,6 @@ export default createUseStyles((theme: ITheme) => ({
     padding: "0.25rem 0.1rem",
     position: "relative",
   }),
-  player: {
-    padding: "0.25rem",
-  },
   name: {
     flexGrow: 1,
   },
@@ -39,9 +36,10 @@ export default createUseStyles((theme: ITheme) => ({
     justifyContent: "center",
 
     "&:hover": {
-      backgroundColor: props.names
-        ? `rgba(${colorNameToRGB(props.color)}, 0.7)`
-        : props.backgroundColor,
+      backgroundColor:
+        props.names && !props.isMobile
+          ? `rgba(${colorNameToRGB(props.color)}, 0.7)`
+          : props.backgroundColor,
       cursor: props.names ? "pointer" : "grab",
     },
     "& img": {
@@ -64,7 +62,9 @@ export default createUseStyles((theme: ITheme) => ({
       color: theme.textColor,
     },
   }),
-
+  player: {
+    padding: "0.25rem",
+  },
   playerColorChangeMenu: {
     alignItems: "center",
     background: theme.backgroundColor,
@@ -82,7 +82,6 @@ export default createUseStyles((theme: ITheme) => ({
     width: "100%",
     zIndex: 10,
   },
-
   playerColorChangeMenuHidden: {
     display: "none",
   },

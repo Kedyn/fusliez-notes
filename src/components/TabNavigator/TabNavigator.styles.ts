@@ -33,5 +33,6 @@ export default createUseStyles((theme: ITheme) => ({
   },
   tabsContainer: {
     display: "flex",
+    height: "100%",
   },
 }));

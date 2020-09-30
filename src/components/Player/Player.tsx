@@ -62,7 +62,10 @@ export default function Player(props: IPlayerProps): JSX.Element {
     React.useEffect(() => {
       let timerId: number;
       if (startLongPress) {
-        timerId = setTimeout(() => setLongPressed(true), ms);
+        timerId = setTimeout(() => {
+          window.navigator.vibrate() && window.navigator.vibrate(200);
+          setLongPressed(true);
+        }, ms);
       } else {
         setLongPressed(false);
         clearTimeout(timerId);
@@ -89,7 +92,7 @@ export default function Player(props: IPlayerProps): JSX.Element {
       className={`${playerStyles.container} player-handle`}
       {...longPressEvents}
     >
-      {isMenuShowing && (
+      {isMenuShowing && !isMobile && (
         <ColorsMenu
           isMenuShowing={isMenuShowing}
           setIsMenuShowing={setIsMenuShowing}
@@ -99,7 +102,7 @@ export default function Player(props: IPlayerProps): JSX.Element {
       <div className={playerStyles.icon}>
         <img
           onClick={() => {
-            if (names) {
+            if (names && !isMobile) {
               setIsMenuShowing(!isMenuShowing);
             }
           }}

@@ -98,8 +98,6 @@ export default function App(): JSX.Element {
     };
   }, [window, orientation]);
 
-  console.log(isMobile, orientation, window.innerHeight > window.innerWidth);
-
   return (
     <React.Fragment>
       <JssProvider registry={jssSetUp(theme)}>

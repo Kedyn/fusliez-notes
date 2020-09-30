@@ -26,8 +26,15 @@ export default function Section(props: ISectionProps): JSX.Element {
         <ReactSortable
           group="players"
           handle=".player-handle"
-          delayOnTouchStart={isMobile}
+          delayOnTouchOnly={isMobile}
+          // have to add filter and preventOnFilter
+          // to enable input on mobile devices
+          // but by doing so
+          // limits the dragging by the icon only
+          filter="input"
+          preventOnFilter={false}
           delay={isMobile ? 150 : 0}
+          touchStartThreshold={3}
           list={list}
           setList={setList}
           className={classes.players}
