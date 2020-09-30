@@ -9,7 +9,6 @@ import useStyles from "./Section.styles";
 export interface ISectionProps {
   title: string;
   list: Array<IPlayer>;
-  listName: string;
   setList: (value: IPlayer[]) => void;
   isMobile: boolean;
 }

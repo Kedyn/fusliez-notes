@@ -1,6 +1,6 @@
 import React from "react";
 import useStyles from "./ProgressBar.styles";
-
+import { MobileContext } from "components/App";
 import {
   CircularProgressbarWithChildren,
   buildStyles,
@@ -18,11 +18,13 @@ export interface IProgressBarProps {
 
 export default function ProgressBar(props: IProgressBarProps): JSX.Element {
   const { progress, backgroundColor, progressColor, wins, losses } = props;
+  const { isMobile } = React.useContext(MobileContext);
 
   const classes = useStyles({
     backgroundColor,
     progressColor,
     progress,
+    isMobile,
   });
 
   return (

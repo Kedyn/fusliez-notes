@@ -3,16 +3,22 @@ import { createUseStyles } from "react-jss";
 
 export default createUseStyles((theme: ITheme) => ({
   root: (props) => ({
-    margin: props.isMobile ? "0.5rem 1rem" : "",
+    alignItems: "center",
     height: "100%",
-    width: props.isMobile ? window.innerWidth * 0.925 : "100%",
+    justifyContent: "center",
+    padding: props.isMobile ? "2rem" : "",
+    width: "100%",
   }),
   notes: (props) => ({
     fontSize: "1.25rem",
     flex: 1,
     width: "100%",
-    minHeight: props.isMobile ? "55vh" : "350px",
     height: "100%",
+    minHeight: props.isMobile
+      ? "55vh"
+      : props.orientation === "landscape"
+      ? "40vh"
+      : "350px",
     backgroundColor: theme.neutralBackgroundColor,
   }),
   notesContainer: {

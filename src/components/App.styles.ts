@@ -2,13 +2,13 @@ import { createUseStyles } from "react-jss";
 
 export default createUseStyles({
   root: {},
-  recordContainer: {
+  recordContainer: (props) => ({
     alignSelf: "center",
     alignItems: "center",
-    height: "100%",
-    flexDirection: "column",
-    margin: "1rem",
-    justifyContent: "space-between",
-    minWidth: "70%",
-  },
+    display: "flex",
+    flexDirection: props.orientation === "portrait" ? "column" : "row",
+    justifyContent: "space-around",
+    padding: "0.5rem",
+    width: "100%",
+  }),
 });

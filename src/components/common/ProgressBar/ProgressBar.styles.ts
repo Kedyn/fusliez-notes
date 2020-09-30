@@ -9,11 +9,11 @@ export default createUseStyles((theme: ITheme) => ({
     borderRadius: "0.5rem",
     width: "100%",
   }),
-  circularBar: {
-    fontSize: "1rem",
-    width: "5.5rem",
-    height: "5.5rem",
-  },
+  circularBar: (props) => ({
+    fontSize: props.isMobile ? "0.5rem" : "1rem",
+    width: props.isMobile ? "5rem" : "5.5rem",
+    height: props.isMobile ? "5rem" : "5.5rem",
+  }),
   progressBar: (props) => ({
     backgroundColor: props.progressColor
       ? props.progressColor

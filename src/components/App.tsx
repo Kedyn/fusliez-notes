@@ -6,17 +6,22 @@ import ControlsContent from "./ControlsContent";
 import FeedbackForm from "./FeedbackForm";
 import Footer from "./Footer";
 import MainContent from "./MainContent";
-import MapsContent from "./MapsContent";
+const MapsContent = React.lazy(() => import("./MapsContent"));
 import Modal from "components/common/Modal";
-import Notes from "./Notes";
+const Notes = React.lazy(() => import("./Notes"));
 import Recovery from "./Recovery";
-import SlideDrawer from "./SlideDrawer";
+const SlideDrawer = React.lazy(() => import("./SlideDrawer"));
 import jssSetUp from "utils/jssSetUp";
-import Scores from "./Scores";
-import ScoresPanel from "./ScoresPanel";
+const Scores = React.lazy(() => import("./Scores"));
+const ScoresPanel = React.lazy(() => import("./ScoresPanel"));
 import TabNavigator from "./TabNavigator";
 
-export const MobileContext = React.createContext(false);
+type ContextProps = {
+  isMobile: boolean;
+  orientation: string;
+};
+
+export const MobileContext = React.createContext<Partial<ContextProps>>({});
 
 const patchNotes = [
   {
@@ -46,20 +51,26 @@ const patchNotes = [
     ],
   },
 ];
+
 export default function App(): JSX.Element {
   const { version, theme } = useData()!; // eslint-disable-line
 
   const [showNotes, setShowNotes] = React.useState(false);
   const [showForm, setShowForm] = React.useState(false);
   const [isDrawerOpen, setIsDrawerOpen] = React.useState(false);
+  const [orientation, setOrientation] = React.useState(
+    window?.screen?.orientation?.type?.includes("portrait")
+      ? "portrait"
+      : "landscape"
+  );
   const [width, setWidth] = React.useState(window.innerWidth);
-  const [currentTab, setCurrentTab] = React.useState("Players");
+  const [currentTab, setCurrentTab] = React.useState("Maps");
 
   const breakpoint = 846;
 
   const isMobile = width <= breakpoint;
 
-  const classes = useStyles();
+  const classes = useStyles({ orientation });
 
   React.useEffect(() => {
     if (version !== INITIAL_DATA.version) {
@@ -77,48 +88,66 @@ export default function App(): JSX.Element {
     };
   }, [width]);
 
+  React.useEffect(() => {
+    const handleOrientationChange = () => {
+      setOrientation(
+        window?.screen?.orientation?.type?.includes("portrait")
+          ? "portrait"
+          : "landscape"
+      );
+    };
+    window.addEventListener("orientationchange", handleOrientationChange);
+    return () => {
+      window.removeEventListener("orientationchange", handleOrientationChange);
+    };
+  }, [orientation]);
+
   return (
     <React.Fragment>
       <JssProvider registry={jssSetUp(theme)}>
         <ThemeProvider theme={theme}>
-          <MobileContext.Provider value={isMobile}>
+          <MobileContext.Provider value={{ isMobile, orientation }}>
             <React.Suspense fallback="loading">
               <Recovery />
               {isMobile ? (
                 <>
-                  {isDrawerOpen && (
-                    <SlideDrawer
-                      isDrawerOpen={isDrawerOpen}
-                      setIsDrawerOpen={setIsDrawerOpen}
-                    />
-                  )}
+                  <div>
+                    {isDrawerOpen && (
+                      <SlideDrawer
+                        isDrawerOpen={isDrawerOpen}
+                        setIsDrawerOpen={setIsDrawerOpen}
+                      />
+                    )}
 
-                  {currentTab === "Players" ? (
-                    <MainContent isMobile={isMobile} />
-                  ) : currentTab === "Notes" ? (
-                    <Notes isMobile={isMobile} />
-                  ) : currentTab === "Record" ? (
-                    <div className={classes.recordContainer}>
-                      <Scores />
-                      <ScoresPanel isMobile={isMobile} />
-                    </div>
-                  ) : currentTab === "Maps" ? (
-                    <MapsContent isMobile={isMobile} />
-                  ) : null}
-                  <>
-                    <TabNavigator
-                      currentTab={currentTab}
-                      setCurrentTab={setCurrentTab}
-                      setIsDrawerOpen={setIsDrawerOpen}
-                      children={
-                        <Footer
-                          showNotes={showNotes}
-                          setShowNotes={setShowNotes}
-                          setShowForm={setShowForm}
-                        />
-                      }
-                    />
-                  </>
+                    {currentTab === "Players" ? (
+                      <MainContent isMobile={isMobile} />
+                    ) : currentTab === "Notes" ? (
+                      <Notes isMobile={isMobile} orientation={orientation} />
+                    ) : currentTab === "Record" ? (
+                      <div className={classes.recordContainer}>
+                        <Scores />
+                        <ScoresPanel isMobile={isMobile} />
+                      </div>
+                    ) : currentTab === "Maps" ? (
+                      <MapsContent
+                        isMobile={isMobile}
+                        orientation={orientation}
+                      />
+                    ) : null}
+                  </div>
+                  <TabNavigator
+                    currentTab={currentTab}
+                    setCurrentTab={setCurrentTab}
+                    setIsDrawerOpen={setIsDrawerOpen}
+                    orientation={orientation}
+                    children={
+                      <Footer
+                        showNotes={showNotes}
+                        setShowNotes={setShowNotes}
+                        setShowForm={setShowForm}
+                      />
+                    }
+                  />
                 </>
               ) : (
                 <>
@@ -152,7 +181,7 @@ export default function App(): JSX.Element {
                     <h3>{title}</h3>
                     <ul>
                       {items.map((item) => (
-                        <li key={item}>{item}</li>
+                        <li key={item.props.children[0]}>{item}</li>
                       ))}
                     </ul>
                   </div>

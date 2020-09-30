@@ -2,17 +2,17 @@ import { ITheme } from "utils/types";
 import { createUseStyles } from "react-jss";
 
 export default createUseStyles((theme: ITheme) => ({
-  root: {
+  root: (props) => ({
     display: "flex",
     flexDirection: "column",
-    position: "sticky",
-    bottom: 0,
-    height: window?.screen?.orientation?.type?.includes("portrait")
-      ? "19%"
-      : "25%",
-  },
+    position: "fixed",
+    bottom: props.orientation === "portrait" ? -30 : 0,
+    height: props.orientation === "portrait" ? "19%" : "25%",
+    marginTop: "10rem",
+    width: "100%",
+  }),
   activeTab: {
-    borderBottom: `6px solid ${theme.buttonTextColor}`,
+    borderBottom: `4px solid ${theme.buttonTextColor}`,
   },
   icon: {
     height: "1.5rem",
@@ -23,11 +23,13 @@ export default createUseStyles((theme: ITheme) => ({
     alignItems: "center",
     boxSizing: "border-box",
     backgroundColor: theme.buttonBackgroundColor,
+    borderRadius: "0",
     color: theme.buttonTextColor,
     display: "flex",
     flex: 1,
     flexDirection: "column",
     fontSize: "1.1rem",
+    justifyContent: "center",
     padding: "0.25rem",
   },
   tabsContainer: {

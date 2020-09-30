@@ -5,10 +5,12 @@ import Button from "components/common/Button";
 
 export default function Notes({
   isMobile,
+  orientation,
 }: {
   isMobile: boolean;
+  orientation: string;
 }): JSX.Element {
-  const classes = useStyles({ isMobile });
+  const classes = useStyles({ isMobile, orientation });
   const [notes, setNotes] = React.useState("");
 
   // load notes if it is in localStorage
@@ -30,7 +32,7 @@ export default function Notes({
 
   return (
     <div className={classes.root}>
-      <h2>Notes</h2>
+      {!isMobile && <h2>Notes</h2>}
       <div className={classes.notesContainer}>
         <textarea
           className={classes.notes}

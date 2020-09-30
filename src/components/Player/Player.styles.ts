@@ -13,7 +13,7 @@ export default createUseStyles((theme: ITheme) => ({
     borderRadius: "0.25rem",
     display: "flex",
     flex: `0 1 ${
-      props.isMobile && window?.screen?.orientation?.type?.includes("portrait")
+      props.isMobile && props.orientation === "portrait"
         ? "100%"
         : props.names
         ? "50%"

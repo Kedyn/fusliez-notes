@@ -20,8 +20,8 @@ export default function PlayersSection(): JSX.Element {
     setUnknownPlayers,
   } = useData()!; // eslint-disable-line
 
-  const classes = useStyles();
-  const isMobile = React.useContext(MobileContext);
+  const { isMobile } = React.useContext(MobileContext);
+  const classes = useStyles({ isMobile });
 
   interface Section {
     title: string;

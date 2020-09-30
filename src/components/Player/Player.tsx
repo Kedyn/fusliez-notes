@@ -18,7 +18,7 @@ export interface IPlayerProps {
 export default function Player(props: IPlayerProps): JSX.Element {
   const [isMenuShowing, setIsMenuShowing] = React.useState(false);
   const [longPressed, setLongPressed] = React.useState(false);
-  const isMobile = React.useContext(MobileContext);
+  const { isMobile, orientation } = React.useContext(MobileContext);
 
   const { names } = useData()!; // eslint-disable-line
   const htmlElRef = React.useRef(null);
@@ -26,6 +26,7 @@ export default function Player(props: IPlayerProps): JSX.Element {
   const playerStyles = usePlayerStyles({
     names,
     isMobile,
+    orientation,
     longPressed,
     ...props,
   });

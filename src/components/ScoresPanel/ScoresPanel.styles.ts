@@ -29,7 +29,7 @@ export default createUseStyles((theme: ITheme) => ({
   scoreButtons: (props) => ({
     display: "flex",
     flexDirection: "column",
-    marginTop: props.isMobile ? "3rem" : "0",
+    marginTop: props.isMobile ? "1rem" : "0",
     marginBottom: "0.5rem",
   }),
   scoreButtonsSection: {

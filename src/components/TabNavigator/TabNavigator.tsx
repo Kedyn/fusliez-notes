@@ -10,14 +10,16 @@ export default function TabNavigator({
   currentTab,
   setCurrentTab,
   setIsDrawerOpen,
+  orientation,
   children,
 }: {
   currentTab: string;
   setCurrentTab: (text: string) => void;
   setIsDrawerOpen: (state: boolean) => void;
+  orientation: string;
   children: JSX.Element;
 }): JSX.Element {
-  const classes = useStyles();
+  const classes = useStyles({ orientation });
 
   const tabs = [
     {

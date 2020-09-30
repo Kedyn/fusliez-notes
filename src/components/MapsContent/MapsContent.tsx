@@ -104,4 +104,5 @@ export default function MapsContent({
 
 MapsContent.defaultProps = {
   isMobile: false,
+  orientation: "portrait",
 };

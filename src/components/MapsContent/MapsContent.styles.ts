@@ -2,12 +2,16 @@ import { ITheme } from "utils/types";
 import { createUseStyles } from "react-jss";
 
 export default createUseStyles((theme: ITheme) => ({
-  root: {
+  root: (props) => ({
     flex: 1,
     justifyContent: "center",
+    minHeight:
+      props.orientation === "portrait" || props.isMobile ? "100%" : "165%",
     margin: "0 0.5rem",
     padding: "0.5rem",
-  },
+    paddingBottom: props.isMobile ? "10rem" : "0.5rem",
+    maxWidth: "50%",
+  }),
   button: (props) => ({
     textAlign: "center",
     fontSize: "1rem",

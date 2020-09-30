@@ -15,12 +15,12 @@ export default createUseStyles((theme: ITheme) => ({
     width: "100vw",
     zIndex: 1,
 
-    [theme.oneColumn]: {
-      display: "block",
-    },
-    [theme.twoColumn]: {
-      display: "block",
-    },
+    // [theme.oneColumn]: {
+    //   display: "block",
+    // },
+    // [theme.twoColumn]: {
+    //   display: "block",
+    // },
   },
   content: {
     backgroundColor: theme.backgroundColor,
