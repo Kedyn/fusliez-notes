@@ -8,6 +8,7 @@ export default createUseStyles((theme: ITheme) => ({
     flex: 1,
     position: "relative",
     justifyContent: "space-between",
+    height: "100%",
     width: "100px",
     margin: "0.25rem",
   },

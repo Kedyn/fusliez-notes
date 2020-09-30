@@ -8,10 +8,5 @@ export default createUseStyles({
     flexWrap: "wrap",
     minHeight: "2rem",
     justifyContent: "flex-start",
-    webkitTouchCallout: "none",
-    webkitUserSelect: "none",
-    khtmlUserSelect: "none",
-    mozUserSelect: "none",
-    msUserSelect: "none",
   },
 });
