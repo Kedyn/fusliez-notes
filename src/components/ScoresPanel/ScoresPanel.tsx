@@ -33,49 +33,50 @@ export default function ScoresPanel({
   }
 
   return (
-    <div className={classes.scoreButtons}>
-      <div className={classes.titleContainer}>
-        <h4 className={classes.title} />
-        <h4 className={classes.title}>Wins</h4>
-        <h4 className={classes.title}>Losses</h4>
-      </div>
+    <div className={classes.root}>
+      <div className={classes.scoreButtons}>
+        <div className={classes.scoreButtonsSection}>
+          <h4 className={classes.title} />
+          <h4 className={classes.title}>Innocent</h4>
+          <h4 className={classes.title}>Impostor</h4>
+        </div>
 
-      <div className={classes.scoreButtonsSection}>
-        <h4 className={classes.title}>Innocent</h4>
-        <WinsLossesButton
-          buttonBackgroundColor={theme.innocentTextColor}
-          decrement={() => setInnocentWins(innocentWins - 1)}
-          increment={() => setInnocentWins(innocentWins + 1)}
-          score={innocentWins}
-          setScore={(value: number) => setInnocentWins(value)}
-        />
-        <WinsLossesButton
-          buttonBackgroundColor={theme.innocentTextColor}
-          decrement={() => setInnocentLosses(innocentLosses - 1)}
-          increment={() => setInnocentLosses(innocentLosses + 1)}
-          score={innocentLosses}
-          setScore={(value: number) => setInnocentLosses(value)}
-        />
-      </div>
+        <div className={classes.scoreButtonsSection}>
+          <h4 className={classes.title}>Wins</h4>
+          <WinsLossesButton
+            buttonBackgroundColor={theme.innocentTextColor}
+            decrement={() => setInnocentWins(innocentWins - 1)}
+            increment={() => setInnocentWins(innocentWins + 1)}
+            score={innocentWins}
+            setScore={(value: number) => setInnocentWins(value)}
+          />
+          <WinsLossesButton
+            buttonBackgroundColor={theme.impostorTextColor}
+            decrement={() => setImpostorWins(impostorWins - 1)}
+            increment={() => setImpostorWins(impostorWins + 1)}
+            score={impostorWins}
+            setScore={(value: number) => setImpostorWins(value)}
+          />
+        </div>
 
-      <div className={classes.scoreButtonsSection}>
-        <h4 className={classes.title}>Impostor</h4>
-        <WinsLossesButton
-          buttonBackgroundColor={theme.impostorTextColor}
-          decrement={() => setImpostorWins(impostorWins - 1)}
-          increment={() => setImpostorWins(impostorWins + 1)}
-          score={impostorWins}
-          setScore={(value: number) => setImpostorWins(value)}
-        />
-        <WinsLossesButton
-          buttonBackgroundColor={theme.impostorTextColor}
-          decrement={() => setImpostorLosses(impostorLosses - 1)}
-          increment={() => setImpostorLosses(impostorLosses + 1)}
-          score={impostorLosses}
-          setScore={(value: number) => setImpostorLosses(value)}
-        />
+        <div className={classes.scoreButtonsSection}>
+          <h4 className={classes.title}>Losses</h4>
+          <WinsLossesButton
+            buttonBackgroundColor={theme.innocentTextColor}
+            decrement={() => setInnocentLosses(innocentLosses - 1)}
+            increment={() => setInnocentLosses(innocentLosses + 1)}
+            score={innocentLosses}
+            setScore={(value: number) => setInnocentLosses(value)}
+          />
+          <WinsLossesButton
+            buttonBackgroundColor={theme.impostorTextColor}
+            decrement={() => setImpostorLosses(impostorLosses - 1)}
+            increment={() => setImpostorLosses(impostorLosses + 1)}
+            score={impostorLosses}
+            setScore={(value: number) => setImpostorLosses(value)}
+          />
+        </div>
       </div>
-
       <div className={classes.buttonContainer}>
         <Button classNames={classes.reset} onClick={() => resetScores()}>
           Reset Scores

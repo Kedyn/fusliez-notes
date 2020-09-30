@@ -28,21 +28,21 @@ export default createUseStyles((theme: ITheme) => ({
   },
   scoreButtons: (props) => ({
     display: "flex",
-    flexDirection: "column",
-    marginTop: props.isMobile ? "1rem" : "0",
+    marginTop: props.isMobile ? "1rem" : "0.5rem",
     marginBottom: "0.5rem",
   }),
   scoreButtonsSection: {
     alignItems: "center",
     display: "flex",
-    justifyContent: "space-between",
+    flexDirection: "column",
+    justifyContent: "space-around",
     width: "100%",
   },
   title: {
-    marginBottom: "0.5rem",
     flex: 1,
     textAlign: "center",
     width: "100%",
+    padding: "0 0.25rem",
   },
   titleContainer: {
     display: "flex",

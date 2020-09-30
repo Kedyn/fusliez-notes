@@ -9,7 +9,7 @@ export default createUseStyles((theme: ITheme) => ({
     position: "relative",
     justifyContent: "space-between",
     width: "100px",
-    marginLeft: "0.5rem",
+    margin: "0.25rem",
   },
   winsLossesButton: {
     margin: 0,

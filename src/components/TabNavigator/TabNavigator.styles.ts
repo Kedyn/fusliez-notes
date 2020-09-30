@@ -6,7 +6,7 @@ export default createUseStyles((theme: ITheme) => ({
     display: "flex",
     flexDirection: "column",
     position: "fixed",
-    bottom: props.orientation === "portrait" ? -30 : 0,
+    bottom: props.orientation === "portrait" ? "-5%" : "1%",
     height: props.orientation === "portrait" ? "19%" : "25%",
     marginTop: "10rem",
     width: "100%",
