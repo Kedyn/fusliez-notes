@@ -14,13 +14,6 @@ export default createUseStyles((theme: ITheme) => ({
     top: 0,
     width: "100vw",
     zIndex: 1,
-
-    // [theme.oneColumn]: {
-    //   display: "block",
-    // },
-    // [theme.twoColumn]: {
-    //   display: "block",
-    // },
   },
   content: {
     backgroundColor: theme.backgroundColor,
