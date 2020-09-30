@@ -59,18 +59,16 @@ export default function App(): JSX.Element {
   const [showForm, setShowForm] = React.useState(false);
   const [isDrawerOpen, setIsDrawerOpen] = React.useState(false);
   const [orientation, setOrientation] = React.useState(
-    window?.screen?.orientation?.type?.includes("portrait")
-      ? "portrait"
-      : "landscape"
+    window.innerHeight > window.innerWidth ? "portrait" : "landscape"
   );
   const [width, setWidth] = React.useState(window.innerWidth);
-  const [currentTab, setCurrentTab] = React.useState("Notes");
+  const [currentTab, setCurrentTab] = React.useState("Players");
 
   const breakpoint = 846;
 
   const isMobile = width <= breakpoint;
 
-  const classes = useStyles({ orientation });
+  const classes = useStyles({ isMobile, orientation });
 
   React.useEffect(() => {
     if (version !== INITIAL_DATA.version) {
@@ -91,16 +89,16 @@ export default function App(): JSX.Element {
   React.useEffect(() => {
     const handleOrientationChange = () => {
       setOrientation(
-        window?.screen?.orientation?.type?.includes("portrait")
-          ? "portrait"
-          : "landscape"
+        window.innerHeight > window.innerWidth ? "portrait" : "landscape"
       );
     };
     window.addEventListener("orientationchange", handleOrientationChange);
     return () => {
       window.removeEventListener("orientationchange", handleOrientationChange);
     };
-  }, [orientation]);
+  }, [window, orientation]);
+
+  console.log(isMobile, orientation, window.innerHeight > window.innerWidth);
 
   return (
     <React.Fragment>

@@ -13,9 +13,9 @@ export default createUseStyles((theme: ITheme) => ({
     borderRadius: "0.25rem",
     display: "flex",
     flex: `0 1 ${
-      props.isMobile && props.orientation === "portrait"
+      props.orientation === "portrait"
         ? "100%"
-        : props.names
+        : props.orientation === "landscape" || props.names
         ? "50%"
         : "25%"
     }`,

@@ -6,7 +6,8 @@ export default createUseStyles({
     alignSelf: "center",
     alignItems: "center",
     display: "flex",
-    flexDirection: props.orientation === "portrait" ? "column" : "row",
+    flexDirection:
+      props.isMobile && props.orientation === "portrait" ? "column" : "row",
     justifyContent: "space-around",
     padding: "0.5rem",
     width: "100%",
