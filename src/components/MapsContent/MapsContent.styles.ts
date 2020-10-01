@@ -13,7 +13,7 @@ export default createUseStyles((theme: ITheme) => ({
     textAlign: "center",
     fontSize: "1rem",
     margin: "1rem 0",
-    padding: "1rem",
+    padding: "0.5rem",
     width: props.isMobile ? "50%" : "25%",
   }),
   mapNames: (props) => ({
@@ -23,14 +23,13 @@ export default createUseStyles((theme: ITheme) => ({
     margin: "0 0.25rem 0.5rem 0.25rem",
     width: props.isMobile ? "95%" : "100%",
   }),
-  mapName: {
-    borderRadius: "25rem",
+  mapName: (props) => ({
+    borderRadius: "5rem",
     boxSizing: "border-box",
     cursor: "pointer",
-    maxHeight: "40%",
     margin: "0 1%",
-    width: "30%",
-  },
+    width: props.isMobile && props.orientation === "portrait" ? "25%" : "17.5%",
+  }),
   playerIcon: (props) => ({
     height: props.isMobile ? "30px" : "44px",
     width: props.isMobile ? "36px" : "48px",

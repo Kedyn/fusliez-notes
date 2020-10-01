@@ -6,14 +6,12 @@ import React from "react";
 import TheSkeld from "./TheSkeld";
 import useStyles from "./MapsContent.styles";
 
-// export interface IMapsContentProps {
-//   isMobile: boolean;
-// }props: IMapsContentProps
-
 export default function MapsContent({
   isMobile,
+  orientation,
 }: {
   isMobile: boolean;
+  orientation: string;
 }): JSX.Element {
   const [map, setMap] = React.useState("skeld");
   const [resetState, setResetState] = React.useState(false);
@@ -36,6 +34,7 @@ export default function MapsContent({
   const classes = useStyles({
     map: map === "skeld" ? "TheSkeld" : map === "mira" ? "Mirahq" : "Polus",
     isMobile,
+    orientation,
   });
 
   let currentMap = <TheSkeld />;
