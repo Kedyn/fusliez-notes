@@ -27,16 +27,26 @@ const patchNotes = [
   {
     title: "Highlights",
     items: [
-      <>Color change menu for players. (click player icon to open)</>,
-      <>Better support for different screen sizes.</>,
-      <>"Use player names options." moved to settings.</>,
-      <>You can now use the ENTER key to move to the next player name.</>,
+      <>Added support for mobile devices in portrait and landscape</>,
+      <>Changed win rate presentation to circular</>,
+    ],
+  },
+  {
+    title: "Fixes",
+    items: [
+      <>Performance issues with notes</>,
+      <>"Show Player Names" settings bug</>,
     ],
   },
   {
     title: "Development Notes",
     items: [
       <>We are working in allowing custom theme colors.</>,
+      <>
+        We can only test the mobile version so much on our side. If you found
+        anything that doesn't work as well as you'd like, please leave us a
+        feedback!
+      </>,
       <>
         We added a feedback link at the bottom at the page, we love to hear from
         all of you.

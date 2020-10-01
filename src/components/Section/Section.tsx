@@ -31,7 +31,7 @@ export default function Section(props: ISectionProps): JSX.Element {
           // to enable input on mobile devices
           // but by doing so
           // limits the dragging by the icon only
-          filter="input"
+          filter={isMobile ? "input" : ""}
           preventOnFilter={false}
           delay={isMobile ? 150 : 0}
           touchStartThreshold={3}

@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Released]
 
+### [v0.9.0]
+
+- Added support for mobile devices in portrait and landscape
+- Changed win rate progress bars to circular
+- Addressed performance issues with notes
+- Fixed "Show Player Names" settings bug
+
 ### [v0.8.3]
 
 #### Added
