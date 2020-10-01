@@ -1,5 +1,5 @@
 import { ITheme } from "utils/types";
-import ProgressBar from "components/common/ProgressBar";
+import CircularProgressBar from "components/common/CircularProgressBar";
 import React from "react";
 import { useData } from "context";
 import useStyles from "./Scores.styles";
@@ -30,47 +30,44 @@ export default function Scores(): JSX.Element {
   const impostorRate = getRate(impostorWins, impostorGames);
 
   return (
-    <React.Fragment>
-      <div className={classes.root}>
-        <div className={classes.title}>
-          <span>Overall</span>
-          <span>
-            {overallWins}W - {overallLosses}L
-          </span>
-        </div>
-        <ProgressBar
+    <div className={classes.root}>
+      <div className={classes.progressBarContainer}>
+        <span className={classes.title}>Overall</span>
+
+        <CircularProgressBar
           progress={overallRate}
           backgroundColor={theme.neutralBackgroundColor}
           progressColor={theme.neutralTextColor}
           className={classes.progress}
+          wins={overallWins}
+          losses={overallLosses}
         />
+      </div>
 
-        <div className={classes.title}>
-          <span>Innocent</span>
-          <span>
-            {innocentWins}W - {innocentLosses}L
-          </span>
-        </div>
-        <ProgressBar
+      <div className={classes.progressBarContainer}>
+        <span className={classes.title}>Innocent</span>
+        <CircularProgressBar
           progress={innocentRate}
           backgroundColor={theme.innocentBackgroundColor}
           progressColor={theme.innocentTextColor}
           className={classes.progress}
+          wins={innocentWins}
+          losses={innocentLosses}
         />
+      </div>
 
-        <div className={classes.title}>
-          <span>Impostor</span>
-          <span>
-            {impostorWins}W - {impostorLosses}L
-          </span>
-        </div>
-        <ProgressBar
+      <div className={classes.progressBarContainer}>
+        <span className={classes.title}>Impostor</span>
+
+        <CircularProgressBar
           progress={impostorRate}
           backgroundColor={theme.impostorBackgroundColor}
           progressColor={theme.impostorTextColor}
           className={classes.progress}
+          wins={impostorWins}
+          losses={impostorLosses}
         />
       </div>
-    </React.Fragment>
+    </div>
   );
 }

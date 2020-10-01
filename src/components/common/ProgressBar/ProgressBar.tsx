@@ -18,12 +18,10 @@ export default function ProgressBar(props: IProgressBarProps): JSX.Element {
   });
 
   return (
-    <React.Fragment>
-      <div
-        className={`${classes.root} ${props.className ? props.className : ""}`}
-      >
-        <div className={classes.progressBar}></div>
-      </div>
-    </React.Fragment>
+    <div
+      className={`${classes.root} ${props.className ? props.className : ""}`}
+    >
+      <div className={classes.progressBar}></div>
+    </div>
   );
 }

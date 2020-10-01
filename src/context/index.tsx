@@ -13,13 +13,12 @@ export interface IDataProviderProps {
 }
 
 export const INITIAL_DATA: IData = {
-  version: "0.8.3",
+  version: "0.9.0",
   theme: "dark",
   innocentWins: 0,
   innocentLosses: 0,
   impostorWins: 0,
   impostorLosses: 0,
-  names: true,
   innocentPlayers: [],
   susPlayers: [],
   evilPlayers: [],
@@ -38,7 +37,7 @@ export const INITIAL_DATA: IData = {
     { id: "white", name: "", color: "white" },
     { id: "yellow", name: "", color: "yellow" },
   ],
-  notes: "",
+  names: true,
 };
 
 const localData = localStorage.getItem(`${namespace}data`);
@@ -82,7 +81,6 @@ export function DataProvider({ children }: IDataProviderProps): JSX.Element {
     data.impostorLosses
   );
   const [names, setLocalNames] = React.useState(data.names);
-  const [notes, setLocalNotes] = React.useState(data.notes);
 
   const [innocentPlayers, setLocalInnocentPlayers] = React.useState<
     Array<IPlayer>
@@ -116,7 +114,6 @@ export function DataProvider({ children }: IDataProviderProps): JSX.Element {
     setLocalSusPlayers([]);
     setLocalEvilPlayers([]);
     setLocalDeadPlayers([]);
-    setLocalNotes("");
 
     localStorage.setItem(
       `${namespace}data`,
@@ -172,6 +169,45 @@ export function DataProvider({ children }: IDataProviderProps): JSX.Element {
     }
   }, []);
 
+  // function setState(
+  //   key: string,
+  //   value: string | number | boolean | Array<IPlayer> | ITheme
+  // ) {
+  //   if (localData) {
+  //     const data = JSON.parse(localData);
+
+  //     switch (key) {
+  //       case "theme":
+  //         data.theme = value.name;
+  //         dispatch({ type: ReducerActionTypes.SET_THEME, payload: value.name });
+
+  //         break;
+  //       case "crewmateWins":
+  //       case "crewmateGames":
+  //       case "impostorWins":
+  //       case "impostorGames":
+  //         data[key] = value;
+  //         dispatch({
+  //           type: ReducerActionTypes.SET_WINS_AND_GAMES,
+  //           payload: { key, value },
+  //         });
+
+  //         break;
+
+  //       case "notes":
+  //         data.notes = value;
+
+  //         dispatch({ type: ReducerActionTypes.SET_NOTES, payload: value });
+
+  //         break;
+  //       default:
+  //         break;
+  //     }
+
+  //     localStorage.setItem(`${namespace}data`, JSON.stringify(data));
+  //   }
+  // }
+
   return (
     <DataContext.Provider
       value={{
@@ -187,7 +223,7 @@ export function DataProvider({ children }: IDataProviderProps): JSX.Element {
         evilPlayers,
         deadPlayers,
         unknownPlayers,
-        notes,
+        // notes,
         resetPlayersPositions,
         resetGames,
         resetAll,
@@ -352,19 +388,6 @@ export function DataProvider({ children }: IDataProviderProps): JSX.Element {
             localStorage.setItem(`${namespace}data`, JSON.stringify(data));
 
             setLocalUnknownPlayers(value);
-          }
-        },
-        setNotes: (value: string) => {
-          const localData = localStorage.getItem(`${namespace}data`);
-
-          if (localData) {
-            const data: IData = JSON.parse(localData);
-
-            data.notes = value;
-
-            localStorage.setItem(`${namespace}data`, JSON.stringify(data));
-
-            setLocalNotes(value);
           }
         },
       }}

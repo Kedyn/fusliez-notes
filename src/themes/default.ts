@@ -32,9 +32,6 @@ export default class DefaultTheme implements ITheme {
   public fontFamily: string;
   public fontSize: number;
 
-  public oneColumn: string;
-  public twoColumn: string;
-
   public global: JssStyle;
 
   public constructor() {
@@ -69,9 +66,6 @@ export default class DefaultTheme implements ITheme {
     this.fontFamily = "Titillium Web, sans-serif";
     this.fontSize = 20;
 
-    this.oneColumn = "@media (max-width: 425px)";
-    this.twoColumn = "@media (max-width: 768px)";
-
     this.global = {
       "*, *:before, *:after": {
         boxSizing: "inherit",
@@ -99,39 +93,17 @@ export default class DefaultTheme implements ITheme {
         flexGrow: 1,
         display: "flex",
         margin: "0 1rem",
-
-        [this.oneColumn]: {
-          margin: 0,
-          flexDirection: "column",
-        },
-        [this.twoColumn]: {
-          flexWrap: "wrap",
-        },
       },
       footer: {
         textAlign: "center",
         fontSize: "smaller",
       },
       "#main": {
-        width: 320,
-        minWidth: 320,
-        padding: "1rem",
-
-        [this.oneColumn]: {
-          width: "100vw",
-        },
+        padding: "0.25rem",
+        height: "100%",
       },
       "#controls": {
-        width: 320,
-        minWidth: 320,
         padding: "1rem",
-
-        [this.oneColumn]: {
-          width: "100vw",
-        },
-        [this.twoColumn]: {
-          flexGrow: 1,
-        },
       },
       "#maps": {
         flexGrow: 1,
@@ -141,7 +113,7 @@ export default class DefaultTheme implements ITheme {
         margin: 0,
       },
       h2: {
-        fontSize: "2rem",
+        fontSize: "1.75rem",
         margin: ".5rem 0",
         fontWeight: "500",
         lineHeight: "1.2",

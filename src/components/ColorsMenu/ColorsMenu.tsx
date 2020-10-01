@@ -32,7 +32,7 @@ export default function ColorsMenu({
   currentColor: string | number;
 }): JSX.Element {
   const classes = useStyles();
-  const ref = React.useRef(null);
+  const ref = React.useRef<HTMLDivElement>(null);
   const {
     innocentPlayers,
     susPlayers,
@@ -203,8 +203,8 @@ export default function ColorsMenu({
   }
 
   React.useEffect(() => {
-    function handleHideMenu(event: React.SyntheticEvent<EventTarget>) {
-      if (ref.current && !ref?.current?.contains(event.target)) {
+    function handleHideMenu(event: Event) {
+      if (ref.current && !ref?.current?.contains(event.target as Node)) {
         setIsMenuShowing(false);
       }
     }

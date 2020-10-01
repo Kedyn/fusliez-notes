@@ -12,28 +12,34 @@ export default createUseStyles((theme: ITheme) => ({
     border: `1px solid ${theme.borderColor}`,
     borderRadius: "0.25rem",
     display: "flex",
+    flex: `0 1 ${
+      props.orientation === "portrait" && props.isMobile
+        ? "100%"
+        : props.orientation === "landscape" || props.names
+        ? "50%"
+        : "25%"
+    }`,
     justifyContent: "center",
     margin: "0.25rem 0",
+    opacity: props.longPressed ? "0.5" : 1,
     padding: "0.25rem 0.1rem",
     position: "relative",
   }),
-  player: {
-    padding: "0.25rem",
-  },
   name: {
     flexGrow: 1,
   },
   icon: (props) => ({
     borderRadius: "6px",
     padding: "0.15rem",
-    margin: "0 0.15rem",
+    margin: props.isMobile ? "0 0.5rem" : "0 0.15rem",
     display: "flex",
     justifyContent: "center",
 
     "&:hover": {
-      backgroundColor: props.names
-        ? `rgba(${colorNameToRGB(props.color)}, 0.7)`
-        : props.backgroundColor,
+      backgroundColor:
+        props.names && !props.isMobile
+          ? `rgba(${colorNameToRGB(props.color)}, 0.7)`
+          : props.backgroundColor,
       cursor: props.names ? "pointer" : "grab",
     },
     "& img": {
@@ -43,7 +49,7 @@ export default createUseStyles((theme: ITheme) => ({
   }),
   input: (props) => ({
     borderRadius: ".2rem",
-    fontSize: props.name ? "1.15rem" : "1rem",
+    fontSize: props.isMobile ? "1.5rem" : props.name ? "1.15rem" : "1rem",
     fontWeight: 700,
     letterSpacing: "0.025rem",
     lineHeight: 1.5,
@@ -56,7 +62,9 @@ export default createUseStyles((theme: ITheme) => ({
       color: theme.textColor,
     },
   }),
-
+  player: {
+    padding: "0.25rem",
+  },
   playerColorChangeMenu: {
     alignItems: "center",
     background: theme.backgroundColor,
@@ -74,7 +82,6 @@ export default createUseStyles((theme: ITheme) => ({
     width: "100%",
     zIndex: 10,
   },
-
   playerColorChangeMenuHidden: {
     display: "none",
   },

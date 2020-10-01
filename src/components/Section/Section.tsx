@@ -10,14 +10,14 @@ export interface ISectionProps {
   title: string;
   list: Array<IPlayer>;
   setList: (value: IPlayer[]) => void;
+  isMobile: boolean;
 }
 
 export default function Section(props: ISectionProps): JSX.Element {
   const { names } = useData()!; // eslint-disable-line
   const classes = useStyles({ names });
 
-  const { title, list, setList } = props;
-
+  const { isMobile, title, list, setList } = props;
   return (
     <React.Fragment>
       <div className={classes.root}>
@@ -26,6 +26,15 @@ export default function Section(props: ISectionProps): JSX.Element {
         <ReactSortable
           group="players"
           handle=".player-handle"
+          delayOnTouchOnly={isMobile}
+          // have to add filter and preventOnFilter
+          // to enable input on mobile devices
+          // but by doing so
+          // limits the dragging by the icon only
+          filter={isMobile ? "input" : ""}
+          preventOnFilter={false}
+          delay={isMobile ? 150 : 0}
+          touchStartThreshold={3}
           list={list}
           setList={setList}
           className={classes.players}

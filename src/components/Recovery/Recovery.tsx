@@ -8,7 +8,7 @@ export default function Recovery(): JSX.Element {
   const [showRecover, setShowRecover] = React.useState(false);
   const [oldNotes, setOldNotes] = React.useState("");
   const classes = useStyles();
-  const { notes, setNotes } = useData()!; // eslint-disable-line
+  // const { notes, setNotes } = useData()!; // eslint-disable-line
 
   React.useEffect(() => {
     const data = localStorage.getItem("data");

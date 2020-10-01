@@ -2,24 +2,34 @@ import ColorsMenu from "../ColorsMenu";
 import { IPlayer } from "utils/types";
 import React from "react";
 import { useData } from "context";
+import { MobileContext } from "components/App";
 import usePlayerStyles from "./Player.styles";
 
 export interface IPlayerProps {
   id: string | number;
   color: string;
+  backgroundColor: string;
   name: string;
   list: Array<IPlayer>;
-  listName: string;
   setList: (value: IPlayer[]) => void;
   index: number;
 }
 
 export default function Player(props: IPlayerProps): JSX.Element {
   const [isMenuShowing, setIsMenuShowing] = React.useState(false);
-  const htmlElRef = React.useRef(null);
+  const [longPressed, setLongPressed] = React.useState(false);
+  const { isMobile, orientation } = React.useContext(MobileContext);
 
   const { names } = useData()!; // eslint-disable-line
-  const playerStyles = usePlayerStyles({ names, ...props });
+  const htmlElRef = React.useRef(null);
+
+  const playerStyles = usePlayerStyles({
+    names,
+    isMobile,
+    orientation,
+    longPressed,
+    ...props,
+  });
 
   const { id, color, name, list, setList, index } = props;
 
@@ -44,9 +54,45 @@ export default function Player(props: IPlayerProps): JSX.Element {
     }
   };
 
+  // put this in for mobile only
+  // so users know they are interacting with the object
+  const useLongPress = (ms = 150) => {
+    const [startLongPress, setStartLongPress] = React.useState(false);
+
+    React.useEffect(() => {
+      let timerId: number;
+      if (startLongPress) {
+        timerId = setTimeout(() => {
+          window.navigator.vibrate() && window.navigator.vibrate(200);
+          setLongPressed(true);
+        }, ms);
+      } else {
+        setLongPressed(false);
+        clearTimeout(timerId);
+      }
+
+      return () => {
+        clearTimeout(timerId);
+      };
+    }, [ms, startLongPress]);
+
+    return {
+      onMouseDown: () => setStartLongPress(true),
+      onMouseUp: () => setStartLongPress(false),
+      onMouseLeave: () => setStartLongPress(false),
+      onTouchStart: () => setStartLongPress(true),
+      onTouchEnd: () => setStartLongPress(false),
+    };
+  };
+
+  const longPressEvents = useLongPress();
+
   return (
-    <div className={`${playerStyles.container} player-handle`}>
-      {isMenuShowing && (
+    <div
+      className={`${playerStyles.container} player-handle`}
+      {...longPressEvents}
+    >
+      {isMenuShowing && !isMobile && (
         <ColorsMenu
           isMenuShowing={isMenuShowing}
           setIsMenuShowing={setIsMenuShowing}
@@ -56,7 +102,7 @@ export default function Player(props: IPlayerProps): JSX.Element {
       <div className={playerStyles.icon}>
         <img
           onClick={() => {
-            if (names) {
+            if (names && !isMobile) {
               setIsMenuShowing(!isMenuShowing);
             }
           }}

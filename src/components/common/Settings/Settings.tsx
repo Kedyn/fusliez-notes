@@ -1,9 +1,7 @@
 import Button from "../Button";
 import Modal from "../Modal";
 import React from "react";
-import Switch from "../Switch";
-import { useData } from "context";
-import useStyles from "./Settings.styles";
+import SettingsContent from "./SettingsContent";
 
 export interface ISettingsProps {
   show: boolean;
@@ -11,9 +9,7 @@ export interface ISettingsProps {
 }
 
 export default function Settings(props: ISettingsProps): JSX.Element {
-  const classes = useStyles();
   const { show, onClose } = props;
-  const { names, setNames } = useData()!; // eslint-disable-line
 
   return (
     <Modal
@@ -22,15 +18,7 @@ export default function Settings(props: ISettingsProps): JSX.Element {
       title="Settings"
       footer={<Button onClick={() => onClose()}>Close</Button>}
     >
-      <div className={classes.container}>
-        <Switch
-          label="Use player names"
-          onChange={() => {
-            setNames((state) => !state);
-          }}
-          checked={names}
-        />
-      </div>
+      <SettingsContent />
     </Modal>
   );
 }

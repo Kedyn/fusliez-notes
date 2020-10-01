@@ -3,6 +3,8 @@ import React from "react";
 import Section from "components/Section";
 import { useData } from "context";
 import useStyles from "./PlayersSection.styles";
+import { MobileContext } from "components/App";
+import { useTranslation } from "react-i18next";
 
 export default function PlayersSection(): JSX.Element {
   const {
@@ -18,7 +20,8 @@ export default function PlayersSection(): JSX.Element {
     setUnknownPlayers,
   } = useData()!; // eslint-disable-line
 
-  const classes = useStyles();
+  const { isMobile } = React.useContext(MobileContext);
+  const classes = useStyles({ isMobile });
 
   interface Section {
     title: string;
@@ -54,19 +57,16 @@ export default function PlayersSection(): JSX.Element {
     },
   ];
 
-  // function swapPlayersColors(
-  //   currentPlayerColor: string,
-  //   targetPlayerColor: string,
-  //   currentPlayerList: Array<IPlayer>
-  // ) {
-  //   // const currentPlayer = currentPlayerList.filter()
-  //   console.log(currentPlayerList);
-  // }
-
   return (
     <div className={classes.root}>
       {sections.map(({ title, list, setList }) => (
-        <Section key={title} title={title} list={list} setList={setList} />
+        <Section
+          key={title}
+          title={title}
+          list={list}
+          setList={setList}
+          isMobile={isMobile}
+        />
       ))}
     </div>
   );
