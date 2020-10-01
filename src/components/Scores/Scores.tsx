@@ -1,5 +1,5 @@
 import { ITheme } from "utils/types";
-import ProgressBar from "components/common/ProgressBar";
+import CircularProgressBar from "components/common/CircularProgressBar";
 import React from "react";
 import { useData } from "context";
 import useStyles from "./Scores.styles";
@@ -34,7 +34,7 @@ export default function Scores(): JSX.Element {
       <div className={classes.progressBarContainer}>
         <span className={classes.title}>Overall</span>
 
-        <ProgressBar
+        <CircularProgressBar
           progress={overallRate}
           backgroundColor={theme.neutralBackgroundColor}
           progressColor={theme.neutralTextColor}
@@ -46,7 +46,7 @@ export default function Scores(): JSX.Element {
 
       <div className={classes.progressBarContainer}>
         <span className={classes.title}>Innocent</span>
-        <ProgressBar
+        <CircularProgressBar
           progress={innocentRate}
           backgroundColor={theme.innocentBackgroundColor}
           progressColor={theme.innocentTextColor}
@@ -59,7 +59,7 @@ export default function Scores(): JSX.Element {
       <div className={classes.progressBarContainer}>
         <span className={classes.title}>Impostor</span>
 
-        <ProgressBar
+        <CircularProgressBar
           progress={impostorRate}
           backgroundColor={theme.impostorBackgroundColor}
           progressColor={theme.impostorTextColor}
