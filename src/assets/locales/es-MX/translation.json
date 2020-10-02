@@ -1,0 +1,81 @@
+{
+  "main": {
+    "overall": "General",
+    "innocent": "Inocente",
+    "impostor": "Impostor",
+    "w": "G",
+    "l": "P",
+    "player": "Jugador",
+    "lists": {
+      "innocent": "Inocentes",
+      "suspicious": "Sospechosos",
+      "evil": "Malos",
+      "hitList": "Lista Negra",
+      "dead": "Muertos",
+      "unknown": "Desconocidos"
+    }
+  },
+  "controls": {
+    "wins": "Victorias",
+    "losses": "Perdidas",
+    "innocent": "Inocente",
+    "impostor": "Impostor",
+    "resetScores": "Reiniciar Puntaje",
+    "resetRound": "Reiniciar Ronda",
+    "resetAll": "Reiniciar Todo",
+    "notes": "Notas",
+    "resetNotes": "Reiniciar Notas",
+    "settings": "Ajustes"
+  },
+  "maps": {
+    "vents": "Conductos",
+    "commonTasks": "Tareas Comunes",
+    "wiringTasks": "Tareas de Cables",
+    "ventConnections": "Conexiones de Conductos",
+    "securityCameras": "Camaras de Seguridad",
+    "cameraZones": "Zonas de Camaras",
+    "reactor": "Reactor",
+    "upperEngine": "Motor Superior",
+    "lowerEngine": "Motor Inferior",
+    "security": "Seguridad",
+    "medBay": "Ala Medica",
+    "electrical": "Electricidad",
+    "storage": "Almacen",
+    "cafeteria": "Cafeteria",
+    "admin": "Admin",
+    "communications": "Comunicaciones",
+    "shields": "Escudos",
+    "o2": "O2",
+    "weapons": "Armeria",
+    "navigation": "Navegacion",
+    "launchpad": "Lanzamientos",
+    "laboratory": "Laboratorio",
+    "lockerRoom": "Vestuario",
+    "office": "Oficina",
+    "greenhouse": "Invernadero",
+    "balcony": "Balcon",
+    "specimenRoom": "Sala de Especimenes",
+    "east": "1. Este",
+    "central": "2. Central",
+    "northeast": "3. Noreste",
+    "south": "4. Sur",
+    "southwest": "5. Suroeste",
+    "northwest": "6. Noroeste"
+  },
+  "settings": {
+    "title": "Ajustes",
+    "usePlayerNames": "Usar nombres de jugadores",
+    "language": "Lenguage",
+    "close": "Cerrar"
+  },
+  "recovery": {
+    "title": "Recuperar viejas Notas",
+    "recover": "Recuperar",
+    "ignore": "Ignorar",
+    "message": {
+      "1": "Parese que tienes viejas notas que podemos recuperar.",
+      "2": "Da clic en Recuperar para agregarlas a tus notas actuales.",
+      "3": "Da clic en Ignorar para borrar tus notas viejas y dejar las actuales."
+    }
+  }
+}
