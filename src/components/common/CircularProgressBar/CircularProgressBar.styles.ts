@@ -23,7 +23,4 @@ export default createUseStyles((theme: ITheme) => ({
     width: props.progress ? `${props.progress}%` : "0%",
     maxWidth: "100%",
   }),
-  title: {
-    fontSize: "1rem",
-  },
 }));

@@ -1,23 +1,28 @@
-import React from "react";
-import useStyles from "./ProgressBar.styles";
-import { MobileContext } from "components/App";
+import "react-circular-progressbar/dist/styles.css";
+
 import {
   CircularProgressbarWithChildren,
   buildStyles,
 } from "react-circular-progressbar";
-import "react-circular-progressbar/dist/styles.css";
 
-export interface IProgressBarProps {
+import { MobileContext } from "components/App";
+import React from "react";
+import useStyles from "./CircularProgressBar.styles";
+
+export interface ICircularProgressBarProps {
   progress: number;
   backgroundColor?: string;
   progressColor?: string;
   className?: string;
   wins?: number;
   losses?: number;
+  children?: React.ReactNode;
 }
 
-export default function ProgressBar(props: IProgressBarProps): JSX.Element {
-  const { progress, backgroundColor, progressColor, wins, losses } = props;
+export default function CircularProgressBar(
+  props: ICircularProgressBarProps
+): JSX.Element {
+  const { progress, backgroundColor, progressColor, children } = props;
   const { isMobile, orientation } = React.useContext(MobileContext);
 
   const classes = useStyles({
@@ -38,8 +43,7 @@ export default function ProgressBar(props: IProgressBarProps): JSX.Element {
         trailColor: backgroundColor,
       })}
     >
-      <span>{`${progress}%`}</span>
-      <span className={classes.title}>{`${wins}W-${losses}L`}</span>
+      {children}
     </CircularProgressbarWithChildren>
   );
 }

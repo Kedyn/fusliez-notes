@@ -21,4 +21,7 @@ export default createUseStyles({
   title: {
     marginBottom: "0.5rem",
   },
+  scores: {
+    fontSize: "1rem",
+  },
 });

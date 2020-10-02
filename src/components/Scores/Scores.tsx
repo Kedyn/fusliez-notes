@@ -1,5 +1,5 @@
-import { ITheme } from "utils/types";
 import CircularProgressBar from "components/common/CircularProgressBar";
+import { ITheme } from "utils/types";
 import React from "react";
 import { useData } from "context";
 import useStyles from "./Scores.styles";
@@ -41,7 +41,12 @@ export default function Scores(): JSX.Element {
           className={classes.progress}
           wins={overallWins}
           losses={overallLosses}
-        />
+        >
+          <span>{`${overallRate}%`}</span>
+          <span
+            className={classes.scores}
+          >{`${overallWins}W-${overallLosses}L`}</span>
+        </CircularProgressBar>
       </div>
 
       <div className={classes.progressBarContainer}>
@@ -53,7 +58,12 @@ export default function Scores(): JSX.Element {
           className={classes.progress}
           wins={innocentWins}
           losses={innocentLosses}
-        />
+        >
+          <span>{`${innocentRate}%`}</span>
+          <span
+            className={classes.scores}
+          >{`${innocentWins}W-${innocentLosses}L`}</span>
+        </CircularProgressBar>
       </div>
 
       <div className={classes.progressBarContainer}>
@@ -66,7 +76,12 @@ export default function Scores(): JSX.Element {
           className={classes.progress}
           wins={impostorWins}
           losses={impostorLosses}
-        />
+        >
+          <span>{`${impostorRate}%`}</span>
+          <span
+            className={classes.scores}
+          >{`${impostorWins}W-${impostorLosses}L`}</span>
+        </CircularProgressBar>
       </div>
     </div>
   );
