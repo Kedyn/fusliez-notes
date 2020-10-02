@@ -14,8 +14,6 @@ export interface ICircularProgressBarProps {
   backgroundColor?: string;
   progressColor?: string;
   className?: string;
-  wins?: number;
-  losses?: number;
   children?: React.ReactNode;
 }
 

@@ -1,14 +1,16 @@
-import React from "react";
-import useStyles from "./ScoresPanel.styles";
 import Button from "components/common/Button";
+import React from "react";
 import WinsLossesButton from "../WinsLossesButton";
 import { useData } from "context";
+import useStyles from "./ScoresPanel.styles";
+import { useTranslation } from "react-i18next";
 
 export default function ScoresPanel({
   isMobile,
 }: {
   isMobile: boolean;
 }): JSX.Element {
+  const { t } = useTranslation();
   const classes = useStyles({ isMobile });
 
   const {
@@ -37,12 +39,12 @@ export default function ScoresPanel({
       <div className={classes.scoreButtons}>
         <div className={classes.scoreButtonsSection}>
           <h4 className={classes.title} />
-          <h4 className={classes.title}>Innocent</h4>
-          <h4 className={classes.title}>Impostor</h4>
+          <h4 className={classes.title}>{t("controls.innocent")}</h4>
+          <h4 className={classes.title}>{t("controls.impostor")}</h4>
         </div>
 
         <div className={classes.scoreButtonsSection}>
-          <h4 className={classes.title}>Wins</h4>
+          <h4 className={classes.title}>{t("controls.wins")}</h4>
           <WinsLossesButton
             buttonBackgroundColor={theme.innocentTextColor}
             decrement={() => setInnocentWins(innocentWins - 1)}
@@ -60,7 +62,7 @@ export default function ScoresPanel({
         </div>
 
         <div className={classes.scoreButtonsSection}>
-          <h4 className={classes.title}>Losses</h4>
+          <h4 className={classes.title}>{t("controls.losses")}</h4>
           <WinsLossesButton
             buttonBackgroundColor={theme.innocentTextColor}
             decrement={() => setInnocentLosses(innocentLosses - 1)}
@@ -79,14 +81,14 @@ export default function ScoresPanel({
       </div>
       <div className={classes.buttonContainer}>
         <Button classNames={classes.reset} onClick={() => resetScores()}>
-          Reset Scores
+          {t("controls.resetScores")}
         </Button>
         {!isMobile && (
           <Button
             classNames={classes.reset}
             onClick={() => resetPlayersPositions()}
           >
-            Reset Round
+            {t("controls.resetRound")}
           </Button>
         )}
       </div>
@@ -96,7 +98,7 @@ export default function ScoresPanel({
             classNames={`${classes.reset} ${classes.dangerButton}`}
             onClick={() => resetAll()}
           >
-            Reset All
+            {t("controls.resetAll")}
           </Button>
         </div>
       )}

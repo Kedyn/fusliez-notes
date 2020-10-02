@@ -5,6 +5,7 @@ import Polus from "./Polus";
 import React from "react";
 import TheSkeld from "./TheSkeld";
 import useStyles from "./MapsContent.styles";
+import { useTranslation } from "react-i18next";
 
 export default function MapsContent({
   isMobile,
@@ -13,6 +14,7 @@ export default function MapsContent({
   isMobile: boolean;
   orientation: string;
 }): JSX.Element {
+  const { t } = useTranslation();
   const [map, setMap] = React.useState("skeld");
   const [resetState, setResetState] = React.useState(false);
 
@@ -95,7 +97,7 @@ export default function MapsContent({
           ))}
       </div>
       <Button className={classes.button} onClick={() => setResetState(true)}>
-        Reset Players
+        {t("maps.resetPlayers")}
       </Button>
     </div>
   );

@@ -60,7 +60,8 @@
     "northeast": "3. Noreste",
     "south": "4. Sur",
     "southwest": "5. Suroeste",
-    "northwest": "6. Noroeste"
+    "northwest": "6. Noroeste",
+    "resetPlayers": "Reiniciar Jugadores"
   },
   "settings": {
     "title": "Ajustes",

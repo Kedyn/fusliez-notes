@@ -1,7 +1,8 @@
-import React from "react";
-import useStyles from "./Notes.styles";
-import { namespace } from "context";
 import Button from "components/common/Button";
+import React from "react";
+import { namespace } from "context";
+import useStyles from "./Notes.styles";
+import { useTranslation } from "react-i18next";
 
 export default function Notes({
   isMobile,
@@ -10,6 +11,7 @@ export default function Notes({
   isMobile: boolean;
   orientation: string;
 }): JSX.Element {
+  const { t } = useTranslation();
   const classes = useStyles({ isMobile, orientation });
   const [notes, setNotes] = React.useState("");
 
@@ -32,7 +34,7 @@ export default function Notes({
 
   return (
     <div className={classes.root}>
-      {!isMobile && <h2>Notes</h2>}
+      {!isMobile && <h2>{t("controls.notes")}</h2>}
       <div className={classes.notesContainer}>
         <textarea
           className={classes.notes}
@@ -56,7 +58,7 @@ export default function Notes({
           saveData("");
         }}
       >
-        Reset Notes
+        {t("controls.resetNotes")}
       </Button>
     </div>
   );

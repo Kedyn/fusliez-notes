@@ -60,7 +60,8 @@
     "northeast": "3. Северо-восток",
     "south": "4. Юг",
     "southwest": "5. Юго-запад",
-    "northwest": "6. Северо-запад"
+    "northwest": "6. Северо-запад",
+    "resetPlayers": "Reset Players"
   },
   "settings": {
     "title": "Настройки",

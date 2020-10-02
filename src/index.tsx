@@ -1,3 +1,5 @@
+import "./i18n";
+
 import App from "components/App";
 import { DataProvider } from "context";
 import React from "react";

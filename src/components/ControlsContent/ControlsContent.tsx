@@ -1,11 +1,13 @@
 import Button from "components/common/Button";
+import Notes from "../Notes";
 import React from "react";
+import ScoresPanel from "../ScoresPanel";
 import Settings from "components/common/Settings";
 import useStyles from "./ControlsContent.styles";
-import ScoresPanel from "../ScoresPanel";
-import Notes from "../Notes";
+import { useTranslation } from "react-i18next";
 
 export default function ControlsContent(): JSX.Element {
+  const { t } = useTranslation();
   const classes = useStyles();
   const [showSettings, setShowSettings] = React.useState(false);
 
@@ -19,7 +21,7 @@ export default function ControlsContent(): JSX.Element {
         classNames={`${classes.dangerButton}`}
         onClick={() => setShowSettings(true)}
       >
-        Settings
+        {t("controls.settings")}
       </Button>
 
       <Settings show={showSettings} onClose={() => setShowSettings(false)} />

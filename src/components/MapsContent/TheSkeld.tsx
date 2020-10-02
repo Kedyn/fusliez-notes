@@ -1,8 +1,11 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 export default function TheSkeld(
   props: React.SVGProps<SVGSVGElement>
 ): JSX.Element {
+  const { t } = useTranslation();
+
   return (
     <svg viewBox="0 0 1366 768" {...props}>
       <title>{"TheSkeld"}</title>
@@ -22,7 +25,7 @@ export default function TheSkeld(
         fill="#fff"
         preserveAspectRatio="xMidYMid meet"
       >
-        {"Vents"}
+        {t("maps.vents")}
       </text>
       <text
         fontFamily="Titillium Web, sans-serif"
@@ -35,7 +38,7 @@ export default function TheSkeld(
         fill="#fff"
         preserveAspectRatio="xMidYMid meet"
       >
-        {"Common Tasks"}
+        {t("maps.commonTasks")}
       </text>
       <text
         fontFamily="Titillium Web, sans-serif"
@@ -48,7 +51,7 @@ export default function TheSkeld(
         fill="#fff"
         preserveAspectRatio="xMidYMid meet"
       >
-        {"Wiring Tasks"}
+        {t("maps.wiringTasks")}
       </text>
       <text
         fontFamily="Titillium Web, sans-serif"
@@ -61,7 +64,7 @@ export default function TheSkeld(
         fill="#fff"
         preserveAspectRatio="xMidYMid meet"
       >
-        {"Vent Connections"}
+        {t("maps.ventConnections")}
       </text>
       <text
         fontFamily="Titillium Web, sans-serif"
@@ -74,7 +77,7 @@ export default function TheSkeld(
         fill="#fff"
         preserveAspectRatio="xMidYMid meet"
       >
-        {"Security Cameras"}
+        {t("maps.securityCameras")}
       </text>
       <text
         fontFamily="Titillium Web, sans-serif"
@@ -87,7 +90,7 @@ export default function TheSkeld(
         fill="#fff"
         preserveAspectRatio="xMidYMid meet"
       >
-        {"Camera Zones"}
+        {t("maps.cameraZones")}
       </text>
       <text
         fontWeight="bold"
@@ -102,7 +105,7 @@ export default function TheSkeld(
         fill="#fff"
         preserveAspectRatio="xMidYMid meet"
       >
-        {"Cafeteria"}
+        {t("maps.cafeteria")}
       </text>
       <text
         fontWeight="bold"
@@ -117,7 +120,7 @@ export default function TheSkeld(
         fill="#fff"
         preserveAspectRatio="xMidYMid meet"
       >
-        {"Weapons"}
+        {t("maps.weapons")}
       </text>
       <text
         fontWeight="bold"
@@ -132,7 +135,7 @@ export default function TheSkeld(
         fill="#fff"
         preserveAspectRatio="xMidYMid meet"
       >
-        {"Navigation"}
+        {t("maps.navigation")}
       </text>
       <text
         fontWeight="bold"
@@ -147,7 +150,7 @@ export default function TheSkeld(
         fill="#fff"
         preserveAspectRatio="xMidYMid meet"
       >
-        {"Shields"}
+        {t("maps.shields")}
       </text>
       <text
         fontWeight="bold"
@@ -162,7 +165,7 @@ export default function TheSkeld(
         fill="#fff"
         preserveAspectRatio="xMidYMid meet"
       >
-        {"Communication"}
+        {t("maps.communications")}
       </text>
       <text
         fontWeight="bold"
@@ -177,7 +180,7 @@ export default function TheSkeld(
         fill="#fff"
         preserveAspectRatio="xMidYMid meet"
       >
-        {"Storage"}
+        {t("maps.storage")}
       </text>
       <text
         fontWeight="bold"
@@ -192,7 +195,7 @@ export default function TheSkeld(
         fill="#fff"
         preserveAspectRatio="xMidYMid meet"
       >
-        {"Electrical"}
+        {t("maps.electrical")}
       </text>
       <text
         fontWeight="bold"
@@ -207,7 +210,7 @@ export default function TheSkeld(
         fill="#fff"
         preserveAspectRatio="xMidYMid meet"
       >
-        {"Lower Engine"}
+        {t("maps.lowerEngine")}
       </text>
       <text
         fontWeight="bold"
@@ -222,7 +225,7 @@ export default function TheSkeld(
         fill="#fff"
         preserveAspectRatio="xMidYMid meet"
       >
-        {"Reactor"}
+        {t("maps.reactor")}
       </text>
       <text
         fontWeight="bold"
@@ -237,7 +240,7 @@ export default function TheSkeld(
         fill="#fff"
         preserveAspectRatio="xMidYMid meet"
       >
-        {"Upper Engine"}
+        {t("maps.upperEngine")}
       </text>
       <text
         fontWeight="bold"
@@ -252,7 +255,7 @@ export default function TheSkeld(
         fill="#fff"
         preserveAspectRatio="xMidYMid meet"
       >
-        {"MedBay"}
+        {t("maps.medBay")}
       </text>
       <text
         fontWeight="bold"
@@ -267,7 +270,7 @@ export default function TheSkeld(
         fill="#fff"
         preserveAspectRatio="xMidYMid meet"
       >
-        {"Security"}
+        {t("maps.security")}
       </text>
       <text
         fontWeight="bold"
@@ -282,7 +285,7 @@ export default function TheSkeld(
         fill="#fff"
         preserveAspectRatio="xMidYMid meet"
       >
-        {"Admin"}
+        {t("maps.admin")}
       </text>
       <text
         fontWeight="bold"
@@ -297,7 +300,7 @@ export default function TheSkeld(
         fill="#fff"
         preserveAspectRatio="xMidYMid meet"
       >
-        {"O2"}
+        {t("maps.o2")}
       </text>
     </svg>
   );

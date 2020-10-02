@@ -60,7 +60,8 @@
     "northeast": "3. Northeast",
     "south": "4. South",
     "southwest": "5. Southwest",
-    "northwest": "6. Northwest"
+    "northwest": "6. Northwest",
+    "resetPlayers": "Reset Players"
   },
   "settings": {
     "title": "Settings",
