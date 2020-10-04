@@ -1,7 +1,6 @@
-import { ITheme } from "utils/types";
 import { createUseStyles } from "react-jss";
 
-export default createUseStyles((theme: ITheme) => ({
+export default createUseStyles({
   winsLossesButtonContainer: {
     alignItems: "center",
     display: "flex",
@@ -14,9 +13,6 @@ export default createUseStyles((theme: ITheme) => ({
   },
   winsLossesButton: {
     margin: 0,
-    "&:hover": {
-      backgroundColor: theme.innocentBackgroundColor,
-    },
   },
   winsLossesButtonLeft: (props) => ({
     backgroundColor: props.buttonBackgroundColor,
@@ -26,4 +22,4 @@ export default createUseStyles((theme: ITheme) => ({
     backgroundColor: props.buttonBackgroundColor,
     borderRadius: "0 6px 6px 0",
   }),
-}));
+});

@@ -20,6 +20,8 @@ export default function PlayersSection(): JSX.Element {
     setEvilPlayers,
     setDeadPlayers,
     setUnknownPlayers,
+
+    resetPlayersPositions,
   } = usePlayers()!; // eslint-disable-line
 
   const { isMobile } = useMobile()!; // eslint-disable-line
@@ -71,6 +73,15 @@ export default function PlayersSection(): JSX.Element {
           isMobile={isMobile}
         />
       ))}
+
+      {isMobile && (
+        <button
+          className={classes.reset}
+          onClick={() => resetPlayersPositions()}
+        >
+          Reset Positions
+        </button>
+      )}
     </div>
   );
 }

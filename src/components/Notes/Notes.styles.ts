@@ -13,7 +13,6 @@ export default createUseStyles((theme: ITheme) => ({
     fontSize: "1.25rem",
     width: "100%",
     height: "100%",
-    backgroundColor: theme.neutralBackgroundColor,
   }),
   notesContainer: {
     flexGrow: 1,

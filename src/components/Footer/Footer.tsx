@@ -33,7 +33,20 @@ export default function Footer(): JSX.Element {
           <a href="https://github.com/Kedyn/fusliez-notes#authors-and-acknowledgment">
             fuslie fam
           </a>
-          . <a onClick={() => setShowFeedback(true)}>Feedback</a>
+          . Leave us some{" "}
+          <a
+            href="https://github.com/Kedyn/fusliez-notes/issues"
+            onClick={(
+              event: React.MouseEvent<HTMLAnchorElement, MouseEvent>
+            ) => {
+              event.preventDefault();
+
+              setShowFeedback(true);
+            }}
+          >
+            Feedback
+          </a>
+          .
         </small>
       </footer>
 

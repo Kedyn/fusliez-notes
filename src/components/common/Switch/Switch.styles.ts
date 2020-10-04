@@ -3,7 +3,6 @@ import { createUseStyles } from "react-jss";
 import { hexToRGB } from "utils/colorConverter";
 
 export default createUseStyles((theme: ITheme) => ({
-  root: {},
   toggle: {
     "-webkit-appearance": "none",
     "-moz-appearance": "none",
@@ -19,6 +18,7 @@ export default createUseStyles((theme: ITheme) => ({
     cursor: "pointer",
     backgroundColor: `rgba(${hexToRGB(theme.buttonBackgroundColor)}, 0.5)`,
     transition: "background-color ease 0.3s",
+    margin: "0.5rem 0",
     marginRight: "0.5rem",
 
     "&:before": {
@@ -49,9 +49,6 @@ export default createUseStyles((theme: ITheme) => ({
   },
   toggleContainer: {
     display: "flex",
-    alignItems: "center",
-    fontSize: "1rem",
-    justifyContent: "center",
     margin: "0.5rem 0",
   },
 }));

@@ -12,7 +12,7 @@ export default function Switch(props: ISwitchProps): JSX.Element {
   const { label, ...other } = props;
 
   return (
-    <div className={classes.root}>
+    <div>
       <label className={classes.toggleContainer}>
         <input className={classes.toggle} type="checkbox" {...other} />
         {label}

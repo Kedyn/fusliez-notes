@@ -36,7 +36,7 @@ export default function MobileContextProvider(
       // logically, it's supposed to be innerHeight > innerWidth
       // return portrait, but it isn't behaving as expected
       setOrientation(
-        window.innerHeight > window.innerWidth ? "portrait" : "landscape"
+        window.innerHeight < window.innerWidth ? "portrait" : "landscape"
       );
     };
 

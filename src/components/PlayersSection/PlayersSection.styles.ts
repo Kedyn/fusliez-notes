@@ -1,8 +1,11 @@
 import { createUseStyles } from "react-jss";
 
 export default createUseStyles({
-  root: (props) => ({
+  root: {
     padding: "0.1rem",
     width: "100%",
-  }),
+  },
+  reset: {
+    marginTop: "1rem",
+  },
 });

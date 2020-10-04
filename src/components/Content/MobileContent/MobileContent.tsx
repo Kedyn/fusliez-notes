@@ -1,3 +1,4 @@
+import FeedbackContent from "components/Feedback/FeedbackContent";
 import { IView } from "utils/types";
 import MainContent from "components/MainContent";
 import MapsContent from "components/MapsContent";
@@ -5,6 +6,7 @@ import Notes from "components/Notes";
 import React from "react";
 import Scores from "components/Scores";
 import ScoresPanel from "components/ScoresPanel";
+import SettingsContent from "components/common/Settings/SettingsContent";
 import SlideDrawer from "components/SlideDrawer";
 import TabNavigator from "components/TabNavigator";
 import { useMobile } from "context/MobileContextProvider";
@@ -35,6 +37,18 @@ export default function MobileContent(): JSX.Element {
     {
       title: "Maps",
       content: <MapsContent />,
+    },
+    {
+      title: "Settings",
+      content: <SettingsContent />,
+    },
+    {
+      title: "Feedback",
+      content: <FeedbackContent />,
+    },
+    {
+      title: "About",
+      content: <></>,
     },
   ];
 

@@ -1,6 +1,7 @@
 import { SheetsRegistry, jss } from "react-jss";
 
 import { ITheme } from "./types";
+import { hexToRGB } from "./colorConverter";
 import preset from "jss-preset-default";
 
 export default function jssSetUp(theme: ITheme): SheetsRegistry {
@@ -106,6 +107,12 @@ export default function jssSetUp(theme: ITheme): SheetsRegistry {
           cursor: "pointer",
           backgroundColor: theme.buttonBackgroundColor,
           color: theme.buttonTextColor,
+
+          "&:hover": {
+            backgroundColor: `rgba(${hexToRGB(
+              theme.buttonBackgroundColor
+            )}, 0.7)`,
+          },
         },
         a: {
           textDecoration: "none",
