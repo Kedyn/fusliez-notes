@@ -6,57 +6,45 @@ export default createUseStyles((theme: ITheme) => ({
   root: {
     alignItems: "center",
     background: theme.backgroundColor,
-    boxShadow: "5px 0px 7px rgba(255,255,255,0.5)",
-    display: "flex",
-    flexDirection: "column",
-    height: window.innerHeight,
+    height: "100vh",
     "-webkit-overflow-scrolling": "touch",
     left: "0",
     overflowY: "scroll",
-    maxWidth: "45%",
-    minWidth: "45%",
-    padding: "1rem",
+    maxWidth: "75%",
+    minWidth: "320px",
+    width: "45%",
     position: "fixed",
     top: "0",
     transform: "translateX(100%)",
     transition: "transform 0.5s ease-out",
     zIndex: "200",
   },
-  container: {
-    alignItems: "center",
-    borderWidth: "2px 0",
-    borderColor: theme.textColor,
-    borderStyle: "solid",
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "flex-start",
-    margin: "0 0.25rem",
-    padding: "0.25rem 0",
-    width: "100%",
-  },
-  dangerButton: {
-    backgroundColor: theme.buttonDangerBackgroundColor,
-    color: theme.buttonDangerTextColor,
-
-    "&:hover": {
-      backgroundColor: `rgba(${hexToRGB(
-        theme.buttonDangerBackgroundColor
-      )}, 0.75)`,
-    },
-  },
   drawerOpen: {
     transform: "translateX(0)",
   },
-  icon: {
-    height: "50px",
-    width: "50px",
-    marginBottom: "1rem",
+  back: {
+    display: "block",
+    padding: "0.5rem 1rem",
+    cursor: "pointer",
+
+    "&:hover": {
+      backgroundColor: `rgba(${hexToRGB(theme.backgroundColor)}, 0.7)`,
+    },
   },
-  nonLastSection: {
-    borderBottom: "none",
+  nav: {
+    listStyleType: "none",
+    margin: 0,
+    padding: 0,
   },
-  reset: {
-    fontSize: "1rem",
-    margin: "0.5rem 0",
+  navItem: {
+    display: "block",
+    padding: "0.5rem",
+    paddingLeft: "2rem",
+    cursor: "pointer",
+
+    "&:hover": {
+      backgroundColor: theme.buttonBackgroundColor,
+      color: theme.buttonTextColor,
+    },
   },
 }));

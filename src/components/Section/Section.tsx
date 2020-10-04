@@ -3,7 +3,7 @@ import Player from "components/Player";
 import React from "react";
 import { ReactSortable } from "react-sortablejs";
 import colorNameToRGB from "utils/colorConverter";
-import { useData } from "context";
+import { useSettings } from "context/SettingsContextProvider";
 import useStyles from "./Section.styles";
 
 export interface ISectionProps {
@@ -14,7 +14,8 @@ export interface ISectionProps {
 }
 
 export default function Section(props: ISectionProps): JSX.Element {
-  const { names } = useData()!; // eslint-disable-line
+  const { names } = useSettings()!; // eslint-disable-line
+
   const classes = useStyles({ names });
 
   const { isMobile, title, list, setList } = props;

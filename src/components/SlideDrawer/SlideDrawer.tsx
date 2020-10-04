@@ -1,22 +1,24 @@
+import Backdrop from "./Backdrop";
+import { BiLeftArrowCircle } from "react-icons/bi";
+import { IView } from "utils/types";
 import React from "react";
 import useStyles from "./SlideDrawer.styles";
-import Backdrop from "./Backdrop";
-import Button from "components/common/Button";
-import SettingsContent from "components/common/Settings/SettingsContent";
-import { useData } from "context";
 
-export default function SlideDrawer({
-  isDrawerOpen,
-  setIsDrawerOpen,
-}: {
+export interface ISideDrawerProps {
   isDrawerOpen: boolean;
   setIsDrawerOpen: (state: boolean) => void;
-}): JSX.Element | null {
+  views: Array<IView>;
+  setActiveView: (value: IView) => void;
+}
+
+export default function SlideDrawer(
+  props: ISideDrawerProps
+): JSX.Element | null {
   const classes = useStyles();
-  const { resetPlayersPositions, resetAll } = useData()!; // eslint-disable-line
+
+  const { isDrawerOpen, setIsDrawerOpen, views, setActiveView } = props;
 
   const ref = React.useRef<HTMLDivElement>(null);
-  //   const [isDrawerOpen, setIsDrawerOpen] = React.useState(true);
 
   React.useEffect(() => {
     function handleHideDrawer(event: Event) {
@@ -31,37 +33,35 @@ export default function SlideDrawer({
     };
   }, []);
 
+  const handleChangeActiveView = (view: IView) => {
+    setActiveView(view);
+
+    setIsDrawerOpen(false);
+  };
+
   if (isDrawerOpen) {
     return (
-      <div>
+      <React.Fragment>
         <Backdrop />
-        <div className={`${classes.root} ${classes.drawerOpen}`} ref={ref}>
-          <img
-            src={`assets/amongNotes.gif`}
-            alt="Among Us Notes"
-            className={classes.icon}
-          />
 
-          <div className={`${classes.container} ${classes.nonLastSection}`}>
-            <Button
-              classNames={classes.reset}
-              onClick={() => resetPlayersPositions()}
-            >
-              Reset Round
-            </Button>
-            <Button
-              classNames={`${classes.reset} ${classes.dangerButton}`}
-              onClick={() => resetAll()}
-            >
-              Reset All
-            </Button>
+        <div className={`${classes.root} ${classes.drawerOpen}`} ref={ref}>
+          <div className={classes.back} onClick={() => setIsDrawerOpen(false)}>
+            <BiLeftArrowCircle />
           </div>
-          <div className={classes.container}>
-            <h4>Settings ⚙️</h4>
-            <SettingsContent />
-          </div>
+
+          <ul className={classes.nav}>
+            {views.map((view, index) => (
+              <li
+                key={index}
+                className={classes.navItem}
+                onClick={() => handleChangeActiveView(view)}
+              >
+                {view.title}
+              </li>
+            ))}
+          </ul>
         </div>
-      </div>
+      </React.Fragment>
     );
   } else {
     return null;

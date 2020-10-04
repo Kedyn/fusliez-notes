@@ -1,9 +1,10 @@
 import ColorsMenu from "../ColorsMenu";
 import { IPlayer } from "utils/types";
 import React from "react";
-import { useData } from "context";
-import { MobileContext } from "components/App";
+import { useMobile } from "context/MobileContextProvider";
 import usePlayerStyles from "./Player.styles";
+import { useSettings } from "context/SettingsContextProvider";
+import { useTranslation } from "react-i18next";
 
 export interface IPlayerProps {
   id: string | number;
@@ -16,11 +17,13 @@ export interface IPlayerProps {
 }
 
 export default function Player(props: IPlayerProps): JSX.Element {
+  const { t } = useTranslation();
+  const { isMobile, orientation } = useMobile()!; // eslint-disable-line
+  const { names } = useSettings()!; // eslint-disable-line
+
   const [isMenuShowing, setIsMenuShowing] = React.useState(false);
   const [longPressed, setLongPressed] = React.useState(false);
-  const { isMobile, orientation } = React.useContext(MobileContext);
 
-  const { names } = useData()!; // eslint-disable-line
   const htmlElRef = React.useRef(null);
 
   const playerStyles = usePlayerStyles({
@@ -56,14 +59,14 @@ export default function Player(props: IPlayerProps): JSX.Element {
 
   // put this in for mobile only
   // so users know they are interacting with the object
-  const useLongPress = (ms = 150) => {
+  const useLongPress = (ms = 50) => {
     const [startLongPress, setStartLongPress] = React.useState(false);
 
     React.useEffect(() => {
-      let timerId: number;
+      let timerId: number | undefined = undefined;
       if (startLongPress) {
         timerId = setTimeout(() => {
-          window.navigator.vibrate() && window.navigator.vibrate(200);
+          window.navigator.vibrate(-1) && window.navigator.vibrate(200);
           setLongPressed(true);
         }, ms);
       } else {
@@ -115,7 +118,7 @@ export default function Player(props: IPlayerProps): JSX.Element {
         <div className={playerStyles.name}>
           <input
             type="text"
-            placeholder="Player"
+            placeholder={t("main.player")}
             className={playerStyles.input}
             onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
               handleChange(index, event)

@@ -1,38 +1,39 @@
 import Button from "components/common/Button";
+import { ITheme } from "utils/types";
 import React from "react";
 import WinsLossesButton from "../WinsLossesButton";
-import { useData } from "context";
+import { useMobile } from "context/MobileContextProvider";
+import { usePlayers } from "context/PlayersContextProvider";
+import { useScores } from "context/ScoresContextProvider";
 import useStyles from "./ScoresPanel.styles";
+import { useTheme } from "react-jss";
 import { useTranslation } from "react-i18next";
 
-export default function ScoresPanel({
-  isMobile,
-}: {
-  isMobile: boolean;
-}): JSX.Element {
+export default function ScoresPanel(): JSX.Element {
   const { t } = useTranslation();
-  const classes = useStyles({ isMobile });
-
+  const theme = useTheme<ITheme>();
   const {
-    theme,
     innocentWins,
     innocentLosses,
     impostorWins,
     impostorLosses,
-    resetPlayersPositions,
-    resetAll,
+
     setImpostorWins,
     setImpostorLosses,
     setInnocentWins,
     setInnocentLosses,
-  } = useData()!; // eslint-disable-line
 
-  function resetScores() {
-    setInnocentWins(0);
-    setInnocentLosses(0);
-    setImpostorWins(0);
-    setImpostorLosses(0);
-  }
+    resetScores,
+  } = useScores()!; // eslint-disable-line
+  const { isMobile } = useMobile()!; // eslint-disable-line
+  const { resetPlayersPositions } = usePlayers()!; // eslint-disable-line
+
+  const classes = useStyles({ isMobile });
+
+  const resetAll = () => {
+    resetScores();
+    resetPlayersPositions();
+  };
 
   return (
     <div className={classes.root}>
@@ -105,7 +106,3 @@ export default function ScoresPanel({
     </div>
   );
 }
-
-ScoresPanel.defaultProps = {
-  isMobile: false,
-};

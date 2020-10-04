@@ -1,7 +1,7 @@
 import CircularProgressBar from "components/common/CircularProgressBar";
 import { ITheme } from "utils/types";
 import React from "react";
-import { useData } from "context";
+import { useScores } from "context/ScoresContextProvider";
 import useStyles from "./Scores.styles";
 import { useTheme } from "react-jss";
 import { useTranslation } from "react-i18next";
@@ -16,7 +16,7 @@ export default function Scores(): JSX.Element {
     innocentLosses,
     impostorWins,
     impostorLosses,
-  } = useData()!; // eslint-disable-line
+  } = useScores()!; // eslint-disable-line
 
   const getRate = (wins: number, games: number): number => {
     return games > 0 ? Math.floor((wins / games) * 100) : 100;

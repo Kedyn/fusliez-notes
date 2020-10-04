@@ -12,13 +12,7 @@ export default createUseStyles((theme: ITheme) => ({
     border: `1px solid ${theme.borderColor}`,
     borderRadius: "0.25rem",
     display: "flex",
-    flex: `0 1 ${
-      props.orientation === "portrait" && props.isMobile
-        ? "100%"
-        : props.orientation === "landscape" || props.names
-        ? "50%"
-        : "25%"
-    }`,
+    flex: `0 1 ${props.names ? "50%" : "25%"}`,
     justifyContent: "center",
     margin: "0.25rem 0",
     opacity: props.longPressed ? "0.5" : 1,

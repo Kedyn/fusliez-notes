@@ -2,7 +2,7 @@ import useStyles, { useColorSwatchStyles } from "./ColorsMenu.styles";
 
 import { IPlayer } from "utils/types";
 import React from "react";
-import { useData } from "context";
+import { usePlayers } from "context/PlayersContextProvider";
 
 // renders each individual color
 function ColorSwatch({
@@ -22,15 +22,13 @@ function ColorSwatch({
   );
 }
 
-export default function ColorsMenu({
-  isMenuShowing,
-  setIsMenuShowing,
-  currentColor,
-}: {
+export interface IColorsMenu {
   isMenuShowing: boolean;
   setIsMenuShowing: (state: boolean) => void;
   currentColor: string | number;
-}): JSX.Element {
+}
+
+export default function ColorsMenu(props: IColorsMenu): JSX.Element {
   const classes = useStyles();
   const ref = React.useRef<HTMLDivElement>(null);
   const {
@@ -39,12 +37,15 @@ export default function ColorsMenu({
     evilPlayers,
     deadPlayers,
     unknownPlayers,
+
     setInnocentPlayers,
     setSusPlayers,
     setEvilPlayers,
     setDeadPlayers,
     setUnknownPlayers,
-  } = useData()!; // eslint-disable-line
+  } = usePlayers()!; // eslint-disable-line
+
+  const { isMenuShowing, setIsMenuShowing, currentColor } = props;
 
   const colors = [
     { id: "brown", color: "saddlebrown" },

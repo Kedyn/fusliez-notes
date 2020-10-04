@@ -1,7 +1,16 @@
 import { createUseStyles } from "react-jss";
 
 export default createUseStyles({
-  root: {},
+  root: {
+    display: "flex",
+    flexDirection: "column",
+    height: "100vh",
+    maxHeight: "100vh",
+  },
+  content: {
+    overflowY: "auto",
+    flexGrow: 1,
+  },
   recordContainer: (props) => ({
     alignSelf: "center",
     alignItems: "center",

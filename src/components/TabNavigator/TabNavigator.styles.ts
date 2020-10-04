@@ -5,13 +5,11 @@ export default createUseStyles((theme: ITheme) => ({
   root: {
     display: "flex",
     flexDirection: "column",
-    position: "fixed",
-    bottom: 0,
     maxHeight: "195px",
     width: "100%",
   },
   activeTab: {
-    borderBottom: `4px solid ${theme.buttonTextColor}`,
+    backgroundColor: `${theme.backgroundColor} !important`,
   },
   icon: {
     height: "1.5rem",

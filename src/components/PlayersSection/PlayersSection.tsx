@@ -1,8 +1,8 @@
 import { IPlayer } from "utils/types";
-import { MobileContext } from "components/App";
 import React from "react";
 import Section from "components/Section";
-import { useData } from "context";
+import { useMobile } from "context/MobileContextProvider";
+import { usePlayers } from "context/PlayersContextProvider";
 import useStyles from "./PlayersSection.styles";
 import { useTranslation } from "react-i18next";
 
@@ -14,14 +14,16 @@ export default function PlayersSection(): JSX.Element {
     evilPlayers,
     deadPlayers,
     unknownPlayers,
+
     setInnocentPlayers,
     setSusPlayers,
     setEvilPlayers,
     setDeadPlayers,
     setUnknownPlayers,
-  } = useData()!; // eslint-disable-line
+  } = usePlayers()!; // eslint-disable-line
 
-  const { isMobile } = React.useContext(MobileContext);
+  const { isMobile } = useMobile()!; // eslint-disable-line
+
   const classes = useStyles({ isMobile });
 
   interface Section {

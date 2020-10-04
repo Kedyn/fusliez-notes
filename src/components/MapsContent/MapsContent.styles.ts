@@ -15,6 +15,7 @@ export default createUseStyles((theme: ITheme) => ({
     margin: "1rem 0",
     padding: "0.5rem",
     width: props.isMobile ? "50%" : "25%",
+    minWidth: "160px",
   }),
   mapNames: (props) => ({
     display: "flex",

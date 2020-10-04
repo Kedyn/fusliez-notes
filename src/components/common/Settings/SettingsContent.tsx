@@ -1,7 +1,7 @@
 import React from "react";
 import Switch from "../Switch";
 import i18next from "i18next";
-import { useData } from "context";
+import { useSettings } from "context/SettingsContextProvider";
 import useStyles from "./SettingsContent.styles";
 import { useTranslation } from "react-i18next";
 
@@ -9,7 +9,7 @@ export default function SettingsContent(): JSX.Element {
   const [language, setLanguage] = React.useState("en-US");
   const { t } = useTranslation();
   const classes = useStyles();
-  const { names, setNames } = useData()!; // eslint-disable-line
+  const { names, setNames } = useSettings()!; // eslint-disable-line
 
   React.useEffect(() => {
     const localLanguage = localStorage.getItem("i18nextLng");

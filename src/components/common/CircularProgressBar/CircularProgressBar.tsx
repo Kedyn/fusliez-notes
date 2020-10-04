@@ -5,8 +5,8 @@ import {
   buildStyles,
 } from "react-circular-progressbar";
 
-import { MobileContext } from "components/App";
 import React from "react";
+import { useMobile } from "context/MobileContextProvider";
 import useStyles from "./CircularProgressBar.styles";
 
 export interface ICircularProgressBarProps {
@@ -21,7 +21,7 @@ export default function CircularProgressBar(
   props: ICircularProgressBarProps
 ): JSX.Element {
   const { progress, backgroundColor, progressColor, children } = props;
-  const { isMobile, orientation } = React.useContext(MobileContext);
+  const { isMobile, orientation } = useMobile()!; // eslint-disable-line
 
   const classes = useStyles({
     backgroundColor,
