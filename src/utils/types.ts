@@ -95,6 +95,14 @@ export interface IThemeContext {
   setBorderColor: (value: string) => void;
 
   setLinkColor: (value: string) => void;
+
+  resetColors: () => void;
+}
+
+export interface IColor {
+  name: string;
+  hex: string;
+  change: (value: string) => void;
 }
 
 export interface IMobileContext {

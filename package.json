@@ -8,6 +8,8 @@
     "build": "parcel build ./src/index.html --no-source-maps -d ./build --public-url ./",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
+    "predeploynext": "npm run build",
+    "deploynext": "gh-pages -d build -e ./next",
     "lint": "eslint ./src/ --cache --fix --ext .ts,.tsx"
   },
   "homepage": "http://kedyn.github.io/fuesliez-notes",
@@ -21,6 +23,7 @@
     "jss-preset-default": "^10.4.0",
     "react": "^16.13.1",
     "react-circular-progressbar": "^2.0.3",
+    "react-color": "^2.18.1",
     "react-dom": "^16.13.1",
     "react-draggable": "^4.4.3",
     "react-i18next": "^11.7.3",
@@ -30,6 +33,7 @@
   },
   "devDependencies": {
     "@types/react": "^16.9.49",
+    "@types/react-color": "^3.0.4",
     "@types/react-dom": "^16.9.8",
     "@typescript-eslint/eslint-plugin": "^4.1.1",
     "@typescript-eslint/parser": "^4.1.1",

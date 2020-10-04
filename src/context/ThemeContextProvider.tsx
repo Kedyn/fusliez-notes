@@ -162,6 +162,35 @@ export default function ThemeContextProvider(
     localStorage.setItem(namespace, JSON.stringify(theme));
   }, [theme]);
 
+  const resetColors = () => {
+    setBackgroundColor(DEFAULT_THEME_DATA.backgroundColor);
+    setTextColor(DEFAULT_THEME_DATA.textColor);
+
+    setInputBackgroundColor(DEFAULT_THEME_DATA.inputBackgroundColor);
+    setInputTextColor(DEFAULT_THEME_DATA.inputTextColor);
+
+    setNeutralBackgroundColor(DEFAULT_THEME_DATA.neutralBackgroundColor);
+    setNeutralTextColor(DEFAULT_THEME_DATA.neutralTextColor);
+
+    setInnocentBackgroundColor(DEFAULT_THEME_DATA.innocentBackgroundColor);
+    setInnocentTextColor(DEFAULT_THEME_DATA.innocentTextColor);
+
+    setImpostorBackgroundColor(DEFAULT_THEME_DATA.impostorBackgroundColor);
+    setImpostorTextColor(DEFAULT_THEME_DATA.impostorTextColor);
+
+    setButtonBackgroundColor(DEFAULT_THEME_DATA.buttonBackgroundColor);
+    setButtonTextColor(DEFAULT_THEME_DATA.buttonTextColor);
+
+    setButtonDangerBackgroundColor(
+      DEFAULT_THEME_DATA.buttonDangerBackgroundColor
+    );
+    setButtonDangerTextColor(DEFAULT_THEME_DATA.buttonDangerTextColor);
+
+    setBorderColor(DEFAULT_THEME_DATA.borderColor);
+
+    setLinkColor(DEFAULT_THEME_DATA.linkColor);
+  };
+
   return (
     <ThemeContext.Provider
       value={{
@@ -214,6 +243,8 @@ export default function ThemeContextProvider(
         setBorderColor,
 
         setLinkColor,
+
+        resetColors,
       }}
     >
       <JssProvider registry={jssSetUp(theme)}>
