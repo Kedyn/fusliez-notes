@@ -14,6 +14,7 @@ export default function Score(props: IScoreProps): JSX.Element {
   return (
     <input
       type="number"
+      min={0}
       className={`${className ? className : ""} ${classes.input}`}
       {...other}
     />

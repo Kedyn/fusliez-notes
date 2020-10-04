@@ -48,14 +48,18 @@ export default function ScoresPanel(): JSX.Element {
           <h4 className={classes.title}>{t("controls.wins")}</h4>
           <WinsLossesButton
             buttonBackgroundColor={theme.innocentTextColor}
-            decrement={() => setInnocentWins(innocentWins - 1)}
+            decrement={() =>
+              setInnocentWins(innocentWins ? innocentWins - 1 : 0)
+            }
             increment={() => setInnocentWins(innocentWins + 1)}
             score={innocentWins}
             setScore={(value: number) => setInnocentWins(value)}
           />
           <WinsLossesButton
             buttonBackgroundColor={theme.impostorTextColor}
-            decrement={() => setImpostorWins(impostorWins - 1)}
+            decrement={() =>
+              setImpostorWins(impostorWins ? impostorWins - 1 : 0)
+            }
             increment={() => setImpostorWins(impostorWins + 1)}
             score={impostorWins}
             setScore={(value: number) => setImpostorWins(value)}
@@ -66,14 +70,18 @@ export default function ScoresPanel(): JSX.Element {
           <h4 className={classes.title}>{t("controls.losses")}</h4>
           <WinsLossesButton
             buttonBackgroundColor={theme.innocentTextColor}
-            decrement={() => setInnocentLosses(innocentLosses - 1)}
+            decrement={() =>
+              setInnocentLosses(innocentLosses ? innocentLosses - 1 : 0)
+            }
             increment={() => setInnocentLosses(innocentLosses + 1)}
             score={innocentLosses}
             setScore={(value: number) => setInnocentLosses(value)}
           />
           <WinsLossesButton
             buttonBackgroundColor={theme.impostorTextColor}
-            decrement={() => setImpostorLosses(impostorLosses - 1)}
+            decrement={() =>
+              setImpostorLosses(impostorLosses ? impostorLosses - 1 : 0)
+            }
             increment={() => setImpostorLosses(impostorLosses + 1)}
             score={impostorLosses}
             setScore={(value: number) => setImpostorLosses(value)}
