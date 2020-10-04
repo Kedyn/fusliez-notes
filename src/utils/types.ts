@@ -5,49 +5,6 @@ export interface IPlayer extends ItemInterface {
   color: string;
 }
 
-export interface IDataContext {
-  version: string;
-  theme: ITheme;
-  innocentWins: number;
-  innocentLosses: number;
-  impostorWins: number;
-  impostorLosses: number;
-  names: boolean;
-  innocentPlayers: Array<IPlayer>;
-  susPlayers: Array<IPlayer>;
-  evilPlayers: Array<IPlayer>;
-  deadPlayers: Array<IPlayer>;
-  unknownPlayers: Array<IPlayer>;
-  // notes: string;
-  resetPlayersPositions: () => void;
-  resetGames: () => void;
-  resetAll: () => void;
-  setTheme: (value: ITheme) => void;
-  setInnocentWins: (value: number) => void;
-  setInnocentLosses: (value: number) => void;
-  setImpostorWins: (value: number) => void;
-  setImpostorLosses: (value: number) => void;
-  setNames: (value: boolean) => void;
-  setInnocentPlayers: (value: Array<IPlayer>) => void;
-  setSusPlayers: (value: Array<IPlayer>) => void;
-  setEvilPlayers: (value: Array<IPlayer>) => void;
-  setDeadPlayers: (value: Array<IPlayer>) => void;
-  setUnknownPlayers: (value: Array<IPlayer>) => void;
-  // setNotes: (value: string) => void;
-}
-
-export interface IData {
-  innocentWins: number;
-  innocentLosses: number;
-  impostorWins: number;
-  impostorLosses: number;
-  innocentPlayers: Array<IPlayer>;
-  susPlayers: Array<IPlayer>;
-  evilPlayers: Array<IPlayer>;
-  deadPlayers: Array<IPlayer>;
-  unknownPlayers: Array<IPlayer>;
-}
-
 export interface ISettings {
   names: boolean;
   scoresStyle: string;

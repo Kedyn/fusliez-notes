@@ -1,33 +1,8 @@
-import { IData, IPlayers, ISettings, ITheme } from "./types";
+import { IPlayers, ISettings, ITheme } from "./types";
 
 export const VERSION = "0.9.0";
 
 export const NAMESPACE = "fusliez-notes-";
-
-export const DEFAULT_DATA: IData = {
-  innocentWins: 0,
-  innocentLosses: 0,
-  impostorWins: 0,
-  impostorLosses: 0,
-  innocentPlayers: [],
-  susPlayers: [],
-  evilPlayers: [],
-  deadPlayers: [],
-  unknownPlayers: [
-    { id: "orange", name: "", color: "orange" },
-    { id: "blue", name: "", color: "blue" },
-    { id: "brown", name: "", color: "brown" },
-    { id: "gray", name: "", color: "gray" },
-    { id: "green", name: "", color: "green" },
-    { id: "lightGreen", name: "", color: "lightGreen" },
-    { id: "pink", name: "", color: "pink" },
-    { id: "purple", name: "", color: "purple" },
-    { id: "red", name: "", color: "red" },
-    { id: "teal", name: "", color: "teal" },
-    { id: "white", name: "", color: "white" },
-    { id: "yellow", name: "", color: "yellow" },
-  ],
-};
 
 export const DEFAULT_SETTINGS: ISettings = {
   names: true,
