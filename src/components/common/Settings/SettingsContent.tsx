@@ -176,6 +176,8 @@ export default function SettingsContent(): JSX.Element {
   const changeColor = (color: IColor) => {
     setActiveColor(color);
 
+    setSelectedColor(color.hex);
+
     setDisplayColorPicker(true);
   };
 
@@ -244,6 +246,8 @@ export default function SettingsContent(): JSX.Element {
             <button
               onClick={() => {
                 setDisplayColorPicker(false);
+
+                activeColor.change(selectedColor);
               }}
             >
               {t("settings.done")}

@@ -1,7 +1,8 @@
+import { NAMESPACE, VERSION } from "utils/constants";
+
 import About from "components/About";
 import Feedback from "components/Feedback/Feedback";
 import React from "react";
-import { VERSION } from "utils/constants";
 import VersionNotes from "components/VersionNotes";
 import useStyles from "./Footer.styles";
 
@@ -13,6 +14,16 @@ export default function Footer(): JSX.Element {
   );
   const [showAbout, setShowAbout] = React.useState<boolean>(false);
   const [showFeedback, setShowFeedback] = React.useState<boolean>(false);
+
+  React.useEffect(() => {
+    const version = localStorage.getItem(`${NAMESPACE}version`);
+
+    if (version === null || version !== VERSION) {
+      setShowVersionNotes(true);
+    }
+
+    localStorage.setItem(`${NAMESPACE}version`, VERSION);
+  }, []);
 
   return (
     <React.Fragment>

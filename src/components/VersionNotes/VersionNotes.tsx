@@ -11,29 +11,28 @@ const NOTES = [
   {
     title: "Highlights",
     items: [
-      <>Added support for mobile devices in portrait and landscape</>,
-      <>Changed win rate presentation to circular</>,
-    ],
-  },
-  {
-    title: "Fixes",
-    items: [
-      <>Performance issues with notes</>,
-      <>"Show Player Names" settings bug</>,
+      <>Added support to change all theme colors, not players.</>,
+      <>Added support for mobile devices in portrait and landscape.</>,
+      <>
+        Changed win rate presentation to circular, which can be switched on
+        settings.
+      </>,
+      <>
+        Added information on those of us who worked on this project by clicking
+        fuslie fam link,
+        <br />
+        bottom of the page, please give it a look. Show some love for all.
+      </>,
     ],
   },
   {
     title: "Development Notes",
     items: [
-      <>We are working in allowing custom theme colors.</>,
       <>
-        We can only test the mobile version so much on our side. If you found
-        anything that doesn't work as well as you'd like, please leave us a
-        feedback!
-      </>,
-      <>
-        We added a feedback link at the bottom at the page, we love to hear from
-        all of you.
+        We can only test the mobile version so much on our side.
+        <br />
+        If you found anything that doesn't work as well as you'd like, please
+        leave us a feedback!
       </>,
       <>
         If you would like to see all the changes we have made please read our{" "}

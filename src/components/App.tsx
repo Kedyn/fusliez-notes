@@ -4,7 +4,7 @@ import React from "react";
 
 export default function App(): JSX.Element {
   return (
-    <React.Suspense fallback="loading">
+    <React.Suspense fallback="Loading...">
       <ContextWrapper>
         <Content />
       </ContextWrapper>
