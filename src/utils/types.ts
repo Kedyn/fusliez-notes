@@ -18,6 +18,44 @@ export interface ISettingsContext {
   setScoresStyle: (value: string) => void;
 }
 
+export interface IStyleVars {
+  fontFamily: string;
+  baseFontSize: number;
+
+  textColorPrimary: string;
+  textColorSecondary: string;
+
+  backgroundColorPrimary: string;
+  backgroundColorSecondary: string;
+
+  borderColor: string;
+
+  colorBlack: string;
+  colorBlackDark: string;
+  colorBlue: string;
+  colorBlueDark: string;
+  colorBrown: string;
+  colorBrownDark: string;
+  colorCyan: string;
+  colorCyanDark: string;
+  colorGreen: string;
+  colorGreenDark: string;
+  colorLime: string;
+  colorLimeDark: string;
+  colorOrange: string;
+  colorOrangeDark: string;
+  colorPink: string;
+  colorPinkDark: string;
+  colorPurple: string;
+  colorPurpleDark: string;
+  colorRed: string;
+  colorRedDark: string;
+  colorWhite: string;
+  colorWhiteDark: string;
+  colorYellow: string;
+  colorYellowDark: string;
+}
+
 export interface ITheme {
   backgroundColor: string;
   textColor: string;

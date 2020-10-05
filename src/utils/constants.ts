@@ -1,4 +1,5 @@
 import { IPlayers, ISettings, ITheme } from "./types";
+import { STYLE_VARS } from "./styleVars";
 
 export const VERSION = "0.9.1";
 
@@ -10,11 +11,11 @@ export const DEFAULT_SETTINGS: ISettings = {
 };
 
 export const DEFAULT_THEME_DATA: ITheme = {
-  backgroundColor: "#202225",
-  textColor: "#ffffff",
+  backgroundColor: STYLE_VARS.backgroundColorPrimary,
+  textColor: STYLE_VARS.textColorPrimary,
 
-  inputBackgroundColor: "#f6edf6",
-  inputTextColor: "#202225",
+  inputBackgroundColor: STYLE_VARS.backgroundColorSecondary,
+  inputTextColor: STYLE_VARS.textColorPrimary,
 
   neutralBackgroundColor: "#f0c5e2",
   neutralTextColor: "#ee54bb",
@@ -31,7 +32,7 @@ export const DEFAULT_THEME_DATA: ITheme = {
   buttonDangerBackgroundColor: "#8B0000",
   buttonDangerTextColor: "#ffffff",
 
-  borderColor: "#36383a",
+  borderColor: STYLE_VARS.borderColor,
 
   linkColor: "#ee54bb",
 };

@@ -1,6 +1,8 @@
 import { SheetsRegistry, jss } from "react-jss";
+import normalize from "normalize-jss";
 
 import { ITheme } from "./types";
+import { STYLE_VARS } from "./styleVars";
 import { hexToRGB } from "./colorConverter";
 import preset from "jss-preset-default";
 
@@ -9,21 +11,16 @@ export default function jssSetUp(theme: ITheme): SheetsRegistry {
 
   const sheetsRegistry = new SheetsRegistry();
 
-  const globalStyleSheet = jss
+  const normalizeStyles = jss.createStyleSheet(normalize).attach();
+
+  const globalStyles = jss
     .createStyleSheet({
       "@global": {
-        "*, *:before, *:after": {
-          boxSizing: "inherit",
-        },
-        html: {
-          boxSizing: "border-box",
-        },
         body: {
-          margin: 0,
           backgroundColor: theme.backgroundColor,
           color: theme.textColor,
-          fontFamily: "Titillium Web, sans-serif",
-          fontSize: 20,
+          fontFamily: STYLE_VARS.fontFamily,
+          fontSize: STYLE_VARS.baseFontSize,
         },
         "#root": {
           display: "flex",
@@ -98,7 +95,7 @@ export default function jssSetUp(theme: ITheme): SheetsRegistry {
           textAlign: "center",
           border: "1px solid transparent",
           padding: ".375rem .75rem",
-          fontFamily: "inherit",
+          fontFamily: STYLE_VARS.fontFamily,
           borderRadius: "0.5rem",
           transition:
             "color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out",
@@ -128,7 +125,8 @@ export default function jssSetUp(theme: ITheme): SheetsRegistry {
     })
     .attach();
 
-  sheetsRegistry.add(globalStyleSheet);
+  sheetsRegistry.add(normalizeStyles);
+  sheetsRegistry.add(globalStyles);
 
   return sheetsRegistry;
 }

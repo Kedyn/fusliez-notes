@@ -32,6 +32,7 @@
     "react-sortablejs": "^2.0.11"
   },
   "devDependencies": {
+    "@types/normalize-jss": "^4.0.0",
     "@types/react": "^16.9.49",
     "@types/react-color": "^3.0.4",
     "@types/react-dom": "^16.9.8",
@@ -40,9 +41,11 @@
     "eslint": "^7.9.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-react": "^7.21.3",
     "gh-pages": "^3.1.0",
     "husky": "^4.3.0",
     "lint-staged": "^10.3.0",
+    "normalize-jss": "^4.0.0",
     "parcel": "^1.12.4",
     "parcel-plugin-static-files-copy": "^2.5.0",
     "prettier": "^2.1.1",

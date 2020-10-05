@@ -25,9 +25,10 @@ export default createUseStyles((theme: ITheme) => ({
     display: "flex",
     flex: 1,
     flexDirection: "column",
-    fontSize: "1.1rem",
+    fontSize: "0.75rem",
     justifyContent: "center",
     padding: "0.25rem",
+    letterSpacing: "0.05em",
   },
   tabsContainer: {
     display: "flex",
