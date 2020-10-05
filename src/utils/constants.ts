@@ -6,7 +6,7 @@ export const NAMESPACE = "fusliez-notes-";
 
 export const DEFAULT_SETTINGS: ISettings = {
   names: true,
-  scoresStyle: "doughnuts",
+  scoresStyle: "circles",
 };
 
 export const DEFAULT_THEME_DATA: ITheme = {

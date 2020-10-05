@@ -35,6 +35,7 @@ export default function CircularProgressBar(
     <CircularProgressbarWithChildren
       value={progress}
       className={classes.circularBar}
+      counterClockwise={true}
       styles={buildStyles({
         textColor: progressColor,
         pathColor: progressColor,

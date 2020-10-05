@@ -13,3 +13,9 @@ const requestWakeLock = async () => {
 };
 
 requestWakeLock();
+
+document.addEventListener("visibilitychange", async () => {
+  if ("wakeLock" in navigator && document.visibilityState === "visible") {
+    await navigator.wakeLock.request("screen");
+  }
+});

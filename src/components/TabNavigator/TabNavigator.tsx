@@ -6,6 +6,7 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import React from "react";
 import { RiDonutChartFill } from "react-icons/ri";
 import useStyles from "./TabNavigator.styles";
+import { useTranslation } from "react-i18next";
 
 export interface ITabNavigator {
   activeView: string;
@@ -15,6 +16,7 @@ export interface ITabNavigator {
 }
 
 export default function TabNavigator(props: ITabNavigator): JSX.Element {
+  const { t } = useTranslation();
   const {
     activeView,
     onChangeActiveView,
@@ -25,7 +27,7 @@ export default function TabNavigator(props: ITabNavigator): JSX.Element {
 
   const tabs = [
     {
-      name: "Players",
+      name: t("menu.players"),
       icon: (
         <img
           src="assets/Players.png"
@@ -42,22 +44,22 @@ export default function TabNavigator(props: ITabNavigator): JSX.Element {
       ),
     },
     {
-      name: "Notes",
+      name: t("menu.notes"),
       icon: <FaRegStickyNote className={classes.icon} />,
       iconSelected: <FaStickyNote className={classes.icon} />,
     },
     {
-      name: "Scores",
+      name: t("menu.scores"),
       icon: <BiDoughnutChart className={classes.icon} />,
       iconSelected: <RiDonutChartFill className={classes.icon} />,
     },
     {
-      name: "Maps",
+      name: t("menu.maps"),
       icon: <FiMap className={classes.icon} />,
       iconSelected: <FaMap className={classes.icon} />,
     },
     {
-      name: "Menu",
+      name: t("menu.menu"),
       icon: <GiHamburgerMenu className={classes.icon} />,
       iconSelected: <GiHamburgerMenu className={classes.icon} />,
     },
@@ -76,7 +78,9 @@ export default function TabNavigator(props: ITabNavigator): JSX.Element {
       <button
         className={`${classes.tab} ${name === activeView && classes.activeTab}`}
         onClick={() =>
-          name === "Menu" ? setIsDrawerOpen(true) : onChangeActiveView(name)
+          name === t("menu.menu")
+            ? setIsDrawerOpen(true)
+            : onChangeActiveView(name)
         }
         disabled={name === activeView}
       >

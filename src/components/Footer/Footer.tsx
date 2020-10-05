@@ -1,3 +1,4 @@
+import About from "components/About";
 import Feedback from "components/Feedback/Feedback";
 import React from "react";
 import { VERSION } from "utils/constants";
@@ -10,6 +11,7 @@ export default function Footer(): JSX.Element {
   const [showVersionNotes, setShowVersionNotes] = React.useState<boolean>(
     false
   );
+  const [showAbout, setShowAbout] = React.useState<boolean>(false);
   const [showFeedback, setShowFeedback] = React.useState<boolean>(false);
 
   return (
@@ -30,7 +32,16 @@ export default function Footer(): JSX.Element {
             {VERSION}
           </a>{" "}
           made with &#10084; by the{" "}
-          <a href="https://github.com/Kedyn/fusliez-notes#authors-and-acknowledgment">
+          <a
+            href="https://github.com/Kedyn/fusliez-notes#authors-and-acknowledgment"
+            onClick={(
+              event: React.MouseEvent<HTMLAnchorElement, MouseEvent>
+            ) => {
+              event.preventDefault();
+
+              setShowAbout(true);
+            }}
+          >
             fuslie fam
           </a>
           . Leave us some{" "}
@@ -54,6 +65,9 @@ export default function Footer(): JSX.Element {
         show={showVersionNotes}
         onClose={() => setShowVersionNotes(false)}
       />
+
+      <About show={showAbout} onClose={() => setShowAbout(false)} />
+
       <Feedback show={showFeedback} onClose={() => setShowFeedback(false)} />
     </React.Fragment>
   );

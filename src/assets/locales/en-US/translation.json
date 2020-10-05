@@ -65,18 +65,43 @@
   },
   "settings": {
     "title": "Settings",
+    "uiSettings": "UI Settings",
+    "scoresTypes": "Scores display type",
+    "bars": "Bars",
+    "circles": "Circles",
     "usePlayerNames": "Use player names",
     "language": "Language",
+    "themeSettings": "Theme Settings",
+    "themeClick": "Click a color to change it",
+    "resetColors": "Reset Colors",
+    "change": "Change",
+    "backgroundColor": "Background Color",
+    "textColor": "Text Color",
+    "inputBackgroundColor": "Input Background Color",
+    "inputTextColor": "Input Text Color",
+    "neutralBackgroundColor": "Neutral Background Color",
+    "neutralTextColor": "Neutral Text Color",
+    "innocentBackgroundColor": "Innocent Background Color",
+    "innocentTextColor": "Innocent Text Color",
+    "impostorBackgroundColor": "Impostor Background Color",
+    "impostorTextColor": "Impostor Text Color",
+    "buttonBackgroundColor": "Button Background Color",
+    "buttonTextColor": "Button Text Color",
+    "buttonDangerBackgroundColor": "Button Danger Background Color",
+    "buttonDangerTextColor": "Button Danger Text Color",
+    "borderColor": "Border Color",
+    "linkColor": "Link Color",
+    "done": "Done",
     "close": "Close"
   },
-  "recovery": {
-    "title": "Recover old Notes",
-    "recover": "Recover",
-    "ignore": "Ignore",
-    "message": {
-      "1": "It seems that you have old notes that can be recovered.",
-      "2": "Click Recover to add this notes to your current notes.",
-      "3": "Click Ignore to delete the old notes and keep your current ones."
-    }
+  "menu": {
+    "players": "Players",
+    "notes": "Notes",
+    "scores": "Scores",
+    "maps": "Maps",
+    "menu": "Menu",
+    "settings": "Settings",
+    "feedback": "Feedback",
+    "about": "About"
   }
 }

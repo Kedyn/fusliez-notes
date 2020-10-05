@@ -1,3 +1,4 @@
+import AboutContent from "components/About/AboutContent";
 import FeedbackContent from "components/Feedback/FeedbackContent";
 import { IView } from "utils/types";
 import MainContent from "components/MainContent";
@@ -11,22 +12,24 @@ import SlideDrawer from "components/SlideDrawer";
 import TabNavigator from "components/TabNavigator";
 import { useMobile } from "context/MobileContextProvider";
 import useStyles from "./MobileContent.styles";
+import { useTranslation } from "react-i18next";
 
 export default function MobileContent(): JSX.Element {
+  const { t } = useTranslation();
   const { isMobile, orientation } = useMobile()!; // eslint-disable-line
   const classes = useStyles({ isMobile, orientation });
 
   const views: Array<IView> = [
     {
-      title: "Players",
+      title: t("menu.players"),
       content: <MainContent />,
     },
     {
-      title: "Notes",
+      title: t("menu.notes"),
       content: <Notes />,
     },
     {
-      title: "Scores",
+      title: t("menu.scores"),
       content: (
         <div className={classes.recordContainer}>
           <Scores />
@@ -35,20 +38,20 @@ export default function MobileContent(): JSX.Element {
       ),
     },
     {
-      title: "Maps",
+      title: t("menu.maps"),
       content: <MapsContent />,
     },
     {
-      title: "Settings",
+      title: t("menu.settings"),
       content: <SettingsContent />,
     },
     {
-      title: "Feedback",
+      title: t("menu.feedback"),
       content: <FeedbackContent />,
     },
     {
-      title: "About",
-      content: <></>,
+      title: t("menu.about"),
+      content: <AboutContent />,
     },
   ];
 
@@ -59,16 +62,16 @@ export default function MobileContent(): JSX.Element {
     let newActiveView: IView;
 
     switch (view) {
-      case "Players":
+      case t("menu.players"):
         newActiveView = views[0];
         break;
-      case "Notes":
+      case t("menu.notes"):
         newActiveView = views[1];
         break;
-      case "Scores":
+      case t("menu.scores"):
         newActiveView = views[2];
         break;
-      case "Maps":
+      case t("menu.maps"):
         newActiveView = views[3];
         break;
       default:

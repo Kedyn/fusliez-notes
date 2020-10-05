@@ -65,18 +65,43 @@
   },
   "settings": {
     "title": "Ajustes",
+    "uiSettings": "Ajustes de IU",
+    "scoresTypes": "Tipo de vistas de puntajes",
+    "bars": "Barras",
+    "circles": "Circulos",
     "usePlayerNames": "Usar nombres de jugadores",
     "language": "Lenguage",
+    "themeSettings": "Ajustes de Tema",
+    "themeClick": "Da clic para cambiar color",
+    "resetColors": "Reiniciar Colores",
+    "change": "Cambiar",
+    "backgroundColor": "Color de Fondo",
+    "textColor": "Color de Texto",
+    "inputBackgroundColor": "Color de Fondo de Notas",
+    "inputTextColor": "Color de Fondo de Texto",
+    "neutralBackgroundColor": "Color de Fondo de Neutral",
+    "neutralTextColor": "Color de Texto de Neutral",
+    "innocentBackgroundColor": "Color de Fondo de Inocente",
+    "innocentTextColor": "Color de Texto de Inocente",
+    "impostorBackgroundColor": "Color de Fondo de Impostor",
+    "impostorTextColor": "Color de Texto de Impostor",
+    "buttonBackgroundColor": "Color de Fondo de Boton",
+    "buttonTextColor": "Color de Texto de Boton",
+    "buttonDangerBackgroundColor": "Color de Fondo de Boton de Peligro",
+    "buttonDangerTextColor": "Color de Texto de Boton de Peligro",
+    "borderColor": "Color de Borde",
+    "linkColor": "Color de Enlace",
+    "done": "Hecho",
     "close": "Cerrar"
   },
-  "recovery": {
-    "title": "Recuperar viejas Notas",
-    "recover": "Recuperar",
-    "ignore": "Ignorar",
-    "message": {
-      "1": "Parese que tienes viejas notas que podemos recuperar.",
-      "2": "Da clic en Recuperar para agregarlas a tus notas actuales.",
-      "3": "Da clic en Ignorar para borrar tus notas viejas y dejar las actuales."
-    }
+  "menu": {
+    "players": "Jugadores",
+    "notes": "Notas",
+    "scores": "Puntajes",
+    "maps": "Mapas",
+    "menu": "Menu",
+    "settings": "Ajustes",
+    "feedback": "Retroalimentacion",
+    "about": "Informacion"
   }
 }

@@ -13,7 +13,7 @@ import { useTranslation } from "react-i18next";
 export default function SettingsContent(): JSX.Element {
   const { t } = useTranslation();
   const { isMobile } = useMobile()!; // eslint-disable-line
-  const { names, setNames } = useSettings()!; // eslint-disable-line
+  const { names, scoresStyle, setNames, setScoresStyle } = useSettings()!; // eslint-disable-line
   const {
     backgroundColor,
     textColor,
@@ -70,82 +70,82 @@ export default function SettingsContent(): JSX.Element {
 
   const colors = [
     {
-      name: "Background Color",
+      name: t("settings.backgroundColor"),
       hex: backgroundColor,
       change: setBackgroundColor,
     },
     {
-      name: "Text Color",
+      name: t("settings.textColor"),
       hex: textColor,
       change: setTextColor,
     },
     {
-      name: "Input Background Color",
+      name: t("settings.inputBackgroundColor"),
       hex: inputBackgroundColor,
       change: setInputBackgroundColor,
     },
     {
-      name: "Input Text Color",
+      name: t("settings.inputTextColor"),
       hex: inputTextColor,
       change: setInputTextColor,
     },
     {
-      name: "Neutral Background Color",
+      name: t("settings.neutralBackgroundColor"),
       hex: neutralBackgroundColor,
       change: setNeutralBackgroundColor,
     },
     {
-      name: "Neutral Text Color",
+      name: t("settings.neutralTextColor"),
       hex: neutralTextColor,
       change: setNeutralTextColor,
     },
     {
-      name: "Innocent Background Color",
+      name: t("settings.innocentBackgroundColor"),
       hex: innocentBackgroundColor,
       change: setInnocentBackgroundColor,
     },
     {
-      name: "Innocent Text Color",
+      name: t("settings.innocentTextColor"),
       hex: innocentTextColor,
       change: setInnocentTextColor,
     },
     {
-      name: "Impostor Background Color",
+      name: t("settings.impostorBackgroundColor"),
       hex: impostorBackgroundColor,
       change: setImpostorBackgroundColor,
     },
     {
-      name: "Impostor Text Color",
+      name: t("settings.impostorTextColor"),
       hex: impostorTextColor,
       change: setImpostorTextColor,
     },
     {
-      name: "Button Background Color",
+      name: t("settings.buttonBackgroundColor"),
       hex: buttonBackgroundColor,
       change: setButtonBackgroundColor,
     },
     {
-      name: "Button Text Color",
+      name: t("settings.buttonTextColor"),
       hex: buttonTextColor,
       change: setButtonTextColor,
     },
     {
-      name: "Button Danger Background Color",
+      name: t("settings.buttonDangerBackgroundColor"),
       hex: buttonDangerBackgroundColor,
       change: setButtonDangerBackgroundColor,
     },
     {
-      name: "Button Danger Text Color",
+      name: t("settings.buttonDangerTextColor"),
       hex: buttonDangerTextColor,
       change: setButtonDangerTextColor,
     },
     {
-      name: "Border Color",
+      name: t("settings.borderColor"),
       hex: borderColor,
       change: setBorderColor,
     },
     {
-      name: "Link Color",
+      name: t("settings.linkColor"),
       hex: linkColor,
       change: setLinkColor,
     },
@@ -153,7 +153,7 @@ export default function SettingsContent(): JSX.Element {
 
   const [language, setLanguage] = React.useState<string>("en-US");
   const [themeHover, setThemeHover] = React.useState<string>(
-    "Click a color to change it"
+    t("settings.themeClick")
   );
   const [displayColorPicker, setDisplayColorPicker] = React.useState<boolean>(
     false
@@ -182,8 +182,19 @@ export default function SettingsContent(): JSX.Element {
   return (
     <div className={classes.root}>
       <div className={classes.uiContainer}>
-        <h4>UI Settings</h4>
+        <h4>{t("settings.uiSettings")}</h4>
         <div className={classes.content}>
+          {t("settings.scoresTypes")}:{" "}
+          <select
+            value={scoresStyle}
+            onChange={(event: React.ChangeEvent<HTMLSelectElement>) => {
+              setScoresStyle(event.currentTarget.value);
+            }}
+          >
+            <option value="bars">{t("settings.bars")}</option>
+            <option value="circles">{t("settings.circles")}</option>
+          </select>
+          <hr />
           <Switch
             label={t("settings.usePlayerNames")}
             onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
@@ -210,7 +221,7 @@ export default function SettingsContent(): JSX.Element {
         </div>
       </div>
       <div className={classes.themeContainer}>
-        <h4>Theme Settings</h4>
+        <h4>{t("settings.themeSettings")}</h4>
 
         <div className={`${classes.content} ${classes.themeButtons}`}>
           {colors.map((color, index) => (
@@ -218,7 +229,7 @@ export default function SettingsContent(): JSX.Element {
               key={index}
               className={classes.themeButton}
               onMouseEnter={() => setThemeHover(color.name)}
-              onMouseLeave={() => setThemeHover("Click a color to change it")}
+              onMouseLeave={() => setThemeHover(t("settings.themeClick"))}
               onClick={() => changeColor(color)}
               style={{ backgroundColor: color.hex }}
             />
@@ -226,7 +237,7 @@ export default function SettingsContent(): JSX.Element {
         </div>
 
         <Modal
-          title={`Change ${activeColor.name}`}
+          title={`${t("settings.change")} ${activeColor.name}`}
           show={displayColorPicker}
           onClose={() => setDisplayColorPicker(false)}
           footer={
@@ -235,7 +246,7 @@ export default function SettingsContent(): JSX.Element {
                 setDisplayColorPicker(false);
               }}
             >
-              Done
+              {t("settings.done")}
             </button>
           }
         >
@@ -250,7 +261,7 @@ export default function SettingsContent(): JSX.Element {
         </div>
 
         <button className={classes.resetTheme} onClick={() => resetColors()}>
-          Reset Colors
+          {t("settings.resetColors")}
         </button>
       </div>
     </div>
