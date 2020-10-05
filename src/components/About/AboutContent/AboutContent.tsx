@@ -60,6 +60,8 @@ export default function AboutContent(): JSX.Element {
           features.
           <br />
           Thank you to everyone who uses this tool.
+          <br />
+          Special thanks to all the fusfam who helps us tests.
         </small>
       </p>
       <p>

@@ -17,6 +17,7 @@ const NOTES = [
         Changed win rate presentation to circular, which can be switched on
         settings.
       </>,
+      <>No longer saves players positions or scores from session to session.</>,
       <>
         Added information on those of us who worked on this project by clicking
         fuslie fam link,

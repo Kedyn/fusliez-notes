@@ -7,12 +7,33 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Released]
 
-### [v0.9.0]
+### [v0.9.0] - 10/05/2020
+
+This released focused on improving the mobile experience and adding support to
+change colors.
+There was also a big refactoring for all the code base.
+
+#### Added
 
 - Added support for mobile devices in portrait and landscape
-- Changed win rate progress bars to circular
-- Addressed performance issues with notes
+- Added circular progress bars
+- Added support to change all theme colors
+- Added support for multiple languages
+- Added support to switch between circular bars to regular bars
+
+#### Fixed
+
+- Fixed performance issues with notes
 - Fixed "Show Player Names" settings bug
+- Fixed UI
+
+#### Changed
+
+- Changed win rate progress bars to circular
+
+#### Removed
+
+- Data, players positions and games no longer gets saved.
 
 ### [v0.8.3]
 
