@@ -40,9 +40,6 @@ export default function jssSetUp(theme: ITheme): SheetsRegistry {
           textAlign: "center",
           fontSize: "smaller",
         },
-        "#main": {
-          padding: "0.25rem",
-        },
         "#controls": {
           padding: "1rem",
         },
@@ -69,7 +66,7 @@ export default function jssSetUp(theme: ITheme): SheetsRegistry {
           maxWidth: "100%",
           height: "auto",
         },
-        'input[type="text"],input[type="number"],input[type="text"]:focus,input[type="number"]:focus': {
+        input: {
           backgroundColor: "transparent",
           color: theme.inputTextColor,
           appearance: "none",

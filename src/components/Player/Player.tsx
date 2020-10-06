@@ -10,7 +10,7 @@ export interface IPlayerProps {
   id: string | number;
   color: string;
   backgroundColor: string;
-  name: string;
+  playerName: string;
   list: Array<IPlayer>;
   setList: (value: IPlayer[]) => void;
   index: number;
@@ -19,7 +19,7 @@ export interface IPlayerProps {
 export default function Player(props: IPlayerProps): JSX.Element {
   const { t } = useTranslation();
   const { isMobile, orientation } = useMobile()!; // eslint-disable-line
-  const { names } = useSettings()!; // eslint-disable-line
+  const { showNames } = useSettings()!; // eslint-disable-line
 
   const [isMenuShowing, setIsMenuShowing] = React.useState(false);
   const [longPressed, setLongPressed] = React.useState(false);
@@ -27,21 +27,21 @@ export default function Player(props: IPlayerProps): JSX.Element {
   const htmlElRef = React.useRef(null);
 
   const playerStyles = usePlayerStyles({
-    names,
+    showNames,
     isMobile,
     orientation,
     longPressed,
     ...props,
   });
 
-  const { id, color, name, list, setList, index } = props;
+  const { id, color, playerName, list, setList, index } = props;
 
   const handleChange = (
     player: number,
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
     const players: Array<IPlayer> = [...list];
-    players[player].name = event.currentTarget.value;
+    players[player].playerName = event.currentTarget.value;
     setList(players);
   };
 
@@ -91,44 +91,46 @@ export default function Player(props: IPlayerProps): JSX.Element {
   const longPressEvents = useLongPress();
 
   return (
-    <div
-      className={`${playerStyles.container} player-handle`}
-      {...longPressEvents}
-    >
-      {isMenuShowing && !isMobile && (
-        <ColorsMenu
-          isMenuShowing={isMenuShowing}
-          setIsMenuShowing={setIsMenuShowing}
-          currentColor={id}
-        />
-      )}
-      <div className={playerStyles.icon}>
-        <img
-          onClick={() => {
-            if (names && !isMobile) {
-              setIsMenuShowing(!isMenuShowing);
-            }
-          }}
-          src={`assets/${color}.png`}
-          alt={color}
-          className="player-handle"
-        />
-      </div>
-      {names && (
-        <div className={playerStyles.name}>
-          <input
-            type="text"
-            placeholder={t("main.player")}
-            className={playerStyles.input}
-            onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
-              handleChange(index, event)
-            }
-            onKeyPress={handleKeyPress}
-            value={name}
-            ref={htmlElRef}
+    <div className={playerStyles.wrapper} id={color}>
+      <div
+        className={`${playerStyles.container} player-handle`}
+        {...longPressEvents}
+      >
+        {isMenuShowing && !isMobile && (
+          <ColorsMenu
+            isMenuShowing={isMenuShowing}
+            setIsMenuShowing={setIsMenuShowing}
+            currentColor={id}
+          />
+        )}
+        <div className={playerStyles.icon}>
+          <img
+            onClick={() => {
+              if (showNames && !isMobile) {
+                setIsMenuShowing(!isMenuShowing);
+              }
+            }}
+            src={`assets/images/players/${color}.png`}
+            alt={color}
+            className="player-handle"
           />
         </div>
-      )}
+        {showNames && (
+          <div className={playerStyles.name}>
+            <input
+              type="text"
+              placeholder={t("main.player")}
+              className={playerStyles.input}
+              onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
+                handleChange(index, event)
+              }
+              onKeyPress={handleKeyPress}
+              value={playerName}
+              ref={htmlElRef}
+            />
+          </div>
+        )}
+      </div>
     </div>
   );
 }

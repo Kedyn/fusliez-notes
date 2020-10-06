@@ -14,15 +14,15 @@ export interface ISectionProps {
 }
 
 export default function Section(props: ISectionProps): JSX.Element {
-  const { names } = useSettings()!; // eslint-disable-line
+  const { showNames } = useSettings()!; // eslint-disable-line
 
-  const classes = useStyles({ names });
+  const classes = useStyles({ showNames });
 
   const { isMobile, title, list, setList } = props;
   return (
     <React.Fragment>
-      <div className={classes.root}>
-        <h2>{title}</h2>
+      <div className={classes.Section}>
+        <h2 className={classes.SectionTitle}>{title}</h2>
 
         <ReactSortable
           group="players"
@@ -38,9 +38,9 @@ export default function Section(props: ISectionProps): JSX.Element {
           touchStartThreshold={3}
           list={list}
           setList={setList}
-          className={classes.players}
+          className={classes.SectionArea}
         >
-          {list.map(({ id, color, name }, index) => (
+          {list.map(({ id, color, playerName }, index) => (
             <Player
               key={id}
               id={id}
@@ -59,7 +59,7 @@ export default function Section(props: ISectionProps): JSX.Element {
                   : color
               )}
               color={color}
-              name={name}
+              playerName={playerName}
               list={list}
               setList={setList}
               index={index}

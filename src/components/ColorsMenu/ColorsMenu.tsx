@@ -48,18 +48,18 @@ export default function ColorsMenu(props: IColorsMenu): JSX.Element {
   const { isMenuShowing, setIsMenuShowing, currentColor } = props;
 
   const colors = [
-    { id: "brown", color: "saddlebrown" },
-    { id: "red", color: "red" },
-    { id: "pink", color: "hotpink" },
-    { id: "orange", color: "orange" },
-    { id: "yellow", color: "yellow" },
-    { id: "lightGreen", color: "chartreuse" },
-    { id: "green", color: "green" },
-    { id: "teal", color: "cyan" },
-    { id: "blue", color: "blue" },
-    { id: "purple", color: "purple" },
-    { id: "gray", color: "dimgray" },
-    { id: "white", color: "white" },
+    { id: "Blue", color: "blue" },
+    { id: "Black", color: "black" },
+    { id: "Brown", color: "brown" },
+    { id: "Cyan", color: "cyan" },
+    { id: "Green", color: "green" },
+    { id: "Lime", color: "lime" },
+    { id: "Orange", color: "orange" },
+    { id: "Pink", color: "pink" },
+    { id: "Purple", color: "purple" },
+    { id: "Red", color: "red" },
+    { id: "White", color: "white" },
+    { id: "Yellow", color: "yellow" },
   ];
 
   const allPlayers = React.useMemo(

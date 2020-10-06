@@ -1,19 +1,19 @@
 import { ItemInterface } from "react-sortablejs";
 
 export interface IPlayer extends ItemInterface {
-  name: string;
+  playerName: string;
   color: string;
 }
 
 export interface ISettings {
-  names: boolean;
+  showNames: boolean;
   scoresStyle: string;
 }
 
 export interface ISettingsContext {
-  names: boolean;
+  showNames: boolean;
 
-  setNames: (value: boolean) => void;
+  setShowNames: (value: boolean) => void;
 }
 
 export interface IStyleVars {
@@ -32,31 +32,15 @@ export interface IStyleVars {
   activeColor: string;
 
   borderColor: string;
+}
 
-  colorBlack: string;
-  colorBlackDark: string;
-  colorBlue: string;
-  colorBlueDark: string;
-  colorBrown: string;
-  colorBrownDark: string;
-  colorCyan: string;
-  colorCyanDark: string;
-  colorGreen: string;
-  colorGreenDark: string;
-  colorLime: string;
-  colorLimeDark: string;
-  colorOrange: string;
-  colorOrangeDark: string;
-  colorPink: string;
-  colorPinkDark: string;
-  colorPurple: string;
-  colorPurpleDark: string;
-  colorRed: string;
-  colorRedDark: string;
-  colorWhite: string;
-  colorWhiteDark: string;
-  colorYellow: string;
-  colorYellowDark: string;
+export interface IColorLibrary {
+  [key: string]: IColorEntry;
+}
+
+export interface IColorEntry {
+  base: string;
+  dark: string;
 }
 
 export interface ITheme {

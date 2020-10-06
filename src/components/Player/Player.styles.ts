@@ -1,54 +1,80 @@
 import { ITheme } from "utils/types";
-import colorNameToRGB from "utils/colorConverter";
+import colorNameToRGB, {
+  contrastColor,
+  getColorValue,
+  hexToRGB,
+} from "utils/colorConverter";
 import { createUseStyles } from "react-jss";
+import { STYLE_VARS } from "utils/styleVars";
 
 export default createUseStyles((theme: ITheme) => ({
+  wrapper: (props) => ({
+    flex: `0 0 ${props.showNames ? "50%" : "25%"}`,
+    maxWidth: "50%",
+  }),
   container: (props) => ({
     alignItems: "center",
     backgroundColor:
-      props.name || !props.names
-        ? `rgba(${props.backgroundColor}, 0.7)`
+      props.playerName || !props.showNames
+        ? `rgb(${getColorValue(props.color, "dark")})`
         : "transparent",
-    border: `1px solid ${theme.borderColor}`,
+    border: "1px solid",
+    borderColor:
+      props.playerName || !props.showNames
+        ? `rgb(${getColorValue(props.color, "base")})`
+        : STYLE_VARS.borderColor,
+    boxShadow:
+      props.playerName || !props.showNames
+        ? `0 0 0.25rem 0 rgb(${getColorValue(props.color, "base")}, 0.75)`
+        : "none",
     borderRadius: "0.25rem",
     display: "flex",
-    flex: `0 1 ${props.names ? "50%" : "25%"}`,
     justifyContent: "center",
-    margin: "0.25rem 0",
+    margin: "0.375rem",
     opacity: props.longPressed ? "0.5" : 1,
-    padding: "0.25rem 0.1rem",
     position: "relative",
+    "&:hover img": {
+      marginTop: "-0.125rem",
+      marginBottom: "0.125rem",
+      transitionTimingFunction: "ease-out",
+    },
+  }),
+  icon: (props) => ({
+    display: "flex",
+    flex: "0 0 2.25rem",
+    justifyContent: "center",
+    padding: "0.25rem 0",
+    alignItems: "center",
+    backgroundColor:
+      props.playerName || !props.showNames
+        ? `rgb(${getColorValue(props.color, "base")})`
+        : "transparent",
+    "&:hover": {
+      cursor: props.showNames ? "pointer" : "grab",
+    },
+    "& img": {
+      display: "block",
+      width: "1.5rem",
+      height: "2rem",
+      margin: 0,
+      transition: "margin 300ms ease-in",
+    },
   }),
   name: {
     flexGrow: 1,
+    flexBasis: "0",
+    maxWidth: "100%",
+    paddingLeft: "0.5rem",
   },
-  icon: (props) => ({
-    borderRadius: "6px",
-    padding: "0.15rem",
-    margin: props.isMobile ? "0 0.5rem" : "0 0.15rem",
-    display: "flex",
-    justifyContent: "center",
-
-    "&:hover": {
-      backgroundColor:
-        props.names && !props.isMobile
-          ? `rgba(${colorNameToRGB(props.color)}, 0.7)`
-          : props.backgroundColor,
-      cursor: props.names ? "pointer" : "grab",
-    },
-    "& img": {
-      minWidth: "1.5rem",
-      minHeight: "1.5rem",
-    },
-  }),
   input: (props) => ({
-    borderRadius: ".2rem",
-    fontSize: props.isMobile ? "1.5rem" : props.name ? "1.15rem" : "1rem",
-    fontWeight: 700,
-    letterSpacing: "0.025rem",
+    color: contrastColor(getColorValue(props.color, "dark")),
+    display: "block",
+    fontSize: props.isMobile ? "1rem" : props.showNames ? "1.15rem" : "1rem",
+    fontFamily: STYLE_VARS.fontFamily,
+    fontWeight: 500,
+    letterSpacing: "0.05rem",
     lineHeight: 1.5,
-    marginRight: "0.25rem",
-    padding: 0,
+    padding: "0.25rem 0",
     textAlign: "left",
     width: "100%",
 

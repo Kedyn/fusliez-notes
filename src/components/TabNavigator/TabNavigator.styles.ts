@@ -1,5 +1,5 @@
-import { ITheme } from "utils/types";
 import { createUseStyles } from "react-jss";
+import { ITheme } from "utils/types";
 
 export default createUseStyles((theme: ITheme) => ({
   root: {

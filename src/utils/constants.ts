@@ -6,7 +6,7 @@ export const VERSION = "0.9.1";
 export const NAMESPACE = "fusliez-notes-";
 
 export const DEFAULT_SETTINGS: ISettings = {
-  names: true,
+  showNames: true,
   scoresStyle: "circles",
 };
 
@@ -47,17 +47,17 @@ export const DEFAULT_PLAYERS: IPlayers = {
   evilPlayers: [],
   deadPlayers: [],
   unknownPlayers: [
-    { id: "orange", name: "", color: "orange" },
-    { id: "blue", name: "", color: "blue" },
-    { id: "brown", name: "", color: "brown" },
-    { id: "gray", name: "", color: "gray" },
-    { id: "green", name: "", color: "green" },
-    { id: "lightGreen", name: "", color: "lightGreen" },
-    { id: "pink", name: "", color: "pink" },
-    { id: "purple", name: "", color: "purple" },
-    { id: "red", name: "", color: "red" },
-    { id: "teal", name: "", color: "teal" },
-    { id: "white", name: "", color: "white" },
-    { id: "yellow", name: "", color: "yellow" },
+    { id: "Blue", playerName: "", color: "blue" },
+    { id: "Black", playerName: "", color: "black" },
+    { id: "Brown", playerName: "", color: "brown" },
+    { id: "Cyan", playerName: "", color: "cyan" },
+    { id: "Green", playerName: "", color: "green" },
+    { id: "Lime", playerName: "", color: "lime" },
+    { id: "Orange", playerName: "", color: "orange" },
+    { id: "Pink", playerName: "", color: "pink" },
+    { id: "Purple", playerName: "", color: "purple" },
+    { id: "Red", playerName: "", color: "red" },
+    { id: "White", playerName: "", color: "white" },
+    { id: "Yellow", playerName: "", color: "yellow" },
   ],
 };
