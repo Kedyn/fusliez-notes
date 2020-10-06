@@ -1,18 +1,14 @@
 import { ITheme } from "utils/types";
-import colorNameToRGB, {
-  contrastColor,
-  getColorValue,
-  hexToRGB,
-} from "utils/colorConverter";
+import { contrastColor, getColorValue } from "utils/colorConverter";
 import { createUseStyles } from "react-jss";
 import { STYLE_VARS } from "utils/styleVars";
 
 export default createUseStyles((theme: ITheme) => ({
-  wrapper: (props) => ({
+  Player: (props) => ({
     flex: `0 0 ${props.showNames ? "50%" : "25%"}`,
     maxWidth: "50%",
   }),
-  container: (props) => ({
+  PlayerTile: (props) => ({
     alignItems: "center",
     backgroundColor:
       props.playerName || !props.showNames
@@ -39,7 +35,7 @@ export default createUseStyles((theme: ITheme) => ({
       transitionTimingFunction: "ease-out",
     },
   }),
-  icon: (props) => ({
+  PlayerIcon: (props) => ({
     display: "flex",
     flex: "0 0 2.25rem",
     justifyContent: "center",
@@ -60,7 +56,7 @@ export default createUseStyles((theme: ITheme) => ({
       transition: "margin 300ms ease-in",
     },
   }),
-  name: {
+  PlayerName: {
     flexGrow: 1,
     flexBasis: "0",
     maxWidth: "100%",
@@ -82,27 +78,27 @@ export default createUseStyles((theme: ITheme) => ({
       color: theme.textColor,
     },
   }),
-  player: {
-    padding: "0.25rem",
-  },
-  playerColorChangeMenu: {
-    alignItems: "center",
-    background: theme.backgroundColor,
-    border: "0.0625rem solid rgba(240, 240, 240, 0.25)",
-    borderRadius: "6px",
-    boxShadow: "0 0 1rem rgba(240, 240, 240, 0.1)",
-    bottom: "110%",
-    display: "flex",
-    flex: 4,
-    flexWrap: "wrap",
-    left: 0,
-    justifyContent: "space-between",
-    position: "absolute",
-    padding: "0.25rem",
-    width: "100%",
-    zIndex: 10,
-  },
-  playerColorChangeMenuHidden: {
-    display: "none",
-  },
+  // player: {
+  //   padding: "0.25rem",
+  // },
+  // playerColorChangeMenu: {
+  //   alignItems: "center",
+  //   background: theme.backgroundColor,
+  //   border: "0.0625rem solid rgba(240, 240, 240, 0.25)",
+  //   borderRadius: "6px",
+  //   boxShadow: "0 0 1rem rgba(240, 240, 240, 0.1)",
+  //   bottom: "110%",
+  //   display: "flex",
+  //   flex: 4,
+  //   flexWrap: "wrap",
+  //   left: 0,
+  //   justifyContent: "space-between",
+  //   position: "absolute",
+  //   padding: "0.25rem",
+  //   width: "100%",
+  //   zIndex: 10,
+  // },
+  // playerColorChangeMenuHidden: {
+  //   display: "none",
+  // },
 }));

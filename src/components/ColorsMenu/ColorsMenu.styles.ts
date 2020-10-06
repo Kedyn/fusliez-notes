@@ -1,44 +1,51 @@
 import { ITheme } from "utils/types";
 import { createUseStyles } from "react-jss";
-import colorNameToRGB from "utils/colorConverter";
+import { getColorValue, hexToRGB } from "utils/colorConverter";
+import { STYLE_VARS } from "utils/styleVars";
 
 export const useColorSwatchStyles = createUseStyles({
-  playerColorChangeMenuIcon: (props) => ({
+  ColorMenuCell: {
+    display: "flex",
+    flex: "0 0 25%",
+    maxWidth: "25%",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  ColorMenuSwatch: (props) => ({
     display: "block",
-    width: "30px",
-    height: "30px",
-    borderRadius: "15px",
-    flex: "1 1 calc(25% - 10px)",
-    backgroundColor: props.targetColor,
-    margin: "0.15rem",
+    height: "2rem",
+    borderRadius: "0.25rem",
+    padding: 0,
+    margin: "0.125rem",
+    border: `1px solid rgba(${hexToRGB(STYLE_VARS.textColorSecondary)}, 0.5)`,
+    backgroundColor: `rgb(${getColorValue(props.targetColor, "base")})`,
 
     "&:hover": {
-      backgroundColor: `rgba(${colorNameToRGB(props.targetColor)}, 0.5)`,
+      borderRadius: "50%",
       cursor: "pointer",
+      backgroundColor: `rgb(${getColorValue(props.targetColor, "base")})`,
     },
   }),
 });
 
 export default createUseStyles((theme: ITheme) => ({
   root: {},
-  playerColorChangeMenu: {
+  ColorMenu: {
     alignItems: "center",
     background: theme.backgroundColor,
-    border: "0.0625rem solid rgba(240, 240, 240, 0.25)",
-    borderRadius: "6px",
-    boxShadow: "0 0 1rem rgba(240, 240, 240, 0.1)",
+    border: `1px solid ${STYLE_VARS.borderColor}`,
+    borderRadius: "0.25rem",
+    boxShadow: "0 0 0.25rem black",
     bottom: "110%",
     display: "flex",
-    flex: 4,
     flexWrap: "wrap",
     left: 0,
     justifyContent: "space-between",
     position: "absolute",
-    padding: "0.25rem",
     width: "100%",
     zIndex: 10,
   },
-  playerColorChangeMenuHidden: {
+  isHidden: {
     display: "none",
   },
 }));

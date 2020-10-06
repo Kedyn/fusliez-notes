@@ -5,8 +5,8 @@ export const STYLE_VARS: IStyleVars = {
     "Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
   baseFontSize: 16,
 
-  textColorPrimary: "#eee",
-  textColorSecondary: "#fff",
+  textColorPrimary: "#eeeeee",
+  textColorSecondary: "#ffffff",
 
   backgroundColorPrimary: "#202225",
   backgroundColorSecondary: "#282b2f",

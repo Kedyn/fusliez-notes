@@ -25,7 +25,7 @@ export default function Player(props: IPlayerProps): JSX.Element {
 
   const htmlElRef = React.useRef(null);
 
-  const playerStyles = usePlayerStyles({
+  const classes = usePlayerStyles({
     showNames,
     isMobile,
     orientation,
@@ -91,11 +91,11 @@ export default function Player(props: IPlayerProps): JSX.Element {
 
   return (
     <div
-      className={`${playerStyles.wrapper} player-handle`}
+      className={`${classes.Player} player-handle`}
       id={color}
       {...longPressEvents}
     >
-      <div className={playerStyles.container}>
+      <div className={classes.PlayerTile}>
         {isMenuShowing && !isMobile && (
           <ColorsMenu
             isMenuShowing={isMenuShowing}
@@ -103,7 +103,7 @@ export default function Player(props: IPlayerProps): JSX.Element {
             currentColor={id}
           />
         )}
-        <div className={playerStyles.icon}>
+        <div className={classes.PlayerIcon}>
           <img
             onClick={() => {
               if (showNames && !isMobile) {
@@ -116,11 +116,11 @@ export default function Player(props: IPlayerProps): JSX.Element {
           />
         </div>
         {showNames && (
-          <div className={playerStyles.name}>
+          <div className={classes.PlayerName}>
             <input
               type="text"
               placeholder={t("main.player")}
-              className={playerStyles.input}
+              className={classes.input}
               onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
                 handleChange(index, event)
               }

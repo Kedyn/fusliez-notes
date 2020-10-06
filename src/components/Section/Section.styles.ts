@@ -4,7 +4,7 @@ import { ITheme } from "utils/types";
 export default createUseStyles((theme: ITheme) => ({
   Section: {},
   SectionTitle: {
-    fontSize: "0.875rem",
+    fontSize: "1rem",
     letterSpacing: "0.05rem",
     fontWeight: 500,
   },

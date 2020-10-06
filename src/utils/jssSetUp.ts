@@ -111,12 +111,28 @@ export default function jssSetUp(theme: ITheme): SheetsRegistry {
         a: {
           textDecoration: "none",
           color: theme.linkColor,
+          "&:hover": {
+            textDecoration: "underline",
+          },
+          "&:focus": {
+            textDecoration: "underline",
+          },
         },
         ul: {
           marginTop: 0,
         },
         li: {
           fontSize: "1rem",
+        },
+        ".sr-only": {
+          border: 0,
+          clip: "rect(0, 0, 0, 0)",
+          height: "1px",
+          margin: "-1px",
+          overflow: "hidden",
+          padding: 0,
+          position: "absolute",
+          width: "1px",
         },
       },
     })
