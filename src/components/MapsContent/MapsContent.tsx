@@ -19,16 +19,16 @@ export default function MapsContent({
   const [resetState, setResetState] = React.useState(false);
 
   const players = [
+    "black",
     "blue",
     "brown",
-    "gray",
+    "cyan",
     "green",
-    "lightGreen",
+    "lime",
     "orange",
     "pink",
     "purple",
     "red",
-    "teal",
     "white",
     "yellow",
   ];
@@ -86,7 +86,7 @@ export default function MapsContent({
           players.map((player) => (
             <Draggable key={player} bounds="parent">
               <img
-                src={`assets/${player}.png`}
+                src={`assets/images/player-icons/${player}.png`}
                 className={classes.playerIcon}
                 onDrag={(event: React.DragEvent<HTMLImageElement>) =>
                   event.stopPropagation()

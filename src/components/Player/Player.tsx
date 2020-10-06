@@ -9,7 +9,6 @@ import { useTranslation } from "react-i18next";
 export interface IPlayerProps {
   id: string | number;
   color: string;
-  backgroundColor: string;
   playerName: string;
   list: Array<IPlayer>;
   setList: (value: IPlayer[]) => void;
@@ -110,7 +109,7 @@ export default function Player(props: IPlayerProps): JSX.Element {
                 setIsMenuShowing(!isMenuShowing);
               }
             }}
-            src={`assets/images/players/${color}.png`}
+            src={`assets/images/player-icons/${color}.png`}
             alt={color}
             className="player-handle"
           />

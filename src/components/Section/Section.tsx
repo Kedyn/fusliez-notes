@@ -44,20 +44,6 @@ export default function Section(props: ISectionProps): JSX.Element {
             <Player
               key={id}
               id={id}
-              // temporary solution for alternative colors for better contrast
-              // if needed, we can move these colors to be part of the nested player object
-              // and have the backgroundColor as one of the keys and use that to map it out
-              backgroundColor={colorNameToRGB(
-                color === "brown"
-                  ? "saddlebrown"
-                  : color === "blue"
-                  ? "cornflowerblue"
-                  : color === "purple"
-                  ? "darkorchid"
-                  : color === "red"
-                  ? "scarlet"
-                  : color
-              )}
               color={color}
               playerName={playerName}
               list={list}
