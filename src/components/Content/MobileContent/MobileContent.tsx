@@ -2,11 +2,11 @@ import AboutContent from "components/About/AboutContent";
 import FeedbackContent from "components/Feedback/FeedbackContent";
 import { IView } from "utils/types";
 import MainContent from "components/MainContent";
-import MapsContent from "components/MapsContent";
-import Notes from "components/Notes";
+import MapsContent from "components/MapsPanel";
+import Notes from "components/NotesPanel";
 import React from "react";
-import Scores from "components/Scores";
 import ScoresPanel from "components/ScoresPanel";
+import ScoreControls from "components/ScoreControls";
 import SettingsContent from "components/common/Settings/SettingsContent";
 import SlideDrawer from "components/SlideDrawer";
 import TabNavigator from "components/TabNavigator";
@@ -32,8 +32,8 @@ export default function MobileContent(): JSX.Element {
       title: t("menu.scores"),
       content: (
         <div className={classes.recordContainer}>
-          <Scores />
           <ScoresPanel />
+          <ScoreControls />
         </div>
       ),
     },

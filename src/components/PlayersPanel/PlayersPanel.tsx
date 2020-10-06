@@ -3,10 +3,10 @@ import React from "react";
 import Section from "components/Section";
 import { useMobile } from "context/MobileContextProvider";
 import { usePlayers } from "context/PlayersContextProvider";
-import useStyles from "./PlayersSection.styles";
+import useStyles from "./PlayersPanel.styles";
 import { useTranslation } from "react-i18next";
 
-export default function PlayersSection(): JSX.Element {
+export default function PlayersPanel(): JSX.Element {
   const { t } = useTranslation();
   const {
     innocentPlayers,

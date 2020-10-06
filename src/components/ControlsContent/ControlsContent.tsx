@@ -1,7 +1,7 @@
 import Button from "components/common/Button";
-import Notes from "../Notes";
+import Notes from "../NotesPanel";
 import React from "react";
-import ScoresPanel from "../ScoresPanel";
+import ScoreControls from "../ScoreControls";
 import Settings from "components/common/Settings";
 import useStyles from "./ControlsContent.styles";
 import { useTranslation } from "react-i18next";
@@ -13,7 +13,7 @@ export default function ControlsContent(): JSX.Element {
 
   return (
     <div id="controls" className={classes.root}>
-      <ScoresPanel />
+      <ScoreControls />
 
       <Notes />
 

@@ -2,10 +2,10 @@ import Button from "components/common/Button";
 import { NAMESPACE } from "utils/constants";
 import React from "react";
 import { useMobile } from "context/MobileContextProvider";
-import useStyles from "./Notes.styles";
+import useStyles from "./NotesPanel.styles";
 import { useTranslation } from "react-i18next";
 
-export default function Notes(): JSX.Element {
+export default function NotesPanel(): JSX.Element {
   const namespace = `${NAMESPACE}notes`;
 
   const { t } = useTranslation();

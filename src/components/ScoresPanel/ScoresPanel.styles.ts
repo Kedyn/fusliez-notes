@@ -1,52 +1,54 @@
-import { ITheme } from "utils/types";
 import { createUseStyles } from "react-jss";
-import { hexToRGB } from "utils/colorConverter";
 
-export default createUseStyles((theme: ITheme) => ({
-  root: {},
-  buttonContainer: {
+export default createUseStyles({
+  root: {
+    alignItems: "center",
     display: "flex",
-    marginTop: "1rem",
+    justifyContent: "space-between",
+    margin: "0.5rem 0",
   },
-  dangerButton: {
-    marginTop: "0.5rem",
-    backgroundColor: theme.buttonDangerBackgroundColor,
-    color: theme.buttonDangerTextColor,
-
-    "&:hover": {
-      backgroundColor: `rgba(${hexToRGB(
-        theme.buttonDangerBackgroundColor
-      )}, 0.75)`,
-    },
-  },
-  reset: {
-    fontSize: "1rem",
-
-    "&+button": {
-      marginLeft: "0.5rem",
-    },
-  },
-  scoreButtons: (props) => ({
-    display: "flex",
-    marginTop: props.isMobile ? "1rem" : "0.5rem",
-    marginBottom: "0.5rem",
-  }),
-  scoreButtonsSection: {
+  progressBarContainer: {
     alignItems: "center",
     display: "flex",
     flexDirection: "column",
-    justifyContent: "space-around",
-    width: "100%",
+    justifyContent: "space-between",
+    fontSize: "1.25rem",
+    margin: "0 0.25rem",
+  },
+  bigCircle: {
+    width: "100px",
+    height: "100px",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+  },
+  smallCircle: {
+    width: "80px",
+    height: "80px",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+  },
+  progress: {
+    marginBottom: "0.5rem",
   },
   title: {
-    flex: 1,
-    textAlign: "center",
-    width: "100%",
-    padding: "0 0.25rem",
+    marginBottom: "0.5rem",
   },
-  titleContainer: {
-    display: "flex",
-    justifyContent: "space-around",
-    lineHeight: "0.5rem",
+  percentage: {
+    fontSize: "0.75rem",
+    fontWeight: "bold",
+    lineHeight: "1rem",
   },
-}));
+  scores: {
+    fontSize: "0.75rem",
+  },
+  bigPercentage: {
+    fontSize: "1rem",
+    fontWeight: "bold",
+    lineHeight: "1rem",
+  },
+  bigScores: {
+    fontSize: "1rem",
+  },
+});

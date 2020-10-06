@@ -1,6 +1,6 @@
-import PlayersSection from "components/PlayersSection";
+import PlayersPanel from "components/PlayersPanel";
 import React from "react";
-import Scores from "components/Scores";
+import ScoresPanel from "components/ScoresPanel";
 import { useMobile } from "context/MobileContextProvider";
 import useStyles from "./MainContent.styles";
 
@@ -10,8 +10,8 @@ export default function MainContent(): JSX.Element {
 
   return (
     <div id="main" className={classes.root}>
-      {!isMobile && <Scores />}
-      <PlayersSection />
+      {!isMobile && <ScoresPanel />}
+      <PlayersPanel />
     </div>
   );
 }

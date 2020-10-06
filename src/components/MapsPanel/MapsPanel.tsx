@@ -4,10 +4,10 @@ import MiraHq from "./MiraHq";
 import Polus from "./Polus";
 import React from "react";
 import TheSkeld from "./TheSkeld";
-import useStyles from "./MapsContent.styles";
+import useStyles from "./MapsPanel.styles";
 import { useTranslation } from "react-i18next";
 
-export default function MapsContent({
+export default function MapsPanel({
   isMobile,
   orientation,
 }: {
@@ -103,7 +103,7 @@ export default function MapsContent({
   );
 }
 
-MapsContent.defaultProps = {
+MapsPanel.defaultProps = {
   isMobile: false,
   orientation: "portrait",
 };
