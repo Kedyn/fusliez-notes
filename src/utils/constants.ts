@@ -12,6 +12,7 @@ export const DEFAULT_SETTINGS: ISettings = {
 
 export const DEFAULT_THEME_DATA: ITheme = {
   backgroundColor: STYLE_VARS.backgroundColorPrimary,
+  backgroundColorAlt: STYLE_VARS.backgroundColorSecondary,
   textColor: STYLE_VARS.textColorPrimary,
 
   inputBackgroundColor: STYLE_VARS.backgroundColorSecondary,
@@ -34,7 +35,10 @@ export const DEFAULT_THEME_DATA: ITheme = {
 
   borderColor: STYLE_VARS.borderColor,
 
-  linkColor: "#ee54bb",
+  linkColor: STYLE_VARS.linkColor,
+  linkColorHover: STYLE_VARS.linkColorHover,
+
+  activeColor: STYLE_VARS.activeColor,
 };
 
 export const DEFAULT_PLAYERS: IPlayers = {

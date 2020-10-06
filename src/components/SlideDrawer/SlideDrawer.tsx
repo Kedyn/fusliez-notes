@@ -1,5 +1,6 @@
 import Backdrop from "./Backdrop";
-import { BiLeftArrowCircle } from "react-icons/bi";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowCircleLeft } from "@fortawesome/free-solid-svg-icons";
 import { IView } from "utils/types";
 import React from "react";
 import useStyles from "./SlideDrawer.styles";
@@ -46,7 +47,7 @@ export default function SlideDrawer(
 
         <div className={`${classes.root} ${classes.drawerOpen}`} ref={ref}>
           <div className={classes.back} onClick={() => setIsDrawerOpen(false)}>
-            <BiLeftArrowCircle />
+            <FontAwesomeIcon icon={faArrowCircleLeft} />
           </div>
 
           <ul className={classes.nav}>

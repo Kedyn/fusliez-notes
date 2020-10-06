@@ -7,19 +7,16 @@ export default createUseStyles((theme: ITheme) => ({
     flexDirection: "column",
     maxHeight: "195px",
     width: "100%",
+    borderTop: `1px solid ${theme.borderColor}`,
   },
-  activeTab: {
-    backgroundColor: `${theme.backgroundColor} !important`,
-  },
-  icon: {
-    height: "1.5rem",
-    color: theme.buttonTextColor,
-    width: "1.5rem",
+  tabsContainer: {
+    display: "flex",
+    height: "100%",
   },
   tab: {
     alignItems: "center",
     boxSizing: "border-box",
-    backgroundColor: theme.buttonBackgroundColor,
+    backgroundColor: theme.backgroundColorAlt,
     borderRadius: "0",
     color: theme.buttonTextColor,
     display: "flex",
@@ -27,11 +24,14 @@ export default createUseStyles((theme: ITheme) => ({
     flexDirection: "column",
     fontSize: "0.75rem",
     justifyContent: "center",
-    padding: "0.25rem",
+    padding: "0.5rem 0.25rem",
     letterSpacing: "0.05em",
   },
-  tabsContainer: {
-    display: "flex",
-    height: "100%",
+  activeTab: {
+    backgroundColor: theme.activeColor,
+  },
+  label: {
+    display: "inline-block",
+    marginTop: "0.5rem",
   },
 }));

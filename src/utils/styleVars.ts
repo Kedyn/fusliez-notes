@@ -11,6 +11,11 @@ export const STYLE_VARS: IStyleVars = {
   backgroundColorPrimary: "#202225",
   backgroundColorSecondary: "#282b2f",
 
+  linkColor: "#9EC4D5",
+  linkColorHover: "#C2D2E3",
+
+  activeColor: "#506167",
+
   borderColor: "#36383a",
 
   colorBlack: "#3F484E",

@@ -26,6 +26,11 @@ export interface IStyleVars {
   backgroundColorPrimary: string;
   backgroundColorSecondary: string;
 
+  linkColor: string;
+  linkColorHover: string;
+
+  activeColor: string;
+
   borderColor: string;
 
   colorBlack: string;
@@ -56,6 +61,7 @@ export interface IStyleVars {
 
 export interface ITheme {
   backgroundColor: string;
+  backgroundColorAlt: string;
   textColor: string;
 
   inputBackgroundColor: string;
@@ -79,6 +85,9 @@ export interface ITheme {
   borderColor: string;
 
   linkColor: string;
+  linkColorHover: string;
+
+  activeColor: string;
 }
 
 export interface IMobileContext {

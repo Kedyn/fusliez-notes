@@ -1,12 +1,16 @@
-import { FaMap, FaRegStickyNote, FaStickyNote } from "react-icons/fa";
-
-import { BiDoughnutChart } from "react-icons/bi";
-import { FiMap } from "react-icons/fi";
-import { GiHamburgerMenu } from "react-icons/gi";
 import React from "react";
-import { RiDonutChartFill } from "react-icons/ri";
-import useStyles from "./TabNavigator.styles";
 import { useTranslation } from "react-i18next";
+import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faUserAstronaut,
+  faEdit,
+  faCompactDisc,
+  faMap,
+  faEllipsisH,
+} from "@fortawesome/free-solid-svg-icons";
+
+import useStyles from "./TabNavigator.styles";
 
 export interface ITabNavigator {
   activeView: string;
@@ -28,51 +32,32 @@ export default function TabNavigator(props: ITabNavigator): JSX.Element {
   const tabs = [
     {
       name: t("menu.players"),
-      icon: (
-        <img
-          src="assets/Players.png"
-          alt="player-icon"
-          className={classes.icon}
-        />
-      ),
-      iconSelected: (
-        <img
-          src="assets/Players-selected.png"
-          alt="player-selected-icon"
-          className={classes.icon}
-        />
-      ),
+      icon: faUserAstronaut,
     },
     {
       name: t("menu.notes"),
-      icon: <FaRegStickyNote className={classes.icon} />,
-      iconSelected: <FaStickyNote className={classes.icon} />,
+      icon: faEdit,
     },
     {
       name: t("menu.scores"),
-      icon: <BiDoughnutChart className={classes.icon} />,
-      iconSelected: <RiDonutChartFill className={classes.icon} />,
+      icon: faCompactDisc,
     },
     {
       name: t("menu.maps"),
-      icon: <FiMap className={classes.icon} />,
-      iconSelected: <FaMap className={classes.icon} />,
+      icon: faMap,
     },
     {
       name: t("menu.menu"),
-      icon: <GiHamburgerMenu className={classes.icon} />,
-      iconSelected: <GiHamburgerMenu className={classes.icon} />,
+      icon: faEllipsisH,
     },
   ];
 
   function Tab({
     name,
     icon,
-    iconSelected,
   }: {
     name: string;
-    icon: JSX.Element;
-    iconSelected: JSX.Element;
+    icon: IconDefinition;
   }): JSX.Element {
     return (
       <button
@@ -84,8 +69,8 @@ export default function TabNavigator(props: ITabNavigator): JSX.Element {
         }
         disabled={name === activeView}
       >
-        {activeView === name ? iconSelected : icon}
-        {name}
+        <FontAwesomeIcon icon={icon} size="lg" />
+        <span className={classes.label}>{name}</span>
       </button>
     );
   }
@@ -93,8 +78,8 @@ export default function TabNavigator(props: ITabNavigator): JSX.Element {
   return (
     <div className={classes.root}>
       <div className={classes.tabsContainer}>
-        {tabs.map(({ name, icon, iconSelected }) => (
-          <Tab key={name} name={name} icon={icon} iconSelected={iconSelected} />
+        {tabs.map(({ name, icon }) => (
+          <Tab key={name} name={name} icon={icon} />
         ))}
       </div>
     </div>
