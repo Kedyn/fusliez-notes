@@ -22,22 +22,17 @@ export default function SettingsContextProvider(
   props: ISettingsContextProviderProps
 ): JSX.Element {
   const [names, setNames] = React.useState<boolean>(settingsData.names);
-  const [scoresStyle, setScoresStyle] = React.useState<string>(
-    settingsData.scoresStyle
-  );
 
   React.useEffect(() => {
-    localStorage.setItem(namespace, JSON.stringify({ names, scoresStyle }));
-  }, [names, scoresStyle]);
+    localStorage.setItem(namespace, JSON.stringify({ names }));
+  }, [names]);
 
   return (
     <SettingsContext.Provider
       value={{
         names,
-        scoresStyle,
 
         setNames,
-        setScoresStyle,
       }}
     >
       {props.children}

@@ -1,8 +1,6 @@
 import CircularProgressBarScores from "./CircularProgressBarScores";
-import ProgressBarScores from "./ProgressBarScores";
 import React from "react";
 import { useScores } from "context/ScoresContextProvider";
-import { useSettings } from "context/SettingsContextProvider";
 
 export default function Scores(): JSX.Element {
   const {
@@ -11,7 +9,6 @@ export default function Scores(): JSX.Element {
     impostorWins,
     impostorLosses,
   } = useScores()!; // eslint-disable-line
-  const { scoresStyle } = useSettings()!; // eslint-disable-line
 
   const getRate = (wins: number, games: number): number => {
     return games > 0 ? Math.floor((wins / games) * 100) : 100;
@@ -26,26 +23,8 @@ export default function Scores(): JSX.Element {
   const impostorGames = impostorWins + impostorLosses;
   const impostorRate = getRate(impostorWins, impostorGames);
 
-  if (scoresStyle === "circles") {
-    return (
-      <CircularProgressBarScores
-        {...{
-          overallRate,
-          overallWins,
-          overallLosses,
-          innocentRate,
-          innocentWins,
-          innocentLosses,
-          impostorRate,
-          impostorWins,
-          impostorLosses,
-        }}
-      />
-    );
-  }
-
   return (
-    <ProgressBarScores
+    <CircularProgressBarScores
       {...{
         overallRate,
         overallWins,

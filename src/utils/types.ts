@@ -12,10 +12,8 @@ export interface ISettings {
 
 export interface ISettingsContext {
   names: boolean;
-  scoresStyle: string;
 
   setNames: (value: boolean) => void;
-  setScoresStyle: (value: string) => void;
 }
 
 export interface IStyleVars {
@@ -81,66 +79,6 @@ export interface ITheme {
   borderColor: string;
 
   linkColor: string;
-}
-
-export interface IThemeContext {
-  backgroundColor: string;
-  textColor: string;
-
-  inputBackgroundColor: string;
-  inputTextColor: string;
-
-  neutralBackgroundColor: string;
-  neutralTextColor: string;
-
-  innocentBackgroundColor: string;
-  innocentTextColor: string;
-
-  impostorBackgroundColor: string;
-  impostorTextColor: string;
-
-  buttonBackgroundColor: string;
-  buttonTextColor: string;
-
-  buttonDangerBackgroundColor: string;
-  buttonDangerTextColor: string;
-
-  borderColor: string;
-
-  linkColor: string;
-
-  setBackgroundColor: (value: string) => void;
-  setTextColor: (value: string) => void;
-
-  setInputBackgroundColor: (value: string) => void;
-  setInputTextColor: (value: string) => void;
-
-  setNeutralBackgroundColor: (value: string) => void;
-  setNeutralTextColor: (value: string) => void;
-
-  setInnocentBackgroundColor: (value: string) => void;
-  setInnocentTextColor: (value: string) => void;
-
-  setImpostorBackgroundColor: (value: string) => void;
-  setImpostorTextColor: (value: string) => void;
-
-  setButtonBackgroundColor: (value: string) => void;
-  setButtonTextColor: (value: string) => void;
-
-  setButtonDangerBackgroundColor: (value: string) => void;
-  setButtonDangerTextColor: (value: string) => void;
-
-  setBorderColor: (value: string) => void;
-
-  setLinkColor: (value: string) => void;
-
-  resetColors: () => void;
-}
-
-export interface IColor {
-  name: string;
-  hex: string;
-  change: (value: string) => void;
 }
 
 export interface IMobileContext {
