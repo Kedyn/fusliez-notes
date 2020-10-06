@@ -90,11 +90,12 @@ export default function Player(props: IPlayerProps): JSX.Element {
   const longPressEvents = useLongPress();
 
   return (
-    <div className={playerStyles.wrapper} id={color}>
-      <div
-        className={`${playerStyles.container} player-handle`}
-        {...longPressEvents}
-      >
+    <div
+      className={`${playerStyles.wrapper} player-handle`}
+      id={color}
+      {...longPressEvents}
+    >
+      <div className={playerStyles.container}>
         {isMenuShowing && !isMobile && (
           <ColorsMenu
             isMenuShowing={isMenuShowing}

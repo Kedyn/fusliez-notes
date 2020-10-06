@@ -2,7 +2,6 @@ import { IPlayer } from "utils/types";
 import Player from "components/Player";
 import React from "react";
 import { ReactSortable } from "react-sortablejs";
-import colorNameToRGB from "utils/colorConverter";
 import { useSettings } from "context/SettingsContextProvider";
 import useStyles from "./Section.styles";
 
