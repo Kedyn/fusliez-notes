@@ -28,6 +28,7 @@
     "settings": "Настройки"
   },
   "maps": {
+    "title": "Maps",
     "vents": "Вентиляция",
     "commonTasks": "Общие задания",
     "wiringTasks": "Провода",
@@ -61,7 +62,8 @@
     "south": "4. Юг",
     "southwest": "5. Юго-запад",
     "northwest": "6. Северо-запад",
-    "resetPlayers": "Reset Players"
+    "dragInstructions": "Drag players on the map to track",
+    "resetPlayers": "Reset Positions"
   },
   "settings": {
     "title": "Настройки",

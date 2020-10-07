@@ -40,9 +40,6 @@ export default function jssSetUp(theme: ITheme): SheetsRegistry {
           textAlign: "center",
           fontSize: "smaller",
         },
-        "#maps": {
-          flexGrow: 1,
-        },
         h1: {
           fontSize: "2rem",
           margin: 0,
@@ -94,8 +91,7 @@ export default function jssSetUp(theme: ITheme): SheetsRegistry {
           borderRadius: "0.5rem",
           transition:
             "color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out",
-          display: "block",
-          width: "100%",
+          display: "inline-block",
           cursor: "pointer",
           backgroundColor: theme.linkColor,
           color: theme.backgroundColor,

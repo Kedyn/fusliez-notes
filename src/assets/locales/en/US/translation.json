@@ -28,6 +28,7 @@
     "settings": "Open Settings"
   },
   "maps": {
+    "title": "Maps",
     "vents": "Vents",
     "commonTasks": "Common Tasks",
     "wiringTasks": "Wiring Tasks",
@@ -61,7 +62,8 @@
     "south": "4. South",
     "southwest": "5. Southwest",
     "northwest": "6. Northwest",
-    "resetPlayers": "Reset Players"
+    "dragInstructions": "Drag players on the map to track",
+    "resetPlayers": "Reset Positions"
   },
   "settings": {
     "title": "Settings",

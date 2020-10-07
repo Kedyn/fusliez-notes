@@ -6,31 +6,28 @@ import React from "react";
 import TheSkeld from "./TheSkeld";
 import useStyles from "./MapsPanel.styles";
 import { useTranslation } from "react-i18next";
+import { useMobile } from "context/MobileContextProvider";
+import cx from "classnames";
 
-export default function MapsPanel({
-  isMobile,
-  orientation,
-}: {
-  isMobile: boolean;
-  orientation: string;
-}): JSX.Element {
+export default function MapsPanel(): JSX.Element {
   const { t } = useTranslation();
   const [map, setMap] = React.useState("skeld");
   const [resetState, setResetState] = React.useState(false);
+  const { isMobile, orientation } = useMobile()!; // eslint-disable-line
 
   const players = [
-    "black",
-    "blue",
     "brown",
-    "cyan",
-    "green",
-    "lime",
-    "orange",
-    "pink",
-    "purple",
     "red",
-    "white",
+    "orange",
     "yellow",
+    "lime",
+    "green",
+    "cyan",
+    "blue",
+    "purple",
+    "pink",
+    "white",
+    "black",
   ];
 
   const classes = useStyles({
@@ -52,42 +49,52 @@ export default function MapsPanel({
   }, [resetState]);
 
   return (
-    <div id="maps" className={classes.root}>
-      <div className={classes.mapNames}>
-        <img
-          src="assets/The_Skeld.png"
-          alt="The Skeld"
-          onClick={() => setMap("skeld")}
-          className={`${classes.mapName} ${
-            map === "skeld" ? classes.activeMap : ""
-          }`}
-        />
-        <img
-          src="assets/Mira_HQ.png"
-          alt="Mira HQ"
-          onClick={() => setMap("mira")}
-          className={`${classes.mapName} ${
-            map === "mira" ? classes.activeMap : ""
-          }`}
-        />
-        <img
-          src="assets/Polus_Map.png"
-          alt="Polus"
-          onClick={() => setMap("polus")}
-          className={`${classes.mapName} ${
-            map === "polus" ? classes.activeMap : ""
-          }`}
-        />
+    <div id="maps" className={classes.MapsPanel}>
+      <div className={classes.MapsHeader}>
+        {!isMobile && <h2 className={classes.MapsTitle}>{t("maps.title")}</h2>}
+        <div className={classes.MapsToggle}>
+          <Button
+            className={cx(classes.MapsToggleButton, {
+              [classes.MapsToggleButtonActive]: map === "skeld",
+            })}
+            onClick={() => setMap("skeld")}
+          >
+            The Skeld
+          </Button>
+          <Button
+            className={cx(classes.MapsToggleButton, {
+              [classes.MapsToggleButtonActive]: map === "mira",
+            })}
+            onClick={() => setMap("mira")}
+          >
+            Mira HQ
+          </Button>
+          <Button
+            className={cx(classes.MapsToggleButton, {
+              [classes.MapsToggleButtonActive]: map === "polus",
+            })}
+            onClick={() => setMap("polus")}
+          >
+            Polus
+          </Button>
+        </div>
       </div>
-      <div className={classes.wrapper}>
+      <div className={classes.MapContainer}>
         {currentMap}
+
+        <div className={classes.DraggableHeader}>
+          <h3>{t("maps.dragInstructions")}</h3>
+          <Button onClick={() => setResetState(true)}>
+            {t("maps.resetPlayers")}
+          </Button>
+        </div>
 
         {!resetState &&
           players.map((player) => (
             <Draggable key={player} bounds="parent">
               <img
                 src={`assets/images/player-icons/${player}.png`}
-                className={classes.playerIcon}
+                className={classes.MapPlayerIcon}
                 onDrag={(event: React.DragEvent<HTMLImageElement>) =>
                   event.stopPropagation()
                 }
@@ -96,9 +103,6 @@ export default function MapsPanel({
             </Draggable>
           ))}
       </div>
-      <Button className={classes.button} onClick={() => setResetState(true)}>
-        {t("maps.resetPlayers")}
-      </Button>
     </div>
   );
 }

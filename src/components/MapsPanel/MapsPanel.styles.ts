@@ -2,48 +2,71 @@ import { ITheme } from "utils/types";
 import { createUseStyles } from "react-jss";
 
 export default createUseStyles((theme: ITheme) => ({
-  root: (props) => ({
+  MapsPanel: {
     flex: 1,
     justifyContent: "center",
-    margin: "0 0.5rem",
-    padding: "0.5rem",
-    paddingBottom: props.isMobile ? "10rem" : "0.5rem",
-  }),
-  button: (props) => ({
-    textAlign: "center",
-    fontSize: "1rem",
-    margin: "1rem 0",
-    padding: "0.5rem",
-    width: props.isMobile ? "50%" : "25%",
-    minWidth: "160px",
-  }),
-  mapNames: (props) => ({
+    padding: "1rem",
+  },
+  MapsHeader: {
     display: "flex",
-    justifyContent: "space-evenly",
+    justifyContent: "space-between",
     alignItems: "center",
-    margin: "0 0.25rem 0.5rem 0.25rem",
-    width: props.isMobile ? "95%" : "100%",
+    marginBottom: "1rem",
+  },
+  MapsTitle: {
+    fontSize: "1.25rem",
+    fontWeight: 500,
+    letterSpacing: "0.05em",
+    marginRight: "1rem",
+    flex: "1 0 auto",
+  },
+  MapsToggle: (props) => ({
+    display: props.isMobile ? "flex" : "inline-flex",
+    width: props.isMobile ? "100%" : "auto",
   }),
-  mapName: (props) => ({
-    borderRadius: "5rem",
-    boxSizing: "border-box",
-    cursor: "pointer",
-    margin: "0 1%",
-    width: props.isMobile && props.orientation === "portrait" ? "25%" : "17.5%",
+  MapsToggleButton: {
+    flex: "1 1 auto",
+    whiteSpace: "nowrap",
+    "&:not(:first-child)": {
+      borderTopLeftRadius: 0,
+      borderBottomLeftRadius: 0,
+    },
+    "&:not(:last-child)": {
+      borderTopRightRadius: 0,
+      borderBottomRightRadius: 0,
+    },
+  },
+  MapsToggleButtonActive: {
+    opacity: "0.5",
+    cursor: "default",
+    "&:hover": {
+      backgroundColor: theme.linkColor,
+    },
+  },
+  MapContainer: (props) => ({
+    position: "relative",
+    textAlign: props.isMobile ? "center" : "left",
   }),
-  playerIcon: (props) => ({
-    height: props.isMobile ? "30px" : "44px",
-    width: props.isMobile ? "36px" : "48px",
-    margin: "0.5rem 0.50rem",
+  DraggableHeader: (props) => ({
+    display: "flex",
+    flexDirection: props.isMobile ? "column" : "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    margin: "1rem 0",
+    "& h3": {
+      fontSize: "0.875rem",
+      fontWeight: 500,
+      letterSpacing: "0.05em",
+      padding: "0.5rem 0",
+    },
+  }),
+  MapPlayerIcon: (props) => ({
+    width: props.isMobile ? "1.5rem" : "3rem",
+    height: "auto",
+    margin: "0.5rem",
 
     "&:hover": {
       cursor: "grab",
     },
   }),
-  activeMap: {
-    border: `0.25rem solid ${theme.buttonTextColor}`,
-  },
-  wrapper: {
-    position: "relative",
-  },
 }));

@@ -28,6 +28,7 @@
     "settings": "Ajustes"
   },
   "maps": {
+    "title": "Maps",
     "vents": "Conductos",
     "commonTasks": "Tareas Comunes",
     "wiringTasks": "Tareas de Cables",
@@ -61,7 +62,8 @@
     "south": "4. Sur",
     "southwest": "5. Suroeste",
     "northwest": "6. Noroeste",
-    "resetPlayers": "Reiniciar Jugadores"
+    "dragInstructions": "Drag players on the map to track",
+    "resetPlayers": "Reset Positions"
   },
   "settings": {
     "title": "Ajustes",
