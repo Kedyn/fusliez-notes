@@ -10,6 +10,7 @@ export default createUseStyles((theme: ITheme) => ({
     padding: "0 0.25rem",
   },
   ProgressBarTitle: {
+    fontSize: "0.875rem",
     letterSpacing: "0.05rem",
     fontWeight: 500,
     marginBottom: "0.5rem",
