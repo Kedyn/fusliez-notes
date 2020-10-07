@@ -3,16 +3,16 @@ import Player from "components/Player";
 import React from "react";
 import { ReactSortable } from "react-sortablejs";
 import { useSettings } from "context/SettingsContextProvider";
-import useStyles from "./Section.styles";
+import useStyles from "./PlayerSection.styles";
 
-export interface ISectionProps {
+export interface IPlayerSectionProps {
   title: string;
   list: Array<IPlayer>;
   setList: (value: IPlayer[]) => void;
   isMobile: boolean;
 }
 
-export default function Section(props: ISectionProps): JSX.Element {
+export default function PlayerSection(props: IPlayerSectionProps): JSX.Element {
   const { showNames } = useSettings()!; // eslint-disable-line
 
   const classes = useStyles({ showNames });
@@ -20,8 +20,8 @@ export default function Section(props: ISectionProps): JSX.Element {
   const { isMobile, title, list, setList } = props;
   return (
     <React.Fragment>
-      <div className={classes.Section}>
-        <h2 className={classes.SectionTitle}>{title}</h2>
+      <div className={classes.PlayerSection}>
+        <h2 className={classes.PlayerSectionTitle}>{title}</h2>
 
         <ReactSortable
           group="players"
@@ -37,7 +37,7 @@ export default function Section(props: ISectionProps): JSX.Element {
           touchStartThreshold={3}
           list={list}
           setList={setList}
-          className={classes.SectionArea}
+          className={classes.PlayerSectionArea}
         >
           {list.map(({ id, color, playerName }, index) => (
             <Player

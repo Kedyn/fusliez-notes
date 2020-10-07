@@ -14,21 +14,16 @@ export const DEFAULT_THEME_DATA: ITheme = {
   backgroundColor: STYLE_VARS.backgroundColorPrimary,
   backgroundColorAlt: STYLE_VARS.backgroundColorSecondary,
   textColor: STYLE_VARS.textColorPrimary,
+  textColorAlt: STYLE_VARS.textColorSecondary,
 
   inputBackgroundColor: STYLE_VARS.backgroundColorSecondary,
   inputTextColor: STYLE_VARS.textColorPrimary,
 
-  neutralBackgroundColor: "#f0c5e2",
-  neutralTextColor: "#ee54bb",
+  neutralColor: STYLE_VARS.neutralColor,
 
-  innocentBackgroundColor: "#ccbed3",
-  innocentTextColor: "#905da9",
+  innocentColor: STYLE_VARS.crewmateColor,
 
-  impostorBackgroundColor: "#c9cfe7",
-  impostorTextColor: "#7289da",
-
-  buttonBackgroundColor: "#6b2fbc",
-  buttonTextColor: "#ffffff",
+  imposterColor: STYLE_VARS.imposterColor,
 
   buttonDangerBackgroundColor: "#8B0000",
   buttonDangerTextColor: "#ffffff",

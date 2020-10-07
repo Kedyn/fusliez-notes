@@ -32,6 +32,10 @@ export interface IStyleVars {
   activeColor: string;
 
   borderColor: string;
+
+  crewmateColor: string;
+  imposterColor: string;
+  neutralColor: string;
 }
 
 export interface IColorLibrary {
@@ -47,21 +51,16 @@ export interface ITheme {
   backgroundColor: string;
   backgroundColorAlt: string;
   textColor: string;
+  textColorAlt: string;
 
   inputBackgroundColor: string;
   inputTextColor: string;
 
-  neutralBackgroundColor: string;
-  neutralTextColor: string;
+  neutralColor: string;
 
-  innocentBackgroundColor: string;
-  innocentTextColor: string;
+  innocentColor: string;
 
-  impostorBackgroundColor: string;
-  impostorTextColor: string;
-
-  buttonBackgroundColor: string;
-  buttonTextColor: string;
+  imposterColor: string;
 
   buttonDangerBackgroundColor: string;
   buttonDangerTextColor: string;

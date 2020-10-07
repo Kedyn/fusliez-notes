@@ -36,7 +36,7 @@ export default function ScoreControls(): JSX.Element {
   };
 
   return (
-    <div className={classes.root}>
+    <div className={classes.ScoreControls}>
       <div className={classes.scoreButtons}>
         <div className={classes.scoreButtonsSection}>
           <h4 className={classes.title} />
@@ -47,7 +47,7 @@ export default function ScoreControls(): JSX.Element {
         <div className={classes.scoreButtonsSection}>
           <h4 className={classes.title}>{t("controls.wins")}</h4>
           <WinsLossesButton
-            buttonBackgroundColor={theme.innocentTextColor}
+            buttonBackgroundColor={theme.innocentColor}
             decrement={() =>
               setInnocentWins(innocentWins ? innocentWins - 1 : 0)
             }
@@ -56,7 +56,7 @@ export default function ScoreControls(): JSX.Element {
             setScore={(value: number) => setInnocentWins(value)}
           />
           <WinsLossesButton
-            buttonBackgroundColor={theme.impostorTextColor}
+            buttonBackgroundColor={theme.imposterColor}
             decrement={() =>
               setImpostorWins(impostorWins ? impostorWins - 1 : 0)
             }
@@ -69,7 +69,7 @@ export default function ScoreControls(): JSX.Element {
         <div className={classes.scoreButtonsSection}>
           <h4 className={classes.title}>{t("controls.losses")}</h4>
           <WinsLossesButton
-            buttonBackgroundColor={theme.innocentTextColor}
+            buttonBackgroundColor={theme.innocentColor}
             decrement={() =>
               setInnocentLosses(innocentLosses ? innocentLosses - 1 : 0)
             }
@@ -78,7 +78,7 @@ export default function ScoreControls(): JSX.Element {
             setScore={(value: number) => setInnocentLosses(value)}
           />
           <WinsLossesButton
-            buttonBackgroundColor={theme.impostorTextColor}
+            buttonBackgroundColor={theme.imposterColor}
             decrement={() =>
               setImpostorLosses(impostorLosses ? impostorLosses - 1 : 0)
             }

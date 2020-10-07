@@ -10,16 +10,16 @@ import {
   faEllipsisH,
 } from "@fortawesome/free-solid-svg-icons";
 
-import useStyles from "./TabNavigator.styles";
+import useStyles from "./Navbar.styles";
 
-export interface ITabNavigator {
+export interface INavbar {
   activeView: string;
   onChangeActiveView: (view: string) => void;
   setIsDrawerOpen: (state: boolean) => void;
   orientation: string;
 }
 
-export default function TabNavigator(props: ITabNavigator): JSX.Element {
+export default function Navbar(props: INavbar): JSX.Element {
   const { t } = useTranslation();
   const {
     activeView,
@@ -52,7 +52,7 @@ export default function TabNavigator(props: ITabNavigator): JSX.Element {
     },
   ];
 
-  function Tab({
+  function NavbarItem({
     name,
     icon,
   }: {
@@ -61,7 +61,9 @@ export default function TabNavigator(props: ITabNavigator): JSX.Element {
   }): JSX.Element {
     return (
       <button
-        className={`${classes.tab} ${name === activeView && classes.activeTab}`}
+        className={`${classes.NavbarItem} ${
+          name === activeView && classes.isActive
+        }`}
         onClick={() =>
           name === t("menu.menu")
             ? setIsDrawerOpen(true)
@@ -70,16 +72,16 @@ export default function TabNavigator(props: ITabNavigator): JSX.Element {
         disabled={name === activeView}
       >
         <FontAwesomeIcon icon={icon} size="lg" />
-        <span className={classes.label}>{name}</span>
+        <span className={classes.NavbarItemLabel}>{name}</span>
       </button>
     );
   }
 
   return (
-    <div className={classes.root}>
-      <div className={classes.tabsContainer}>
+    <div className={classes.Navbar}>
+      <div className={classes.NavbarContainer}>
         {tabs.map(({ name, icon }) => (
-          <Tab key={name} name={name} icon={icon} />
+          <NavbarItem key={name} name={name} icon={icon} />
         ))}
       </div>
     </div>

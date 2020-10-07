@@ -1,6 +1,6 @@
 import { IPlayer } from "utils/types";
 import React from "react";
-import Section from "components/Section";
+import PlayerSection from "components/PlayerSection";
 import { useMobile } from "context/MobileContextProvider";
 import { usePlayers } from "context/PlayersContextProvider";
 import useStyles from "./PlayersPanel.styles";
@@ -63,9 +63,9 @@ export default function PlayersPanel(): JSX.Element {
   ];
 
   return (
-    <div className={classes.root}>
+    <div className={classes.PlayersPanel}>
       {sections.map(({ title, list, setList }) => (
-        <Section
+        <PlayerSection
           key={title}
           title={title}
           list={list}
@@ -76,7 +76,7 @@ export default function PlayersPanel(): JSX.Element {
 
       {isMobile && (
         <button
-          className={classes.reset}
+          className={classes.PlayersPanelReset}
           onClick={() => resetPlayersPositions()}
         >
           Reset Positions

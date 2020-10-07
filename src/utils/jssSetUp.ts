@@ -3,7 +3,6 @@ import normalize from "normalize-jss";
 
 import { ITheme } from "./types";
 import { STYLE_VARS } from "./styleVars";
-import { hexToRGB } from "./colorConverter";
 import preset from "jss-preset-default";
 
 export default function jssSetUp(theme: ITheme): SheetsRegistry {
@@ -30,11 +29,6 @@ export default function jssSetUp(theme: ITheme): SheetsRegistry {
           margin: "0 auto",
           width: "100vw",
           overflowX: "hidden",
-        },
-        main: {
-          flexGrow: 1,
-          display: "flex",
-          margin: "0 1rem",
         },
         footer: {
           textAlign: "center",
@@ -99,13 +93,11 @@ export default function jssSetUp(theme: ITheme): SheetsRegistry {
           display: "block",
           width: "100%",
           cursor: "pointer",
-          backgroundColor: theme.buttonBackgroundColor,
-          color: theme.buttonTextColor,
+          backgroundColor: theme.linkColor,
+          color: theme.backgroundColor,
 
           "&:hover": {
-            backgroundColor: `rgba(${hexToRGB(
-              theme.buttonBackgroundColor
-            )}, 0.7)`,
+            backgroundColor: theme.linkColorHover,
           },
         },
         a: {

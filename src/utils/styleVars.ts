@@ -17,6 +17,10 @@ export const STYLE_VARS: IStyleVars = {
   activeColor: "#506167",
 
   borderColor: "#36383a",
+
+  crewmateColor: "#008dfc",
+  imposterColor: "#af1211",
+  neutralColor: "#8d86b7",
 };
 
 export const COLOR_LIBRARY: IColorLibrary = {

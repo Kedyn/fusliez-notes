@@ -1,6 +1,7 @@
 import CircularProgressBarScores from "./CircularProgressBarScores";
 import React from "react";
 import { useScores } from "context/ScoresContextProvider";
+import useStyles from "./ScoresPanel.styles";
 
 export default function ScoresPanels(): JSX.Element {
   const {
@@ -9,6 +10,8 @@ export default function ScoresPanels(): JSX.Element {
     impostorWins,
     impostorLosses,
   } = useScores()!; // eslint-disable-line
+
+  const classes = useStyles();
 
   const getRate = (wins: number, games: number): number => {
     return games > 0 ? Math.floor((wins / games) * 100) : 100;
@@ -24,18 +27,20 @@ export default function ScoresPanels(): JSX.Element {
   const impostorRate = getRate(impostorWins, impostorGames);
 
   return (
-    <CircularProgressBarScores
-      {...{
-        overallRate,
-        overallWins,
-        overallLosses,
-        innocentRate,
-        innocentWins,
-        innocentLosses,
-        impostorRate,
-        impostorWins,
-        impostorLosses,
-      }}
-    />
+    <div className={classes.ScoresPanel}>
+      <CircularProgressBarScores
+        {...{
+          overallRate,
+          overallWins,
+          overallLosses,
+          innocentRate,
+          innocentWins,
+          innocentLosses,
+          impostorRate,
+          impostorWins,
+          impostorLosses,
+        }}
+      />
+    </div>
   );
 }

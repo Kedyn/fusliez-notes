@@ -2,23 +2,23 @@ import { createUseStyles } from "react-jss";
 import { ITheme } from "utils/types";
 
 export default createUseStyles((theme: ITheme) => ({
-  root: {
+  Navbar: {
     display: "flex",
     flexDirection: "column",
     maxHeight: "195px",
     width: "100%",
     borderTop: `1px solid ${theme.borderColor}`,
   },
-  tabsContainer: {
+  NavbarContainer: {
     display: "flex",
     height: "100%",
   },
-  tab: {
+  NavbarItem: {
     alignItems: "center",
     boxSizing: "border-box",
     backgroundColor: theme.backgroundColorAlt,
     borderRadius: "0",
-    color: theme.buttonTextColor,
+    color: theme.textColorAlt,
     display: "flex",
     flex: 1,
     flexDirection: "column",
@@ -27,10 +27,10 @@ export default createUseStyles((theme: ITheme) => ({
     padding: "0.5rem 0.25rem",
     letterSpacing: "0.05em",
   },
-  activeTab: {
+  isActive: {
     backgroundColor: theme.activeColor,
   },
-  label: {
+  NavbarItemLabel: {
     display: "inline-block",
     marginTop: "0.5rem",
   },

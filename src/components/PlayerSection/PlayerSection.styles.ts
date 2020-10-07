@@ -2,13 +2,13 @@ import { createUseStyles } from "react-jss";
 import { ITheme } from "utils/types";
 
 export default createUseStyles((theme: ITheme) => ({
-  Section: {},
-  SectionTitle: {
+  PlayerSection: {},
+  PlayerSectionTitle: {
     fontSize: "1rem",
     letterSpacing: "0.05rem",
     fontWeight: 500,
   },
-  SectionArea: {
+  PlayerSectionArea: {
     display: "flex",
     flexWrap: "wrap",
     minHeight: "2rem",

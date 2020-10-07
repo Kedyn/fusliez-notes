@@ -1,14 +1,14 @@
 import { NAMESPACE, VERSION } from "utils/constants";
 
-import DesktopContent from "components/Content/DesktopContent";
-import MobileContent from "components/Content/MobileContent";
+import DesktopLayout from "components/Layout/DesktopLayout";
+import MobileLayout from "components/Layout/MobileLayout";
 import React from "react";
 import { useMobile } from "context/MobileContextProvider";
 
 export default function Content(): JSX.Element {
   const { isMobile } = useMobile()!; // eslint-disable-line
 
-  let content = <DesktopContent />;
+  let content = <DesktopLayout />;
 
   React.useEffect(() => {
     const version = localStorage.getItem(`${NAMESPACE}version`);
@@ -27,7 +27,7 @@ export default function Content(): JSX.Element {
   }, []);
 
   if (isMobile) {
-    content = <MobileContent />;
+    content = <MobileLayout />;
   }
 
   return <React.Fragment>{content}</React.Fragment>;

@@ -1,6 +1,7 @@
 import CircularProgressBar from "components/common/CircularProgressBar";
 import { ITheme } from "utils/types";
 import React from "react";
+import cx from "classnames";
 import useStyles from "./CircularProgressBarScores.styles";
 import { useTheme } from "react-jss";
 import { useTranslation } from "react-i18next";
@@ -38,60 +39,89 @@ export default function CircularProgressBarScores(
   } = props;
 
   return (
-    <div className={classes.root}>
-      <div className={classes.progressBarContainer}>
-        <span className={classes.title}>{t("main.innocent")}</span>
+    <React.Fragment>
+      <div className={classes.ProgressBar}>
+        <span
+          className={cx(
+            classes.ProgressBarTitle,
+            classes.ProgressBarTitleInnocent
+          )}
+        >
+          {t("main.innocent")}
+        </span>
 
-        <div className={classes.smallCircle}>
+        <div className={classes.CircleSecondary}>
           <CircularProgressBar
             progress={innocentRate}
-            backgroundColor={theme.innocentBackgroundColor}
-            progressColor={theme.innocentTextColor}
+            color={theme.innocentColor}
             className={classes.progress}
           >
-            <span className={classes.percentage}>{`${innocentRate}%`}</span>
-            <span className={classes.scores}>{`${innocentWins}${t(
+            <span
+              className={classes.CirclePercentage}
+            >{`${innocentRate}%`}</span>
+            <span className={classes.CircleScores}>{`${innocentWins}${t(
               "main.w"
             )}-${innocentLosses}${t("main.l")}`}</span>
           </CircularProgressBar>
         </div>
       </div>
 
-      <div className={classes.progressBarContainer}>
-        <span className={classes.title}>{t("main.overall")}</span>
+      <div className={classes.ProgressBar}>
+        <span
+          className={cx(
+            classes.ProgressBarTitle,
+            classes.ProgressBarTitleOverall
+          )}
+        >
+          {t("main.overall")}
+        </span>
 
-        <div className={classes.bigCircle}>
+        <div className={classes.CirclePrimary}>
           <CircularProgressBar
             progress={overallRate}
-            backgroundColor={theme.neutralBackgroundColor}
-            progressColor={theme.neutralTextColor}
+            color={theme.neutralColor}
             className={classes.progress}
           >
-            <span className={classes.bigPercentage}>{`${overallRate}%`}</span>
-            <span className={classes.bigScores}>{`${overallWins}${t(
-              "main.w"
-            )}-${overallLosses}${t("main.l")}`}</span>
+            <span
+              className={cx(
+                classes.CirclePercentage,
+                classes.CirclePercentagePrimary
+              )}
+            >{`${overallRate}%`}</span>
+            <span
+              className={cx(classes.CircleScores, classes.CircleScoresPrimary)}
+            >{`${overallWins}${t("main.w")}-${overallLosses}${t(
+              "main.l"
+            )}`}</span>
           </CircularProgressBar>
         </div>
       </div>
 
-      <div className={classes.progressBarContainer}>
-        <span className={classes.title}>{t("main.impostor")}</span>
+      <div className={classes.ProgressBar}>
+        <span
+          className={cx(
+            classes.ProgressBarTitle,
+            classes.ProgressBarTitleImpostor
+          )}
+        >
+          {t("main.impostor")}
+        </span>
 
-        <div className={classes.smallCircle}>
+        <div className={classes.CircleSecondary}>
           <CircularProgressBar
             progress={impostorRate}
-            backgroundColor={theme.impostorBackgroundColor}
-            progressColor={theme.impostorTextColor}
+            color={theme.imposterColor}
             className={classes.progress}
           >
-            <span className={classes.percentage}>{`${impostorRate}%`}</span>
-            <span className={classes.scores}>{`${impostorWins}${t(
+            <span
+              className={classes.CirclePercentage}
+            >{`${impostorRate}%`}</span>
+            <span className={classes.CircleScores}>{`${impostorWins}${t(
               "main.w"
             )}-${impostorLosses}${t("main.l")}`}</span>
           </CircularProgressBar>
         </div>
       </div>
-    </div>
+    </React.Fragment>
   );
 }

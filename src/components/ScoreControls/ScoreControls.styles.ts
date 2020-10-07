@@ -3,7 +3,7 @@ import { createUseStyles } from "react-jss";
 import { hexToRGB } from "utils/colorConverter";
 
 export default createUseStyles((theme: ITheme) => ({
-  root: {},
+  ScoreControls: {},
   buttonContainer: {
     display: "flex",
     marginTop: "1rem",

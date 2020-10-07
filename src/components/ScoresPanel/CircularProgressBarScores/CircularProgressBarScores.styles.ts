@@ -1,30 +1,38 @@
 import { createUseStyles } from "react-jss";
+import { ITheme } from "utils/types";
 
-export default createUseStyles({
-  root: {
-    alignItems: "center",
-    display: "flex",
-    justifyContent: "space-between",
-    margin: "0.5rem 0",
-  },
-  progressBarContainer: {
+export default createUseStyles((theme: ITheme) => ({
+  ProgressBar: {
     alignItems: "center",
     display: "flex",
     flexDirection: "column",
     justifyContent: "space-between",
+    padding: "0 0.25rem",
+  },
+  ProgressBarTitle: {
+    letterSpacing: "0.05rem",
+    fontWeight: 500,
+    marginBottom: "0.5rem",
+  },
+  ProgressBarTitleOverall: {
     fontSize: "1.25rem",
-    margin: "0 0.25rem",
   },
-  bigCircle: {
-    width: "100px",
-    height: "100px",
+  ProgressBarTitleImpostor: {
+    color: theme.imposterColor,
+  },
+  ProgressBarTitleInnocent: {
+    color: theme.innocentColor,
+  },
+  CirclePrimary: {
+    width: "6rem",
+    height: "6rem",
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
   },
-  smallCircle: {
-    width: "80px",
-    height: "80px",
+  CircleSecondary: {
+    width: "5rem",
+    height: "5rem",
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
@@ -32,23 +40,20 @@ export default createUseStyles({
   progress: {
     marginBottom: "0.5rem",
   },
-  title: {
-    marginBottom: "0.5rem",
-  },
-  percentage: {
+  CirclePercentage: {
     fontSize: "0.75rem",
-    fontWeight: "bold",
-    lineHeight: "1rem",
+    fontWeight: 700,
+    lineHeight: 1,
+    letterSpacing: "0.05rem",
   },
-  scores: {
-    fontSize: "0.75rem",
-  },
-  bigPercentage: {
-    fontSize: "1rem",
-    fontWeight: "bold",
-    lineHeight: "1rem",
-  },
-  bigScores: {
+  CirclePercentagePrimary: {
     fontSize: "1rem",
   },
-});
+  CircleScores: {
+    fontSize: "0.75rem",
+    letterSpacing: "0.05rem",
+  },
+  CircleScoresPrimary: {
+    fontSize: "1rem",
+  },
+}));

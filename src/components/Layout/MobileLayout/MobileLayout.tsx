@@ -2,19 +2,19 @@ import AboutContent from "components/About/AboutContent";
 import FeedbackContent from "components/Feedback/FeedbackContent";
 import { IView } from "utils/types";
 import MainContent from "components/MainContent";
-import MapsContent from "components/MapsPanel";
-import Notes from "components/NotesPanel";
+import MapsPanel from "components/MapsPanel";
+import NotesPanel from "components/NotesPanel";
 import React from "react";
 import ScoresPanel from "components/ScoresPanel";
 import ScoreControls from "components/ScoreControls";
 import SettingsContent from "components/common/Settings/SettingsContent";
 import SlideDrawer from "components/SlideDrawer";
-import TabNavigator from "components/TabNavigator";
+import Navbar from "components/Navbar";
 import { useMobile } from "context/MobileContextProvider";
-import useStyles from "./MobileContent.styles";
+import useStyles from "./MobileLayout.styles";
 import { useTranslation } from "react-i18next";
 
-export default function MobileContent(): JSX.Element {
+export default function MobileLayout(): JSX.Element {
   const { t } = useTranslation();
   const { isMobile, orientation } = useMobile()!; // eslint-disable-line
   const classes = useStyles({ isMobile, orientation });
@@ -26,12 +26,12 @@ export default function MobileContent(): JSX.Element {
     },
     {
       title: t("menu.notes"),
-      content: <Notes />,
+      content: <NotesPanel />,
     },
     {
       title: t("menu.scores"),
       content: (
-        <div className={classes.recordContainer}>
+        <div className={classes.MobileScoresContent}>
           <ScoresPanel />
           <ScoreControls />
         </div>
@@ -39,7 +39,7 @@ export default function MobileContent(): JSX.Element {
     },
     {
       title: t("menu.maps"),
-      content: <MapsContent />,
+      content: <MapsPanel />,
     },
     {
       title: t("menu.settings"),
@@ -82,8 +82,8 @@ export default function MobileContent(): JSX.Element {
   };
 
   return (
-    <div className={classes.root}>
-      <div className={classes.content}>
+    <div className={classes.MobileLayout}>
+      <div className={classes.MobileContent}>
         <SlideDrawer
           isDrawerOpen={isDrawerOpen}
           setIsDrawerOpen={setIsDrawerOpen}
@@ -94,7 +94,7 @@ export default function MobileContent(): JSX.Element {
         {activeView.content}
       </div>
 
-      <TabNavigator
+      <Navbar
         activeView={activeView.title}
         onChangeActiveView={handleChangeActiveView}
         setIsDrawerOpen={setIsDrawerOpen}
