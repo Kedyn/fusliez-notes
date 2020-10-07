@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Released]
 
+### [v0.9.1] - 10/07/2020
+
+#### Added
+
+- Added translation to pt-BR
+
 ### [v0.9.0] - 10/05/2020
 
 This released focused on improving the mobile experience and adding support to
