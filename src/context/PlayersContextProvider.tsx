@@ -31,11 +31,17 @@ export default function PlayersContextProvider(
   );
 
   const resetPlayersPositions = () => {
-    setInnocentPlayers(DEFAULT_PLAYERS.innocentPlayers);
-    setSusPlayers(DEFAULT_PLAYERS.susPlayers);
-    setEvilPlayers(DEFAULT_PLAYERS.evilPlayers);
-    setDeadPlayers(DEFAULT_PLAYERS.deadPlayers);
-    setUnknownPlayers(DEFAULT_PLAYERS.unknownPlayers);
+    setUnknownPlayers([
+      ...innocentPlayers,
+      ...susPlayers,
+      ...evilPlayers,
+      ...deadPlayers,
+      ...unknownPlayers,
+    ]);
+    setInnocentPlayers([]);
+    setSusPlayers([]);
+    setEvilPlayers([]);
+    setDeadPlayers([]);
   };
 
   return (
