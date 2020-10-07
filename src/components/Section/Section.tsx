@@ -34,7 +34,7 @@ export default function Section(props: ISectionProps): JSX.Element {
           // limits the dragging by the icon only
           filter={isMobile ? "input" : ""}
           preventOnFilter={false}
-          delay={isMobile ? 150 : 0}
+          delay={isMobile ? 10 : 0}
           touchStartThreshold={3}
           list={list}
           setList={setList}
