@@ -15,7 +15,6 @@ export default createUseStyles((theme: ITheme) => ({
     flex: `0 1 ${props.names ? "50%" : "25%"}`,
     justifyContent: "center",
     margin: "0.25rem 0",
-    opacity: props.longPressed ? "0.5" : 1,
     padding: "0.25rem 0.1rem",
     position: "relative",
   }),
