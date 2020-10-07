@@ -2,9 +2,12 @@ import Button from "components/common/Button";
 import React from "react";
 import Score from "components/common/Score";
 import useStyles from "./WinsLossesButton.styles";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMinus, faPlus } from "@fortawesome/free-solid-svg-icons";
 
 export interface IWinsLossesButtonProps {
   buttonBackgroundColor: string;
+  buttonBackgroundColorHover: string;
   decrement: () => void;
   increment: () => void;
   score: number;
@@ -16,21 +19,25 @@ export default function WinsLossesButton(
 ): JSX.Element {
   const {
     buttonBackgroundColor,
+    buttonBackgroundColorHover,
     decrement,
     increment,
     score,
     setScore,
   } = props;
 
-  const classes = useStyles({ buttonBackgroundColor });
+  const classes = useStyles({
+    buttonBackgroundColor,
+    buttonBackgroundColorHover,
+  });
 
   return (
-    <div className={classes.winsLossesButtonContainer}>
+    <div className={classes.WinsLossesButtonContainer}>
       <Button
         onClick={() => decrement()}
         className={`${classes.winsLossesButton} ${classes.winsLossesButtonLeft}`}
       >
-        -
+        <FontAwesomeIcon icon={faMinus} />
       </Button>
       <Score
         value={score}
@@ -42,7 +49,7 @@ export default function WinsLossesButton(
         onClick={() => increment()}
         className={`${classes.winsLossesButton} ${classes.winsLossesButtonRight}`}
       >
-        +
+        <FontAwesomeIcon icon={faPlus} />
       </Button>
     </div>
   );

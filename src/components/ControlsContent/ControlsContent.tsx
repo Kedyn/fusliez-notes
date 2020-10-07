@@ -1,5 +1,5 @@
 import Button from "components/common/Button";
-import Notes from "../NotesPanel";
+import NotesPanel from "../NotesPanel";
 import React from "react";
 import ScoreControls from "../ScoreControls";
 import Settings from "components/common/Settings";
@@ -12,10 +12,10 @@ export default function ControlsContent(): JSX.Element {
   const [showSettings, setShowSettings] = React.useState(false);
 
   return (
-    <div id="controls" className={classes.root}>
+    <div id="controls" className={classes.ControlsContent}>
       <ScoreControls />
 
-      <Notes />
+      <NotesPanel />
 
       <Button
         classNames={`${classes.dangerButton}`}

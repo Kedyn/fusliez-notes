@@ -19,7 +19,11 @@ export const STYLE_VARS: IStyleVars = {
   borderColor: "#36383a",
 
   crewmateColor: "#008dfc",
+  crewmateColorAlt: "#30a4ff",
+
   imposterColor: "#af1211",
+  imposterColorAlt: "#dd1716",
+
   neutralColor: "#8d86b7",
 };
 

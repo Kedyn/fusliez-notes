@@ -3,11 +3,13 @@ import { createUseStyles } from "react-jss";
 import { hexToRGB } from "utils/colorConverter";
 
 export default createUseStyles((theme: ITheme) => ({
-  root: {
+  ControlsContent: {
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "flex-start",
+    padding: "1rem",
+    maxWidth: "22.5rem",
   },
 
   buttonContainer: {

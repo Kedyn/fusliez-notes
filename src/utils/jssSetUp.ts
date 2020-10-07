@@ -15,6 +15,12 @@ export default function jssSetUp(theme: ITheme): SheetsRegistry {
   const globalStyles = jss
     .createStyleSheet({
       "@global": {
+        "*, *:before, *:after": {
+          boxSizing: "inherit",
+        },
+        html: {
+          boxSizing: "border-box",
+        },
         body: {
           backgroundColor: theme.backgroundColor,
           color: theme.textColor,
@@ -33,9 +39,6 @@ export default function jssSetUp(theme: ITheme): SheetsRegistry {
         footer: {
           textAlign: "center",
           fontSize: "smaller",
-        },
-        "#controls": {
-          padding: "1rem",
         },
         "#maps": {
           flexGrow: 1,
@@ -63,6 +66,7 @@ export default function jssSetUp(theme: ITheme): SheetsRegistry {
         input: {
           backgroundColor: "transparent",
           color: theme.inputTextColor,
+          fontFamily: STYLE_VARS.fontFamily,
           appearance: "none",
           border: "none",
           boxShadow: "none",

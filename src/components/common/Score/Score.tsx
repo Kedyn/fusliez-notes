@@ -9,14 +9,7 @@ export interface IScoreProps {
 export default function Score(props: IScoreProps): JSX.Element {
   const classes = useStyles();
 
-  const { className, ...other } = props;
+  const { ...other } = props;
 
-  return (
-    <input
-      type="number"
-      min={0}
-      className={`${className ? className : ""} ${classes.input}`}
-      {...other}
-    />
-  );
+  return <input type="number" min={0} className={classes.Score} {...other} />;
 }

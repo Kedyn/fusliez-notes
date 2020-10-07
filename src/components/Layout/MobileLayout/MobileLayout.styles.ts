@@ -15,8 +15,7 @@ export default createUseStyles({
     alignSelf: "center",
     alignItems: "center",
     display: "flex",
-    flexDirection:
-      props.isMobile && props.orientation === "portrait" ? "column" : "row",
+    flexWrap: "wrap",
     justifyContent: "space-around",
     margin: "1rem",
     padding: 0,

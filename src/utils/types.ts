@@ -34,7 +34,11 @@ export interface IStyleVars {
   borderColor: string;
 
   crewmateColor: string;
+  crewmateColorAlt: string;
+
   imposterColor: string;
+  imposterColorAlt: string;
+
   neutralColor: string;
 }
 
@@ -59,8 +63,10 @@ export interface ITheme {
   neutralColor: string;
 
   innocentColor: string;
+  innocentColorHover: string;
 
   imposterColor: string;
+  imposterColorHover: string;
 
   buttonDangerBackgroundColor: string;
   buttonDangerTextColor: string;

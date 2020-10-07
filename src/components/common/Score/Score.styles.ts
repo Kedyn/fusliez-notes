@@ -2,15 +2,18 @@ import { ITheme } from "utils/types";
 import { createUseStyles } from "react-jss";
 
 export default createUseStyles((theme: ITheme) => ({
-  input: {
-    backgroundColor: `${theme.inputBackgroundColor} !important`,
-    color: `${theme.inputTextColor} !important`,
+  Score: {
+    backgroundColor: theme.inputBackgroundColor,
+    color: theme.inputTextColor,
+    borderTop: `1px solid ${theme.borderColor}`,
+    borderBottom: `1px solid ${theme.borderColor}`,
+    display: "block",
     fontSize: "1.25rem",
+    fontWeight: 700,
     height: "100%",
     padding: "0 0.5rem",
     textAlign: "center",
-    appearance: "textfield !important",
-    "-moz-appearance": "textfield !important",
-    width: "2.5rem",
+    appearance: "textfield",
+    width: "2rem",
   },
 }));
