@@ -16,7 +16,7 @@ export default createUseStyles((theme: ITheme) => ({
     outline: "none",
     border: "none",
     cursor: "pointer",
-    backgroundColor: `rgba(${hexToRGB(theme.buttonBackgroundColor)}, 0.5)`,
+    backgroundColor: `rgba(${hexToRGB(theme.linkColor)}, 0.5)`,
     transition: "background-color ease 0.3s",
     margin: "0.5rem 0",
     marginRight: "0.5rem",
@@ -41,7 +41,7 @@ export default createUseStyles((theme: ITheme) => ({
       transition: "all cubic-bezier(0.3, 1.5, 0.7, 1) 0.3s",
     },
     "&:checked": {
-      backgroundColor: theme.buttonBackgroundColor,
+      backgroundColor: theme.linkColor,
     },
     "&:checked:before": {
       left: "2rem",

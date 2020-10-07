@@ -3,10 +3,11 @@ import { createUseStyles } from "react-jss";
 import { hexToRGB } from "utils/colorConverter";
 
 export default createUseStyles((theme: ITheme) => ({
-  ScoreControls: {
-    flex: "1 0 16rem",
-    maxWidth: "20rem",
-  },
+  ScoreControls: (props) => ({
+    flex: props.isMobile ? "1 0 16rem" : "0 0 auto",
+    maxWidth: props.isMobile ? "20rem" : "none",
+    margin: props.isMobile ? 0 : "1rem 0",
+  }),
   ScoreButtonsLayout: (props) => ({
     display: "flex",
     marginTop: props.isMobile ? "1rem" : "0.5rem",
@@ -37,7 +38,7 @@ export default createUseStyles((theme: ITheme) => ({
   ScoreOptions: {
     display: "flex",
     flexWrap: "wrap",
-    margin: "1rem 0",
+    margin: "1rem 0 0",
   },
   ScoreOptionButton: {
     flex: "1 0 8rem",
@@ -52,10 +53,5 @@ export default createUseStyles((theme: ITheme) => ({
         theme.buttonDangerBackgroundColor
       )}, 0.75)`,
     },
-  },
-  titleContainer: {
-    display: "flex",
-    justifyContent: "space-around",
-    lineHeight: "0.5rem",
   },
 }));

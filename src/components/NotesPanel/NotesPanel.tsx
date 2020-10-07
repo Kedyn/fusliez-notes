@@ -20,11 +20,21 @@ export default function NotesPanel(): JSX.Element {
   }, [notes]);
 
   return (
-    <div className={classes.root}>
-      {!isMobile && <h2>{t("controls.notes")}</h2>}
-      <div className={classes.notesContainer}>
+    <div className={classes.NotesPanel}>
+      <div className={classes.NotesHeader}>
+        {!isMobile && <h2>{t("controls.notes")}</h2>}
+        <Button
+          className={classes.NotesReset}
+          onClick={() => {
+            setNotes("");
+          }}
+        >
+          {t("controls.resetNotes")}
+        </Button>
+      </div>
+      <div className={classes.Notepad}>
         <textarea
-          className={classes.notes}
+          className={classes.NotepadTextarea}
           name="notes"
           onChange={(event: React.ChangeEvent<HTMLTextAreaElement>) => {
             setNotes(event.target.value);
@@ -32,14 +42,6 @@ export default function NotesPanel(): JSX.Element {
           value={notes}
         />
       </div>
-      <Button
-        classNames={classes.resetNotes}
-        onClick={() => {
-          setNotes("");
-        }}
-      >
-        {t("controls.resetNotes")}
-      </Button>
     </div>
   );
 }

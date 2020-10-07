@@ -1,6 +1,5 @@
 import { ITheme } from "utils/types";
 import { createUseStyles } from "react-jss";
-import { hexToRGB } from "utils/colorConverter";
 
 export default createUseStyles((theme: ITheme) => ({
   ControlsContent: {
@@ -11,27 +10,11 @@ export default createUseStyles((theme: ITheme) => ({
     padding: "1rem",
     maxWidth: "22.5rem",
   },
-
-  buttonContainer: {
-    display: "flex",
-  },
-  dangerButton: {
-    marginTop: "0.5rem",
-    backgroundColor: theme.buttonDangerBackgroundColor,
-    color: theme.buttonDangerTextColor,
-
-    "&:hover": {
-      backgroundColor: `rgba(${hexToRGB(
-        theme.buttonDangerBackgroundColor
-      )}, 0.75)`,
-    },
-  },
-  reset: {
-    fontSize: "1rem",
-
-    "&+button": {
-      marginLeft: "0.5rem",
-    },
+  Divider: {
+    width: "100%",
+    border: 0,
+    borderBottom: `1px solid ${theme.borderColor}`,
+    marginBottom: "1rem",
   },
   scoreButtons: {
     display: "flex",
@@ -43,23 +26,5 @@ export default createUseStyles((theme: ITheme) => ({
     display: "flex",
     justifyContent: "space-between",
     width: "100%",
-  },
-  settingsButton: {
-    marginTop: "0.5rem",
-    backgroundColor: "slategray",
-
-    "&:hover": {
-      backgroundColor: `rgba(${hexToRGB("slategray")},0.75)`,
-    },
-  },
-  titleContainer: {
-    display: "flex",
-    justifyContent: "space-around",
-    lineHeight: "0.5rem",
-  },
-  title: {
-    flex: 1,
-    width: "100%",
-    textAlign: "center",
   },
 }));

@@ -23,9 +23,9 @@
     "resetScores": "Reset Scores",
     "resetRound": "Reset Round",
     "resetAll": "Reset All",
-    "notes": "Notes",
-    "resetNotes": "Reset Notes",
-    "settings": "Settings"
+    "notes": "Notepad",
+    "resetNotes": "Reset Notepad",
+    "settings": "Open Settings"
   },
   "maps": {
     "vents": "Vents",

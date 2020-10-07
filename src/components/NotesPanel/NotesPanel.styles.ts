@@ -1,23 +1,35 @@
-import { ITheme } from "utils/types";
 import { createUseStyles } from "react-jss";
 
-export default createUseStyles((theme: ITheme) => ({
-  root: (props) => ({
+export default createUseStyles({
+  NotesPanel: (props) => ({
     height: "100%",
     display: "flex",
     flexDirection: "column",
     padding: props.isMobile ? "1rem" : "0",
     width: "100%",
   }),
-  notes: (props) => ({
+  NotesHeader: {
+    display: "flex",
+    marginBottom: "0.5rem",
+    "& h2": {
+      fontSize: "1.25rem",
+      fontWeight: 500,
+      letterSpacing: "0.05em",
+      marginRight: "1rem",
+      flex: "1 0 auto",
+    },
+  },
+  NotesReset: {
+    flex: "1 1 0",
+    whiteSpace: "nowrap",
+  },
+  Notepad: {
+    flexGrow: 1,
+    marginBottom: "1rem",
+  },
+  NotepadTextarea: {
     fontSize: "1.25rem",
     width: "100%",
     height: "100%",
-  }),
-  notesContainer: {
-    flexGrow: 1,
   },
-  resetNotes: {
-    marginTop: "0.5rem",
-  },
-}));
+});
