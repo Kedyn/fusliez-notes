@@ -1,4 +1,5 @@
 import Button from "components/common/Button";
+import { DEFAULT_PLAYERS } from "utils/constants";
 import { ITheme } from "utils/types";
 import React from "react";
 import WinsLossesButton from "../WinsLossesButton";
@@ -26,13 +27,24 @@ export default function ScoresPanel(): JSX.Element {
     resetScores,
   } = useScores()!; // eslint-disable-line
   const { isMobile } = useMobile()!; // eslint-disable-line
-  const { resetPlayersPositions } = usePlayers()!; // eslint-disable-line
+  const {
+    setInnocentPlayers,
+    setSusPlayers,
+    setDeadPlayers,
+    setUnknownPlayers,
+
+    resetPlayersPositions,
+  } = usePlayers()!; // eslint-disable-line
 
   const classes = useStyles({ isMobile });
 
   const resetAll = () => {
     resetScores();
-    resetPlayersPositions();
+
+    setInnocentPlayers([]);
+    setSusPlayers([]);
+    setDeadPlayers([]);
+    setUnknownPlayers(DEFAULT_PLAYERS.unknownPlayers);
   };
 
   return (
