@@ -12,7 +12,7 @@ A web to help keep track of among us game.
 
 ## Usage
 
-To start using it just head over to [Projects page](https://kedyn.github.io/fusliez-notes/).
+To start using it just head over to the [Project's page](https://kedyn.github.io/fusliez-notes/).
 
 ## Contributing
 
