@@ -14,7 +14,8 @@ export default createUseStyles((theme: ITheme) => ({
     minHeight: "2rem",
     justifyContent: "flex-start",
     backgroundColor: theme.backgroundColorAlt,
-    boxShadow: "inset 0 0 0.25rem 0 black",
+    boxShadow:
+      "inset 0.5rem 0.5rem 1.5rem  rgba(0,0,0,0.05), inset -0.5rem -0.5rem 1.5rem  rgba(255,255,255,0.05)",
     borderRadius: "0.25rem",
   },
 }));

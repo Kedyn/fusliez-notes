@@ -100,5 +100,6 @@ export default createUseStyles((theme: ITheme) => ({
     width: "4rem",
     height: "auto",
     alignSelf: "flex-start",
+    marginBottom: "2rem",
   },
 }));

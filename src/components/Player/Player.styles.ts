@@ -1,5 +1,5 @@
 import { ITheme } from "utils/types";
-import { contrastColor, getColorValue } from "utils/colorConverter";
+import { contrastColor, getColorValue, hexToRGB } from "utils/colorConverter";
 import { createUseStyles } from "react-jss";
 import { STYLE_VARS } from "utils/styleVars";
 
@@ -13,47 +13,41 @@ export default createUseStyles((theme: ITheme) => ({
     backgroundColor:
       props.playerName || !props.showNames
         ? `rgb(${getColorValue(props.color, "dark")})`
-        : "transparent",
+        : theme.backgroundColorAlt,
     border: "1px solid",
     borderColor:
       props.playerName || !props.showNames
         ? `rgb(${getColorValue(props.color, "base")})`
-        : STYLE_VARS.borderColor,
+        : "transparent",
     boxShadow:
-      props.playerName || !props.showNames
-        ? `0 0 0.25rem 0 rgb(${getColorValue(props.color, "base")}, 0.75)`
-        : "none",
+      "-1px -1px 2px rgba(255,255,255,0.25), 1px 1px 2px rgba(0,0,0,0.35)",
     borderRadius: "0.25rem",
     display: "flex",
     justifyContent: "center",
     margin: "0.375rem",
     opacity: props.longPressed ? "0.5" : 1,
     position: "relative",
-    "&:hover img": {
-      marginTop: "-0.125rem",
-      marginBottom: "0.125rem",
-      transitionTimingFunction: "ease-out",
+    transition: "border-color 0.2s ease",
+    "&:hover": {
+      borderColor: `rgba(${hexToRGB(theme.textColorAlt)}, 0.25)`,
     },
   }),
   PlayerIcon: (props) => ({
     display: "flex",
     flex: "0 0 2.25rem",
+    alignSelf: "stretch",
+    width: "2.25rem",
     justifyContent: "center",
-    padding: "0.25rem 0",
     alignItems: "center",
     backgroundColor:
       props.playerName || !props.showNames
         ? `rgb(${getColorValue(props.color, "base")})`
         : "transparent",
+    backgroundRepeat: "no-repeat",
+    backgroundSize: "1.75rem auto",
+    backgroundPosition: "center 0.25rem",
     "&:hover": {
       cursor: props.showNames ? "pointer" : "grab",
-    },
-    "& img": {
-      display: "block",
-      width: "1.5rem",
-      height: "2rem",
-      margin: 0,
-      transition: "margin 300ms ease-in",
     },
   }),
   PlayerName: {
@@ -62,14 +56,14 @@ export default createUseStyles((theme: ITheme) => ({
     maxWidth: "100%",
     paddingLeft: "0.5rem",
   },
-  input: (props) => ({
+  PlayerInput: (props) => ({
     color: contrastColor(getColorValue(props.color, "dark")),
     display: "block",
     fontSize: props.isMobile ? "1rem" : props.showNames ? "1.15rem" : "1rem",
     fontFamily: STYLE_VARS.fontFamily,
-    fontWeight: 500,
+    fontWeight: 600,
     letterSpacing: "0.05rem",
-    lineHeight: 1.5,
+    lineHeight: 1.25,
     padding: "0.25rem 0",
     textAlign: "left",
     width: "100%",

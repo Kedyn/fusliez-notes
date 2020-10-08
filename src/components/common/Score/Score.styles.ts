@@ -9,7 +9,7 @@ export default createUseStyles((theme: ITheme) => ({
     borderBottom: `1px solid ${theme.borderColor}`,
     display: "block",
     fontSize: "1.25rem",
-    fontWeight: 700,
+    fontWeight: 600,
     height: "100%",
     padding: "0 0.5rem",
     textAlign: "center",

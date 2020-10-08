@@ -5,7 +5,7 @@ export default createUseStyles((theme: ITheme) => ({
   Navbar: {
     display: "flex",
     flexDirection: "column",
-    maxHeight: "195px",
+    height: "3.5rem",
     width: "100%",
     borderTop: `1px solid ${theme.borderColor}`,
   },

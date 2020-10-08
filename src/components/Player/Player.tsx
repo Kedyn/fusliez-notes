@@ -5,6 +5,7 @@ import { useMobile } from "context/MobileContextProvider";
 import usePlayerStyles from "./Player.styles";
 import { useSettings } from "context/SettingsContextProvider";
 import { useTranslation } from "react-i18next";
+import cx from "classnames";
 
 export interface IPlayerProps {
   id: string | number;
@@ -103,24 +104,23 @@ export default function Player(props: IPlayerProps): JSX.Element {
             currentColor={id}
           />
         )}
-        <div className={classes.PlayerIcon}>
-          <img
-            onClick={() => {
-              if (showNames && !isMobile) {
-                setIsMenuShowing(!isMenuShowing);
-              }
-            }}
-            src={`assets/images/player-icons/${color}.png`}
-            alt={color}
-            className="player-handle"
-          />
-        </div>
+        <div
+          className={cx(classes.PlayerIcon, "player-handle")}
+          onClick={() => {
+            if (showNames && !isMobile) {
+              setIsMenuShowing(!isMenuShowing);
+            }
+          }}
+          style={{
+            backgroundImage: `url(assets/images/player-icons/${color}.png)`,
+          }}
+        ></div>
         {showNames && (
           <div className={classes.PlayerName}>
             <input
               type="text"
               placeholder={t("main.player")}
-              className={classes.input}
+              className={classes.PlayerInput}
               onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
                 handleChange(index, event)
               }
