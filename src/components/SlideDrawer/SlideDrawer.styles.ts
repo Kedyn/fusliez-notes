@@ -70,7 +70,7 @@ export default createUseStyles((theme: ITheme) => ({
   },
   SlideDrawerNavItem: {
     display: "block",
-    fontSize: "1.25rem",
+    fontSize: "1.5rem",
     fontWeight: 500,
     letterSpacing: "0.05em",
     padding: "0.5rem 0",
@@ -80,6 +80,10 @@ export default createUseStyles((theme: ITheme) => ({
       paddingLeft: "1.5rem",
       transitionTimingFunction: "ease-out",
     },
+  },
+  minorItem: {
+    fontSize: "1rem",
+    opacity: 0.7,
   },
   SlideDrawerEmote: {
     width: "4rem",

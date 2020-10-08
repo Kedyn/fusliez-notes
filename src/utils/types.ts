@@ -90,6 +90,7 @@ export interface IMobileContext {
 export interface IView {
   title: string;
   content: React.ReactNode;
+  minor: boolean;
 }
 
 export interface IScoresContext {

@@ -7,7 +7,7 @@ import NotesPanel from "components/NotesPanel";
 import React from "react";
 import ScoresPanel from "components/ScoresPanel";
 import ScoreControls from "components/ScoreControls";
-import SettingsContent from "components/common/Settings/SettingsContent";
+import SettingsPanel from "components/common/Settings/SettingsPanel";
 import SlideDrawer from "components/SlideDrawer";
 import Navbar from "components/Navbar";
 import { useMobile } from "context/MobileContextProvider";
@@ -23,10 +23,12 @@ export default function MobileLayout(): JSX.Element {
     {
       title: t("menu.players"),
       content: <MainContent />,
+      minor: false,
     },
     {
       title: t("menu.notes"),
       content: <NotesPanel />,
+      minor: false,
     },
     {
       title: t("menu.scores"),
@@ -36,22 +38,32 @@ export default function MobileLayout(): JSX.Element {
           <ScoreControls />
         </div>
       ),
+      minor: false,
     },
     {
       title: t("menu.maps"),
       content: <MapsPanel />,
+      minor: false,
     },
     {
       title: t("menu.settings"),
-      content: <SettingsContent />,
-    },
-    {
-      title: t("menu.feedback"),
-      content: <FeedbackContent />,
+      content: <SettingsPanel />,
+      minor: true,
     },
     {
       title: t("menu.about"),
       content: <AboutContent />,
+      minor: true,
+    },
+    // {
+    //   title: t("menu.changelog"),
+    //   content: <ChangelogContent />,
+    //   minor: true,
+    // },
+    {
+      title: t("menu.feedback"),
+      content: <FeedbackContent />,
+      minor: true,
     },
   ];
 

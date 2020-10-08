@@ -65,7 +65,10 @@ export default function SlideDrawer(
             {views.map((view, index) => (
               <li
                 key={index}
-                className={classes.SlideDrawerNavItem}
+                className={cx({
+                  [classes.SlideDrawerNavItem]: true,
+                  [classes.minorItem]: view.minor,
+                })}
                 onClick={() => handleChangeActiveView(view)}
               >
                 {view.title}

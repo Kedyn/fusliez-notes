@@ -20,7 +20,7 @@ export default function Button(props: IButtonProps): JSX.Element {
     danger,
     pressed,
     onClick,
-    ...other
+    ...others
   } = props;
 
   return (
@@ -35,7 +35,7 @@ export default function Button(props: IButtonProps): JSX.Element {
         },
         className
       )}
-      {...other}
+      {...others}
     >
       {children}
     </button>

@@ -1,7 +1,7 @@
 import Button from "../Button";
 import Modal from "../Modal";
 import React from "react";
-import SettingsContent from "./SettingsContent";
+import SettingsPanel from "./SettingsPanel";
 import { useTranslation } from "react-i18next";
 
 export interface ISettingsProps {
@@ -20,7 +20,7 @@ export default function Settings(props: ISettingsProps): JSX.Element {
       title={t("settings.title")}
       footer={<Button onClick={() => onClose()}>{t("settings.close")}</Button>}
     >
-      <SettingsContent />
+      <SettingsPanel />
     </Modal>
   );
 }
