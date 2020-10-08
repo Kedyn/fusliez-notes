@@ -12,9 +12,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 #### Added
 
 - Added translation to pt-BR
-- Fixed reset buttons
 
-### [v0.9.0] - 10/05/2020
+#### Fixed
+
+- Reset buttons
+
+### [v0.9.0] - 10/06/2020
 
 This released focused on improving the mobile experience and adding support to
 change colors.
