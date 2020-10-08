@@ -1,7 +1,9 @@
 import { createUseStyles } from "react-jss";
 
 export default createUseStyles({
-  PlayersPanel: {},
+  PlayersPanel: {
+    marginBottom: "1rem",
+  },
   PlayersPanelReset: {
     marginTop: "1rem",
   },

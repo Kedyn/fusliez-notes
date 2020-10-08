@@ -20,6 +20,7 @@ export default function jssSetUp(theme: ITheme): SheetsRegistry {
         },
         html: {
           boxSizing: "border-box",
+          height: "100%",
         },
         body: {
           backgroundColor: theme.backgroundColor,
@@ -27,12 +28,11 @@ export default function jssSetUp(theme: ITheme): SheetsRegistry {
           fontFamily: STYLE_VARS.fontFamily,
           fontWeight: 400,
           fontSize: STYLE_VARS.baseFontSize,
+          height: "100%",
         },
         "#root": {
           display: "flex",
           flexDirection: "column",
-          height: "100vh",
-          height: "calc(var(--vh, 1vh) * 100)",
           maxWidth: "1920px",
           margin: "0 auto",
           width: "100vw",

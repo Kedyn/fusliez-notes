@@ -34,17 +34,14 @@ export default function NotesPanel(): JSX.Element {
           </Button>
         </div>
       )}
-      <div className={classes.Notepad}>
-        <textarea
-          className={classes.NotepadTextarea}
-          name="notes"
-          onChange={(event: React.ChangeEvent<HTMLTextAreaElement>) => {
-            setNotes(event.target.value);
-          }}
-          value={notes}
-          rows={10}
-        />
-      </div>
+      <textarea
+        className={classes.Notepad}
+        name="notes"
+        onChange={(event: React.ChangeEvent<HTMLTextAreaElement>) => {
+          setNotes(event.target.value);
+        }}
+        value={notes}
+      />
       {isMobile && (
         <Button
           className={classes.NotesReset}

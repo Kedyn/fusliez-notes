@@ -3,10 +3,7 @@ import { ITheme } from "utils/types";
 
 export default createUseStyles((theme: ITheme) => ({
   Navbar: {
-    position: "fixed",
-    left: 0,
-    right: 0,
-    bottom: 0,
+    flex: "0 0 3.5rem",
     height: "3.5rem",
     width: "100%",
     borderTop: `1px solid ${theme.borderColor}`,
