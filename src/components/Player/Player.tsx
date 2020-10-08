@@ -119,7 +119,7 @@ export default function Player(props: IPlayerProps): JSX.Element {
           <div className={classes.PlayerName}>
             <input
               type="text"
-              placeholder={t("main.player")}
+              placeholder={color}
               className={classes.PlayerInput}
               onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
                 handleChange(index, event)
