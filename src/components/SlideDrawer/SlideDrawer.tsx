@@ -1,9 +1,9 @@
-import Backdrop from "./Backdrop";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowCircleLeft } from "@fortawesome/free-solid-svg-icons";
+import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import { IView } from "utils/types";
 import React from "react";
 import useStyles from "./SlideDrawer.styles";
+import cx from "classnames";
 
 export interface ISideDrawerProps {
   isDrawerOpen: boolean;
@@ -39,22 +39,38 @@ export default function SlideDrawer(
 
     setIsDrawerOpen(false);
   };
-
-  if (isDrawerOpen) {
-    return (
-      <React.Fragment>
-        <Backdrop />
-
-        <div className={`${classes.root} ${classes.drawerOpen}`} ref={ref}>
-          <div className={classes.back} onClick={() => setIsDrawerOpen(false)}>
-            <FontAwesomeIcon icon={faArrowCircleLeft} />
+  return (
+    <React.Fragment>
+      <div
+        className={cx(classes.Backdrop, {
+          [classes.isBackdropOpen]: isDrawerOpen,
+        })}
+      />
+      <div
+        className={cx(classes.SlideDrawer, {
+          [classes.isDrawerOpen]: isDrawerOpen,
+        })}
+        ref={ref}
+      >
+        <div className={classes.SlideDrawerContent}>
+          <div className={classes.SlideDrawerHeader}>
+            <div>
+              <h1>fusliez notes</h1>
+              <h2>(an Among Us companion app)</h2>
+            </div>
+            <button
+              className={classes.SlideDrawerClose}
+              onClick={() => setIsDrawerOpen(false)}
+            >
+              <FontAwesomeIcon icon={faTimes} />
+            </button>
           </div>
 
-          <ul className={classes.nav}>
+          <ul className={classes.SlideDrawerNav}>
             {views.map((view, index) => (
               <li
                 key={index}
-                className={classes.navItem}
+                className={classes.SlideDrawerNavItem}
                 onClick={() => handleChangeActiveView(view)}
               >
                 {view.title}
@@ -62,9 +78,12 @@ export default function SlideDrawer(
             ))}
           </ul>
         </div>
-      </React.Fragment>
-    );
-  } else {
-    return null;
-  }
+        <img
+          className={classes.SlideDrawerEmote}
+          src="assets/images/amongNotes.gif"
+          alt="Among Us animated gif emote"
+        />
+      </div>
+    </React.Fragment>
+  );
 }

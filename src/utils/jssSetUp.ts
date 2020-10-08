@@ -25,6 +25,7 @@ export default function jssSetUp(theme: ITheme): SheetsRegistry {
           backgroundColor: theme.backgroundColor,
           color: theme.textColor,
           fontFamily: STYLE_VARS.fontFamily,
+          fontWeight: 400,
           fontSize: STYLE_VARS.baseFontSize,
         },
         "#root": {
@@ -64,6 +65,7 @@ export default function jssSetUp(theme: ITheme): SheetsRegistry {
           backgroundColor: "transparent",
           color: theme.inputTextColor,
           fontFamily: STYLE_VARS.fontFamily,
+          fontWeight: 400,
           appearance: "none",
           border: "none",
           boxShadow: "none",
@@ -88,6 +90,7 @@ export default function jssSetUp(theme: ITheme): SheetsRegistry {
           border: "1px solid transparent",
           padding: ".375rem .75rem",
           fontFamily: STYLE_VARS.fontFamily,
+          fontWeight: 400,
           borderRadius: "0.5rem",
           transition:
             "color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out",

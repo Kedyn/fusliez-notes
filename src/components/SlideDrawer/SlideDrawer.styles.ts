@@ -3,48 +3,102 @@ import { createUseStyles } from "react-jss";
 import { hexToRGB } from "utils/colorConverter";
 
 export default createUseStyles((theme: ITheme) => ({
-  root: {
+  Backdrop: {
+    position: "fixed",
+    width: "100%",
+    height: "100%",
+    backgroundColor: "rgba(0,0,0,0.75)",
+    zIndex: "100",
+    top: 0,
+    left: 0,
+    transition: "opacity 0.4s ease-in",
+    opacity: 0,
+    pointerEvents: "none",
+  },
+  isBackdropOpen: {
+    opacity: 1,
+    pointerEvents: "auto",
+    transitionTimingFunction: "ease-out",
+  },
+  SlideDrawer: {
     alignItems: "center",
     background: theme.backgroundColor,
     height: "100vh",
     "-webkit-overflow-scrolling": "touch",
-    left: "0",
+    left: "-100%",
     overflowY: "scroll",
-    maxWidth: "75%",
-    minWidth: "320px",
-    width: "45%",
+    width: "calc(100vw - 2rem)",
     position: "fixed",
+    padding: "1rem",
     top: "0",
-    transform: "translateX(100%)",
-    transition: "transform 0.5s ease-out",
+    transition: "left 0.4s ease-in",
     zIndex: "200",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "space-between",
   },
-  drawerOpen: {
-    transform: "translateX(0)",
+  isDrawerOpen: {
+    left: "0%",
+    transitionTimingFunction: "ease-out",
   },
-  back: {
-    display: "block",
-    padding: "0.5rem 1rem",
-    cursor: "pointer",
-
-    "&:hover": {
-      backgroundColor: `rgba(${hexToRGB(theme.backgroundColor)}, 0.7)`,
+  SlideDrawerContent: {
+    flex: "1 0 auto",
+    alignSelf: "stretch",
+  },
+  SlideDrawerHeader: {
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "flex-start",
+    paddingBottom: "0.5rem",
+    borderBottom: `1px solid ${theme.borderColor}`,
+    marginBottom: "0.5rem",
+    "& h1": {
+      fontSize: "2rem",
+      fontWeight: 200,
+      letterSpacing: "0.05em",
+    },
+    "& h2": {
+      fontSize: "0.875rem",
+      fontWeight: 500,
+      letterSpacing: "0.05em",
     },
   },
-  nav: {
+  SlideDrawerClose: {
+    appearance: "none",
+    display: "block",
+    color: theme.linkColor,
+    width: "2rem",
+    lineHeight: "2rem",
+    padding: 0,
+    cursor: "pointer",
+    backgroundColor: "transparent",
+    "&:hover": {
+      color: theme.linkColorHover,
+      backgroundColor: `rgba(${hexToRGB(theme.backgroundColorAlt)}, 1)`,
+    },
+  },
+  SlideDrawerSubheader: {},
+  SlideDrawerNav: {
     listStyleType: "none",
     margin: 0,
     padding: 0,
   },
-  navItem: {
+  SlideDrawerNavItem: {
     display: "block",
-    padding: "0.5rem",
-    paddingLeft: "2rem",
+    fontSize: "1.25rem",
+    fontWeight: 500,
+    letterSpacing: "0.05em",
+    padding: "0.5rem 0",
     cursor: "pointer",
-
+    transition: "padding-left 0.2s ease-in",
     "&:hover": {
-      backgroundColor: theme.buttonBackgroundColor,
-      color: theme.buttonTextColor,
+      paddingLeft: "1.5rem",
+      transitionTimingFunction: "ease-out",
     },
+  },
+  SlideDrawerEmote: {
+    width: "4rem",
+    height: "auto",
+    alignSelf: "flex-start",
   },
 }));
