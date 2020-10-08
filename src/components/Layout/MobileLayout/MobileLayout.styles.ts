@@ -4,12 +4,11 @@ export default createUseStyles({
   MobileLayout: {
     display: "flex",
     flexDirection: "column",
-    height: "100vh",
-    maxHeight: "100vh",
+    paddingBottom: "4rem",
   },
   MobileContent: {
-    overflowY: "auto",
-    flexGrow: 1,
+    minHeight: "calc(100vh - 4rem)",
+    minHeight: "calc((var(--vh, 1vh) * 100) - 4rem)",
   },
   MobileScoresContent: (props) => ({
     alignSelf: "center",

@@ -20,11 +20,12 @@ export default createUseStyles({
     },
   },
   NotesReset: {
-    flex: "1 1 0",
+    flex: "0 0 0",
+    alignSelf: "flex-start",
     whiteSpace: "nowrap",
   },
   Notepad: {
-    flexGrow: 1,
+    flex: "1 0 auto",
     marginBottom: "1rem",
   },
   NotepadTextarea: {

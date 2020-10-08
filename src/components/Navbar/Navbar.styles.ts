@@ -3,12 +3,14 @@ import { ITheme } from "utils/types";
 
 export default createUseStyles((theme: ITheme) => ({
   Navbar: {
-    display: "flex",
-    flexDirection: "column",
+    position: "fixed",
+    left: 0,
+    right: 0,
+    bottom: 0,
     height: "3.5rem",
     width: "100%",
     borderTop: `1px solid ${theme.borderColor}`,
-    flex: "0 1 3.5rem",
+    zIndex: 10,
   },
   NavbarContainer: {
     display: "flex",

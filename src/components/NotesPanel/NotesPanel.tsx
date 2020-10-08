@@ -21,17 +21,19 @@ export default function NotesPanel(): JSX.Element {
 
   return (
     <div className={classes.NotesPanel}>
-      <div className={classes.NotesHeader}>
-        {!isMobile && <h2>{t("controls.notes")}</h2>}
-        <Button
-          className={classes.NotesReset}
-          onClick={() => {
-            setNotes("");
-          }}
-        >
-          {t("controls.resetNotes")}
-        </Button>
-      </div>
+      {!isMobile && (
+        <div className={classes.NotesHeader}>
+          <h2>{t("controls.notes")}</h2>
+          <Button
+            className={classes.NotesReset}
+            onClick={() => {
+              setNotes("");
+            }}
+          >
+            {t("controls.resetNotes")}
+          </Button>
+        </div>
+      )}
       <div className={classes.Notepad}>
         <textarea
           className={classes.NotepadTextarea}
@@ -40,8 +42,19 @@ export default function NotesPanel(): JSX.Element {
             setNotes(event.target.value);
           }}
           value={notes}
+          rows={10}
         />
       </div>
+      {isMobile && (
+        <Button
+          className={classes.NotesReset}
+          onClick={() => {
+            setNotes("");
+          }}
+        >
+          {t("controls.resetNotes")}
+        </Button>
+      )}
     </div>
   );
 }
