@@ -8,6 +8,7 @@ export default createUseStyles((theme: ITheme) => ({
     height: "3.5rem",
     width: "100%",
     borderTop: `1px solid ${theme.borderColor}`,
+    flex: "0 1 3.5rem",
   },
   NavbarContainer: {
     display: "flex",
