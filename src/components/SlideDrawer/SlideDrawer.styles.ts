@@ -1,6 +1,5 @@
 import { ITheme } from "utils/types";
 import { createUseStyles } from "react-jss";
-import { hexToRGB } from "utils/colorConverter";
 
 export default createUseStyles((theme: ITheme) => ({
   Backdrop: {
