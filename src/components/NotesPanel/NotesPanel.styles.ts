@@ -3,6 +3,7 @@ import { createUseStyles } from "react-jss";
 export default createUseStyles({
   NotesPanel: (props) => ({
     height: "100%",
+    flexGrow: 1,
     display: "flex",
     flexDirection: "column",
     padding: props.isMobile ? "1rem" : "0",

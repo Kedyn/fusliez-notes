@@ -9,6 +9,8 @@ export default createUseStyles({
   },
   MobileContent: {
     flex: "1 1 auto",
+    display: "flex",
+    flexDirection: "column",
     overflowY: "scroll",
     paddingBottom: "1rem",
   },

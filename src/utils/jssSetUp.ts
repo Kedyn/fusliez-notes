@@ -33,6 +33,7 @@ export default function jssSetUp(theme: ITheme): SheetsRegistry {
         "#root": {
           display: "flex",
           flexDirection: "column",
+          height: "100%",
           maxWidth: "1920px",
           margin: "0 auto",
           width: "100vw",
