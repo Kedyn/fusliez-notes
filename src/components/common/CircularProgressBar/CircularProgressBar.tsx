@@ -40,9 +40,6 @@ export default function CircularProgressBar(
       className={classes.CircularBar}
       counterClockwise={true}
       styles={{
-        root: {
-          filter: `drop-shadow(0 0 0.25rem ${buildTrailColor(color)})`,
-        },
         path: {
           stroke: color,
         },

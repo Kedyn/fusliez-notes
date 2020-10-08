@@ -18,10 +18,9 @@ export default createUseStyles((theme: ITheme) => ({
     borderColor:
       props.playerName || !props.showNames
         ? `rgb(${getColorValue(props.color, "base")})`
-        : "transparent",
-    boxShadow:
-      "-1px -1px 2px rgba(255,255,255,0.25), 1px 1px 2px rgba(0,0,0,0.5)",
+        : theme.borderColor,
     borderRadius: "0.25rem",
+    boxShadow: "1px 1px 1px rgba(0,0,0,0.25)",
     display: "flex",
     justifyContent: "center",
     margin: "0.375rem",
