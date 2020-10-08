@@ -27,6 +27,9 @@ export default createUseStyles((theme: ITheme) => ({
     justifyContent: "center",
     padding: "0.5rem 0.25rem",
     letterSpacing: "0.05em",
+    "&:hover": {
+      backgroundColor: theme.backgroundColor,
+    },
   },
   isActive: {
     backgroundColor: theme.activeColor,

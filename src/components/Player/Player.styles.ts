@@ -5,8 +5,8 @@ import { STYLE_VARS } from "utils/styleVars";
 
 export default createUseStyles((theme: ITheme) => ({
   Player: (props) => ({
-    flex: `0 0 ${props.showNames ? "50%" : "25%"}`,
-    maxWidth: "50%",
+    flex: props.showNames ? "1 0 50%" : "0 0 2.5rem",
+    maxWidth: props.showNames ? "50%" : "none",
   }),
   PlayerTile: (props) => ({
     alignItems: "center",
@@ -20,7 +20,7 @@ export default createUseStyles((theme: ITheme) => ({
         ? `rgb(${getColorValue(props.color, "base")})`
         : "transparent",
     boxShadow:
-      "-1px -1px 2px rgba(255,255,255,0.25), 1px 1px 2px rgba(0,0,0,0.35)",
+      "-1px -1px 2px rgba(255,255,255,0.25), 1px 1px 2px rgba(0,0,0,0.5)",
     borderRadius: "0.25rem",
     display: "flex",
     justifyContent: "center",
@@ -37,6 +37,7 @@ export default createUseStyles((theme: ITheme) => ({
     flex: "0 0 2.25rem",
     alignSelf: "stretch",
     width: "2.25rem",
+    height: "2rem",
     justifyContent: "center",
     alignItems: "center",
     backgroundColor:
@@ -70,6 +71,7 @@ export default createUseStyles((theme: ITheme) => ({
 
     "&::placeholder": {
       color: theme.textColor,
+      opacity: 0.5,
     },
   }),
 }));
