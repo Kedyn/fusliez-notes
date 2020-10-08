@@ -8,7 +8,6 @@ export default function AboutContent(): JSX.Element {
   return (
     <div className={classes.root}>
       <h4>fusliez notes v{VERSION}</h4>
-      <br />
       <a href="https://www.twitch.tv/fuslie">
         <strong>fuslie</strong>
       </a>
@@ -52,6 +51,12 @@ export default function AboutContent(): JSX.Element {
       </a>
       <br />
       <small>Russian (RU) Translations</small>
+      <br />
+      <a href="https://github.com/danilolmoura">
+        <strong>Danilo Moura</strong>
+      </a>
+      <br />
+      <small>Portuguese (BR) Translations</small>
       <br />
 
       <p>

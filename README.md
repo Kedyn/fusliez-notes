@@ -42,7 +42,7 @@ Rydannn (twitch handle)
 GeneralMitch (twitch handle)  
 Kermitigated (twitch handle)  
 [Kinishina](https://github.com/Kinishina)  
-[Federico Gaston Ramadan](https://github.com/federamadan)
+[Federico Gaston Ramadan](https://github.com/federamadan)  
 [Danilo Moura](https://github.com/danilolmoura) (A.K.A. Eudan)
 
 Please if you would not like to be mentioned here or your information is wrong

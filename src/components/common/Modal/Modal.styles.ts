@@ -9,7 +9,6 @@ export default createUseStyles((theme: ITheme) => ({
     height: "100vh",
     left: 0,
     justifyContent: "center",
-    overflow: "auto",
     position: "absolute",
     top: 0,
     width: "100vw",
@@ -20,6 +19,8 @@ export default createUseStyles((theme: ITheme) => ({
     borderRadius: "10px",
     maxWidth: 1600,
     padding: "0 2rem",
+    maxHeight: "100vh",
+    overflowY: "auto",
   },
   header: {
     borderBottom: `1px solid ${theme.borderColor}`,

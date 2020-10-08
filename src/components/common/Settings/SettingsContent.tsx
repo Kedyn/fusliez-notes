@@ -219,6 +219,7 @@ export default function SettingsContent(): JSX.Element {
             <option value="en-US">English (US)</option>
             <option value="es-MX">Spanish (MX)</option>
             <option value="ru-RU">Russian (RU)</option>
+            <option value="pt-BR">Portuguese (BR)</option>
           </select>
         </div>
       </div>
