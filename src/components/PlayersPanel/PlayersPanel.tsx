@@ -5,6 +5,7 @@ import { useMobile } from "context/MobileContextProvider";
 import { usePlayers } from "context/PlayersContextProvider";
 import useStyles from "./PlayersPanel.styles";
 import { useTranslation } from "react-i18next";
+import Button from "components/common/Button";
 
 export default function PlayersPanel(): JSX.Element {
   const { t } = useTranslation();
@@ -75,12 +76,12 @@ export default function PlayersPanel(): JSX.Element {
       ))}
 
       {isMobile && (
-        <button
+        <Button
           className={classes.PlayersPanelReset}
           onClick={() => resetPlayersPositions()}
         >
           Reset Positions
-        </button>
+        </Button>
       )}
     </div>
   );

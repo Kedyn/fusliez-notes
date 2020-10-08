@@ -87,24 +87,6 @@ export default function jssSetUp(theme: ITheme): SheetsRegistry {
           border: `1px solid ${theme.borderColor}`,
           borderRadius: "0.5rem",
         },
-        button: {
-          textAlign: "center",
-          border: "1px solid transparent",
-          padding: ".375rem .75rem",
-          fontFamily: STYLE_VARS.fontFamily,
-          fontWeight: 400,
-          borderRadius: "0.5rem",
-          transition:
-            "color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out",
-          display: "inline-block",
-          cursor: "pointer",
-          backgroundColor: theme.linkColor,
-          color: theme.backgroundColor,
-
-          "&:hover": {
-            backgroundColor: theme.linkColorHover,
-          },
-        },
         a: {
           textDecoration: "none",
           color: theme.linkColor,

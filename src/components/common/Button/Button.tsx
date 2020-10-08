@@ -1,20 +1,43 @@
 import React from "react";
 import useStyles from "./Button.styles";
+import cx from "classnames";
 
 export interface IButtonProps {
+  className?: string;
   children: React.ReactNode;
-  classNames?: string;
-  [unknown: string]: any; // eslint-disable-line
+  danger?: boolean;
+  fullWidth?: boolean;
+  pressed?: boolean;
+  onClick?(): void;
 }
 
 export default function Button(props: IButtonProps): JSX.Element {
   const classes = useStyles();
-  const { classNames, ...other } = props;
+  const {
+    className,
+    children,
+    fullWidth,
+    danger,
+    pressed,
+    onClick,
+    ...other
+  } = props;
 
   return (
     <button
-      className={`${classNames ? classNames : ""} ${classes.root}`}
+      onClick={onClick}
+      className={cx(
+        {
+          [classes.Button]: true,
+          [classes.danger]: danger,
+          [classes.pressed]: pressed,
+          [classes.fullWidth]: fullWidth,
+        },
+        className
+      )}
       {...other}
-    />
+    >
+      {children}
+    </button>
   );
 }

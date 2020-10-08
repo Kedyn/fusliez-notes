@@ -63,20 +63,6 @@ export default createUseStyles((theme: ITheme) => ({
       letterSpacing: "0.05em",
     },
   },
-  SlideDrawerClose: {
-    appearance: "none",
-    display: "block",
-    color: theme.linkColor,
-    width: "2rem",
-    lineHeight: "2rem",
-    padding: 0,
-    cursor: "pointer",
-    backgroundColor: "transparent",
-    "&:hover": {
-      color: theme.linkColorHover,
-      backgroundColor: `rgba(${hexToRGB(theme.backgroundColorAlt)}, 1)`,
-    },
-  },
   SlideDrawerSubheader: {},
   SlideDrawerNav: {
     listStyleType: "none",

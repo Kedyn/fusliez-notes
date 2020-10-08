@@ -7,7 +7,6 @@ import TheSkeld from "./TheSkeld";
 import useStyles from "./MapsPanel.styles";
 import { useTranslation } from "react-i18next";
 import { useMobile } from "context/MobileContextProvider";
-import cx from "classnames";
 
 export default function MapsPanel(): JSX.Element {
   const { t } = useTranslation();
@@ -54,25 +53,22 @@ export default function MapsPanel(): JSX.Element {
         {!isMobile && <h2 className={classes.MapsTitle}>{t("maps.title")}</h2>}
         <div className={classes.MapsToggle}>
           <Button
-            className={cx(classes.MapsToggleButton, {
-              [classes.MapsToggleButtonActive]: map === "skeld",
-            })}
+            className={classes.MapsToggleButton}
+            pressed={map === "skeld"}
             onClick={() => setMap("skeld")}
           >
             The Skeld
           </Button>
           <Button
-            className={cx(classes.MapsToggleButton, {
-              [classes.MapsToggleButtonActive]: map === "mira",
-            })}
+            className={classes.MapsToggleButton}
+            pressed={map === "mira"}
             onClick={() => setMap("mira")}
           >
             Mira HQ
           </Button>
           <Button
-            className={cx(classes.MapsToggleButton, {
-              [classes.MapsToggleButtonActive]: map === "polus",
-            })}
+            className={classes.MapsToggleButton}
+            pressed={map === "polus"}
             onClick={() => setMap("polus")}
           >
             Polus

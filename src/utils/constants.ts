@@ -27,13 +27,13 @@ export const DEFAULT_THEME_DATA: ITheme = {
   imposterColor: STYLE_VARS.imposterColor,
   imposterColorHover: STYLE_VARS.imposterColorAlt,
 
-  buttonDangerBackgroundColor: "#8B0000",
-  buttonDangerTextColor: "#ffffff",
-
   borderColor: STYLE_VARS.borderColor,
 
   linkColor: STYLE_VARS.linkColor,
   linkColorHover: STYLE_VARS.linkColorHover,
+
+  dangerColor: STYLE_VARS.dangerColor,
+  dangerColorHover: STYLE_VARS.dangerColorHover,
 
   activeColor: STYLE_VARS.activeColor,
 };

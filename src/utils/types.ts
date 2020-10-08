@@ -29,6 +29,9 @@ export interface IStyleVars {
   linkColor: string;
   linkColorHover: string;
 
+  dangerColor: string;
+  dangerColorHover: string;
+
   activeColor: string;
 
   borderColor: string;
@@ -68,13 +71,13 @@ export interface ITheme {
   imposterColor: string;
   imposterColorHover: string;
 
-  buttonDangerBackgroundColor: string;
-  buttonDangerTextColor: string;
-
   borderColor: string;
 
   linkColor: string;
   linkColorHover: string;
+
+  dangerColor: string;
+  dangerColorHover: string;
 
   activeColor: string;
 }

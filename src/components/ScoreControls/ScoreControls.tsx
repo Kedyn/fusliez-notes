@@ -8,7 +8,6 @@ import { useScores } from "context/ScoresContextProvider";
 import useStyles from "./ScoreControls.styles";
 import { useTheme } from "react-jss";
 import { useTranslation } from "react-i18next";
-import cx from "classnames";
 
 export default function ScoreControls(): JSX.Element {
   const { t } = useTranslation();
@@ -99,14 +98,14 @@ export default function ScoreControls(): JSX.Element {
       </div>
       <div className={classes.ScoreOptions}>
         <Button
-          classNames={classes.ScoreOptionButton}
+          className={classes.ScoreOptionButton}
           onClick={() => resetScores()}
         >
           {t("controls.resetScores")}
         </Button>
         {!isMobile && (
           <Button
-            classNames={classes.ScoreOptionButton}
+            className={classes.ScoreOptionButton}
             onClick={() => resetPlayersPositions()}
           >
             {t("controls.resetRound")}
@@ -114,10 +113,8 @@ export default function ScoreControls(): JSX.Element {
         )}
         {!isMobile && (
           <Button
-            classNames={cx(
-              classes.ScoreOptionButton,
-              classes.ScoreOptionButtonDanger
-            )}
+            className={classes.ScoreOptionButton}
+            danger
             onClick={() => resetAll()}
           >
             {t("controls.resetAll")}

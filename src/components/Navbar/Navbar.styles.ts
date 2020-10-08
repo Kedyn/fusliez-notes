@@ -14,6 +14,8 @@ export default createUseStyles((theme: ITheme) => ({
     height: "100%",
   },
   NavbarItem: {
+    appearance: "none",
+    border: 0,
     alignItems: "center",
     boxSizing: "border-box",
     backgroundColor: theme.backgroundColorAlt,

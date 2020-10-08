@@ -1,9 +1,8 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import { IView } from "utils/types";
 import React from "react";
 import useStyles from "./SlideDrawer.styles";
 import cx from "classnames";
+import CloseButton from "components/common/CloseButton";
 
 export interface ISideDrawerProps {
   isDrawerOpen: boolean;
@@ -58,12 +57,8 @@ export default function SlideDrawer(
               <h1>fusliez notes</h1>
               <h2>(an Among Us companion app)</h2>
             </div>
-            <button
-              className={classes.SlideDrawerClose}
-              onClick={() => setIsDrawerOpen(false)}
-            >
-              <FontAwesomeIcon icon={faTimes} />
-            </button>
+
+            <CloseButton onClick={() => setIsDrawerOpen(false)} />
           </div>
 
           <ul className={classes.SlideDrawerNav}>

@@ -1,4 +1,5 @@
 import React from "react";
+import CloseButton from "components/common/CloseButton";
 import useStyles from "./Modal.styles";
 
 export interface IModalProps {
@@ -17,22 +18,20 @@ export default function Modal(props: IModalProps): JSX.Element {
     const classes = useStyles();
 
     return (
-      <div className={classes.modalContainer} onClick={() => onClose()}>
+      <div className={classes.ModalBackdrop} onClick={() => onClose()}>
         <div
-          className={classes.content}
+          className={classes.Modal}
           onClick={(event: React.MouseEvent<HTMLDivElement, MouseEvent>) =>
             event.stopPropagation()
           }
         >
-          <div className={classes.header}>
-            <div className={classes.title}>{title}</div>
-            <div className={classes.close} onClick={() => onClose()}>
-              x
-            </div>
+          <div className={classes.ModalHeader}>
+            <h2 className={classes.ModalTitle}>{title}</h2>
+            <CloseButton onClick={() => onClose()} />
           </div>
-          <div className={classes.body}>{children}</div>
+          <div className={classes.ModalBody}>{children}</div>
           {footer !== undefined && (
-            <div className={classes.footer}>{footer}</div>
+            <div className={classes.ModalFooter}>{footer}</div>
           )}
         </div>
       </div>

@@ -14,6 +14,9 @@ export const STYLE_VARS: IStyleVars = {
   linkColor: "#9EC4D5",
   linkColorHover: "#C2D2E3",
 
+  dangerColor: "#8B0000",
+  dangerColorHover: "#be0000",
+
   activeColor: "#506167",
 
   borderColor: "#36383a",

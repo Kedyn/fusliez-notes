@@ -1,6 +1,5 @@
 import { ITheme } from "utils/types";
 import { createUseStyles } from "react-jss";
-import { hexToRGB } from "utils/colorConverter";
 
 export default createUseStyles((theme: ITheme) => ({
   ScoreControls: (props) => ({
@@ -23,18 +22,18 @@ export default createUseStyles((theme: ITheme) => ({
     maxWidth: "100%",
     padding: "0 0.25rem",
   },
-  ScoreButtonsLabel: {
+  ScoreButtonsLabel: (props) => ({
     letterSpacing: "0.05rem",
-    fontSize: "0.75rem",
+    fontSize: props.isMobile ? "0.75rem" : "0.875rem",
     fontWeight: 500,
-  },
-  ScoreButtonsHeader: {
-    fontSize: "0.875rem",
+  }),
+  ScoreButtonsHeader: (props) => ({
+    fontSize: props.isMobile ? "0.875rem" : "1rem",
     letterSpacing: "0.05rem",
     fontWeight: 500,
     textAlign: "center",
     width: "100%",
-  },
+  }),
   ScoreOptions: {
     display: "flex",
     flexWrap: "wrap",
@@ -43,15 +42,5 @@ export default createUseStyles((theme: ITheme) => ({
   ScoreOptionButton: {
     flex: "1 0 8rem",
     margin: "0.25rem",
-  },
-  ScoreOptionButtonDanger: {
-    backgroundColor: theme.buttonDangerBackgroundColor,
-    color: theme.buttonDangerTextColor,
-
-    "&:hover": {
-      backgroundColor: `rgba(${hexToRGB(
-        theme.buttonDangerBackgroundColor
-      )}, 0.75)`,
-    },
   },
 }));

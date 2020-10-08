@@ -54,7 +54,7 @@ export default createUseStyles((theme: ITheme) => ({
     alignItems: "center",
     margin: "1rem 0",
     "& h3": {
-      fontSize: "0.875rem",
+      fontSize: props.isMobile ? "0.875rem" : "1rem",
       fontWeight: 500,
       letterSpacing: "0.05em",
       padding: "0.5rem 0",

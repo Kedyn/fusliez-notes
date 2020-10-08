@@ -1,6 +1,8 @@
 import { createUseStyles } from "react-jss";
+import { ITheme } from "utils/types";
+import { hexToRGB } from "utils/colorConverter";
 
-export default createUseStyles({
+export default createUseStyles((theme: ITheme) => ({
   WinsLossesButtonContainer: {
     alignItems: "center",
     display: "flex",
@@ -15,9 +17,13 @@ export default createUseStyles({
     margin: 0,
     fontSize: "0.75rem",
     padding: "0.375rem .5rem",
-    backgroundColor: props.buttonBackgroundColor,
+    backgroundColor: `rgba(${hexToRGB(props.buttonBackgroundColor)}, 0.5)`,
+    color: theme.textColor,
     "&:hover": {
-      backgroundColor: props.buttonBackgroundColorHover,
+      backgroundColor: `rgba(${hexToRGB(
+        props.buttonBackgroundColorHover
+      )}, 0.5)`,
+      color: theme.textColorAlt,
     },
   }),
   winsLossesButtonLeft: {
@@ -26,4 +32,4 @@ export default createUseStyles({
   winsLossesButtonRight: {
     borderRadius: "0 6px 6px 0",
   },
-});
+}));
