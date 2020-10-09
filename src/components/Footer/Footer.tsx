@@ -3,7 +3,7 @@ import { NAMESPACE, VERSION } from "utils/constants";
 import About from "components/About";
 import Feedback from "components/Feedback/Feedback";
 import React from "react";
-import VersionNotes from "components/VersionNotes";
+import VersionNotes from "components/Changelog";
 import useStyles from "./Footer.styles";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";

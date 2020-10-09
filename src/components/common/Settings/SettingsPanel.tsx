@@ -6,6 +6,7 @@ import { useSettings } from "context/SettingsContextProvider";
 import useStyles from "./SettingsPanel.styles";
 import { useTranslation } from "react-i18next";
 import RadioButton from "components/common/RadioButton";
+import { ILanguage } from "utils/types";
 
 export default function SettingsPanel(): JSX.Element {
   const { t } = useTranslation();
@@ -30,45 +31,54 @@ export default function SettingsPanel(): JSX.Element {
     i18next.changeLanguage(newLanguage);
 
     setLanguage(newLanguage);
+    console.log(language);
   };
+
+  const languages: Array<ILanguage> = [
+    {
+      id: "en-US",
+      label: "English (US)",
+    },
+    {
+      id: "es-MX",
+      label: "Spanish (MX)",
+    },
+    {
+      id: "ru-RU",
+      label: "Russian (RU)",
+    },
+  ];
 
   return (
     <div className={classes.SettingsPanel}>
-      <h4>{t("settings.uiSettings")}</h4>
+      {isMobile && (
+        <h2 className={classes.SettingsPanelTitle}>{t("settings.title")}</h2>
+      )}
       <div className={classes.SettingsContent}>
-        <Switch
-          label={t("settings.usePlayerNames")}
-          onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-            setShowNames(event.currentTarget.checked);
-          }}
-          checked={showNames}
-        />
-        <hr />
-        {t("settings.language")}:{" "}
-        <RadioButton
-          label="English (US)"
-          name="appLanguage"
-          id="en-US"
-          value="en-US"
-          onChange={handleSwitchLanguage}
-          checked={language === "en-US"}
-        ></RadioButton>
-        <RadioButton
-          label="Spanish (MX)"
-          name="appLanguage"
-          id="es-MX"
-          value="en-US"
-          onChange={handleSwitchLanguage}
-          checked={language === "es-MX"}
-        ></RadioButton>
-        <RadioButton
-          label="Russian (RU)"
-          name="appLanguage"
-          id="es-MX"
-          value="en-US"
-          onChange={handleSwitchLanguage}
-          checked={language === "es-MX"}
-        ></RadioButton>
+        <div className={classes.SettingsPane}>
+          <Switch
+            label={t("settings.usePlayerNames")}
+            onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+              setShowNames(event.currentTarget.checked);
+            }}
+            checked={showNames}
+          />
+        </div>
+
+        <div className={classes.SettingsPane}>
+          <h4>{t("settings.language")}</h4>
+          {languages.map((option, index) => (
+            <RadioButton
+              key={index}
+              label={option.label}
+              name="appLanguage"
+              id={option.id}
+              value={option.id}
+              onChange={handleSwitchLanguage}
+              checked={language === option.id}
+            />
+          ))}
+        </div>
       </div>
     </div>
   );

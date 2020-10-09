@@ -1,14 +1,17 @@
 import { ITheme } from "utils/types";
 import { createUseStyles } from "react-jss";
-import { hexToRGB } from "utils/colorConverter";
 
 export default createUseStyles((theme: ITheme) => ({
-  toggle: {
-    "-webkit-appearance": "none",
-    "-moz-appearance": "none",
+  Switch: {
+    display: "flex",
+    margin: "0.5rem 0",
+    alignItems: "center",
+  },
+  SwitchControl: {
     appearance: "none",
-    minWidth: "3rem",
-    height: "1.1rem",
+    width: "4rem",
+    height: "2rem",
+    lineHeight: "1.75rem",
     display: "inline-block",
     position: "relative",
     borderRadius: "2rem",
@@ -16,39 +19,40 @@ export default createUseStyles((theme: ITheme) => ({
     outline: "none",
     border: "none",
     cursor: "pointer",
-    backgroundColor: `rgba(${hexToRGB(theme.linkColor)}, 0.5)`,
-    transition: "background-color ease 0.3s",
-    margin: "0.5rem 0",
-    marginRight: "0.5rem",
+    backgroundColor: theme.borderColor,
+    transition: "background-color ease 0.2s",
+    marginRight: "1rem",
+    boxShadow: "inset 1px 1px 1px rgba(0,0,0,0.25)",
 
     "&:before": {
       content: '"on off"',
       display: "block",
       position: "absolute",
       zIndex: "2",
-      width: "1rem",
-      height: "1rem",
+      left: 0,
+      width: "1.75rem",
+      height: "1.75rem",
       background: theme.textColorAlt,
       borderRadius: "50%",
       textTransform: "uppercase",
       textIndent: "-1.6rem",
-      wordSpacing: "1.4rem",
+      wordSpacing: "2.4rem",
       color: theme.textColorAlt,
       fontSize: "0.75rem",
-      padding: "0.125rem 0",
+      margin: "0.125rem 0",
       whiteSpace: "nowrap",
-      boxShadow: "0 1px 2px rgba(0,0,0,0.2)",
+      boxShadow: "1px 1px 1px rgba(0,0,0,0.25)",
       transition: "all cubic-bezier(0.3, 1.5, 0.7, 1) 0.3s",
     },
     "&:checked": {
-      backgroundColor: theme.linkColor,
+      backgroundColor: theme.activeColor,
     },
     "&:checked:before": {
       left: "2rem",
     },
   },
-  toggleContainer: {
-    display: "flex",
-    margin: "0.5rem 0",
+  SwitchLabel: {
+    display: "inline-block",
+    padding: "0.5rem 0",
   },
 }));

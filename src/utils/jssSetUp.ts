@@ -27,6 +27,7 @@ export default function jssSetUp(theme: ITheme): SheetsRegistry {
           color: theme.textColor,
           fontFamily: STYLE_VARS.fontFamily,
           fontWeight: 400,
+          lineHeight: 1.5,
           fontSize: STYLE_VARS.baseFontSize,
           height: "100%",
         },

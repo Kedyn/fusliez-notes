@@ -93,6 +93,11 @@ export interface IView {
   minor: boolean;
 }
 
+export interface ILanguage {
+  label: string;
+  id: string;
+}
+
 export interface IScoresContext {
   innocentWins: number;
   innocentLosses: number;

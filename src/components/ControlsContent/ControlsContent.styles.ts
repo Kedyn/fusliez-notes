@@ -10,6 +10,13 @@ export default createUseStyles((theme: ITheme) => ({
     padding: "1rem",
     maxWidth: "22.5rem",
   },
+  ControlsContentHeader: {
+    display: "flex",
+    justifyContent: "space-between",
+    alignSelf: "stretch",
+    padding: "0.5rem 0.5rem 1rem",
+    borderBottom: `1px solid ${theme.borderColor}`,
+  },
   Divider: {
     width: "100%",
     border: 0,

@@ -13,9 +13,9 @@ export default function Switch(props: ISwitchProps): JSX.Element {
 
   return (
     <div>
-      <label className={classes.toggleContainer}>
-        <input className={classes.toggle} type="checkbox" {...other} />
-        {label}
+      <label className={classes.Switch}>
+        <input className={classes.SwitchControl} type="checkbox" {...other} />
+        <span className={classes.SwitchLabel}>{label}</span>
       </label>
     </div>
   );

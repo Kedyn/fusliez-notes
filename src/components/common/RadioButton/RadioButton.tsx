@@ -7,7 +7,7 @@ interface IRadioButtonProps {
   id?: string;
   name?: string;
   value?: string;
-  onChange?: (event: React.ChangeEvent) => void;
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 export default function RadioButton(props: IRadioButtonProps): JSX.Element {
@@ -38,7 +38,7 @@ export default function RadioButton(props: IRadioButtonProps): JSX.Element {
         <span className={classes.RadioControlBackdrop}></span>
         <span className={classes.RadioControlIcon}></span>
       </span>
-      <span>{label}</span>
+      <span className={classes.RadioLabel}>{label}</span>
     </label>
   );
 }

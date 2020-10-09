@@ -1,6 +1,5 @@
 import { ITheme } from "utils/types";
 import { createUseStyles } from "react-jss";
-import { hexToRGB, lightenDarkenColor } from "utils/colorConverter";
 
 export default createUseStyles((theme: ITheme) => ({
   ModalBackdrop: {
@@ -17,8 +16,8 @@ export default createUseStyles((theme: ITheme) => ({
   },
   Modal: {
     backgroundColor: theme.backgroundColor,
-    borderRadius: "2rem",
-    maxWidth: 1600,
+    borderRadius: "0.5rem",
+    width: "40rem",
     padding: "1rem 2rem",
   },
   ModalHeader: {

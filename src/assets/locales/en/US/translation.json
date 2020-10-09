@@ -24,8 +24,7 @@
     "resetRound": "Reset Round",
     "resetAll": "Reset All",
     "notes": "Notepad",
-    "resetNotes": "Reset Notepad",
-    "settings": "Open Settings"
+    "resetNotes": "Reset Notepad"
   },
   "maps": {
     "title": "Maps",
@@ -68,7 +67,7 @@
   "settings": {
     "title": "Settings",
     "uiSettings": "UI Settings",
-    "usePlayerNames": "Use player names",
+    "usePlayerNames": "Use player names for tiles",
     "language": "Language",
     "done": "Done",
     "close": "Close"
@@ -81,6 +80,7 @@
     "menu": "Menu",
     "settings": "Settings",
     "feedback": "Feedback",
-    "about": "About"
+    "about": "About",
+    "changelog": "Changelog"
   }
 }

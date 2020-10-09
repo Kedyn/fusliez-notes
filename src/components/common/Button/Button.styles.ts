@@ -9,7 +9,7 @@ export default createUseStyles((theme: ITheme) => ({
     cursor: "pointer",
     textAlign: "center",
     border: 0,
-    padding: ".375rem .75rem",
+    padding: ".5rem .75rem",
     fontFamily: STYLE_VARS.fontFamily,
     fontWeight: 600,
     borderRadius: "0.5rem",

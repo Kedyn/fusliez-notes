@@ -1,11 +1,16 @@
 import { createUseStyles } from "react-jss";
 import { ITheme } from "utils/types";
-import { STYLE_VARS } from "utils/styleVars";
-import { hexToRGB } from "utils/colorConverter";
 
 export default createUseStyles((theme: ITheme) => ({
   RadioButton: {
-    display: "block",
+    display: "flex",
+    alignItems: "center",
+    "& input:checked ~ $RadioControl $RadioControlBackdrop, & input:focus ~ $RadioControl $RadioControlBackdrop, & input:active ~ $RadioControl $RadioControlBackdrop": {
+      backgroundColor: theme.activeColor,
+    },
+    "& input:focus ~ $RadioControl $RadioControlBackdrop, & input:active ~ $RadioControl $RadioControlBackdrop": {
+      boxShadow: `0 0 1px 1px ${theme.activeColor}`,
+    },
     "& input:checked ~ $RadioControl $RadioControlIcon": {
       transform: "translate(-50%, -50%) scale(1)",
       backgroundColor: theme.textColor,
@@ -16,6 +21,7 @@ export default createUseStyles((theme: ITheme) => ({
     display: "inline-block",
     width: "1em",
     height: "1em",
+    marginRight: "1rem",
   },
   RadioControlBackdrop: {
     position: "absolute",
@@ -25,7 +31,8 @@ export default createUseStyles((theme: ITheme) => ({
     right: 0,
     bottom: 0,
     borderRadius: "50%",
-    backgroundColor: theme.backgroundColorAlt,
+    transition: "background-color 0.2s ease",
+    backgroundColor: theme.borderColor,
   },
   RadioControlIcon: {
     position: "absolute",
@@ -38,5 +45,9 @@ export default createUseStyles((theme: ITheme) => ({
     width: "0.5em",
     borderRadius: "50%",
     transition: "transform 0.2s ease",
+  },
+  RadioLabel: {
+    display: "inline-block",
+    padding: "0.5rem 0",
   },
 }));

@@ -1,12 +1,9 @@
-import Modal from "components/common/Modal";
 import React from "react";
+import useStyles from "./ChangelogPanel.styles";
+import { useMobile } from "context/MobileContextProvider";
 import { VERSION } from "utils/constants";
 
-export interface IVersionNotesProps {
-  show: boolean;
-  onClose: () => void;
-}
-
+// kedyn I suggest you put this content somewhere else. maybe involve a markdown converter
 const NOTES = [
   {
     title: "Highlights",
@@ -21,9 +18,8 @@ const NOTES = [
       <>No longer saves players positions or scores from session to session.</>,
       <>
         Added information on those of us who worked on this project by clicking
-        fuslie fam link,
-        <br />
-        bottom of the page, please give it a look. Show some love for all.
+        the fuslie fam link, at the bottom of the page, please give it a look.
+        Show some love for all.
       </>,
     ],
   },
@@ -33,8 +29,8 @@ const NOTES = [
       <>
         We can only test the mobile version so much on our side.
         <br />
-        If you found anything that doesn't work as well as you'd like, please
-        leave us a feedback!
+        If you found anything that doesn&apos;t work as well as you&apos;d like,
+        please leave us a feedback!
       </>,
       <>
         If you would like to see all the changes we have made please read our{" "}
@@ -47,15 +43,17 @@ const NOTES = [
   },
 ];
 
-export default function VersionNotes(props: IVersionNotesProps): JSX.Element {
-  const { show, onClose } = props;
+export default function ChangelogPanel(): JSX.Element {
+  const { isMobile } = useMobile()!; // eslint-disable-line
+  const classes = useStyles({ isMobile });
 
   return (
-    <Modal
-      title={`fusliez notes v${VERSION} notes`}
-      show={show}
-      onClose={onClose}
-    >
+    <div className={classes.ChangelogPanel}>
+      {isMobile && (
+        <h2
+          className={classes.ChangelogPanelTitle}
+        >{`fusliez notes v${VERSION} notes`}</h2>
+      )}
       {NOTES.map(({ title, items }, index) => (
         <div key={index}>
           <h3>{title}</h3>
@@ -66,6 +64,6 @@ export default function VersionNotes(props: IVersionNotesProps): JSX.Element {
           </ul>
         </div>
       ))}
-    </Modal>
+    </div>
   );
 }

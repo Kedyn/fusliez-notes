@@ -1,4 +1,4 @@
-import AboutContent from "components/About/AboutContent";
+import AboutContent from "components/About/AboutPanel";
 import FeedbackContent from "components/Feedback/FeedbackContent";
 import { IView } from "utils/types";
 import MainContent from "components/MainContent";
@@ -13,6 +13,7 @@ import Navbar from "components/Navbar";
 import { useMobile } from "context/MobileContextProvider";
 import useStyles from "./MobileLayout.styles";
 import { useTranslation } from "react-i18next";
+import ChangelogPanel from "components/Changelog/ChangelogPanel";
 
 export default function MobileLayout(): JSX.Element {
   const { t } = useTranslation();
@@ -55,11 +56,11 @@ export default function MobileLayout(): JSX.Element {
       content: <AboutContent />,
       minor: true,
     },
-    // {
-    //   title: t("menu.changelog"),
-    //   content: <ChangelogContent />,
-    //   minor: true,
-    // },
+    {
+      title: t("menu.changelog"),
+      content: <ChangelogPanel />,
+      minor: true,
+    },
     {
       title: t("menu.feedback"),
       content: <FeedbackContent />,

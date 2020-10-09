@@ -17,7 +17,7 @@ export const STYLE_VARS: IStyleVars = {
   dangerColor: "#8B0000",
   dangerColorHover: "#be0000",
 
-  activeColor: "#506167",
+  activeColor: "#667c84",
 
   borderColor: "#36383a",
 

@@ -1,4 +1,3 @@
-import Button from "../Button";
 import Modal from "../Modal";
 import React from "react";
 import SettingsPanel from "./SettingsPanel";
@@ -14,12 +13,7 @@ export default function Settings(props: ISettingsProps): JSX.Element {
   const { t } = useTranslation();
 
   return (
-    <Modal
-      show={show}
-      onClose={onClose}
-      title={t("settings.title")}
-      footer={<Button onClick={() => onClose()}>{t("settings.close")}</Button>}
-    >
+    <Modal show={show} onClose={onClose} title={t("settings.title")}>
       <SettingsPanel />
     </Modal>
   );

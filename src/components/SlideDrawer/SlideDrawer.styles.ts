@@ -84,11 +84,12 @@ export default createUseStyles((theme: ITheme) => ({
   minorItem: {
     fontSize: "1rem",
     opacity: 0.7,
+    padding: "0.25rem 0",
   },
   SlideDrawerEmote: {
     width: "4rem",
     height: "auto",
     alignSelf: "flex-start",
-    marginBottom: "2rem",
+    marginBottom: "1rem",
   },
 }));
