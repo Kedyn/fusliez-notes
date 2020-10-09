@@ -14,7 +14,7 @@ export default createUseStyles({
     overflowY: "scroll",
     paddingBottom: "1rem",
   },
-  MobileScoresContent: (props) => ({
+  MobileScoresContent: {
     alignSelf: "center",
     alignItems: "center",
     display: "flex",
@@ -23,5 +23,5 @@ export default createUseStyles({
     margin: "1rem",
     padding: 0,
     width: "auto",
-  }),
+  },
 });

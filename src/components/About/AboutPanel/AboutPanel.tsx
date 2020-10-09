@@ -16,37 +16,79 @@ export default function AboutPanel(): JSX.Element {
       )}
       <h3>fusliez notes v{VERSION}</h3>
       <p>
-        <a href="https://www.twitch.tv/fuslie">fuslie</a>
+        <a
+          href="https://www.twitch.tv/fuslie"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          fuslie
+        </a>
         <br />
         Inspired this project
       </p>
       <p>
-        <a href="https://github.com/Kedyn">Kedyn Macedonio</a>
+        <a
+          href="https://github.com/Kedyn"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Kedyn Macedonio
+        </a>
         <br />
         Developer / Creator / Project Maintainer / Spanish (MX) Translations
       </p>
       <p>
-        <a href="https://github.com/francistse23">Francis Tse</a>
+        <a
+          href="https://github.com/francistse23"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Francis Tse
+        </a>
         <br />
         Developer / Project Maintainer
       </p>
       <p>
-        <a href="https://github.com/kevinydhan">Kevin Han</a>
+        <a
+          href="https://github.com/kevinydhan"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Kevin Han
+        </a>
         <br />
         UI Design
       </p>
       <p>
-        <a href="https://github.com/chilblane">Daniel Singer</a>
+        <a
+          href="https://github.com/chilblane"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Daniel Singer
+        </a>
         <br />
-        UI / Project Contributor
+        UX/UI Developer + Product Direction
       </p>
       <p>
-        <a href="https://github.com/Viou">Griffin Suparto</a>
+        <a
+          href="https://github.com/Viou"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Griffin Suparto
+        </a>
         <br />
         Developer / Project Contributor
       </p>
       <p>
-        <a href="https://github.com/Kinishina">Kinishina</a>
+        <a
+          href="https://github.com/Kinishina"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Kinishina
+        </a>
         <br />
         Russian (RU) Translations
       </p>
@@ -66,7 +108,14 @@ export default function AboutPanel(): JSX.Element {
         this.
       </p>
       <p className={classes.Outro}>
-        - <a href="https://github.com/Kedyn">Kedyn Macedonio</a>
+        -{" "}
+        <a
+          href="https://github.com/Kedyn"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Kedyn Macedonio
+        </a>
       </p>
     </div>
   );

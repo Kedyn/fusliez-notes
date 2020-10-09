@@ -1,5 +1,4 @@
 import AboutContent from "components/About/AboutPanel";
-import FeedbackContent from "components/Feedback/FeedbackContent";
 import { IView } from "utils/types";
 import MainContent from "components/MainContent";
 import MapsPanel from "components/MapsPanel";
@@ -59,11 +58,6 @@ export default function MobileLayout(): JSX.Element {
     {
       title: t("menu.changelog"),
       content: <ChangelogPanel />,
-      minor: true,
-    },
-    {
-      title: t("menu.feedback"),
-      content: <FeedbackContent />,
       minor: true,
     },
   ];
