@@ -1,4 +1,4 @@
-import Modal from "../Modal";
+import Modal from "components/common/Modal";
 import React from "react";
 import SettingsPanel from "./SettingsPanel";
 import { useTranslation } from "react-i18next";

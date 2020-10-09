@@ -1,4 +1,4 @@
-import ColorsMenu from "../ColorsMenu";
+import ColorsMenu from "components/ColorsMenu";
 import { IPlayer } from "utils/types";
 import React from "react";
 import { useMobile } from "context/MobileContextProvider";

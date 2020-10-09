@@ -1,7 +1,7 @@
 import Button from "components/common/Button";
 import { ITheme } from "utils/types";
 import React from "react";
-import WinsLossesButton from "../WinsLossesButton";
+import WinsLossesButton from "./WinsLossesButton";
 import { useMobile } from "context/MobileContextProvider";
 import { usePlayers } from "context/PlayersContextProvider";
 import { useScores } from "context/ScoresContextProvider";

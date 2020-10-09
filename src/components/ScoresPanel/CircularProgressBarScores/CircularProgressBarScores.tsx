@@ -1,4 +1,4 @@
-import CircularProgressBar from "components/common/CircularProgressBar";
+import CircularProgressBar from "./CircularProgressBar";
 import { ITheme } from "utils/types";
 import React from "react";
 import cx from "classnames";

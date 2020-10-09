@@ -1,6 +1,6 @@
 import Button from "components/common/Button";
 import React from "react";
-import Score from "components/common/Score";
+import Score from "components/ScoreControls/Score";
 import useStyles from "./WinsLossesButton.styles";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMinus, faPlus } from "@fortawesome/free-solid-svg-icons";

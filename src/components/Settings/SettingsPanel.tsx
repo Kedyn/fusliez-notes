@@ -1,5 +1,5 @@
 import React from "react";
-import Switch from "../Switch";
+import Switch from "components/common/Switch";
 import i18next from "i18next";
 import { useMobile } from "context/MobileContextProvider";
 import { useSettings } from "context/SettingsContextProvider";

@@ -6,7 +6,7 @@ import NotesPanel from "components/NotesPanel";
 import React from "react";
 import ScoresPanel from "components/ScoresPanel";
 import ScoreControls from "components/ScoreControls";
-import SettingsPanel from "components/common/Settings/SettingsPanel";
+import SettingsPanel from "components/Settings/SettingsPanel";
 import SlideDrawer from "components/SlideDrawer";
 import Navbar from "components/Navbar";
 import { useMobile } from "context/MobileContextProvider";
