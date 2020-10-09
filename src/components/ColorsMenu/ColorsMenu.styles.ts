@@ -13,6 +13,7 @@ export const useColorSwatchStyles = createUseStyles({
   },
   ColorMenuSwatch: (props) => ({
     display: "block",
+    width: "100%",
     height: "2rem",
     borderRadius: "0.25rem",
     padding: 0,
