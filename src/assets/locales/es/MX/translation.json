@@ -24,8 +24,7 @@
     "resetRound": "Reiniciar Ronda",
     "resetAll": "Reiniciar Todo",
     "notes": "Notas",
-    "resetNotes": "Reiniciar Notas",
-    "settings": "Ajustes"
+    "resetNotes": "Reiniciar Notas"
   },
   "maps": {
     "title": "Maps",
@@ -81,6 +80,7 @@
     "menu": "Menu",
     "settings": "Ajustes",
     "feedback": "Retroalimentacion",
-    "about": "Informacion"
+    "about": "Informacion",
+    "changelog": "Changelog"
   }
 }

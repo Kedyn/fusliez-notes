@@ -24,8 +24,7 @@
     "resetRound": "Сбросить раунд",
     "resetAll": "Сбросить все",
     "notes": "Записки",
-    "resetNotes": "Сбросить записки",
-    "settings": "Настройки"
+    "resetNotes": "Сбросить записки"
   },
   "maps": {
     "title": "Maps",
@@ -81,6 +80,7 @@
     "menu": "Menu",
     "settings": "Settings",
     "feedback": "Feedback",
-    "about": "About"
+    "about": "About",
+    "changelog": "Changelog"
   }
 }

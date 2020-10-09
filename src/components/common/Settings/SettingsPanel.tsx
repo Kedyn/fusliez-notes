@@ -44,6 +44,10 @@ export default function SettingsPanel(): JSX.Element {
       label: "Spanish (MX)",
     },
     {
+      id: "pt-BR",
+      label: "Portuguese (BR)",
+    },
+    {
       id: "ru-RU",
       label: "Russian (RU)",
     },

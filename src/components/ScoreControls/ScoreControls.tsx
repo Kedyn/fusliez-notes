@@ -8,6 +8,7 @@ import { useScores } from "context/ScoresContextProvider";
 import useStyles from "./ScoreControls.styles";
 import { useTheme } from "react-jss";
 import { useTranslation } from "react-i18next";
+import { DEFAULT_PLAYERS } from "utils/constants";
 
 export default function ScoreControls(): JSX.Element {
   const { t } = useTranslation();
@@ -26,13 +27,23 @@ export default function ScoreControls(): JSX.Element {
     resetScores,
   } = useScores()!; // eslint-disable-line
   const { isMobile } = useMobile()!; // eslint-disable-line
-  const { resetPlayersPositions } = usePlayers()!; // eslint-disable-line
+  const {
+    setInnocentPlayers,
+    setSusPlayers,
+    setDeadPlayers,
+    setUnknownPlayers,
+
+    resetPlayersPositions,
+  } = usePlayers()!; // eslint-disable-line
 
   const classes = useStyles({ isMobile });
 
   const resetAll = () => {
     resetScores();
-    resetPlayersPositions();
+    setInnocentPlayers([]);
+    setSusPlayers([]);
+    setDeadPlayers([]);
+    setUnknownPlayers(DEFAULT_PLAYERS.unknownPlayers);
   };
 
   return (

@@ -9,7 +9,6 @@ const NOTES = [
     title: "Highlights",
     items: [
       <>Added Spanish, Russian, Portuguese languages (check settings).</>,
-      <>Added support to change all theme colors, not players.</>,
       <>Added support for mobile devices in portrait and landscape.</>,
       <>
         Changed win rate presentation to circular, which can be switched on

@@ -17,8 +17,16 @@ export default createUseStyles((theme: ITheme) => ({
   Modal: {
     backgroundColor: theme.backgroundColor,
     borderRadius: "0.5rem",
+    display: "flex",
     width: "40rem",
+    maxHeight: "90%",
     padding: "1rem 2rem",
+  },
+  ModalContent: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "stretch",
+    width: "100%",
   },
   ModalHeader: {
     display: "flex",
@@ -42,6 +50,7 @@ export default createUseStyles((theme: ITheme) => ({
   },
   ModalBody: {
     padding: "1rem 0",
+    overflowY: "auto",
   },
   ModalFooter: {
     borderTop: `1px solid ${theme.borderColor}`,

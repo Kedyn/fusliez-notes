@@ -25,14 +25,16 @@ export default function Modal(props: IModalProps): JSX.Element {
             event.stopPropagation()
           }
         >
-          <div className={classes.ModalHeader}>
-            <h2 className={classes.ModalTitle}>{title}</h2>
-            <CloseButton onClick={() => onClose()} />
+          <div className={classes.ModalContent}>
+            <div className={classes.ModalHeader}>
+              <h2 className={classes.ModalTitle}>{title}</h2>
+              <CloseButton onClick={() => onClose()} />
+            </div>
+            <div className={classes.ModalBody}>{children}</div>
+            {footer !== undefined && (
+              <div className={classes.ModalFooter}>{footer}</div>
+            )}
           </div>
-          <div className={classes.ModalBody}>{children}</div>
-          {footer !== undefined && (
-            <div className={classes.ModalFooter}>{footer}</div>
-          )}
         </div>
       </div>
     );

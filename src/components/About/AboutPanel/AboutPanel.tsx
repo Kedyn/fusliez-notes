@@ -83,6 +83,17 @@ export default function AboutPanel(): JSX.Element {
       </p>
       <p>
         <a
+          href="https://github.com/danilolmoura"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Danilo Moura
+        </a>
+        <br />
+        Portuguese (BR) Translations
+      </p>
+      <p>
+        <a
           href="https://github.com/Kinishina"
           target="_blank"
           rel="noopener noreferrer"
