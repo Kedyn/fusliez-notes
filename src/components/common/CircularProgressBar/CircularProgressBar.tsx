@@ -1,9 +1,6 @@
 import "react-circular-progressbar/dist/styles.css";
 
-import {
-  CircularProgressbarWithChildren,
-  buildStyles,
-} from "react-circular-progressbar";
+import { CircularProgressbarWithChildren } from "react-circular-progressbar";
 
 import React from "react";
 import { useMobile } from "context/MobileContextProvider";
@@ -31,7 +28,7 @@ export default function CircularProgressBar(
   });
 
   function buildTrailColor(color: string): string {
-    return `rgba(${hexToRGB(color)}, 0.5)`;
+    return `rgba(${hexToRGB(color)}, 0.3)`;
   }
 
   return (

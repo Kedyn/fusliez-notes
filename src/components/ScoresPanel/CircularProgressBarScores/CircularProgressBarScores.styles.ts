@@ -1,5 +1,6 @@
 import { createUseStyles } from "react-jss";
 import { ITheme } from "utils/types";
+import { lightenDarkenColor } from "utils/colorConverter";
 
 export default createUseStyles((theme: ITheme) => ({
   ProgressBar: {
@@ -19,10 +20,10 @@ export default createUseStyles((theme: ITheme) => ({
     fontSize: "1.25rem",
   },
   ProgressBarTitleImpostor: {
-    color: theme.imposterColor,
+    color: lightenDarkenColor(theme.imposterColor, 80),
   },
   ProgressBarTitleCrewmate: {
-    color: theme.crewmateColor,
+    color: lightenDarkenColor(theme.crewmateColor, 30),
   },
   CirclePrimary: {
     width: "6rem",
