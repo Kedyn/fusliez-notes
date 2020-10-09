@@ -1,7 +1,7 @@
 {
   "main": {
     "overall": "General",
-    "innocent": "Tripulante",
+    "crewmate": "Tripulante",
     "impostor": "Impostor",
     "w": "G",
     "l": "P",
@@ -18,7 +18,7 @@
   "controls": {
     "wins": "Victorias",
     "losses": "Perdidas",
-    "innocent": "Tripulante",
+    "crewmate": "Tripulante",
     "impostor": "Impostor",
     "resetScores": "Reiniciar Puntaje",
     "resetRound": "Reiniciar Ronda",

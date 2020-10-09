@@ -10,9 +10,9 @@ export interface ICircularProgressBarScoresProps {
   overallRate: number;
   overallWins: number;
   overallLosses: number;
-  innocentRate: number;
-  innocentWins: number;
-  innocentLosses: number;
+  crewmateRate: number;
+  crewmateWins: number;
+  crewmateLosses: number;
   impostorRate: number;
   impostorWins: number;
   impostorLosses: number;
@@ -30,9 +30,9 @@ export default function CircularProgressBarScores(
     overallRate,
     overallWins,
     overallLosses,
-    innocentRate,
-    innocentWins,
-    innocentLosses,
+    crewmateRate,
+    crewmateWins,
+    crewmateLosses,
     impostorRate,
     impostorWins,
     impostorLosses,
@@ -44,24 +44,24 @@ export default function CircularProgressBarScores(
         <span
           className={cx(
             classes.ProgressBarTitle,
-            classes.ProgressBarTitleInnocent
+            classes.ProgressBarTitleCrewmate
           )}
         >
-          {t("main.innocent")}
+          {t("main.crewmate")}
         </span>
 
         <div className={classes.CircleSecondary}>
           <CircularProgressBar
-            progress={innocentRate}
-            color={theme.innocentColor}
+            progress={crewmateRate}
+            color={theme.crewmateColor}
             className={classes.progress}
           >
             <span
               className={classes.CirclePercentage}
-            >{`${innocentRate}%`}</span>
-            <span className={classes.CircleScores}>{`${innocentWins}${t(
+            >{`${crewmateRate}%`}</span>
+            <span className={classes.CircleScores}>{`${crewmateWins}${t(
               "main.w"
-            )}-${innocentLosses}${t("main.l")}`}</span>
+            )}-${crewmateLosses}${t("main.l")}`}</span>
           </CircularProgressBar>
         </div>
       </div>

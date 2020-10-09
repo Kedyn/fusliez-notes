@@ -21,8 +21,8 @@ export const DEFAULT_THEME_DATA: ITheme = {
 
   neutralColor: STYLE_VARS.neutralColor,
 
-  innocentColor: STYLE_VARS.crewmateColor,
-  innocentColorHover: STYLE_VARS.crewmateColorAlt,
+  crewmateColor: STYLE_VARS.crewmateColor,
+  crewmateColorHover: STYLE_VARS.crewmateColorAlt,
 
   imposterColor: STYLE_VARS.imposterColor,
   imposterColorHover: STYLE_VARS.imposterColorAlt,

@@ -1,7 +1,7 @@
 {
   "main": {
     "overall": "Общий",
-    "innocent": "Член экипажа",
+    "crewmate": "Член экипажа",
     "impostor": "Предатель",
     "w": "В",
     "l": "П",
@@ -18,7 +18,7 @@
   "controls": {
     "wins": "Выигрышей",
     "losses": "Поражений",
-    "innocent": "Член экипажа",
+    "crewmate": "Член экипажа",
     "impostor": "Предатель",
     "resetScores": "Сбросить счет",
     "resetRound": "Сбросить раунд",

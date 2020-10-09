@@ -21,8 +21,8 @@ export default createUseStyles((theme: ITheme) => ({
   ProgressBarTitleImpostor: {
     color: theme.imposterColor,
   },
-  ProgressBarTitleInnocent: {
-    color: theme.innocentColor,
+  ProgressBarTitleCrewmate: {
+    color: theme.crewmateColor,
   },
   CirclePrimary: {
     width: "6rem",

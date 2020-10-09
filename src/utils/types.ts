@@ -65,8 +65,8 @@ export interface ITheme {
 
   neutralColor: string;
 
-  innocentColor: string;
-  innocentColorHover: string;
+  crewmateColor: string;
+  crewmateColorHover: string;
 
   imposterColor: string;
   imposterColorHover: string;
@@ -99,13 +99,13 @@ export interface ILanguage {
 }
 
 export interface IScoresContext {
-  innocentWins: number;
-  innocentLosses: number;
+  crewmateWins: number;
+  crewmateLosses: number;
   impostorWins: number;
   impostorLosses: number;
 
-  setInnocentWins: (value: number) => void;
-  setInnocentLosses: (value: number) => void;
+  setCrewmateWins: (value: number) => void;
+  setCrewmateLosses: (value: number) => void;
   setImpostorWins: (value: number) => void;
   setImpostorLosses: (value: number) => void;
 

@@ -13,15 +13,15 @@ export default function ScoreControls(): JSX.Element {
   const { t } = useTranslation();
   const theme = useTheme<ITheme>();
   const {
-    innocentWins,
-    innocentLosses,
+    crewmateWins,
+    crewmateLosses,
     impostorWins,
     impostorLosses,
 
     setImpostorWins,
     setImpostorLosses,
-    setInnocentWins,
-    setInnocentLosses,
+    setCrewmateWins,
+    setCrewmateLosses,
 
     resetScores,
   } = useScores()!; // eslint-disable-line
@@ -41,7 +41,7 @@ export default function ScoreControls(): JSX.Element {
         <div className={classes.ScoreButtonsColumn}>
           <h4 className={classes.ScoreButtonsLabel}>&nbsp;</h4>
           <h4 className={classes.ScoreButtonsLabel}>
-            {t("controls.innocent")}
+            {t("controls.crewmate")}
           </h4>
           <h4 className={classes.ScoreButtonsLabel}>
             {t("controls.impostor")}
@@ -51,14 +51,14 @@ export default function ScoreControls(): JSX.Element {
         <div className={classes.ScoreButtonsColumn}>
           <h4 className={classes.ScoreButtonsHeader}>{t("controls.wins")}</h4>
           <WinsLossesButton
-            buttonBackgroundColor={theme.innocentColor}
-            buttonBackgroundColorHover={theme.innocentColorHover}
+            buttonBackgroundColor={theme.crewmateColor}
+            buttonBackgroundColorHover={theme.crewmateColorHover}
             decrement={() =>
-              setInnocentWins(innocentWins ? innocentWins - 1 : 0)
+              setCrewmateWins(crewmateWins ? crewmateWins - 1 : 0)
             }
-            increment={() => setInnocentWins(innocentWins + 1)}
-            score={innocentWins}
-            setScore={(value: number) => setInnocentWins(value)}
+            increment={() => setCrewmateWins(crewmateWins + 1)}
+            score={crewmateWins}
+            setScore={(value: number) => setCrewmateWins(value)}
           />
           <WinsLossesButton
             buttonBackgroundColor={theme.imposterColor}
@@ -75,14 +75,14 @@ export default function ScoreControls(): JSX.Element {
         <div className={classes.ScoreButtonsColumn}>
           <h4 className={classes.ScoreButtonsHeader}>{t("controls.losses")}</h4>
           <WinsLossesButton
-            buttonBackgroundColor={theme.innocentColor}
-            buttonBackgroundColorHover={theme.innocentColorHover}
+            buttonBackgroundColor={theme.crewmateColor}
+            buttonBackgroundColorHover={theme.crewmateColorHover}
             decrement={() =>
-              setInnocentLosses(innocentLosses ? innocentLosses - 1 : 0)
+              setCrewmateLosses(crewmateLosses ? crewmateLosses - 1 : 0)
             }
-            increment={() => setInnocentLosses(innocentLosses + 1)}
-            score={innocentLosses}
-            setScore={(value: number) => setInnocentLosses(value)}
+            increment={() => setCrewmateLosses(crewmateLosses + 1)}
+            score={crewmateLosses}
+            setScore={(value: number) => setCrewmateLosses(value)}
           />
           <WinsLossesButton
             buttonBackgroundColor={theme.imposterColor}

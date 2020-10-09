@@ -5,8 +5,8 @@ import useStyles from "./ScoresPanel.styles";
 
 export default function ScoresPanels(): JSX.Element {
   const {
-    innocentWins,
-    innocentLosses,
+    crewmateWins,
+    crewmateLosses,
     impostorWins,
     impostorLosses,
   } = useScores()!; // eslint-disable-line
@@ -17,12 +17,12 @@ export default function ScoresPanels(): JSX.Element {
     return games > 0 ? Math.floor((wins / games) * 100) : 100;
   };
 
-  const overallWins = innocentWins + impostorWins;
-  const overallLosses = innocentLosses + impostorLosses;
+  const overallWins = crewmateWins + impostorWins;
+  const overallLosses = crewmateLosses + impostorLosses;
   const overallGames = overallWins + overallLosses;
   const overallRate = getRate(overallWins, overallGames);
-  const innocentGames = innocentWins + innocentLosses;
-  const innocentRate = getRate(innocentWins, innocentGames);
+  const crewmateGames = crewmateWins + crewmateLosses;
+  const crewmateRate = getRate(crewmateWins, crewmateGames);
   const impostorGames = impostorWins + impostorLosses;
   const impostorRate = getRate(impostorWins, impostorGames);
 
@@ -33,9 +33,9 @@ export default function ScoresPanels(): JSX.Element {
           overallRate,
           overallWins,
           overallLosses,
-          innocentRate,
-          innocentWins,
-          innocentLosses,
+          crewmateRate,
+          crewmateWins,
+          crewmateLosses,
           impostorRate,
           impostorWins,
           impostorLosses,

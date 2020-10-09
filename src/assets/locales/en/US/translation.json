@@ -1,7 +1,7 @@
 {
   "main": {
     "overall": "Overall",
-    "innocent": "Crewmate",
+    "crewmate": "Crewmate",
     "impostor": "Impostor",
     "w": "W",
     "l": "L",
@@ -18,7 +18,7 @@
   "controls": {
     "wins": "Wins",
     "losses": "Losses",
-    "innocent": "Crewmate",
+    "crewmate": "Crewmate",
     "impostor": "Impostor",
     "resetScores": "Reset Scores",
     "resetRound": "Reset Round",
