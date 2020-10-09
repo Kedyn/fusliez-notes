@@ -44,6 +44,7 @@ Kermitigated (twitch handle)
 [Kinishina](https://github.com/Kinishina)  
 [Federico Gaston Ramadan](https://github.com/federamadan)  
 [Danilo Moura](https://github.com/danilolmoura) (A.K.A. Eudan)
+[Fabian9799](https://github.com/fabian9799)  
 
 Please if you would not like to be mentioned here or your information is wrong
 let me know so I can remove it or fix it, thank you!
