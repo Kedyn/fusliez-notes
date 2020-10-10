@@ -1,18 +1,20 @@
+import { NAMESPACE, VERSION } from "utils/constants";
+
 import AboutContent from "components/About/AboutPanel";
+import ChangelogPanel from "components/Changelog/ChangelogPanel";
 import { IView } from "utils/types";
 import MainContent from "components/MainContent";
 import MapsPanel from "components/MapsPanel";
+import Navbar from "components/Navbar";
 import NotesPanel from "components/NotesPanel";
 import React from "react";
-import ScoresPanel from "components/ScoresPanel";
 import ScoreControls from "components/ScoreControls";
+import ScoresPanel from "components/ScoresPanel";
 import SettingsPanel from "components/Settings/SettingsPanel";
 import SlideDrawer from "components/SlideDrawer";
-import Navbar from "components/Navbar";
 import { useMobile } from "context/MobileContextProvider";
 import useStyles from "./MobileLayout.styles";
 import { useTranslation } from "react-i18next";
-import ChangelogPanel from "components/Changelog/ChangelogPanel";
 
 export default function MobileLayout(): JSX.Element {
   const { t } = useTranslation();
@@ -87,6 +89,16 @@ export default function MobileLayout(): JSX.Element {
 
     setActiveView(newActiveView);
   };
+
+  React.useEffect(() => {
+    const version = localStorage.getItem(`${NAMESPACE}version`);
+
+    if (version === null || version !== VERSION) {
+      setActiveView(views[6]);
+    }
+
+    localStorage.setItem(`${NAMESPACE}version`, VERSION);
+  }, []);
 
   return (
     <div className={classes.MobileLayout}>
