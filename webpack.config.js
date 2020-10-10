@@ -1,8 +1,5 @@
 const path = require("path");
-const CopyPlugin = require("copy-webpack-plugin");
-const JSONMinifyPlugin = require("node-json-minify");
-
-const isProduction = process.env.NODE_ENV === "production";
+const { CopyPlugin, HtmlWebpackPlugin } = require("./webpack.plugins");
 
 module.exports = {
   mode: process.env.NODE_ENV || "development",
@@ -43,26 +40,5 @@ module.exports = {
     extensions: [".js", ".jsx", ".ts", ".tsx", ".json"],
   },
 
-  plugins: [
-    new CopyPlugin({
-      patterns: [
-        {
-          from: "**/*.(jpe?g|png|gif|ico)",
-          to: "assets",
-          context: "src/assets",
-        },
-        {
-          from: "**/*.json",
-          to: "assets",
-          context: "src/assets",
-          transform: function (content) {
-            if (isProduction) {
-              return JSONMinifyPlugin(content.toString());
-            }
-            return content;
-          },
-        },
-      ],
-    }),
-  ],
+  plugins: [CopyPlugin, HtmlWebpackPlugin],
 };
