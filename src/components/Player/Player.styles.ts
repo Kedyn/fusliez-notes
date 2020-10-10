@@ -47,7 +47,7 @@ export default createUseStyles((theme: ITheme) => ({
     backgroundSize: "1.75rem auto",
     backgroundPosition: "center 0.25rem",
     "&:hover": {
-      cursor: props.showNames ? "pointer" : "grab",
+      cursor: props.isReadOnly ? "grab" : "pointer",
     },
   }),
   PlayerName: {
@@ -71,6 +71,10 @@ export default createUseStyles((theme: ITheme) => ({
     "&::placeholder": {
       color: theme.textColor,
       opacity: 0.5,
+    },
+
+    "&[readonly]": {
+      cursor: props.isReadOnly ? "grab" : "text",
     },
   }),
 }));

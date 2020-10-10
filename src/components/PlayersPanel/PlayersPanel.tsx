@@ -3,6 +3,7 @@ import React from "react";
 import PlayerSection from "components/PlayerSection";
 import { useMobile } from "context/MobileContextProvider";
 import { usePlayers } from "context/PlayersContextProvider";
+import { useLocking } from "context/LockingContextProvider";
 import useStyles from "./PlayersPanel.styles";
 import { useTranslation } from "react-i18next";
 import Button from "components/common/Button";
@@ -24,6 +25,12 @@ export default function PlayersPanel(): JSX.Element {
 
     resetPlayersPositions,
   } = usePlayers()!; // eslint-disable-line
+
+  const {
+    isLocked,
+
+    toggleLock,
+  } = useLocking()!;
 
   const { isMobile } = useMobile()!; // eslint-disable-line
 
@@ -74,6 +81,10 @@ export default function PlayersPanel(): JSX.Element {
           isMobile={isMobile}
         />
       ))}
+
+      <Button className={classes.PlayersPanelLock} onClick={() => toggleLock()}>
+        {isLocked ? t("controls.unlockPlayers") : t("controls.lockPlayers")}
+      </Button>
 
       {isMobile && (
         <Button

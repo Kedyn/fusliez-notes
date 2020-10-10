@@ -24,7 +24,9 @@
     "resetRound": "Reset Round",
     "resetAll": "Reset All",
     "notes": "Notepad",
-    "resetNotes": "Reset Notepad"
+    "resetNotes": "Reset Notepad",
+    "lockPlayers": "Lock Players",
+    "unlockPlayers": "Unlock Players"
   },
   "maps": {
     "title": "Maps",

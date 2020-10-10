@@ -3,6 +3,7 @@ import Player from "components/Player";
 import React from "react";
 import { ReactSortable } from "react-sortablejs";
 import { useSettings } from "context/SettingsContextProvider";
+import { useLocking } from "context/LockingContextProvider";
 import useStyles from "./PlayerSection.styles";
 
 export interface IPlayerSectionProps {
@@ -14,6 +15,7 @@ export interface IPlayerSectionProps {
 
 export default function PlayerSection(props: IPlayerSectionProps): JSX.Element {
   const { showNames } = useSettings()!; // eslint-disable-line
+  const { isLocked } = useLocking()!;
 
   const classes = useStyles({ showNames });
 
@@ -48,6 +50,7 @@ export default function PlayerSection(props: IPlayerSectionProps): JSX.Element {
               list={list}
               setList={setList}
               index={index}
+              isReadOnly={isLocked}
             />
           ))}
         </ReactSortable>

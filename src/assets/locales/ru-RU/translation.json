@@ -24,7 +24,9 @@
     "resetRound": "Сбросить раунд",
     "resetAll": "Сбросить все",
     "notes": "Записки",
-    "resetNotes": "Сбросить записки"
+    "resetNotes": "Сбросить записки",
+    "lockPlayers": "Lock Players",
+    "unlockPlayers": "Unlock Players"
   },
   "maps": {
     "title": "Maps",
