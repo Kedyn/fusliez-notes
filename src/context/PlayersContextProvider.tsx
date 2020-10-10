@@ -45,19 +45,15 @@ export default function PlayersContextProvider(
   };
 
   const resetPlayers = () => {
-    console.log(DEFAULT_PLAYERS.unknownPlayers);
-    setUnknownPlayers([...DEFAULT_PLAYERS.unknownPlayers]);
+    setUnknownPlayers(
+      DEFAULT_PLAYERS.unknownPlayers.map((player) => ({ ...player }))
+    );
 
     setInnocentPlayers([]);
     setSusPlayers([]);
     setEvilPlayers([]);
     setDeadPlayers([]);
   };
-
-  React.useEffect(() => {
-    console.log(unknownPlayers);
-    console.log(DEFAULT_PLAYERS.unknownPlayers);
-  }, [unknownPlayers]);
 
   return (
     <PlayersContext.Provider
