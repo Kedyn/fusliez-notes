@@ -1,39 +1,41 @@
 import { IPlayers, ISettings, ITheme } from "./types";
+import { STYLE_VARS } from "./styleVars";
 
-export const VERSION = "0.9.0";
+export const VERSION = "0.9.1";
 
 export const NAMESPACE = "fusliez-notes-";
 
 export const DEFAULT_SETTINGS: ISettings = {
-  names: true,
+  showNames: true,
   scoresStyle: "circles",
 };
 
 export const DEFAULT_THEME_DATA: ITheme = {
-  backgroundColor: "#202225",
-  textColor: "#ffffff",
+  backgroundColor: STYLE_VARS.backgroundColorPrimary,
+  backgroundColorAlt: STYLE_VARS.backgroundColorSecondary,
+  textColor: STYLE_VARS.textColorPrimary,
+  textColorAlt: STYLE_VARS.textColorSecondary,
 
-  inputBackgroundColor: "#f6edf6",
-  inputTextColor: "#202225",
+  inputBackgroundColor: STYLE_VARS.backgroundColorSecondary,
+  inputTextColor: STYLE_VARS.textColorPrimary,
 
-  neutralBackgroundColor: "#f0c5e2",
-  neutralTextColor: "#ee54bb",
+  neutralColor: STYLE_VARS.neutralColor,
 
-  innocentBackgroundColor: "#ccbed3",
-  innocentTextColor: "#905da9",
+  crewmateColor: STYLE_VARS.crewmateColor,
+  crewmateColorHover: STYLE_VARS.crewmateColorAlt,
 
-  impostorBackgroundColor: "#c9cfe7",
-  impostorTextColor: "#7289da",
+  imposterColor: STYLE_VARS.imposterColor,
+  imposterColorHover: STYLE_VARS.imposterColorAlt,
 
-  buttonBackgroundColor: "#6b2fbc",
-  buttonTextColor: "#ffffff",
+  borderColor: STYLE_VARS.borderColor,
 
-  buttonDangerBackgroundColor: "#8B0000",
-  buttonDangerTextColor: "#ffffff",
+  linkColor: STYLE_VARS.linkColor,
+  linkColorHover: STYLE_VARS.linkColorHover,
 
-  borderColor: "#36383a",
+  dangerColor: STYLE_VARS.dangerColor,
+  dangerColorHover: STYLE_VARS.dangerColorHover,
 
-  linkColor: "#ee54bb",
+  activeColor: STYLE_VARS.activeColor,
 };
 
 export const DEFAULT_PLAYERS: IPlayers = {
@@ -42,17 +44,17 @@ export const DEFAULT_PLAYERS: IPlayers = {
   evilPlayers: [],
   deadPlayers: [],
   unknownPlayers: [
-    { id: "orange", name: "", color: "orange" },
-    { id: "blue", name: "", color: "blue" },
-    { id: "brown", name: "", color: "brown" },
-    { id: "gray", name: "", color: "gray" },
-    { id: "green", name: "", color: "green" },
-    { id: "lightGreen", name: "", color: "lightGreen" },
-    { id: "pink", name: "", color: "pink" },
-    { id: "purple", name: "", color: "purple" },
-    { id: "red", name: "", color: "red" },
-    { id: "teal", name: "", color: "teal" },
-    { id: "white", name: "", color: "white" },
-    { id: "yellow", name: "", color: "yellow" },
+    { id: "Brown", playerName: "", color: "brown" },
+    { id: "Red", playerName: "", color: "red" },
+    { id: "Orange", playerName: "", color: "orange" },
+    { id: "Yellow", playerName: "", color: "yellow" },
+    { id: "Lime", playerName: "", color: "lime" },
+    { id: "Green", playerName: "", color: "green" },
+    { id: "Cyan", playerName: "", color: "cyan" },
+    { id: "Blue", playerName: "", color: "blue" },
+    { id: "Purple", playerName: "", color: "purple" },
+    { id: "Pink", playerName: "", color: "pink" },
+    { id: "White", playerName: "", color: "white" },
+    { id: "Black", playerName: "", color: "black" },
   ],
 };
