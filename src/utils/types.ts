@@ -134,4 +134,5 @@ export interface IPlayersContext {
   setUnknownPlayers: (value: Array<IPlayer>) => void;
 
   resetPlayersPositions: () => void;
+  resetPlayers: () => void;
 }
