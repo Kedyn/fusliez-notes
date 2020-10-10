@@ -14,21 +14,21 @@ export interface IPlayersContextProviderProps {
 export default function PlayersContextProvider(
   props: IPlayersContextProviderProps
 ): JSX.Element {
-  const [innocentPlayers, setInnocentPlayers] = React.useState<Array<IPlayer>>(
-    DEFAULT_PLAYERS.innocentPlayers
-  );
-  const [susPlayers, setSusPlayers] = React.useState<Array<IPlayer>>(
-    DEFAULT_PLAYERS.susPlayers
-  );
-  const [evilPlayers, setEvilPlayers] = React.useState<Array<IPlayer>>(
-    DEFAULT_PLAYERS.evilPlayers
-  );
-  const [deadPlayers, setDeadPlayers] = React.useState<Array<IPlayer>>(
-    DEFAULT_PLAYERS.deadPlayers
-  );
-  const [unknownPlayers, setUnknownPlayers] = React.useState<Array<IPlayer>>(
-    DEFAULT_PLAYERS.unknownPlayers
-  );
+  const [innocentPlayers, setInnocentPlayers] = React.useState<Array<IPlayer>>([
+    ...DEFAULT_PLAYERS.innocentPlayers,
+  ]);
+  const [susPlayers, setSusPlayers] = React.useState<Array<IPlayer>>([
+    ...DEFAULT_PLAYERS.susPlayers,
+  ]);
+  const [evilPlayers, setEvilPlayers] = React.useState<Array<IPlayer>>([
+    ...DEFAULT_PLAYERS.evilPlayers,
+  ]);
+  const [deadPlayers, setDeadPlayers] = React.useState<Array<IPlayer>>([
+    ...DEFAULT_PLAYERS.deadPlayers,
+  ]);
+  const [unknownPlayers, setUnknownPlayers] = React.useState<Array<IPlayer>>([
+    ...DEFAULT_PLAYERS.unknownPlayers,
+  ]);
 
   const resetPlayersPositions = () => {
     setUnknownPlayers([
@@ -43,6 +43,21 @@ export default function PlayersContextProvider(
     setEvilPlayers([]);
     setDeadPlayers([]);
   };
+
+  const resetPlayers = () => {
+    console.log(DEFAULT_PLAYERS.unknownPlayers);
+    setUnknownPlayers([...DEFAULT_PLAYERS.unknownPlayers]);
+
+    setInnocentPlayers([]);
+    setSusPlayers([]);
+    setEvilPlayers([]);
+    setDeadPlayers([]);
+  };
+
+  React.useEffect(() => {
+    console.log(unknownPlayers);
+    console.log(DEFAULT_PLAYERS.unknownPlayers);
+  }, [unknownPlayers]);
 
   return (
     <PlayersContext.Provider
@@ -60,6 +75,7 @@ export default function PlayersContextProvider(
         setUnknownPlayers,
 
         resetPlayersPositions,
+        resetPlayers,
       }}
     >
       {props.children}
