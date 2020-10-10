@@ -34,6 +34,8 @@ export default function Player(props: IPlayerProps): JSX.Element {
 
   const { id, color, playerName, list, setList, index } = props;
 
+  console.log(id);
+
   const handleChange = (
     player: number,
     event: React.ChangeEvent<HTMLInputElement>
@@ -64,7 +66,7 @@ export default function Player(props: IPlayerProps): JSX.Element {
           <ColorsMenu
             isMenuShowing={isMenuShowing}
             setIsMenuShowing={setIsMenuShowing}
-            currentColor={id}
+            currentColor={String(id)}
           />
         )}
         <div
