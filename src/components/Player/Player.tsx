@@ -1,11 +1,11 @@
 import ColorsMenu from "components/ColorsMenu";
 import { IPlayer } from "utils/types";
 import React from "react";
+import cx from "classnames";
 import { useMobile } from "context/MobileContextProvider";
 import usePlayerStyles from "./Player.styles";
 import { useSettings } from "context/SettingsContextProvider";
 import { useTranslation } from "react-i18next";
-import cx from "classnames";
 
 export interface IPlayerProps {
   id: string | number;
@@ -49,10 +49,12 @@ export default function Player(props: IPlayerProps): JSX.Element {
     if (event.key === "Enter") {
       const currentInput = (htmlElRef.current as unknown) as HTMLInputElement;
       const nextParent =
-        currentInput.parentElement?.parentElement?.nextElementSibling ??
         currentInput.parentElement?.parentElement?.parentElement
+          ?.nextElementSibling ??
+        currentInput.parentElement?.parentElement?.parentElement?.parentElement
           ?.firstElementChild;
-      const nextInput = nextParent?.lastChild?.firstChild as HTMLInputElement;
+      const nextInput = nextParent?.lastChild?.lastChild
+        ?.firstChild as HTMLInputElement;
       nextInput?.select();
     }
   };
