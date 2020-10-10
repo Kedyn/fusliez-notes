@@ -1,7 +1,7 @@
 {
   "main": {
     "overall": "Общий",
-    "innocent": "Член экипажа",
+    "crewmate": "Член экипажа",
     "impostor": "Предатель",
     "w": "В",
     "l": "П",
@@ -18,16 +18,16 @@
   "controls": {
     "wins": "Выигрышей",
     "losses": "Поражений",
-    "innocent": "Член экипажа",
+    "crewmate": "Член экипажа",
     "impostor": "Предатель",
     "resetScores": "Сбросить счет",
     "resetRound": "Сбросить раунд",
     "resetAll": "Сбросить все",
     "notes": "Записки",
-    "resetNotes": "Сбросить записки",
-    "settings": "Настройки"
+    "resetNotes": "Сбросить записки"
   },
   "maps": {
+    "title": "Maps",
     "vents": "Вентиляция",
     "commonTasks": "Общие задания",
     "wiringTasks": "Провода",
@@ -61,36 +61,14 @@
     "south": "4. Юг",
     "southwest": "5. Юго-запад",
     "northwest": "6. Северо-запад",
-    "resetPlayers": "Reset Players"
+    "dragInstructions": "Drag players on the map to track",
+    "resetPlayers": "Reset Positions"
   },
   "settings": {
     "title": "Настройки",
     "uiSettings": "UI Settings",
-    "scoresTypes": "Scores display type",
-    "bars": "Bars",
-    "circles": "Circles",
     "usePlayerNames": "Использовать имена игроков",
     "language": "Язык",
-    "themeSettings": "Theme Settings",
-    "themeClick": "Click a color to change it",
-    "resetColors": "Reset Colors",
-    "change": "Change",
-    "backgroundColor": "Background Color",
-    "textColor": "Text Color",
-    "inputBackgroundColor": "Input Background Color",
-    "inputTextColor": "Input Text Color",
-    "neutralBackgroundColor": "Neutral Background Color",
-    "neutralTextColor": "Neutral Text Color",
-    "innocentBackgroundColor": "Innocent Background Color",
-    "innocentTextColor": "Innocent Text Color",
-    "impostorBackgroundColor": "Impostor Background Color",
-    "impostorTextColor": "Impostor Text Color",
-    "buttonBackgroundColor": "Button Background Color",
-    "buttonTextColor": "Button Text Color",
-    "buttonDangerBackgroundColor": "Button Danger Background Color",
-    "buttonDangerTextColor": "Button Danger Text Color",
-    "borderColor": "Border Color",
-    "linkColor": "Link Color",
     "done": "Done",
     "close": "Закрыть"
   },
@@ -102,6 +80,7 @@
     "menu": "Menu",
     "settings": "Settings",
     "feedback": "Feedback",
-    "about": "About"
+    "about": "About",
+    "changelog": "Changelog"
   }
 }

@@ -1,8 +1,8 @@
-import Backdrop from "./Backdrop";
-import { BiLeftArrowCircle } from "react-icons/bi";
 import { IView } from "utils/types";
 import React from "react";
 import useStyles from "./SlideDrawer.styles";
+import cx from "classnames";
+import CloseButton from "components/common/CloseButton";
 
 export interface ISideDrawerProps {
   isDrawerOpen: boolean;
@@ -38,22 +38,37 @@ export default function SlideDrawer(
 
     setIsDrawerOpen(false);
   };
+  return (
+    <React.Fragment>
+      <div
+        className={cx(classes.Backdrop, {
+          [classes.isBackdropOpen]: isDrawerOpen,
+        })}
+      />
+      <div
+        className={cx(classes.SlideDrawer, {
+          [classes.isDrawerOpen]: isDrawerOpen,
+        })}
+        ref={ref}
+      >
+        <div className={classes.SlideDrawerContent}>
+          <div className={classes.SlideDrawerHeader}>
+            <div>
+              <h1>fusliez notes</h1>
+              <h2>(an Among Us companion app)</h2>
+            </div>
 
-  if (isDrawerOpen) {
-    return (
-      <React.Fragment>
-        <Backdrop />
-
-        <div className={`${classes.root} ${classes.drawerOpen}`} ref={ref}>
-          <div className={classes.back} onClick={() => setIsDrawerOpen(false)}>
-            <BiLeftArrowCircle />
+            <CloseButton onClick={() => setIsDrawerOpen(false)} />
           </div>
 
-          <ul className={classes.nav}>
+          <ul className={classes.SlideDrawerNav}>
             {views.map((view, index) => (
               <li
                 key={index}
-                className={classes.navItem}
+                className={cx({
+                  [classes.SlideDrawerNavItem]: true,
+                  [classes.minorItem]: view.minor,
+                })}
                 onClick={() => handleChangeActiveView(view)}
               >
                 {view.title}
@@ -61,9 +76,12 @@ export default function SlideDrawer(
             ))}
           </ul>
         </div>
-      </React.Fragment>
-    );
-  } else {
-    return null;
-  }
+        <img
+          className={classes.SlideDrawerEmote}
+          src="assets/images/amongNotes.gif"
+          alt="Among Us animated gif emote"
+        />
+      </div>
+    </React.Fragment>
+  );
 }

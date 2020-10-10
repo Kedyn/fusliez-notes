@@ -12,14 +12,14 @@ export interface ISettingsContextProps {
 export default function ScoresContextProvider(
   props: ISettingsContextProps
 ): JSX.Element {
-  const [innocentWins, setInnocentWins] = React.useState<number>(0);
-  const [innocentLosses, setInnocentLosses] = React.useState<number>(0);
+  const [crewmateWins, setCrewmateWins] = React.useState<number>(0);
+  const [crewmateLosses, setCrewmateLosses] = React.useState<number>(0);
   const [impostorWins, setImpostorWins] = React.useState<number>(0);
   const [impostorLosses, setImpostorLosses] = React.useState<number>(0);
 
   const resetScores = () => {
-    setInnocentWins(0);
-    setInnocentLosses(0);
+    setCrewmateWins(0);
+    setCrewmateLosses(0);
     setImpostorWins(0);
     setImpostorLosses(0);
   };
@@ -27,13 +27,13 @@ export default function ScoresContextProvider(
   return (
     <ScoresContext.Provider
       value={{
-        innocentWins,
-        innocentLosses,
+        crewmateWins,
+        crewmateLosses,
         impostorWins,
         impostorLosses,
 
-        setInnocentWins,
-        setInnocentLosses,
+        setCrewmateWins,
+        setCrewmateLosses,
         setImpostorWins,
         setImpostorLosses,
 

@@ -1,108 +1,85 @@
 import { ItemInterface } from "react-sortablejs";
 
 export interface IPlayer extends ItemInterface {
-  name: string;
+  playerName: string;
   color: string;
 }
 
 export interface ISettings {
-  names: boolean;
+  showNames: boolean;
   scoresStyle: string;
 }
 
 export interface ISettingsContext {
-  names: boolean;
-  scoresStyle: string;
+  showNames: boolean;
 
-  setNames: (value: boolean) => void;
-  setScoresStyle: (value: string) => void;
+  setShowNames: (value: boolean) => void;
+}
+
+export interface IStyleVars {
+  fontFamily: string;
+  baseFontSize: number;
+
+  textColorPrimary: string;
+  textColorSecondary: string;
+
+  backgroundColorPrimary: string;
+  backgroundColorSecondary: string;
+
+  linkColor: string;
+  linkColorHover: string;
+
+  dangerColor: string;
+  dangerColorHover: string;
+
+  activeColor: string;
+
+  borderColor: string;
+
+  crewmateColor: string;
+  crewmateColorAlt: string;
+
+  imposterColor: string;
+  imposterColorAlt: string;
+
+  neutralColor: string;
+}
+
+export interface IColorLibrary {
+  [key: string]: IColorEntry;
+}
+
+export interface IColorEntry {
+  base: string;
+  dark: string;
 }
 
 export interface ITheme {
   backgroundColor: string;
+  backgroundColorAlt: string;
   textColor: string;
+  textColorAlt: string;
 
   inputBackgroundColor: string;
   inputTextColor: string;
 
-  neutralBackgroundColor: string;
-  neutralTextColor: string;
+  neutralColor: string;
 
-  innocentBackgroundColor: string;
-  innocentTextColor: string;
+  crewmateColor: string;
+  crewmateColorHover: string;
 
-  impostorBackgroundColor: string;
-  impostorTextColor: string;
-
-  buttonBackgroundColor: string;
-  buttonTextColor: string;
-
-  buttonDangerBackgroundColor: string;
-  buttonDangerTextColor: string;
+  imposterColor: string;
+  imposterColorHover: string;
 
   borderColor: string;
 
   linkColor: string;
-}
+  linkColorHover: string;
 
-export interface IThemeContext {
-  backgroundColor: string;
-  textColor: string;
+  dangerColor: string;
+  dangerColorHover: string;
 
-  inputBackgroundColor: string;
-  inputTextColor: string;
-
-  neutralBackgroundColor: string;
-  neutralTextColor: string;
-
-  innocentBackgroundColor: string;
-  innocentTextColor: string;
-
-  impostorBackgroundColor: string;
-  impostorTextColor: string;
-
-  buttonBackgroundColor: string;
-  buttonTextColor: string;
-
-  buttonDangerBackgroundColor: string;
-  buttonDangerTextColor: string;
-
-  borderColor: string;
-
-  linkColor: string;
-
-  setBackgroundColor: (value: string) => void;
-  setTextColor: (value: string) => void;
-
-  setInputBackgroundColor: (value: string) => void;
-  setInputTextColor: (value: string) => void;
-
-  setNeutralBackgroundColor: (value: string) => void;
-  setNeutralTextColor: (value: string) => void;
-
-  setInnocentBackgroundColor: (value: string) => void;
-  setInnocentTextColor: (value: string) => void;
-
-  setImpostorBackgroundColor: (value: string) => void;
-  setImpostorTextColor: (value: string) => void;
-
-  setButtonBackgroundColor: (value: string) => void;
-  setButtonTextColor: (value: string) => void;
-
-  setButtonDangerBackgroundColor: (value: string) => void;
-  setButtonDangerTextColor: (value: string) => void;
-
-  setBorderColor: (value: string) => void;
-
-  setLinkColor: (value: string) => void;
-
-  resetColors: () => void;
-}
-
-export interface IColor {
-  name: string;
-  hex: string;
-  change: (value: string) => void;
+  activeColor: string;
 }
 
 export interface IMobileContext {
@@ -113,16 +90,22 @@ export interface IMobileContext {
 export interface IView {
   title: string;
   content: React.ReactNode;
+  minor: boolean;
+}
+
+export interface ILanguage {
+  label: string;
+  id: string;
 }
 
 export interface IScoresContext {
-  innocentWins: number;
-  innocentLosses: number;
+  crewmateWins: number;
+  crewmateLosses: number;
   impostorWins: number;
   impostorLosses: number;
 
-  setInnocentWins: (value: number) => void;
-  setInnocentLosses: (value: number) => void;
+  setCrewmateWins: (value: number) => void;
+  setCrewmateLosses: (value: number) => void;
   setImpostorWins: (value: number) => void;
   setImpostorLosses: (value: number) => void;
 

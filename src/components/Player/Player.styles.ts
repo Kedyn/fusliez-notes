@@ -1,82 +1,76 @@
 import { ITheme } from "utils/types";
-import colorNameToRGB from "utils/colorConverter";
+import { contrastColor, getColorValue, hexToRGB } from "utils/colorConverter";
 import { createUseStyles } from "react-jss";
+import { STYLE_VARS } from "utils/styleVars";
 
 export default createUseStyles((theme: ITheme) => ({
-  container: (props) => ({
+  Player: (props) => ({
+    flex: props.showNames ? "1 0 50%" : "0 0 2.5rem",
+    maxWidth: props.showNames ? "50%" : "none",
+  }),
+  PlayerTile: (props) => ({
     alignItems: "center",
     backgroundColor:
-      props.name || !props.names
-        ? `rgba(${props.backgroundColor}, 0.7)`
-        : "transparent",
-    border: `1px solid ${theme.borderColor}`,
+      props.playerName || !props.showNames
+        ? `rgb(${getColorValue(props.color, "dark")})`
+        : theme.backgroundColorAlt,
+    border: "1px solid",
+    borderColor:
+      props.playerName || !props.showNames
+        ? `rgb(${getColorValue(props.color, "base")})`
+        : theme.borderColor,
     borderRadius: "0.25rem",
+    boxShadow: "1px 1px 1px rgba(0,0,0,0.25)",
     display: "flex",
-    flex: `0 1 ${props.names ? "50%" : "25%"}`,
     justifyContent: "center",
-    margin: "0.25rem 0",
+    margin: "0.375rem",
     opacity: props.longPressed ? "0.5" : 1,
-    padding: "0.25rem 0.1rem",
     position: "relative",
-  }),
-  name: {
-    flexGrow: 1,
-  },
-  icon: (props) => ({
-    borderRadius: "6px",
-    padding: "0.15rem",
-    margin: props.isMobile ? "0 0.5rem" : "0 0.15rem",
-    display: "flex",
-    justifyContent: "center",
-
+    transition: "border-color 0.2s ease",
     "&:hover": {
-      backgroundColor:
-        props.names && !props.isMobile
-          ? `rgba(${colorNameToRGB(props.color)}, 0.7)`
-          : props.backgroundColor,
-      cursor: props.names ? "pointer" : "grab",
-    },
-    "& img": {
-      minWidth: "1.5rem",
-      minHeight: "1.5rem",
+      borderColor: `rgba(${hexToRGB(theme.textColorAlt)}, 0.25)`,
     },
   }),
-  input: (props) => ({
-    borderRadius: ".2rem",
-    fontSize: props.isMobile ? "1.5rem" : props.name ? "1.15rem" : "1rem",
-    fontWeight: 700,
-    letterSpacing: "0.025rem",
-    lineHeight: 1.5,
-    marginRight: "0.25rem",
-    padding: 0,
+  PlayerIcon: (props) => ({
+    display: "flex",
+    flex: "0 0 2.25rem",
+    alignSelf: "stretch",
+    width: "2.25rem",
+    height: "2rem",
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor:
+      props.playerName || !props.showNames
+        ? `rgb(${getColorValue(props.color, "base")})`
+        : "transparent",
+    backgroundRepeat: "no-repeat",
+    backgroundSize: "1.75rem auto",
+    backgroundPosition: "center 0.25rem",
+    "&:hover": {
+      cursor: props.showNames ? "pointer" : "grab",
+    },
+  }),
+  PlayerName: {
+    flexGrow: 1,
+    flexBasis: "0",
+    maxWidth: "100%",
+    paddingLeft: "0.5rem",
+  },
+  PlayerInput: (props) => ({
+    color: contrastColor(getColorValue(props.color, "dark")),
+    display: "block",
+    fontSize: props.isMobile ? "1rem" : props.showNames ? "1.15rem" : "1rem",
+    fontFamily: STYLE_VARS.fontFamily,
+    fontWeight: 600,
+    letterSpacing: "0.05rem",
+    lineHeight: 1.25,
+    padding: "0.25rem 0",
     textAlign: "left",
     width: "100%",
 
     "&::placeholder": {
       color: theme.textColor,
+      opacity: 0.5,
     },
   }),
-  player: {
-    padding: "0.25rem",
-  },
-  playerColorChangeMenu: {
-    alignItems: "center",
-    background: theme.backgroundColor,
-    border: "0.0625rem solid rgba(240, 240, 240, 0.25)",
-    borderRadius: "6px",
-    boxShadow: "0 0 1rem rgba(240, 240, 240, 0.1)",
-    bottom: "110%",
-    display: "flex",
-    flex: 4,
-    flexWrap: "wrap",
-    left: 0,
-    justifyContent: "space-between",
-    position: "absolute",
-    padding: "0.25rem",
-    width: "100%",
-    zIndex: 10,
-  },
-  playerColorChangeMenuHidden: {
-    display: "none",
-  },
 }));

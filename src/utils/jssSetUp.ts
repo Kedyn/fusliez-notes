@@ -1,7 +1,8 @@
 import { SheetsRegistry, jss } from "react-jss";
+import normalize from "normalize-jss";
 
 import { ITheme } from "./types";
-import { hexToRGB } from "./colorConverter";
+import { STYLE_VARS } from "./styleVars";
 import preset from "jss-preset-default";
 
 export default function jssSetUp(theme: ITheme): SheetsRegistry {
@@ -9,7 +10,9 @@ export default function jssSetUp(theme: ITheme): SheetsRegistry {
 
   const sheetsRegistry = new SheetsRegistry();
 
-  const globalStyleSheet = jss
+  const normalizeStyles = jss.createStyleSheet(normalize).attach();
+
+  const globalStyles = jss
     .createStyleSheet({
       "@global": {
         "*, *:before, *:after": {
@@ -17,40 +20,29 @@ export default function jssSetUp(theme: ITheme): SheetsRegistry {
         },
         html: {
           boxSizing: "border-box",
+          height: "100%",
         },
         body: {
-          margin: 0,
           backgroundColor: theme.backgroundColor,
           color: theme.textColor,
-          fontFamily: "Titillium Web, sans-serif",
-          fontSize: 20,
+          fontFamily: STYLE_VARS.fontFamily,
+          fontWeight: 400,
+          lineHeight: 1.5,
+          fontSize: STYLE_VARS.baseFontSize,
+          height: "100%",
         },
         "#root": {
           display: "flex",
           flexDirection: "column",
-          height: "100vh",
+          height: "100%",
           maxWidth: "1920px",
           margin: "0 auto",
           width: "100vw",
           overflowX: "hidden",
         },
-        main: {
-          flexGrow: 1,
-          display: "flex",
-          margin: "0 1rem",
-        },
         footer: {
           textAlign: "center",
           fontSize: "smaller",
-        },
-        "#main": {
-          padding: "0.25rem",
-        },
-        "#controls": {
-          padding: "1rem",
-        },
-        "#maps": {
-          flexGrow: 1,
         },
         h1: {
           fontSize: "2rem",
@@ -72,9 +64,11 @@ export default function jssSetUp(theme: ITheme): SheetsRegistry {
           maxWidth: "100%",
           height: "auto",
         },
-        'input[type="text"],input[type="number"],input[type="text"]:focus,input[type="number"]:focus': {
+        input: {
           backgroundColor: "transparent",
           color: theme.inputTextColor,
+          fontFamily: STYLE_VARS.fontFamily,
+          fontWeight: 400,
           appearance: "none",
           border: "none",
           boxShadow: "none",
@@ -94,29 +88,15 @@ export default function jssSetUp(theme: ITheme): SheetsRegistry {
           border: `1px solid ${theme.borderColor}`,
           borderRadius: "0.5rem",
         },
-        button: {
-          textAlign: "center",
-          border: "1px solid transparent",
-          padding: ".375rem .75rem",
-          fontFamily: "inherit",
-          borderRadius: "0.5rem",
-          transition:
-            "color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out",
-          display: "block",
-          width: "100%",
-          cursor: "pointer",
-          backgroundColor: theme.buttonBackgroundColor,
-          color: theme.buttonTextColor,
-
-          "&:hover": {
-            backgroundColor: `rgba(${hexToRGB(
-              theme.buttonBackgroundColor
-            )}, 0.7)`,
-          },
-        },
         a: {
           textDecoration: "none",
           color: theme.linkColor,
+          "&:hover": {
+            textDecoration: "underline",
+          },
+          "&:focus": {
+            textDecoration: "underline",
+          },
         },
         ul: {
           marginTop: 0,
@@ -124,11 +104,22 @@ export default function jssSetUp(theme: ITheme): SheetsRegistry {
         li: {
           fontSize: "1rem",
         },
+        ".sr-only": {
+          border: 0,
+          clip: "rect(0, 0, 0, 0)",
+          height: "1px",
+          margin: "-1px",
+          overflow: "hidden",
+          padding: 0,
+          position: "absolute",
+          width: "1px",
+        },
       },
     })
     .attach();
 
-  sheetsRegistry.add(globalStyleSheet);
+  sheetsRegistry.add(normalizeStyles);
+  sheetsRegistry.add(globalStyles);
 
   return sheetsRegistry;
 }

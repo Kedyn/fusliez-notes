@@ -21,23 +21,20 @@ export interface ISettingsContextProviderProps {
 export default function SettingsContextProvider(
   props: ISettingsContextProviderProps
 ): JSX.Element {
-  const [names, setNames] = React.useState<boolean>(settingsData.names);
-  const [scoresStyle, setScoresStyle] = React.useState<string>(
-    settingsData.scoresStyle
+  const [showNames, setShowNames] = React.useState<boolean>(
+    settingsData.showNames
   );
 
   React.useEffect(() => {
-    localStorage.setItem(namespace, JSON.stringify({ names, scoresStyle }));
-  }, [names, scoresStyle]);
+    localStorage.setItem(namespace, JSON.stringify({ showNames }));
+  }, [showNames]);
 
   return (
     <SettingsContext.Provider
       value={{
-        names,
-        scoresStyle,
+        showNames,
 
-        setNames,
-        setScoresStyle,
+        setShowNames,
       }}
     >
       {props.children}

@@ -15,10 +15,15 @@ function ColorSwatch({
   const classes = useColorSwatchStyles({ targetColor });
 
   return (
-    <button
-      className={classes.playerColorChangeMenuIcon}
-      onClick={() => swapPlayersColors()}
-    />
+    <div className={classes.ColorMenuCell}>
+      <button
+        className={classes.ColorMenuSwatch}
+        onClick={() => swapPlayersColors()}
+        title={targetColor}
+      >
+        <span className="sr-only">{targetColor}</span>
+      </button>
+    </div>
   );
 }
 
@@ -48,18 +53,18 @@ export default function ColorsMenu(props: IColorsMenu): JSX.Element {
   const { isMenuShowing, setIsMenuShowing, currentColor } = props;
 
   const colors = [
-    { id: "brown", color: "saddlebrown" },
-    { id: "red", color: "red" },
-    { id: "pink", color: "hotpink" },
-    { id: "orange", color: "orange" },
-    { id: "yellow", color: "yellow" },
-    { id: "lightGreen", color: "chartreuse" },
-    { id: "green", color: "green" },
-    { id: "teal", color: "cyan" },
-    { id: "blue", color: "blue" },
-    { id: "purple", color: "purple" },
-    { id: "gray", color: "dimgray" },
-    { id: "white", color: "white" },
+    { id: "Brown", color: "brown" },
+    { id: "Red", color: "red" },
+    { id: "Orange", color: "orange" },
+    { id: "Yellow", color: "yellow" },
+    { id: "Lime", color: "lime" },
+    { id: "Green", color: "green" },
+    { id: "Cyan", color: "cyan" },
+    { id: "Blue", color: "blue" },
+    { id: "Purple", color: "purple" },
+    { id: "Pink", color: "pink" },
+    { id: "White", color: "white" },
+    { id: "Black", color: "black" },
   ];
 
   const allPlayers = React.useMemo(
@@ -222,8 +227,8 @@ export default function ColorsMenu(props: IColorsMenu): JSX.Element {
   return (
     <div
       ref={ref}
-      className={`${classes.playerColorChangeMenu} ${
-        isMenuShowing ? "" : classes.playerColorChangeMenuHidden
+      className={`${classes.ColorMenu} ${
+        isMenuShowing ? "" : classes.isHidden
       }`}
     >
       {colors.map(({ id, color }) => (

@@ -2,44 +2,58 @@ import { ITheme } from "utils/types";
 import { createUseStyles } from "react-jss";
 
 export default createUseStyles((theme: ITheme) => ({
-  modalContainer: {
+  ModalBackdrop: {
     alignItems: "center",
-    backgroundColor: "rgba(0, 0, 0, 0.75)",
+    backgroundColor: "rgba(0, 0, 0, 0.9)",
     display: "flex",
-    height: "100vh",
+    bottom: 0,
     left: 0,
     justifyContent: "center",
     position: "absolute",
     top: 0,
-    width: "100vw",
+    right: 0,
     zIndex: 1,
   },
-  content: {
+  Modal: {
     backgroundColor: theme.backgroundColor,
-    borderRadius: "10px",
-    maxWidth: 1600,
-    padding: "0 2rem",
-    maxHeight: "100vh",
+    borderRadius: "0.5rem",
+    display: "flex",
+    width: "40rem",
+    maxHeight: "90%",
+    padding: "1rem 2rem",
+  },
+  ModalContent: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "stretch",
+    width: "100%",
+  },
+  ModalHeader: {
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    paddingBottom: "0.5rem",
+    borderBottom: `1px solid ${theme.borderColor}`,
+  },
+  ModalTitle: {
+    fontSize: "2rem",
+    fontWeight: 200,
+    letterSpacing: "0.05em",
+  },
+  ModalClose: {
+    appearance: "none",
+    borderRadius: "50%",
+    display: "block",
+    width: "2rem",
+    lineHeight: "2rem",
+    padding: 0,
+  },
+  ModalBody: {
+    padding: "1rem 0",
     overflowY: "auto",
   },
-  header: {
-    borderBottom: `1px solid ${theme.borderColor}`,
-    display: "flex",
-  },
-  title: {
-    flexGrow: 1,
-    padding: "1rem",
-  },
-  close: {
-    textAlign: "center",
-    padding: "1rem",
-    cursor: "pointer",
-  },
-  body: {
-    padding: "1rem",
-  },
-  footer: {
+  ModalFooter: {
     borderTop: `1px solid ${theme.borderColor}`,
-    padding: "1rem",
+    padding: "1rem 0",
   },
 }));

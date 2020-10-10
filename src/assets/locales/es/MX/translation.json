@@ -1,7 +1,7 @@
 {
   "main": {
     "overall": "General",
-    "innocent": "Inocente",
+    "crewmate": "Tripulante",
     "impostor": "Impostor",
     "w": "G",
     "l": "P",
@@ -18,16 +18,16 @@
   "controls": {
     "wins": "Victorias",
     "losses": "Perdidas",
-    "innocent": "Inocente",
+    "crewmate": "Tripulante",
     "impostor": "Impostor",
     "resetScores": "Reiniciar Puntaje",
     "resetRound": "Reiniciar Ronda",
     "resetAll": "Reiniciar Todo",
     "notes": "Notas",
-    "resetNotes": "Reiniciar Notas",
-    "settings": "Ajustes"
+    "resetNotes": "Reiniciar Notas"
   },
   "maps": {
+    "title": "Maps",
     "vents": "Conductos",
     "commonTasks": "Tareas Comunes",
     "wiringTasks": "Tareas de Cables",
@@ -61,36 +61,14 @@
     "south": "4. Sur",
     "southwest": "5. Suroeste",
     "northwest": "6. Noroeste",
-    "resetPlayers": "Reiniciar Jugadores"
+    "dragInstructions": "Drag players on the map to track",
+    "resetPlayers": "Reset Positions"
   },
   "settings": {
     "title": "Ajustes",
     "uiSettings": "Ajustes de IU",
-    "scoresTypes": "Tipo de vistas de puntajes",
-    "bars": "Barras",
-    "circles": "Circulos",
     "usePlayerNames": "Usar nombres de jugadores",
     "language": "Lenguage",
-    "themeSettings": "Ajustes de Tema",
-    "themeClick": "Da clic para cambiar color",
-    "resetColors": "Reiniciar Colores",
-    "change": "Cambiar",
-    "backgroundColor": "Color de Fondo",
-    "textColor": "Color de Texto",
-    "inputBackgroundColor": "Color de Fondo de Notas",
-    "inputTextColor": "Color de Fondo de Texto",
-    "neutralBackgroundColor": "Color de Fondo de Neutral",
-    "neutralTextColor": "Color de Texto de Neutral",
-    "innocentBackgroundColor": "Color de Fondo de Inocente",
-    "innocentTextColor": "Color de Texto de Inocente",
-    "impostorBackgroundColor": "Color de Fondo de Impostor",
-    "impostorTextColor": "Color de Texto de Impostor",
-    "buttonBackgroundColor": "Color de Fondo de Boton",
-    "buttonTextColor": "Color de Texto de Boton",
-    "buttonDangerBackgroundColor": "Color de Fondo de Boton de Peligro",
-    "buttonDangerTextColor": "Color de Texto de Boton de Peligro",
-    "borderColor": "Color de Borde",
-    "linkColor": "Color de Enlace",
     "done": "Hecho",
     "close": "Cerrar"
   },
@@ -102,6 +80,7 @@
     "menu": "Menu",
     "settings": "Ajustes",
     "feedback": "Retroalimentacion",
-    "about": "Informacion"
+    "about": "Informacion",
+    "changelog": "Changelog"
   }
 }
