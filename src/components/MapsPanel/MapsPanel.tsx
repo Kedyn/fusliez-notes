@@ -102,8 +102,3 @@ export default function MapsPanel(): JSX.Element {
     </div>
   );
 }
-
-MapsPanel.defaultProps = {
-  isMobile: false,
-  orientation: "portrait",
-};

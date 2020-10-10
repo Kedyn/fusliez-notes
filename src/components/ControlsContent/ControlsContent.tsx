@@ -4,7 +4,7 @@ import React from "react";
 import ScoreControls from "components/ScoreControls";
 import Settings from "components/Settings";
 import About from "components/About";
-import VersionNotes from "components/Changelog";
+import Changelog from "components/Changelog";
 import useStyles from "./ControlsContent.styles";
 import { useTranslation } from "react-i18next";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -14,9 +14,7 @@ export default function ControlsContent(): JSX.Element {
   const { t } = useTranslation();
   const classes = useStyles();
 
-  const [showVersionNotes, setShowVersionNotes] = React.useState<boolean>(
-    false
-  );
+  const [showChangelog, setShowChangelog] = React.useState<boolean>(false);
   const [showSettings, setShowSettings] = React.useState(false);
   const [showAbout, setShowAbout] = React.useState<boolean>(false);
 
@@ -27,7 +25,7 @@ export default function ControlsContent(): JSX.Element {
           <FontAwesomeIcon icon={faCog} /> {t("menu.settings")}
         </Button>{" "}
         <Button onClick={() => setShowAbout(true)}>{t("menu.about")}</Button>{" "}
-        <Button onClick={() => setShowVersionNotes(true)}>
+        <Button onClick={() => setShowChangelog(true)}>
           {t("menu.changelog")}
         </Button>
       </div>
@@ -37,10 +35,7 @@ export default function ControlsContent(): JSX.Element {
       <NotesPanel />
       <Settings show={showSettings} onClose={() => setShowSettings(false)} />
 
-      <VersionNotes
-        show={showVersionNotes}
-        onClose={() => setShowVersionNotes(false)}
-      />
+      <Changelog show={showChangelog} onClose={() => setShowChangelog(false)} />
 
       <About show={showAbout} onClose={() => setShowAbout(false)} />
     </div>

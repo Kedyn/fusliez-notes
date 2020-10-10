@@ -8,7 +8,7 @@ export interface IChangelogProps {
   onClose: () => void;
 }
 
-export default function VersionNotes(props: IChangelogProps): JSX.Element {
+export default function Changelog(props: IChangelogProps): JSX.Element {
   return (
     <Modal title={`fusliez notes v${VERSION} notes`} {...props}>
       <ChangelogPanel />
