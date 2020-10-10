@@ -15,8 +15,7 @@
     "predeploynext": "npm run build",
     "deploynext": "gh-pages -d build -e ./next",
     "lint": "eslint ./src/ --cache --fix --ext .ts,.tsx",
-    "webpack": "webpack",
-    "webpack:prod": "NODE_ENV=production webpack"
+    "webpack": "webpack"
   },
   "homepage": "http://kedyn.github.io/fusliez-notes",
   "author": "Kedyn Macedonio",
