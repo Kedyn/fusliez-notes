@@ -15,6 +15,18 @@
     "prettier/@typescript-eslint",
     "plugin:prettier/recommended"
   ],
+  "overrides": [
+    {
+      "files": ["*.js", "*.jsx", "*.mjs"],
+      "parserOptions": {
+        "parser": "babel-eslint"
+      },
+      "rules": {
+        "@typescript-eslint/explicit-function-return-type": "off",
+        "@typescript-eslint/no-var-requires": "off"
+      }
+    }
+  ],
   "rules": {
     "camelcase": "error"
   }
