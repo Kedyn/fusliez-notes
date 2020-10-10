@@ -34,8 +34,6 @@ export default function Player(props: IPlayerProps): JSX.Element {
 
   const { id, color, playerName, list, setList, index } = props;
 
-  console.log(id);
-
   const handleChange = (
     player: number,
     event: React.ChangeEvent<HTMLInputElement>
