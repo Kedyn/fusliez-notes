@@ -47,7 +47,7 @@ export default createUseStyles((theme: ITheme) => ({
     backgroundSize: "1.75rem auto",
     backgroundPosition: "center 0.25rem",
     "&:hover": {
-      cursor: props.isReadOnly ? "grab" : "pointer",
+      cursor: props.isReadOnly ? "grab" : props.showNames ? "pointer" : "grab",
     },
   }),
   PlayerName: {
