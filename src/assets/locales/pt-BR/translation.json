@@ -24,7 +24,9 @@
     "resetRound": "Reiniciar Rodada",
     "resetAll": "Reiniciar Tudo",
     "notes": "Notas",
-    "resetNotes": "Reiniciar Notas"
+    "resetNotes": "Reiniciar Notas",
+    "lockPlayers": "Lock Players",
+    "unlockPlayers": "Unlock Players"
   },
   "maps": {
     "title": "Maps",

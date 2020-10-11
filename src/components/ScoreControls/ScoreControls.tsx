@@ -8,10 +8,12 @@ import { useScores } from "context/ScoresContextProvider";
 import useStyles from "./ScoreControls.styles";
 import { useTheme } from "react-jss";
 import { useTranslation } from "react-i18next";
+import { useLocking } from "context/LockingContextProvider";
 
 export default function ScoreControls(): JSX.Element {
   const { t } = useTranslation();
   const theme = useTheme<ITheme>();
+  const { resetLock } = useLocking()!;
   const {
     crewmateWins,
     crewmateLosses,
@@ -32,8 +34,8 @@ export default function ScoreControls(): JSX.Element {
 
   const resetAll = () => {
     resetScores();
-
     resetPlayers();
+    resetLock();
   };
 
   return (

@@ -136,3 +136,10 @@ export interface IPlayersContext {
   resetPlayersPositions: () => void;
   resetPlayers: () => void;
 }
+
+export interface ILockingContextProvider {
+  isLocked: boolean;
+
+  resetLock: () => void;
+  toggleLock: () => void;
+}

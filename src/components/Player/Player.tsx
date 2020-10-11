@@ -14,6 +14,7 @@ export interface IPlayerProps {
   list: Array<IPlayer>;
   setList: (value: IPlayer[]) => void;
   index: number;
+  isReadOnly: boolean;
 }
 
 export default function Player(props: IPlayerProps): JSX.Element {
@@ -34,7 +35,7 @@ export default function Player(props: IPlayerProps): JSX.Element {
     ...props,
   });
 
-  const { id, color, playerName, list, setList, index } = props;
+  const { id, color, playerName, list, setList, index, isReadOnly } = props;
 
   const handleChange = (
     player: number,
@@ -99,7 +100,7 @@ export default function Player(props: IPlayerProps): JSX.Element {
       {...longPressEvents}
     >
       <div className={classes.PlayerTile}>
-        {isMenuShowing && !isMobile && (
+        {isMenuShowing && !isMobile && !isReadOnly && (
           <ColorsMenu
             isMenuShowing={isMenuShowing}
             setIsMenuShowing={setIsMenuShowing}
@@ -109,6 +110,10 @@ export default function Player(props: IPlayerProps): JSX.Element {
         <div
           className={cx(classes.PlayerIcon, "player-handle")}
           onClick={() => {
+            if (isReadOnly) {
+              return;
+            }
+
             if (showNames && !isMobile) {
               setIsMenuShowing(!isMenuShowing);
             }
@@ -129,6 +134,7 @@ export default function Player(props: IPlayerProps): JSX.Element {
               onKeyPress={handleKeyPress}
               value={playerName}
               ref={htmlElRef}
+              readOnly={isReadOnly}
             />
           </div>
         )}

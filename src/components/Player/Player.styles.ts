@@ -29,6 +29,7 @@ export default createUseStyles((theme: ITheme) => ({
     transition: "border-color 0.2s ease",
     "&:hover": {
       borderColor: `rgba(${hexToRGB(theme.textColorAlt)}, 0.25)`,
+      cursor: props.isReadOnly ? "grab" : "pointer",
     },
   }),
   PlayerIcon: (props) => ({
@@ -47,7 +48,7 @@ export default createUseStyles((theme: ITheme) => ({
     backgroundSize: "1.75rem auto",
     backgroundPosition: "center 0.25rem",
     "&:hover": {
-      cursor: props.showNames ? "pointer" : "grab",
+      cursor: props.isReadOnly ? "grab" : props.showNames ? "pointer" : "grab",
     },
   }),
   PlayerName: {
@@ -71,6 +72,10 @@ export default createUseStyles((theme: ITheme) => ({
     "&::placeholder": {
       color: theme.textColor,
       opacity: 0.5,
+    },
+
+    "&[readonly]": {
+      cursor: props.isReadOnly ? "grab" : "text",
     },
   }),
 }));

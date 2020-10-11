@@ -4,7 +4,12 @@ export default createUseStyles({
   PlayersPanel: {
     marginBottom: "1rem",
   },
-  PlayersPanelReset: {
+  PlayersControls: {
+    display: "flex",
+  },
+  PlayersControlsButtons: {
     marginTop: "1rem",
+    margin: "0.25rem",
+    width: "-webkit-fill-available",
   },
 });
