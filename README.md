@@ -31,15 +31,16 @@ Thanks to the developer team:
 [Francis Tse](https://github.com/francistse23) (A.K.A. Furanki)  
 [Kevin Han](https://github.com/kevinydhan) (A.K.A. khany)  
 [Charlie Chai](https://github.com/charlie-808)  
-[Griffin Suparto](https://github.com/Viou)
+[Griffin Suparto](https://github.com/Viou)  
+[Alena Choong](https://github.com/leeeennyy)
 
 Thanks to everyone who has suggested enhancements, reported bugs, are or any
 other support on this project such as:
 
 [Adam Gausmann](https://github.com/agausmann)  
 Pedro / Dian\_\_  
-Rydannn (twitch handle)  
-GeneralMitch (twitch handle)  
+Rydannn (https://twitter.com/RydanTweets)  
+GeneralMitch (https://twitter.com/GeneralMitch1)  
 Kermitigated (twitch handle)  
 [Kinishina](https://github.com/Kinishina)  
 [Federico Gaston Ramadan](https://github.com/federamadan)  

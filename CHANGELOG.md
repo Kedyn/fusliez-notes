@@ -7,12 +7,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Released]
 
-### [v0.9.2] - 10/07/2020
-
-#### Added
-
-- Added feature to enable read-only/editing mode for player colours and names
-
 ### [v0.9.1] - 10/07/2020
 
 #### Added
@@ -160,6 +154,14 @@ Project fusliez notes begins, prototype release.
 Features included draggable players and progress bar for score.
 
 ## [Unreleased]
+
+### [vX.X.X] - X/X/X
+
+New UI revamp from chilblane. Improves not only visually, but also mobile support.
+
+#### Added
+
+- Added feature to enable read-only/editing mode for player colours and names
 
 ### [v0.1.0] - 8/24/2020
 
