@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Released]
 
+### [v0.9.2] - 10/07/2020
+
+#### Added
+
+- Added feature to enable read-only/editing mode for player colours and names
+
 ### [v0.9.1] - 10/07/2020
 
 #### Added

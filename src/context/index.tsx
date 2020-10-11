@@ -3,6 +3,7 @@ import { JssProvider, ThemeProvider } from "react-jss";
 import { DEFAULT_THEME_DATA } from "utils/constants";
 import MobileContextProvider from "./MobileContextProvider";
 import PlayersContextProvider from "./PlayersContextProvider";
+import LockingContextProvider from "./LockingContextProvider";
 import React from "react";
 import ScoresContextProvider from "./ScoresContextProvider";
 import SettingsContextProvider from "./SettingsContextProvider";
@@ -21,7 +22,11 @@ export default function ContextWrapper(
         <ThemeProvider theme={DEFAULT_THEME_DATA}>
           <MobileContextProvider>
             <ScoresContextProvider>
-              <PlayersContextProvider>{props.children}</PlayersContextProvider>
+              <LockingContextProvider>
+                <PlayersContextProvider>
+                  {props.children}
+                </PlayersContextProvider>
+              </LockingContextProvider>
             </ScoresContextProvider>
           </MobileContextProvider>
         </ThemeProvider>
