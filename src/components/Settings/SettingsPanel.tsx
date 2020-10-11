@@ -1,3 +1,5 @@
+import { ILanguage } from "utils/types";
+import RadioButton from "components/common/RadioButton";
 import React from "react";
 import Switch from "components/common/Switch";
 import i18next from "i18next";
@@ -5,8 +7,6 @@ import { useMobile } from "context/MobileContextProvider";
 import { useSettings } from "context/SettingsContextProvider";
 import useStyles from "./SettingsPanel.styles";
 import { useTranslation } from "react-i18next";
-import RadioButton from "components/common/RadioButton";
-import { ILanguage } from "utils/types";
 
 export default function SettingsPanel(): JSX.Element {
   const { t } = useTranslation();
@@ -31,7 +31,6 @@ export default function SettingsPanel(): JSX.Element {
     i18next.changeLanguage(newLanguage);
 
     setLanguage(newLanguage);
-    console.log(language);
   };
 
   const languages: Array<ILanguage> = [
