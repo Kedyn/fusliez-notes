@@ -4,13 +4,12 @@ export default createUseStyles({
   PlayersPanel: {
     marginBottom: "1rem",
   },
-  PlayersPanelReset: {
-    marginTop: "1rem",
+  PlayersControls: {
+    display: "flex",
   },
-  PlayersPanelLock: {
-    marginRight: "1rem",
-    position: "absolute",
-    right: 0,
-    bottom: 0,
+  PlayersControlsButtons: {
+    marginTop: "1rem",
+    margin: "0.25rem",
+    width: "-webkit-fill-available",
   },
 });

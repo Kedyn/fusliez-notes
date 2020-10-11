@@ -82,18 +82,23 @@ export default function PlayersPanel(): JSX.Element {
         />
       ))}
 
-      <Button className={classes.PlayersPanelLock} onClick={() => toggleLock()}>
-        {isLocked ? t("controls.unlockPlayers") : t("controls.lockPlayers")}
-      </Button>
-
-      {isMobile && (
+      <div className={classes.PlayersControls}>
         <Button
-          className={classes.PlayersPanelReset}
-          onClick={() => resetPlayersPositions()}
+          className={classes.PlayersControlsButtons}
+          onClick={() => toggleLock()}
         >
-          Reset Positions
+          {isLocked ? t("controls.unlockPlayers") : t("controls.lockPlayers")}
         </Button>
-      )}
+
+        {isMobile && (
+          <Button
+            className={classes.PlayersControlsButtons}
+            onClick={() => resetPlayersPositions()}
+          >
+            Reset Positions
+          </Button>
+        )}
+      </div>
     </div>
   );
 }

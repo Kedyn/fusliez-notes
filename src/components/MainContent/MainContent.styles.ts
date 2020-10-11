@@ -6,6 +6,5 @@ export default createUseStyles({
     padding: props.isMobile ? 0 : "1rem",
     maxWidth: props.isMobile ? "none" : "22.5rem",
     height: "100%",
-    position: "relative",
   }),
 });
