@@ -4,6 +4,8 @@ import { IPlayer } from "utils/types";
 import React from "react";
 import { usePlayers } from "context/PlayersContextProvider";
 
+// interface PlayerData
+
 // renders each individual color
 function ColorSwatch({
   targetColor,
@@ -30,7 +32,7 @@ function ColorSwatch({
 export interface IColorsMenu {
   isMenuShowing: boolean;
   setIsMenuShowing: (state: boolean) => void;
-  currentColor: string | number;
+  currentColor: string;
 }
 
 export default function ColorsMenu(props: IColorsMenu): JSX.Element {
@@ -90,15 +92,21 @@ export default function ColorsMenu(props: IColorsMenu): JSX.Element {
     }
 
     // [list_name, player_object]
-    const currentPlayer = ["", {}];
-    const targetPlayer = ["", {}];
+    const currentPlayer: [string, IPlayer] = [
+      "",
+      { playerName: "", id: "", color: "" },
+    ];
+    const targetPlayer: [string, IPlayer] = [
+      "",
+      { playerName: "", id: "", color: "" },
+    ];
 
     // find current target player list
     // VERY VERY unoptimal solution
     // to find which list the target color is located
     for (const list of allPlayers) {
       for (const [listName, listPlayers] of Object.entries(list)) {
-        for (const player of listPlayers) {
+        for (const player of listPlayers ?? []) {
           if (player.id === currentPlayerColor) {
             currentPlayer[0] = listName;
             currentPlayer[1] = player;
@@ -125,7 +133,7 @@ export default function ColorsMenu(props: IColorsMenu): JSX.Element {
       })
       .map((list) => Object.values(list)[0]);
 
-    currentPlayerList = currentPlayerList.map((player: IPlayer) => {
+    currentPlayerList = currentPlayerList?.map((player: IPlayer) => {
       if (
         player.name === currentPlayer[1].name &&
         currentPlayer[1].color === player.color
@@ -152,7 +160,7 @@ export default function ColorsMenu(props: IColorsMenu): JSX.Element {
       return player;
     });
 
-    _updatePlayersList(currentPlayer[0], currentPlayerList);
+    _updatePlayersList(currentPlayer[0], currentPlayerList ?? []);
 
     // if the players are not in the same list
     if (currentPlayer[0] !== targetPlayer[0]) {
@@ -164,7 +172,7 @@ export default function ColorsMenu(props: IColorsMenu): JSX.Element {
         })
         .map((list) => Object.values(list)[0]);
 
-      targetPlayerList = targetPlayerList.map((player: IPlayer) => {
+      targetPlayerList = targetPlayerList?.map((player: IPlayer) => {
         if (
           player.name === targetPlayer[1].name &&
           targetPlayer[1].id === player.id
@@ -178,7 +186,7 @@ export default function ColorsMenu(props: IColorsMenu): JSX.Element {
         return player;
       });
 
-      _updatePlayersList(targetPlayer[0], targetPlayerList);
+      _updatePlayersList(targetPlayer[0], targetPlayerList ?? []);
     }
 
     // function that performs setState
