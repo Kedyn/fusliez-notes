@@ -155,6 +155,15 @@ Features included draggable players and progress bar for score.
 
 ## [Unreleased]
 
+### [vX.X.X] - X/X/X
+
+New UI revamp from chilblane. Improves not only visually, but also mobile support.
+
+#### Added
+
+- Added feature to enable read-only/editing mode for player colours and names
+- Added translation to de-DE
+
 ### [v0.1.0] - 8/24/2020
 
 fuslie adds notepad ftw on the stream

@@ -8,12 +8,12 @@ import { useSettings } from "context/SettingsContextProvider";
 import { useTranslation } from "react-i18next";
 
 export interface IPlayerProps {
-  id: string | number;
   color: string;
   playerName: string;
   list: Array<IPlayer>;
   setList: (value: IPlayer[]) => void;
   index: number;
+  isReadOnly: boolean;
 }
 
 export default function Player(props: IPlayerProps): JSX.Element {
@@ -22,7 +22,6 @@ export default function Player(props: IPlayerProps): JSX.Element {
   const { showNames } = useSettings()!; // eslint-disable-line
 
   const [isMenuShowing, setIsMenuShowing] = React.useState(false);
-  const [longPressed, setLongPressed] = React.useState(false);
 
   const htmlElRef = React.useRef(null);
 
@@ -30,11 +29,10 @@ export default function Player(props: IPlayerProps): JSX.Element {
     showNames,
     isMobile,
     orientation,
-    longPressed,
     ...props,
   });
 
-  const { id, color, playerName, list, setList, index } = props;
+  const { color, playerName, list, setList, index, isReadOnly } = props;
 
   const handleChange = (
     player: number,
@@ -59,56 +57,23 @@ export default function Player(props: IPlayerProps): JSX.Element {
     }
   };
 
-  // put this in for mobile only
-  // so users know they are interacting with the object
-  const useLongPress = (ms = 50) => {
-    const [startLongPress, setStartLongPress] = React.useState(false);
-
-    React.useEffect(() => {
-      let timerId: number | undefined = undefined;
-      if (startLongPress) {
-        timerId = setTimeout(() => {
-          window.navigator.vibrate(-1) && window.navigator.vibrate(200);
-          setLongPressed(true);
-        }, ms);
-      } else {
-        setLongPressed(false);
-        clearTimeout(timerId);
-      }
-
-      return () => {
-        clearTimeout(timerId);
-      };
-    }, [ms, startLongPress]);
-
-    return {
-      onMouseDown: () => setStartLongPress(true),
-      onMouseUp: () => setStartLongPress(false),
-      onMouseLeave: () => setStartLongPress(false),
-      onTouchStart: () => setStartLongPress(true),
-      onTouchEnd: () => setStartLongPress(false),
-    };
-  };
-
-  const longPressEvents = useLongPress();
-
   return (
-    <div
-      className={`${classes.Player} player-handle`}
-      id={color}
-      {...longPressEvents}
-    >
+    <div className={`${classes.Player} player-handle`} id={color}>
       <div className={classes.PlayerTile}>
-        {isMenuShowing && !isMobile && (
+        {isMenuShowing && !isMobile && !isReadOnly && (
           <ColorsMenu
             isMenuShowing={isMenuShowing}
             setIsMenuShowing={setIsMenuShowing}
-            currentColor={id}
+            currentColor={color}
           />
         )}
         <div
           className={cx(classes.PlayerIcon, "player-handle")}
           onClick={() => {
+            if (isReadOnly) {
+              return;
+            }
+
             if (showNames && !isMobile) {
               setIsMenuShowing(!isMenuShowing);
             }
@@ -119,17 +84,22 @@ export default function Player(props: IPlayerProps): JSX.Element {
         ></div>
         {showNames && (
           <div className={classes.PlayerName}>
-            <input
-              type="text"
-              placeholder={color}
-              className={classes.PlayerInput}
-              onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
-                handleChange(index, event)
-              }
-              onKeyPress={handleKeyPress}
-              value={playerName}
-              ref={htmlElRef}
-            />
+            {!isReadOnly && (
+              <input
+                type="text"
+                placeholder={t(`main.${color}`)}
+                className={classes.PlayerInput}
+                onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
+                  handleChange(index, event)
+                }
+                onKeyPress={handleKeyPress}
+                value={playerName}
+                ref={htmlElRef}
+              />
+            )}
+            {isReadOnly && (
+              <>{playerName !== "" ? playerName : t(`main.${color}`)}</>
+            )}
           </div>
         )}
       </div>

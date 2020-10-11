@@ -16,7 +16,7 @@ window.addEventListener("resize", setVh);
 
 const requestWakeLock = async () => {
   if ("wakeLock" in navigator) {
-    await navigator.wakeLock.request("screen");
+    await navigator?.wakeLock.request("screen");
   }
 };
 
@@ -24,6 +24,6 @@ requestWakeLock();
 
 document.addEventListener("visibilitychange", async () => {
   if ("wakeLock" in navigator && document.visibilityState === "visible") {
-    await navigator.wakeLock.request("screen");
+    await navigator?.wakeLock.request("screen");
   }
 });

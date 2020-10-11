@@ -2,6 +2,7 @@ import { IPlayer } from "utils/types";
 import Player from "components/Player";
 import React from "react";
 import { ReactSortable } from "react-sortablejs";
+import { useLocking } from "context/LockingContextProvider";
 import { useSettings } from "context/SettingsContextProvider";
 import useStyles from "./PlayerSection.styles";
 
@@ -14,10 +15,12 @@ export interface IPlayerSectionProps {
 
 export default function PlayerSection(props: IPlayerSectionProps): JSX.Element {
   const { showNames } = useSettings()!; // eslint-disable-line
+  const { isLocked } = useLocking()!; // eslint-disable-line
 
   const classes = useStyles({ showNames });
 
   const { isMobile, title, list, setList } = props;
+
   return (
     <React.Fragment>
       <div className={classes.PlayerSection}>
@@ -39,15 +42,15 @@ export default function PlayerSection(props: IPlayerSectionProps): JSX.Element {
           setList={setList}
           className={classes.PlayerSectionArea}
         >
-          {list.map(({ id, color, playerName }, index) => (
+          {list.map(({ color, playerName }, index) => (
             <Player
-              key={id}
-              id={id}
+              key={index}
               color={color}
               playerName={playerName}
               list={list}
               setList={setList}
               index={index}
+              isReadOnly={isLocked}
             />
           ))}
         </ReactSortable>

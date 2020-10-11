@@ -4,8 +4,10 @@ export default createUseStyles({
   MobileLayout: {
     display: "flex",
     flexDirection: "column",
-    height: "100vh",
     height: "calc(var(--vh, 1vh) * 100)",
+    fallbacks: {
+      height: "100vh",
+    },
   },
   MobileContent: {
     flex: "1 1 auto",

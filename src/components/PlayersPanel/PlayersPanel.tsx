@@ -1,11 +1,13 @@
+import Button from "components/common/Button";
 import { IPlayer } from "utils/types";
-import React from "react";
 import PlayerSection from "components/PlayerSection";
+import React from "react";
+import { useLocking } from "context/LockingContextProvider";
 import { useMobile } from "context/MobileContextProvider";
 import { usePlayers } from "context/PlayersContextProvider";
+import { useSettings } from "context/SettingsContextProvider";
 import useStyles from "./PlayersPanel.styles";
 import { useTranslation } from "react-i18next";
-import Button from "components/common/Button";
 
 export default function PlayersPanel(): JSX.Element {
   const { t } = useTranslation();
@@ -24,6 +26,14 @@ export default function PlayersPanel(): JSX.Element {
 
     resetPlayersPositions,
   } = usePlayers()!; // eslint-disable-line
+
+  const { showNames } = useSettings()!; // eslint-disable-line
+
+  const {
+    isLocked,
+
+    toggleLock,
+  } = useLocking()!; // eslint-disable-line
 
   const { isMobile } = useMobile()!; // eslint-disable-line
 
@@ -75,14 +85,25 @@ export default function PlayersPanel(): JSX.Element {
         />
       ))}
 
-      {isMobile && (
-        <Button
-          className={classes.PlayersPanelReset}
-          onClick={() => resetPlayersPositions()}
-        >
-          Reset Positions
-        </Button>
-      )}
+      <div className={classes.PlayersControls}>
+        {showNames && (
+          <Button
+            className={classes.PlayersControlsButtons}
+            onClick={() => toggleLock()}
+          >
+            {isLocked ? t("controls.unlockPlayers") : t("controls.lockPlayers")}
+          </Button>
+        )}
+
+        {isMobile && (
+          <Button
+            className={classes.PlayersControlsButtons}
+            onClick={() => resetPlayersPositions()}
+          >
+            Reset Positions
+          </Button>
+        )}
+      </div>
     </div>
   );
 }

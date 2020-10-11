@@ -1,7 +1,8 @@
-import { ITheme } from "utils/types";
 import { contrastColor, getColorValue, hexToRGB } from "utils/colorConverter";
-import { createUseStyles } from "react-jss";
+
+import { ITheme } from "utils/types";
 import { STYLE_VARS } from "utils/styleVars";
+import { createUseStyles } from "react-jss";
 
 export default createUseStyles((theme: ITheme) => ({
   Player: (props) => ({
@@ -29,6 +30,7 @@ export default createUseStyles((theme: ITheme) => ({
     transition: "border-color 0.2s ease",
     "&:hover": {
       borderColor: `rgba(${hexToRGB(theme.textColorAlt)}, 0.25)`,
+      cursor: props.isReadOnly ? "grab" : "pointer",
     },
   }),
   PlayerIcon: (props) => ({
@@ -47,15 +49,24 @@ export default createUseStyles((theme: ITheme) => ({
     backgroundSize: "1.75rem auto",
     backgroundPosition: "center 0.25rem",
     "&:hover": {
-      cursor: props.showNames ? "pointer" : "grab",
+      cursor: props.isReadOnly ? "grab" : props.showNames ? "pointer" : "grab",
     },
   }),
-  PlayerName: {
+  PlayerName: (props) => ({
     flexGrow: 1,
     flexBasis: "0",
     maxWidth: "100%",
     paddingLeft: "0.5rem",
-  },
+    fontSize: "1.15rem",
+    fontWeight: 600,
+    lineHeight: 1.25,
+    letterSpacing: "0.05rem",
+    color:
+      props.playerName !== ""
+        ? contrastColor(getColorValue(props.color, "dark"))
+        : theme.textColor,
+    opacity: props.isReadOnly && props.playerName === "" ? 0.5 : 1,
+  }),
   PlayerInput: (props) => ({
     color: contrastColor(getColorValue(props.color, "dark")),
     display: "block",
