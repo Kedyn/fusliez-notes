@@ -37,11 +37,11 @@
     "resetAll": "Reiniciar Todo",
     "notes": "Notas",
     "resetNotes": "Reiniciar Notas",
-    "lockPlayers": "Lock Players",
-    "unlockPlayers": "Unlock Players"
+    "lockPlayers": "Blocquea edicion",
+    "unlockPlayers": "Desbloquea edicion"
   },
   "maps": {
-    "title": "Maps",
+    "title": "Mapas",
     "vents": "Conductos",
     "commonTasks": "Tareas Comunes",
     "wiringTasks": "Tareas de Cables",
@@ -75,8 +75,8 @@
     "south": "4. Sur",
     "southwest": "5. Suroeste",
     "northwest": "6. Noroeste",
-    "dragInstructions": "Drag players on the map to track",
-    "resetPlayers": "Reset Positions"
+    "dragInstructions": "Arrasta los jugadores al mapa",
+    "resetPlayers": "Reiniciar posiciones"
   },
   "settings": {
     "title": "Ajustes",
@@ -95,6 +95,6 @@
     "settings": "Ajustes",
     "feedback": "Retroalimentacion",
     "about": "Sobre",
-    "changelog": "Changelog"
+    "changelog": "Cambios"
   }
 }

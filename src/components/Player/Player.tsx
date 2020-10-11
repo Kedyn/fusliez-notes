@@ -84,18 +84,22 @@ export default function Player(props: IPlayerProps): JSX.Element {
         ></div>
         {showNames && (
           <div className={classes.PlayerName}>
-            <input
-              type="text"
-              placeholder={t(`main.${color}`)}
-              className={classes.PlayerInput}
-              onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
-                handleChange(index, event)
-              }
-              onKeyPress={handleKeyPress}
-              value={playerName}
-              ref={htmlElRef}
-              readOnly={isReadOnly}
-            />
+            {!isReadOnly && (
+              <input
+                type="text"
+                placeholder={t(`main.${color}`)}
+                className={classes.PlayerInput}
+                onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
+                  handleChange(index, event)
+                }
+                onKeyPress={handleKeyPress}
+                value={playerName}
+                ref={htmlElRef}
+              />
+            )}
+            {isReadOnly && (
+              <>{playerName !== "" ? playerName : t(`main.${color}`)}</>
+            )}
           </div>
         )}
       </div>
