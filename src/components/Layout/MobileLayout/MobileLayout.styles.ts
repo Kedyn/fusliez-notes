@@ -4,11 +4,10 @@ export default createUseStyles({
   MobileLayout: {
     display: "flex",
     flexDirection: "column",
-    height: "100vh",
-    // this height is a fallback @khany
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
     height: "calc(var(--vh, 1vh) * 100)",
+    fallbacks: {
+      height: "100vh",
+    },
   },
   MobileContent: {
     flex: "1 1 auto",
