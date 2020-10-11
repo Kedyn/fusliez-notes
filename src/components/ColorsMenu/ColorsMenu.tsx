@@ -1,41 +1,28 @@
-import useStyles, { useColorSwatchStyles } from "./ColorsMenu.styles";
-
+import ColorSwatch from "./ColorSwatch";
 import { IPlayer } from "utils/types";
 import React from "react";
 import { usePlayers } from "context/PlayersContextProvider";
+import useStyles from "./ColorsMenu.styles";
 
-// renders each individual color
-function ColorSwatch({
-  targetColor,
-  swapPlayersColors,
-}: {
-  targetColor: string;
-  swapPlayersColors: () => void;
-}): JSX.Element {
-  const classes = useColorSwatchStyles({ targetColor });
-
-  return (
-    <div className={classes.ColorMenuCell}>
-      <button
-        className={classes.ColorMenuSwatch}
-        onClick={() => swapPlayersColors()}
-        title={targetColor}
-      >
-        <span className="sr-only">{targetColor}</span>
-      </button>
-    </div>
-  );
+interface IPlayerData {
+  player: IPlayer;
+  list: Array<IPlayer>;
+  modifier: (value: Array<IPlayer>) => void;
 }
 
-export interface IColorsMenu {
+export interface IColorsMenuProps {
   isMenuShowing: boolean;
   setIsMenuShowing: (state: boolean) => void;
-  currentColor: string | number;
+  currentColor: string;
 }
 
-export default function ColorsMenu(props: IColorsMenu): JSX.Element {
-  const classes = useStyles();
+export default function ColorsMenu(props: IColorsMenuProps): JSX.Element {
+  const { isMenuShowing, setIsMenuShowing, currentColor } = props;
+
   const ref = React.useRef<HTMLDivElement>(null);
+
+  const classes = useStyles();
+
   const {
     innocentPlayers,
     susPlayers,
@@ -50,163 +37,111 @@ export default function ColorsMenu(props: IColorsMenu): JSX.Element {
     setUnknownPlayers,
   } = usePlayers()!; // eslint-disable-line
 
-  const { isMenuShowing, setIsMenuShowing, currentColor } = props;
-
   const colors = [
-    { id: "Brown", color: "brown" },
-    { id: "Red", color: "red" },
-    { id: "Orange", color: "orange" },
-    { id: "Yellow", color: "yellow" },
-    { id: "Lime", color: "lime" },
-    { id: "Green", color: "green" },
-    { id: "Cyan", color: "cyan" },
-    { id: "Blue", color: "blue" },
-    { id: "Purple", color: "purple" },
-    { id: "Pink", color: "pink" },
-    { id: "White", color: "white" },
-    { id: "Black", color: "black" },
+    { color: "brown" },
+    { color: "red" },
+    { color: "orange" },
+    { color: "yellow" },
+    { color: "lime" },
+    { color: "green" },
+    { color: "cyan" },
+    { color: "blue" },
+    { color: "purple" },
+    { color: "pink" },
+    { color: "white" },
+    { color: "black" },
   ];
 
-  const allPlayers = React.useMemo(
-    () => [
-      { innocentPlayers },
-      { susPlayers },
-      { evilPlayers },
-      { deadPlayers },
-      { unknownPlayers },
-    ],
-    [innocentPlayers, susPlayers, evilPlayers, deadPlayers, unknownPlayers]
-  );
-
-  function swapPlayersColors(
+  const swapPlayersColors = (
     currentPlayerColor: string,
     targetPlayerColor: string
-  ) {
-    // dont need to do anything
-    // if the ids/colors are the same
-    if (currentPlayerColor === targetPlayerColor) {
-      setIsMenuShowing(false);
-      return;
-    }
+  ) => {
+    if (currentPlayerColor !== targetPlayerColor) {
+      const allPlayers = [
+        { players: unknownPlayers, modifier: setUnknownPlayers },
+        { players: innocentPlayers, modifier: setInnocentPlayers },
+        { players: susPlayers, modifier: setSusPlayers },
+        { players: evilPlayers, modifier: setEvilPlayers },
+        { players: deadPlayers, modifier: setDeadPlayers },
+      ];
 
-    // [list_name, player_object]
-    const currentPlayer = ["", {}];
-    const targetPlayer = ["", {}];
+      let currentPlayerData: IPlayerData | null = null;
+      let targetPlayerData: IPlayerData | null = null;
 
-    // find current target player list
-    // VERY VERY unoptimal solution
-    // to find which list the target color is located
-    for (const list of allPlayers) {
-      for (const [listName, listPlayers] of Object.entries(list)) {
-        for (const player of listPlayers) {
-          if (player.id === currentPlayerColor) {
-            currentPlayer[0] = listName;
-            currentPlayer[1] = player;
+      for (const list of allPlayers) {
+        for (const player of list.players) {
+          if (player.color === currentPlayerColor) {
+            currentPlayerData = {
+              player: player,
+              list: list.players,
+              modifier: list.modifier,
+            };
+          } else if (player.color === targetPlayerColor) {
+            targetPlayerData = {
+              player: player,
+              list: list.players,
+              modifier: list.modifier,
+            };
           }
 
-          if (player.id === targetPlayerColor) {
-            targetPlayer[0] = listName;
-            targetPlayer[1] = player;
-          }
-
-          if (targetPlayer[0] && currentPlayer[0]) break;
+          if (currentPlayerData !== null && targetPlayerData !== null) break;
         }
-        if (targetPlayer[0] && currentPlayer[0]) break;
+        if (currentPlayerData !== null && targetPlayerData !== null) break;
       }
-      if (targetPlayer[0] && currentPlayer[0]) break;
-    }
 
-    // filter out the current and target player from their lists
-    let [currentPlayerList] = allPlayers
-      .filter((list) => {
-        if (Object.keys(list)[0] == currentPlayer[0]) {
-          return true;
-        } else return false;
-      })
-      .map((list) => Object.values(list)[0]);
+      if (currentPlayerData !== null && targetPlayerData !== null) {
+        // the previous check will make sure both data are never null, we can use disable-line
 
-    currentPlayerList = currentPlayerList.map((player: IPlayer) => {
-      if (
-        player.name === currentPlayer[1].name &&
-        currentPlayer[1].color === player.color
-      ) {
-        // this creates a new object
-        // that inherits the player, but replaces the id/color
-        // then return that object
-        player = {
-          ...player,
-          id: targetPlayerColor,
-          color: targetPlayerColor,
-        };
-      } else if (
-        player.name === targetPlayer[1].name &&
-        targetPlayer[1].color === player.color
-      ) {
-        // see above
-        player = {
-          ...player,
-          id: currentPlayerColor,
-          color: currentPlayerColor,
-        };
-      }
-      return player;
-    });
+        if (currentPlayerData.modifier === targetPlayerData.modifier) {
+          currentPlayerData.modifier([
+            ...currentPlayerData.list.map((player) => {
+              if (player.color === currentPlayerColor) {
+                return {
+                  ...targetPlayerData!.player, // eslint-disable-line
+                  playerName: currentPlayerData!.player.playerName, // eslint-disable-line
+                };
+              } else if (player.color === targetPlayerColor) {
+                return {
+                  // the following will never be null
+                  ...currentPlayerData!.player, // eslint-disable-line
+                  playerName: targetPlayerData!.player.playerName, // eslint-disable-line
+                };
+              }
 
-    _updatePlayersList(currentPlayer[0], currentPlayerList);
+              return player;
+            }),
+          ]);
+        } else {
+          currentPlayerData.modifier([
+            ...currentPlayerData.list.map((player) => {
+              if (player.color === currentPlayerColor) {
+                return {
+                  ...targetPlayerData!.player, // eslint-disable-line
+                  playerName: currentPlayerData!.player.playerName, // eslint-disable-line
+                };
+              }
 
-    // if the players are not in the same list
-    if (currentPlayer[0] !== targetPlayer[0]) {
-      let [targetPlayerList] = allPlayers
-        .filter((list) => {
-          if (Object.keys(list)[0] == targetPlayer[0]) {
-            return true;
-          } else return false;
-        })
-        .map((list) => Object.values(list)[0]);
+              return player;
+            }),
+          ]);
+          targetPlayerData.modifier([
+            ...targetPlayerData.list.map((player) => {
+              if (player.color === targetPlayerColor) {
+                return {
+                  ...currentPlayerData!.player, // eslint-disable-line
+                  playerName: targetPlayerData!.player.playerName, // eslint-disable-line
+                };
+              }
 
-      targetPlayerList = targetPlayerList.map((player: IPlayer) => {
-        if (
-          player.name === targetPlayer[1].name &&
-          targetPlayer[1].id === player.id
-        ) {
-          player = {
-            ...player,
-            id: currentPlayerColor,
-            color: currentPlayerColor,
-          };
+              return player;
+            }),
+          ]);
         }
-        return player;
-      });
-
-      _updatePlayersList(targetPlayer[0], targetPlayerList);
-    }
-
-    // function that performs setState
-    // based on the player list name (i.e. innocentPlayers)
-    function _updatePlayersList(listName: string, updatedList: Array<IPlayer>) {
-      switch (listName) {
-        case "innocentPlayers":
-          setInnocentPlayers(updatedList);
-          break;
-        case "susPlayers":
-          setSusPlayers(updatedList);
-          break;
-        case "evilPlayers":
-          setEvilPlayers(updatedList);
-          break;
-        case "deadPlayers":
-          setDeadPlayers(updatedList);
-          break;
-        case "unknownPlayers":
-          setUnknownPlayers(updatedList);
-          break;
-        default:
-          break;
       }
     }
 
     setIsMenuShowing(false);
-  }
+  };
 
   React.useEffect(() => {
     function handleHideMenu(event: Event) {
@@ -231,11 +166,11 @@ export default function ColorsMenu(props: IColorsMenu): JSX.Element {
         isMenuShowing ? "" : classes.isHidden
       }`}
     >
-      {colors.map(({ id, color }) => (
+      {colors.map(({ color }) => (
         <ColorSwatch
           targetColor={color}
-          key={id}
-          swapPlayersColors={() => swapPlayersColors(currentColor, id)}
+          key={color}
+          swapPlayersColors={() => swapPlayersColors(currentColor, color)}
         />
       ))}
     </div>

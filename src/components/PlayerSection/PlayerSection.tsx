@@ -39,10 +39,9 @@ export default function PlayerSection(props: IPlayerSectionProps): JSX.Element {
           setList={setList}
           className={classes.PlayerSectionArea}
         >
-          {list.map(({ id, color, playerName }, index) => (
+          {list.map(({ color, playerName }, index) => (
             <Player
-              key={id}
-              id={id}
+              key={index}
               color={color}
               playerName={playerName}
               list={list}
