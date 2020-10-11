@@ -29,6 +29,7 @@ export default createUseStyles((theme: ITheme) => ({
     transition: "border-color 0.2s ease",
     "&:hover": {
       borderColor: `rgba(${hexToRGB(theme.textColorAlt)}, 0.25)`,
+      cursor: props.isReadOnly ? "grab" : "pointer",
     },
   }),
   PlayerIcon: (props) => ({
