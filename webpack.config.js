@@ -1,7 +1,9 @@
 const path = require("path");
-const { CopyPlugin, HtmlWebpackPlugin } = require("./webpack.plugins");
+const plugins = require("./webpack.plugins");
 
 module.exports = {
+  plugins,
+
   mode: process.env.NODE_ENV || "development",
   entry: path.resolve(__dirname, "src", "index.tsx"),
   output: {
@@ -30,14 +32,18 @@ module.exports = {
 
   resolve: {
     alias: {
-      assets: path.resolve(__dirname, "src", "assets"),
       components: path.resolve(__dirname, "src", "components"),
       context: path.resolve(__dirname, "src", "context"),
       themes: path.resolve(__dirname, "src", "themes"),
       utils: path.resolve(__dirname, "src", "utils"),
     },
-    extensions: [".js", ".jsx", ".ts", ".tsx", ".json"],
+    extensions: [".js", ".jsx", ".ts", ".tsx"],
   },
 
-  plugins: [CopyPlugin, HtmlWebpackPlugin],
+  devServer: {
+    contentBase: path.resolve(__dirname, "dist"),
+    compress: true,
+    port: 1234,
+    open: true,
+  },
 };

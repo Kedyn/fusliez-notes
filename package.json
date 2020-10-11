@@ -15,6 +15,7 @@
     "predeploynext": "npm run build",
     "deploynext": "gh-pages -d build -e ./next",
     "lint": "eslint ./src/ --cache --fix --ext .ts,.tsx",
+    "dev": "webpack-dev-server",
     "webpack": "webpack"
   },
   "homepage": "http://kedyn.github.io/fusliez-notes",
@@ -48,6 +49,7 @@
     "@types/react-dom": "^16.9.8",
     "@typescript-eslint/eslint-plugin": "^4.1.1",
     "@typescript-eslint/parser": "^4.1.1",
+    "clean-webpack-plugin": "^3.0.0",
     "copy-webpack-plugin": "^6.2.1",
     "css-loader": "^4.3.0",
     "eslint": "^7.9.0",
@@ -67,7 +69,8 @@
     "ts-loader": "^8.0.4",
     "typescript": "^4.0.2",
     "webpack": "^4.44.2",
-    "webpack-cli": "^3.3.12"
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0"
   },
   "husky": {
     "hooks": {

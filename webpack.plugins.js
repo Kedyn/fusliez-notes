@@ -1,11 +1,12 @@
 const path = require("path");
-const CopyPlugin = require("copy-webpack-plugin");
+const CopyWebpackPlugin = require("copy-webpack-plugin");
 const JsonMinifyPlugin = require("node-json-minify");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
 const isProduction = process.env.NODE_ENV === "production";
 
-exports.CopyPlugin = new CopyPlugin({
+const copyWebpackPlugin = new CopyWebpackPlugin({
   patterns: [
     {
       from: "**/*.(jpe?g|png|gif|ico)",
@@ -26,8 +27,12 @@ exports.CopyPlugin = new CopyPlugin({
   ],
 });
 
-exports.HtmlWebpackPlugin = new HtmlWebpackPlugin({
+const htmlWebpackPlugin = new HtmlWebpackPlugin({
   title: "fusliez notes",
   minify: isProduction,
   template: path.resolve(__dirname, "src", "templates", "index.template.html"),
 });
+
+const cleanWebpackPlugin = new CleanWebpackPlugin();
+
+module.exports = [cleanWebpackPlugin, copyWebpackPlugin, htmlWebpackPlugin];
