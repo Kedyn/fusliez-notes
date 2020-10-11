@@ -5,10 +5,9 @@ import cx from "classnames";
 import { useMobile } from "context/MobileContextProvider";
 import usePlayerStyles from "./Player.styles";
 import { useSettings } from "context/SettingsContextProvider";
-// import { useTranslation } from "react-i18next";
+import { useTranslation } from "react-i18next";
 
 export interface IPlayerProps {
-  id: string | number;
   color: string;
   playerName: string;
   list: Array<IPlayer>;
@@ -18,7 +17,7 @@ export interface IPlayerProps {
 }
 
 export default function Player(props: IPlayerProps): JSX.Element {
-  // const { t } = useTranslation();
+  const { t } = useTranslation();
   const { isMobile, orientation } = useMobile()!; // eslint-disable-line
   const { showNames } = useSettings()!; // eslint-disable-line
 
@@ -33,7 +32,7 @@ export default function Player(props: IPlayerProps): JSX.Element {
     ...props,
   });
 
-  const { id, color, playerName, list, setList, index, isReadOnly } = props;
+  const { color, playerName, list, setList, index, isReadOnly } = props;
 
   const handleChange = (
     player: number,
@@ -65,7 +64,7 @@ export default function Player(props: IPlayerProps): JSX.Element {
           <ColorsMenu
             isMenuShowing={isMenuShowing}
             setIsMenuShowing={setIsMenuShowing}
-            currentColor={String(id)}
+            currentColor={color}
           />
         )}
         <div
@@ -87,7 +86,7 @@ export default function Player(props: IPlayerProps): JSX.Element {
           <div className={classes.PlayerName}>
             <input
               type="text"
-              placeholder={color}
+              placeholder={t(`main.${color}`)}
               className={classes.PlayerInput}
               onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
                 handleChange(index, event)

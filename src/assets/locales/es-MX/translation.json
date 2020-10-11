@@ -13,7 +13,19 @@
       "hitList": "Lista Negra",
       "dead": "Muertos",
       "unknown": "Desconocidos"
-    }
+    },
+    "brown": "Cafe",
+    "red": "Rejo",
+    "orange": "Naranja",
+    "yellow": "Amarillo",
+    "lime": "Limon",
+    "green": "Verde",
+    "cyan": "Cian",
+    "blue": "Azul",
+    "purple": "Morado",
+    "pink": "Rosa",
+    "white": "Blanco",
+    "black": "Negro"
   },
   "controls": {
     "wins": "Victorias",
