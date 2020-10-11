@@ -19,7 +19,6 @@ export default function CircularProgressBar(
 ): JSX.Element {
   const { progress, color, children } = props;
   const { isMobile, orientation } = useMobile()!; // eslint-disable-line
-
   const classes = useStyles({
     color,
     progress,
@@ -41,7 +40,7 @@ export default function CircularProgressBar(
           stroke: color,
         },
         trail: {
-          stroke: buildTrailColor(color),
+          stroke: buildTrailColor(String(color)),
         },
       }}
     >
