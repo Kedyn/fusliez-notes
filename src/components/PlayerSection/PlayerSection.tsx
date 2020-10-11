@@ -17,8 +17,6 @@ export default function PlayerSection(props: IPlayerSectionProps): JSX.Element {
   const { showNames } = useSettings()!; // eslint-disable-line
   const { isLocked } = useLocking()!; // eslint-disable-line
 
-  console.log(isLocked);
-
   const classes = useStyles({ showNames });
 
   const { isMobile, title, list, setList } = props;
