@@ -1,10 +1,11 @@
-import { createUseStyles } from "react-jss";
 import { ITheme } from "utils/types";
+import { createUseStyles } from "react-jss";
 
 export default createUseStyles((theme: ITheme) => ({
   RadioButton: {
     display: "flex",
     alignItems: "center",
+    paddingLeft: "0.5rem",
     "& input:checked ~ $RadioControl $RadioControlBackdrop, & input:focus ~ $RadioControl $RadioControlBackdrop, & input:active ~ $RadioControl $RadioControlBackdrop": {
       backgroundColor: theme.activeColor,
     },
