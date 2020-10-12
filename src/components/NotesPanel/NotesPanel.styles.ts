@@ -23,7 +23,6 @@ export default createUseStyles({
   NotesReset: {
     flex: "0 0 auto",
     alignSelf: "flex-start",
-    whiteSpace: "nowrap",
   },
   Notepad: {
     flex: "1 0 auto",

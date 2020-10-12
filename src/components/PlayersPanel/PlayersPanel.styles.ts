@@ -6,10 +6,13 @@ export default createUseStyles({
   },
   PlayersControls: {
     display: "flex",
-  },
-  PlayersControlsButtons: {
-    marginTop: "1rem",
-    margin: "0.25rem",
-    width: "-webkit-fill-available",
+    flexWrap: "wrap",
+    justifyContent: "space-between",
+    padding: "0.5rem 0",
+    "& button": {
+      margin: "0.25rem",
+      flex: "1 1 auto",
+      maxWidth: "100%",
+    },
   },
 });

@@ -39,7 +39,9 @@ export default createUseStyles((theme: ITheme) => ({
       color: theme.textColorAlt,
     },
   },
-  fullWidth: {},
+  fullWidth: {
+    width: "100%",
+  },
   pressed: {
     cursor: "default",
     backgroundColor: theme.backgroundColorAlt,
@@ -48,5 +50,16 @@ export default createUseStyles((theme: ITheme) => ({
       color: theme.linkColor,
       backgroundColor: theme.backgroundColorAlt,
     },
+  },
+
+  CloseButton: {
+    width: "2rem",
+    lineHeight: "2rem",
+    height: "2rem",
+    padding: 0,
+    borderRadius: "50%",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
   },
 }));

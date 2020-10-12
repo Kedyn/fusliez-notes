@@ -1,6 +1,8 @@
 import React from "react";
 import useStyles from "./Button.styles";
 import cx from "classnames";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
 export interface IButtonProps {
   className?: string;
@@ -39,5 +41,20 @@ export default function Button(props: IButtonProps): JSX.Element {
     >
       {children}
     </button>
+  );
+}
+
+export interface ICloseButtonProps {
+  onClick(): void;
+}
+
+export function CloseButton(props: ICloseButtonProps): JSX.Element {
+  const classes = useStyles();
+  const { onClick, ...others } = props;
+
+  return (
+    <Button onClick={onClick} className={classes.CloseButton} {...others}>
+      <FontAwesomeIcon icon={faTimes} />
+    </Button>
   );
 }

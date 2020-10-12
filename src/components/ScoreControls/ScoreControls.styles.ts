@@ -5,7 +5,7 @@ export default createUseStyles((theme: ITheme) => ({
   ScoreControls: (props) => ({
     flex: props.isMobile ? "1 0 16rem" : "0 0 auto",
     maxWidth: props.isMobile ? "20rem" : "none",
-    margin: props.isMobile ? 0 : "1rem 0",
+    marginBottom: props.isMobile ? 0 : "1rem",
   }),
   ScoreButtonsLayout: (props) => ({
     display: "flex",
