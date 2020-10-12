@@ -4,3 +4,4 @@ dist/
 docs/
 node_modules/
 .eslintcache
+bundle-stats.json

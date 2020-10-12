@@ -9,12 +9,13 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server",
-    "build": "NODE_ENV=production npm run webpack",
+    "analyze": "npm run build:stats && webpack-bundle-analyzer bundle-stats.json",
+    "build:stats": "webpack --profile --json > bundle-stats.json",
+    "build": "NODE_ENV=production webpack",
     "deploy": "gh-pages -d dist",
     "predeploynext": "npm run build",
     "deploynext": "gh-pages -d build -e ./next",
-    "lint": "eslint ./src/ --cache --fix --ext .ts,.tsx",
-    "webpack": "webpack"
+    "lint": "eslint ./src/ --cache --fix --ext .ts,.tsx"
   },
   "homepage": "http://kedyn.github.io/fusliez-notes",
   "author": "Kedyn Macedonio",

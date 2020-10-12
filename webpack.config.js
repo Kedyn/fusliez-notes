@@ -1,6 +1,8 @@
 const path = require("path");
 const plugins = require("./webpack.plugins");
 
+const isProduction = process.env.NODE_ENV === "production";
+
 module.exports = {
   plugins,
 
@@ -8,7 +10,7 @@ module.exports = {
   entry: path.resolve(__dirname, "src", "index.tsx"),
   output: {
     path: path.resolve(__dirname, "dist"),
-    filename: "[name].[contenthash].js",
+    filename: "[name].[hash].js",
   },
 
   module: {
@@ -17,6 +19,9 @@ module.exports = {
         test: /\.(ts|tsx)$/,
         loader: "ts-loader",
         exclude: /node_modules/,
+        options: {
+          transpileOnly: true,
+        },
       },
       {
         test: /\.css$/,
@@ -35,6 +40,7 @@ module.exports = {
     extensions: [".js", ".jsx", ".ts", ".tsx"],
   },
 
+  devtool: isProduction ? "none" : "eval-cheap-module-source-map",
   devServer: {
     contentBase: path.resolve(__dirname, "dist"),
     compress: true,
