@@ -12,10 +12,15 @@ export default createUseStyles((theme: ITheme) => ({
   },
   ControlsContentHeader: {
     display: "flex",
+    flexWrap: "wrap",
     justifyContent: "space-between",
     alignSelf: "stretch",
-    padding: "0.5rem 0.5rem 1rem",
-    borderBottom: `1px solid ${theme.borderColor}`,
+    padding: "0.5rem 0",
+    "& button": {
+      margin: "0.25rem",
+      flex: "1 1 auto",
+      maxWidth: "100%",
+    },
   },
   Divider: {
     width: "100%",

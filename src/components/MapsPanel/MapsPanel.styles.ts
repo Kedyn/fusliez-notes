@@ -26,7 +26,6 @@ export default createUseStyles((theme: ITheme) => ({
   }),
   MapsToggleButton: {
     flex: "1 1 auto",
-    whiteSpace: "nowrap",
     "&:not(:first-child)": {
       borderTopLeftRadius: 0,
       borderBottomLeftRadius: 0,

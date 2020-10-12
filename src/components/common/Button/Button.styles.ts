@@ -39,7 +39,9 @@ export default createUseStyles((theme: ITheme) => ({
       color: theme.textColorAlt,
     },
   },
-  fullWidth: {},
+  fullWidth: {
+    width: "100%",
+  },
   pressed: {
     cursor: "default",
     backgroundColor: theme.backgroundColorAlt,

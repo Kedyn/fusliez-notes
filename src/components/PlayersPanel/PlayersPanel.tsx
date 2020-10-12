@@ -87,19 +87,13 @@ export default function PlayersPanel(): JSX.Element {
 
       <div className={classes.PlayersControls}>
         {showNames && (
-          <Button
-            className={classes.PlayersControlsButtons}
-            onClick={() => toggleLock()}
-          >
+          <Button onClick={() => toggleLock()}>
             {isLocked ? t("controls.unlockPlayers") : t("controls.lockPlayers")}
           </Button>
         )}
 
         {isMobile && (
-          <Button
-            className={classes.PlayersControlsButtons}
-            onClick={() => resetPlayersPositions()}
-          >
+          <Button onClick={() => resetPlayersPositions()}>
             Reset Positions
           </Button>
         )}
