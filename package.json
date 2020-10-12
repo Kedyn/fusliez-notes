@@ -8,7 +8,7 @@
   },
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-serveer",
+    "start": "webpack-dev-server",
     "build": "NODE_ENV=production npm run webpack",
     "deploy": "gh-pages -d dist",
     "predeploynext": "npm run build",
