@@ -2,7 +2,7 @@ import { IView } from "utils/types";
 import React from "react";
 import useStyles from "./SlideDrawer.styles";
 import cx from "classnames";
-import CloseButton from "components/common/CloseButton";
+import { CloseButton } from "components/common/Button";
 
 export interface ISideDrawerProps {
   isDrawerOpen: boolean;
