@@ -39,8 +39,8 @@ other support on this project such as:
 
 [Adam Gausmann](https://github.com/agausmann)  
 Pedro / Dian\_\_  
-Rydannn (https://twitter.com/RydanTweets)  
-GeneralMitch (https://twitter.com/GeneralMitch1)  
+[Rydannn] (https://twitter.com/RydanTweets)  
+[GeneralMitch] (https://twitter.com/GeneralMitch1)  
 Kermitigated (twitch handle)  
 [Kinishina](https://github.com/Kinishina)  
 [Federico Gaston Ramadan](https://github.com/federamadan)  
