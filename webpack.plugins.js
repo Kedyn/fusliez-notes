@@ -14,7 +14,7 @@ const copyWebpackPlugin = new CopyWebpackPlugin({
       context: "src/assets",
     },
     {
-      from: "**/*.json",
+      from: "**/*.(json|webmanifest)",
       to: "assets",
       context: "src/assets",
       transform: function (content) {
