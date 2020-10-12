@@ -36,7 +36,10 @@ const htmlWebpackPlugin = new HtmlWebpackPlugin({
 
 const cleanWebpackPlugin = new CleanWebpackPlugin();
 
-const bundleAnalyzerPlugin = new BundleAnalyzerPlugin();
+const bundleAnalyzerPlugin = new BundleAnalyzerPlugin({
+  analyzerMode: isProduction ? "disabled" : "server",
+  openAnalyzer: false,
+});
 
 module.exports = [
   cleanWebpackPlugin,
