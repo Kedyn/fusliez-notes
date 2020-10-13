@@ -18,6 +18,7 @@ And migrated from parcel to webpack. Restructure most components.
 - Added translation to de-DE
 - About button
 - Changelog button
+- Colorblind mode
 
 #### Fixed
 

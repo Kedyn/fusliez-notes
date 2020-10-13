@@ -8,7 +8,7 @@ export const NAMESPACE = "fusliez-notes-";
 
 export const DEFAULT_SETTINGS: ISettings = {
   showNames: true,
-  scoresStyle: "circles",
+  isColorBlind: false,
 };
 
 export const DEFAULT_THEME_DATA: ITheme = {

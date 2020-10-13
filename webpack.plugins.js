@@ -9,7 +9,7 @@ const isProduction = process.env.NODE_ENV === "production";
 const copyWebpackPlugin = new CopyWebpackPlugin({
   patterns: [
     {
-      from: "**/*.(jpe?g|png|gif)",
+      from: "**/*.*",
       to: "assets",
       context: "src/assets",
     },

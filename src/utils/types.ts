@@ -7,13 +7,15 @@ export interface IPlayer extends ItemInterface {
 
 export interface ISettings {
   showNames: boolean;
-  scoresStyle: string;
+  isColorBlind: boolean;
 }
 
 export interface ISettingsContext {
   showNames: boolean;
+  isColorBlind: boolean;
 
   setShowNames: (value: boolean) => void;
+  setIsColorBlind: (value: boolean) => void;
 }
 
 export interface IStyleVars {

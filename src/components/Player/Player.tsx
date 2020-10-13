@@ -19,7 +19,7 @@ export interface IPlayerProps {
 export default function Player(props: IPlayerProps): JSX.Element {
   const { t } = useTranslation();
   const { isMobile, orientation } = useMobile()!; // eslint-disable-line
-  const { showNames } = useSettings()!; // eslint-disable-line
+  const { showNames, isColorBlind } = useSettings()!; // eslint-disable-line
 
   const [isMenuShowing, setIsMenuShowing] = React.useState(false);
 
@@ -58,7 +58,7 @@ export default function Player(props: IPlayerProps): JSX.Element {
   };
 
   return (
-    <div className={`${classes.Player} player-handle`} id={color}>
+    <div className={`${classes.Player} player-handle`} id={color} title={color}>
       <div className={classes.PlayerTile}>
         {isMenuShowing && !isMobile && !isReadOnly && (
           <ColorsMenu
@@ -103,6 +103,9 @@ export default function Player(props: IPlayerProps): JSX.Element {
           </div>
         )}
       </div>
+      {isColorBlind && (
+        <div className={classes.ColorBlind}>{t(`main.${color}`)}</div>
+      )}
     </div>
   );
 }

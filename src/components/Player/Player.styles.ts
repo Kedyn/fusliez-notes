@@ -84,4 +84,12 @@ export default createUseStyles((theme: ITheme) => ({
       opacity: 0.5,
     },
   }),
+  ColorBlind: (props) => ({
+    textAlign: "center",
+    margin: "0.375rem",
+    marginTop: "-0.375rem",
+    fontSize: "0.75rem",
+    width: !props.showNames ? "2.25rem" : "100%",
+    overflowX: "hidden",
+  }),
 }));
