@@ -82,6 +82,7 @@
     "title": "Settings",
     "uiSettings": "UI Settings",
     "usePlayerNames": "Use player names for tiles",
+    "useColorBlindMode": "Use color blind mode",
     "language": "Language",
     "done": "Done",
     "close": "Close"

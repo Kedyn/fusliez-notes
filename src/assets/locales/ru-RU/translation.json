@@ -82,6 +82,7 @@
     "title": "Настройки",
     "uiSettings": "Настройки интерфейса",
     "usePlayerNames": "Использовать имена игроков",
+    "useColorBlindMode": "Use color blind mode",
     "language": "Язык",
     "done": "Готово",
     "close": "Закрыть"

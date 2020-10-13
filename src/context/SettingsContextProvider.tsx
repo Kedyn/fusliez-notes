@@ -24,17 +24,25 @@ export default function SettingsContextProvider(
   const [showNames, setShowNames] = React.useState<boolean>(
     settingsData.showNames
   );
+  const [isColorBlind, setIsColorBlind] = React.useState<boolean>(
+    settingsData.isColorBlind
+  );
 
   React.useEffect(() => {
-    localStorage.setItem(namespace, JSON.stringify({ showNames }));
-  }, [showNames]);
+    localStorage.setItem(
+      namespace,
+      JSON.stringify({ showNames, isColorBlind })
+    );
+  }, [showNames, isColorBlind]);
 
   return (
     <SettingsContext.Provider
       value={{
         showNames,
+        isColorBlind,
 
         setShowNames,
+        setIsColorBlind,
       }}
     >
       {props.children}

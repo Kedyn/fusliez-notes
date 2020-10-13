@@ -11,7 +11,12 @@ import { useTranslation } from "react-i18next";
 export default function SettingsPanel(): JSX.Element {
   const { t } = useTranslation();
   const { isMobile } = useMobile()!; // eslint-disable-line
-  const { showNames, setShowNames } = useSettings()!; // eslint-disable-line
+  const {
+    showNames,
+    setShowNames,
+    isColorBlind,
+    setIsColorBlind,
+  } = useSettings()!; // eslint-disable-line
 
   const [language, setLanguage] = React.useState<string>("en-US");
 
@@ -69,6 +74,13 @@ export default function SettingsPanel(): JSX.Element {
               setShowNames(event.currentTarget.checked);
             }}
             checked={showNames}
+          />
+          <Switch
+            label={t("settings.useColorBlindMode")}
+            onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+              setIsColorBlind(event.currentTarget.checked);
+            }}
+            checked={isColorBlind}
           />
         </div>
 
