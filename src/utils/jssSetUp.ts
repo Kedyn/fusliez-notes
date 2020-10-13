@@ -1,8 +1,8 @@
 import { SheetsRegistry, jss } from "react-jss";
-import normalize from "normalize-jss";
 
 import { ITheme } from "./types";
 import { STYLE_VARS } from "./styleVars";
+import normalize from "normalize-jss";
 import preset from "jss-preset-default";
 
 export default function jssSetUp(theme: ITheme): SheetsRegistry {
@@ -113,6 +113,9 @@ export default function jssSetUp(theme: ITheme): SheetsRegistry {
           padding: 0,
           position: "absolute",
           width: "1px",
+        },
+        ".dragging": {
+          cursor: "grabbing !important",
         },
       },
     })
