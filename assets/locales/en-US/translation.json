@@ -1,7 +1,7 @@
 {
   "main": {
     "overall": "Overall",
-    "innocent": "Innocent",
+    "crewmate": "Crewmate",
     "impostor": "Impostor",
     "w": "W",
     "l": "L",
@@ -13,21 +13,35 @@
       "hitList": "Hit List",
       "dead": "Dead",
       "unknown": "Unknown"
-    }
+    },
+    "brown": "Brown",
+    "red": "Red",
+    "orange": "Orange",
+    "yellow": "Yellow",
+    "lime": "Lime",
+    "green": "Green",
+    "cyan": "Cyan",
+    "blue": "Blue",
+    "purple": "Purple",
+    "pink": "Pink",
+    "white": "White",
+    "black": "Black"
   },
   "controls": {
     "wins": "Wins",
     "losses": "Losses",
-    "innocent": "Innocent",
+    "crewmate": "Crewmate",
     "impostor": "Impostor",
     "resetScores": "Reset Scores",
     "resetRound": "Reset Round",
     "resetAll": "Reset All",
-    "notes": "Notes",
-    "resetNotes": "Reset Notes",
-    "settings": "Settings"
+    "notes": "Notepad",
+    "resetNotes": "Reset Notepad",
+    "lockPlayers": "Lock Players",
+    "unlockPlayers": "Unlock Players"
   },
   "maps": {
+    "title": "Maps",
     "vents": "Vents",
     "commonTasks": "Common Tasks",
     "wiringTasks": "Wiring Tasks",
@@ -61,36 +75,16 @@
     "south": "4. South",
     "southwest": "5. Southwest",
     "northwest": "6. Northwest",
-    "resetPlayers": "Reset Players"
+    "dragInstructions": "Drag players on the map to track",
+    "resetPlayers": "Reset Positions"
   },
   "settings": {
     "title": "Settings",
     "uiSettings": "UI Settings",
-    "scoresTypes": "Scores display type",
-    "bars": "Bars",
-    "circles": "Circles",
-    "usePlayerNames": "Use player names",
+    "playerTiles": "Player Tiles",
+    "usePlayerNames": "Show player names",
+    "colorBlindMode": "Color blind mode",
     "language": "Language",
-    "themeSettings": "Theme Settings",
-    "themeClick": "Click a color to change it",
-    "resetColors": "Reset Colors",
-    "change": "Change",
-    "backgroundColor": "Background Color",
-    "textColor": "Text Color",
-    "inputBackgroundColor": "Input Background Color",
-    "inputTextColor": "Input Text Color",
-    "neutralBackgroundColor": "Neutral Background Color",
-    "neutralTextColor": "Neutral Text Color",
-    "innocentBackgroundColor": "Innocent Background Color",
-    "innocentTextColor": "Innocent Text Color",
-    "impostorBackgroundColor": "Impostor Background Color",
-    "impostorTextColor": "Impostor Text Color",
-    "buttonBackgroundColor": "Button Background Color",
-    "buttonTextColor": "Button Text Color",
-    "buttonDangerBackgroundColor": "Button Danger Background Color",
-    "buttonDangerTextColor": "Button Danger Text Color",
-    "borderColor": "Border Color",
-    "linkColor": "Link Color",
     "done": "Done",
     "close": "Close"
   },
@@ -102,6 +96,7 @@
     "menu": "Menu",
     "settings": "Settings",
     "feedback": "Feedback",
-    "about": "About"
+    "about": "About",
+    "changelog": "Changelog"
   }
 }
