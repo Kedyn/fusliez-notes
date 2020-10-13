@@ -61,6 +61,11 @@ export default function AboutPanel(): JSX.Element {
       link: "https://github.com/fabian9799",
       contribution: "German (DE) Translation",
     },
+    {
+      name: "HoneyLemonDaisy",
+      link: "https://twitter.com/honeylemondaisy",
+      contribution: "Social share image",
+    },
   ];
 
   return (
