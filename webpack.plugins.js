@@ -3,6 +3,7 @@ const CopyWebpackPlugin = require("copy-webpack-plugin");
 const JsonMinifyPlugin = require("node-json-minify");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
 
 const isProduction = process.env.NODE_ENV === "production";
 
@@ -35,4 +36,13 @@ const htmlWebpackPlugin = new HtmlWebpackPlugin({
 
 const cleanWebpackPlugin = new CleanWebpackPlugin();
 
-module.exports = [cleanWebpackPlugin, copyWebpackPlugin, htmlWebpackPlugin];
+const bundleAnalyzerPlugin = new BundleAnalyzerPlugin({
+  analyzerMode: "static",
+});
+
+module.exports = [
+  cleanWebpackPlugin,
+  copyWebpackPlugin,
+  htmlWebpackPlugin,
+  bundleAnalyzerPlugin,
+];

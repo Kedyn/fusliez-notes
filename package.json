@@ -9,9 +9,7 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server",
-    "analyze": "npm run build:stats && webpack-bundle-analyzer bundle-stats.json",
-    "build:stats": "webpack --profile --json > bundle-stats.json",
-    "build": "NODE_ENV=production webpack",
+    "build": "cross-env NODE_ENV=production webpack",
     "deploy": "gh-pages -d dist",
     "predeploynext": "npm run build",
     "deploynext": "gh-pages -d build -e ./next",
@@ -52,6 +50,7 @@
     "@typescript-eslint/parser": "^4.1.1",
     "clean-webpack-plugin": "^3.0.0",
     "copy-webpack-plugin": "^6.2.1",
+    "cross-env": "^7.0.2",
     "css-loader": "^4.3.0",
     "eslint": "^7.9.0",
     "eslint-config-prettier": "^6.11.0",
