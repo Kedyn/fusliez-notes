@@ -17,9 +17,21 @@ export default function PlayerSection(props: IPlayerSectionProps): JSX.Element {
   const { showNames } = useSettings()!; // eslint-disable-line
   const { isLocked } = useLocking()!; // eslint-disable-line
 
+  const [isSorting, setIsSorting] = React.useState(false);
+
   const classes = useStyles({ showNames });
 
   const { isMobile, title, list, setList } = props;
+
+  React.useEffect(() => {
+    if (!isMobile) {
+      if (isSorting) {
+        document.querySelector("body")!.classList.add("dragging"); // eslint-disable-line
+      } else {
+        document.querySelector("body")!.classList.remove("dragging"); // eslint-disable-line
+      }
+    }
+  }, [isSorting]);
 
   return (
     <React.Fragment>
@@ -41,6 +53,9 @@ export default function PlayerSection(props: IPlayerSectionProps): JSX.Element {
           list={list}
           setList={setList}
           className={classes.PlayerSectionArea}
+          forceFallback={true}
+          onChoose={() => setIsSorting(true)}
+          onUnchoose={() => setIsSorting(false)}
         >
           {list.map(({ color, playerName }, index) => (
             <Player

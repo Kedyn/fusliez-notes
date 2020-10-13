@@ -14,18 +14,18 @@
       "dead": "Мертвый",
       "unknown": "Неизвестно"
     },
-    "brown": "Brown",
-    "red": "Red",
-    "orange": "Orange",
-    "yellow": "Yellow",
-    "lime": "Lime",
-    "green": "Green",
-    "cyan": "Cyan",
-    "blue": "Blue",
-    "purple": "Purple",
-    "pink": "Pink",
-    "white": "White",
-    "black": "Black"
+    "brown": "Коричневый",
+    "red": "Красный",
+    "orange": "Оранжевый",
+    "yellow": "Желтый",
+    "lime": "Лаймовый",
+    "green": "Зеленый",
+    "cyan": "Циановый",
+    "blue": "Синий",
+    "purple": "Фиолетовый",
+    "pink": "Розовый",
+    "white": "Белый",
+    "black": "Черный"
   },
   "controls": {
     "wins": "Выигрышей",
@@ -36,12 +36,12 @@
     "resetRound": "Сбросить раунд",
     "resetAll": "Сбросить все",
     "notes": "Записки",
-    "resetNotes": "Сбросить записки",
-    "lockPlayers": "Lock Players",
-    "unlockPlayers": "Unlock Players"
+    "resetNotes": "Удалить заметки",
+    "lockPlayers": "Заблокировать игроков",
+    "unlockPlayers": "Разблокировать игроков"
   },
   "maps": {
-    "title": "Maps",
+    "title": "Карты",
     "vents": "Вентиляция",
     "commonTasks": "Общие задания",
     "wiringTasks": "Провода",
@@ -75,26 +75,26 @@
     "south": "4. Юг",
     "southwest": "5. Юго-запад",
     "northwest": "6. Северо-запад",
-    "dragInstructions": "Drag players on the map to track",
-    "resetPlayers": "Reset Positions"
+    "dragInstructions": "Для отслеживания, перетащите игроков на карту",
+    "resetPlayers": "Сбросить позиции"
   },
   "settings": {
     "title": "Настройки",
-    "uiSettings": "UI Settings",
+    "uiSettings": "Настройки интерфейса",
     "usePlayerNames": "Использовать имена игроков",
     "language": "Язык",
-    "done": "Done",
+    "done": "Готово",
     "close": "Закрыть"
   },
   "menu": {
-    "players": "Players",
-    "notes": "Notes",
-    "scores": "Scores",
-    "maps": "Maps",
-    "menu": "Menu",
-    "settings": "Settings",
-    "feedback": "Feedback",
-    "about": "About",
-    "changelog": "Changelog"
+    "players": "Игроки",
+    "notes": "Заметки",
+    "scores": "Счет",
+    "maps": "Карты",
+    "menu": "Меню",
+    "settings": "Настройки",
+    "feedback": "Обратная связь",
+    "about": "О проекте",
+    "changelog": "Список изменений"
   }
 }

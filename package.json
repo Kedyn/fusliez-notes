@@ -8,12 +8,12 @@
   },
   "main": "index.js",
   "scripts": {
-    "start": "parcel serve ./src/index.html --open",
-    "build": "parcel build ./src/index.html --no-source-maps -d ./build --public-url ./",
+    "start": "webpack-dev-server",
+    "build": "cross-env NODE_ENV=production webpack",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
+    "deploy": "gh-pages -d dist",
     "predeploynext": "npm run build",
-    "deploynext": "gh-pages -d build -e ./next",
+    "deploynext": "gh-pages -d dist -e ./next",
     "lint": "eslint ./src/ --cache --fix --ext .ts,.tsx"
   },
   "homepage": "http://kedyn.github.io/fusliez-notes",
@@ -37,7 +37,8 @@
     "react-draggable": "^4.4.3",
     "react-i18next": "^11.7.3",
     "react-jss": "^10.4.0",
-    "react-sortablejs": "^2.0.11"
+    "react-sortablejs": "^6.0.0",
+    "sortablejs": "^1.12.0"
   },
   "devDependencies": {
     "@types/classnames": "^2.2.10",
@@ -48,32 +49,28 @@
     "@types/react-dom": "^16.9.8",
     "@typescript-eslint/eslint-plugin": "^4.1.1",
     "@typescript-eslint/parser": "^4.1.1",
+    "clean-webpack-plugin": "^3.0.0",
+    "copy-webpack-plugin": "^6.2.1",
+    "cross-env": "^7.0.2",
+    "css-loader": "^4.3.0",
     "eslint": "^7.9.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-prettier": "^3.1.4",
     "eslint-plugin-react": "^7.21.3",
     "gh-pages": "^3.1.0",
+    "html-webpack-plugin": "^4.5.0",
     "husky": "^4.3.0",
     "lint-staged": "^10.3.0",
+    "node-json-minify": "^1.0.0",
     "normalize-jss": "^4.0.0",
-    "parcel": "^1.12.4",
-    "parcel-plugin-static-files-copy": "^2.5.0",
     "prettier": "^2.1.1",
-    "typescript": "^4.0.2"
-  },
-  "alias": {
-    "components": "./src/components",
-    "context": "./src/context",
-    "themes": "./src/themes",
-    "utils": "./src/utils"
-  },
-  "staticFiles": {
-    "staticPath": [
-      {
-        "staticPath": "./src/assets",
-        "staticOutDir": "assets"
-      }
-    ]
+    "style-loader": "^2.0.0",
+    "ts-loader": "^8.0.4",
+    "typescript": "^4.0.2",
+    "webpack": "^4.44.2",
+    "webpack-bundle-analyzer": "^3.9.0",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0"
   },
   "husky": {
     "hooks": {

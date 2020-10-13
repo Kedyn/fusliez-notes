@@ -1,13 +1,72 @@
 import React from "react";
-import { useTranslation } from "react-i18next";
 import { VERSION } from "utils/constants";
-import useStyles from "./AboutPanel.styles";
 import { useMobile } from "context/MobileContextProvider";
+import useStyles from "./AboutPanel.styles";
+import { useTranslation } from "react-i18next";
 
 export default function AboutPanel(): JSX.Element {
   const { t } = useTranslation();
   const { isMobile } = useMobile()!; // eslint-disable-line
   const classes = useStyles({ isMobile });
+
+  const credits = [
+    {
+      name: "fuslie",
+      link: "https://www.twitch.tv/fuslie",
+      contribution: "Inspired this project",
+    },
+    {
+      name: "Kedyn Macedonio",
+      link: "https://github.com/Kedyn",
+      contribution:
+        "Developer / Creator / Project Maintainer / Spanish (MX) Translations",
+    },
+    {
+      name: "Francis Tse",
+      link: "https://github.com/francistse23",
+      contribution: "Developer / Project Maintainer",
+    },
+    {
+      name: "Kevin Han",
+      link: "https://github.com/kevinydhan",
+      contribution: "UI Design / Developer / Project Contributor",
+    },
+    {
+      name: "Daniel Singer",
+      link: "https://github.com/chilblane",
+      contribution: "UX/UI Developer + Product Direction",
+    },
+    {
+      name: "Griffin Suparto",
+      link: "https://github.com/Viou",
+      contribution: "Developer / Project Contributor",
+    },
+    {
+      name: "Danilo Moura",
+      link: "https://github.com/danilolmoura",
+      contribution: "Portuguese (BR) Translations",
+    },
+    {
+      name: "Kinishina",
+      link: "https://github.com/danilolmoura",
+      contribution: "Russian (RU) Translations",
+    },
+    {
+      name: "Alena Choong",
+      link: "https://github.com/leeeennyy",
+      contribution: "Developer / Project Contributor",
+    },
+    {
+      name: "Fabian9799",
+      link: "https://github.com/fabian9799",
+      contribution: "German (DE) Translation",
+    },
+    {
+      name: "HoneyLemonDaisy",
+      link: "https://twitter.com/honeylemondaisy",
+      contribution: "Social share image",
+    },
+  ];
 
   return (
     <div className={classes.AboutPanel}>
@@ -15,94 +74,15 @@ export default function AboutPanel(): JSX.Element {
         <h2 className={classes.AboutPanelTitle}>{t("menu.about")}</h2>
       )}
       <h3>fusliez notes v{VERSION}</h3>
-      <p>
-        <a
-          href="https://www.twitch.tv/fuslie"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          fuslie
-        </a>
-        <br />
-        Inspired this project
-      </p>
-      <p>
-        <a
-          href="https://github.com/Kedyn"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Kedyn Macedonio
-        </a>
-        <br />
-        Developer / Creator / Project Maintainer / Spanish (MX) Translations
-      </p>
-      <p>
-        <a
-          href="https://github.com/francistse23"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Francis Tse
-        </a>
-        <br />
-        Developer / Project Maintainer
-      </p>
-      <p>
-        <a
-          href="https://github.com/kevinydhan"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Kevin Han
-        </a>
-        <br />
-        UI Design
-      </p>
-      <p>
-        <a
-          href="https://github.com/chilblane"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Daniel Singer
-        </a>
-        <br />
-        UX/UI Developer + Product Direction
-      </p>
-      <p>
-        <a
-          href="https://github.com/Viou"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Griffin Suparto
-        </a>
-        <br />
-        Developer / Project Contributor
-      </p>
-      <p>
-        <a
-          href="https://github.com/danilolmoura"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Danilo Moura
-        </a>
-        <br />
-        Portuguese (BR) Translations
-      </p>
-      <p>
-        <a
-          href="https://github.com/Kinishina"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Kinishina
-        </a>
-        <br />
-        Russian (RU) Translations
-      </p>
+      {credits.map((person, index) => (
+        <p key={index}>
+          <a href={person.link} target="_blank" rel="noopener noreferrer">
+            {person.name}
+          </a>
+          <br />
+          {person.contribution}
+        </p>
+      ))}
       <hr />
       <p>
         Thank you to everyone who has reported issues / suggested new features.
@@ -128,6 +108,10 @@ export default function AboutPanel(): JSX.Element {
           Kedyn Macedonio
         </a>
       </p>
+      <hr />
+      <small>
+        Disclaimer this app is in no way associated with InnerSloth.
+      </small>
     </div>
   );
 }
