@@ -1,7 +1,6 @@
 import React from "react";
 import useStyles from "./Footer.styles";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHeart } from "@fortawesome/free-solid-svg-icons";
 
 export default function Footer(): JSX.Element {
   const classes = useStyles();
@@ -9,7 +8,7 @@ export default function Footer(): JSX.Element {
   return (
     <React.Fragment>
       <footer className={classes.Footer}>
-        fusliez notes made with <FontAwesomeIcon icon={faHeart} /> by the fuslie
+        fusliez notes made with <FontAwesomeIcon icon="heart" /> by the fuslie
         fam. |{" "}
         <a
           href="https://github.com/Kedyn/fusliez-notes"

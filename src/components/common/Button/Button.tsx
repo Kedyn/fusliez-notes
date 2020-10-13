@@ -2,7 +2,6 @@ import React from "react";
 import useStyles from "./Button.styles";
 import cx from "classnames";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
 export interface IButtonProps {
   className?: string;
@@ -54,7 +53,7 @@ export function CloseButton(props: ICloseButtonProps): JSX.Element {
 
   return (
     <Button onClick={onClick} className={classes.CloseButton} {...others}>
-      <FontAwesomeIcon icon={faTimes} />
+      <FontAwesomeIcon icon="times" />
     </Button>
   );
 }
