@@ -7,6 +7,34 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Released]
 
+### [v0.10.0] - 10/12/2020
+
+New UI revamp from chilblane. Improves not only visually, but also mobile support.
+And migrated from parcel to webpack. Restructure most components.
+
+#### Added
+
+- Added feature to enable read-only/editing mode for player colours and names
+- Added translation to de-DE
+- About button
+- Changelog button
+
+#### Fixed
+
+- No longer shows weird mouse icon while dragging player
+- UI
+
+#### Removed
+
+- Themes Settings
+- Scores display type
+
+#### Changed
+
+- Innocent to Crewmate
+- Parcel to webpack
+- Player images
+
 ### [v0.9.1] - 10/07/2020
 
 #### Added
@@ -157,12 +185,7 @@ Features included draggable players and progress bar for score.
 
 ### [vX.X.X] - X/X/X
 
-New UI revamp from chilblane. Improves not only visually, but also mobile support.
-
-#### Added
-
-- Added feature to enable read-only/editing mode for player colours and names
-- Added translation to de-DE
+Next update changes will go here.
 
 ### [v0.1.0] - 8/24/2020
 

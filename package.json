@@ -10,9 +10,10 @@
   "scripts": {
     "start": "webpack-dev-server",
     "build": "cross-env NODE_ENV=production webpack",
+    "predeploy": "npm run build",
     "deploy": "gh-pages -d dist",
     "predeploynext": "npm run build",
-    "deploynext": "gh-pages -d build -e ./next",
+    "deploynext": "gh-pages -d dist -e ./next",
     "lint": "eslint ./src/ --cache --fix --ext .ts,.tsx"
   },
   "homepage": "http://kedyn.github.io/fusliez-notes",

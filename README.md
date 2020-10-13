@@ -44,7 +44,7 @@ Pedro / Dian\_\_
 Kermitigated (twitch handle)  
 [Kinishina](https://github.com/Kinishina)  
 [Federico Gaston Ramadan](https://github.com/federamadan)  
-[Danilo Moura](https://github.com/danilolmoura) (A.K.A. Eudan)
+[Danilo Moura](https://github.com/danilolmoura) (A.K.A. Eudan)  
 [Fabian9799](https://github.com/fabian9799)  
 [Tim Bang](https://github.com/I3lackRacer)
 
