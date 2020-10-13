@@ -76,7 +76,7 @@ export default function SettingsPanel(): JSX.Element {
             checked={showNames}
           />
           <Switch
-            label={t("settings.useColorBlind")}
+            label={t("settings.useColorBlindMode")}
             onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
               setIsColorBlind(event.currentTarget.checked);
             }}
