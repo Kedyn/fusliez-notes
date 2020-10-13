@@ -38,6 +38,7 @@ const cleanWebpackPlugin = new CleanWebpackPlugin();
 
 const bundleAnalyzerPlugin = new BundleAnalyzerPlugin({
   analyzerMode: "static",
+  openAnalyzer: false,
 });
 
 module.exports = [
