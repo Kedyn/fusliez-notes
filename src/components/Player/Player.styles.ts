@@ -6,8 +6,11 @@ import { createUseStyles } from "react-jss";
 
 export default createUseStyles((theme: ITheme) => ({
   Player: (props) => ({
-    flex: props.showNames ? "1 0 50%" : "0 0 2.5rem",
-    maxWidth: props.showNames ? "50%" : "none",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "stretch",
+    flex: props.showNames || props.isColorBlind ? "1 0 50%" : "0 0 2.5rem",
+    maxWidth: props.showNames || props.isColorBlind ? "50%" : "none",
   }),
   PlayerTile: (props) => ({
     alignItems: "center",
@@ -35,9 +38,9 @@ export default createUseStyles((theme: ITheme) => ({
   }),
   PlayerIcon: (props) => ({
     display: "flex",
-    flex: "0 0 2.25rem",
+    flex: props.showNames || !props.isColorBlind ? "0 0 2.25rem" : "1 0 auto",
     alignSelf: "stretch",
-    width: "2.25rem",
+    width: props.showNames || !props.isColorBlind ? "2.25rem" : "auto",
     height: "2rem",
     justifyContent: "center",
     alignItems: "center",
@@ -84,12 +87,12 @@ export default createUseStyles((theme: ITheme) => ({
       opacity: 0.5,
     },
   }),
-  ColorBlind: (props) => ({
+  PlayerHelpText: {
     textAlign: "center",
-    margin: "0.375rem",
-    marginTop: "-0.375rem",
     fontSize: "0.75rem",
-    width: !props.showNames ? "2.25rem" : "100%",
     overflowX: "hidden",
-  }),
+    letterSpacing: "0.05em",
+    fontWeight: 500,
+    opacity: 0.7,
+  },
 }));

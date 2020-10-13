@@ -28,6 +28,7 @@ export default function Player(props: IPlayerProps): JSX.Element {
   const classes = usePlayerStyles({
     showNames,
     isMobile,
+    isColorBlind,
     orientation,
     ...props,
   });
@@ -58,8 +59,8 @@ export default function Player(props: IPlayerProps): JSX.Element {
   };
 
   return (
-    <div className={`${classes.Player} player-handle`} id={color} title={color}>
-      <div className={classes.PlayerTile}>
+    <div className={classes.Player} id={color} title={color}>
+      <div className={`${classes.PlayerTile} player-handle`}>
         {isMenuShowing && !isMobile && !isReadOnly && (
           <ColorsMenu
             isMenuShowing={isMenuShowing}
@@ -104,7 +105,7 @@ export default function Player(props: IPlayerProps): JSX.Element {
         )}
       </div>
       {isColorBlind && (
-        <div className={classes.ColorBlind}>{t(`main.${color}`)}</div>
+        <div className={classes.PlayerHelpText}>{t(`main.${color}`)}</div>
       )}
     </div>
   );

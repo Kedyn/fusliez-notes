@@ -81,8 +81,9 @@
   "settings": {
     "title": "Ajustes",
     "uiSettings": "Ajustes de IU",
+    "playerTiles": "Player Tiles",
     "usePlayerNames": "Usar nombres de jugadores",
-    "useColorBlindMode": "Usar modo daltonico",
+    "colorBlindMode": "Usar modo daltonico",
     "language": "Lenguage",
     "done": "Hecho",
     "close": "Cerrar"

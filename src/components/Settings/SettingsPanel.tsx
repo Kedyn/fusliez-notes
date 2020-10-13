@@ -67,6 +67,7 @@ export default function SettingsPanel(): JSX.Element {
         <h2 className={classes.SettingsPanelTitle}>{t("settings.title")}</h2>
       )}
       <div className={classes.SettingsContent}>
+        <h4>{t("settings.playerTiles")}</h4>
         <div className={classes.SettingsPane}>
           <Switch
             label={t("settings.usePlayerNames")}
@@ -76,7 +77,7 @@ export default function SettingsPanel(): JSX.Element {
             checked={showNames}
           />
           <Switch
-            label={t("settings.useColorBlindMode")}
+            label={t("settings.colorBlindMode")}
             onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
               setIsColorBlind(event.currentTarget.checked);
             }}
