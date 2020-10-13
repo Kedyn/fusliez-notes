@@ -1,14 +1,7 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
-import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
+import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faUserAstronaut,
-  faEdit,
-  faCompactDisc,
-  faMap,
-  faEllipsisH,
-} from "@fortawesome/free-solid-svg-icons";
 
 import useStyles from "./Navbar.styles";
 
@@ -32,23 +25,23 @@ export default function Navbar(props: INavbar): JSX.Element {
   const tabs = [
     {
       name: t("menu.players"),
-      icon: faUserAstronaut,
+      icon: "user-astronaut",
     },
     {
       name: t("menu.notes"),
-      icon: faEdit,
+      icon: "edit",
     },
     {
       name: t("menu.scores"),
-      icon: faCompactDisc,
+      icon: "compact-disc",
     },
     {
       name: t("menu.maps"),
-      icon: faMap,
+      icon: "map",
     },
     {
       name: t("menu.menu"),
-      icon: faEllipsisH,
+      icon: "ellipsis-h",
     },
   ];
 
@@ -57,7 +50,7 @@ export default function Navbar(props: INavbar): JSX.Element {
     icon,
   }: {
     name: string;
-    icon: IconDefinition;
+    icon: IconProp;
   }): JSX.Element {
     return (
       <button
@@ -81,7 +74,7 @@ export default function Navbar(props: INavbar): JSX.Element {
     <div className={classes.Navbar}>
       <div className={classes.NavbarContainer}>
         {tabs.map(({ name, icon }) => (
-          <NavbarItem key={name} name={name} icon={icon} />
+          <NavbarItem key={name} name={name} icon={icon as IconProp} />
         ))}
       </div>
     </div>
