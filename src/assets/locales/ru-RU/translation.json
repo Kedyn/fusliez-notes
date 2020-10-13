@@ -81,8 +81,9 @@
   "settings": {
     "title": "Настройки",
     "uiSettings": "Настройки интерфейса",
+    "playerTiles": "Player Tiles",
     "usePlayerNames": "Использовать имена игроков",
-    "useColorBlindMode": "Use color blind mode",
+    "colorBlindMode": "Color blind mode",
     "language": "Язык",
     "done": "Готово",
     "close": "Закрыть"
