@@ -11,6 +11,7 @@ const NOTES = [
       <>UI Revamp.</>,
       <>Added lock editing player mode.</>,
       <>Better support for mobile.</>,
+      <>Color blind mode (settings).</>,
     ],
   },
   {
