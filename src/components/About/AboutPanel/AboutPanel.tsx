@@ -103,6 +103,17 @@ export default function AboutPanel(): JSX.Element {
         <br />
         Russian (RU) Translations
       </p>
+      <p>
+        <a
+          href="https://twitter.com/honeylemondaisy"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          HoneyLemonDaisy
+        </a>
+        <br />
+        Social share image
+      </p>
       <hr />
       <p>
         Thank you to everyone who has reported issues / suggested new features.
