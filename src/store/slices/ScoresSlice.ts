@@ -82,6 +82,8 @@ export const {
   setImpostorLosses,
   incrementImpostorLosses,
   decrementImpostorLosses,
+
+  resetScores,
 } = ScoresSlice.actions;
 
 export const getCrewmateWins = (state: IUISliceState): number =>
