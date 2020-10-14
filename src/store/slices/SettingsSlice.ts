@@ -44,4 +44,7 @@ export const {
 export const getShowNames = (state: IUISliceState): boolean =>
   state.Settings.showNames;
 
+export const getIsColorBlind = (state: IUISliceState): boolean =>
+  state.Settings.isColorBlind;
+
 export default SettingsSlice;
