@@ -23,6 +23,7 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.32",
     "@fortawesome/free-solid-svg-icons": "^5.15.1",
     "@fortawesome/react-fontawesome": "^0.1.11",
+    "@reduxjs/toolkit": "^1.4.0",
     "beautiful-react-hooks": "^0.30.1",
     "browserslist": "^4.14.5",
     "classnames": "^2.2.6",
@@ -37,6 +38,7 @@
     "react-draggable": "^4.4.3",
     "react-i18next": "^11.7.3",
     "react-jss": "^10.4.0",
+    "react-redux": "^7.2.1",
     "react-sortablejs": "^6.0.0",
     "sortablejs": "^1.12.0"
   },
@@ -47,6 +49,7 @@
     "@types/react": "^16.9.49",
     "@types/react-color": "^3.0.4",
     "@types/react-dom": "^16.9.8",
+    "@types/react-redux": "^7.1.9",
     "@typescript-eslint/eslint-plugin": "^4.1.1",
     "@typescript-eslint/parser": "^4.1.1",
     "clean-webpack-plugin": "^3.0.0",
