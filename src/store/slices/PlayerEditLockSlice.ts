@@ -10,7 +10,6 @@ const PlayerEditLockSlice = createSlice({
       action.payload,
 
     togglePlayerEditLock: (state: boolean) => !state,
-
     resetLock: () => false,
   },
 });

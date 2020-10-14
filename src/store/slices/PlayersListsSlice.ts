@@ -39,8 +39,21 @@ const PlayersListsSlice = createSlice({
         action.payload.players
       ),
 
+    resetPlayersListsPositions: (state: IPlayers) => ({
+      ...DEFAULT_PLAYERS,
+
+      unknownPlayers: [
+        ...state.innocentPlayers,
+        ...state.susPlayers,
+        ...state.evilPlayers,
+        ...state.deadPlayers,
+        ...state.unknownPlayers,
+      ],
+    }),
+
     resetPlayersLists: () => ({
       ...DEFAULT_PLAYERS,
+
       unknownPlayers: [
         ...DEFAULT_PLAYERS.unknownPlayers.map((player) => ({ ...player })),
       ],
@@ -50,6 +63,8 @@ const PlayersListsSlice = createSlice({
 
 export const {
   setPlayersFromList,
+
+  resetPlayersListsPositions,
 
   resetPlayersLists,
 } = PlayersListsSlice.actions;

@@ -8,11 +8,11 @@ import SettingsSlice from "./slices/SettingsSlice";
 
 const store: Store = configureStore({
   reducer: {
-    settings: SettingsSlice.reducer,
-    device: DeviceSlice.reducer,
-    scores: ScoresSlice.reducer,
-    playerEitLock: PlayerEditLockSlice.reducer,
-    playersLists: PlayersListsSlice.reducer,
+    Settings: SettingsSlice.reducer,
+    Device: DeviceSlice.reducer,
+    Scores: ScoresSlice.reducer,
+    PlayerEditLock: PlayerEditLockSlice.reducer,
+    PlayersLists: PlayersListsSlice.reducer,
   },
   middleware: [...getDefaultMiddleware()],
 });

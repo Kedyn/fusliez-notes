@@ -1,18 +1,23 @@
+import { getIsMobile, getOrientation } from "store/slices/DeviceSlice";
+
 import Button from "components/common/Button";
 import Draggable from "react-draggable";
 import MiraHq from "./MiraHq";
 import Polus from "./Polus";
 import React from "react";
 import TheSkeld from "./TheSkeld";
+import { useSelector } from "react-redux";
 import useStyles from "./MapsPanel.styles";
 import { useTranslation } from "react-i18next";
-import { useMobile } from "context/MobileContextProvider";
 
 export default function MapsPanel(): JSX.Element {
   const { t } = useTranslation();
+
   const [map, setMap] = React.useState("skeld");
   const [resetState, setResetState] = React.useState(false);
-  const { isMobile, orientation } = useMobile()!; // eslint-disable-line
+
+  const isMobile = useSelector(getIsMobile);
+  const orientation = useSelector(getOrientation);
 
   const players = [
     "brown",
