@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Released]
 
-### [v0.10.0] - 10/12/2020
+### [v0.10.0] - 10/13/2020
 
 New UI revamp from chilblane. Improves not only visually, but also mobile support.
 And migrated from parcel to webpack. Restructure most components.
