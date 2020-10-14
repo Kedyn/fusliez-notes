@@ -1,11 +1,27 @@
+import { DEFAULT_SETTINGS, NAMESPACE } from "utils/constants";
 import { ISettings, IUISliceState } from "utils/types";
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
-import { DEFAULT_SETTINGS } from "utils/constants";
+function getInitialSate(): ISettings {
+  /* const localSettingsData: string | null = localStorage.getItem(
+    `${NAMESPACE}settings`
+  );
+
+  if (localSettingsData) {
+    const settingsObject = JSON.parse(localSettingsData);
+    const returningSettings = {};
+
+    for (const key of Object.keys(DEFAULT_SETTINGS)) {
+      if ()
+    }
+  } */
+
+  return DEFAULT_SETTINGS;
+}
 
 const SettingsSlice = createSlice({
   name: "Scores",
-  initialState: DEFAULT_SETTINGS,
+  initialState: getInitialSate(),
   reducers: {
     setShowNames: (state: ISettings, action: PayloadAction<boolean>) => ({
       ...state,
