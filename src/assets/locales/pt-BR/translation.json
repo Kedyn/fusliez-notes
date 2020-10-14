@@ -14,18 +14,18 @@
       "dead": "Mortos",
       "unknown": "Desconhecidos"
     },
-    "brown": "Brown",
-    "red": "Red",
-    "orange": "Orange",
-    "yellow": "Yellow",
-    "lime": "Lime",
-    "green": "Green",
-    "cyan": "Cyan",
-    "blue": "Blue",
-    "purple": "Purple",
-    "pink": "Pink",
-    "white": "White",
-    "black": "Black"
+    "brown": "Marron",
+    "red": "Vermelho",
+    "orange": "Laranja",
+    "yellow": "Amarelo",
+    "lime": "Verde Limão",
+    "green": "Verde",
+    "cyan": "Ciano",
+    "blue": "Azul",
+    "purple": "Roxo",
+    "pink": "Rosa",
+    "white": "Branco",
+    "black": "Preto"
   },
   "controls": {
     "wins": "Vitórias",
@@ -38,7 +38,7 @@
     "notes": "Notas",
     "resetNotes": "Reiniciar Notas",
     "lockPlayers": "Lock Players",
-    "unlockPlayers": "Unlock Players"
+    "unlockPlayers": "Desbloquear Jogadores"
   },
   "maps": {
     "title": "Maps",
@@ -75,15 +75,15 @@
     "south": "4. Sul",
     "southwest": "5. Sudoeste",
     "northwest": "6. Noroeste",
-    "dragInstructions": "Drag players on the map to track",
+    "dragInstructions": "Arraste jogadores no mapa para rastrear",
     "resetPlayers": "Reiniciar Jogadores"
   },
   "settings": {
     "title": "Ajustes",
     "uiSettings": "Ajustes de Interface",
-    "playerTiles": "Player Tiles",
+    "playerTiles": "Peças do Jogador",
     "usePlayerNames": "Usar Nomes de Jogadores",
-    "colorBlindMode": "Color blind mode",
+    "colorBlindMode": "Modo Daltônico",
     "language": "Idioma",
     "done": "Feito",
     "close": "Fechar"
@@ -97,6 +97,6 @@
     "settings": "Ajustes",
     "feedback": "Feedback",
     "about": "Sobre",
-    "changelog": "Changelog"
+    "changelog": "Log de mudanças"
   }
 }
