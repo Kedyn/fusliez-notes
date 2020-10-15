@@ -81,8 +81,9 @@
     "settings": {
       "title": "Einstellungen",
       "uiSettings": "Benutzeroberfläche",
-      "usePlayerNames": "Spielernamen benutzen",
-      "useColorBlindMode": "Farbenblinder Modus benutzen",
+      "playerTiles": "Spielerflächen",
+      "usePlayerNames": "Spielernamen anzeigen",
+      "colorBlindMode": "Farbenblinder Modus benutzen",
       "language": "Sprache",
       "done": "Fertig",
       "close": "Schliessen"
