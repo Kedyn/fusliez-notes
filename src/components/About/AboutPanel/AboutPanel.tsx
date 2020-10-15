@@ -66,6 +66,16 @@ export default function AboutPanel(): JSX.Element {
       link: "https://twitter.com/honeylemondaisy",
       contribution: "Social share image",
     },
+    {
+      name: "Parsa Eskandarnejad",
+      link: "https://github.com/parsaaes",
+      contribution: "Persian (IR) Translation",
+    },
+    {
+      name: "Michał Stankiewicz",
+      link: "http://fb.niezwyczajniezwyczajny.pl",
+      contribution: "Polish (PL) Translation",
+    },
   ];
 
   return (

@@ -63,6 +63,10 @@ export default function SettingsPanel(): JSX.Element {
       id: "fa-IR",
       label: "Persian (IR)",
     },
+    {
+      id: "pl-PL",
+      label: "Polish (PL)",
+    },
   ];
 
   return (
