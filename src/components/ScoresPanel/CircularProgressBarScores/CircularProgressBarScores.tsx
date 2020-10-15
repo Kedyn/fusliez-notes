@@ -21,7 +21,7 @@ export interface ICircularProgressBarScoresProps {
 export default function CircularProgressBarScores(
   props: ICircularProgressBarScoresProps
 ): JSX.Element {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   const theme = useTheme<ITheme>();
   const classes = useStyles();
@@ -59,9 +59,12 @@ export default function CircularProgressBarScores(
             <span
               className={classes.CirclePercentage}
             >{`${crewmateRate}%`}</span>
-            <span className={classes.CircleScores}>{`${crewmateWins}${t(
-              "main.w"
-            )}-${crewmateLosses}${t("main.l")}`}</span>
+            <span
+              style={{ direction: i18n.dir() }}
+              className={classes.CircleScores}
+            >{`${crewmateWins}${t("main.w")}-${crewmateLosses}${t(
+              "main.l"
+            )}`}</span>
           </CircularProgressBar>
         </div>
       </div>
@@ -89,6 +92,7 @@ export default function CircularProgressBarScores(
               )}
             >{`${overallRate}%`}</span>
             <span
+              style={{ direction: i18n.dir() }}
               className={cx(classes.CircleScores, classes.CircleScoresPrimary)}
             >{`${overallWins}${t("main.w")}-${overallLosses}${t(
               "main.l"
@@ -116,9 +120,12 @@ export default function CircularProgressBarScores(
             <span
               className={classes.CirclePercentage}
             >{`${impostorRate}%`}</span>
-            <span className={classes.CircleScores}>{`${impostorWins}${t(
-              "main.w"
-            )}-${impostorLosses}${t("main.l")}`}</span>
+            <span
+              style={{ direction: i18n.dir() }}
+              className={classes.CircleScores}
+            >{`${impostorWins}${t("main.w")}-${impostorLosses}${t(
+              "main.l"
+            )}`}</span>
           </CircularProgressBar>
         </div>
       </div>
