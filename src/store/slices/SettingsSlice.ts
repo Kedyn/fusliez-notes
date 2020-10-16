@@ -3,18 +3,19 @@ import { ISettings, IUISliceState } from "utils/types";
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
 function getInitialSate(): ISettings {
-  /* const localSettingsData: string | null = localStorage.getItem(
+  const localSettingsData: string | null = localStorage.getItem(
     `${NAMESPACE}settings`
   );
 
   if (localSettingsData) {
     const settingsObject = JSON.parse(localSettingsData);
-    const returningSettings = {};
 
-    for (const key of Object.keys(DEFAULT_SETTINGS)) {
-      if ()
-    }
-  } */
+    return {
+      showNames: settingsObject.showNames || DEFAULT_SETTINGS.showNames,
+      isColorBlind:
+        settingsObject.isColorBlind || DEFAULT_SETTINGS.isColorBlind,
+    };
+  }
 
   return DEFAULT_SETTINGS;
 }
