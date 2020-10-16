@@ -2,7 +2,7 @@ import { IPlayers, ISettings, ITheme } from "./types";
 
 import { STYLE_VARS } from "./styleVars";
 
-export const VERSION = "0.10.0";
+export const VERSION = "0.10.1";
 
 export const NAMESPACE = "fusliez-notes-";
 
