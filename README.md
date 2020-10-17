@@ -39,14 +39,14 @@ other support on this project such as:
 
 [Adam Gausmann](https://github.com/agausmann)  
 Pedro / Dian\_\_  
-[Rydannn] (https://twitter.com/RydanTweets)  
-[GeneralMitch] (https://twitter.com/GeneralMitch1)  
+[Rydannn](https://twitter.com/RydanTweets)  
+[GeneralMitch](https://twitter.com/GeneralMitch1)  
 Kermitigated (twitch handle)  
 [Kinishina](https://github.com/Kinishina)  
 [Federico Gaston Ramadan](https://github.com/federamadan)  
 [Danilo Moura](https://github.com/danilolmoura) (A.K.A. Eudan)  
 [Fabian9799](https://github.com/fabian9799)  
-[Tim Bang](https://github.com/I3lackRacer)
+[Tim Bang](https://github.com/I3lackRacer)  
 [HoneyLemonDaisy](https://twitter.com/honeylemondaisy) (artwork)
 
 Please if you would not like to be mentioned here or your information is wrong
