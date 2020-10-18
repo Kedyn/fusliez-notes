@@ -48,6 +48,7 @@ Kermitigated (twitch handle)
 [Fabian9799](https://github.com/fabian9799)  
 [Tim Bang](https://github.com/I3lackRacer)  
 [HoneyLemonDaisy](https://twitter.com/honeylemondaisy) (artwork)
+[Victor Pietro](https://github.com/pietroow) (A.K.A. Pietroow)
 
 Please if you would not like to be mentioned here or your information is wrong
 let me know so I can remove it or fix it, thank you!
