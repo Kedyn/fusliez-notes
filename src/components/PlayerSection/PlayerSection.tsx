@@ -2,8 +2,9 @@ import { IPlayer } from "utils/types";
 import Player from "components/Player";
 import React from "react";
 import { ReactSortable } from "react-sortablejs";
-import { useLocking } from "context/LockingContextProvider";
-import { useSettings } from "context/SettingsContextProvider";
+import { getPlayerEditLock } from "store/slices/PlayerEditLockSlice";
+import { getShowNames } from "store/slices/SettingsSlice";
+import { useSelector } from "react-redux";
 import useStyles from "./PlayerSection.styles";
 
 export interface IPlayerSectionProps {
@@ -14,8 +15,8 @@ export interface IPlayerSectionProps {
 }
 
 export default function PlayerSection(props: IPlayerSectionProps): JSX.Element {
-  const { showNames } = useSettings()!; // eslint-disable-line
-  const { isLocked } = useLocking()!; // eslint-disable-line
+  const showNames = useSelector(getShowNames);
+  const isLocked = useSelector(getPlayerEditLock);
 
   const [isSorting, setIsSorting] = React.useState(false);
 

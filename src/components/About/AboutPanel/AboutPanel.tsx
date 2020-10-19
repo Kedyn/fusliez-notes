@@ -1,12 +1,15 @@
 import React from "react";
 import { VERSION } from "utils/constants";
-import { useMobile } from "context/MobileContextProvider";
+import { getIsMobile } from "store/slices/DeviceSlice";
+import { useSelector } from "react-redux";
 import useStyles from "./AboutPanel.styles";
 import { useTranslation } from "react-i18next";
 
 export default function AboutPanel(): JSX.Element {
   const { t } = useTranslation();
-  const { isMobile } = useMobile()!; // eslint-disable-line
+
+  const isMobile = useSelector(getIsMobile);
+
   const classes = useStyles({ isMobile });
 
   const credits = [

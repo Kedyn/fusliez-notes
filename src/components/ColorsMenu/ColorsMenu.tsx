@@ -1,7 +1,12 @@
+import {
+  getPlayersFromList,
+  setPlayersFromList,
+} from "store/slices/PlayersListsSlice";
+import { useDispatch, useSelector } from "react-redux";
+
 import ColorSwatch from "./ColorSwatch";
 import { IPlayer } from "utils/types";
 import React from "react";
-import { usePlayers } from "context/PlayersContextProvider";
 import useStyles from "./ColorsMenu.styles";
 
 interface IPlayerData {
@@ -23,19 +28,13 @@ export default function ColorsMenu(props: IColorsMenuProps): JSX.Element {
 
   const classes = useStyles();
 
-  const {
-    innocentPlayers,
-    susPlayers,
-    evilPlayers,
-    deadPlayers,
-    unknownPlayers,
+  const innocentPlayers = useSelector(getPlayersFromList("innocentPlayers"));
+  const susPlayers = useSelector(getPlayersFromList("susPlayers"));
+  const evilPlayers = useSelector(getPlayersFromList("evilPlayers"));
+  const deadPlayers = useSelector(getPlayersFromList("deadPlayers"));
+  const unknownPlayers = useSelector(getPlayersFromList("unknownPlayers"));
 
-    setInnocentPlayers,
-    setSusPlayers,
-    setEvilPlayers,
-    setDeadPlayers,
-    setUnknownPlayers,
-  } = usePlayers()!; // eslint-disable-line
+  const dispatch = useDispatch();
 
   const colors = [
     { color: "brown" },
@@ -58,11 +57,56 @@ export default function ColorsMenu(props: IColorsMenuProps): JSX.Element {
   ) => {
     if (currentPlayerColor !== targetPlayerColor) {
       const allPlayers = [
-        { players: unknownPlayers, modifier: setUnknownPlayers },
-        { players: innocentPlayers, modifier: setInnocentPlayers },
-        { players: susPlayers, modifier: setSusPlayers },
-        { players: evilPlayers, modifier: setEvilPlayers },
-        { players: deadPlayers, modifier: setDeadPlayers },
+        {
+          players: unknownPlayers,
+          modifier: (value: Array<IPlayer>) =>
+            dispatch(
+              setPlayersFromList({
+                listName: "unknownPlayers",
+                players: value,
+              })
+            ),
+        },
+        {
+          players: innocentPlayers,
+          modifier: (value: Array<IPlayer>) =>
+            dispatch(
+              setPlayersFromList({
+                listName: "innocentPlayers",
+                players: value,
+              })
+            ),
+        },
+        {
+          players: susPlayers,
+          modifier: (value: Array<IPlayer>) =>
+            dispatch(
+              setPlayersFromList({
+                listName: "susPlayers",
+                players: value,
+              })
+            ),
+        },
+        {
+          players: evilPlayers,
+          modifier: (value: Array<IPlayer>) =>
+            dispatch(
+              setPlayersFromList({
+                listName: "evilPlayers",
+                players: value,
+              })
+            ),
+        },
+        {
+          players: deadPlayers,
+          modifier: (value: Array<IPlayer>) =>
+            dispatch(
+              setPlayersFromList({
+                listName: "deadPlayers",
+                players: value,
+              })
+            ),
+        },
       ];
 
       let currentPlayerData: IPlayerData | null = null;

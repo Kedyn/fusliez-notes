@@ -1,10 +1,12 @@
+import { getIsColorBlind, getShowNames } from "store/slices/SettingsSlice";
+import { getIsMobile, getOrientation } from "store/slices/DeviceSlice";
+
 import ColorsMenu from "components/ColorsMenu";
 import { IPlayer } from "utils/types";
 import React from "react";
 import cx from "classnames";
-import { useMobile } from "context/MobileContextProvider";
 import usePlayerStyles from "./Player.styles";
-import { useSettings } from "context/SettingsContextProvider";
+import { useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
 
 export interface IPlayerProps {
@@ -18,8 +20,11 @@ export interface IPlayerProps {
 
 export default function Player(props: IPlayerProps): JSX.Element {
   const { t } = useTranslation();
-  const { isMobile, orientation } = useMobile()!; // eslint-disable-line
-  const { showNames, isColorBlind } = useSettings()!; // eslint-disable-line
+
+  const isMobile = useSelector(getIsMobile);
+  const orientation = useSelector(getOrientation);
+  const showNames = useSelector(getShowNames);
+  const isColorBlind = useSelector(getIsColorBlind);
 
   const [isMenuShowing, setIsMenuShowing] = React.useState(false);
 
@@ -39,7 +44,7 @@ export default function Player(props: IPlayerProps): JSX.Element {
     player: number,
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
-    const players: Array<IPlayer> = [...list];
+    const players: Array<IPlayer> = list.map((value) => ({ ...value }));
     players[player].playerName = event.currentTarget.value;
     setList(players);
   };

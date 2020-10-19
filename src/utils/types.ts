@@ -145,3 +145,23 @@ export interface ILockingContextProvider {
   resetLock: () => void;
   toggleLock: () => void;
 }
+
+export interface IDevice {
+  isMobile: boolean;
+  orientation: "portrait" | "landscape";
+}
+
+export interface IScores {
+  crewmateWins: number;
+  crewmateLosses: number;
+  impostorWins: number;
+  impostorLosses: number;
+}
+
+export interface IUISliceState {
+  Settings: ISettings;
+  Device: IDevice;
+  Scores: IScores;
+  PlayerEditLock: boolean;
+  PlayersLists: IPlayers;
+}

@@ -1,7 +1,9 @@
+import { getIsMobile, getOrientation } from "store/slices/DeviceSlice";
+
 import Button from "components/common/Button";
 import { NAMESPACE } from "utils/constants";
 import React from "react";
-import { useMobile } from "context/MobileContextProvider";
+import { useSelector } from "react-redux";
 import useStyles from "./NotesPanel.styles";
 import { useTranslation } from "react-i18next";
 
@@ -9,8 +11,12 @@ export default function NotesPanel(): JSX.Element {
   const namespace = `${NAMESPACE}notes`;
 
   const { t } = useTranslation();
-  const { isMobile, orientation } = useMobile()!; // eslint-disable-line
+
+  const isMobile = useSelector(getIsMobile);
+  const orientation = useSelector(getOrientation);
+
   const classes = useStyles({ isMobile, orientation });
+
   const [notes, setNotes] = React.useState(
     localStorage.getItem(namespace) || ""
   );

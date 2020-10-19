@@ -1,22 +1,28 @@
+import {
+  getIsColorBlind,
+  getShowNames,
+  setIsColorBlind,
+  setShowNames,
+} from "store/slices/SettingsSlice";
+import { useDispatch, useSelector } from "react-redux";
+
 import { ILanguage } from "utils/types";
 import RadioButton from "components/common/RadioButton";
 import React from "react";
 import Switch from "components/common/Switch";
+import { getIsMobile } from "store/slices/DeviceSlice";
 import i18next from "i18next";
-import { useMobile } from "context/MobileContextProvider";
-import { useSettings } from "context/SettingsContextProvider";
 import useStyles from "./SettingsPanel.styles";
 import { useTranslation } from "react-i18next";
 
 export default function SettingsPanel(): JSX.Element {
+  const isMobile = useSelector(getIsMobile);
+  const showNames = useSelector(getShowNames);
+  const isColorBlind = useSelector(getIsColorBlind);
+
+  const dispatch = useDispatch();
+
   const { t } = useTranslation();
-  const { isMobile } = useMobile()!; // eslint-disable-line
-  const {
-    showNames,
-    setShowNames,
-    isColorBlind,
-    setIsColorBlind,
-  } = useSettings()!; // eslint-disable-line
 
   const [language, setLanguage] = React.useState<string>("en-US");
 
@@ -80,14 +86,14 @@ export default function SettingsPanel(): JSX.Element {
           <Switch
             label={t("settings.usePlayerNames")}
             onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-              setShowNames(event.currentTarget.checked);
+              dispatch(setShowNames(event.currentTarget.checked));
             }}
             checked={showNames}
           />
           <Switch
             label={t("settings.colorBlindMode")}
             onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-              setIsColorBlind(event.currentTarget.checked);
+              dispatch(setIsColorBlind(event.currentTarget.checked));
             }}
             checked={isColorBlind}
           />

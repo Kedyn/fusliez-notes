@@ -1,4 +1,5 @@
 import { NAMESPACE, VERSION } from "utils/constants";
+import { getIsMobile, getOrientation } from "store/slices/DeviceSlice";
 
 import AboutContent from "components/About/AboutPanel";
 import ChangelogPanel from "components/Changelog/ChangelogPanel";
@@ -12,13 +13,16 @@ import ScoreControls from "components/ScoreControls";
 import ScoresPanel from "components/ScoresPanel";
 import SettingsPanel from "components/Settings/SettingsPanel";
 import SlideDrawer from "components/SlideDrawer";
-import { useMobile } from "context/MobileContextProvider";
+import { useSelector } from "react-redux";
 import useStyles from "./MobileLayout.styles";
 import { useTranslation } from "react-i18next";
 
 export default function MobileLayout(): JSX.Element {
   const { t } = useTranslation();
-  const { isMobile, orientation } = useMobile()!; // eslint-disable-line
+
+  const isMobile = useSelector(getIsMobile);
+  const orientation = useSelector(getOrientation);
+
   const classes = useStyles({ isMobile, orientation });
 
   const views: Array<IView> = [

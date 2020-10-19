@@ -1,8 +1,17 @@
-import { IPlayers, ISettings, ITheme } from "./types";
+import { IPlayers, IScores, ISettings, ITheme } from "./types";
 
 import { STYLE_VARS } from "./styleVars";
 
 export const VERSION = "0.10.1";
+
+export const BREAKPOINT = 846;
+
+export const DEFAULT_SCORES: IScores = {
+  crewmateWins: 0,
+  crewmateLosses: 0,
+  impostorWins: 0,
+  impostorLosses: 0,
+};
 
 export const NAMESPACE = "fusliez-notes-";
 
@@ -11,6 +20,7 @@ export const DEFAULT_SETTINGS: ISettings = {
   isColorBlind: false,
 };
 
+// This should be revisit as constants should not have dynamic values
 export const DEFAULT_THEME_DATA: ITheme = {
   backgroundColor: STYLE_VARS.backgroundColorPrimary,
   backgroundColorAlt: STYLE_VARS.backgroundColorSecondary,

@@ -36,6 +36,7 @@ module.exports = {
       context: path.resolve(__dirname, "src", "context"),
       themes: path.resolve(__dirname, "src", "themes"),
       utils: path.resolve(__dirname, "src", "utils"),
+      store: path.resolve(__dirname, "src", "store"),
     },
     extensions: [".js", ".jsx", ".ts", ".tsx"],
   },

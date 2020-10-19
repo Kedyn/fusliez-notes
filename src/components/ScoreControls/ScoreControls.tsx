@@ -1,41 +1,60 @@
+import {
+  decrementCrewmateLosses,
+  decrementCrewmateWins,
+  decrementImpostorLosses,
+  decrementImpostorWins,
+  getCrewmateLosses,
+  getCrewmateWins,
+  getImpostorLosses,
+  getImpostorWins,
+  incrementCrewmateLosses,
+  incrementCrewmateWins,
+  incrementImpostorLosses,
+  incrementImpostorWins,
+  resetScores,
+  setCrewmateLosses,
+  setCrewmateWins,
+  setImpostorLosses,
+  setImpostorWins,
+} from "store/slices/ScoresSlice";
+import {
+  resetPlayersLists,
+  resetPlayersListsPositions,
+} from "store/slices/PlayersListsSlice";
+import { useDispatch, useSelector } from "react-redux";
+
 import Button from "components/common/Button";
 import { ITheme } from "utils/types";
 import React from "react";
 import WinsLossesButton from "./WinsLossesButton";
-import { useMobile } from "context/MobileContextProvider";
-import { usePlayers } from "context/PlayersContextProvider";
-import { useScores } from "context/ScoresContextProvider";
+import { getIsMobile } from "store/slices/DeviceSlice";
+import { resetLock } from "store/slices/PlayerEditLockSlice";
 import useStyles from "./ScoreControls.styles";
 import { useTheme } from "react-jss";
 import { useTranslation } from "react-i18next";
-import { useLocking } from "context/LockingContextProvider";
 
 export default function ScoreControls(): JSX.Element {
   const { t } = useTranslation();
+
   const theme = useTheme<ITheme>();
-  const { resetLock } = useLocking()!;
-  const {
-    crewmateWins,
-    crewmateLosses,
-    impostorWins,
-    impostorLosses,
 
-    setImpostorWins,
-    setImpostorLosses,
-    setCrewmateWins,
-    setCrewmateLosses,
+  const crewmateWins = useSelector(getCrewmateWins);
+  const crewmateLosses = useSelector(getCrewmateLosses);
+  const impostorWins = useSelector(getImpostorWins);
+  const impostorLosses = useSelector(getImpostorLosses);
 
-    resetScores,
-  } = useScores()!; // eslint-disable-line
-  const { isMobile } = useMobile()!; // eslint-disable-line
-  const { resetPlayersPositions, resetPlayers } = usePlayers()!; // eslint-disable-line
+  const isMobile = useSelector(getIsMobile);
 
   const classes = useStyles({ isMobile });
 
+  const dispatch = useDispatch();
+
   const resetAll = () => {
-    resetScores();
-    resetPlayers();
-    resetLock();
+    dispatch(resetScores());
+
+    dispatch(resetPlayersLists());
+
+    dispatch(resetLock());
   };
 
   return (
@@ -56,22 +75,18 @@ export default function ScoreControls(): JSX.Element {
           <WinsLossesButton
             buttonBackgroundColor={theme.crewmateColor}
             buttonBackgroundColorHover={theme.crewmateColorHover}
-            decrement={() =>
-              setCrewmateWins(crewmateWins ? crewmateWins - 1 : 0)
-            }
-            increment={() => setCrewmateWins(crewmateWins + 1)}
+            decrement={() => dispatch(decrementCrewmateWins())}
+            increment={() => dispatch(incrementCrewmateWins())}
             score={crewmateWins}
-            setScore={(value: number) => setCrewmateWins(value)}
+            setScore={(value: number) => dispatch(setCrewmateWins(value))}
           />
           <WinsLossesButton
             buttonBackgroundColor={theme.imposterColor}
             buttonBackgroundColorHover={theme.imposterColorHover}
-            decrement={() =>
-              setImpostorWins(impostorWins ? impostorWins - 1 : 0)
-            }
-            increment={() => setImpostorWins(impostorWins + 1)}
+            decrement={() => dispatch(decrementImpostorWins())}
+            increment={() => dispatch(incrementImpostorWins())}
             score={impostorWins}
-            setScore={(value: number) => setImpostorWins(value)}
+            setScore={(value: number) => dispatch(setImpostorWins(value))}
           />
         </div>
 
@@ -80,36 +95,32 @@ export default function ScoreControls(): JSX.Element {
           <WinsLossesButton
             buttonBackgroundColor={theme.crewmateColor}
             buttonBackgroundColorHover={theme.crewmateColorHover}
-            decrement={() =>
-              setCrewmateLosses(crewmateLosses ? crewmateLosses - 1 : 0)
-            }
-            increment={() => setCrewmateLosses(crewmateLosses + 1)}
+            decrement={() => dispatch(decrementCrewmateLosses())}
+            increment={() => dispatch(incrementCrewmateLosses())}
             score={crewmateLosses}
-            setScore={(value: number) => setCrewmateLosses(value)}
+            setScore={(value: number) => dispatch(setCrewmateLosses(value))}
           />
           <WinsLossesButton
             buttonBackgroundColor={theme.imposterColor}
             buttonBackgroundColorHover={theme.imposterColorHover}
-            decrement={() =>
-              setImpostorLosses(impostorLosses ? impostorLosses - 1 : 0)
-            }
-            increment={() => setImpostorLosses(impostorLosses + 1)}
+            decrement={() => dispatch(decrementImpostorLosses())}
+            increment={() => dispatch(incrementImpostorLosses())}
             score={impostorLosses}
-            setScore={(value: number) => setImpostorLosses(value)}
+            setScore={(value: number) => dispatch(setImpostorLosses(value))}
           />
         </div>
       </div>
       <div className={classes.ScoreOptions}>
         <Button
           className={classes.ScoreOptionButton}
-          onClick={() => resetScores()}
+          onClick={() => dispatch(resetScores())}
         >
           {t("controls.resetScores")}
         </Button>
         {!isMobile && (
           <Button
             className={classes.ScoreOptionButton}
-            onClick={() => resetPlayersPositions()}
+            onClick={() => dispatch(resetPlayersListsPositions())}
           >
             {t("controls.resetRound")}
           </Button>
