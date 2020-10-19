@@ -107,7 +107,7 @@ export default function PlayersPanel(): JSX.Element {
 
         {isMobile && (
           <Button onClick={() => dispatch(resetPlayersListsPositions())}>
-            Reset Positions
+            {t("controls.resetAll")}
           </Button>
         )}
       </div>

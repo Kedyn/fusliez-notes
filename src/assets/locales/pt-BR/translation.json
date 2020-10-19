@@ -14,7 +14,7 @@
       "dead": "Mortos",
       "unknown": "Desconhecidos"
     },
-    "brown": "Marron",
+    "brown": "Marrom",
     "red": "Vermelho",
     "orange": "Laranja",
     "yellow": "Amarelo",
@@ -30,14 +30,14 @@
   "controls": {
     "wins": "Vitórias",
     "losses": "Derrotas",
-    "crewmate": "Inocente",
+    "crewmate": "Tripulante",
     "impostor": "Impostor",
     "resetScores": "Reiniciar Pontuação",
     "resetRound": "Reiniciar Rodada",
     "resetAll": "Reiniciar Tudo",
     "notes": "Notas",
     "resetNotes": "Reiniciar Notas",
-    "lockPlayers": "Lock Players",
+    "lockPlayers": "Bloquear Jogadores",
     "unlockPlayers": "Desbloquear Jogadores"
   },
   "maps": {
@@ -52,8 +52,8 @@
     "upperEngine": "Motor Superior",
     "lowerEngine": "Motor Inferior",
     "security": "Segurança",
-    "medBay": "Ala Medica",
-    "electrical": "Eletricidade",
+    "medBay": "Enfermaria",
+    "electrical": "Elétrica",
     "storage": "Armazém",
     "cafeteria": "Cafeteria",
     "admin": "Administração",
