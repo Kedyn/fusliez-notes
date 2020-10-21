@@ -9,8 +9,7 @@
     "lists": {
       "innocent": "Inocentes",
       "suspicious": "Sospechosos",
-      "evil": "Malos",
-      "hitList": "Lista Negra",
+      "evilHitList": "Malos / Lista Negra",
       "dead": "Muertos",
       "unknown": "Desconocidos"
     },
