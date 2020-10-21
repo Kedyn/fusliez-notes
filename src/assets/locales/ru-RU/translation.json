@@ -85,7 +85,9 @@
     "colorBlindMode": "Color blind mode",
     "language": "Язык",
     "done": "Готово",
-    "close": "Закрыть"
+    "close": "Закрыть",
+    "addSection": "Add Section",
+    "resetSections": "Reset Sections"
   },
   "menu": {
     "players": "Игроки",

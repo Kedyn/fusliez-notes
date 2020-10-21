@@ -1,20 +1,20 @@
-import Layout from "./Layout";
 import ContextWrapper from "context";
+import Layout from "./Layout";
 import React from "react";
-
-import { library } from "@fortawesome/fontawesome-svg-core";
-// TODO: deep imports aren't necessary.
-// use normal imports when proper tree shaking is added
+import { faCompactDisc } from "@fortawesome/free-solid-svg-icons/faCompactDisc";
+import { faEdit } from "@fortawesome/free-solid-svg-icons/faEdit";
+import { faEllipsisH } from "@fortawesome/free-solid-svg-icons/faEllipsisH";
 import { faHeart } from "@fortawesome/free-solid-svg-icons/faHeart";
+import { faMap } from "@fortawesome/free-solid-svg-icons/faMap";
 import { faMinus } from "@fortawesome/free-solid-svg-icons/faMinus";
 import { faPlus } from "@fortawesome/free-solid-svg-icons/faPlus";
+import { faSort } from "@fortawesome/free-solid-svg-icons";
 import { faTimes } from "@fortawesome/free-solid-svg-icons/faTimes";
 import { faUserAstronaut } from "@fortawesome/free-solid-svg-icons/faUserAstronaut";
-import { faEdit } from "@fortawesome/free-solid-svg-icons/faEdit";
-import { faCompactDisc } from "@fortawesome/free-solid-svg-icons/faCompactDisc";
-import { faMap } from "@fortawesome/free-solid-svg-icons/faMap";
-import { faEllipsisH } from "@fortawesome/free-solid-svg-icons/faEllipsisH";
+import { library } from "@fortawesome/fontawesome-svg-core";
 
+// TODO: deep imports aren't necessary.
+// use normal imports when proper tree shaking is added
 library.add(
   faHeart,
   faMinus,
@@ -24,7 +24,8 @@ library.add(
   faEdit,
   faCompactDisc,
   faMap,
-  faEllipsisH
+  faEllipsisH,
+  faSort
 );
 
 export default function App(): JSX.Element {

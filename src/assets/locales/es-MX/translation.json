@@ -85,7 +85,9 @@
     "colorBlindMode": "Usar modo daltonico",
     "language": "Lenguage",
     "done": "Hecho",
-    "close": "Cerrar"
+    "close": "Cerrar",
+    "addSection": "Agregar Seccion",
+    "resetSections": "Reiniciar Secciones"
   },
   "menu": {
     "players": "Jugadores",

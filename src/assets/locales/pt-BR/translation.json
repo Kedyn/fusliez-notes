@@ -85,7 +85,9 @@
     "colorBlindMode": "Modo Daltônico",
     "language": "Idioma",
     "done": "Feito",
-    "close": "Fechar"
+    "close": "Fechar",
+    "addSection": "Add Section",
+    "resetSections": "Reset Sections"
   },
   "menu": {
     "players": "Jogadores",

@@ -85,7 +85,9 @@
     "colorBlindMode": "حالت کوررنگی",
     "language": "زبان",
     "done": "انجام شد",
-    "close": "بسته"
+    "close": "بسته",
+    "addSection": "Add Section",
+    "resetSections": "Reset Sections"
   },
   "menu": {
     "players": "بازیکن‌ها",

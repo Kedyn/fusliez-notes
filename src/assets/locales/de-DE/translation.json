@@ -85,7 +85,9 @@
     "colorBlindMode": "Farbenblinder Modus benutzen",
     "language": "Sprache",
     "done": "Fertig",
-    "close": "Schliessen"
+    "close": "Schliessen",
+    "addSection": "Add Section",
+    "resetSections": "Reset Sections"
   },
   "menu": {
     "players": "Spieler",

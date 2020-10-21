@@ -52,23 +52,35 @@ const PlayersListsSlice = createSlice({
     setPlayersLists: (
       state: IPlayersListsSlice,
       action: PayloadAction<Array<IPlayersList>>
-    ) => ({
-      ...state,
+    ) => {
+      let newPlayersContainer = -1;
 
-      lists: [
-        ...action.payload.map((list, index) => ({
-          ...list,
+      return {
+        ...state,
 
-          id: index,
-        })),
-      ],
-    }),
+        lists: [
+          ...action.payload.map((list, index) => {
+            if (list.id === state.playersContainer) {
+              newPlayersContainer = index;
+            }
+
+            return {
+              ...list,
+
+              id: index,
+            };
+          }),
+        ],
+
+        playersContainer: newPlayersContainer,
+      };
+    },
 
     setPlayersListsTitle: (
       state: IPlayersListsSlice,
       action: PayloadAction<{
         index: number;
-        title: "string";
+        title: string;
       }>
     ) => ({
       ...state,
@@ -123,26 +135,9 @@ const PlayersListsSlice = createSlice({
       ),
     }),
 
-    resetPlayersLists: (state: IPlayersListsSlice) => ({
-      ...state,
-
-      lists: [
-        ...state.lists.map((list) => {
-          if (list.id === state.playersContainer) {
-            return {
-              ...list,
-
-              players: [...DEFAULT_PLAYERS],
-            };
-          }
-
-          return {
-            ...list,
-
-            players: [],
-          };
-        }),
-      ],
+    resetPlayersLists: () => ({
+      playersContainer: 4,
+      lists: [...DEFAULT_PLAYERS_LISTS.map((list) => list)],
     }),
   },
 });

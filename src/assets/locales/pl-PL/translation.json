@@ -85,7 +85,9 @@
     "colorBlindMode": "Color blind mode",
     "language": "Język",
     "done": "Gotowe",
-    "close": "Zamknij"
+    "close": "Zamknij",
+    "addSection": "Add Section",
+    "resetSections": "Reset Sections"
   },
   "menu": {
     "players": "Gracze",

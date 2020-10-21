@@ -85,7 +85,9 @@
     "colorBlindMode": "Color blind mode",
     "language": "Language",
     "done": "Done",
-    "close": "Close"
+    "close": "Close",
+    "addSection": "Add Section",
+    "resetSections": "Reset Sections"
   },
   "menu": {
     "players": "Players",

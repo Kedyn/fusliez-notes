@@ -1,7 +1,7 @@
-import React from "react";
-import useStyles from "./Button.styles";
-import cx from "classnames";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import React from "react";
+import cx from "classnames";
+import useStyles from "./Button.styles";
 
 export interface IButtonProps {
   className?: string;
