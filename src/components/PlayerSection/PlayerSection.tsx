@@ -1,28 +1,33 @@
-import { IPlayer } from "utils/types";
+import { IPlayer, IPlayersList } from "utils/types";
+import { useDispatch, useSelector } from "react-redux";
+
 import Player from "components/Player";
 import React from "react";
 import { ReactSortable } from "react-sortablejs";
+import { getIsMobile } from "store/slices/DeviceSlice";
 import { getPlayerEditLock } from "store/slices/PlayerEditLockSlice";
 import { getShowNames } from "store/slices/SettingsSlice";
-import { useSelector } from "react-redux";
+import { setPlayersFromList } from "store/slices/PlayersListsSlice";
 import useStyles from "./PlayerSection.styles";
+import { useTranslation } from "react-i18next";
 
 export interface IPlayerSectionProps {
-  title: string;
-  list: Array<IPlayer>;
-  setList: (value: IPlayer[]) => void;
-  isMobile: boolean;
+  list: IPlayersList;
 }
 
 export default function PlayerSection(props: IPlayerSectionProps): JSX.Element {
   const showNames = useSelector(getShowNames);
-  const isLocked = useSelector(getPlayerEditLock);
+  const isMobile = useSelector(getIsMobile);
 
   const [isSorting, setIsSorting] = React.useState(false);
 
   const classes = useStyles({ showNames });
 
-  const { isMobile, title, list, setList } = props;
+  const { list } = props;
+
+  const { t } = useTranslation();
+
+  const dispatch = useDispatch();
 
   React.useEffect(() => {
     if (!isMobile) {
@@ -37,7 +42,7 @@ export default function PlayerSection(props: IPlayerSectionProps): JSX.Element {
   return (
     <React.Fragment>
       <div className={classes.PlayerSection}>
-        <h2 className={classes.PlayerSectionTitle}>{title}</h2>
+        <h2 className={classes.PlayerSectionTitle}>{t(list.title)}</h2>
 
         <ReactSortable
           group="players"
@@ -51,22 +56,27 @@ export default function PlayerSection(props: IPlayerSectionProps): JSX.Element {
           preventOnFilter={false}
           delay={isMobile ? 10 : 0}
           touchStartThreshold={3}
-          list={list}
-          setList={setList}
+          list={list.players}
+          setList={(newState) => {
+            dispatch(
+              setPlayersFromList({
+                listId: list.id as number,
+                players: newState,
+              })
+            );
+          }}
           className={classes.PlayerSectionArea}
           forceFallback={true}
           onChoose={() => setIsSorting(true)}
           onUnchoose={() => setIsSorting(false)}
         >
-          {list.map(({ color, playerName }, index) => (
+          {list.players.map(({ color, playerName }, index) => (
             <Player
               key={index}
               color={color}
               playerName={playerName}
               list={list}
-              setList={setList}
               index={index}
-              isReadOnly={isLocked}
             />
           ))}
         </ReactSortable>

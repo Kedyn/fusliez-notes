@@ -1,5 +1,5 @@
 import { DEFAULT_SETTINGS, NAMESPACE } from "utils/constants";
-import { ISettings, IUISliceState } from "utils/types";
+import { ISettings, IUIStoreState } from "utils/types";
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
 function getInitialSate(): ISettings {
@@ -58,10 +58,10 @@ export const {
   resetSettings,
 } = SettingsSlice.actions;
 
-export const getShowNames = (state: IUISliceState): boolean =>
+export const getShowNames = (state: IUIStoreState): boolean =>
   state.Settings.showNames;
 
-export const getIsColorBlind = (state: IUISliceState): boolean =>
+export const getIsColorBlind = (state: IUIStoreState): boolean =>
   state.Settings.isColorBlind;
 
 export default SettingsSlice;
