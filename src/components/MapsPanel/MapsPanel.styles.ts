@@ -60,9 +60,9 @@ export default createUseStyles((theme: ITheme) => ({
     },
   }),
   MapPlayerIcon: (props) => ({
-    width: props.isMobile ? "1.5rem" : "3rem",
+    width: props.isMobile ? "1.15rem" : "2.3rem",
     height: "auto",
-    margin: "0.5rem",
+    margin: "0.5rem 0.75rem",
 
     "&:hover": {
       cursor: "grab",
