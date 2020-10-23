@@ -1,6 +1,7 @@
 import React from "react";
 import { VERSION } from "utils/constants";
-import { useMobile } from "context/MobileContextProvider";
+import { getIsMobile } from "store/slices/DeviceSlice";
+import { useSelector } from "react-redux";
 import useStyles from "./ChangelogPanel.styles";
 
 // kedyn I suggest you put this content somewhere else. maybe involve a markdown converter
@@ -8,6 +9,7 @@ const NOTES = [
   {
     title: "Highlights",
     items: [
+      <>Added Persian and Polish translations</>,
       <>UI Revamp.</>,
       <>Added lock editing player mode.</>,
       <>Better support for mobile.</>,
@@ -33,7 +35,8 @@ const NOTES = [
 ];
 
 export default function ChangelogPanel(): JSX.Element {
-  const { isMobile } = useMobile()!; // eslint-disable-line
+  const isMobile = useSelector(getIsMobile);
+
   const classes = useStyles({ isMobile });
 
   return (

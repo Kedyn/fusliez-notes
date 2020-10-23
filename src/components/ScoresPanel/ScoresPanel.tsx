@@ -1,15 +1,20 @@
+import {
+  getCrewmateLosses,
+  getCrewmateWins,
+  getImpostorLosses,
+  getImpostorWins,
+} from "store/slices/ScoresSlice";
+
 import CircularProgressBarScores from "./CircularProgressBarScores";
 import React from "react";
-import { useScores } from "context/ScoresContextProvider";
+import { useSelector } from "react-redux";
 import useStyles from "./ScoresPanel.styles";
 
 export default function ScoresPanels(): JSX.Element {
-  const {
-    crewmateWins,
-    crewmateLosses,
-    impostorWins,
-    impostorLosses,
-  } = useScores()!; // eslint-disable-line
+  const crewmateWins = useSelector(getCrewmateWins);
+  const crewmateLosses = useSelector(getCrewmateLosses);
+  const impostorWins = useSelector(getImpostorWins);
+  const impostorLosses = useSelector(getImpostorLosses);
 
   const classes = useStyles();
 

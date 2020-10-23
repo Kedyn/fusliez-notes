@@ -1,11 +1,12 @@
 import "react-circular-progressbar/dist/styles.css";
 
-import { CircularProgressbarWithChildren } from "react-circular-progressbar";
+import { getIsMobile, getOrientation } from "store/slices/DeviceSlice";
 
+import { CircularProgressbarWithChildren } from "react-circular-progressbar";
 import React from "react";
-import { useMobile } from "context/MobileContextProvider";
-import useStyles from "./CircularProgressBar.styles";
 import { hexToRGB } from "utils/colorConverter";
+import { useSelector } from "react-redux";
+import useStyles from "./CircularProgressBar.styles";
 
 export interface ICircularProgressBarProps {
   progress: number;
@@ -18,7 +19,10 @@ export default function CircularProgressBar(
   props: ICircularProgressBarProps
 ): JSX.Element {
   const { progress, color, children } = props;
-  const { isMobile, orientation } = useMobile()!; // eslint-disable-line
+
+  const isMobile = useSelector(getIsMobile);
+  const orientation = useSelector(getOrientation);
+
   const classes = useStyles({
     color,
     progress,

@@ -7,13 +7,18 @@ import useStyles from "./DesktopLayout.styles";
 
 export default function DesktopContent(): JSX.Element {
   const classes = useStyles();
+
   return (
     <React.Fragment>
       <main className={classes.DesktopContent}>
         <MainContent />
+
         <div className={classes.DesktopDivider} />
+
         <ControlsContent />
+
         <div className={classes.DesktopDivider} />
+
         <MapsContent />
       </main>
 

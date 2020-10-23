@@ -12,6 +12,7 @@ import { useTranslation } from "react-i18next";
 
 export default function ControlsContent(): JSX.Element {
   const { t } = useTranslation();
+
   const classes = useStyles();
 
   const [showChangelog, setShowChangelog] = React.useState<boolean>(false);
@@ -31,10 +32,13 @@ export default function ControlsContent(): JSX.Element {
   return (
     <div id="controls" className={classes.ControlsContent}>
       <ScoreControls />
+
       <hr className={classes.Divider} />
 
       <NotesPanel />
+
       <hr className={classes.Divider} />
+
       <div className={classes.ControlsContentHeader}>
         <Button onClick={() => setShowSettings(true)}>
           {t("menu.settings")}
@@ -42,9 +46,9 @@ export default function ControlsContent(): JSX.Element {
         <Button onClick={() => setShowAbout(true)}>{t("menu.about")}</Button>
         <Button onClick={() => setShowChangelog(true)}>
           {t("menu.changelog")}
-          {/* zdsfsaflkjsdfldfkjaslfkdjsfldsjkflsfjdslfkdjsfldsfjkdlsfk */}
         </Button>
       </div>
+
       <Settings show={showSettings} onClose={() => setShowSettings(false)} />
 
       <Changelog show={showChangelog} onClose={() => setShowChangelog(false)} />
