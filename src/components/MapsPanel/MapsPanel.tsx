@@ -6,6 +6,7 @@ import MiraHq from "./MiraHq";
 import Polus from "./Polus";
 import React from "react";
 import TheSkeld from "./TheSkeld";
+import TheSkeldWithDetails from "./TheSkeldWithDetails";
 import { useSelector } from "react-redux";
 import useStyles from "./MapsPanel.styles";
 import { useTranslation } from "react-i18next";
@@ -15,6 +16,7 @@ export default function MapsPanel(): JSX.Element {
 
   const [map, setMap] = React.useState("skeld");
   const [resetState, setResetState] = React.useState(false);
+  const [showDetails, setShowDetails] = React.useState(true);
 
   const isMobile = useSelector(getIsMobile);
   const orientation = useSelector(getOrientation);
@@ -40,7 +42,7 @@ export default function MapsPanel(): JSX.Element {
     orientation,
   });
 
-  let currentMap = <TheSkeld />;
+  let currentMap = showDetails ? <TheSkeldWithDetails /> : <TheSkeld />;
 
   if (map === "mira") {
     currentMap = <MiraHq />;
@@ -56,28 +58,46 @@ export default function MapsPanel(): JSX.Element {
     <div id="maps" className={classes.MapsPanel}>
       <div className={classes.MapsHeader}>
         {!isMobile && <h2 className={classes.MapsTitle}>{t("maps.title")}</h2>}
-        <div className={classes.MapsToggle}>
-          <Button
-            className={classes.MapsToggleButton}
-            pressed={map === "skeld"}
-            onClick={() => setMap("skeld")}
-          >
-            The Skeld
-          </Button>
-          <Button
-            className={classes.MapsToggleButton}
-            pressed={map === "mira"}
-            onClick={() => setMap("mira")}
-          >
-            Mira HQ
-          </Button>
-          <Button
-            className={classes.MapsToggleButton}
-            pressed={map === "polus"}
-            onClick={() => setMap("polus")}
-          >
-            Polus
-          </Button>
+        <div className={classes.MapsButtonsContainer}>
+          <div className={classes.MapsToggle}>
+            <Button
+              className={classes.MapsToggleButton}
+              pressed={map === "skeld"}
+              onClick={() => setMap("skeld")}
+            >
+              The Skeld
+            </Button>
+            <Button
+              className={classes.MapsToggleButton}
+              pressed={map === "mira"}
+              onClick={() => setMap("mira")}
+            >
+              Mira HQ
+            </Button>
+            <Button
+              className={classes.MapsToggleButton}
+              pressed={map === "polus"}
+              onClick={() => setMap("polus")}
+            >
+              Polus
+            </Button>
+          </div>
+          <div className={classes.MapsToggle}>
+            <Button
+              className={classes.MapsToggleButton}
+              pressed={!showDetails}
+              onClick={() => setShowDetails(false)}
+            >
+              Simple
+            </Button>
+            <Button
+              className={classes.MapsToggleButton}
+              pressed={showDetails}
+              onClick={() => setShowDetails(true)}
+            >
+              Detailed
+            </Button>
+          </div>
         </div>
       </div>
       <div className={classes.MapContainer}>

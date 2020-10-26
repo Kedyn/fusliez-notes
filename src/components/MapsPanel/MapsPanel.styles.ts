@@ -68,4 +68,9 @@ export default createUseStyles((theme: ITheme) => ({
       cursor: "grab",
     },
   }),
+  MapsButtonsContainer: {
+    display: "flex",
+    justifyContent: "space-between",
+    width: "45%",
+  },
 }));
