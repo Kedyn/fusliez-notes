@@ -47,8 +47,10 @@ Kermitigated (twitch handle)
 [Danilo Moura](https://github.com/danilolmoura) (A.K.A. Eudan)  
 [Fabian9799](https://github.com/fabian9799)  
 [Tim Bang](https://github.com/I3lackRacer)  
-[HoneyLemonDaisy](https://twitter.com/honeylemondaisy) (artwork)
-[Victor Pietro](https://github.com/pietroow) (A.K.A. Pietroow)
+[HoneyLemonDaisy](https://twitter.com/honeylemondaisy) (artwork)  
+[Victor Pietro](https://github.com/pietroow) (A.K.A. Pietroow)  
+[Coleyra](https://github.com/Coleyra)  
+[MissingNoShiny](https://github.com/MissingNoShiny)  
 
 Please if you would not like to be mentioned here or your information is wrong
 let me know so I can remove it or fix it, thank you!
