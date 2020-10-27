@@ -16,7 +16,7 @@ import { useTranslation } from "react-i18next";
 export default function MapsPanel(): JSX.Element {
   const { t } = useTranslation();
 
-  const [map, setMap] = React.useState("polus");
+  const [map, setMap] = React.useState("skeld");
   const [resetState, setResetState] = React.useState(false);
   const [showDetails, setShowDetails] = React.useState(true);
 

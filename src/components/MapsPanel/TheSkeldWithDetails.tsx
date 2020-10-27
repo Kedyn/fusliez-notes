@@ -95,12 +95,12 @@ export default function TheSkeld(
       <text
         fontWeight="bold"
         fontFamily="Titillium Web, sans-serif"
-        fontSize={20}
-        y={162}
+        fontSize={22}
+        y={168}
         x={710}
         fillOpacity="null"
         strokeOpacity="null"
-        strokeWidth="1"
+        strokeWidth="0.5"
         stroke="#000"
         fill="#EEC200"
         preserveAspectRatio="xMidYMid meet"
@@ -110,12 +110,12 @@ export default function TheSkeld(
       <text
         fontWeight="bold"
         fontFamily="Titillium Web, sans-serif"
-        fontSize={20}
-        y={195}
-        x={980}
+        fontSize={22}
+        y={225}
+        x={1000}
         fillOpacity="null"
         strokeOpacity="null"
-        strokeWidth="1"
+        strokeWidth="1.5"
         stroke="#000"
         fill="#EEC200"
         preserveAspectRatio="xMidYMid meet"
@@ -125,12 +125,12 @@ export default function TheSkeld(
       <text
         fontWeight="bold"
         fontFamily="Titillium Web, sans-serif"
-        fontSize={20}
+        fontSize={22}
         y={355}
         x={1205}
         fillOpacity="null"
         strokeOpacity="null"
-        strokeWidth="0.2"
+        strokeWidth="0.5"
         stroke="#000"
         fill="#EEC200"
         preserveAspectRatio="xMidYMid meet"
@@ -140,7 +140,7 @@ export default function TheSkeld(
       <text
         fontWeight="bold"
         fontFamily="Titillium Web, sans-serif"
-        fontSize={20}
+        fontSize={22}
         y={560}
         x={1005}
         fillOpacity="null"
@@ -170,7 +170,7 @@ export default function TheSkeld(
       <text
         fontWeight="bold"
         fontFamily="Titillium Web, sans-serif"
-        fontSize={20}
+        fontSize={22}
         y={565}
         x={680}
         fillOpacity="null"
@@ -185,7 +185,7 @@ export default function TheSkeld(
       <text
         fontWeight="bold"
         fontFamily="Titillium Web, sans-serif"
-        fontSize={20}
+        fontSize={22}
         y={492}
         x={515.5}
         fillOpacity="null"
@@ -200,7 +200,7 @@ export default function TheSkeld(
       <text
         fontWeight="bold"
         fontFamily="Titillium Web, sans-serif"
-        fontSize={20}
+        fontSize={22}
         y={540}
         x={185.5}
         fillOpacity="null"
@@ -215,12 +215,12 @@ export default function TheSkeld(
       <text
         fontWeight="bold"
         fontFamily="Titillium Web, sans-serif"
-        fontSize={20}
+        fontSize={22}
         y={370}
-        x={150}
+        x={170}
         fillOpacity="null"
         strokeOpacity="null"
-        strokeWidth="1"
+        strokeWidth="0.5"
         stroke="#000"
         fill="#EEC200"
         preserveAspectRatio="xMidYMid meet"
@@ -230,7 +230,7 @@ export default function TheSkeld(
       <text
         fontWeight="bold"
         fontFamily="Titillium Web, sans-serif"
-        fontSize={20}
+        fontSize={22}
         y={175}
         x={190.5}
         fillOpacity="null"
@@ -245,7 +245,7 @@ export default function TheSkeld(
       <text
         fontWeight="bold"
         fontFamily="Titillium Web, sans-serif"
-        fontSize={20}
+        fontSize={22}
         y={315}
         x={490}
         fillOpacity="null"
@@ -260,9 +260,9 @@ export default function TheSkeld(
       <text
         fontWeight="bold"
         fontFamily="Titillium Web, sans-serif"
-        fontSize={20}
+        fontSize={22}
         y={360}
-        x={355}
+        x={365}
         fillOpacity="null"
         strokeOpacity="null"
         strokeWidth="0.2"
@@ -275,12 +275,12 @@ export default function TheSkeld(
       <text
         fontWeight="bold"
         fontFamily="Titillium Web, sans-serif"
-        fontSize={20}
-        y={455}
-        x={875.5}
+        fontSize={22}
+        y={425}
+        x={885.5}
         fillOpacity="null"
         strokeOpacity="null"
-        strokeWidth="1"
+        strokeWidth="0.5"
         stroke="#000"
         fill="#EEC200"
         preserveAspectRatio="xMidYMid meet"
@@ -290,7 +290,7 @@ export default function TheSkeld(
       <text
         fontWeight="bold"
         fontFamily="Titillium Web, sans-serif"
-        fontSize={20}
+        fontSize={22}
         y={330}
         x={942.5}
         fillOpacity="null"

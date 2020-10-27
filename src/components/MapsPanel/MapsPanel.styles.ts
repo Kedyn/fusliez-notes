@@ -23,6 +23,7 @@ export default createUseStyles((theme: ITheme) => ({
   MapsToggle: (props) => ({
     display: props.isMobile ? "flex" : "inline-flex",
     width: props.isMobile ? "100%" : "auto",
+    margin: "0 0.25rem",
   }),
   MapsToggleButton: {
     flex: "1 1 auto",
@@ -70,7 +71,7 @@ export default createUseStyles((theme: ITheme) => ({
   }),
   MapsButtonsContainer: {
     display: "flex",
-    justifyContent: "space-between",
-    width: "45%",
+    justifyContent: "flex-end",
+    flex: "1 0 auto",
   },
 }));
