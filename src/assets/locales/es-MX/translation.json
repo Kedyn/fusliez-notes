@@ -37,8 +37,8 @@
     "resetAll": "Reiniciar Todo",
     "notes": "Notas",
     "resetNotes": "Reiniciar Notas",
-    "lockPlayers": "Bloquear edición de jugadores",
-    "unlockPlayers": "Desbloquear edición de jugadores"
+    "lockPlayers": "Bloquear edición",
+    "unlockPlayers": "Desbloquear edición"
   },
   "maps": {
     "title": "Mapas",
@@ -56,7 +56,7 @@
     "electrical": "Electricidad",
     "storage": "Almacén",
     "cafeteria": "Cafetería",
-    "admin": "Administración",
+    "admin": "Admin.",
     "communications": "Comunicaciones",
     "shields": "Escudos",
     "o2": "O2",
@@ -76,7 +76,7 @@
     "southwest": "5. Suroeste",
     "northwest": "6. Noroeste",
     "dragInstructions": "Arrastra jugadores al mapa para rastrearlos",
-    "resetPlayers": "Reiniciar posiciones de jugadores"
+    "resetPlayers": "Reiniciar posiciones"
   },
   "settings": {
     "title": "Ajustes",
