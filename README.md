@@ -51,7 +51,7 @@ Kermitigated (twitch handle)
 [Victor Pietro](https://github.com/pietroow) (A.K.A. Pietroow)  
 [Coleyra](https://github.com/Coleyra)  
 [MissingNoShiny](https://github.com/MissingNoShiny)  
-u/Stark_001001 (The Skeld in game map)
+u/Stark_001001 (The Skeld in game map)  
 u/mooseknuckle_king (Mira HQ and Polus in game maps)
 
 Please if you would not like to be mentioned here or your information is wrong

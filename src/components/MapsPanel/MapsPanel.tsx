@@ -3,6 +3,7 @@ import { getIsMobile, getOrientation } from "store/slices/DeviceSlice";
 import Button from "components/common/Button";
 import Draggable from "react-draggable";
 import MiraHq from "./MiraHq";
+import MiraHqWithDetails from "./MiraHqWithDetails";
 import Polus from "./Polus";
 import React from "react";
 import TheSkeld from "./TheSkeld";
@@ -14,7 +15,7 @@ import { useTranslation } from "react-i18next";
 export default function MapsPanel(): JSX.Element {
   const { t } = useTranslation();
 
-  const [map, setMap] = React.useState("skeld");
+  const [map, setMap] = React.useState("mira");
   const [resetState, setResetState] = React.useState(false);
   const [showDetails, setShowDetails] = React.useState(true);
 
@@ -45,7 +46,7 @@ export default function MapsPanel(): JSX.Element {
   let currentMap = showDetails ? <TheSkeldWithDetails /> : <TheSkeld />;
 
   if (map === "mira") {
-    currentMap = <MiraHq />;
+    currentMap = showDetails ? <MiraHqWithDetails /> : <MiraHq />;
   } else if (map === "polus") {
     currentMap = <Polus />;
   }
