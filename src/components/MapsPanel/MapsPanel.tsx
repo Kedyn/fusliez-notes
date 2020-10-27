@@ -5,6 +5,7 @@ import Draggable from "react-draggable";
 import MiraHq from "./MiraHq";
 import MiraHqWithDetails from "./MiraHqWithDetails";
 import Polus from "./Polus";
+import PolusWithDetails from "./PolusWithDetails";
 import React from "react";
 import TheSkeld from "./TheSkeld";
 import TheSkeldWithDetails from "./TheSkeldWithDetails";
@@ -15,7 +16,7 @@ import { useTranslation } from "react-i18next";
 export default function MapsPanel(): JSX.Element {
   const { t } = useTranslation();
 
-  const [map, setMap] = React.useState("mira");
+  const [map, setMap] = React.useState("polus");
   const [resetState, setResetState] = React.useState(false);
   const [showDetails, setShowDetails] = React.useState(true);
 
@@ -48,7 +49,7 @@ export default function MapsPanel(): JSX.Element {
   if (map === "mira") {
     currentMap = showDetails ? <MiraHqWithDetails /> : <MiraHq />;
   } else if (map === "polus") {
-    currentMap = <Polus />;
+    currentMap = showDetails ? <PolusWithDetails /> : <Polus />;
   }
 
   React.useEffect(() => {
