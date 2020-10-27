@@ -17,7 +17,7 @@ export default function Polus(
       <text
         fontWeight="bold"
         fontFamily="Titillium Web, sans-serif"
-        fontSize={20}
+        fontSize={22}
         y={375}
         x={264.5}
         strokeOpacity="null"
@@ -31,7 +31,7 @@ export default function Polus(
       <text
         fontWeight="bold"
         fontFamily="Titillium Web, sans-serif"
-        fontSize={20}
+        fontSize={22}
         y={365}
         x={75.5}
         strokeOpacity="null"
@@ -45,7 +45,7 @@ export default function Polus(
       <text
         fontWeight="bold"
         fontFamily="Titillium Web, sans-serif"
-        fontSize={20}
+        fontSize={22}
         y={433}
         x={865.5}
         strokeOpacity="null"
@@ -59,7 +59,7 @@ export default function Polus(
       <text
         fontWeight="bold"
         fontFamily="Titillium Web, sans-serif"
-        fontSize={20}
+        fontSize={22}
         y={361}
         x={631.5}
         strokeOpacity="null"
@@ -73,7 +73,7 @@ export default function Polus(
       <text
         fontWeight="bold"
         fontFamily="Titillium Web, sans-serif"
-        fontSize={20}
+        fontSize={22}
         y={260}
         x={984.5}
         strokeOpacity="null"
@@ -87,7 +87,7 @@ export default function Polus(
       <text
         fontWeight="bold"
         fontFamily="Titillium Web, sans-serif"
-        fontSize={20}
+        fontSize={22}
         y={597}
         x={1085.5}
         strokeOpacity="null"
@@ -102,7 +102,7 @@ export default function Polus(
         transform="rotate(45 684.608 655)"
         fontWeight="bold"
         fontFamily="Titillium Web, sans-serif"
-        fontSize={20}
+        fontSize={22}
         y={662}
         x={653.5}
         strokeOpacity="null"
@@ -116,7 +116,7 @@ export default function Polus(
       <text
         fontWeight="bold"
         fontFamily="Titillium Web, sans-serif"
-        fontSize={20}
+        fontSize={22}
         y={660}
         x={358.5}
         strokeOpacity="null"
@@ -131,7 +131,7 @@ export default function Polus(
         transform="rotate(45 424.608 494)"
         fontWeight="bold"
         fontFamily="Titillium Web, sans-serif"
-        fontSize={20}
+        fontSize={22}
         y={531}
         x={303.5}
         strokeOpacity="null"
@@ -145,7 +145,7 @@ export default function Polus(
       <text
         fontWeight="bold"
         fontFamily="Titillium Web, sans-serif"
-        fontSize={20}
+        fontSize={22}
         y={499}
         x={659.5}
         strokeOpacity="null"
@@ -159,7 +159,7 @@ export default function Polus(
       <text
         fontWeight="bold"
         fontFamily="Titillium Web, sans-serif"
-        fontSize={20}
+        fontSize={22}
         y={519}
         x={181.5}
         strokeOpacity="null"
@@ -173,7 +173,7 @@ export default function Polus(
       <text
         fontWeight="bold"
         fontFamily="Titillium Web, sans-serif"
-        fontSize={20}
+        fontSize={22}
         y={428}
         x={409.5}
         strokeOpacity="null"
@@ -187,7 +187,7 @@ export default function Polus(
       <text
         fontWeight="bold"
         fontFamily="Titillium Web, sans-serif"
-        fontSize={20}
+        fontSize={22}
         y={250}
         x={712.5}
         strokeOpacity="null"
@@ -201,7 +201,7 @@ export default function Polus(
       <text
         fontWeight="bold"
         fontFamily="Titillium Web, sans-serif"
-        fontSize={20}
+        fontSize={22}
         y={632}
         x={475.5}
         strokeOpacity="null"
@@ -215,7 +215,7 @@ export default function Polus(
       <text
         fontWeight="bold"
         fontFamily="Titillium Web, sans-serif"
-        fontSize={20}
+        fontSize={22}
         y={598}
         x={85.5}
         strokeOpacity="null"
@@ -229,7 +229,7 @@ export default function Polus(
       <text
         fontWeight="bold"
         fontFamily="Titillium Web, sans-serif"
-        fontSize={20}
+        fontSize={22}
         y={248}
         x={285.5}
         strokeOpacity="null"
@@ -242,7 +242,7 @@ export default function Polus(
       </text>
       <text
         fontFamily="Titillium Web, sans-serif"
-        fontSize={20}
+        fontSize={22}
         y={45}
         x={890}
         strokeOpacity="null"
@@ -255,7 +255,7 @@ export default function Polus(
       </text>
       <text
         fontFamily="Titillium Web, sans-serif"
-        fontSize={20}
+        fontSize={22}
         y={77.5}
         x={890}
         strokeOpacity="null"
@@ -268,7 +268,7 @@ export default function Polus(
       </text>
       <text
         fontFamily="Titillium Web, sans-serif"
-        fontSize={20}
+        fontSize={22}
         y={110}
         x={890}
         strokeOpacity="null"
@@ -281,7 +281,7 @@ export default function Polus(
       </text>
       <text
         fontFamily="Titillium Web, sans-serif"
-        fontSize={20}
+        fontSize={22}
         y={45}
         x={1110}
         strokeOpacity="null"
@@ -294,7 +294,7 @@ export default function Polus(
       </text>
       <text
         fontFamily="Titillium Web, sans-serif"
-        fontSize={20}
+        fontSize={22}
         y={77.5}
         x={1110}
         strokeOpacity="null"
@@ -307,7 +307,7 @@ export default function Polus(
       </text>
       <text
         fontFamily="Titillium Web, sans-serif"
-        fontSize={20}
+        fontSize={22}
         y={110}
         x={1110}
         strokeOpacity="null"

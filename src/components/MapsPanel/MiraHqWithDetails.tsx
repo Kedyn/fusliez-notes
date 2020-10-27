@@ -17,11 +17,11 @@ export default function MiraHq(
       <text
         fontWeight="bold"
         fontFamily="Titillium Web, sans-serif"
-        fontSize={20}
+        fontSize={22}
         y={155}
         x={842.5}
         stroke="#000"
-        strokeWidth="1.2"
+        strokeWidth="1"
         fill="#EEC200"
         preserveAspectRatio="xMidYMid meet"
       >
@@ -30,10 +30,11 @@ export default function MiraHq(
       <text
         fontWeight="bold"
         fontFamily="Titillium Web, sans-serif"
-        fontSize={20}
+        fontSize={22}
         y={254}
         x={949.5}
         stroke="#000"
+        strokeWidth="1"
         fill="#EEC200"
         preserveAspectRatio="xMidYMid meet"
       >
@@ -42,10 +43,11 @@ export default function MiraHq(
       <text
         fontWeight="bold"
         fontFamily="Titillium Web, sans-serif"
-        fontSize={20}
+        fontSize={22}
         y={232}
         x={794.5}
         stroke="#000"
+        strokeWidth="0.75"
         fill="#EEC200"
         preserveAspectRatio="xMidYMid meet"
       >
@@ -55,7 +57,7 @@ export default function MiraHq(
         transform="rotate(45.439 727.06 812.293) scale(.78224 1)"
         fontWeight="bold"
         fontFamily="Titillium Web, sans-serif"
-        fontSize={20}
+        fontSize={22}
         y={551.511}
         x={705.185}
         strokeOpacity="null"
@@ -69,11 +71,12 @@ export default function MiraHq(
         transform="rotate(67.008 640.961 672.111) scale(.83183 1)"
         fontWeight="bold"
         fontFamily="Titillium Web, sans-serif"
-        fontSize={20}
+        fontSize={22}
         y={625.612}
         x={643.578}
         fillOpacity="null"
         strokeOpacity="null"
+        strokeWidth="1.25"
         stroke="#000"
         fill="#EEC200"
         preserveAspectRatio="xMidYMid meet"
@@ -83,7 +86,7 @@ export default function MiraHq(
       <text
         fontWeight="bold"
         fontFamily="Titillium Web, sans-serif"
-        fontSize={20}
+        fontSize={22}
         y={666}
         x={788.5}
         strokeOpacity="null"
@@ -97,7 +100,7 @@ export default function MiraHq(
       <text
         fontWeight="bold"
         fontFamily="Titillium Web, sans-serif"
-        fontSize={20}
+        fontSize={22}
         y={560}
         x={1054.5}
         strokeOpacity="null"
@@ -112,7 +115,7 @@ export default function MiraHq(
         transform="rotate(45 938.725 548.208)"
         fontWeight="bold"
         fontFamily="Titillium Web, sans-serif"
-        fontSize={20}
+        fontSize={22}
         y={565}
         x={919.5}
         strokeOpacity="null"
@@ -126,7 +129,7 @@ export default function MiraHq(
       <text
         fontWeight="bold"
         fontFamily="Titillium Web, sans-serif"
-        fontSize={20}
+        fontSize={22}
         y={704}
         x={1077.5}
         strokeOpacity="null"
@@ -140,11 +143,11 @@ export default function MiraHq(
       <text
         fontWeight="bold"
         fontFamily="Titillium Web, sans-serif"
-        fontSize={20}
+        fontSize={22}
         y={612}
         x={224.5}
         strokeOpacity="null"
-        strokeWidth="null"
+        strokeWidth="1.25"
         stroke="#000"
         fill="#EEC200"
         preserveAspectRatio="xMidYMid meet"
@@ -154,7 +157,7 @@ export default function MiraHq(
       <text
         fontWeight="bold"
         fontFamily="Titillium Web, sans-serif"
-        fontSize={20}
+        fontSize={22}
         y={400}
         x={428}
         strokeOpacity="null"
@@ -169,7 +172,7 @@ export default function MiraHq(
         transform="rotate(45 705.725 339.208)"
         fontWeight="bold"
         fontFamily="Titillium Web, sans-serif"
-        fontSize={20}
+        fontSize={22}
         y={420}
         x={653.5}
         strokeOpacity="null"
@@ -183,7 +186,7 @@ export default function MiraHq(
       <text
         fontWeight="bold"
         fontFamily="Titillium Web, sans-serif"
-        fontSize={20}
+        fontSize={22}
         y={63}
         x={1140}
         strokeOpacity="null"
@@ -197,7 +200,7 @@ export default function MiraHq(
       <text
         fontWeight="bold"
         fontFamily="Titillium Web, sans-serif"
-        fontSize={20}
+        fontSize={22}
         y={98}
         x={1140}
         strokeOpacity="null"
@@ -211,7 +214,7 @@ export default function MiraHq(
       <text
         fontWeight="bold"
         fontFamily="Titillium Web, sans-serif"
-        fontSize={20}
+        fontSize={22}
         y={135}
         x={1140}
         strokeOpacity="null"
@@ -225,7 +228,7 @@ export default function MiraHq(
       <text
         fontWeight="bold"
         fontFamily="Titillium Web, sans-serif"
-        fontSize={20}
+        fontSize={22}
         y={172}
         x={1140}
         strokeOpacity="null"

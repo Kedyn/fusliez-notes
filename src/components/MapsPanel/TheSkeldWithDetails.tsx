@@ -145,7 +145,7 @@ export default function TheSkeld(
         x={1005}
         fillOpacity="null"
         strokeOpacity="null"
-        strokeWidth="1"
+        strokeWidth="0.75"
         stroke="#000"
         fill="#EEC200"
         preserveAspectRatio="xMidYMid meet"
