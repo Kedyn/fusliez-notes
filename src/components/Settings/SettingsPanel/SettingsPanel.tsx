@@ -117,8 +117,8 @@ export default function SettingsPanel(): JSX.Element {
             handle=".list-handle"
             delayOnTouchOnly={isMobile}
             delay={isMobile ? 10 : 0}
-            list={playersLists}
             forceFallback={true}
+            list={playersLists}
             setList={(newState) => dispatch(setPlayersLists(newState))}
             className={classes.SettingsPlayersLists}
           >
@@ -147,15 +147,14 @@ export default function SettingsPanel(): JSX.Element {
                   />
                 </div>
 
-                <div>
-                  <RadioButton
-                    key={list.id}
-                    name="playersContainer"
-                    onChange={() =>
-                      dispatch(setPlayersContainer(list.id as number))
-                    }
-                    checked={playersContainer === list.id}
-                  />
+                <div
+                  className={classes.SettingsPlayersContainer}
+                  data-selected={playersContainer === list.id}
+                  onClick={() =>
+                    dispatch(setPlayersContainer(list.id as number))
+                  }
+                >
+                  <FontAwesomeIcon icon="users" />
                 </div>
 
                 <div>
@@ -204,6 +203,14 @@ export default function SettingsPanel(): JSX.Element {
               {t("settings.resetSections")}
             </Button>
           </div>
+
+          <p>
+            <small>
+              Note: changing the players container (
+              <FontAwesomeIcon icon="users" size="sm" />) will only reset after
+              clicking Reset Round or Reset All.
+            </small>
+          </p>
         </div>
 
         <div className={classes.SettingsPane}>

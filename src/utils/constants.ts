@@ -75,3 +75,5 @@ export const DEFAULT_PLAYERS_LISTS: Array<IPlayersList> = [
   { id: 3, title: "main.lists.dead", players: [] },
   { id: 4, title: "main.lists.unknown", players: DEFAULT_PLAYERS },
 ];
+
+export const DEFAULT_PLAYERS_CONTAINER = 4;

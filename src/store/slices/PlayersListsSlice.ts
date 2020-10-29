@@ -1,4 +1,7 @@
-import { DEFAULT_PLAYERS, DEFAULT_PLAYERS_LISTS } from "utils/constants";
+import {
+  DEFAULT_PLAYERS_CONTAINER,
+  DEFAULT_PLAYERS_LISTS,
+} from "utils/constants";
 import {
   IPlayer,
   IPlayersList,
@@ -9,7 +12,7 @@ import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
 function getInitialState(): IPlayersListsSlice {
   return {
-    playersContainer: 4,
+    playersContainer: DEFAULT_PLAYERS_CONTAINER,
     lists: DEFAULT_PLAYERS_LISTS,
   };
 }
@@ -136,7 +139,7 @@ const PlayersListsSlice = createSlice({
     }),
 
     resetPlayersLists: () => ({
-      playersContainer: 4,
+      playersContainer: DEFAULT_PLAYERS_CONTAINER,
       lists: [...DEFAULT_PLAYERS_LISTS.map((list) => list)],
     }),
   },

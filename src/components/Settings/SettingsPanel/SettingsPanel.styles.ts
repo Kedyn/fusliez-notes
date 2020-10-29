@@ -59,6 +59,14 @@ export default createUseStyles((theme: ITheme) => ({
       cursor: "grabbing",
     },
   },
+  SettingsPlayersContainer: {
+    cursor: "pointer",
+    padding: "0 0.5rem",
+
+    "&[data-selected='false']": {
+      opacity: 0.25,
+    },
+  },
   SettingsDeleteButton: {
     padding: "0rem 0.25rem",
     marginRight: "0.5rem",
