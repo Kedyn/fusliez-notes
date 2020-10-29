@@ -17,12 +17,12 @@ export default function MiraHq(
       <text
         fontWeight="bold"
         fontFamily="Titillium Web, sans-serif"
-        fontSize={22}
+        fontSize={32}
         y={155}
-        x={842.5}
+        x={812.5}
+        strokeWidth="1.75"
         stroke="#000"
-        strokeWidth="1"
-        fill="#EEC200"
+        fill="#fff"
         preserveAspectRatio="xMidYMid meet"
       >
         {t("maps.greenhouse")}
@@ -30,12 +30,12 @@ export default function MiraHq(
       <text
         fontWeight="bold"
         fontFamily="Titillium Web, sans-serif"
-        fontSize={22}
+        fontSize={32}
         y={254}
         x={949.5}
+        strokeWidth="1.75"
         stroke="#000"
-        strokeWidth="1"
-        fill="#EEC200"
+        fill="#fff"
         preserveAspectRatio="xMidYMid meet"
       >
         {t("maps.admin")}
@@ -43,12 +43,12 @@ export default function MiraHq(
       <text
         fontWeight="bold"
         fontFamily="Titillium Web, sans-serif"
-        fontSize={22}
+        fontSize={32}
         y={232}
-        x={794.5}
-        stroke="#000"
+        x={784.5}
         strokeWidth="0.75"
-        fill="#EEC200"
+        stroke="#fff"
+        fill="#000"
         preserveAspectRatio="xMidYMid meet"
       >
         {t("maps.office")}
@@ -57,28 +57,29 @@ export default function MiraHq(
         transform="rotate(45.439 727.06 812.293) scale(.78224 1)"
         fontWeight="bold"
         fontFamily="Titillium Web, sans-serif"
-        fontSize={22}
+        fontSize={26}
         y={551.511}
         x={705.185}
         strokeOpacity="null"
+        strokeWidth="1.75"
         stroke="#000"
-        fill="#FFEA8A"
+        fill="#fff"
         preserveAspectRatio="xMidYMid meet"
       >
         {t("maps.communications")}
       </text>
       <text
-        transform="rotate(67.008 640.961 672.111) scale(.83183 1)"
+        transform="rotate(67.008 600.961 652.111) scale(.83183 1)"
         fontWeight="bold"
         fontFamily="Titillium Web, sans-serif"
-        fontSize={22}
-        y={625.612}
-        x={643.578}
+        fontSize={32}
+        y={580.612}
+        x={590.578}
         fillOpacity="null"
         strokeOpacity="null"
-        strokeWidth="1.25"
-        stroke="#000"
-        fill="#EEC200"
+        strokeWidth="0.75"
+        stroke="#fff"
+        fill="#000"
         preserveAspectRatio="xMidYMid meet"
       >
         {t("maps.lockerRoom")}
@@ -86,13 +87,13 @@ export default function MiraHq(
       <text
         fontWeight="bold"
         fontFamily="Titillium Web, sans-serif"
-        fontSize={22}
+        fontSize={28}
         y={666}
-        x={788.5}
+        x={778.5}
         strokeOpacity="null"
-        strokeWidth="1"
-        stroke="#000"
-        fill="#EEC200"
+        strokeWidth="0.75"
+        stroke="#fff"
+        fill="#000"
         preserveAspectRatio="xMidYMid meet"
       >
         {t("maps.medBay")}
@@ -100,13 +101,13 @@ export default function MiraHq(
       <text
         fontWeight="bold"
         fontFamily="Titillium Web, sans-serif"
-        fontSize={22}
+        fontSize={32}
         y={560}
         x={1054.5}
         strokeOpacity="null"
-        strokeWidth="1"
-        stroke="#000"
-        fill="#EEC200"
+        strokeWidth="0.75"
+        stroke="#fff"
+        fill="#000"
         preserveAspectRatio="xMidYMid meet"
       >
         {t("maps.cafeteria")}
@@ -115,13 +116,13 @@ export default function MiraHq(
         transform="rotate(45 938.725 548.208)"
         fontWeight="bold"
         fontFamily="Titillium Web, sans-serif"
-        fontSize={22}
+        fontSize={28}
         y={565}
-        x={919.5}
+        x={909.5}
         strokeOpacity="null"
-        strokeWidth="1"
+        strokeWidth="1.75"
         stroke="#000"
-        fill="#FFEA8A"
+        fill="#fff"
         preserveAspectRatio="xMidYMid meet"
       >
         {t("maps.storage")}
@@ -129,13 +130,13 @@ export default function MiraHq(
       <text
         fontWeight="bold"
         fontFamily="Titillium Web, sans-serif"
-        fontSize={22}
+        fontSize={32}
         y={704}
         x={1077.5}
         strokeOpacity="null"
-        strokeWidth="null"
+        strokeWidth="1.75"
         stroke="#000"
-        fill="#FFEA8A"
+        fill="#fff"
         preserveAspectRatio="xMidYMid meet"
       >
         {t("maps.balcony")}
@@ -143,13 +144,13 @@ export default function MiraHq(
       <text
         fontWeight="bold"
         fontFamily="Titillium Web, sans-serif"
-        fontSize={22}
+        fontSize={32}
         y={612}
-        x={224.5}
+        x={214.5}
         strokeOpacity="null"
-        strokeWidth="1.25"
-        stroke="#000"
-        fill="#EEC200"
+        strokeWidth="0.75"
+        stroke="#fff"
+        fill="#000"
         preserveAspectRatio="xMidYMid meet"
       >
         {t("maps.launchpad")}
@@ -157,13 +158,13 @@ export default function MiraHq(
       <text
         fontWeight="bold"
         fontFamily="Titillium Web, sans-serif"
-        fontSize={22}
+        fontSize={28}
         y={400}
-        x={428}
+        x={408}
         strokeOpacity="null"
-        strokeWidth="1"
+        strokeWidth="1.75"
         stroke="#000"
-        fill="#FFEA8A"
+        fill="#fff"
         preserveAspectRatio="xMidYMid meet"
       >
         {t("maps.reactor")}
@@ -172,13 +173,13 @@ export default function MiraHq(
         transform="rotate(45 705.725 339.208)"
         fontWeight="bold"
         fontFamily="Titillium Web, sans-serif"
-        fontSize={22}
+        fontSize={28}
         y={420}
         x={653.5}
         strokeOpacity="null"
-        strokeWidth="1"
-        stroke="#000"
-        fill="#EEC200"
+        strokeWidth="0.75"
+        stroke="#fff"
+        fill="#000"
         preserveAspectRatio="xMidYMid meet"
       >
         {t("maps.laboratory")}

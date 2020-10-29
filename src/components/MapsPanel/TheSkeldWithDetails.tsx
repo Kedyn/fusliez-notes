@@ -16,7 +16,8 @@ export default function TheSkeld(
       />
       <text
         fontFamily="Titillium Web, sans-serif"
-        fontSize={18}
+        fontWeight="bold"
+        fontSize={22}
         y={30}
         x={1160}
         strokeOpacity="null"
@@ -29,7 +30,8 @@ export default function TheSkeld(
       </text>
       <text
         fontFamily="Titillium Web, sans-serif"
-        fontSize={18}
+        fontWeight="bold"
+        fontSize={22}
         y={55}
         x={1160}
         strokeOpacity="null"
@@ -42,7 +44,8 @@ export default function TheSkeld(
       </text>
       <text
         fontFamily="Titillium Web, sans-serif"
-        fontSize={18}
+        fontWeight="bold"
+        fontSize={22}
         y={82}
         x={1160}
         strokeOpacity="null"
@@ -55,7 +58,8 @@ export default function TheSkeld(
       </text>
       <text
         fontFamily="Titillium Web, sans-serif"
-        fontSize={18}
+        fontWeight="bold"
+        fontSize={22}
         y={108}
         x={1160}
         strokeOpacity="null"
@@ -68,8 +72,9 @@ export default function TheSkeld(
       </text>
       <text
         fontFamily="Titillium Web, sans-serif"
-        fontSize={18}
-        y={132}
+        fontWeight="bold"
+        fontSize={22}
+        y={136}
         x={1160}
         strokeOpacity="null"
         strokeWidth={0}
@@ -81,8 +86,9 @@ export default function TheSkeld(
       </text>
       <text
         fontFamily="Titillium Web, sans-serif"
-        fontSize={18}
-        y={160}
+        fontWeight="bold"
+        fontSize={22}
+        y={165}
         x={1160}
         strokeOpacity="null"
         strokeWidth={0}
@@ -95,14 +101,14 @@ export default function TheSkeld(
       <text
         fontWeight="bold"
         fontFamily="Titillium Web, sans-serif"
-        fontSize={22}
+        fontSize={32}
         y={168}
-        x={710}
+        x={700}
         fillOpacity="null"
         strokeOpacity="null"
-        strokeWidth="0.5"
+        strokeWidth="1.75"
         stroke="#000"
-        fill="#EEC200"
+        fill="#fff"
         preserveAspectRatio="xMidYMid meet"
       >
         {t("maps.cafeteria")}
@@ -110,14 +116,14 @@ export default function TheSkeld(
       <text
         fontWeight="bold"
         fontFamily="Titillium Web, sans-serif"
-        fontSize={22}
+        fontSize={32}
         y={225}
         x={1000}
         fillOpacity="null"
         strokeOpacity="null"
-        strokeWidth="1.5"
+        strokeWidth="1.75"
         stroke="#000"
-        fill="#EEC200"
+        fill="#fff"
         preserveAspectRatio="xMidYMid meet"
       >
         {t("maps.weapons")}
@@ -125,14 +131,14 @@ export default function TheSkeld(
       <text
         fontWeight="bold"
         fontFamily="Titillium Web, sans-serif"
-        fontSize={22}
+        fontSize={32}
         y={355}
-        x={1205}
+        x={1155}
         fillOpacity="null"
         strokeOpacity="null"
-        strokeWidth="0.5"
+        strokeWidth="1.75"
         stroke="#000"
-        fill="#EEC200"
+        fill="#fff"
         preserveAspectRatio="xMidYMid meet"
       >
         {t("maps.navigation")}
@@ -140,14 +146,14 @@ export default function TheSkeld(
       <text
         fontWeight="bold"
         fontFamily="Titillium Web, sans-serif"
-        fontSize={22}
+        fontSize={28}
         y={560}
-        x={1005}
+        x={990}
         fillOpacity="null"
         strokeOpacity="null"
-        strokeWidth="0.75"
+        strokeWidth="1.75"
         stroke="#000"
-        fill="#EEC200"
+        fill="#fff"
         preserveAspectRatio="xMidYMid meet"
       >
         {t("maps.shields")}
@@ -155,14 +161,14 @@ export default function TheSkeld(
       <text
         fontWeight="bold"
         fontFamily="Titillium Web, sans-serif"
-        fontSize={20}
+        fontSize={28}
         y={655}
         x={830}
         fillOpacity="null"
         strokeOpacity="null"
-        strokeWidth="0.2"
+        strokeWidth="1.75"
         stroke="#000"
-        fill="#EEC200"
+        fill="#fff"
         preserveAspectRatio="xMidYMid meet"
       >
         {t("maps.communications")}
@@ -170,14 +176,14 @@ export default function TheSkeld(
       <text
         fontWeight="bold"
         fontFamily="Titillium Web, sans-serif"
-        fontSize={22}
+        fontSize={32}
         y={565}
         x={680}
         fillOpacity="null"
         strokeOpacity="null"
-        strokeWidth="0.2"
+        strokeWidth="1.75"
         stroke="#000"
-        fill="#EEC200"
+        fill="#fff"
         preserveAspectRatio="xMidYMid meet"
       >
         {t("maps.storage")}
@@ -185,14 +191,14 @@ export default function TheSkeld(
       <text
         fontWeight="bold"
         fontFamily="Titillium Web, sans-serif"
-        fontSize={22}
+        fontSize={32}
         y={492}
         x={515.5}
         fillOpacity="null"
         strokeOpacity="null"
-        strokeWidth="0.2"
+        strokeWidth="1.75"
         stroke="#000"
-        fill="#EEC200"
+        fill="#fff"
         preserveAspectRatio="xMidYMid meet"
       >
         {t("maps.electrical")}
@@ -200,14 +206,14 @@ export default function TheSkeld(
       <text
         fontWeight="bold"
         fontFamily="Titillium Web, sans-serif"
-        fontSize={22}
+        fontSize={32}
         y={540}
         x={185.5}
         fillOpacity="null"
         strokeOpacity="null"
-        strokeWidth="0.2"
+        strokeWidth="1.75"
         stroke="#000"
-        fill="#EEC200"
+        fill="#fff"
         preserveAspectRatio="xMidYMid meet"
       >
         {t("maps.lowerEngine")}
@@ -215,14 +221,14 @@ export default function TheSkeld(
       <text
         fontWeight="bold"
         fontFamily="Titillium Web, sans-serif"
-        fontSize={22}
+        fontSize={32}
         y={370}
         x={170}
         fillOpacity="null"
         strokeOpacity="null"
-        strokeWidth="0.5"
+        strokeWidth="1.75"
         stroke="#000"
-        fill="#EEC200"
+        fill="#fff"
         preserveAspectRatio="xMidYMid meet"
       >
         {t("maps.reactor")}
@@ -230,14 +236,14 @@ export default function TheSkeld(
       <text
         fontWeight="bold"
         fontFamily="Titillium Web, sans-serif"
-        fontSize={22}
+        fontSize={32}
         y={175}
         x={190.5}
         fillOpacity="null"
         strokeOpacity="null"
-        strokeWidth="0.2"
+        strokeWidth="1.75"
         stroke="#000"
-        fill="#EEC200"
+        fill="#fff"
         preserveAspectRatio="xMidYMid meet"
       >
         {t("maps.upperEngine")}
@@ -245,14 +251,14 @@ export default function TheSkeld(
       <text
         fontWeight="bold"
         fontFamily="Titillium Web, sans-serif"
-        fontSize={22}
+        fontSize={32}
         y={315}
         x={490}
         fillOpacity="null"
         strokeOpacity="null"
-        strokeWidth="0.2"
+        strokeWidth="1.75"
         stroke="#000"
-        fill="#EEC200"
+        fill="#fff"
         preserveAspectRatio="xMidYMid meet"
       >
         {t("maps.medBay")}
@@ -260,14 +266,14 @@ export default function TheSkeld(
       <text
         fontWeight="bold"
         fontFamily="Titillium Web, sans-serif"
-        fontSize={22}
+        fontSize={32}
         y={360}
         x={365}
         fillOpacity="null"
         strokeOpacity="null"
-        strokeWidth="0.2"
+        strokeWidth="1.75"
         stroke="#000"
-        fill="#EEC200"
+        fill="#fff"
         preserveAspectRatio="xMidYMid meet"
       >
         {t("maps.security")}
@@ -275,14 +281,14 @@ export default function TheSkeld(
       <text
         fontWeight="bold"
         fontFamily="Titillium Web, sans-serif"
-        fontSize={22}
+        fontSize={32}
         y={425}
         x={885.5}
         fillOpacity="null"
         strokeOpacity="null"
-        strokeWidth="0.5"
+        strokeWidth="1.75"
         stroke="#000"
-        fill="#EEC200"
+        fill="#fff"
         preserveAspectRatio="xMidYMid meet"
       >
         {t("maps.admin")}
@@ -290,14 +296,14 @@ export default function TheSkeld(
       <text
         fontWeight="bold"
         fontFamily="Titillium Web, sans-serif"
-        fontSize={22}
+        fontSize={32}
         y={330}
         x={942.5}
         fillOpacity="null"
         strokeOpacity="null"
-        strokeWidth="0.2"
+        strokeWidth="1.75"
         stroke="#000"
-        fill="#EEC200"
+        fill="#fff"
         preserveAspectRatio="xMidYMid meet"
       >
         {t("maps.o2")}

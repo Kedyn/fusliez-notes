@@ -17,13 +17,13 @@ export default function Polus(
       <text
         fontWeight="bold"
         fontFamily="Titillium Web, sans-serif"
-        fontSize={22}
+        fontSize={26}
         y={375}
-        x={264.5}
+        x={244.5}
         strokeOpacity="null"
         strokeWidth="0.5"
         stroke="#000"
-        fill="#EEC200"
+        fill="#fff"
         preserveAspectRatio="xMidYMid meet"
       >
         {t("maps.electrical")}
@@ -31,13 +31,13 @@ export default function Polus(
       <text
         fontWeight="bold"
         fontFamily="Titillium Web, sans-serif"
-        fontSize={22}
+        fontSize={26}
         y={365}
         x={75.5}
         strokeOpacity="null"
         strokeWidth="0.5"
         stroke="#000"
-        fill="#EEC200"
+        fill="#fff"
         preserveAspectRatio="xMidYMid meet"
       >
         {t("maps.security")}
@@ -45,13 +45,13 @@ export default function Polus(
       <text
         fontWeight="bold"
         fontFamily="Titillium Web, sans-serif"
-        fontSize={22}
+        fontSize={26}
         y={433}
         x={865.5}
         strokeOpacity="null"
         strokeWidth="0.5"
         stroke="#000"
-        fill="#EEC200"
+        fill="#fff"
         preserveAspectRatio="xMidYMid meet"
       >
         {t("maps.east")}
@@ -59,13 +59,13 @@ export default function Polus(
       <text
         fontWeight="bold"
         fontFamily="Titillium Web, sans-serif"
-        fontSize={22}
+        fontSize={26}
         y={361}
-        x={631.5}
+        x={618.5}
         strokeOpacity="null"
         strokeWidth="null"
         stroke="#000"
-        fill="#EEC200"
+        fill="#fff"
         preserveAspectRatio="xMidYMid meet"
       >
         {t("maps.storage")}
@@ -73,13 +73,13 @@ export default function Polus(
       <text
         fontWeight="bold"
         fontFamily="Titillium Web, sans-serif"
-        fontSize={22}
+        fontSize={32}
         y={260}
-        x={984.5}
+        x={994.5}
         strokeOpacity="null"
-        strokeWidth="1"
+        strokeWidth="1.5"
         stroke="#000"
-        fill="#EEC200"
+        fill="#fff"
         preserveAspectRatio="xMidYMid meet"
       >
         {t("maps.laboratory")}
@@ -87,13 +87,13 @@ export default function Polus(
       <text
         fontWeight="bold"
         fontFamily="Titillium Web, sans-serif"
-        fontSize={22}
+        fontSize={28}
         y={597}
-        x={1085.5}
+        x={1035.5}
         strokeOpacity="null"
-        strokeWidth="0.5"
+        strokeWidth="1"
         stroke="#000"
-        fill="#EEC200"
+        fill="#fff"
         preserveAspectRatio="xMidYMid meet"
       >
         {t("maps.specimenRoom")}
@@ -102,13 +102,13 @@ export default function Polus(
         transform="rotate(45 684.608 655)"
         fontWeight="bold"
         fontFamily="Titillium Web, sans-serif"
-        fontSize={22}
-        y={662}
-        x={653.5}
+        fontSize={28}
+        y={632}
+        x={673.5}
         strokeOpacity="null"
-        strokeWidth="null"
+        strokeWidth="1"
         stroke="#000"
-        fill="#EEC200"
+        fill="#fff"
         preserveAspectRatio="xMidYMid meet"
       >
         {t("maps.admin")}
@@ -116,13 +116,13 @@ export default function Polus(
       <text
         fontWeight="bold"
         fontFamily="Titillium Web, sans-serif"
-        fontSize={22}
+        fontSize={26}
         y={660}
-        x={358.5}
+        x={342.5}
         strokeOpacity="null"
-        strokeWidth="0.5"
+        strokeWidth="1"
         stroke="#000"
-        fill="#EEC200"
+        fill="#fff"
         preserveAspectRatio="xMidYMid meet"
       >
         {t("maps.weapons")}
@@ -137,7 +137,7 @@ export default function Polus(
         strokeOpacity="null"
         strokeWidth="null"
         stroke="#000"
-        fill="#EEC200"
+        fill="#fff"
         preserveAspectRatio="xMidYMid meet"
       >
         {t("maps.communications")}
@@ -145,13 +145,13 @@ export default function Polus(
       <text
         fontWeight="bold"
         fontFamily="Titillium Web, sans-serif"
-        fontSize={22}
+        fontSize={26}
         y={499}
         x={659.5}
         strokeOpacity="null"
         strokeWidth="null"
         stroke="#000"
-        fill="#EEC200"
+        fill="#fff"
         preserveAspectRatio="xMidYMid meet"
       >
         {t("maps.office")}
@@ -159,13 +159,13 @@ export default function Polus(
       <text
         fontWeight="bold"
         fontFamily="Titillium Web, sans-serif"
-        fontSize={22}
-        y={519}
-        x={181.5}
+        fontSize={26}
+        y={500}
+        x={71.5}
         strokeOpacity="null"
         strokeWidth="null"
         stroke="#000"
-        fill="#EEC200"
+        fill="#fff"
         preserveAspectRatio="xMidYMid meet"
       >
         {t("maps.o2")}
@@ -173,13 +173,13 @@ export default function Polus(
       <text
         fontWeight="bold"
         fontFamily="Titillium Web, sans-serif"
-        fontSize={22}
+        fontSize={26}
         y={428}
         x={409.5}
         strokeOpacity="null"
-        strokeWidth="1"
+        strokeWidth="1.5"
         stroke="#000"
-        fill="#EEC200"
+        fill="#fff"
         preserveAspectRatio="xMidYMid meet"
       >
         {t("maps.central")}
@@ -187,13 +187,13 @@ export default function Polus(
       <text
         fontWeight="bold"
         fontFamily="Titillium Web, sans-serif"
-        fontSize={22}
+        fontSize={26}
         y={250}
         x={712.5}
         strokeOpacity="null"
         strokeWidth="0.5"
         stroke="#000"
-        fill="#EEC200"
+        fill="#fff"
         preserveAspectRatio="xMidYMid meet"
       >
         {t("maps.northeast")}
@@ -201,13 +201,13 @@ export default function Polus(
       <text
         fontWeight="bold"
         fontFamily="Titillium Web, sans-serif"
-        fontSize={22}
+        fontSize={26}
         y={632}
         x={475.5}
         strokeOpacity="null"
         strokeWidth="0.5"
         stroke="#000"
-        fill="#EEC200"
+        fill="#fff"
         preserveAspectRatio="xMidYMid meet"
       >
         {t("maps.south")}
@@ -215,13 +215,13 @@ export default function Polus(
       <text
         fontWeight="bold"
         fontFamily="Titillium Web, sans-serif"
-        fontSize={22}
+        fontSize={26}
         y={598}
         x={85.5}
         strokeOpacity="null"
         strokeWidth="0.5"
         stroke="#000"
-        fill="#EEC200"
+        fill="#fff"
         preserveAspectRatio="xMidYMid meet"
       >
         {t("maps.southwest")}
@@ -229,19 +229,20 @@ export default function Polus(
       <text
         fontWeight="bold"
         fontFamily="Titillium Web, sans-serif"
-        fontSize={22}
+        fontSize={26}
         y={248}
         x={285.5}
         strokeOpacity="null"
         strokeWidth="0.5"
         stroke="#000"
-        fill="#EEC200"
+        fill="#fff"
         preserveAspectRatio="xMidYMid meet"
       >
         {t("maps.northwest")}
       </text>
       <text
         fontFamily="Titillium Web, sans-serif"
+        fontWeight="bold"
         fontSize={22}
         y={45}
         x={890}
@@ -255,6 +256,7 @@ export default function Polus(
       </text>
       <text
         fontFamily="Titillium Web, sans-serif"
+        fontWeight="bold"
         fontSize={22}
         y={77.5}
         x={890}
@@ -268,6 +270,7 @@ export default function Polus(
       </text>
       <text
         fontFamily="Titillium Web, sans-serif"
+        fontWeight="bold"
         fontSize={22}
         y={110}
         x={890}
@@ -281,6 +284,7 @@ export default function Polus(
       </text>
       <text
         fontFamily="Titillium Web, sans-serif"
+        fontWeight="bold"
         fontSize={22}
         y={45}
         x={1110}
@@ -294,6 +298,7 @@ export default function Polus(
       </text>
       <text
         fontFamily="Titillium Web, sans-serif"
+        fontWeight="bold"
         fontSize={22}
         y={77.5}
         x={1110}
@@ -307,6 +312,7 @@ export default function Polus(
       </text>
       <text
         fontFamily="Titillium Web, sans-serif"
+        fontWeight="bold"
         fontSize={22}
         y={110}
         x={1110}

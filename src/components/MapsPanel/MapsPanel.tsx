@@ -13,7 +13,7 @@ import { useTranslation } from "react-i18next";
 export default function MapsPanel(): JSX.Element {
   const { t } = useTranslation();
 
-  const [map, setMap] = React.useState("skeld");
+  const [map, setMap] = React.useState("polus");
   const [resetState, setResetState] = React.useState(false);
 
   const isMobile = useSelector(getIsMobile);
