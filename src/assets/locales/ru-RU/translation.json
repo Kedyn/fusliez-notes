@@ -87,7 +87,8 @@
     "done": "Готово",
     "close": "Закрыть",
     "addSection": "Add Section",
-    "resetSections": "Reset Sections"
+    "resetSections": "Reset Sections",
+    "sectionsNote": "Note: changing the players container (<1/>) will only reset after clicking Reset Round or Reset All."
   },
   "menu": {
     "players": "Игроки",
