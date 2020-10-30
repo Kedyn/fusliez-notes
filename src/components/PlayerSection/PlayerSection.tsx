@@ -1,18 +1,17 @@
-import { IPlayer, IPlayersList } from "utils/types";
 import { useDispatch, useSelector } from "react-redux";
 
+import { IPlayersSection } from "utils/types";
 import Player from "components/Player";
 import React from "react";
 import { ReactSortable } from "react-sortablejs";
 import { getIsMobile } from "store/slices/DeviceSlice";
-import { getPlayerEditLock } from "store/slices/PlayerEditLockSlice";
 import { getShowNames } from "store/slices/SettingsSlice";
-import { setPlayersFromList } from "store/slices/PlayersListsSlice";
+import { setPlayersFromSection } from "store/slices/PlayersSectionsSlice";
 import useStyles from "./PlayerSection.styles";
 import { useTranslation } from "react-i18next";
 
 export interface IPlayerSectionProps {
-  list: IPlayersList;
+  section: IPlayersSection;
 }
 
 export default function PlayerSection(props: IPlayerSectionProps): JSX.Element {
@@ -23,7 +22,7 @@ export default function PlayerSection(props: IPlayerSectionProps): JSX.Element {
 
   const classes = useStyles({ showNames });
 
-  const { list } = props;
+  const { section } = props;
 
   const { t } = useTranslation();
 
@@ -42,7 +41,7 @@ export default function PlayerSection(props: IPlayerSectionProps): JSX.Element {
   return (
     <React.Fragment>
       <div className={classes.PlayerSection}>
-        <h2 className={classes.PlayerSectionTitle}>{t(list.title)}</h2>
+        <h2 className={classes.PlayerSectionTitle}>{t(section.title)}</h2>
 
         <ReactSortable
           group="players"
@@ -56,11 +55,11 @@ export default function PlayerSection(props: IPlayerSectionProps): JSX.Element {
           preventOnFilter={false}
           delay={isMobile ? 10 : 0}
           touchStartThreshold={3}
-          list={list.players}
+          list={section.players}
           setList={(newState) => {
             dispatch(
-              setPlayersFromList({
-                listId: list.id as number,
+              setPlayersFromSection({
+                sectionId: section.id as number,
                 players: newState,
               })
             );
@@ -70,12 +69,12 @@ export default function PlayerSection(props: IPlayerSectionProps): JSX.Element {
           onChoose={() => setIsSorting(true)}
           onUnchoose={() => setIsSorting(false)}
         >
-          {list.players.map(({ color, playerName }, index) => (
+          {section.players.map(({ color, playerName }, index) => (
             <Player
               key={index}
               color={color}
               playerName={playerName}
-              list={list}
+              section={section}
               index={index}
             />
           ))}

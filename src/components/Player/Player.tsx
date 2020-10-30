@@ -1,4 +1,4 @@
-import { IPlayer, IPlayersList } from "utils/types";
+import { IPlayer, IPlayersSection } from "utils/types";
 import { getIsColorBlind, getShowNames } from "store/slices/SettingsSlice";
 import { getIsMobile, getOrientation } from "store/slices/DeviceSlice";
 import { useDispatch, useSelector } from "react-redux";
@@ -7,14 +7,14 @@ import ColorsMenu from "components/ColorsMenu";
 import React from "react";
 import cx from "classnames";
 import { getPlayerEditLock } from "store/slices/PlayerEditLockSlice";
-import { setPlayersFromList } from "store/slices/PlayersListsSlice";
+import { setPlayersFromSection } from "store/slices/PlayersSectionsSlice";
 import usePlayerStyles from "./Player.styles";
 import { useTranslation } from "react-i18next";
 
 export interface IPlayerProps {
   color: string;
   playerName: string;
-  list: IPlayersList;
+  section: IPlayersSection;
   index: number;
 }
 
@@ -41,19 +41,21 @@ export default function Player(props: IPlayerProps): JSX.Element {
     ...props,
   });
 
-  const { color, playerName, list, index } = props;
+  const { color, playerName, section, index } = props;
 
   const handleChange = (
     player: number,
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
-    const players: Array<IPlayer> = list.players.map((value) => ({ ...value }));
+    const players: Array<IPlayer> = section.players.map((value) => ({
+      ...value,
+    }));
 
     players[player].playerName = event.currentTarget.value;
 
     dispatch(
-      setPlayersFromList({
-        listId: list.id as number,
+      setPlayersFromSection({
+        sectionId: section.id as number,
         players: players,
       })
     );

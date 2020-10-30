@@ -1,8 +1,7 @@
 import {
-  getPlayersLists,
-  setPlayersFromList,
-  setPlayersLists,
-} from "store/slices/PlayersListsSlice";
+  getPlayersSections,
+  setPlayersSections,
+} from "store/slices/PlayersSectionsSlice";
 import { useDispatch, useSelector } from "react-redux";
 
 import ColorSwatch from "./ColorSwatch";
@@ -22,7 +21,7 @@ export default function ColorsMenu(props: IColorsMenuProps): JSX.Element {
 
   const classes = useStyles();
 
-  const playersLists = useSelector(getPlayersLists);
+  const playersSections = useSelector(getPlayersSections);
 
   const dispatch = useDispatch();
 
@@ -48,15 +47,15 @@ export default function ColorsMenu(props: IColorsMenuProps): JSX.Element {
     if (currentPlayerColor !== targetPlayerColor) {
       const currentPlayerData = {
         index: -1,
-        list: playersLists[0],
+        list: playersSections[0],
       };
 
       const targetPlayerData = {
         index: -1,
-        list: playersLists[0],
+        list: playersSections[0],
       };
 
-      for (const list of playersLists) {
+      for (const list of playersSections) {
         for (const [playerIndex, player] of list.players.entries()) {
           if (player.color === currentPlayerColor) {
             currentPlayerData.index = playerIndex;
@@ -75,14 +74,16 @@ export default function ColorsMenu(props: IColorsMenuProps): JSX.Element {
         }
       }
 
-      const newPlayersLists = [...playersLists.map((list) => ({ ...list }))];
+      const newPlayersSections = [
+        ...playersSections.map((list) => ({ ...list })),
+      ];
 
       let listIndex = -1;
 
       if (currentPlayerData.list.id === targetPlayerData.list.id) {
         listIndex = currentPlayerData.list.id as number;
 
-        newPlayersLists[listIndex].players = playersLists[
+        newPlayersSections[listIndex].players = playersSections[
           listIndex
         ].players.map((player, index) => {
           if (index === currentPlayerData.index) {
@@ -104,7 +105,7 @@ export default function ColorsMenu(props: IColorsMenuProps): JSX.Element {
       } else {
         listIndex = currentPlayerData.list.id as number;
 
-        newPlayersLists[listIndex].players = playersLists[
+        newPlayersSections[listIndex].players = playersSections[
           listIndex
         ].players.map((player, index) => {
           if (index === currentPlayerData.index) {
@@ -120,7 +121,7 @@ export default function ColorsMenu(props: IColorsMenuProps): JSX.Element {
 
         listIndex = targetPlayerData.list.id as number;
 
-        newPlayersLists[listIndex].players = playersLists[
+        newPlayersSections[listIndex].players = playersSections[
           listIndex
         ].players.map((player, index) => {
           if (index === targetPlayerData.index) {
@@ -135,7 +136,7 @@ export default function ColorsMenu(props: IColorsMenuProps): JSX.Element {
         });
       }
 
-      dispatch(setPlayersLists(newPlayersLists));
+      dispatch(setPlayersSections(newPlayersSections));
     }
 
     setIsMenuShowing(false);

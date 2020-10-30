@@ -1,13 +1,13 @@
 import { createUseStyles } from "react-jss";
 
 export default createUseStyles({
-  SettingsPlayersLists: {},
-  SettingsPlayersListItem: {
+  SettingsPlayersSections: {},
+  SettingsPlayersSectionItem: {
     display: "flex",
 
     marginBottom: "0.5rem",
   },
-  SettingsPlayersListsHandle: {
+  SettingsPlayersSectionsHandle: {
     cursor: "grab",
 
     "&:active": {

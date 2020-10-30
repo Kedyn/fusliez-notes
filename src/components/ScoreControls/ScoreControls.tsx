@@ -18,9 +18,9 @@ import {
   setImpostorWins,
 } from "store/slices/ScoresSlice";
 import {
-  resetPlayersLists,
-  resetPlayersListsPositions,
-} from "store/slices/PlayersListsSlice";
+  resetPlayersSections,
+  resetPlayersSectionsPositions,
+} from "store/slices/PlayersSectionsSlice";
 import { useDispatch, useSelector } from "react-redux";
 
 import Button from "components/common/Button";
@@ -52,7 +52,7 @@ export default function ScoreControls(): JSX.Element {
   const resetAll = () => {
     dispatch(resetScores());
 
-    dispatch(resetPlayersLists());
+    dispatch(resetPlayersSections());
 
     dispatch(resetLock());
   };
@@ -120,7 +120,7 @@ export default function ScoreControls(): JSX.Element {
         {!isMobile && (
           <Button
             className={classes.ScoreOptionButton}
-            onClick={() => dispatch(resetPlayersListsPositions())}
+            onClick={() => dispatch(resetPlayersSectionsPositions())}
           >
             {t("controls.resetRound")}
           </Button>

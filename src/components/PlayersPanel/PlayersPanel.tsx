@@ -3,9 +3,9 @@ import {
   togglePlayerEditLock,
 } from "store/slices/PlayerEditLockSlice";
 import {
-  getPlayersLists,
-  resetPlayersListsPositions,
-} from "store/slices/PlayersListsSlice";
+  getPlayersSections,
+  resetPlayersSectionsPositions,
+} from "store/slices/PlayersSectionsSlice";
 import { useDispatch, useSelector } from "react-redux";
 
 import Button from "components/common/Button";
@@ -20,7 +20,7 @@ export default function PlayersPanel(): JSX.Element {
   const showNames = useSelector(getShowNames);
   const isLocked = useSelector(getPlayerEditLock);
   const isMobile = useSelector(getIsMobile);
-  const lists = useSelector(getPlayersLists);
+  const sections = useSelector(getPlayersSections);
 
   const dispatch = useDispatch();
 
@@ -30,8 +30,8 @@ export default function PlayersPanel(): JSX.Element {
 
   return (
     <div className={classes.PlayersPanel}>
-      {lists.map((list) => (
-        <PlayerSection list={list} key={list.id} />
+      {sections.map((section) => (
+        <PlayerSection section={section} key={section.id} />
       ))}
 
       <div className={classes.PlayersControls}>
@@ -42,7 +42,7 @@ export default function PlayersPanel(): JSX.Element {
         )}
 
         {isMobile && (
-          <Button onClick={() => dispatch(resetPlayersListsPositions())}>
+          <Button onClick={() => dispatch(resetPlayersSectionsPositions())}>
             {t("controls.resetAll")}
           </Button>
         )}

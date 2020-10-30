@@ -1,4 +1,4 @@
-import { IPlayer, IPlayersList, IScores, ISettings, ITheme } from "./types";
+import { IPlayer, IPlayersSection, IScores, ISettings, ITheme } from "./types";
 
 import { STYLE_VARS } from "./styleVars";
 
@@ -64,7 +64,7 @@ export const DEFAULT_PLAYERS: Array<IPlayer> = [
   { id: "Black", playerName: "", color: "black" },
 ];
 
-export const DEFAULT_PLAYERS_LISTS: Array<IPlayersList> = [
+export const DEFAULT_PLAYERS_SECTIONS: Array<IPlayersSection> = [
   { id: 0, title: "main.lists.innocent", players: [] },
   { id: 1, title: "main.lists.suspicious", players: [] },
   {

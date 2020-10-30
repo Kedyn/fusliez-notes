@@ -138,15 +138,15 @@ export interface IUIStoreState {
   Device: IDevice;
   Scores: IScores;
   PlayerEditLock: boolean;
-  PlayersLists: IPlayersListsSlice;
+  PlayersSections: IPlayersSectionsSlice;
 }
 
-export interface IPlayersList extends ItemInterface {
+export interface IPlayersSection extends ItemInterface {
   title: string;
   players: Array<IPlayer>;
 }
 
-export interface IPlayersListsSlice {
+export interface IPlayersSectionsSlice {
   playersContainer: number;
-  lists: Array<IPlayersList>;
+  sections: Array<IPlayersSection>;
 }

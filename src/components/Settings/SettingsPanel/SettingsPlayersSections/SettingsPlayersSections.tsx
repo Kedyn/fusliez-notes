@@ -1,12 +1,12 @@
 import { Trans, useTranslation } from "react-i18next";
 import {
   getPlayersContainer,
-  getPlayersLists,
-  resetPlayersLists,
+  getPlayersSections,
+  resetPlayersSections,
   setPlayersContainer,
-  setPlayersLists,
-  setPlayersListsTitle,
-} from "store/slices/PlayersListsSlice";
+  setPlayersSections,
+  setPlayersSectionsTitle,
+} from "store/slices/PlayersSectionsSlice";
 import { useDispatch, useSelector } from "react-redux";
 
 import Button from "components/common/Button";
@@ -18,7 +18,7 @@ import useStyles from "./SettingsPlayersSections.styles";
 
 export default function SettingsPlayersSections(): JSX.Element {
   const isMobile = useSelector(getIsMobile);
-  const playersLists = useSelector(getPlayersLists);
+  const playersSections = useSelector(getPlayersSections);
   const playersContainer = useSelector(getPlayersContainer);
 
   const classes = useStyles();
@@ -34,14 +34,14 @@ export default function SettingsPlayersSections(): JSX.Element {
         delayOnTouchOnly={isMobile}
         delay={isMobile ? 10 : 0}
         forceFallback={true}
-        list={playersLists}
-        setList={(newState) => dispatch(setPlayersLists(newState))}
-        className={classes.SettingsPlayersLists}
+        list={playersSections}
+        setList={(newState) => dispatch(setPlayersSections(newState))}
+        className={classes.SettingsPlayersSections}
       >
-        {playersLists.map((list) => (
-          <div key={list.id} className={classes.SettingsPlayersListItem}>
+        {playersSections.map((list) => (
+          <div key={list.id} className={classes.SettingsPlayersSectionItem}>
             <div
-              className={`list-handle ${classes.SettingsPlayersListsHandle}`}
+              className={`list-handle ${classes.SettingsPlayersSectionsHandle}`}
             >
               <FontAwesomeIcon icon="sort" size="lg" />
             </div>
@@ -53,7 +53,7 @@ export default function SettingsPlayersSections(): JSX.Element {
                 className={classes.SettingsInput}
                 onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
                   dispatch(
-                    setPlayersListsTitle({
+                    setPlayersSectionsTitle({
                       index: list.id as number,
                       title: event.currentTarget.value,
                     })
@@ -78,8 +78,8 @@ export default function SettingsPlayersSections(): JSX.Element {
                 onClick={() => {
                   if (list.id !== playersContainer) {
                     dispatch(
-                      setPlayersLists([
-                        ...playersLists.filter(
+                      setPlayersSections([
+                        ...playersSections.filter(
                           (element) => element.id !== list.id
                         ),
                       ])
@@ -98,10 +98,10 @@ export default function SettingsPlayersSections(): JSX.Element {
         <Button
           onClick={() => {
             dispatch(
-              setPlayersLists([
-                ...playersLists,
+              setPlayersSections([
+                ...playersSections,
 
-                { id: playersLists.length, title: "", players: [] },
+                { id: playersSections.length, title: "", players: [] },
               ])
             );
           }}
@@ -111,7 +111,7 @@ export default function SettingsPlayersSections(): JSX.Element {
         <Button
           danger
           onClick={() => {
-            dispatch(resetPlayersLists());
+            dispatch(resetPlayersSections());
           }}
         >
           {t("settings.resetSections")}
