@@ -16,11 +16,11 @@ export default createUseStyles({
   },
   SettingsInputContainer: {
     flexGrow: 1,
+    padding: "0 0.5rem",
   },
   SettingsInput: {
     display: "block",
     width: "100%",
-    margin: "0 0.5rem",
   },
   SettingsPlayersContainer: {
     cursor: "pointer",
