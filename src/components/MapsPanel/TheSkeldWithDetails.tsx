@@ -11,7 +11,7 @@ export default function TheSkeld(
       <title>{"TheSkeld"}</title>
       <image
         fill="#b3cde0"
-        href="assets/TheSkeld-detailed.png"
+        href="assets/images/TheSkeld.png"
         preserveAspectRatio="xMidYMid meet"
       />
       <text

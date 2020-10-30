@@ -11,7 +11,7 @@ export default function Polus(
       <title>{"Polus"}</title>
       <image
         fill="#b3cde0"
-        href="assets/Polus-detailed.jpg"
+        href="assets/images/Polus.jpg"
         preserveAspectRatio="xMidYMid meet"
       />
       <text

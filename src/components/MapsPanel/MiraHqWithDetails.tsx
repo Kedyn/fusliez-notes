@@ -11,7 +11,7 @@ export default function MiraHq(
       <title>{"MiraHq"}</title>
       <image
         fill="#b3cde0"
-        href="assets/Mirahq-detailed.jpg"
+        href="assets/images/Mirahq.jpg"
         preserveAspectRatio="xMidYMid meet"
       />
       <text

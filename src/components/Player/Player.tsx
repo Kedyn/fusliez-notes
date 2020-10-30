@@ -97,7 +97,7 @@ export default function Player(props: IPlayerProps): JSX.Element {
             }
           }}
           style={{
-            backgroundImage: `url(assets/images/player-icons/${color}.png)`,
+            backgroundImage: `url(assets/images/playerIcons/${color}.png)`,
           }}
         ></div>
         {showNames && (

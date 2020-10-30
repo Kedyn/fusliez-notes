@@ -94,7 +94,7 @@ export default function MapsPanel(): JSX.Element {
           players.map((player) => (
             <Draggable key={player} bounds="parent">
               <img
-                src={`assets/images/player-icons/${player}.png`}
+                src={`assets/images/playerIcons/${player}.png`}
                 className={classes.MapPlayerIcon}
                 onDrag={(event: React.DragEvent<HTMLImageElement>) =>
                   event.stopPropagation()
