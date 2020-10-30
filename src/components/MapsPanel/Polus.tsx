@@ -11,16 +11,17 @@ export default function Polus(
       <title>{"Polus"}</title>
       <image
         fill="#b3cde0"
-        href="assets/Polus.png"
+        href="assets/images/Polus.jpg"
         preserveAspectRatio="xMidYMid meet"
       />
       <text
         fontWeight="bold"
         fontFamily="Titillium Web, sans-serif"
-        fontSize={20}
-        y={368}
-        x={334.5}
+        fontSize={26}
+        y={375}
+        x={244.5}
         strokeOpacity="null"
+        strokeWidth="0.5"
         stroke="#000"
         fill="#fff"
         preserveAspectRatio="xMidYMid meet"
@@ -30,10 +31,11 @@ export default function Polus(
       <text
         fontWeight="bold"
         fontFamily="Titillium Web, sans-serif"
-        fontSize={20}
-        y={355}
-        x={189.5}
+        fontSize={26}
+        y={365}
+        x={75.5}
         strokeOpacity="null"
+        strokeWidth="0.5"
         stroke="#000"
         fill="#fff"
         preserveAspectRatio="xMidYMid meet"
@@ -43,10 +45,11 @@ export default function Polus(
       <text
         fontWeight="bold"
         fontFamily="Titillium Web, sans-serif"
-        fontSize={20}
-        y={435}
-        x={813.5}
+        fontSize={26}
+        y={433}
+        x={865.5}
         strokeOpacity="null"
+        strokeWidth="0.5"
         stroke="#000"
         fill="#fff"
         preserveAspectRatio="xMidYMid meet"
@@ -56,9 +59,9 @@ export default function Polus(
       <text
         fontWeight="bold"
         fontFamily="Titillium Web, sans-serif"
-        fontSize={20}
+        fontSize={26}
         y={361}
-        x={631.5}
+        x={618.5}
         strokeOpacity="null"
         strokeWidth="null"
         stroke="#000"
@@ -70,11 +73,11 @@ export default function Polus(
       <text
         fontWeight="bold"
         fontFamily="Titillium Web, sans-serif"
-        fontSize={20}
-        y={266}
-        x={929.5}
+        fontSize={32}
+        y={260}
+        x={994.5}
         strokeOpacity="null"
-        strokeWidth="null"
+        strokeWidth="1.5"
         stroke="#000"
         fill="#fff"
         preserveAspectRatio="xMidYMid meet"
@@ -84,11 +87,11 @@ export default function Polus(
       <text
         fontWeight="bold"
         fontFamily="Titillium Web, sans-serif"
-        fontSize={20}
+        fontSize={28}
         y={597}
-        x={1013.5}
+        x={1035.5}
         strokeOpacity="null"
-        strokeWidth="null"
+        strokeWidth="1"
         stroke="#000"
         fill="#fff"
         preserveAspectRatio="xMidYMid meet"
@@ -99,11 +102,11 @@ export default function Polus(
         transform="rotate(45 684.608 655)"
         fontWeight="bold"
         fontFamily="Titillium Web, sans-serif"
-        fontSize={20}
-        y={662}
-        x={653.5}
+        fontSize={28}
+        y={632}
+        x={673.5}
         strokeOpacity="null"
-        strokeWidth="null"
+        strokeWidth="1"
         stroke="#000"
         fill="#fff"
         preserveAspectRatio="xMidYMid meet"
@@ -113,11 +116,11 @@ export default function Polus(
       <text
         fontWeight="bold"
         fontFamily="Titillium Web, sans-serif"
-        fontSize={20}
-        y={676}
-        x={403.5}
+        fontSize={26}
+        y={660}
+        x={342.5}
         strokeOpacity="null"
-        strokeWidth="null"
+        strokeWidth="1"
         stroke="#000"
         fill="#fff"
         preserveAspectRatio="xMidYMid meet"
@@ -125,12 +128,12 @@ export default function Polus(
         {t("maps.weapons")}
       </text>
       <text
-        transform="rotate(45 434.608 494)"
+        transform="rotate(45 424.608 494)"
         fontWeight="bold"
         fontFamily="Titillium Web, sans-serif"
-        fontSize={20}
-        y={501}
-        x={353.5}
+        fontSize={22}
+        y={531}
+        x={303.5}
         strokeOpacity="null"
         strokeWidth="null"
         stroke="#000"
@@ -142,9 +145,9 @@ export default function Polus(
       <text
         fontWeight="bold"
         fontFamily="Titillium Web, sans-serif"
-        fontSize={20}
-        y={487}
-        x={669.5}
+        fontSize={26}
+        y={499}
+        x={659.5}
         strokeOpacity="null"
         strokeWidth="null"
         stroke="#000"
@@ -156,9 +159,9 @@ export default function Polus(
       <text
         fontWeight="bold"
         fontFamily="Titillium Web, sans-serif"
-        fontSize={20}
-        y={519}
-        x={181.5}
+        fontSize={26}
+        y={500}
+        x={71.5}
         strokeOpacity="null"
         strokeWidth="null"
         stroke="#000"
@@ -170,11 +173,11 @@ export default function Polus(
       <text
         fontWeight="bold"
         fontFamily="Titillium Web, sans-serif"
-        fontSize={20}
-        y={434}
-        x={469.5}
+        fontSize={26}
+        y={428}
+        x={409.5}
         strokeOpacity="null"
-        strokeWidth="null"
+        strokeWidth="1.5"
         stroke="#000"
         fill="#fff"
         preserveAspectRatio="xMidYMid meet"
@@ -184,11 +187,11 @@ export default function Polus(
       <text
         fontWeight="bold"
         fontFamily="Titillium Web, sans-serif"
-        fontSize={20}
-        y={254}
-        x={704.5}
+        fontSize={26}
+        y={250}
+        x={712.5}
         strokeOpacity="null"
-        strokeWidth="null"
+        strokeWidth="0.5"
         stroke="#000"
         fill="#fff"
         preserveAspectRatio="xMidYMid meet"
@@ -198,11 +201,11 @@ export default function Polus(
       <text
         fontWeight="bold"
         fontFamily="Titillium Web, sans-serif"
-        fontSize={20}
-        y={634}
-        x={510.5}
+        fontSize={26}
+        y={632}
+        x={475.5}
         strokeOpacity="null"
-        strokeWidth="null"
+        strokeWidth="0.5"
         stroke="#000"
         fill="#fff"
         preserveAspectRatio="xMidYMid meet"
@@ -212,11 +215,11 @@ export default function Polus(
       <text
         fontWeight="bold"
         fontFamily="Titillium Web, sans-serif"
-        fontSize={20}
-        y={611}
-        x={186.5}
+        fontSize={26}
+        y={598}
+        x={85.5}
         strokeOpacity="null"
-        strokeWidth="null"
+        strokeWidth="0.5"
         stroke="#000"
         fill="#fff"
         preserveAspectRatio="xMidYMid meet"
@@ -226,11 +229,11 @@ export default function Polus(
       <text
         fontWeight="bold"
         fontFamily="Titillium Web, sans-serif"
-        fontSize={20}
-        y={242}
-        x={363.5}
+        fontSize={26}
+        y={248}
+        x={285.5}
         strokeOpacity="null"
-        strokeWidth="null"
+        strokeWidth="0.5"
         stroke="#000"
         fill="#fff"
         preserveAspectRatio="xMidYMid meet"
@@ -239,8 +242,9 @@ export default function Polus(
       </text>
       <text
         fontFamily="Titillium Web, sans-serif"
-        fontSize={20}
-        y={60}
+        fontWeight="bold"
+        fontSize={22}
+        y={45}
         x={890}
         strokeOpacity="null"
         strokeWidth={0}
@@ -252,8 +256,9 @@ export default function Polus(
       </text>
       <text
         fontFamily="Titillium Web, sans-serif"
-        fontSize={20}
-        y={95}
+        fontWeight="bold"
+        fontSize={22}
+        y={77.5}
         x={890}
         strokeOpacity="null"
         strokeWidth={0}
@@ -265,8 +270,9 @@ export default function Polus(
       </text>
       <text
         fontFamily="Titillium Web, sans-serif"
-        fontSize={20}
-        y={130}
+        fontWeight="bold"
+        fontSize={22}
+        y={110}
         x={890}
         strokeOpacity="null"
         strokeWidth={0}
@@ -278,9 +284,10 @@ export default function Polus(
       </text>
       <text
         fontFamily="Titillium Web, sans-serif"
-        fontSize={20}
-        y={60}
-        x={1090}
+        fontWeight="bold"
+        fontSize={22}
+        y={45}
+        x={1110}
         strokeOpacity="null"
         strokeWidth={0}
         stroke="#000"
@@ -291,9 +298,10 @@ export default function Polus(
       </text>
       <text
         fontFamily="Titillium Web, sans-serif"
-        fontSize={20}
-        y={95}
-        x={1090}
+        fontWeight="bold"
+        fontSize={22}
+        y={77.5}
+        x={1110}
         strokeOpacity="null"
         strokeWidth={0}
         stroke="#000"
@@ -304,9 +312,10 @@ export default function Polus(
       </text>
       <text
         fontFamily="Titillium Web, sans-serif"
-        fontSize={20}
-        y={130}
-        x={1090}
+        fontWeight="bold"
+        fontSize={22}
+        y={110}
+        x={1110}
         strokeOpacity="null"
         strokeWidth={0}
         stroke="#000"
@@ -315,54 +324,6 @@ export default function Polus(
       >
         {t("maps.cameraZones")}
       </text>
-      <ellipse
-        ry={3}
-        rx={3.5}
-        cy={273.707}
-        cx={444}
-        fill="red"
-        preserveAspectRatio="xMidYMid meet"
-      />
-      <ellipse
-        ry={3}
-        rx={3.5}
-        cy={466.016}
-        cx={892.72}
-        fill="red"
-        preserveAspectRatio="xMidYMid meet"
-      />
-      <ellipse
-        ry={3}
-        rx={3.5}
-        cy={467.192}
-        cx={553.975}
-        fill="red"
-        preserveAspectRatio="xMidYMid meet"
-      />
-      <ellipse
-        ry={3}
-        rx={3.5}
-        cy={287.821}
-        cx={787.45}
-        fill="red"
-        preserveAspectRatio="xMidYMid meet"
-      />
-      <ellipse
-        ry={3}
-        rx={3.5}
-        cy={587.752}
-        cx={595.141}
-        fill="red"
-        preserveAspectRatio="xMidYMid meet"
-      />
-      <ellipse
-        ry={3}
-        rx={3.5}
-        cy={650.091}
-        cx={266.394}
-        fill="red"
-        preserveAspectRatio="xMidYMid meet"
-      />
     </svg>
   );
 }
