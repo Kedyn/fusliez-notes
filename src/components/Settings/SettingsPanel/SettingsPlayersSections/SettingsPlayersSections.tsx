@@ -121,9 +121,9 @@ export default function SettingsPlayersSections(): JSX.Element {
       <p>
         <small>
           <Trans i18nKey="settings.sectionsNote">
-            Note: changing the players container (
-            <FontAwesomeIcon icon="users" size="sm" />) will only reset after
-            clicking Reset Round or Reset All.
+            Note: changing the default section (
+            <FontAwesomeIcon icon="users" size="sm" />) will only be affected
+            after clicking Reset Round or Reset All.
           </Trans>
         </small>
       </p>
