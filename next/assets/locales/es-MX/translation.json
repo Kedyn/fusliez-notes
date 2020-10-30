@@ -88,7 +88,7 @@
     "close": "Cerrar",
     "addSection": "Agregar Seccion",
     "resetSections": "Reiniciar Secciones",
-    "sectionsNote": "Note: changing the players container (<1/>) will only reset after clicking Reset Round or Reset All."
+    "sectionsNote": "Note: changing the default section (<1 />) will only be affected after clicking Reset Round or Reset All."
   },
   "menu": {
     "players": "Jugadores",
