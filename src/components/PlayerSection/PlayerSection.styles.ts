@@ -1,5 +1,5 @@
-import { createUseStyles } from "react-jss";
 import { ITheme } from "utils/types";
+import { createUseStyles } from "react-jss";
 
 export default createUseStyles((theme: ITheme) => ({
   PlayerSection: {},
@@ -13,7 +13,7 @@ export default createUseStyles((theme: ITheme) => ({
     flexWrap: "wrap",
     minHeight: "2rem",
     justifyContent: "flex-start",
-    padding: "0.75rem",
+    padding: "0.5rem",
     backgroundColor: theme.backgroundColorAlt,
     borderRadius: "0.25rem",
   },

@@ -23,6 +23,7 @@ export default createUseStyles((theme: ITheme) => ({
   MapsToggle: (props) => ({
     display: props.isMobile ? "flex" : "inline-flex",
     width: props.isMobile ? "100%" : "auto",
+    margin: "0 0.25rem",
   }),
   MapsToggleButton: {
     flex: "1 1 auto",
@@ -60,12 +61,17 @@ export default createUseStyles((theme: ITheme) => ({
     },
   }),
   MapPlayerIcon: (props) => ({
-    width: props.isMobile ? "1.5rem" : "3rem",
+    width: props.isMobile ? "1.15rem" : "2.3rem",
     height: "auto",
-    margin: "0.5rem",
+    margin: "0.5rem 0.75rem",
 
     "&:hover": {
       cursor: "grab",
     },
   }),
+  MapsButtonsContainer: {
+    display: "flex",
+    justifyContent: "flex-end",
+    flex: "1 0 auto",
+  },
 }));
