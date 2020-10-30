@@ -114,31 +114,6 @@ export interface IScoresContext {
   resetScores: () => void;
 }
 
-export interface IPlayers {
-  innocentPlayers: Array<IPlayer>;
-  susPlayers: Array<IPlayer>;
-  evilPlayers: Array<IPlayer>;
-  deadPlayers: Array<IPlayer>;
-  unknownPlayers: Array<IPlayer>;
-}
-
-export interface IPlayersContext {
-  innocentPlayers: Array<IPlayer>;
-  susPlayers: Array<IPlayer>;
-  evilPlayers: Array<IPlayer>;
-  deadPlayers: Array<IPlayer>;
-  unknownPlayers: Array<IPlayer>;
-
-  setInnocentPlayers: (value: Array<IPlayer>) => void;
-  setSusPlayers: (value: Array<IPlayer>) => void;
-  setEvilPlayers: (value: Array<IPlayer>) => void;
-  setDeadPlayers: (value: Array<IPlayer>) => void;
-  setUnknownPlayers: (value: Array<IPlayer>) => void;
-
-  resetPlayersPositions: () => void;
-  resetPlayers: () => void;
-}
-
 export interface ILockingContextProvider {
   isLocked: boolean;
 
@@ -158,10 +133,20 @@ export interface IScores {
   impostorLosses: number;
 }
 
-export interface IUISliceState {
+export interface IUIStoreState {
   Settings: ISettings;
   Device: IDevice;
   Scores: IScores;
   PlayerEditLock: boolean;
-  PlayersLists: IPlayers;
+  PlayersLists: IPlayersListsSlice;
+}
+
+export interface IPlayersList extends ItemInterface {
+  title: string;
+  players: Array<IPlayer>;
+}
+
+export interface IPlayersListsSlice {
+  playersContainer: number;
+  lists: Array<IPlayersList>;
 }

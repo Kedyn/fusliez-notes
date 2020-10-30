@@ -1,19 +1,13 @@
 import {
-  getPlayersFromList,
+  getPlayersLists,
   setPlayersFromList,
+  setPlayersLists,
 } from "store/slices/PlayersListsSlice";
 import { useDispatch, useSelector } from "react-redux";
 
 import ColorSwatch from "./ColorSwatch";
-import { IPlayer } from "utils/types";
 import React from "react";
 import useStyles from "./ColorsMenu.styles";
-
-interface IPlayerData {
-  player: IPlayer;
-  list: Array<IPlayer>;
-  modifier: (value: Array<IPlayer>) => void;
-}
 
 export interface IColorsMenuProps {
   isMenuShowing: boolean;
@@ -28,11 +22,7 @@ export default function ColorsMenu(props: IColorsMenuProps): JSX.Element {
 
   const classes = useStyles();
 
-  const innocentPlayers = useSelector(getPlayersFromList("innocentPlayers"));
-  const susPlayers = useSelector(getPlayersFromList("susPlayers"));
-  const evilPlayers = useSelector(getPlayersFromList("evilPlayers"));
-  const deadPlayers = useSelector(getPlayersFromList("deadPlayers"));
-  const unknownPlayers = useSelector(getPlayersFromList("unknownPlayers"));
+  const playersLists = useSelector(getPlayersLists);
 
   const dispatch = useDispatch();
 
@@ -56,132 +46,96 @@ export default function ColorsMenu(props: IColorsMenuProps): JSX.Element {
     targetPlayerColor: string
   ) => {
     if (currentPlayerColor !== targetPlayerColor) {
-      const allPlayers = [
-        {
-          players: unknownPlayers,
-          modifier: (value: Array<IPlayer>) =>
-            dispatch(
-              setPlayersFromList({
-                listName: "unknownPlayers",
-                players: value,
-              })
-            ),
-        },
-        {
-          players: innocentPlayers,
-          modifier: (value: Array<IPlayer>) =>
-            dispatch(
-              setPlayersFromList({
-                listName: "innocentPlayers",
-                players: value,
-              })
-            ),
-        },
-        {
-          players: susPlayers,
-          modifier: (value: Array<IPlayer>) =>
-            dispatch(
-              setPlayersFromList({
-                listName: "susPlayers",
-                players: value,
-              })
-            ),
-        },
-        {
-          players: evilPlayers,
-          modifier: (value: Array<IPlayer>) =>
-            dispatch(
-              setPlayersFromList({
-                listName: "evilPlayers",
-                players: value,
-              })
-            ),
-        },
-        {
-          players: deadPlayers,
-          modifier: (value: Array<IPlayer>) =>
-            dispatch(
-              setPlayersFromList({
-                listName: "deadPlayers",
-                players: value,
-              })
-            ),
-        },
-      ];
+      const currentPlayerData = {
+        index: -1,
+        list: playersLists[0],
+      };
 
-      let currentPlayerData: IPlayerData | null = null;
-      let targetPlayerData: IPlayerData | null = null;
+      const targetPlayerData = {
+        index: -1,
+        list: playersLists[0],
+      };
 
-      for (const list of allPlayers) {
-        for (const player of list.players) {
+      for (const list of playersLists) {
+        for (const [playerIndex, player] of list.players.entries()) {
           if (player.color === currentPlayerColor) {
-            currentPlayerData = {
-              player: player,
-              list: list.players,
-              modifier: list.modifier,
-            };
+            currentPlayerData.index = playerIndex;
+            currentPlayerData.list = list;
           } else if (player.color === targetPlayerColor) {
-            targetPlayerData = {
-              player: player,
-              list: list.players,
-              modifier: list.modifier,
+            targetPlayerData.index = playerIndex;
+            targetPlayerData.list = list;
+          }
+
+          if (currentPlayerData.index !== -1 && targetPlayerData.index !== -1) {
+            break;
+          }
+        }
+        if (currentPlayerData.index !== -1 && targetPlayerData.index !== -1) {
+          break;
+        }
+      }
+
+      const newPlayersLists = [...playersLists.map((list) => ({ ...list }))];
+
+      let listIndex = -1;
+
+      if (currentPlayerData.list.id === targetPlayerData.list.id) {
+        listIndex = currentPlayerData.list.id as number;
+
+        newPlayersLists[listIndex].players = playersLists[
+          listIndex
+        ].players.map((player, index) => {
+          if (index === currentPlayerData.index) {
+            return {
+              ...player,
+
+              color: targetPlayerColor,
+            };
+          } else if (index === targetPlayerData.index) {
+            return {
+              ...player,
+
+              color: currentPlayerColor,
             };
           }
 
-          if (currentPlayerData !== null && targetPlayerData !== null) break;
-        }
-        if (currentPlayerData !== null && targetPlayerData !== null) break;
+          return player;
+        });
+      } else {
+        listIndex = currentPlayerData.list.id as number;
+
+        newPlayersLists[listIndex].players = playersLists[
+          listIndex
+        ].players.map((player, index) => {
+          if (index === currentPlayerData.index) {
+            return {
+              ...player,
+
+              color: targetPlayerColor,
+            };
+          }
+
+          return player;
+        });
+
+        listIndex = targetPlayerData.list.id as number;
+
+        newPlayersLists[listIndex].players = playersLists[
+          listIndex
+        ].players.map((player, index) => {
+          if (index === targetPlayerData.index) {
+            return {
+              ...player,
+
+              color: currentPlayerColor,
+            };
+          }
+
+          return player;
+        });
       }
 
-      if (currentPlayerData !== null && targetPlayerData !== null) {
-        // the previous check will make sure both data are never null, we can use disable-line
-
-        if (currentPlayerData.modifier === targetPlayerData.modifier) {
-          currentPlayerData.modifier([
-            ...currentPlayerData.list.map((player) => {
-              if (player.color === currentPlayerColor) {
-                return {
-                  ...targetPlayerData!.player, // eslint-disable-line
-                  playerName: currentPlayerData!.player.playerName, // eslint-disable-line
-                };
-              } else if (player.color === targetPlayerColor) {
-                return {
-                  // the following will never be null
-                  ...currentPlayerData!.player, // eslint-disable-line
-                  playerName: targetPlayerData!.player.playerName, // eslint-disable-line
-                };
-              }
-
-              return player;
-            }),
-          ]);
-        } else {
-          currentPlayerData.modifier([
-            ...currentPlayerData.list.map((player) => {
-              if (player.color === currentPlayerColor) {
-                return {
-                  ...targetPlayerData!.player, // eslint-disable-line
-                  playerName: currentPlayerData!.player.playerName, // eslint-disable-line
-                };
-              }
-
-              return player;
-            }),
-          ]);
-          targetPlayerData.modifier([
-            ...targetPlayerData.list.map((player) => {
-              if (player.color === targetPlayerColor) {
-                return {
-                  ...currentPlayerData!.player, // eslint-disable-line
-                  playerName: targetPlayerData!.player.playerName, // eslint-disable-line
-                };
-              }
-
-              return player;
-            }),
-          ]);
-        }
-      }
+      dispatch(setPlayersLists(newPlayersLists));
     }
 
     setIsMenuShowing(false);

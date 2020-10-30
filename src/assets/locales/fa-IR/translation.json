@@ -9,8 +9,7 @@
     "lists": {
       "innocent": "بی گناه",
       "suspicious": "مشکوک",
-      "evil": "شیطان",
-      "hitList": "مورد حمله قرار گرفته‌ها",
+      "evilHitList": "شیطان / مورد حمله قرار گرفته‌ها",
       "dead": "مرده",
       "unknown": "نامعلوم"
     },
@@ -86,7 +85,10 @@
     "colorBlindMode": "حالت کوررنگی",
     "language": "زبان",
     "done": "انجام شد",
-    "close": "بسته"
+    "close": "بسته",
+    "addSection": "Add Section",
+    "resetSections": "Reset Sections",
+    "sectionsNote": "Note: changing the default section (<1 />) will only be affected after clicking Reset Round or Reset All."
   },
   "menu": {
     "players": "بازیکن‌ها",

@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { ILanguage } from "utils/types";
 import RadioButton from "components/common/RadioButton";
 import React from "react";
+import SettingsPlayersSections from "./SettingsPlayersSections";
 import Switch from "components/common/Switch";
 import { getIsMobile } from "store/slices/DeviceSlice";
 import i18next from "i18next";
@@ -85,8 +86,8 @@ export default function SettingsPanel(): JSX.Element {
         <h2 className={classes.SettingsPanelTitle}>{t("settings.title")}</h2>
       )}
       <div className={classes.SettingsContent}>
-        <h4>{t("settings.playerTiles")}</h4>
         <div className={classes.SettingsPane}>
+          <h4>{t("settings.playerTiles")}</h4>
           <Switch
             label={t("settings.usePlayerNames")}
             onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
@@ -101,6 +102,10 @@ export default function SettingsPanel(): JSX.Element {
             }}
             checked={isColorBlind}
           />
+
+          <div className={classes.SettingsContentDivider} />
+
+          <SettingsPlayersSections />
         </div>
 
         <div className={classes.SettingsPane}>

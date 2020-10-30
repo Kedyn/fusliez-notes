@@ -86,7 +86,10 @@
     "colorBlindMode": "Mode daltonien",
     "language": "Langue",
     "done": "Valider",
-    "close": "Fermer"
+    "close": "Fermer",
+    "addSection": "Add Section",
+    "resetSections": "Reset Sections",
+    "sectionsNote": "Note: changing the default section (<1 />) will only be affected after clicking Reset Round or Reset All."
   },
   "menu": {
     "players": "Joueurs",

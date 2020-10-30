@@ -9,8 +9,7 @@
     "lists": {
       "innocent": "Член экипажа",
       "suspicious": "Подозрительный",
-      "evil": "Злой",
-      "hitList": "Список целей",
+      "evilHitList": "Злой / Список целей",
       "dead": "Мертвый",
       "unknown": "Неизвестно"
     },
@@ -86,7 +85,10 @@
     "colorBlindMode": "Color blind mode",
     "language": "Язык",
     "done": "Готово",
-    "close": "Закрыть"
+    "close": "Закрыть",
+    "addSection": "Add Section",
+    "resetSections": "Reset Sections",
+    "sectionsNote": "Note: changing the default section (<1 />) will only be affected after clicking Reset Round or Reset All."
   },
   "menu": {
     "players": "Игроки",

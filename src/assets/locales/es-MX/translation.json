@@ -9,8 +9,7 @@
     "lists": {
       "innocent": "Inocentes",
       "suspicious": "Sospechosos",
-      "evil": "Malos",
-      "hitList": "Lista Negra",
+      "evilHitList": "Malos / Lista Negra",
       "dead": "Muertos",
       "unknown": "Desconocidos"
     },
@@ -86,7 +85,10 @@
     "colorBlindMode": "Usar modo daltónico",
     "language": "Idioma",
     "done": "Hecho",
-    "close": "Cerrar"
+    "close": "Cerrar",
+    "addSection": "Agregar Seccion",
+    "resetSections": "Reiniciar Secciones",
+    "sectionsNote": "Note: changing the default section (<1 />) will only be affected after clicking Reset Round or Reset All."
   },
   "menu": {
     "players": "Jugadores",

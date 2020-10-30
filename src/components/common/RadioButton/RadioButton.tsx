@@ -2,7 +2,7 @@ import React from "react";
 import useStyles from "./RadioButton.styles";
 
 interface IRadioButtonProps {
-  label: React.ReactNode;
+  label?: React.ReactNode;
   checked?: boolean;
   id?: string;
   name?: string;

@@ -9,8 +9,7 @@
     "lists": {
       "innocent": "Unschuldig",
       "suspicious": "Verdächtig",
-      "evil": "Böse",
-      "hitList": "Hitliste",
+      "evilHitList": "Böse / Hitliste",
       "dead": "Tot",
       "unknown": "Unbekannt"
     },
@@ -86,7 +85,10 @@
     "colorBlindMode": "Farbenblinder Modus benutzen",
     "language": "Sprache",
     "done": "Fertig",
-    "close": "Schliessen"
+    "close": "Schliessen",
+    "addSection": "Add Section",
+    "resetSections": "Reset Sections",
+    "sectionsNote": "Note: changing the default section (<1 />) will only be affected after clicking Reset Round or Reset All."
   },
   "menu": {
     "players": "Spieler",
