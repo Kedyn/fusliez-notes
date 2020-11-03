@@ -1,4 +1,4 @@
-import { NAMESPACE, VERSION } from "utils/constants";
+import { NAMESPACE, VERSION } from "constants/main";
 import { getIsMobile, getOrientation } from "store/slices/DeviceSlice";
 
 import AboutContent from "components/About/AboutPanel";

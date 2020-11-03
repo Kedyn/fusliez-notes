@@ -1,6 +1,6 @@
-import { IStyleVars, IColorLibrary } from "./types";
+import { IColorLibrary, ITheme } from "utils/types";
 
-export const STYLE_VARS: IStyleVars = {
+export const DEFAULT_THEME_DATA: ITheme = {
   fontFamily:
     "Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
   baseFontSize: 16,
@@ -21,11 +21,11 @@ export const STYLE_VARS: IStyleVars = {
 
   borderColor: "#36383a",
 
-  crewmateColor: "#008dfc",
-  crewmateColorAlt: "#30a4ff",
+  crewmateColorPrimary: "#008dfc",
+  crewmateColorSecondary: "#30a4ff",
 
-  imposterColor: "#af1211",
-  imposterColorAlt: "#dd1716",
+  imposterColorPrimary: "#af1211",
+  imposterColorSecondary: "#dd1716",
 
   neutralColor: "#8d86b7",
 };

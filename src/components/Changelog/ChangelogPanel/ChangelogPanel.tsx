@@ -1,38 +1,9 @@
+import { NOTES } from "constants/changelog";
 import React from "react";
-import { VERSION } from "utils/constants";
+import { VERSION } from "constants/main";
 import { getIsMobile } from "store/slices/DeviceSlice";
 import { useSelector } from "react-redux";
 import useStyles from "./ChangelogPanel.styles";
-
-// kedyn I suggest you put this content somewhere else. maybe involve a markdown converter
-const NOTES = [
-  {
-    title: "Highlights",
-    items: [
-      <>Added Persian and Polish translations</>,
-      <>UI Revamp.</>,
-      <>Added lock editing player mode.</>,
-      <>Better support for mobile.</>,
-      <>Color blind mode (settings).</>,
-    ],
-  },
-  {
-    title: "Development Notes",
-    items: [
-      <>
-        If you would like to see all the changes we have made please read our{" "}
-        <a
-          href="https://github.com/Kedyn/fusliez-notes/blob/master/CHANGELOG.md"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          CHANGELOG.md
-        </a>{" "}
-        file.
-      </>,
-    ],
-  },
-];
 
 export default function ChangelogPanel(): JSX.Element {
   const isMobile = useSelector(getIsMobile);

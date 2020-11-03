@@ -1,7 +1,4 @@
-import {
-  DEFAULT_PLAYERS_CONTAINER,
-  DEFAULT_PLAYERS_SECTIONS,
-} from "utils/constants";
+import { DEFAULT_SECTION, DEFAULT_SECTIONS } from "constants/sections";
 import {
   IPlayer,
   IPlayersSection,
@@ -12,8 +9,8 @@ import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
 function getInitialState(): IPlayersSectionsSlice {
   return {
-    playersContainer: DEFAULT_PLAYERS_CONTAINER,
-    sections: DEFAULT_PLAYERS_SECTIONS,
+    playersContainer: DEFAULT_SECTION,
+    sections: DEFAULT_SECTIONS,
   };
 }
 
@@ -139,8 +136,8 @@ const PlayersSectionsSlice = createSlice({
     }),
 
     resetPlayersSections: () => ({
-      playersContainer: DEFAULT_PLAYERS_CONTAINER,
-      sections: [...DEFAULT_PLAYERS_SECTIONS.map((section) => section)],
+      playersContainer: DEFAULT_SECTION,
+      sections: [...DEFAULT_SECTIONS.map((section) => section)],
     }),
   },
 });

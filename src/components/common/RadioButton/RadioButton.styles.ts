@@ -14,7 +14,7 @@ export default createUseStyles((theme: ITheme) => ({
     },
     "& input:checked ~ $RadioControl $RadioControlIcon": {
       transform: "translate(-50%, -50%) scale(1)",
-      backgroundColor: theme.textColor,
+      backgroundColor: theme.textColorPrimary,
     },
   },
   RadioControl: {

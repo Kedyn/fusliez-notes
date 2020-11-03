@@ -1,4 +1,4 @@
-import { NAMESPACE, VERSION } from "utils/constants";
+import { NAMESPACE, VERSION } from "constants/main";
 
 import About from "components/About";
 import Button from "components/common/Button";

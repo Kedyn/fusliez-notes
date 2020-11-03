@@ -1,7 +1,6 @@
 import { contrastColor, getColorValue, hexToRGB } from "utils/colorConverter";
 
 import { ITheme } from "utils/types";
-import { STYLE_VARS } from "utils/styleVars";
 import { createUseStyles } from "react-jss";
 
 export default createUseStyles((theme: ITheme) => ({
@@ -17,7 +16,7 @@ export default createUseStyles((theme: ITheme) => ({
     backgroundColor:
       props.playerName || !props.showNames
         ? `rgb(${getColorValue(props.color, "dark")})`
-        : theme.backgroundColorAlt,
+        : theme.backgroundColorSecondary,
     border: "1px solid",
     borderColor:
       props.playerName || !props.showNames
@@ -32,7 +31,7 @@ export default createUseStyles((theme: ITheme) => ({
     position: "relative",
     transition: "border-color 0.2s ease",
     "&:hover": {
-      borderColor: `rgba(${hexToRGB(theme.textColorAlt)}, 0.25)`,
+      borderColor: `rgba(${hexToRGB(theme.textColorSecondary)}, 0.25)`,
       cursor: props.isReadOnly ? "grab" : "pointer",
     },
   }),
@@ -66,15 +65,15 @@ export default createUseStyles((theme: ITheme) => ({
     letterSpacing: "0.05rem",
     color:
       props.playerName !== ""
-        ? contrastColor(getColorValue(props.color, "dark"))
-        : theme.textColor,
+        ? contrastColor(getColorValue(props.color, "dark"), theme)
+        : theme.textColorPrimary,
     opacity: props.isReadOnly && props.playerName === "" ? 0.5 : 1,
   }),
   PlayerInput: (props) => ({
-    color: contrastColor(getColorValue(props.color, "dark")),
+    color: contrastColor(getColorValue(props.color, "dark"), theme),
     display: "block",
     fontSize: props.isMobile ? "1rem" : props.showNames ? "1.15rem" : "1rem",
-    fontFamily: STYLE_VARS.fontFamily,
+    fontFamily: theme.fontFamily,
     fontWeight: 600,
     letterSpacing: "0.05rem",
     lineHeight: 1.25,
@@ -83,7 +82,7 @@ export default createUseStyles((theme: ITheme) => ({
     width: "100%",
 
     "&::placeholder": {
-      color: theme.textColor,
+      color: theme.textColorPrimary,
       opacity: 0.5,
     },
   }),

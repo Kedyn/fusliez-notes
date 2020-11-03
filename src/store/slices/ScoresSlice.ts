@@ -1,7 +1,7 @@
 import { IScores, IUIStoreState } from "utils/types";
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
-import { DEFAULT_SCORES } from "utils/constants";
+import { DEFAULT_SCORES } from "constants/scores";
 
 const ScoresSlice = createSlice({
   name: "Scores",
