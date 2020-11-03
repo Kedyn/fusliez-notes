@@ -4,6 +4,7 @@ import DeviceSlice from "./slices/DeviceSlice";
 import PlayerEditLockSlice from "./slices/PlayerEditLockSlice";
 import { PlayersSectionsMiddleware } from "./middleware/PlayersSectionsMiddleware";
 import PlayersSectionsSlice from "./slices/PlayersSectionsSlice";
+import { ScoresMiddleware } from "./middleware/ScoresMiddleware";
 import ScoresSlice from "./slices/ScoresSlice";
 import { SettingsMiddleware } from "./middleware/SettingsMiddleware";
 import SettingsSlice from "./slices/SettingsSlice";
@@ -20,6 +21,7 @@ const store: Store = configureStore({
     ...getDefaultMiddleware(),
     SettingsMiddleware,
     PlayersSectionsMiddleware,
+    ScoresMiddleware,
   ],
 });
 
