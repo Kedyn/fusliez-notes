@@ -78,7 +78,7 @@ export default function SettingsPanel(): JSX.Element {
       id: "fr-FR",
       label: "French (FR)",
     },
- ];
+  ];
 
   return (
     <div className={classes.SettingsPanel}>

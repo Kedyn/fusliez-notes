@@ -1,11 +1,9 @@
 import { SheetsRegistry, jss } from "react-jss";
 
-import { ITheme } from "./types";
-import { STYLE_VARS } from "./styleVars";
 import normalize from "normalize-jss";
 import preset from "jss-preset-default";
 
-export default function jssSetUp(theme: ITheme): SheetsRegistry {
+export default function jssSetUp(): SheetsRegistry {
   jss.setup(preset());
 
   const sheetsRegistry = new SheetsRegistry();
@@ -23,12 +21,8 @@ export default function jssSetUp(theme: ITheme): SheetsRegistry {
           height: "100%",
         },
         body: {
-          backgroundColor: theme.backgroundColor,
-          color: theme.textColor,
-          fontFamily: STYLE_VARS.fontFamily,
           fontWeight: 400,
           lineHeight: 1.5,
-          fontSize: STYLE_VARS.baseFontSize,
           height: "100%",
         },
         "#root": {
@@ -66,8 +60,6 @@ export default function jssSetUp(theme: ITheme): SheetsRegistry {
         },
         input: {
           backgroundColor: "transparent",
-          color: theme.inputTextColor,
-          fontFamily: STYLE_VARS.fontFamily,
           fontWeight: 400,
           appearance: "none",
           border: "none",
@@ -81,16 +73,12 @@ export default function jssSetUp(theme: ITheme): SheetsRegistry {
           "-moz-appearance": "textfield",
         },
         textarea: {
-          backgroundColor: theme.inputBackgroundColor,
-          color: theme.inputTextColor,
           fontFamily: "inherit",
           padding: ".375rem .75rem",
-          border: `1px solid ${theme.borderColor}`,
           borderRadius: "0.5rem",
         },
         a: {
           textDecoration: "none",
-          color: theme.linkColor,
           "&:hover": {
             textDecoration: "underline",
           },
@@ -113,9 +101,6 @@ export default function jssSetUp(theme: ITheme): SheetsRegistry {
           padding: 0,
           position: "absolute",
           width: "1px",
-        },
-        ".dragging": {
-          cursor: "grabbing !important",
         },
       },
     })

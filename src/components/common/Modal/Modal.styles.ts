@@ -15,7 +15,7 @@ export default createUseStyles((theme: ITheme) => ({
     zIndex: 1,
   },
   Modal: {
-    backgroundColor: theme.backgroundColor,
+    backgroundColor: theme.backgroundColorPrimary,
     borderRadius: "0.5rem",
     display: "flex",
     width: "40rem",

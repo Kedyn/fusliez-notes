@@ -1,7 +1,7 @@
 import { IDevice, IUIStoreState } from "utils/types";
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
-import { BREAKPOINT } from "utils/constants";
+import { BREAKPOINT } from "constants/main";
 
 const DeviceSlice = createSlice({
   name: "Device",

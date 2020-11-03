@@ -1,5 +1,5 @@
-import { createUseStyles } from "react-jss";
 import { ITheme } from "utils/types";
+import { createUseStyles } from "react-jss";
 
 export default createUseStyles((theme: ITheme) => ({
   Navbar: {
@@ -18,9 +18,9 @@ export default createUseStyles((theme: ITheme) => ({
     border: 0,
     alignItems: "center",
     boxSizing: "border-box",
-    backgroundColor: theme.backgroundColorAlt,
+    backgroundColor: theme.backgroundColorSecondary,
     borderRadius: "0",
-    color: theme.textColorAlt,
+    color: theme.textColorSecondary,
     display: "flex",
     flex: "0 0 20%",
     maxWidth: "20%",
@@ -30,7 +30,7 @@ export default createUseStyles((theme: ITheme) => ({
     padding: "0.5rem 0.25rem",
     letterSpacing: "0.05em",
     "&:hover": {
-      backgroundColor: theme.backgroundColor,
+      backgroundColor: theme.backgroundColorPrimary,
     },
   },
   isActive: {

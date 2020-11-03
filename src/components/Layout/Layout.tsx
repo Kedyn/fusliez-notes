@@ -1,4 +1,4 @@
-import { BREAKPOINT, NAMESPACE, VERSION } from "utils/constants";
+import { BREAKPOINT, NAMESPACE, VERSION } from "constants/main";
 import {
   getIsMobile,
   getOrientation,
@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from "react-redux";
 import DesktopLayout from "components/Layout/DesktopLayout";
 import MobileLayout from "components/Layout/MobileLayout";
 import React from "react";
+import useStyles from "./Layout.styles";
 
 export default function Content(): JSX.Element {
   const [width, setWidth] = React.useState(window.innerWidth);
@@ -18,6 +19,9 @@ export default function Content(): JSX.Element {
   const orientation = useSelector(getOrientation);
 
   const dispatch = useDispatch();
+
+  // This is only used to load the current theme colors
+  const classes = useStyles(); // eslint-disable-line
 
   let content = <DesktopLayout />;
 

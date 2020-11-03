@@ -73,16 +73,16 @@ export default function ScoreControls(): JSX.Element {
         <div className={classes.ScoreButtonsColumn}>
           <h4 className={classes.ScoreButtonsHeader}>{t("controls.wins")}</h4>
           <WinsLossesButton
-            buttonBackgroundColor={theme.crewmateColor}
-            buttonBackgroundColorHover={theme.crewmateColorHover}
+            buttonBackgroundColor={theme.crewmateColorPrimary}
+            buttonBackgroundColorHover={theme.crewmateColorSecondary}
             decrement={() => dispatch(decrementCrewmateWins())}
             increment={() => dispatch(incrementCrewmateWins())}
             score={crewmateWins}
             setScore={(value: number) => dispatch(setCrewmateWins(value))}
           />
           <WinsLossesButton
-            buttonBackgroundColor={theme.imposterColor}
-            buttonBackgroundColorHover={theme.imposterColorHover}
+            buttonBackgroundColor={theme.imposterColorPrimary}
+            buttonBackgroundColorHover={theme.imposterColorSecondary}
             decrement={() => dispatch(decrementImpostorWins())}
             increment={() => dispatch(incrementImpostorWins())}
             score={impostorWins}
@@ -93,16 +93,16 @@ export default function ScoreControls(): JSX.Element {
         <div className={classes.ScoreButtonsColumn}>
           <h4 className={classes.ScoreButtonsHeader}>{t("controls.losses")}</h4>
           <WinsLossesButton
-            buttonBackgroundColor={theme.crewmateColor}
-            buttonBackgroundColorHover={theme.crewmateColorHover}
+            buttonBackgroundColor={theme.crewmateColorPrimary}
+            buttonBackgroundColorHover={theme.crewmateColorSecondary}
             decrement={() => dispatch(decrementCrewmateLosses())}
             increment={() => dispatch(incrementCrewmateLosses())}
             score={crewmateLosses}
             setScore={(value: number) => dispatch(setCrewmateLosses(value))}
           />
           <WinsLossesButton
-            buttonBackgroundColor={theme.imposterColor}
-            buttonBackgroundColorHover={theme.imposterColorHover}
+            buttonBackgroundColor={theme.imposterColorPrimary}
+            buttonBackgroundColorHover={theme.imposterColorSecondary}
             decrement={() => dispatch(decrementImpostorLosses())}
             increment={() => dispatch(incrementImpostorLosses())}
             score={impostorLosses}

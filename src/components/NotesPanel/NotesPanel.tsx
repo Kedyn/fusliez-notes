@@ -1,7 +1,7 @@
 import { getIsMobile, getOrientation } from "store/slices/DeviceSlice";
 
 import Button from "components/common/Button";
-import { NAMESPACE } from "utils/constants";
+import { NAMESPACE } from "constants/main";
 import React from "react";
 import { useSelector } from "react-redux";
 import useStyles from "./NotesPanel.styles";

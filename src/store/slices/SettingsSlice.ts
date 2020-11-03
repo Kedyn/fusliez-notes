@@ -1,6 +1,8 @@
-import { DEFAULT_SETTINGS, NAMESPACE } from "utils/constants";
 import { ISettings, IUIStoreState } from "utils/types";
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
+
+import { DEFAULT_SETTINGS } from "constants/settings";
+import { NAMESPACE } from "constants/main";
 
 function getInitialSate(): ISettings {
   const localSettingsData: string | null = localStorage.getItem(
