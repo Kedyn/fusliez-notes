@@ -2,9 +2,10 @@ import { Store, configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
 
 import DeviceSlice from "./slices/DeviceSlice";
 import PlayerEditLockSlice from "./slices/PlayerEditLockSlice";
+import { PlayersSectionsMiddleware } from "./middleware/PlayersSectionsMiddleware";
 import PlayersSectionsSlice from "./slices/PlayersSectionsSlice";
 import ScoresSlice from "./slices/ScoresSlice";
-import { SettingsMiddleWare } from "./middleware/SettingsMiddleware";
+import { SettingsMiddleware } from "./middleware/SettingsMiddleware";
 import SettingsSlice from "./slices/SettingsSlice";
 
 const store: Store = configureStore({
@@ -15,7 +16,11 @@ const store: Store = configureStore({
     PlayerEditLock: PlayerEditLockSlice.reducer,
     PlayersSections: PlayersSectionsSlice.reducer,
   },
-  middleware: [...getDefaultMiddleware(), SettingsMiddleWare],
+  middleware: [
+    ...getDefaultMiddleware(),
+    SettingsMiddleware,
+    PlayersSectionsMiddleware,
+  ],
 });
 
 export default store;

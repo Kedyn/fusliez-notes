@@ -119,7 +119,7 @@ export interface IPlayersSection extends ItemInterface {
 }
 
 export interface IPlayersSectionsSlice {
-  playersContainer: number;
+  defaultSection: number;
   sections: Array<IPlayersSection>;
 }
 

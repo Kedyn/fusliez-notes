@@ -22,7 +22,7 @@ export default createUseStyles({
     display: "block",
     width: "100%",
   },
-  SettingsPlayersContainer: {
+  SettingsPlayersSection: {
     cursor: "pointer",
     padding: "0 0.5rem",
 

@@ -13,7 +13,7 @@ import { Middleware } from "@reduxjs/toolkit";
 import { NAMESPACE } from "constants/main";
 import { RootState } from "store";
 
-export const SettingsMiddleWare: Middleware<unknown, RootState> = (store) => (
+export const SettingsMiddleware: Middleware<unknown, RootState> = (store) => (
   next
 ) => (action) => {
   const state = store.getState();
