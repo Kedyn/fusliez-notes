@@ -9,8 +9,7 @@
     "lists": {
       "innocent": "Innocent",
       "suspicious": "Suspect",
-      "evil": "Méchant",
-      "hitList": "Liste noire",
+      "evilHitList": "Liste noire",
       "dead": "Mort",
       "unknown": "Pas d'information"
     },
@@ -87,9 +86,9 @@
     "language": "Langue",
     "done": "Valider",
     "close": "Fermer",
-    "addSection": "Add Section",
-    "resetSections": "Reset Sections",
-    "sectionsNote": "Note: changing the default section (<1 />) will only be affected after clicking Reset Round or Reset All."
+    "addSection": "Ajouter une section",
+    "resetSections": "Réinitialiser les sections",
+    "sectionsNote": "Note: Modifier la section par défaut (<1 />) sera effectif après avoir cliqué sur 'Réinitialiser la partie' ou 'Tout réinitialiser'."
   },
   "menu": {
     "players": "Joueurs",
