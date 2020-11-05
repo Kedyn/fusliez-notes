@@ -22,4 +22,13 @@ export default createUseStyles((theme: ITheme) => ({
       color: theme.linkColor,
     },
   },
+  LayoutDisclaimer: {
+    position: "absolute",
+    bottom: 0,
+    padding: "0.5rem",
+    textAlign: "center",
+    backgroundColor: theme.backgroundColorSecondary,
+    zIndex: 20,
+    width: "100%",
+  },
 }));

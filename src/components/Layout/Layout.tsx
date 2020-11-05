@@ -7,6 +7,7 @@ import {
 } from "store/slices/DeviceSlice";
 import { useDispatch, useSelector } from "react-redux";
 
+import Button from "components/common/Button";
 import DesktopLayout from "components/Layout/DesktopLayout";
 import MobileLayout from "components/Layout/MobileLayout";
 import React from "react";
@@ -14,6 +15,9 @@ import useStyles from "./Layout.styles";
 
 export default function Content(): JSX.Element {
   const [width, setWidth] = React.useState(window.innerWidth);
+  const [showDisclaimer, setShowDisclaimer] = React.useState<null | string>(
+    localStorage.getItem(`${NAMESPACE}disclaimer`)
+  );
 
   const isMobile = useSelector(getIsMobile);
   const orientation = useSelector(getOrientation);
@@ -77,5 +81,37 @@ export default function Content(): JSX.Element {
     content = <MobileLayout />;
   }
 
-  return <React.Fragment>{content}</React.Fragment>;
+  return (
+    <React.Fragment>
+      {content}
+
+      {showDisclaimer === null && (
+        <div className={classes.LayoutDisclaimer}>
+          <p>
+            Please know that we utilize Google Analytics to collect anonymous
+            data, to help us with development.
+            <br />
+            For information on how Google utilizes or collects data please check{" "}
+            <a
+              href="https://policies.google.com/technologies/partner-sites"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              here
+            </a>
+            .
+          </p>
+          <Button
+            onClick={() => {
+              setShowDisclaimer("Understood");
+
+              localStorage.setItem(`${NAMESPACE}disclaimer`, "Understood");
+            }}
+          >
+            I understand
+          </Button>
+        </div>
+      )}
+    </React.Fragment>
+  );
 }
