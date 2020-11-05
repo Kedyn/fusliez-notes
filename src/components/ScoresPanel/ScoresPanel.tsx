@@ -22,14 +22,19 @@ export default function ScoresPanels(): JSX.Element {
     return games > 0 ? Math.floor((wins / games) * 100) : 100;
   };
 
-  const overallWins = crewmateWins + impostorWins;
-  const overallLosses = crewmateLosses + impostorLosses;
+  const crewmateWinsNumber = crewmateWins ? crewmateWins : 0;
+  const crewmateLossesNumber = crewmateLosses ? crewmateLosses : 0;
+  const impostorWinsNumber = impostorWins ? impostorWins : 0;
+  const impostorLossesNumber = impostorLosses ? impostorLosses : 0;
+
+  const overallWins = crewmateWinsNumber + impostorWinsNumber;
+  const overallLosses = crewmateLossesNumber + impostorLossesNumber;
   const overallGames = overallWins + overallLosses;
   const overallRate = getRate(overallWins, overallGames);
-  const crewmateGames = crewmateWins + crewmateLosses;
-  const crewmateRate = getRate(crewmateWins, crewmateGames);
-  const impostorGames = impostorWins + impostorLosses;
-  const impostorRate = getRate(impostorWins, impostorGames);
+  const crewmateGames = crewmateWinsNumber + crewmateLossesNumber;
+  const crewmateRate = getRate(crewmateWinsNumber, crewmateGames);
+  const impostorGames = impostorWinsNumber + impostorLossesNumber;
+  const impostorRate = getRate(impostorWinsNumber, impostorGames);
 
   return (
     <div className={classes.ScoresPanel}>
@@ -39,11 +44,11 @@ export default function ScoresPanels(): JSX.Element {
           overallWins,
           overallLosses,
           crewmateRate,
-          crewmateWins,
-          crewmateLosses,
+          crewmateWins: crewmateWinsNumber,
+          crewmateLosses: crewmateLossesNumber,
           impostorRate,
-          impostorWins,
-          impostorLosses,
+          impostorWins: impostorWinsNumber,
+          impostorLosses: impostorLossesNumber,
         }}
       />
     </div>
