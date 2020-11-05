@@ -12,13 +12,9 @@ export default function Switch(props: ISwitchProps): JSX.Element {
   const { label, ...other } = props;
 
   return (
-    <div>
-      <label className={classes.Switch}>
-        <input className={classes.SwitchControl} type="checkbox" {...other} />
-        <span className={classes.SwitchLabel}>{label}</span>
-      </label>
+    <div className={classes.Switch}>
+      <label className={classes.SwitchLabel}>{label}</label>
+      <input className={classes.SwitchButton} type="checkbox" {...other} />
     </div>
   );
 }
-
-//the previous was created by using the https://danklammer.com/articles/simple-css-toggle-switch/ styles
