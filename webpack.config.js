@@ -49,4 +49,10 @@ module.exports = {
     port: 1234,
     open: true,
   },
+
+  optimization: {
+    splitChunks: {
+      chunks: "all",
+    },
+  },
 };
