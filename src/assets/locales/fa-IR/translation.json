@@ -32,12 +32,12 @@
     "crewmate": "خدمه",
     "impostor": "خائن",
     "resetScores": "بازنشانی امتیازها",
-    "resetRound": "بازنشانی دست",
+    "resetPositions": "Reset Positions",
     "resetAll": "بازنشانی همه",
     "notes": "دفترچه",
     "resetNotes": "بازنشانی دفترچه",
-    "lockPlayers": "قفل کردن بازیکن‌ها",
-    "unlockPlayers": "باز کردن قفل بازیکن‌ها"
+    "lockEditing": "Lock Editing",
+    "unlockEditing": "Unlock Editing"
   },
   "maps": {
     "title": "نقشه‌ها",
@@ -74,8 +74,8 @@
     "south": "۴. جنوب",
     "southwest": "۵. جنوب غربی",
     "northwest": "۶. شمال غربی",
-    "dragInstructions": "بازیکن‌هارو روی نقشه بکشید تا دنبالشون کنید",
-    "resetPlayers": "بازنشانی مکان‌ها"
+    "dragInstructions": "Drag players on the map",
+    "removePlayers": "Remove All Players From Map"
   },
   "settings": {
     "title": "تنظیمات",

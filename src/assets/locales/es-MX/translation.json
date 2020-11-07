@@ -32,12 +32,12 @@
     "crewmate": "Tripulante",
     "impostor": "Impostor",
     "resetScores": "Reiniciar Puntaje",
-    "resetRound": "Reiniciar Ronda",
+    "resetPositions": "Reiniciar Posiciones",
     "resetAll": "Reiniciar Todo",
     "notes": "Notas",
     "resetNotes": "Reiniciar Notas",
-    "lockPlayers": "Bloquear edición",
-    "unlockPlayers": "Desbloquear edición"
+    "lockEditing": "Bloquear edición",
+    "unlockEditing": "Desbloquear edición"
   },
   "maps": {
     "title": "Mapas",
@@ -74,8 +74,8 @@
     "south": "4. Sur",
     "southwest": "5. Suroeste",
     "northwest": "6. Noroeste",
-    "dragInstructions": "Arrastra jugadores al mapa para rastrearlos",
-    "resetPlayers": "Reiniciar posiciones"
+    "dragInstructions": "Arrastra jugadores al mapa",
+    "removePlayers": "Quitar todos los jugadores del mapa"
   },
   "settings": {
     "title": "Ajustes",

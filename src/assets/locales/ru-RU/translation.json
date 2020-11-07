@@ -32,7 +32,7 @@
     "crewmate": "Член экипажа",
     "impostor": "Предатель",
     "resetScores": "Сбросить счет",
-    "resetRound": "Сбросить раунд",
+    "resetPositions": "Reset Positions",
     "resetAll": "Сбросить все",
     "notes": "Записки",
     "resetNotes": "Удалить заметки",
@@ -74,8 +74,8 @@
     "south": "4. Юг",
     "southwest": "5. Юго-запад",
     "northwest": "6. Северо-запад",
-    "dragInstructions": "Для отслеживания, перетащите игроков на карту",
-    "resetPlayers": "Сбросить позиции"
+    "dragInstructions": "Drag players on the map",
+    "removePlayers": "Remove All Players From Map"
   },
   "settings": {
     "title": "Настройки",

@@ -122,7 +122,7 @@ export default function ScoreControls(): JSX.Element {
             className={classes.ScoreOptionButton}
             onClick={() => dispatch(resetPlayersSectionsPositions())}
           >
-            {t("controls.resetRound")}
+            {t("controls.resetPositions")}
           </Button>
         )}
         {!isMobile && (

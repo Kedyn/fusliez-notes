@@ -68,16 +68,14 @@ export default function AboutPanel(): JSX.Element {
 
       <p>Thanks to everyone who uses this tool.</p>
 
-      <p>
-        Please, if you have some spare time, check out everyone mentioned here
-        and show some love to them.
-      </p>
+      <p>Please check out everyone mentioned here and show them some love.</p>
 
       <p>
         PS: If I left anyone out, please let me know. I do not mean to forget
-        anyone, but know that I am grateful to everyone who has taken part of
-        this.
+        anyone.
       </p>
+
+      <p> I am grateful to everyone who has taken part of this.</p>
 
       <p className={classes.AboutPanelOutro}>
         -{" "}

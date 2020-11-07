@@ -76,7 +76,7 @@ export default function MapsPanel(): JSX.Element {
         <div className={classes.DraggableHeader}>
           <h3>{t("maps.dragInstructions")}</h3>
           <Button onClick={() => dispatch(resetCharacters())}>
-            {t("maps.resetPlayers")}
+            {t("maps.removePlayers")}
           </Button>
         </div>
 

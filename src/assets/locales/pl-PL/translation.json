@@ -32,12 +32,12 @@
     "crewmate": "Członek załogi",
     "impostor": "Zdrajca",
     "resetScores": "Zresetuj wynik",
-    "resetRound": "Zresetuj rundy",
+    "resetPositions": "Reset Positions",
     "resetAll": "Zresetuj wszystko",
     "notes": "Notatnik",
     "resetNotes": "Zresetuj notatnik",
-    "lockPlayers": "Zablokuj graczy",
-    "unlockPlayers": "Odblokuj graczy"
+    "lockEditing": "Lock Editing",
+    "unlockEditing": "Unlock Editing"
   },
   "maps": {
     "title": "Mapy",
@@ -74,8 +74,8 @@
     "south": "4. Południe",
     "southwest": "5. Południowy zachód",
     "northwest": "6. Północny zachód",
-    "dragInstructions": "Przesuń graczy na mapę",
-    "resetPlayers": "Zresetuj pozycje"
+    "dragInstructions": "Drag players on the map",
+    "removePlayers": "Remove All Players From Map"
   },
   "settings": {
     "title": "Ustawienia",
