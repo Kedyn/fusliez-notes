@@ -12,7 +12,8 @@
       "evil": "Méchant",
       "hitList": "Liste noire",
       "dead": "Mort",
-      "unknown": "Pas d'information"
+      "unknown": "Pas d'information",
+      "unused": "Unused"
     },
     "brown": "Marron",
     "red": "Rouge",

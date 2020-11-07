@@ -11,7 +11,8 @@
       "suspicious": "Podejrzany",
       "evilHitList": "Zły / Lista celów",
       "dead": "Martwy",
-      "unknown": "Nieznany"
+      "unknown": "Nieznany",
+      "unused": "Unused"
     },
     "brown": "Brązowy",
     "red": "Czerwony",

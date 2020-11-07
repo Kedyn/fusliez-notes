@@ -11,7 +11,8 @@
       "suspicious": "Sospechosos",
       "evilHitList": "Malos / Lista Negra",
       "dead": "Muertos",
-      "unknown": "Desconocidos"
+      "unknown": "Desconocidos",
+      "unused": "Unused"
     },
     "brown": "Café",
     "red": "Rojo",
