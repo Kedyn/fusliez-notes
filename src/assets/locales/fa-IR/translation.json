@@ -7,11 +7,12 @@
     "l": "ش",
     "player": "بازیکن",
     "lists": {
-      "innocent": "بی گناه",
+      "innocent": "بی‌گناه",
       "suspicious": "مشکوک",
       "evilHitList": "شیطان / مورد حمله قرار گرفته‌ها",
       "dead": "مرده",
-      "unknown": "نامعلوم"
+      "unknown": "نامعلوم",
+      "unused": "استفاده نشده"
     },
     "brown": "قهوه‌ای",
     "red": "قرمز",
@@ -86,9 +87,9 @@
     "language": "زبان",
     "done": "انجام شد",
     "close": "بسته",
-    "addSection": "Add Section",
-    "resetSections": "Reset Sections",
-    "sectionsNote": "Note: changing the default section (<1 />) will only be affected after clicking Reset Round or Reset All."
+    "addSection": "اضافه کردن بخش",
+    "resetSections": "بازنشانی بخش‌ها",
+    "sectionsNote": "نکته: تغییر بخش پیش فرض (<1 />) فقط بعد از کلیک روی بازنشانی دست یا بازنشانی همه اعمال می‌شود."
   },
   "menu": {
     "players": "بازیکن‌ها",
