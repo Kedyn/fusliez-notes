@@ -11,7 +11,8 @@
       "suspicious": "Suspicious",
       "evilHitList": "Evil / Hit List",
       "dead": "Dead",
-      "unknown": "Unknown"
+      "unknown": "Unknown",
+      "unused": "Unused"
     },
     "brown": "Brown",
     "red": "Red",
@@ -32,12 +33,12 @@
     "crewmate": "Crewmate",
     "impostor": "Impostor",
     "resetScores": "Reset Scores",
-    "resetRound": "Reset Round",
+    "resetPositions": "Reset Positions",
     "resetAll": "Reset All",
     "notes": "Notepad",
     "resetNotes": "Reset Notepad",
-    "lockPlayers": "Lock Players",
-    "unlockPlayers": "Unlock Players"
+    "lockEditing": "Lock Editing",
+    "unlockEditing": "Unlock Editing"
   },
   "maps": {
     "title": "Maps",
@@ -74,8 +75,8 @@
     "south": "4. South",
     "southwest": "5. Southwest",
     "northwest": "6. Northwest",
-    "dragInstructions": "Drag players on the map to track",
-    "resetPlayers": "Reset Positions"
+    "dragInstructions": "Drag players on the map",
+    "removePlayers": "Remove All Players From Map"
   },
   "settings": {
     "title": "Settings",

@@ -12,7 +12,8 @@
       "evil": "Méchant",
       "hitList": "Liste noire",
       "dead": "Mort",
-      "unknown": "Pas d'information"
+      "unknown": "Pas d'information",
+      "unused": "Unused"
     },
     "brown": "Marron",
     "red": "Rouge",
@@ -33,12 +34,12 @@
     "crewmate": "Équipage",
     "impostor": "Imposteur",
     "resetScores": "Réinitialiser les scores",
-    "resetRound": "Réinitialiser la partie",
+    "resetPositions": "Reset Positions",
     "resetAll": "Tout réinitialiser",
     "notes": "Notes",
     "resetNotes": "Réinitialiser les notes",
-    "lockPlayers": "Verrouiller les joueurs",
-    "unlockPlayers": "Déverrouiller les joueurs"
+    "lockEditing": "Lock Editing",
+    "unlockEditing": "Unlock Editing"
   },
   "maps": {
     "title": "Cartes",
@@ -75,8 +76,8 @@
     "south": "4. Sud",
     "southwest": "5. Sud-Ouest",
     "northwest": "6. Nord-Ouest",
-    "dragInstructions": "Faites glisser les joueurs sur la carte pour suivre leur position",
-    "resetPlayers": "Réinitialiser les positions"
+    "dragInstructions": "Drag players on the map",
+    "removePlayers": "Remove All Players From Map"
   },
   "settings": {
     "title": "Réglages",

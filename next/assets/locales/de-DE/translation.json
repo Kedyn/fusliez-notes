@@ -11,7 +11,8 @@
       "suspicious": "Verdächtig",
       "evilHitList": "Böse / Hitliste",
       "dead": "Tot",
-      "unknown": "Unbekannt"
+      "unknown": "Unbekannt",
+      "unused": "Unused"
     },
     "brown": "Braun",
     "red": "Rot",
@@ -32,12 +33,12 @@
     "crewmate": "Teammitglied",
     "impostor": "Schwindler",
     "resetScores": "Punkte zurücksetzen",
-    "resetRound": "Runde zurücksetzen",
+    "resetPositions": "Reset Positions",
     "resetAll": "Alles zurücksetzen",
     "notes": "Notizen",
     "resetNotes": "Notizen zurücksetzen",
-    "lockPlayers": "Spieler sperren",
-    "unlockPlayers": "Spieler entsperren"
+    "lockEditing": "Lock Editing",
+    "unlockEditing": "Unlock Editing"
   },
   "maps": {
     "title": "Spielkarte",
@@ -74,8 +75,8 @@
     "south": "4. Süden",
     "southwest": "5. Südwest",
     "northwest": "6. Nordwest",
-    "dragInstructions": "Ziehen Sie die Spieler auf die Karte, um sie zu verfolgen",
-    "resetPlayers": "Spieler zurücksetzen"
+    "dragInstructions": "Drag players on the map",
+    "removePlayers": "Remove Players From Map"
   },
   "settings": {
     "title": "Einstellungen",
