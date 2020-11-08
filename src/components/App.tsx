@@ -37,7 +37,7 @@ library.add(
 
 export default function App(): JSX.Element {
   return (
-    <React.Suspense fallback="Loading...">
+    <>
       <Provider store={store}>
         <JssProvider registry={jssSetUp()}>
           <ThemeProvider theme={DEFAULT_THEME_DATA}>
@@ -45,6 +45,6 @@ export default function App(): JSX.Element {
           </ThemeProvider>
         </JssProvider>
       </Provider>
-    </React.Suspense>
+    </>
   );
 }

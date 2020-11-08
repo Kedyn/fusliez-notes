@@ -8,10 +8,17 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 
 import Button from "components/common/Button";
-import DesktopLayout from "components/Layout/DesktopLayout";
-import MobileLayout from "components/Layout/MobileLayout";
 import React from "react";
 import useStyles from "./Layout.styles";
+
+const DesktopLayout = React.lazy(
+  () =>
+    import(/* webpackChunkName: "desktop" */ "components/Layout/DesktopLayout")
+);
+const MobileLayout = React.lazy(
+  () =>
+    import(/* webpackChunkName: "mobile" */ "components/Layout/MobileLayout")
+);
 
 export default function Content(): JSX.Element {
   const [width, setWidth] = React.useState(window.innerWidth);
@@ -83,7 +90,7 @@ export default function Content(): JSX.Element {
 
   return (
     <React.Fragment>
-      {content}
+      <React.Suspense fallback="Loading...">{content}</React.Suspense>
 
       {showDisclaimer === null && (
         <div className={classes.LayoutDisclaimer}>
