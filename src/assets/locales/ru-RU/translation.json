@@ -12,7 +12,7 @@
       "evilHitList": "Злой / Список целей",
       "dead": "Мертвый",
       "unknown": "Неизвестно",
-      "unused": "Unused"
+      "unused": "Неиспользуемый"
     },
     "brown": "Коричневый",
     "red": "Красный",
@@ -35,7 +35,7 @@
     "resetScores": "Сбросить счет",
     "resetRound": "Сбросить раунд",
     "resetAll": "Сбросить все",
-    "notes": "Записки",
+    "notes": "Заметки",
     "resetNotes": "Удалить заметки",
     "lockPlayers": "Заблокировать игроков",
     "unlockPlayers": "Разблокировать игроков"
@@ -87,9 +87,9 @@
     "language": "Язык",
     "done": "Готово",
     "close": "Закрыть",
-    "addSection": "Add Section",
-    "resetSections": "Reset Sections",
-    "sectionsNote": "Note: changing the default section (<1 />) will only be affected after clicking Reset Round or Reset All."
+    "addSection": "Добавить раздел",
+    "resetSections": "Сбросить разделы",
+    "sectionsNote": "Примечание: изменение стандатных разделов (<1 />) применяется только после нажития Сбросить раунд или Сбросить все."
   },
   "menu": {
     "players": "Игроки",
