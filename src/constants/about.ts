@@ -25,6 +25,10 @@ export const DEVELOPERS: Array<IPerson> = [
     name: "Griffin Suparto",
     link: "https://github.com/Viou",
   },
+  {
+    name: "Pawel Boguslawski",
+    link: "https://github.com/bogusweb",
+  },
 ];
 
 export const TRANSLATORS: Array<IPerson> = [
