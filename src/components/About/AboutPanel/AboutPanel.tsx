@@ -1,11 +1,11 @@
 import { ARTISTS, DEVELOPERS, SPECIAL, TRANSLATORS } from "constants/about";
+import { Trans, useTranslation } from "react-i18next";
 
 import React from "react";
 import { VERSION } from "constants/main";
 import { getIsMobile } from "store/slices/DeviceSlice";
 import { useSelector } from "react-redux";
 import useStyles from "./AboutPanel.styles";
-import { useTranslation } from "react-i18next";
 
 export default function AboutPanel(): JSX.Element {
   const { t } = useTranslation();
@@ -16,12 +16,12 @@ export default function AboutPanel(): JSX.Element {
 
   const teams = [
     {
-      title: "Developers",
+      title: t("about.developers"),
       people: DEVELOPERS,
     },
-    { title: "Translators", people: TRANSLATORS },
-    { title: "Artists", people: ARTISTS },
-    { title: "Special Thanks To", people: SPECIAL },
+    { title: t("about.translators"), people: TRANSLATORS },
+    { title: t("about.artists"), people: ARTISTS },
+    { title: t("about.special"), people: SPECIAL },
   ];
 
   return (
@@ -50,32 +50,26 @@ export default function AboutPanel(): JSX.Element {
       <hr />
 
       <p>
-        First, thanks to{" "}
-        <a
-          href="https://www.twitch.tv/fuslie"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          fuslie
-        </a>{" "}
-        for inspiring this project.
+        <Trans i18nKey="about.partOne">
+          First, thanks to
+          <a
+            href="https://www.twitch.tv/fuslie"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            fuslie
+          </a>
+          for inspiring this project.
+        </Trans>
       </p>
 
-      <p>
-        Thanks to everyone who has suggested enhancements, reported bugs, or any
-        other support on this project.
-      </p>
+      <p>{t("about.partTwo")}</p>
 
-      <p>Thanks to everyone who uses this tool.</p>
+      <p>{t("about.partThree")}</p>
 
-      <p>Please check out everyone mentioned here and show them some love.</p>
+      <p>{t("about.partFour")}</p>
 
-      <p>
-        PS: If I left anyone out, please let me know. I do not mean to forget
-        anyone.
-      </p>
-
-      <p> I am grateful to everyone who has taken part of this.</p>
+      <p>{t("about.partFive")}</p>
 
       <p className={classes.AboutPanelOutro}>
         -{" "}
@@ -91,9 +85,7 @@ export default function AboutPanel(): JSX.Element {
       <hr />
 
       <p>
-        <small>
-          Disclaimer this app is in no way associated with InnerSloth.
-        </small>
+        <small>{t("about.disclaimer")}</small>
       </p>
     </div>
   );

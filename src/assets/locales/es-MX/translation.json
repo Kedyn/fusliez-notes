@@ -101,5 +101,17 @@
     "feedback": "Sugerencias",
     "about": "Acerca de",
     "changelog": "Cambios"
+  },
+  "about": {
+    "developers": "Desarrolladores",
+    "translators": "Traductores",
+    "artists": "Artistas",
+    "special": "Agradecimientos Especiales A",
+    "disclaimer": "Descargo de responsabilidad: esta aplicacion no esta asociada de ninguna manera con InnerSloth.",
+    "partOne": "Primero, gracias a <1>fuslie</1> por inspirar este proyecto.",
+    "partTwo": "Gracias a todos los que sugirieron mejoras, reportaron errores o dieron cualquier otro apoyo en este proyecto.",
+    "partThree": "Gracias a todos los que utilizan esta herramienta.",
+    "partFour": "Por favor echen un vistazo a todas las personas mencionadas aqui y muestrenles un poco de amor.",
+    "partFive": "PS: Si he dejado alguien fuera favor de hacermelo saber. He intentado no olvidar a nadie."
   }
 }
