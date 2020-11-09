@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "target": "es6",
-    "module": "commonjs",
+    "module": "esnext",
     "lib": ["es6", "dom", "es2017"],
     "jsx": "react",
     "strict": true,
@@ -9,7 +9,9 @@
     "baseUrl": "./src/",
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true
+    "forceConsistentCasingInFileNames": true,
+    "removeComments": false,
+    "moduleResolution": "node",
   },
   "exclude": [".cache", "android", "build", "dist"]
 }
