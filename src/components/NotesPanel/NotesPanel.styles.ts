@@ -28,5 +28,6 @@ export default createUseStyles({
     flex: "1 0 auto",
     marginBottom: "1rem",
     fontSize: "1.25rem",
+    resize: "vertical",
   },
 });
