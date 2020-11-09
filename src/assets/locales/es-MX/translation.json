@@ -89,7 +89,7 @@
     "close": "Cerrar",
     "addSection": "Agregar Seccion",
     "resetSections": "Reiniciar Secciones",
-    "sectionsNote": "Note: changing the default section (<1 />) will only be affected after clicking Reset Round or Reset All."
+    "sectionsNote": "Nota: cambiar la seccion por defecto (<1 />) solo se vera afectada despues de Reiniciar Posiciones o Reiniciar Todo."
   },
   "menu": {
     "players": "Jugadores",
