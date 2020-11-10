@@ -18,7 +18,16 @@ export interface ISettingsContext {
   setIsColorBlind: (value: boolean) => void;
 }
 
-export interface IStyleVars {
+export interface IColorLibrary {
+  [key: string]: IColorEntry;
+}
+
+export interface IColorEntry {
+  base: string;
+  dark: string;
+}
+
+export interface ITheme {
   fontFamily: string;
   baseFontSize: number;
 
@@ -38,50 +47,13 @@ export interface IStyleVars {
 
   borderColor: string;
 
-  crewmateColor: string;
-  crewmateColorAlt: string;
+  crewmateColorPrimary: string;
+  crewmateColorSecondary: string;
 
-  imposterColor: string;
-  imposterColorAlt: string;
-
-  neutralColor: string;
-}
-
-export interface IColorLibrary {
-  [key: string]: IColorEntry;
-}
-
-export interface IColorEntry {
-  base: string;
-  dark: string;
-}
-
-export interface ITheme {
-  backgroundColor: string;
-  backgroundColorAlt: string;
-  textColor: string;
-  textColorAlt: string;
-
-  inputBackgroundColor: string;
-  inputTextColor: string;
+  imposterColorPrimary: string;
+  imposterColorSecondary: string;
 
   neutralColor: string;
-
-  crewmateColor: string;
-  crewmateColorHover: string;
-
-  imposterColor: string;
-  imposterColorHover: string;
-
-  borderColor: string;
-
-  linkColor: string;
-  linkColorHover: string;
-
-  dangerColor: string;
-  dangerColorHover: string;
-
-  activeColor: string;
 }
 
 export interface IMobileContext {
@@ -139,6 +111,7 @@ export interface IUIStoreState {
   Scores: IScores;
   PlayerEditLock: boolean;
   PlayersSections: IPlayersSectionsSlice;
+  Maps: IMaps;
 }
 
 export interface IPlayersSection extends ItemInterface {
@@ -147,6 +120,22 @@ export interface IPlayersSection extends ItemInterface {
 }
 
 export interface IPlayersSectionsSlice {
-  playersContainer: number;
+  defaultSection: number;
   sections: Array<IPlayersSection>;
+}
+
+export interface IPerson {
+  name: string;
+  link: string;
+}
+
+export interface IMapsCharacter {
+  id: string;
+  x: number;
+  y: number;
+}
+
+export interface IMaps {
+  currentMap: string;
+  characters: Array<IMapsCharacter>;
 }

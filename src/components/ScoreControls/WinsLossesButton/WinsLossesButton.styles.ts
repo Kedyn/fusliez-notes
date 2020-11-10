@@ -1,5 +1,5 @@
-import { createUseStyles } from "react-jss";
 import { ITheme } from "utils/types";
+import { createUseStyles } from "react-jss";
 import { hexToRGB } from "utils/colorConverter";
 
 export default createUseStyles((theme: ITheme) => ({
@@ -18,12 +18,12 @@ export default createUseStyles((theme: ITheme) => ({
     fontSize: "0.75rem",
     padding: "0.375rem .5rem",
     backgroundColor: `rgba(${hexToRGB(props.buttonBackgroundColor)}, 0.5)`,
-    color: theme.textColor,
+    color: theme.textColorPrimary,
     "&:hover": {
       backgroundColor: `rgba(${hexToRGB(
         props.buttonBackgroundColorHover
       )}, 0.5)`,
-      color: theme.textColorAlt,
+      color: theme.textColorSecondary,
     },
   }),
   winsLossesButtonLeft: {

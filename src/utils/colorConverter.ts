@@ -1,4 +1,5 @@
-import { STYLE_VARS, COLOR_LIBRARY } from "utils/styleVars";
+import { COLOR_LIBRARY } from "constants/theme";
+import { ITheme } from "./types";
 
 export function getColorValue(color: string, shade: string): string {
   if (typeof COLOR_LIBRARY[color.toLowerCase()] != "undefined") {
@@ -26,12 +27,11 @@ export function hexToRGB(hex: string): string {
 }
 
 //function to decide whether to use light or dark text color
-export function contrastColor(color: string): string {
+export function contrastColor(color: string, theme: ITheme): string {
   const output =
     luma(color) >= 140
-      ? STYLE_VARS.backgroundColorSecondary
-      : STYLE_VARS.textColorSecondary;
-  // console.log(output);
+      ? theme.backgroundColorSecondary
+      : theme.textColorSecondary;
   return output;
 }
 

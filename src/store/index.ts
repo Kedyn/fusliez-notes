@@ -1,10 +1,13 @@
 import { Store, configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
 
 import DeviceSlice from "./slices/DeviceSlice";
+import MapsSlice from "./slices/MapsSlice";
 import PlayerEditLockSlice from "./slices/PlayerEditLockSlice";
+import { PlayersSectionsMiddleware } from "./middleware/PlayersSectionsMiddleware";
 import PlayersSectionsSlice from "./slices/PlayersSectionsSlice";
+import { ScoresMiddleware } from "./middleware/ScoresMiddleware";
 import ScoresSlice from "./slices/ScoresSlice";
-import { SettingsMiddleWare } from "./middleware/SettingsMiddleware";
+import { SettingsMiddleware } from "./middleware/SettingsMiddleware";
 import SettingsSlice from "./slices/SettingsSlice";
 
 const store: Store = configureStore({
@@ -14,8 +17,14 @@ const store: Store = configureStore({
     Scores: ScoresSlice.reducer,
     PlayerEditLock: PlayerEditLockSlice.reducer,
     PlayersSections: PlayersSectionsSlice.reducer,
+    Maps: MapsSlice.reducer,
   },
-  middleware: [...getDefaultMiddleware(), SettingsMiddleWare],
+  middleware: [
+    ...getDefaultMiddleware(),
+    SettingsMiddleware,
+    PlayersSectionsMiddleware,
+    ScoresMiddleware,
+  ],
 });
 
 export default store;

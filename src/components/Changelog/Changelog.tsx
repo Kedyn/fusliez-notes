@@ -1,7 +1,7 @@
+import ChangelogPanel from "./ChangelogPanel";
 import Modal from "components/common/Modal";
 import React from "react";
-import { VERSION } from "utils/constants";
-import ChangelogPanel from "./ChangelogPanel";
+import { VERSION } from "constants/main";
 
 export interface IChangelogProps {
   show: boolean;

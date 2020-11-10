@@ -1,4 +1,4 @@
-import { BREAKPOINT, NAMESPACE, VERSION } from "utils/constants";
+import { BREAKPOINT, NAMESPACE, VERSION } from "constants/main";
 import {
   getIsMobile,
   getOrientation,
@@ -7,17 +7,32 @@ import {
 } from "store/slices/DeviceSlice";
 import { useDispatch, useSelector } from "react-redux";
 
-import DesktopLayout from "components/Layout/DesktopLayout";
-import MobileLayout from "components/Layout/MobileLayout";
+import Button from "components/common/Button";
 import React from "react";
+import useStyles from "./Layout.styles";
+
+const DesktopLayout = React.lazy(
+  () =>
+    import(/* webpackChunkName: "desktop" */ "components/Layout/DesktopLayout")
+);
+const MobileLayout = React.lazy(
+  () =>
+    import(/* webpackChunkName: "mobile" */ "components/Layout/MobileLayout")
+);
 
 export default function Content(): JSX.Element {
   const [width, setWidth] = React.useState(window.innerWidth);
+  const [showDisclaimer, setShowDisclaimer] = React.useState<null | string>(
+    localStorage.getItem(`${NAMESPACE}disclaimer`)
+  );
 
   const isMobile = useSelector(getIsMobile);
   const orientation = useSelector(getOrientation);
 
   const dispatch = useDispatch();
+
+  // This is only used to load the current theme colors
+  const classes = useStyles(); // eslint-disable-line
 
   let content = <DesktopLayout />;
 
@@ -73,5 +88,37 @@ export default function Content(): JSX.Element {
     content = <MobileLayout />;
   }
 
-  return <React.Fragment>{content}</React.Fragment>;
+  return (
+    <React.Fragment>
+      <React.Suspense fallback="Loading...">{content}</React.Suspense>
+
+      {showDisclaimer === null && (
+        <div className={classes.LayoutDisclaimer}>
+          <p>
+            Please know that we utilize Google Analytics to collect anonymous
+            data, to help us with development.
+            <br />
+            For information on how Google utilizes or collects data please check{" "}
+            <a
+              href="https://policies.google.com/technologies/partner-sites"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              here
+            </a>
+            .
+          </p>
+          <Button
+            onClick={() => {
+              setShowDisclaimer("Understood");
+
+              localStorage.setItem(`${NAMESPACE}disclaimer`, "Understood");
+            }}
+          >
+            I understand
+          </Button>
+        </div>
+      )}
+    </React.Fragment>
+  );
 }

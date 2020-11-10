@@ -14,7 +14,7 @@ export default createUseStyles((theme: ITheme) => ({
     minHeight: "2rem",
     justifyContent: "flex-start",
     padding: "0.5rem",
-    backgroundColor: theme.backgroundColorAlt,
+    backgroundColor: theme.backgroundColorSecondary,
     borderRadius: "0.25rem",
   },
 }));

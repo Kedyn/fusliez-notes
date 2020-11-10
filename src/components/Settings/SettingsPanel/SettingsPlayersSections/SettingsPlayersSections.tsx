@@ -1,9 +1,9 @@
 import { Trans, useTranslation } from "react-i18next";
 import {
-  getPlayersContainer,
+  getDefaultSection,
   getPlayersSections,
   resetPlayersSections,
-  setPlayersContainer,
+  setDefaultSection,
   setPlayersSections,
   setPlayersSectionsTitle,
 } from "store/slices/PlayersSectionsSlice";
@@ -19,7 +19,7 @@ import useStyles from "./SettingsPlayersSections.styles";
 export default function SettingsPlayersSections(): JSX.Element {
   const isMobile = useSelector(getIsMobile);
   const playersSections = useSelector(getPlayersSections);
-  const playersContainer = useSelector(getPlayersContainer);
+  const defaultSection = useSelector(getDefaultSection);
 
   const classes = useStyles();
 
@@ -64,9 +64,9 @@ export default function SettingsPlayersSections(): JSX.Element {
             </div>
 
             <div
-              className={classes.SettingsPlayersContainer}
-              data-selected={playersContainer === list.id}
-              onClick={() => dispatch(setPlayersContainer(list.id as number))}
+              className={classes.SettingsPlayersSection}
+              data-selected={defaultSection === list.id}
+              onClick={() => dispatch(setDefaultSection(list.id as number))}
             >
               <FontAwesomeIcon icon="users" />
             </div>
@@ -76,7 +76,7 @@ export default function SettingsPlayersSections(): JSX.Element {
                 danger
                 className={classes.SettingsDeleteButton}
                 onClick={() => {
-                  if (list.id !== playersContainer) {
+                  if (list.id !== defaultSection) {
                     dispatch(
                       setPlayersSections([
                         ...playersSections.filter(

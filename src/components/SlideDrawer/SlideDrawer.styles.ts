@@ -21,7 +21,7 @@ export default createUseStyles((theme: ITheme) => ({
   },
   SlideDrawer: {
     alignItems: "center",
-    background: theme.backgroundColor,
+    background: theme.backgroundColorPrimary,
     height: "100%",
     "-webkit-overflow-scrolling": "touch",
     left: "-100%",

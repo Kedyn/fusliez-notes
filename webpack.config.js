@@ -11,6 +11,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "[name].[hash].js",
+    chunkFilename: "[name].[hash].js",
   },
 
   module: {
@@ -37,6 +38,7 @@ module.exports = {
       themes: path.resolve(__dirname, "src", "themes"),
       utils: path.resolve(__dirname, "src", "utils"),
       store: path.resolve(__dirname, "src", "store"),
+      constants: path.resolve(__dirname, "src", "constants"),
     },
     extensions: [".js", ".jsx", ".ts", ".tsx"],
   },
@@ -47,5 +49,11 @@ module.exports = {
     compress: true,
     port: 1234,
     open: true,
+  },
+
+  optimization: {
+    splitChunks: {
+      chunks: "all",
+    },
   },
 };

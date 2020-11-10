@@ -1,11 +1,33 @@
 import { IScores, IUIStoreState } from "utils/types";
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
-import { DEFAULT_SCORES } from "utils/constants";
+import { DEFAULT_SCORES } from "constants/scores";
+import { NAMESPACE } from "constants/main";
+
+function getInitialState(): IScores {
+  const localScoresData: string | null = localStorage.getItem(
+    `${NAMESPACE}scores`
+  );
+
+  if (localScoresData) {
+    const scoresObject = JSON.parse(localScoresData);
+
+    return {
+      crewmateWins: scoresObject.crewmateWins || DEFAULT_SCORES.crewmateWins,
+      crewmateLosses:
+        scoresObject.crewmateLosses || DEFAULT_SCORES.crewmateLosses,
+      impostorWins: scoresObject.impostorWins || DEFAULT_SCORES.impostorWins,
+      impostorLosses:
+        scoresObject.impostorLosses || DEFAULT_SCORES.impostorLosses,
+    };
+  }
+
+  return DEFAULT_SCORES;
+}
 
 const ScoresSlice = createSlice({
   name: "Scores",
-  initialState: DEFAULT_SCORES,
+  initialState: getInitialState(),
   reducers: {
     setCrewmateWins: (state: IScores, action: PayloadAction<number>) => ({
       ...state,

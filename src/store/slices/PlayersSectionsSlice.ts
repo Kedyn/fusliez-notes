@@ -1,7 +1,4 @@
-import {
-  DEFAULT_PLAYERS_CONTAINER,
-  DEFAULT_PLAYERS_SECTIONS,
-} from "utils/constants";
+import { DEFAULT_SECTION, DEFAULT_SECTIONS } from "constants/sections";
 import {
   IPlayer,
   IPlayersSection,
@@ -10,15 +7,30 @@ import {
 } from "utils/types";
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
+import { NAMESPACE } from "constants/main";
+
 function getInitialState(): IPlayersSectionsSlice {
+  const localPlayersSectionsData: string | null = localStorage.getItem(
+    `${NAMESPACE}sections`
+  );
+
+  if (localPlayersSectionsData) {
+    const playersSectionsObject = JSON.parse(localPlayersSectionsData);
+
+    return {
+      defaultSection: playersSectionsObject.defaultSection || DEFAULT_SECTION,
+      sections: playersSectionsObject.sections || DEFAULT_SECTIONS,
+    };
+  }
+
   return {
-    playersContainer: DEFAULT_PLAYERS_CONTAINER,
-    sections: DEFAULT_PLAYERS_SECTIONS,
+    defaultSection: DEFAULT_SECTION,
+    sections: DEFAULT_SECTIONS,
   };
 }
 
 function getPlayersSectionsFromOriginalPositions(
-  playersContainer: number,
+  defaultSection: number,
   sections: Array<IPlayersSection>
 ): Array<IPlayersSection> {
   const newSections: Array<IPlayersSection> = [];
@@ -34,7 +46,7 @@ function getPlayersSectionsFromOriginalPositions(
     players = players.concat(section.players);
   }
 
-  newSections[playersContainer].players = players;
+  newSections[defaultSection].players = players;
 
   return newSections;
 }
@@ -43,28 +55,28 @@ const PlayersSectionsSlice = createSlice({
   name: "PlayersSections",
   initialState: getInitialState(),
   reducers: {
-    setPlayersContainer: (
+    setDefaultSection: (
       state: IPlayersSectionsSlice,
       action: PayloadAction<number>
     ) => ({
       ...state,
 
-      playersContainer: action.payload,
+      defaultSection: action.payload,
     }),
 
     setPlayersSections: (
       state: IPlayersSectionsSlice,
       action: PayloadAction<Array<IPlayersSection>>
     ) => {
-      let newPlayersContainer = -1;
+      let newDefaultSection = -1;
 
       return {
         ...state,
 
         sections: [
           ...action.payload.map((section, index) => {
-            if (section.id === state.playersContainer) {
-              newPlayersContainer = index;
+            if (section.id === state.defaultSection) {
+              newDefaultSection = index;
             }
 
             return {
@@ -75,7 +87,7 @@ const PlayersSectionsSlice = createSlice({
           }),
         ],
 
-        playersContainer: newPlayersContainer,
+        defaultSection: newDefaultSection,
       };
     },
 
@@ -133,34 +145,34 @@ const PlayersSectionsSlice = createSlice({
       ...state,
 
       sections: getPlayersSectionsFromOriginalPositions(
-        state.playersContainer,
+        state.defaultSection,
         state.sections
       ),
     }),
 
     resetPlayersSections: () => ({
-      playersContainer: DEFAULT_PLAYERS_CONTAINER,
-      sections: [...DEFAULT_PLAYERS_SECTIONS.map((section) => section)],
+      defaultSection: DEFAULT_SECTION,
+      sections: [...DEFAULT_SECTIONS.map((section) => section)],
     }),
   },
 });
 
 export const {
-  setPlayersContainer,
+  setDefaultSection,
 
   setPlayersSections,
 
-  setPlayersFromSection,
-
   setPlayersSectionsTitle,
+
+  setPlayersFromSection,
 
   resetPlayersSectionsPositions,
 
   resetPlayersSections,
 } = PlayersSectionsSlice.actions;
 
-export const getPlayersContainer = (state: IUIStoreState): number =>
-  state.PlayersSections.playersContainer;
+export const getDefaultSection = (state: IUIStoreState): number =>
+  state.PlayersSections.defaultSection;
 
 export const getPlayersSections = (
   state: IUIStoreState

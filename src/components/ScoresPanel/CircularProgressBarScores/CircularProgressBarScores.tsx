@@ -53,7 +53,7 @@ export default function CircularProgressBarScores(
         <div className={classes.CircleSecondary}>
           <CircularProgressBar
             progress={crewmateRate}
-            color={theme.crewmateColor}
+            color={theme.crewmateColorPrimary}
             className={classes.progress}
           >
             <span
@@ -114,7 +114,7 @@ export default function CircularProgressBarScores(
         <div className={classes.CircleSecondary}>
           <CircularProgressBar
             progress={impostorRate}
-            color={theme.imposterColor}
+            color={theme.imposterColorPrimary}
             className={classes.progress}
           >
             <span

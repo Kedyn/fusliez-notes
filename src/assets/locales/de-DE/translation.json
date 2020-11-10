@@ -11,7 +11,8 @@
       "suspicious": "Verdächtig",
       "evilHitList": "Böse / Hitliste",
       "dead": "Tot",
-      "unknown": "Unbekannt"
+      "unknown": "Unbekannt",
+      "unused": "Unused"
     },
     "brown": "Braun",
     "red": "Rot",
@@ -32,12 +33,12 @@
     "crewmate": "Teammitglied",
     "impostor": "Schwindler",
     "resetScores": "Punkte zurücksetzen",
-    "resetRound": "Runde zurücksetzen",
+    "resetPositions": "Reset Positions",
     "resetAll": "Alles zurücksetzen",
     "notes": "Notizen",
     "resetNotes": "Notizen zurücksetzen",
-    "lockPlayers": "Spieler sperren",
-    "unlockPlayers": "Spieler entsperren"
+    "lockEditing": "Lock Editing",
+    "unlockEditing": "Unlock Editing"
   },
   "maps": {
     "title": "Spielkarte",
@@ -74,8 +75,8 @@
     "south": "4. Süden",
     "southwest": "5. Südwest",
     "northwest": "6. Nordwest",
-    "dragInstructions": "Ziehen Sie die Spieler auf die Karte, um sie zu verfolgen",
-    "resetPlayers": "Spieler zurücksetzen"
+    "dragInstructions": "Drag players on the map",
+    "removePlayers": "Remove Players From Map"
   },
   "settings": {
     "title": "Einstellungen",
@@ -88,7 +89,7 @@
     "close": "Schliessen",
     "addSection": "Add Section",
     "resetSections": "Reset Sections",
-    "sectionsNote": "Note: changing the default section (<1 />) will only be affected after clicking Reset Round or Reset All."
+    "sectionsNote": "Note: changing the default section (<1 />) will only be affected after clicking Reset Positions or Reset All."
   },
   "menu": {
     "players": "Spieler",
@@ -100,5 +101,17 @@
     "feedback": "Rückmeldung",
     "about": "Über",
     "changelog": "Änderungsprotokoll"
+  },
+  "about": {
+    "developers": "Developers",
+    "translators": "Translators",
+    "artists": "Artists",
+    "special": "Special Thanks To",
+    "disclaimer": "Disclaimer: this app is in no way associated with InnerSloth.",
+    "partOne": "First, thanks to <1>fuslie</1> for inspiring this project.",
+    "partTwo": "Thanks to everyone who has suggested enhancements, reported bugs, or any other support on this project.",
+    "partThree": "Thanks to everyone who uses this tool.",
+    "partFour": "Please check out everyone mentioned here and show them some love.",
+    "partFive": "PS: If I left anyone out, please let me know. I do not mean to forget anyone."
   }
 }

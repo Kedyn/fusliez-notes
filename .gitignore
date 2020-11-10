@@ -5,3 +5,4 @@ docs/
 node_modules/
 .eslintcache
 test-coverage
+.idea/

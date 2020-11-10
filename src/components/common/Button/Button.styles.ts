@@ -1,6 +1,5 @@
-import { createUseStyles } from "react-jss";
 import { ITheme } from "utils/types";
-import { STYLE_VARS } from "utils/styleVars";
+import { createUseStyles } from "react-jss";
 import { hexToRGB } from "utils/colorConverter";
 
 export default createUseStyles((theme: ITheme) => ({
@@ -10,7 +9,7 @@ export default createUseStyles((theme: ITheme) => ({
     textAlign: "center",
     border: 0,
     padding: ".5rem .75rem",
-    fontFamily: STYLE_VARS.fontFamily,
+    fontFamily: theme.fontFamily,
     fontWeight: 600,
     borderRadius: "0.5rem",
     color: theme.linkColor,
@@ -27,16 +26,16 @@ export default createUseStyles((theme: ITheme) => ({
     },
     "&:active": {
       boxShadow: "inset 1px 1px 1px rgba(0,0,0,0.5)",
-      backgroundColor: theme.backgroundColorAlt,
+      backgroundColor: theme.backgroundColorSecondary,
     },
   },
   danger: {
     backgroundColor: `rgba(${hexToRGB(theme.dangerColor)}, 0.5)`,
-    color: theme.textColor,
+    color: theme.textColorPrimary,
 
     "&:hover": {
       backgroundColor: `rgba(${hexToRGB(theme.dangerColorHover)}, 0.5)`,
-      color: theme.textColorAlt,
+      color: theme.textColorSecondary,
     },
   },
   fullWidth: {
@@ -44,11 +43,11 @@ export default createUseStyles((theme: ITheme) => ({
   },
   pressed: {
     cursor: "default",
-    backgroundColor: theme.backgroundColorAlt,
+    backgroundColor: theme.backgroundColorPrimary,
     boxShadow: "inset 1px 1px 1px rgba(0,0,0,0.5)",
     "&:hover": {
       color: theme.linkColor,
-      backgroundColor: theme.backgroundColorAlt,
+      backgroundColor: theme.backgroundColorSecondary,
     },
   },
 

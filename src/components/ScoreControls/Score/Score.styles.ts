@@ -3,8 +3,8 @@ import { createUseStyles } from "react-jss";
 
 export default createUseStyles((theme: ITheme) => ({
   Score: {
-    backgroundColor: theme.inputBackgroundColor,
-    color: theme.inputTextColor,
+    backgroundColor: theme.backgroundColorSecondary,
+    color: theme.textColorPrimary,
     borderTop: `1px solid ${theme.borderColor}`,
     borderBottom: `1px solid ${theme.borderColor}`,
     display: "block",

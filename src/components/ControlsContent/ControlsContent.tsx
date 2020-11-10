@@ -1,14 +1,21 @@
-import { NAMESPACE, VERSION } from "utils/constants";
+import { NAMESPACE, VERSION } from "constants/main";
 
-import About from "components/About";
 import Button from "components/common/Button";
-import Changelog from "components/Changelog";
 import NotesPanel from "components/NotesPanel";
 import React from "react";
 import ScoreControls from "components/ScoreControls";
-import Settings from "components/Settings";
 import useStyles from "./ControlsContent.styles";
 import { useTranslation } from "react-i18next";
+
+const Settings = React.lazy(
+  () => import(/* webpackChunkName: "settings" */ "components/Settings")
+);
+const About = React.lazy(
+  () => import(/* webpackChunkName: "about" */ "components/About")
+);
+const Changelog = React.lazy(
+  () => import(/* webpackChunkName: "changelog" */ "components/Changelog")
+);
 
 export default function ControlsContent(): JSX.Element {
   const { t } = useTranslation();

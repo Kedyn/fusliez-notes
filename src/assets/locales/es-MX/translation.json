@@ -11,7 +11,8 @@
       "suspicious": "Sospechosos",
       "evilHitList": "Malos / Lista Negra",
       "dead": "Muertos",
-      "unknown": "Desconocidos"
+      "unknown": "Desconocidos",
+      "unused": "Unused"
     },
     "brown": "Café",
     "red": "Rojo",
@@ -32,12 +33,12 @@
     "crewmate": "Tripulante",
     "impostor": "Impostor",
     "resetScores": "Reiniciar Puntaje",
-    "resetRound": "Reiniciar Ronda",
+    "resetPositions": "Reiniciar Posiciones",
     "resetAll": "Reiniciar Todo",
     "notes": "Notas",
     "resetNotes": "Reiniciar Notas",
-    "lockPlayers": "Bloquear edición",
-    "unlockPlayers": "Desbloquear edición"
+    "lockEditing": "Bloquear edición",
+    "unlockEditing": "Desbloquear edición"
   },
   "maps": {
     "title": "Mapas",
@@ -74,8 +75,8 @@
     "south": "4. Sur",
     "southwest": "5. Suroeste",
     "northwest": "6. Noroeste",
-    "dragInstructions": "Arrastra jugadores al mapa para rastrearlos",
-    "resetPlayers": "Reiniciar posiciones"
+    "dragInstructions": "Arrastra jugadores al mapa",
+    "removePlayers": "Quitar todos los jugadores del mapa"
   },
   "settings": {
     "title": "Ajustes",
@@ -88,7 +89,7 @@
     "close": "Cerrar",
     "addSection": "Agregar Seccion",
     "resetSections": "Reiniciar Secciones",
-    "sectionsNote": "Note: changing the default section (<1 />) will only be affected after clicking Reset Round or Reset All."
+    "sectionsNote": "Nota: cambiar la seccion por defecto (<1 />) solo se vera afectada despues de Reiniciar Posiciones o Reiniciar Todo."
   },
   "menu": {
     "players": "Jugadores",
@@ -100,5 +101,17 @@
     "feedback": "Sugerencias",
     "about": "Acerca de",
     "changelog": "Cambios"
+  },
+  "about": {
+    "developers": "Desarrolladores",
+    "translators": "Traductores",
+    "artists": "Artistas",
+    "special": "Agradecimientos Especiales A",
+    "disclaimer": "Descargo de responsabilidad: esta aplicacion no esta asociada de ninguna manera con InnerSloth.",
+    "partOne": "Primero, gracias a <1>fuslie</1> por inspirar este proyecto.",
+    "partTwo": "Gracias a todos los que sugirieron mejoras, reportaron errores o dieron cualquier otro apoyo en este proyecto.",
+    "partThree": "Gracias a todos los que utilizan esta herramienta.",
+    "partFour": "Por favor echen un vistazo a todas las personas mencionadas aqui y muestrenles un poco de amor.",
+    "partFive": "PS: Si he dejado alguien fuera favor de hacermelo saber. He intentado no olvidar a nadie."
   }
 }

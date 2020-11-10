@@ -9,231 +9,70 @@ export default function MiraHq(
   return (
     <svg viewBox="0 0 1366 768" {...props}>
       <title>{"MiraHq"}</title>
-      <image
-        fill="#b3cde0"
-        href="assets/Mirahq.png"
-        preserveAspectRatio="xMidYMid meet"
-      />
-      <text
-        fontWeight="bold"
-        fontFamily="Titillium Web, sans-serif"
-        fontSize={20}
-        y={106}
-        x={842.5}
-        stroke="#000"
-        fill="#fff"
-        preserveAspectRatio="xMidYMid meet"
-      >
+      <image href="assets/images/Mirahq.jpg" />
+      <text y={155} x={812.5}>
         {t("maps.greenhouse")}
       </text>
-      <text
-        fontWeight="bold"
-        fontFamily="Titillium Web, sans-serif"
-        fontSize={20}
-        y={154}
-        x={936.5}
-        stroke="#000"
-        fill="#fff"
-        preserveAspectRatio="xMidYMid meet"
-      >
+      <text y={254} x={949.5}>
         {t("maps.admin")}
       </text>
-      <text
-        fontWeight="bold"
-        fontFamily="Titillium Web, sans-serif"
-        fontSize={20}
-        y={232}
-        x={794.5}
-        stroke="#000"
-        fill="#fff"
-        preserveAspectRatio="xMidYMid meet"
-      >
+      <text y={232} x={784.5}>
         {t("maps.office")}
       </text>
       <text
         transform="rotate(45.439 727.06 812.293) scale(.78224 1)"
-        fontWeight="bold"
-        fontFamily="Titillium Web, sans-serif"
-        fontSize={20}
         y={551.511}
         x={705.185}
-        strokeOpacity="null"
-        stroke="#000"
-        fill="#fff"
-        preserveAspectRatio="xMidYMid meet"
       >
         {t("maps.communications")}
       </text>
       <text
-        transform="rotate(67.008 640.961 672.111) scale(.83183 1)"
-        fontWeight="bold"
-        fontFamily="Titillium Web, sans-serif"
-        fontSize={20}
-        y={583.612}
-        x={630.578}
-        fillOpacity="null"
-        strokeOpacity="null"
-        stroke="#000"
-        fill="#fff"
-        preserveAspectRatio="xMidYMid meet"
+        transform="rotate(67.008 600.961 652.111) scale(.83183 1)"
+        y={580.612}
+        x={590.578}
       >
         {t("maps.lockerRoom")}
       </text>
-      <text
-        fontWeight="bold"
-        fontFamily="Titillium Web, sans-serif"
-        fontSize={20}
-        y={651}
-        x={798.5}
-        strokeOpacity="null"
-        stroke="#000"
-        fill="#fff"
-        preserveAspectRatio="xMidYMid meet"
-      >
+      <text fontSize={28} y={666} x={778.5}>
         {t("maps.medBay")}
       </text>
-      <text
-        fontWeight="bold"
-        fontFamily="Titillium Web, sans-serif"
-        fontSize={20}
-        y={544}
-        x={1054.5}
-        strokeOpacity="null"
-        strokeWidth="null"
-        stroke="#000"
-        fill="#fff"
-        preserveAspectRatio="xMidYMid meet"
-      >
+      <text y={560} x={1054.5}>
         {t("maps.cafeteria")}
       </text>
       <text
         transform="rotate(45 938.725 548.208)"
-        fontWeight="bold"
-        fontFamily="Titillium Web, sans-serif"
-        fontSize={20}
-        y={555}
-        x={901.5}
-        strokeOpacity="null"
-        strokeWidth="null"
-        stroke="#000"
-        fill="#fff"
-        preserveAspectRatio="xMidYMid meet"
+        fontSize={28}
+        y={565}
+        x={909.5}
       >
         {t("maps.storage")}
       </text>
-      <text
-        fontWeight="bold"
-        fontFamily="Titillium Web, sans-serif"
-        fontSize={20}
-        y={699}
-        x={1047.5}
-        strokeOpacity="null"
-        strokeWidth="null"
-        stroke="#000"
-        fill="#fff"
-        preserveAspectRatio="xMidYMid meet"
-      >
+      <text y={704} x={1077.5}>
         {t("maps.balcony")}
       </text>
-      <text
-        fontWeight="bold"
-        fontFamily="Titillium Web, sans-serif"
-        fontSize={20}
-        y={629}
-        x={310.5}
-        strokeOpacity="null"
-        strokeWidth="null"
-        stroke="#000"
-        fill="#fff"
-        preserveAspectRatio="xMidYMid meet"
-      >
+      <text y={612} x={214.5}>
         {t("maps.launchpad")}
       </text>
-      <text
-        fontWeight="bold"
-        fontFamily="Titillium Web, sans-serif"
-        fontSize={20}
-        y={328}
-        x={492.5}
-        strokeOpacity="null"
-        strokeWidth="null"
-        stroke="#000"
-        fill="#fff"
-        preserveAspectRatio="xMidYMid meet"
-      >
+      <text fontSize={28} y={400} x={408}>
         {t("maps.reactor")}
       </text>
-      <text
-        transform="rotate(45 705.725 339.208)"
-        fontWeight="bold"
-        fontFamily="Titillium Web, sans-serif"
-        fontSize={20}
-        y={346}
-        x={653.5}
-        strokeOpacity="null"
-        strokeWidth="null"
-        stroke="#000"
-        fill="#fff"
-        preserveAspectRatio="xMidYMid meet"
-      >
+      <text transform="rotate(45 705.725 339.208)" y={420} x={653.5}>
         {t("maps.laboratory")}
       </text>
-      <text
-        fontWeight="bold"
-        fontFamily="Titillium Web, sans-serif"
-        fontSize={20}
-        y={280}
-        x={264.5}
-        strokeOpacity="null"
-        strokeWidth={0}
-        stroke="#000"
-        fill="#fff"
-        preserveAspectRatio="xMidYMid meet"
-      >
-        {t("maps.vents")}
-      </text>
-      <text
-        fontWeight="bold"
-        fontFamily="Titillium Web, sans-serif"
-        fontSize={20}
-        y={315}
-        x={265}
-        strokeOpacity="null"
-        strokeWidth={0}
-        stroke="#000"
-        fill="#fff"
-        preserveAspectRatio="xMidYMid meet"
-      >
-        {t("maps.ventConnections")}
-      </text>
-      <text
-        fontWeight="bold"
-        fontFamily="Titillium Web, sans-serif"
-        fontSize={20}
-        y={345}
-        x={265}
-        strokeOpacity="null"
-        strokeWidth={0}
-        stroke="#000"
-        fill="#fff"
-        preserveAspectRatio="xMidYMid meet"
-      >
-        {t("maps.wiringTasks")}
-      </text>
-      <text
-        fontWeight="bold"
-        fontFamily="Titillium Web, sans-serif"
-        fontSize={20}
-        y={380}
-        x={264.5}
-        strokeOpacity="null"
-        strokeWidth={0}
-        stroke="#000"
-        fill="#fff"
-        preserveAspectRatio="xMidYMid meet"
-      >
-        {t("maps.commonTasks")}
-      </text>
+      <g className="MapDescriptions">
+        <text y={63} x={1140}>
+          {t("maps.vents")}
+        </text>
+        <text y={98} x={1140}>
+          {t("maps.ventConnections")}
+        </text>
+        <text y={135} x={1140}>
+          {t("maps.wiringTasks")}
+        </text>
+        <text y={172} x={1140}>
+          {t("maps.commonTasks")}
+        </text>
+      </g>
     </svg>
   );
 }

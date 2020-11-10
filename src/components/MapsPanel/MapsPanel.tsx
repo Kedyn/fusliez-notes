@@ -1,45 +1,59 @@
+import {
+  getCharacters,
+  getCurrentMap,
+  resetCharacters,
+  setCharacterPosition,
+  setCurrentMap,
+} from "store/slices/MapsSlice";
+import { getIsColorBlind, getShowNames } from "store/slices/SettingsSlice";
 import { getIsMobile, getOrientation } from "store/slices/DeviceSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 import Button from "components/common/Button";
 import Draggable from "react-draggable";
-import MiraHqWithDetails from "./MiraHqWithDetails";
-import PolusWithDetails from "./PolusWithDetails";
+import MiraHq from "./MiraHq";
+import Polus from "./Polus";
 import React from "react";
-import TheSkeldWithDetails from "./TheSkeldWithDetails";
+import TheSkeld from "./TheSkeld";
 import { getAllPlayers } from "store/slices/PlayersSectionsSlice";
-import { getShowNames } from "store/slices/SettingsSlice";
-import { useSelector } from "react-redux";
 import useStyles from "./MapsPanel.styles";
 import { useTranslation } from "react-i18next";
 
 export default function MapsPanel(): JSX.Element {
   const { t } = useTranslation();
 
-  const [map, setMap] = React.useState("polus");
-  const [resetState, setResetState] = React.useState(false);
-
   const isMobile = useSelector(getIsMobile);
   const orientation = useSelector(getOrientation);
   const showNames = useSelector(getShowNames);
+  const isColorBlind = useSelector(getIsColorBlind);
   const allPlayers = useSelector(getAllPlayers);
+  const players = useSelector(getCharacters);
+  const map = useSelector(getCurrentMap);
+
+  // this maps the coordinates to the player
+  const allPlayersWithCoordinates = allPlayers.map((player) => {
+    for (const { id, x, y } of players) {
+      if (player.color === id) {
+        return { ...player, x, y };
+      }
+    }
+  });
+
+  const dispatch = useDispatch();
 
   const classes = useStyles({
-    map: map === "skeld" ? "TheSkeld" : map === "mira" ? "Mirahq" : "Polus",
+    map: map,
     isMobile,
     orientation,
   });
 
-  let currentMap = <TheSkeldWithDetails />;
+  let currentMap = <TheSkeld />;
 
-  if (map === "mira") {
-    currentMap = <MiraHqWithDetails />;
-  } else if (map === "polus") {
-    currentMap = <PolusWithDetails />;
+  if (map === "MiraHq") {
+    currentMap = <MiraHq />;
+  } else if (map === "Polus") {
+    currentMap = <Polus />;
   }
-
-  React.useEffect(() => {
-    if (resetState) setResetState(false);
-  }, [resetState]);
 
   return (
     <div id="maps" className={classes.MapsPanel}>
@@ -48,22 +62,22 @@ export default function MapsPanel(): JSX.Element {
         <div className={classes.MapsToggle}>
           <Button
             className={classes.MapsToggleButton}
-            pressed={map === "skeld"}
-            onClick={() => setMap("skeld")}
+            pressed={map === "TheSkeld"}
+            onClick={() => dispatch(setCurrentMap("TheSkeld"))}
           >
             The Skeld
           </Button>
           <Button
             className={classes.MapsToggleButton}
-            pressed={map === "mira"}
-            onClick={() => setMap("mira")}
+            pressed={map === "MiraHq"}
+            onClick={() => dispatch(setCurrentMap("MiraHq"))}
           >
             Mira HQ
           </Button>
           <Button
             className={classes.MapsToggleButton}
-            pressed={map === "polus"}
-            onClick={() => setMap("polus")}
+            pressed={map === "Polus"}
+            onClick={() => dispatch(setCurrentMap("Polus"))}
           >
             Polus
           </Button>
@@ -74,29 +88,54 @@ export default function MapsPanel(): JSX.Element {
 
         <div className={classes.DraggableHeader}>
           <h3>{t("maps.dragInstructions")}</h3>
-          <Button onClick={() => setResetState(true)}>
-            {t("maps.resetPlayers")}
+          <Button onClick={() => dispatch(resetCharacters())}>
+            {t("maps.removePlayers")}
           </Button>
         </div>
 
-        {!resetState &&
-          allPlayers.map(({ playerName, color }) => (
-            <Draggable key={color} bounds="parent">
-              <span className={classes.MapPlayerIconContainer}>
-                {showNames && (
-                  <text className={classes.MapPlayerName}>{playerName}</text>
-                )}
-                <img
-                  src={`assets/images/playerIcons/${color}.png`}
-                  className={classes.MapPlayerIcon}
-                  onDrag={(event: React.DragEvent<HTMLImageElement>) =>
-                    event.stopPropagation()
-                  }
-                  draggable={false}
-                />
-              </span>
-            </Draggable>
-          ))}
+        {/* 
+          kind of a weird way to write it
+          but wasn't sure on how to address
+          some of the TS errors 
+        */}
+        {allPlayersWithCoordinates.length &&
+          allPlayersWithCoordinates.map((player) =>
+            player ? (
+              <Draggable
+                key={player?.color}
+                bounds="parent"
+                position={{ x: player?.x, y: player?.y }}
+                onStop={(event, data) => {
+                  dispatch(
+                    setCharacterPosition({
+                      id: player?.color,
+                      x: data.lastX,
+                      y: data.lastY,
+                    })
+                  );
+                }}
+              >
+                <span className={classes.MapPlayerIconContainer}>
+                  {showNames && (
+                    <p className={classes.MapPlayerName}>
+                      {player?.playerName}
+                    </p>
+                  )}
+                  <img
+                    src={`assets/images/playerIcons/${player?.color}.png`}
+                    className={classes.MapPlayerIcon}
+                    onDrag={(event: React.DragEvent<HTMLImageElement>) =>
+                      event.stopPropagation()
+                    }
+                    draggable={false}
+                  />
+                  {isColorBlind && (
+                    <p className={classes.MapPlayerName}>{player?.color}</p>
+                  )}
+                </span>
+              </Draggable>
+            ) : null
+          )}
       </div>
     </div>
   );

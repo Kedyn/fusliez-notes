@@ -1,21 +1,44 @@
-import { NAMESPACE, VERSION } from "utils/constants";
+import { NAMESPACE, VERSION } from "constants/main";
 import { getIsMobile, getOrientation } from "store/slices/DeviceSlice";
 
-import AboutContent from "components/About/AboutPanel";
-import ChangelogPanel from "components/Changelog/ChangelogPanel";
 import { IView } from "utils/types";
 import MainContent from "components/MainContent";
-import MapsPanel from "components/MapsPanel";
 import Navbar from "components/Navbar";
-import NotesPanel from "components/NotesPanel";
 import React from "react";
-import ScoreControls from "components/ScoreControls";
-import ScoresPanel from "components/ScoresPanel";
-import SettingsPanel from "components/Settings/SettingsPanel";
-import SlideDrawer from "components/SlideDrawer";
 import { useSelector } from "react-redux";
 import useStyles from "./MobileLayout.styles";
 import { useTranslation } from "react-i18next";
+
+const NotesPanel = React.lazy(
+  () => import(/* webpackChunkName: "notes" */ "components/NotesPanel")
+);
+const ScoresPanel = React.lazy(
+  () => import(/* webpackChunkName: "scores" */ "components/ScoresPanel")
+);
+const ScoreControls = React.lazy(
+  () => import(/* webpackChunkName: "score" */ "components/ScoreControls")
+);
+const MapsPanel = React.lazy(
+  () => import(/* webpackChunkName: "maps" */ "components/MapsPanel")
+);
+const SettingsPanel = React.lazy(
+  () =>
+    import(
+      /* webpackChunkName: "settings" */ "components/Settings/SettingsPanel"
+    )
+);
+const AboutContent = React.lazy(
+  () => import(/* webpackChunkName: "about" */ "components/About/AboutPanel")
+);
+const ChangelogPanel = React.lazy(
+  () =>
+    import(
+      /* webpackChunkName: "changelog" */ "components/Changelog/ChangelogPanel"
+    )
+);
+const SlideDrawer = React.lazy(
+  () => import(/* webpackChunkName: "drawer" */ "components/SlideDrawer")
+);
 
 export default function MobileLayout(): JSX.Element {
   const { t } = useTranslation();

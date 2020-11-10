@@ -1,13 +1,12 @@
 import { ITheme } from "utils/types";
-import { STYLE_VARS } from "utils/styleVars";
 import { createUseStyles } from "react-jss";
 
 export default createUseStyles((theme: ITheme) => ({
   root: {},
   ColorMenu: {
     alignItems: "center",
-    background: theme.backgroundColor,
-    border: `1px solid ${STYLE_VARS.borderColor}`,
+    background: theme.backgroundColorPrimary,
+    border: `1px solid ${theme.borderColor}`,
     borderRadius: "0.25rem",
     boxShadow: "0 0 0.25rem black",
     bottom: "110%",

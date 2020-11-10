@@ -1,9 +1,9 @@
 import { getColorValue, hexToRGB } from "utils/colorConverter";
 
-import { STYLE_VARS } from "utils/styleVars";
+import { ITheme } from "utils/types";
 import { createUseStyles } from "react-jss";
 
-export default createUseStyles({
+export default createUseStyles((theme: ITheme) => ({
   ColorMenuCell: {
     display: "flex",
     flex: "0 0 25%",
@@ -18,7 +18,7 @@ export default createUseStyles({
     borderRadius: "0.25rem",
     padding: 0,
     margin: "0.125rem",
-    border: `1px solid rgba(${hexToRGB(STYLE_VARS.textColorSecondary)}, 0.5)`,
+    border: `1px solid rgba(${hexToRGB(theme.textColorSecondary)}, 0.5)`,
     backgroundColor: `rgb(${getColorValue(props.targetColor, "base")})`,
 
     "&:hover": {
@@ -27,4 +27,4 @@ export default createUseStyles({
       backgroundColor: `rgb(${getColorValue(props.targetColor, "base")})`,
     },
   }),
-});
+}));

@@ -9,360 +9,75 @@ export default function Polus(
   return (
     <svg viewBox="0 0 1366 768" {...props}>
       <title>{"Polus"}</title>
-      <image
-        fill="#b3cde0"
-        href="assets/Polus.png"
-        preserveAspectRatio="xMidYMid meet"
-      />
-      <text
-        fontWeight="bold"
-        fontFamily="Titillium Web, sans-serif"
-        fontSize={20}
-        y={368}
-        x={334.5}
-        strokeOpacity="null"
-        stroke="#000"
-        fill="#fff"
-        preserveAspectRatio="xMidYMid meet"
-      >
+      <image href="assets/images/Polus.jpg" />
+      <text y={375} x={244.5}>
         {t("maps.electrical")}
       </text>
-      <text
-        fontWeight="bold"
-        fontFamily="Titillium Web, sans-serif"
-        fontSize={20}
-        y={355}
-        x={189.5}
-        strokeOpacity="null"
-        stroke="#000"
-        fill="#fff"
-        preserveAspectRatio="xMidYMid meet"
-      >
+      <text y={365} x={75.5}>
         {t("maps.security")}
       </text>
-      <text
-        fontWeight="bold"
-        fontFamily="Titillium Web, sans-serif"
-        fontSize={20}
-        y={435}
-        x={813.5}
-        strokeOpacity="null"
-        stroke="#000"
-        fill="#fff"
-        preserveAspectRatio="xMidYMid meet"
-      >
+      <text y={433} x={865.5}>
         {t("maps.east")}
       </text>
-      <text
-        fontWeight="bold"
-        fontFamily="Titillium Web, sans-serif"
-        fontSize={20}
-        y={361}
-        x={631.5}
-        strokeOpacity="null"
-        strokeWidth="null"
-        stroke="#000"
-        fill="#fff"
-        preserveAspectRatio="xMidYMid meet"
-      >
+      <text y={361} x={618.5}>
         {t("maps.storage")}
       </text>
-      <text
-        fontWeight="bold"
-        fontFamily="Titillium Web, sans-serif"
-        fontSize={20}
-        y={266}
-        x={929.5}
-        strokeOpacity="null"
-        strokeWidth="null"
-        stroke="#000"
-        fill="#fff"
-        preserveAspectRatio="xMidYMid meet"
-      >
+      <text fontSize={32} y={260} x={994.5}>
         {t("maps.laboratory")}
       </text>
-      <text
-        fontWeight="bold"
-        fontFamily="Titillium Web, sans-serif"
-        fontSize={20}
-        y={597}
-        x={1013.5}
-        strokeOpacity="null"
-        strokeWidth="null"
-        stroke="#000"
-        fill="#fff"
-        preserveAspectRatio="xMidYMid meet"
-      >
+      <text fontSize={28} y={597} x={1035.5}>
         {t("maps.specimenRoom")}
       </text>
-      <text
-        transform="rotate(45 684.608 655)"
-        fontWeight="bold"
-        fontFamily="Titillium Web, sans-serif"
-        fontSize={20}
-        y={662}
-        x={653.5}
-        strokeOpacity="null"
-        strokeWidth="null"
-        stroke="#000"
-        fill="#fff"
-        preserveAspectRatio="xMidYMid meet"
-      >
+      <text transform="rotate(45 684.608 655)" y={632} x={673.5}>
         {t("maps.admin")}
       </text>
-      <text
-        fontWeight="bold"
-        fontFamily="Titillium Web, sans-serif"
-        fontSize={20}
-        y={676}
-        x={403.5}
-        strokeOpacity="null"
-        strokeWidth="null"
-        stroke="#000"
-        fill="#fff"
-        preserveAspectRatio="xMidYMid meet"
-      >
+      <text y={660} x={342.5}>
         {t("maps.weapons")}
       </text>
-      <text
-        transform="rotate(45 434.608 494)"
-        fontWeight="bold"
-        fontFamily="Titillium Web, sans-serif"
-        fontSize={20}
-        y={501}
-        x={353.5}
-        strokeOpacity="null"
-        strokeWidth="null"
-        stroke="#000"
-        fill="#fff"
-        preserveAspectRatio="xMidYMid meet"
-      >
+      <text transform="rotate(45 424.608 494)" y={531} x={303.5}>
         {t("maps.communications")}
       </text>
-      <text
-        fontWeight="bold"
-        fontFamily="Titillium Web, sans-serif"
-        fontSize={20}
-        y={487}
-        x={669.5}
-        strokeOpacity="null"
-        strokeWidth="null"
-        stroke="#000"
-        fill="#fff"
-        preserveAspectRatio="xMidYMid meet"
-      >
+      <text y={499} x={659.5}>
         {t("maps.office")}
       </text>
-      <text
-        fontWeight="bold"
-        fontFamily="Titillium Web, sans-serif"
-        fontSize={20}
-        y={519}
-        x={181.5}
-        strokeOpacity="null"
-        strokeWidth="null"
-        stroke="#000"
-        fill="#fff"
-        preserveAspectRatio="xMidYMid meet"
-      >
+      <text y={500} x={71.5}>
         {t("maps.o2")}
       </text>
-      <text
-        fontWeight="bold"
-        fontFamily="Titillium Web, sans-serif"
-        fontSize={20}
-        y={434}
-        x={469.5}
-        strokeOpacity="null"
-        strokeWidth="null"
-        stroke="#000"
-        fill="#fff"
-        preserveAspectRatio="xMidYMid meet"
-      >
+      <text y={428} x={409.5}>
         {t("maps.central")}
       </text>
-      <text
-        fontWeight="bold"
-        fontFamily="Titillium Web, sans-serif"
-        fontSize={20}
-        y={254}
-        x={704.5}
-        strokeOpacity="null"
-        strokeWidth="null"
-        stroke="#000"
-        fill="#fff"
-        preserveAspectRatio="xMidYMid meet"
-      >
+      <text y={250} x={712.5}>
         {t("maps.northeast")}
       </text>
-      <text
-        fontWeight="bold"
-        fontFamily="Titillium Web, sans-serif"
-        fontSize={20}
-        y={634}
-        x={510.5}
-        strokeOpacity="null"
-        strokeWidth="null"
-        stroke="#000"
-        fill="#fff"
-        preserveAspectRatio="xMidYMid meet"
-      >
+      <text y={632} x={475.5}>
         {t("maps.south")}
       </text>
-      <text
-        fontWeight="bold"
-        fontFamily="Titillium Web, sans-serif"
-        fontSize={20}
-        y={611}
-        x={186.5}
-        strokeOpacity="null"
-        strokeWidth="null"
-        stroke="#000"
-        fill="#fff"
-        preserveAspectRatio="xMidYMid meet"
-      >
+      <text y={598} x={85.5}>
         {t("maps.southwest")}
       </text>
-      <text
-        fontWeight="bold"
-        fontFamily="Titillium Web, sans-serif"
-        fontSize={20}
-        y={242}
-        x={363.5}
-        strokeOpacity="null"
-        strokeWidth="null"
-        stroke="#000"
-        fill="#fff"
-        preserveAspectRatio="xMidYMid meet"
-      >
+      <text y={248} x={285.5}>
         {t("maps.northwest")}
       </text>
-      <text
-        fontFamily="Titillium Web, sans-serif"
-        fontSize={20}
-        y={60}
-        x={890}
-        strokeOpacity="null"
-        strokeWidth={0}
-        stroke="#000"
-        fill="#fff"
-        preserveAspectRatio="xMidYMid meet"
-      >
-        {t("maps.vents")}
-      </text>
-      <text
-        fontFamily="Titillium Web, sans-serif"
-        fontSize={20}
-        y={95}
-        x={890}
-        strokeOpacity="null"
-        strokeWidth={0}
-        stroke="#000"
-        fill="#fff"
-        preserveAspectRatio="xMidYMid meet"
-      >
-        {t("maps.commonTasks")}
-      </text>
-      <text
-        fontFamily="Titillium Web, sans-serif"
-        fontSize={20}
-        y={130}
-        x={890}
-        strokeOpacity="null"
-        strokeWidth={0}
-        stroke="#000"
-        fill="#fff"
-        preserveAspectRatio="xMidYMid meet"
-      >
-        {t("maps.wiringTasks")}
-      </text>
-      <text
-        fontFamily="Titillium Web, sans-serif"
-        fontSize={20}
-        y={60}
-        x={1090}
-        strokeOpacity="null"
-        strokeWidth={0}
-        stroke="#000"
-        fill="#fff"
-        preserveAspectRatio="xMidYMid meet"
-      >
-        {t("maps.ventConnections")}
-      </text>
-      <text
-        fontFamily="Titillium Web, sans-serif"
-        fontSize={20}
-        y={95}
-        x={1090}
-        strokeOpacity="null"
-        strokeWidth={0}
-        stroke="#000"
-        fill="#fff"
-        preserveAspectRatio="xMidYMid meet"
-      >
-        {t("maps.securityCameras")}
-      </text>
-      <text
-        fontFamily="Titillium Web, sans-serif"
-        fontSize={20}
-        y={130}
-        x={1090}
-        strokeOpacity="null"
-        strokeWidth={0}
-        stroke="#000"
-        fill="#fff"
-        preserveAspectRatio="xMidYMid meet"
-      >
-        {t("maps.cameraZones")}
-      </text>
-      <ellipse
-        ry={3}
-        rx={3.5}
-        cy={273.707}
-        cx={444}
-        fill="red"
-        preserveAspectRatio="xMidYMid meet"
-      />
-      <ellipse
-        ry={3}
-        rx={3.5}
-        cy={466.016}
-        cx={892.72}
-        fill="red"
-        preserveAspectRatio="xMidYMid meet"
-      />
-      <ellipse
-        ry={3}
-        rx={3.5}
-        cy={467.192}
-        cx={553.975}
-        fill="red"
-        preserveAspectRatio="xMidYMid meet"
-      />
-      <ellipse
-        ry={3}
-        rx={3.5}
-        cy={287.821}
-        cx={787.45}
-        fill="red"
-        preserveAspectRatio="xMidYMid meet"
-      />
-      <ellipse
-        ry={3}
-        rx={3.5}
-        cy={587.752}
-        cx={595.141}
-        fill="red"
-        preserveAspectRatio="xMidYMid meet"
-      />
-      <ellipse
-        ry={3}
-        rx={3.5}
-        cy={650.091}
-        cx={266.394}
-        fill="red"
-        preserveAspectRatio="xMidYMid meet"
-      />
+      <g className="MapDescriptions">
+        <text fontSize={22} y={45} x={890}>
+          {t("maps.vents")}
+        </text>
+        <text fontSize={22} y={77.5} x={890}>
+          {t("maps.commonTasks")}
+        </text>
+        <text fontSize={22} y={110} x={890}>
+          {t("maps.wiringTasks")}
+        </text>
+        <text fontSize={22} y={45} x={1110}>
+          {t("maps.ventConnections")}
+        </text>
+        <text fontSize={22} y={77.5} x={1110}>
+          {t("maps.securityCameras")}
+        </text>
+        <text fontSize={22} y={110} x={1110}>
+          {t("maps.cameraZones")}
+        </text>
+      </g>
     </svg>
   );
 }

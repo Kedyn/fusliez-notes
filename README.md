@@ -30,13 +30,14 @@ Thanks to the developer team:
 [Daniel Singer](https://github.com/chilblane) (A.K.A. chilblane)  
 [Francis Tse](https://github.com/francistse23) (A.K.A. Furanki)  
 [Kevin Han](https://github.com/kevinydhan) (A.K.A. khany)  
-[Charlie Chai](https://github.com/charlie-808)  
 [Griffin Suparto](https://github.com/Viou)  
-[Alena Choong](https://github.com/leeeennyy)
+[Alena Choong](https://github.com/leeeennyy)  
+[Pawel Boguslawski](https://github.com/bogusweb)
 
-Thanks to everyone who has suggested enhancements, reported bugs, are or any
+Thanks to everyone who has suggested enhancements, reported bugs, or any
 other support on this project such as:
 
+[Charlie Chai](https://github.com/charlie-808)  
 [Adam Gausmann](https://github.com/agausmann)  
 Pedro / Dian\_\_  
 [Rydannn](https://twitter.com/RydanTweets)  
@@ -51,7 +52,10 @@ Kermitigated (twitch handle)
 [Victor Pietro](https://github.com/pietroow) (A.K.A. Pietroow)  
 [Coleyra](https://github.com/Coleyra)  
 [MissingNoShiny](https://github.com/MissingNoShiny)  
-[Stark_001001](https://www.reddit.com/user/Stark_001001) (The Skeld in game map) [mooseknuckle_king](https://www.reddit.com/user/mooseknuckle_king/) (Mira HQ and Polus in game maps)
+[Stark_001001](https://www.reddit.com/user/Stark_001001) (The Skeld in game
+map)  
+[mooseknuckle_king](https://www.reddit.com/user/mooseknuckle_king/) (Mira HQ and
+Polus in game maps)
 
 Please if you would not like to be mentioned here or your information is wrong
 let me know so I can remove it or fix it, thank you!
