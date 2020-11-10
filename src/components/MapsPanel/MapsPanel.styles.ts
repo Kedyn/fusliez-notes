@@ -64,28 +64,23 @@ export default createUseStyles((theme: ITheme) => ({
     width: props.isMobile ? "1.15rem" : "2.3rem",
     height: "auto",
     margin: "0 0.75rem",
-
-    // "&:hover": {
-    //   cursor: "grab",
-    // },
   }),
-  MapPlayerName: (props) => ({
-    fontSize: props.isMobile ? "1rem" : "1.25rem",
+  MapPlayerName: {
+    fontSize: "1rem",
     textShadow:
       "-1.5px -1.5px 0 #000, 1.5px -1.5px 0 #000, -1.5px 1.5px 0 #000, 1.5px 1.5px 0 #000",
-  }),
+  },
   MapPlayerIconContainer: (props) => ({
     alignItems: "center",
-    border: "1px solid white",
-    display: "flex",
+    display: "inline-flex",
     flex: `1 0
      ${props.isMobile ? "2rem" : "4rem"}`,
     flexDirection: "column",
     height: "auto",
     justifyContent: "center",
-    margin: "0.5rem 0",
+    margin: "0.5rem",
     textAlign: "center",
-    width: props.isMobile ? "2rem" : "4rem",
+    minWidth: props.isMobile ? "1.5rem" : "3rem",
 
     "&:hover": {
       cursor: "grab",

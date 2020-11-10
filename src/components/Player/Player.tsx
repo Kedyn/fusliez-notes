@@ -107,6 +107,7 @@ export default function Player(props: IPlayerProps): JSX.Element {
                 type="text"
                 placeholder={t(`main.${color}`)}
                 className={classes.PlayerInput}
+                maxLength={10}
                 onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
                   handleChange(index, event)
                 }

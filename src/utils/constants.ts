@@ -52,7 +52,7 @@ export const DEFAULT_THEME_DATA: ITheme = {
 export const DEFAULT_PLAYERS: Array<IPlayer> = [
   { id: "Brown", playerName: "", color: "brown" },
   { id: "Red", playerName: "", color: "red" },
-  { id: "Orange", playerName: "fuslie PhD", color: "orange" },
+  { id: "Orange", playerName: "", color: "orange" },
   { id: "Yellow", playerName: "", color: "yellow" },
   { id: "Lime", playerName: "", color: "lime" },
   { id: "Green", playerName: "", color: "green" },
