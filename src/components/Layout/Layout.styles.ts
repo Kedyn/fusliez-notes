@@ -25,6 +25,7 @@ export default createUseStyles((theme: ITheme) => ({
   LayoutDisclaimer: {
     position: "absolute",
     bottom: 0,
+    left: 0,
     padding: "0.5rem",
     textAlign: "center",
     backgroundColor: theme.backgroundColorSecondary,
