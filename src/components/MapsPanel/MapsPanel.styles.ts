@@ -63,15 +63,32 @@ export default createUseStyles((theme: ITheme) => ({
   MapPlayerIcon: (props) => ({
     width: props.isMobile ? "1.15rem" : "2.3rem",
     height: "auto",
-    margin: "0.5rem 0.75rem",
+    margin: "0 0.75rem",
+
+    // "&:hover": {
+    //   cursor: "grab",
+    // },
+  }),
+  MapPlayerName: (props) => ({
+    fontSize: props.isMobile ? "1rem" : "1.25rem",
+    textShadow:
+      "-1.5px -1.5px 0 #000, 1.5px -1.5px 0 #000, -1.5px 1.5px 0 #000, 1.5px 1.5px 0 #000",
+  }),
+  MapPlayerIconContainer: (props) => ({
+    alignItems: "center",
+    border: "1px solid white",
+    display: "flex",
+    flex: `1 0
+     ${props.isMobile ? "2rem" : "4rem"}`,
+    flexDirection: "column",
+    height: "auto",
+    justifyContent: "center",
+    margin: "0.5rem 0",
+    textAlign: "center",
+    width: props.isMobile ? "2rem" : "4rem",
 
     "&:hover": {
       cursor: "grab",
     },
   }),
-  MapsButtonsContainer: {
-    display: "flex",
-    justifyContent: "flex-end",
-    flex: "1 0 auto",
-  },
 }));

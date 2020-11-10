@@ -6,6 +6,7 @@ import MiraHqWithDetails from "./MiraHqWithDetails";
 import PolusWithDetails from "./PolusWithDetails";
 import React from "react";
 import TheSkeldWithDetails from "./TheSkeldWithDetails";
+import { getAllPlayers } from "store/slices/PlayersSectionsSlice";
 import { useSelector } from "react-redux";
 import useStyles from "./MapsPanel.styles";
 import { useTranslation } from "react-i18next";
@@ -19,20 +20,22 @@ export default function MapsPanel(): JSX.Element {
   const isMobile = useSelector(getIsMobile);
   const orientation = useSelector(getOrientation);
 
-  const players = [
-    "brown",
-    "red",
-    "orange",
-    "yellow",
-    "lime",
-    "green",
-    "cyan",
-    "blue",
-    "purple",
-    "pink",
-    "white",
-    "black",
-  ];
+  // const players = [
+  //   "brown",
+  //   "red",
+  //   "orange",
+  //   "yellow",
+  //   "lime",
+  //   "green",
+  //   "cyan",
+  //   "blue",
+  //   "purple",
+  //   "pink",
+  //   "white",
+  //   "black",
+  // ];
+
+  const allPlayers = useSelector(getAllPlayers);
 
   const classes = useStyles({
     map: map === "skeld" ? "TheSkeld" : map === "mira" ? "Mirahq" : "Polus",
@@ -91,16 +94,19 @@ export default function MapsPanel(): JSX.Element {
         </div>
 
         {!resetState &&
-          players.map((player) => (
-            <Draggable key={player} bounds="parent">
-              <img
-                src={`assets/images/playerIcons/${player}.png`}
-                className={classes.MapPlayerIcon}
-                onDrag={(event: React.DragEvent<HTMLImageElement>) =>
-                  event.stopPropagation()
-                }
-                draggable={false}
-              />
+          allPlayers.map(({ playerName, color }) => (
+            <Draggable key={color} bounds="parent">
+              <span className={classes.MapPlayerIconContainer}>
+                <text className={classes.MapPlayerName}>{playerName}</text>
+                <img
+                  src={`assets/images/playerIcons/${color}.png`}
+                  className={classes.MapPlayerIcon}
+                  onDrag={(event: React.DragEvent<HTMLImageElement>) =>
+                    event.stopPropagation()
+                  }
+                  draggable={false}
+                />
+              </span>
             </Draggable>
           ))}
       </div>
