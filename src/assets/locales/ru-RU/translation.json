@@ -25,7 +25,9 @@
     "purple": "Фиолетовый",
     "pink": "Розовый",
     "white": "Белый",
-    "black": "Черный"
+    "black": "Черный",
+    "disclaimer": "Please know that we utilize Google Analytics to collect anonymous data, to help us with development. <1 /> For information on how Google utilizes or collects data please check <3>here</3>.",
+    "understand": "I understand"
   },
   "controls": {
     "wins": "Выигрышей",

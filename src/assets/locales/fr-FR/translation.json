@@ -26,7 +26,9 @@
     "purple": "Violet",
     "pink": "Rose",
     "white": "Blanc",
-    "black": "Noir"
+    "black": "Noir",
+    "disclaimer": "Please know that we utilize Google Analytics to collect anonymous data, to help us with development. <1 /> For information on how Google utilizes or collects data please check <3>here</3>.",
+    "understand": "I understand"
   },
   "controls": {
     "wins": "Victoires",

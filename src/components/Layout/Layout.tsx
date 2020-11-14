@@ -1,4 +1,5 @@
 import { BREAKPOINT, NAMESPACE, VERSION } from "constants/main";
+import { Trans, useTranslation } from "react-i18next";
 import {
   getIsMobile,
   getOrientation,
@@ -30,6 +31,8 @@ export default function Content(): JSX.Element {
   const orientation = useSelector(getOrientation);
 
   const dispatch = useDispatch();
+
+  const { t } = useTranslation();
 
   // This is only used to load the current theme colors
   const classes = useStyles(); // eslint-disable-line
@@ -90,23 +93,26 @@ export default function Content(): JSX.Element {
 
   return (
     <React.Fragment>
-      <React.Suspense fallback="Loading...">{content}</React.Suspense>
+      {content}
 
       {showDisclaimer === null && (
         <div className={classes.LayoutDisclaimer}>
           <p>
-            Please know that we utilize Google Analytics to collect anonymous
-            data, to help us with development.
-            <br />
-            For information on how Google utilizes or collects data please check{" "}
-            <a
-              href="https://policies.google.com/technologies/partner-sites"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              here
-            </a>
-            .
+            <Trans i18nKey="main.disclaimer">
+              Please know that we utilize Google Analytics to collect anonymous
+              data, to help us with development.
+              <br />
+              For information on how Google utilizes or collects data please
+              check
+              <a
+                href="https://policies.google.com/technologies/partner-sites"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                here
+              </a>
+              .
+            </Trans>
           </p>
           <Button
             onClick={() => {
@@ -115,7 +121,7 @@ export default function Content(): JSX.Element {
               localStorage.setItem(`${NAMESPACE}disclaimer`, "Understood");
             }}
           >
-            I understand
+            {t("main.understand")}
           </Button>
         </div>
       )}

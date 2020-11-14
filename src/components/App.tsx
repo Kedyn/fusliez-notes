@@ -41,7 +41,9 @@ export default function App(): JSX.Element {
       <Provider store={store}>
         <JssProvider registry={jssSetUp()}>
           <ThemeProvider theme={DEFAULT_THEME_DATA}>
-            <Layout />
+            <React.Suspense fallback="Loading...">
+              <Layout />
+            </React.Suspense>
           </ThemeProvider>
         </JssProvider>
       </Provider>

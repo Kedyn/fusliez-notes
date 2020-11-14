@@ -25,7 +25,9 @@
     "purple": "Morado",
     "pink": "Rosado",
     "white": "Blanco",
-    "black": "Negro"
+    "black": "Negro",
+    "disclaimer": "Por favor comprende que utilizamos Google Analytics para colectar datos anonimamente para que nos ayude con el desarrollo. <1 /> Para mas informacion de como Google utiliza o colecciona esta informacion da clic <3>aqui</3>.",
+    "understand": "Comprendo"
   },
   "controls": {
     "wins": "Victorias",
