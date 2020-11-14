@@ -13,12 +13,12 @@ function getInitialState(): IScores {
     const scoresObject = JSON.parse(localScoresData);
 
     return {
-      crewmateWins: scoresObject.crewmateWins || DEFAULT_SCORES.crewmateWins,
+      crewmateWins: scoresObject.crewmateWins ?? DEFAULT_SCORES.crewmateWins,
       crewmateLosses:
-        scoresObject.crewmateLosses || DEFAULT_SCORES.crewmateLosses,
-      impostorWins: scoresObject.impostorWins || DEFAULT_SCORES.impostorWins,
+        scoresObject.crewmateLosses ?? DEFAULT_SCORES.crewmateLosses,
+      impostorWins: scoresObject.impostorWins ?? DEFAULT_SCORES.impostorWins,
       impostorLosses:
-        scoresObject.impostorLosses || DEFAULT_SCORES.impostorLosses,
+        scoresObject.impostorLosses ?? DEFAULT_SCORES.impostorLosses,
     };
   }
 
