@@ -115,5 +115,10 @@
     "partThree": "Gracias a todos los que utilizan esta herramienta.",
     "partFour": "Por favor echen un vistazo a todas las personas mencionadas aqui y muestrenles un poco de amor.",
     "partFive": "PS: Si he dejado alguien fuera favor de hacermelo saber. He intentado no olvidar a nadie."
+  },
+  "footer": {
+    "partOne": "fusliez notes creado con <1 /> por fusfam.",
+    "partTwo": "Ver en GitHub",
+    "partThree": "Deja comentario (en ingles)"
   }
 }

@@ -1,21 +1,28 @@
+import { Trans, useTranslation } from "react-i18next";
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import useStyles from "./Footer.styles";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default function Footer(): JSX.Element {
   const classes = useStyles();
 
+  const { t } = useTranslation();
+
   return (
     <React.Fragment>
       <footer className={classes.Footer}>
-        fusliez notes made with <FontAwesomeIcon icon="heart" /> by the fuslie
-        fam. |{" "}
+        <Trans i18nKey="footer.partOne">
+          fusliez notes made with <FontAwesomeIcon icon="heart" /> by the fuslie
+          fam.
+        </Trans>{" "}
+        |{" "}
         <a
           href="https://github.com/Kedyn/fusliez-notes"
           target="_blank"
           rel="noopener noreferrer"
         >
-          View on Github
+          {t("footer.partTwo")}
         </a>{" "}
         |{" "}
         <a
@@ -23,7 +30,7 @@ export default function Footer(): JSX.Element {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Leave feedback
+          {t("footer.partThree")}
         </a>
       </footer>
     </React.Fragment>
