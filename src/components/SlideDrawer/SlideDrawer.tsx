@@ -1,8 +1,8 @@
+import { CloseButton } from "components/common/Button";
 import { IView } from "utils/types";
 import React from "react";
-import useStyles from "./SlideDrawer.styles";
 import cx from "classnames";
-import { CloseButton } from "components/common/Button";
+import useStyles from "./SlideDrawer.styles";
 
 export interface ISideDrawerProps {
   isDrawerOpen: boolean;
@@ -76,11 +76,11 @@ export default function SlideDrawer(
             ))}
           </ul>
         </div>
-        <img
+        {/* <img
           className={classes.SlideDrawerEmote}
           src="assets/images/amongNotes.gif"
           alt="Among Us animated gif emote"
-        />
+        /> */}
       </div>
     </React.Fragment>
   );

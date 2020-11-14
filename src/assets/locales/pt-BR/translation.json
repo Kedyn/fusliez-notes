@@ -25,7 +25,9 @@
     "purple": "Roxo",
     "pink": "Rosa",
     "white": "Branco",
-    "black": "Preto"
+    "black": "Preto",
+    "disclaimer": "Please know that we utilize Google Analytics to collect anonymous data, to help us with development. <1 /> For information on how Google utilizes or collects data please check <3>here</3>.",
+    "understand": "I understand"
   },
   "controls": {
     "wins": "Vitórias",
@@ -33,12 +35,12 @@
     "crewmate": "Tripulante",
     "impostor": "Impostor",
     "resetScores": "Reiniciar Pontuação",
-    "resetRound": "Reiniciar Rodada",
+    "resetPositions": "Reset Positions",
     "resetAll": "Reiniciar Tudo",
     "notes": "Notas",
     "resetNotes": "Reiniciar Notas",
-    "lockPlayers": "Bloquear Jogadores",
-    "unlockPlayers": "Desbloquear Jogadores"
+    "lockEditing": "Lock Editing",
+    "unlockEditing": "Unlock Editing"
   },
   "maps": {
     "title": "Maps",
@@ -75,8 +77,8 @@
     "south": "4. Sul",
     "southwest": "5. Sudoeste",
     "northwest": "6. Noroeste",
-    "dragInstructions": "Arraste jogadores no mapa para rastrear",
-    "resetPlayers": "Reiniciar Jogadores"
+    "dragInstructions": "Drag players on the map",
+    "removePlayers": "Remove All Players From Map"
   },
   "settings": {
     "title": "Ajustes",
@@ -89,7 +91,7 @@
     "close": "Fechar",
     "addSection": "Add Section",
     "resetSections": "Reset Sections",
-    "sectionsNote": "Note: changing the default section (<1 />) will only be affected after clicking Reset Round or Reset All."
+    "sectionsNote": "Note: changing the default section (<1 />) will only be affected after clicking Reset Positions or Reset All."
   },
   "menu": {
     "players": "Jogadores",
@@ -101,5 +103,22 @@
     "feedback": "Feedback",
     "about": "Sobre",
     "changelog": "Log de mudanças"
+  },
+  "about": {
+    "developers": "Developers",
+    "translators": "Translators",
+    "artists": "Artists",
+    "special": "Special Thanks To",
+    "disclaimer": "Disclaimer: this app is in no way associated with InnerSloth.",
+    "partOne": "First, thanks to <1>fuslie</1> for inspiring this project.",
+    "partTwo": "Thanks to everyone who has suggested enhancements, reported bugs, or any other support on this project.",
+    "partThree": "Thanks to everyone who uses this tool.",
+    "partFour": "Please check out everyone mentioned here and show them some love.",
+    "partFive": "PS: If I left anyone out, please let me know. I do not mean to forget anyone."
+  },
+  "footer": {
+    "partOne": "fusliez notes made with <1 /> by the fusfam.",
+    "partTwo": "View on GitHub",
+    "partThree": "Leave feedback (English only)"
   }
 }

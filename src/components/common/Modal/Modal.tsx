@@ -1,5 +1,5 @@
-import React from "react";
 import { CloseButton } from "components/common/Button";
+import React from "react";
 import useStyles from "./Modal.styles";
 
 export interface IModalProps {

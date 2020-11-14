@@ -2,6 +2,27 @@ import { ITheme } from "utils/types";
 import { createUseStyles } from "react-jss";
 
 export default createUseStyles((theme: ITheme) => ({
+  "@global": {
+    image: {
+      pointerEvents: "none",
+    },
+    text: {
+      fontFamily:
+        "Impact, Haettenschweiler, Franklin Gothic Bold, Charcoal, Helvetica Inserat, Bitstream Vera Sans Bold, Arial Black, sans serif",
+      fontSize: "1.75rem",
+      fill: "#ffffff",
+      strokeWidth: "1px",
+      stroke: "#000000",
+      pointerEvents: "none",
+    },
+    ".MapDescriptions": {
+      "&>text": {
+        fontFamily: theme.fontFamily,
+        fontSize: "1.25rem",
+        strokeWidth: 0,
+      },
+    },
+  },
   MapsPanel: {
     flex: 1,
     justifyContent: "center",

@@ -31,7 +31,8 @@ Thanks to the developer team:
 [Francis Tse](https://github.com/francistse23) (A.K.A. Furanki)  
 [Kevin Han](https://github.com/kevinydhan) (A.K.A. khany)  
 [Griffin Suparto](https://github.com/Viou)  
-[Alena Choong](https://github.com/leeeennyy)
+[Alena Choong](https://github.com/leeeennyy)  
+[Pawel Boguslawski](https://github.com/bogusweb)
 
 Thanks to everyone who has suggested enhancements, reported bugs, or any
 other support on this project such as:

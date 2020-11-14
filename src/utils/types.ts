@@ -111,6 +111,7 @@ export interface IUIStoreState {
   Scores: IScores;
   PlayerEditLock: boolean;
   PlayersSections: IPlayersSectionsSlice;
+  Maps: IMaps;
 }
 
 export interface IPlayersSection extends ItemInterface {
@@ -126,4 +127,15 @@ export interface IPlayersSectionsSlice {
 export interface IPerson {
   name: string;
   link: string;
+}
+
+export interface IMapsCharacter {
+  id: string;
+  x: number;
+  y: number;
+}
+
+export interface IMaps {
+  currentMap: string;
+  characters: Array<IMapsCharacter>;
 }
