@@ -28,6 +28,7 @@ import { ITheme } from "utils/types";
 import React from "react";
 import WinsLossesButton from "./WinsLossesButton";
 import { getIsMobile } from "store/slices/DeviceSlice";
+import { resetCharacters } from "store/slices/MapsSlice";
 import { resetLock } from "store/slices/PlayerEditLockSlice";
 import useStyles from "./ScoreControls.styles";
 import { useTheme } from "react-jss";
@@ -53,6 +54,8 @@ export default function ScoreControls(): JSX.Element {
     dispatch(resetScores());
 
     dispatch(resetPlayersSections());
+
+    dispatch(resetCharacters());
 
     dispatch(resetLock());
   };
