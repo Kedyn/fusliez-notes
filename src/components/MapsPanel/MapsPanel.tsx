@@ -22,6 +22,7 @@ import MiraHq from "./MiraHq";
 import Polus from "./Polus";
 import React from "react";
 import TheSkeld from "./TheSkeld";
+import { ensure } from "utils/helperFunctions";
 import useStyles from "./MapsPanel.styles";
 import { useTranslation } from "react-i18next";
 
@@ -100,10 +101,9 @@ export function reassignPlayers(
     newDeadPlayers = [...deadPlayersSection.players, player];
 
     // get current player's section
-    const currentPlayerSection: IPlayersSection | any = playersSections.find(
+    const currentPlayerSection = playersSections.find(
       (playersSection) => playersSection.id === sectionId
     );
-
     if (currentPlayerSection) {
       // remove player from original section
       const newCurrentPlayers = currentPlayerSection?.players.filter(
