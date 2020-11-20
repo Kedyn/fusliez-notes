@@ -39,4 +39,9 @@ export default createUseStyles({
     justifyContent: "space-between",
     marginRight: "0.5rem",
   },
+  DisabledEditing: {
+    "&:hover": {
+      cursor: "not-allowed",
+    },
+  },
 });

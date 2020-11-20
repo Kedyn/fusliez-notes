@@ -48,9 +48,14 @@ export default function SettingsPlayersSections(): JSX.Element {
 
             <div className={classes.SettingsInputContainer}>
               <input
+                disabled={list.title === "main.lists.dead"}
                 type="text"
                 placeholder="Section name"
-                className={classes.SettingsInput}
+                className={`${classes.SettingsInput} ${
+                  list.title === "main.lists.dead"
+                    ? `${classes.DisabledEditing}`
+                    : ""
+                }`}
                 onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
                   dispatch(
                     setPlayersSectionsTitle({
