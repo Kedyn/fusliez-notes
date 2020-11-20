@@ -69,8 +69,6 @@ export function reassignPlayers(
 ): void {
   // if already dead, set to unknown/default
   // else set to dead
-
-  // console.log(defaultPlayersSection, deadPlayersSection);
   const { sectionId, listName, player } = findCurrentList(
     playersSections,
     color
@@ -86,8 +84,6 @@ export function reassignPlayers(
       (deadPlayer) => deadPlayer.color !== player.color
     );
 
-    console.log("already in dead. showing new dead players", newDeadPlayers);
-
     dispatch(
       setPlayersFromSection({
         sectionId: defaultPlayersSection.id as number,
@@ -96,7 +92,6 @@ export function reassignPlayers(
     );
   } else {
     // add player to dead players
-    console.log("current dead", deadPlayersSection.players);
     newDeadPlayers = [...deadPlayersSection.players, player];
 
     // get current player's section
@@ -153,14 +148,6 @@ export default function MapsPanel(): JSX.Element {
   } else if (map === "Polus") {
     currentMap = <Polus />;
   }
-
-  console.log(deadPlayersSection);
-
-  // console.log(findCurrentList(playersSections, "brown"));
-
-  // console.log(
-  //   playersSections.find((playersSection) => playersSection.id === 1)
-  // );
 
   return (
     <div id="maps" className={classes.MapsPanel}>
