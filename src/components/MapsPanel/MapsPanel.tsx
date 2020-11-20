@@ -22,7 +22,6 @@ import MiraHq from "./MiraHq";
 import Polus from "./Polus";
 import React from "react";
 import TheSkeld from "./TheSkeld";
-import { ensure } from "utils/helperFunctions";
 import useStyles from "./MapsPanel.styles";
 import { useTranslation } from "react-i18next";
 
