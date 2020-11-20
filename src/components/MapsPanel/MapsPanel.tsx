@@ -203,6 +203,7 @@ export default function MapsPanel(): JSX.Element {
             }}
           >
             <img
+              alt={`${player.id} player icon`}
               src={`assets/images/playerIcons/${
                 deadPlayersSection?.players
                   .map((deadPlayer) => deadPlayer.color)
