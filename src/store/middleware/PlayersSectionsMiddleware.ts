@@ -1,7 +1,7 @@
 import { DEFAULT_SECTION, DEFAULT_SECTIONS } from "constants/sections";
 import { IPlayer, IPlayersSection } from "utils/types";
 import {
-  getDefaultSection,
+  getDefaultSectionId,
   getPlayersSections,
   resetPlayersSections,
   resetPlayersSectionsPositions,
@@ -20,7 +20,7 @@ export const PlayersSectionsMiddleware: Middleware<unknown, RootState> = (
 ) => (next) => (action) => {
   const state = store.getState();
 
-  let defaultSection = getDefaultSection(state);
+  let defaultSection = getDefaultSectionId(state);
   let sections = getPlayersSections(state).map((section) => ({
     id: section.id,
     title: section.title,

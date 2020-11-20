@@ -171,11 +171,39 @@ export const {
   resetPlayersSections,
 } = PlayersSectionsSlice.actions;
 
-export const getDefaultSection = (state: IUIStoreState): number =>
+export const getDefaultSectionId = (state: IUIStoreState): number =>
   state.PlayersSections.defaultSection;
 
 export const getPlayersSections = (
   state: IUIStoreState
 ): Array<IPlayersSection> => state.PlayersSections.sections;
+
+export const getDefaultPlayersSection = (
+  state: IUIStoreState
+): IPlayersSection =>
+  _ensure(
+    state.PlayersSections.sections.find(
+      (playersSection) => playersSection.id === getDefaultSectionId(state)
+    )
+  );
+
+export const getDeadPlayersSection = (state: IUIStoreState): IPlayersSection =>
+  _ensure(
+    state.PlayersSections.sections.find(
+      (playerSection) => playerSection.title === "main.lists.dead"
+    )
+  );
+
+// ensure Array.prototype.find will not return `undefined`
+function _ensure(
+  argument: IPlayersSection | undefined,
+  message = "This value was promised to be there."
+): IPlayersSection {
+  if (argument === undefined || argument === null) {
+    throw new TypeError(message);
+  }
+
+  return argument;
+}
 
 export default PlayersSectionsSlice;

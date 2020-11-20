@@ -1,6 +1,6 @@
 import { Trans, useTranslation } from "react-i18next";
 import {
-  getDefaultSection,
+  getDefaultSectionId,
   getPlayersSections,
   resetPlayersSections,
   setDefaultSection,
@@ -19,7 +19,7 @@ import useStyles from "./SettingsPlayersSections.styles";
 export default function SettingsPlayersSections(): JSX.Element {
   const isMobile = useSelector(getIsMobile);
   const playersSections = useSelector(getPlayersSections);
-  const defaultSection = useSelector(getDefaultSection);
+  const defaultSection = useSelector(getDefaultSectionId);
 
   const classes = useStyles();
 
