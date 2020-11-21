@@ -82,9 +82,12 @@ export default createUseStyles((theme: ITheme) => ({
     },
   }),
   MapPlayerIcon: (props) => ({
-    width: props.isMobile ? "1.15rem" : "2.3rem",
+    width: props.isMobile ? "1rem" : "2rem",
     height: "auto",
     margin: "0.5rem 0.75rem",
+    mozUserSelect: "none",
+    webkitUserSelect: "none",
+    userSelect: "none",
 
     "&:hover": {
       cursor: "grab",
