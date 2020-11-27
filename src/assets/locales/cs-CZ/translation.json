@@ -25,7 +25,9 @@
     "purple": "Fialová",
     "pink": "Růžová",
     "white": "Bílá",
-    "black": "Černá"
+    "black": "Černá",
+    "disclaimer": "Používáme Google Analytics ke sbírání anonymních dat, která nám pomohou s vývojem. <1 /> Pro více informací jak Google používá nebo sbírá tyto data klikněte <3>zde</3>.",
+    "understand": "Souhlasím"
   },
   "controls": {
     "wins": "Vyhrál/a",
@@ -76,7 +78,7 @@
     "southwest": "5. Jihozápad",
     "northwest": "6. Severozápad",
     "dragInstructions": "Přetáhněte hráče na mapu pro sledování",
-    "resetPlayers": "Restartovat hráče"
+    "removePlayers": "Smazat všechny hráče z mapy"
   },
   "settings": {
     "title": "Nastavení",
@@ -101,5 +103,22 @@
     "feedback": "Zpětná vazba",
     "about": "O",
     "changelog": "Seznam změn"
+  },
+  "about": {
+    "developers": "Vývojáři",
+    "translators": "Překladatelé",
+    "artists": "Umělci",
+    "special": "Speciální poděkování",
+    "disclaimer": "Odmítnutí odpovědnosti: tato aplikace není žádným způsobem spojena s InnerSloth.",
+    "partOne": "Děkuji <1>fuslie</1> pro inspiraci na tento projekt.",
+    "partTwo": "Děkuji všem, kteří navrhovali vylepšení, nahlašovali chyby nebo jinak podporovali tento projekt.",
+    "partThree": "Děkuji všem, kteří používají tuto aplikaci.",
+    "partFour": "Prosím koukněte se na všechny tady označené a ukažte jim lásku.",
+    "partFive": "PS: Pokud jsem někoho vynechal, prosím kontaktujte mě. Není můj úmysl někoho vynechat."
+  },
+  "footer": {
+    "partOne": "fusliez notes vytvořené s <1 /> fuslie rodinou.",
+    "partTwo": "Otevřít GitHub",
+    "partThree": "Zanechat zpětnou vazbu"
   }
 }
