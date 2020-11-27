@@ -7,11 +7,11 @@ import useStyles from "./Footer.styles";
 export default function Footer(): JSX.Element {
   const classes = useStyles();
 
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   return (
     <React.Fragment>
-      <footer className={classes.Footer}>
+      <footer style={{ direction: i18n.dir() }} className={classes.Footer}>
         <Trans i18nKey="footer.partOne">
           fusliez notes made with <FontAwesomeIcon icon="heart" /> by the fuslie
           fam.
