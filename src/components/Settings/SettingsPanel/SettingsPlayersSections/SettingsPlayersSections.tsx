@@ -73,7 +73,7 @@ export default function SettingsPlayersSections(): JSX.Element {
 
             <div>
               <Button
-                danger
+                danger={list.id !== defaultSection}
                 className={classes.SettingsDeleteButton}
                 onClick={() => {
                   if (list.id !== defaultSection) {
@@ -86,6 +86,7 @@ export default function SettingsPlayersSections(): JSX.Element {
                     );
                   }
                 }}
+                disabled={list.id === defaultSection}
               >
                 <FontAwesomeIcon icon="times" size="sm" />
               </Button>

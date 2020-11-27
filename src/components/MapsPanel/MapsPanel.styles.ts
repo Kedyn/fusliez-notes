@@ -2,6 +2,27 @@ import { ITheme } from "utils/types";
 import { createUseStyles } from "react-jss";
 
 export default createUseStyles((theme: ITheme) => ({
+  "@global": {
+    image: {
+      pointerEvents: "none",
+    },
+    text: {
+      fontFamily:
+        "Impact, Haettenschweiler, Franklin Gothic Bold, Charcoal, Helvetica Inserat, Bitstream Vera Sans Bold, Arial Black, sans serif",
+      fontSize: "1.75rem",
+      fill: "#ffffff",
+      strokeWidth: "1px",
+      stroke: "#000000",
+      pointerEvents: "none",
+    },
+    ".MapDescriptions": {
+      "&>text": {
+        fontFamily: theme.fontFamily,
+        fontSize: "1.25rem",
+        strokeWidth: 0,
+      },
+    },
+  },
   MapsPanel: {
     flex: 1,
     justifyContent: "center",
@@ -61,9 +82,12 @@ export default createUseStyles((theme: ITheme) => ({
     },
   }),
   MapPlayerIcon: (props) => ({
-    width: props.isMobile ? "1.15rem" : "2.3rem",
+    width: props.isMobile ? "1rem" : "2rem",
     height: "auto",
     margin: "0.5rem 0.75rem",
+    mozUserSelect: "none",
+    webkitUserSelect: "none",
+    userSelect: "none",
 
     "&:hover": {
       cursor: "grab",

@@ -16,7 +16,7 @@ export default createUseStyles((theme: ITheme) => ({
     transition: "all 0.2s ease",
     backgroundColor: `rgba(${hexToRGB(theme.linkColor)}, 0.15)`,
     boxShadow: "1px 1px 1px rgba(0,0,0,0.25)",
-    "&:hover": {
+    "&:hover:enabled": {
       color: theme.linkColorHover,
       backgroundColor: `rgba(${hexToRGB(theme.linkColor)}, 0.25)`,
     },
@@ -24,7 +24,7 @@ export default createUseStyles((theme: ITheme) => ({
       outline: "none",
       boxShadow: `0 0 0.25rem ${theme.linkColor}`,
     },
-    "&:active": {
+    "&:active:enabled": {
       boxShadow: "inset 1px 1px 1px rgba(0,0,0,0.5)",
       backgroundColor: theme.backgroundColorSecondary,
     },

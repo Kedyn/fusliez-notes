@@ -3,7 +3,8 @@ import React from "react";
 import cx from "classnames";
 import useStyles from "./Button.styles";
 
-export interface IButtonProps {
+export interface IButtonProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   className?: string;
   children: React.ReactNode;
   danger?: boolean;
@@ -43,7 +44,8 @@ export default function Button(props: IButtonProps): JSX.Element {
   );
 }
 
-export interface ICloseButtonProps {
+export interface ICloseButtonProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   onClick(): void;
 }
 
@@ -52,7 +54,12 @@ export function CloseButton(props: ICloseButtonProps): JSX.Element {
   const { onClick, ...others } = props;
 
   return (
-    <Button onClick={onClick} className={classes.CloseButton} {...others}>
+    <Button
+      onClick={onClick}
+      className={classes.CloseButton}
+      {...others}
+      aria-label="Close"
+    >
       <FontAwesomeIcon icon="times" />
     </Button>
   );

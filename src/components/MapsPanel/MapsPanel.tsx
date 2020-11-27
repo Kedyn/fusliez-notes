@@ -1,4 +1,12 @@
+import {
+  getCharacters,
+  getCurrentMap,
+  resetCharacters,
+  setCharacterPosition,
+  setCurrentMap,
+} from "store/slices/MapsSlice";
 import { getIsMobile, getOrientation } from "store/slices/DeviceSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 import Button from "components/common/Button";
 import Draggable from "react-draggable";
@@ -6,51 +14,33 @@ import MiraHq from "./MiraHq";
 import Polus from "./Polus";
 import React from "react";
 import TheSkeld from "./TheSkeld";
-import { useSelector } from "react-redux";
 import useStyles from "./MapsPanel.styles";
 import { useTranslation } from "react-i18next";
 
 export default function MapsPanel(): JSX.Element {
   const { t } = useTranslation();
 
-  const [map, setMap] = React.useState("polus");
-  const [resetState, setResetState] = React.useState(false);
-
   const isMobile = useSelector(getIsMobile);
   const orientation = useSelector(getOrientation);
 
-  const players = [
-    "brown",
-    "red",
-    "orange",
-    "yellow",
-    "lime",
-    "green",
-    "cyan",
-    "blue",
-    "purple",
-    "pink",
-    "white",
-    "black",
-  ];
+  const players = useSelector(getCharacters);
+  const map = useSelector(getCurrentMap);
+
+  const dispatch = useDispatch();
 
   const classes = useStyles({
-    map: map === "skeld" ? "TheSkeld" : map === "mira" ? "Mirahq" : "Polus",
+    map: map,
     isMobile,
     orientation,
   });
 
   let currentMap = <TheSkeld />;
 
-  if (map === "mira") {
+  if (map === "MiraHq") {
     currentMap = <MiraHq />;
-  } else if (map === "polus") {
+  } else if (map === "Polus") {
     currentMap = <Polus />;
   }
-
-  React.useEffect(() => {
-    if (resetState) setResetState(false);
-  }, [resetState]);
 
   return (
     <div id="maps" className={classes.MapsPanel}>
@@ -59,22 +49,22 @@ export default function MapsPanel(): JSX.Element {
         <div className={classes.MapsToggle}>
           <Button
             className={classes.MapsToggleButton}
-            pressed={map === "skeld"}
-            onClick={() => setMap("skeld")}
+            pressed={map === "TheSkeld"}
+            onClick={() => dispatch(setCurrentMap("TheSkeld"))}
           >
             The Skeld
           </Button>
           <Button
             className={classes.MapsToggleButton}
-            pressed={map === "mira"}
-            onClick={() => setMap("mira")}
+            pressed={map === "MiraHq"}
+            onClick={() => dispatch(setCurrentMap("MiraHq"))}
           >
             Mira HQ
           </Button>
           <Button
             className={classes.MapsToggleButton}
-            pressed={map === "polus"}
-            onClick={() => setMap("polus")}
+            pressed={map === "Polus"}
+            onClick={() => dispatch(setCurrentMap("Polus"))}
           >
             Polus
           </Button>
@@ -85,24 +75,36 @@ export default function MapsPanel(): JSX.Element {
 
         <div className={classes.DraggableHeader}>
           <h3>{t("maps.dragInstructions")}</h3>
-          <Button onClick={() => setResetState(true)}>
-            {t("maps.resetPlayers")}
+          <Button onClick={() => dispatch(resetCharacters())}>
+            {t("maps.removePlayers")}
           </Button>
         </div>
 
-        {!resetState &&
-          players.map((player) => (
-            <Draggable key={player} bounds="parent">
-              <img
-                src={`assets/images/playerIcons/${player}.png`}
-                className={classes.MapPlayerIcon}
-                onDrag={(event: React.DragEvent<HTMLImageElement>) =>
-                  event.stopPropagation()
-                }
-                draggable={false}
-              />
-            </Draggable>
-          ))}
+        {players.map((player) => (
+          <Draggable
+            key={player.id}
+            bounds="parent"
+            position={{ x: player.x, y: player.y }}
+            onStop={(event, data) => {
+              dispatch(
+                setCharacterPosition({
+                  id: player.id,
+                  x: data.lastX,
+                  y: data.lastY,
+                })
+              );
+            }}
+          >
+            <img
+              src={`assets/images/playerIcons/${player.id}.png`}
+              className={classes.MapPlayerIcon}
+              onDrag={(event: React.DragEvent<HTMLImageElement>) =>
+                event.stopPropagation()
+              }
+              draggable={false}
+            />
+          </Draggable>
+        ))}
       </div>
     </div>
   );

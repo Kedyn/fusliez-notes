@@ -25,7 +25,9 @@
     "purple": "بنفش",
     "pink": "صورتی",
     "white": "سفید",
-    "black": "سیاه"
+    "black": "سیاه",
+    "disclaimer": "Please know that we utilize Google Analytics to collect anonymous data, to help us with development. <1 /> For information on how Google utilizes or collects data please check <3>here</3>.",
+    "understand": "I understand"
   },
   "controls": {
     "wins": "پیروزی‌ها",
@@ -33,12 +35,12 @@
     "crewmate": "خدمه",
     "impostor": "خائن",
     "resetScores": "بازنشانی امتیازها",
-    "resetRound": "بازنشانی دست",
+    "resetPositions": "Reset Positions",
     "resetAll": "بازنشانی همه",
     "notes": "دفترچه",
     "resetNotes": "بازنشانی دفترچه",
-    "lockPlayers": "قفل کردن بازیکن‌ها",
-    "unlockPlayers": "باز کردن قفل بازیکن‌ها"
+    "lockEditing": "Lock Editing",
+    "unlockEditing": "Unlock Editing"
   },
   "maps": {
     "title": "نقشه‌ها",
@@ -75,8 +77,8 @@
     "south": "۴. جنوب",
     "southwest": "۵. جنوب غربی",
     "northwest": "۶. شمال غربی",
-    "dragInstructions": "بازیکن‌هارو روی نقشه بکشید تا دنبالشون کنید",
-    "resetPlayers": "بازنشانی مکان‌ها"
+    "dragInstructions": "Drag players on the map",
+    "removePlayers": "Remove All Players From Map"
   },
   "settings": {
     "title": "تنظیمات",
@@ -101,5 +103,22 @@
     "feedback": "بازخورد",
     "about": "درباره",
     "changelog": "تغییرات"
+  },
+  "about": {
+    "developers": "Developers",
+    "translators": "Translators",
+    "artists": "Artists",
+    "special": "Special Thanks To",
+    "disclaimer": "Disclaimer: this app is in no way associated with InnerSloth.",
+    "partOne": "First, thanks to <1>fuslie</1> for inspiring this project.",
+    "partTwo": "Thanks to everyone who has suggested enhancements, reported bugs, or any other support on this project.",
+    "partThree": "Thanks to everyone who uses this tool.",
+    "partFour": "Please check out everyone mentioned here and show them some love.",
+    "partFive": "PS: If I left anyone out, please let me know. I do not mean to forget anyone."
+  },
+  "footer": {
+    "partOne": "fusliez notes made with <1 /> by the fuslie family.",
+    "partTwo": "View on GitHub",
+    "partThree": "Leave feedback (English only)"
   }
 }

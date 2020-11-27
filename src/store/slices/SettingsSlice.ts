@@ -13,9 +13,9 @@ function getInitialSate(): ISettings {
     const settingsObject = JSON.parse(localSettingsData);
 
     return {
-      showNames: settingsObject.showNames || DEFAULT_SETTINGS.showNames,
+      showNames: settingsObject.showNames ?? DEFAULT_SETTINGS.showNames,
       isColorBlind:
-        settingsObject.isColorBlind || DEFAULT_SETTINGS.isColorBlind,
+        settingsObject.isColorBlind ?? DEFAULT_SETTINGS.isColorBlind,
     };
   }
 

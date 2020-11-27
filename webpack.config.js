@@ -11,6 +11,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "[name].[hash].js",
+    chunkFilename: "[name].[hash].js",
   },
 
   module: {
@@ -33,7 +34,6 @@ module.exports = {
   resolve: {
     alias: {
       components: path.resolve(__dirname, "src", "components"),
-      context: path.resolve(__dirname, "src", "context"),
       themes: path.resolve(__dirname, "src", "themes"),
       utils: path.resolve(__dirname, "src", "utils"),
       store: path.resolve(__dirname, "src", "store"),
@@ -48,5 +48,11 @@ module.exports = {
     compress: true,
     port: 1234,
     open: true,
+  },
+
+  optimization: {
+    splitChunks: {
+      chunks: "all",
+    },
   },
 };

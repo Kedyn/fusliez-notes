@@ -1,4 +1,5 @@
 import { BREAKPOINT, NAMESPACE, VERSION } from "constants/main";
+import { Trans, useTranslation } from "react-i18next";
 import {
   getIsMobile,
   getOrientation,
@@ -8,10 +9,17 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 
 import Button from "components/common/Button";
-import DesktopLayout from "components/Layout/DesktopLayout";
-import MobileLayout from "components/Layout/MobileLayout";
 import React from "react";
 import useStyles from "./Layout.styles";
+
+const DesktopLayout = React.lazy(
+  () =>
+    import(/* webpackChunkName: "desktop" */ "components/Layout/DesktopLayout")
+);
+const MobileLayout = React.lazy(
+  () =>
+    import(/* webpackChunkName: "mobile" */ "components/Layout/MobileLayout")
+);
 
 export default function Content(): JSX.Element {
   const [width, setWidth] = React.useState(window.innerWidth);
@@ -23,6 +31,8 @@ export default function Content(): JSX.Element {
   const orientation = useSelector(getOrientation);
 
   const dispatch = useDispatch();
+
+  const { t } = useTranslation();
 
   // This is only used to load the current theme colors
   const classes = useStyles(); // eslint-disable-line
@@ -88,18 +98,21 @@ export default function Content(): JSX.Element {
       {showDisclaimer === null && (
         <div className={classes.LayoutDisclaimer}>
           <p>
-            Please know that we utilize Google Analytics to collect anonymous
-            data, to help us with development.
-            <br />
-            For information on how Google utilizes or collects data please check{" "}
-            <a
-              href="https://policies.google.com/technologies/partner-sites"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              here
-            </a>
-            .
+            <Trans i18nKey="main.disclaimer">
+              Please know that we utilize Google Analytics to collect anonymous
+              data, to help us with development.
+              <br />
+              For information on how Google utilizes or collects data please
+              check
+              <a
+                href="https://policies.google.com/technologies/partner-sites"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                here
+              </a>
+              .
+            </Trans>
           </p>
           <Button
             onClick={() => {
@@ -108,7 +121,7 @@ export default function Content(): JSX.Element {
               localStorage.setItem(`${NAMESPACE}disclaimer`, "Understood");
             }}
           >
-            I understand
+            {t("main.understand")}
           </Button>
         </div>
       )}
