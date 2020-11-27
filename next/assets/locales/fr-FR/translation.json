@@ -27,7 +27,8 @@
     "pink": "Rose",
     "white": "Blanc",
     "black": "Noir",
-    "disclaimer": "Please know that we utilize Google Analytics to collect anonymous data, to help us with development. <1 /> For information on how Google utilizes or collects data please check <2>here</2>."
+    "disclaimer": "Please know that we utilize Google Analytics to collect anonymous data, to help us with development. <1 /> For information on how Google utilizes or collects data please check <3>here</3>.",
+    "understand": "I understand"
   },
   "controls": {
     "wins": "Victoires",
@@ -115,5 +116,10 @@
     "partThree": "Thanks to everyone who uses this tool.",
     "partFour": "Please check out everyone mentioned here and show them some love.",
     "partFive": "PS: If I left anyone out, please let me know. I do not mean to forget anyone."
+  },
+  "footer": {
+    "partOne": "fusliez notes made with <1 /> by the fuslie family.",
+    "partTwo": "View on GitHub",
+    "partThree": "Leave feedback (English only)"
   }
 }

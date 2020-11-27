@@ -26,7 +26,8 @@
     "pink": "Rosado",
     "white": "Blanco",
     "black": "Negro",
-    "disclaimer": "Por favor comprende que utilizamos Google Analytics para colectar datos anonimamente para que nos ayude con el desarrollo. <1 /> Para mas informacion de como Google utiliza o colecciona esta informacion da clic <3>aqui</3>."
+    "disclaimer": "Por favor comprende que utilizamos Google Analytics para colectar datos anonimamente para que nos ayude con el desarrollo. <1 /> Para mas informacion de como Google utiliza o colecciona esta informacion da clic <3>aqui</3>.",
+    "understand": "Comprendo"
   },
   "controls": {
     "wins": "Victorias",
@@ -114,5 +115,10 @@
     "partThree": "Gracias a todos los que utilizan esta herramienta.",
     "partFour": "Por favor echen un vistazo a todas las personas mencionadas aqui y muestrenles un poco de amor.",
     "partFive": "PS: Si he dejado alguien fuera favor de hacermelo saber. He intentado no olvidar a nadie."
+  },
+  "footer": {
+    "partOne": "fusliez notes creado con <1 /> por la famia fuslie.",
+    "partTwo": "Ver en GitHub",
+    "partThree": "Deja comentario (en ingles)"
   }
 }
