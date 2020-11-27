@@ -8,7 +8,7 @@ import { useSelector } from "react-redux";
 import useStyles from "./AboutPanel.styles";
 
 export default function AboutPanel(): JSX.Element {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   const isMobile = useSelector(getIsMobile);
 
@@ -25,7 +25,7 @@ export default function AboutPanel(): JSX.Element {
   ];
 
   return (
-    <div className={classes.AboutPanel}>
+    <div style={{ direction: i18n.dir() }} className={classes.AboutPanel}>
       {isMobile && (
         <h2 className={classes.AboutPanelHeader}>{t("menu.about")}</h2>
       )}
