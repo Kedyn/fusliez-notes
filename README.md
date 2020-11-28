@@ -55,7 +55,8 @@ Kermitigated (twitch handle)
 [Stark_001001](https://www.reddit.com/user/Stark_001001) (The Skeld in game
 map)  
 [mooseknuckle_king](https://www.reddit.com/user/mooseknuckle_king/) (Mira HQ and
-Polus in game maps)
+Polus in game maps)  
+[Drison64](https://github.com/Drison64)
 
 Please if you would not like to be mentioned here or your information is wrong
 let me know so I can remove it or fix it, thank you!

@@ -45,96 +45,24 @@ export default function ColorsMenu(props: IColorsMenuProps): JSX.Element {
     targetPlayerColor: string
   ) => {
     if (currentPlayerColor !== targetPlayerColor) {
-      const currentPlayerData = {
-        index: -1,
-        list: playersSections[0],
-      };
-
-      const targetPlayerData = {
-        index: -1,
-        list: playersSections[0],
-      };
-
-      for (const list of playersSections) {
-        for (const [playerIndex, player] of list.players.entries()) {
-          if (player.color === currentPlayerColor) {
-            currentPlayerData.index = playerIndex;
-            currentPlayerData.list = list;
-          } else if (player.color === targetPlayerColor) {
-            targetPlayerData.index = playerIndex;
-            targetPlayerData.list = list;
-          }
-
-          if (currentPlayerData.index !== -1 && targetPlayerData.index !== -1) {
-            break;
-          }
-        }
-        if (currentPlayerData.index !== -1 && targetPlayerData.index !== -1) {
-          break;
-        }
-      }
-
       const newPlayersSections = [
-        ...playersSections.map((list) => ({ ...list })),
+        ...playersSections.map((list) => ({
+          ...list,
+
+          players: [
+            ...list.players.map((player) => ({
+              ...player,
+
+              color:
+                player.color === currentPlayerColor
+                  ? targetPlayerColor
+                  : player.color === targetPlayerColor
+                  ? currentPlayerColor
+                  : player.color,
+            })),
+          ],
+        })),
       ];
-
-      let listIndex = -1;
-
-      if (currentPlayerData.list.id === targetPlayerData.list.id) {
-        listIndex = currentPlayerData.list.id as number;
-
-        newPlayersSections[listIndex].players = playersSections[
-          listIndex
-        ].players.map((player, index) => {
-          if (index === currentPlayerData.index) {
-            return {
-              ...player,
-
-              color: targetPlayerColor,
-            };
-          } else if (index === targetPlayerData.index) {
-            return {
-              ...player,
-
-              color: currentPlayerColor,
-            };
-          }
-
-          return player;
-        });
-      } else {
-        listIndex = currentPlayerData.list.id as number;
-
-        newPlayersSections[listIndex].players = playersSections[
-          listIndex
-        ].players.map((player, index) => {
-          if (index === currentPlayerData.index) {
-            return {
-              ...player,
-
-              color: targetPlayerColor,
-            };
-          }
-
-          return player;
-        });
-
-        listIndex = targetPlayerData.list.id as number;
-
-        newPlayersSections[listIndex].players = playersSections[
-          listIndex
-        ].players.map((player, index) => {
-          if (index === targetPlayerData.index) {
-            return {
-              ...player,
-
-              color: currentPlayerColor,
-            };
-          }
-
-          return player;
-        });
-      }
 
       dispatch(setPlayersSections(newPlayersSections));
     }
