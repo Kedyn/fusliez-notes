@@ -6,9 +6,12 @@ A web to help keep track of among us game.
 
 - Score tracking
 - Draggable players between innocent/sus/hit list/evil/dead/unknown sections
+- Customizable sections
 - Notes
 - Maps
 - Draggable players on the map
+- Colorblind mode
+- Multiple languages
 
 ## Usage
 
@@ -56,7 +59,10 @@ Kermitigated (twitch handle)
 map)  
 [mooseknuckle_king](https://www.reddit.com/user/mooseknuckle_king/) (Mira HQ and
 Polus in game maps)  
-[Drison64](https://github.com/Drison64)
+[Drison64](https://github.com/Drison64)  
+[Unviray](https://github.com/Unviray)  
+[Itay Kabalo](https://twitter.com/itaykabalo)  
+Nuno Lopes
 
 Please if you would not like to be mentioned here or your information is wrong
 let me know so I can remove it or fix it, thank you!
