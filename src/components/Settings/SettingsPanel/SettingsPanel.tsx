@@ -86,6 +86,10 @@ export default function SettingsPanel(): JSX.Element {
       id: "he-IL",
       label: "Hebrew (IL)",
     },
+    {
+      id: "mg-MG",
+      label: "Malagasy (MG)",
+    },
   ];
 
   return (
