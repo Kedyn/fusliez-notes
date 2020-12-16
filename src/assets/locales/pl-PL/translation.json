@@ -105,20 +105,20 @@
     "changelog": "Dziennik zmian"
   },
   "about": {
-    "developers": "Developers",
-    "translators": "Translators",
-    "artists": "Artists",
-    "special": "Special Thanks To",
-    "disclaimer": "Disclaimer: this app is in no way associated with InnerSloth.",
-    "partOne": "First, thanks to <1>fuslie</1> for inspiring this project.",
-    "partTwo": "Thanks to everyone who has suggested enhancements, reported bugs, or any other support on this project.",
-    "partThree": "Thanks to everyone who uses this tool.",
-    "partFour": "Please check out everyone mentioned here and show them some love.",
-    "partFive": "PS: If I left anyone out, please let me know. I do not mean to forget anyone."
+    "developers": "Deweloperzy",
+    "translators": "Tłumacze",
+    "artists": "Artyści",
+    "special": "Specjalne podziękowania dla",
+    "disclaimer": "Uwaga: ta aplikacja nie jest w żadnym stopniu powiązana z Innersloth.",
+    "partOne": "Po pierwsze, podziękowania dla <1>fuslie</1> za inspirowanie do tego projektu.",
+    "partTwo": "Podziękowania dla tych którzy sugerowali ulepszenia, zgłaszali błędy lub każde inne wsparcie w tym projekcie.",
+    "partThree": "Podziękowania dla każdego użytkownika tej aplikacji.",
+    "partFour": "Proszę sprawdźcie wszystkich wymienionych tutaj i pokażcie im miłość.",
+    "partFive": "PS: Jeśli kogoś tutaj pominąłem powiadomncie mnie. Nie miałem zamiaru zapomnieć o nikim."
   },
   "footer": {
-    "partOne": "fusliez notes made with <1 /> by the fuslie family.",
-    "partTwo": "View on GitHub",
-    "partThree": "Leave feedback (English only)"
+    "partOne": "fusliez notes zrobione z <1 /> przez fuslie family.",
+    "partTwo": "Zobacz na Github'ie",
+    "partThree": "Zostaw opinie (Tylko po angielsku)"
   }
 }
