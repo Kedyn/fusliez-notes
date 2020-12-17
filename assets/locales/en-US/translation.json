@@ -9,10 +9,10 @@
     "lists": {
       "innocent": "Innocent",
       "suspicious": "Suspicious",
-      "evil": "Evil",
-      "hitList": "Hit List",
+      "evilHitList": "Evil / Hit List",
       "dead": "Dead",
-      "unknown": "Unknown"
+      "unknown": "Unknown",
+      "unused": "Unused"
     },
     "brown": "Brown",
     "red": "Red",
@@ -25,7 +25,9 @@
     "purple": "Purple",
     "pink": "Pink",
     "white": "White",
-    "black": "Black"
+    "black": "Black",
+    "disclaimer": "Please know that we utilize Google Analytics to collect anonymous data, to help us with development. <1 /> For information on how Google utilizes or collects data please check <3>here</3>.",
+    "understand": "I understand"
   },
   "controls": {
     "wins": "Wins",
@@ -33,12 +35,12 @@
     "crewmate": "Crewmate",
     "impostor": "Impostor",
     "resetScores": "Reset Scores",
-    "resetRound": "Reset Round",
+    "resetPositions": "Reset Positions",
     "resetAll": "Reset All",
     "notes": "Notepad",
     "resetNotes": "Reset Notepad",
-    "lockPlayers": "Lock Players",
-    "unlockPlayers": "Unlock Players"
+    "lockEditing": "Lock Editing",
+    "unlockEditing": "Unlock Editing"
   },
   "maps": {
     "title": "Maps",
@@ -75,8 +77,8 @@
     "south": "4. South",
     "southwest": "5. Southwest",
     "northwest": "6. Northwest",
-    "dragInstructions": "Drag players on the map to track",
-    "resetPlayers": "Reset Positions"
+    "dragInstructions": "Drag players on the map",
+    "removePlayers": "Remove All Players From Map"
   },
   "settings": {
     "title": "Settings",
@@ -86,7 +88,10 @@
     "colorBlindMode": "Color blind mode",
     "language": "Language",
     "done": "Done",
-    "close": "Close"
+    "close": "Close",
+    "addSection": "Add Section",
+    "resetSections": "Reset Sections",
+    "sectionsNote": "Note: changing the default section (<1 />) will only be affected after clicking Reset Positions or Reset All."
   },
   "menu": {
     "players": "Players",
@@ -98,5 +103,22 @@
     "feedback": "Feedback",
     "about": "About",
     "changelog": "Changelog"
+  },
+  "about": {
+    "developers": "Developers",
+    "translators": "Translators",
+    "artists": "Artists",
+    "special": "Special Thanks To",
+    "disclaimer": "Disclaimer: this app is in no way associated with InnerSloth.",
+    "partOne": "First, thanks to <1>fuslie</1> for inspiring this project.",
+    "partTwo": "Thanks to everyone who has suggested enhancements, reported bugs, or any other support on this project.",
+    "partThree": "Thanks to everyone who uses this tool.",
+    "partFour": "Please check out everyone mentioned here and show them some love.",
+    "partFive": "PS: If I left anyone out, please let me know. I do not mean to forget anyone."
+  },
+  "footer": {
+    "partOne": "fusliez notes made with <1 /> by the fuslie family.",
+    "partTwo": "View on GitHub",
+    "partThree": "Leave feedback"
   }
 }

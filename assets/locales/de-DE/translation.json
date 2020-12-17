@@ -9,10 +9,10 @@
     "lists": {
       "innocent": "Unschuldig",
       "suspicious": "Verdächtig",
-      "evil": "Böse",
-      "hitList": "Hitliste",
+      "evilHitList": "Böse / Hitliste",
       "dead": "Tot",
-      "unknown": "Unbekannt"
+      "unknown": "Unbekannt",
+      "unused": "Nicht benutzt"
     },
     "brown": "Braun",
     "red": "Rot",
@@ -25,7 +25,9 @@
     "purple": "Lila",
     "pink": "Pink",
     "white": "Weiß",
-    "black": "Schwarz"
+    "black": "Schwarz",
+    "disclaimer": "Bitte beachte, dass wir Google Analytics verwenden, um anonyme Daten zu sammeln die uns bei der Entwicklung unterstützen. <1 />",
+    "understand": "Ich verstehe"
   },
   "controls": {
     "wins": "Siege",
@@ -33,12 +35,12 @@
     "crewmate": "Teammitglied",
     "impostor": "Schwindler",
     "resetScores": "Punkte zurücksetzen",
-    "resetRound": "Runde zurücksetzen",
+    "resetPositions": "Positionen Zurücksetzen",
     "resetAll": "Alles zurücksetzen",
     "notes": "Notizen",
     "resetNotes": "Notizen zurücksetzen",
-    "lockPlayers": "Spieler sperren",
-    "unlockPlayers": "Spieler entsperren"
+    "lockEditing": "Bearbeiten sperren",
+    "unlockEditing": "Bearbeiten entsperren"
   },
   "maps": {
     "title": "Spielkarte",
@@ -75,8 +77,8 @@
     "south": "4. Süden",
     "southwest": "5. Südwest",
     "northwest": "6. Nordwest",
-    "dragInstructions": "Ziehen Sie die Spieler auf die Karte, um sie zu verfolgen",
-    "resetPlayers": "Spieler zurücksetzen"
+    "dragInstructions": "Ziehe Spieler auf die Karte",
+    "removePlayers": "Entferne Spieler von der Karte"
   },
   "settings": {
     "title": "Einstellungen",
@@ -86,7 +88,10 @@
     "colorBlindMode": "Farbenblinder Modus benutzen",
     "language": "Sprache",
     "done": "Fertig",
-    "close": "Schliessen"
+    "close": "Schliessen",
+    "addSection": "Abschnitt hinzufügen",
+    "resetSections": "Abschnitt zurücksetzen",
+    "sectionsNote": "Hinweis: Das Ändern des Standardabschnitts (<1 />) ist nur betroffen, wenn Positionen zurücksetzen oder alle zurücksetzen angeklickt wurde."
   },
   "menu": {
     "players": "Spieler",
@@ -98,5 +103,22 @@
     "feedback": "Rückmeldung",
     "about": "Über",
     "changelog": "Änderungsprotokoll"
+  },
+  "about": {
+    "developers": "Entwickler",
+    "translators": "Übersetzer",
+    "artists": "Künstler",
+    "special": "Besonderer Dank geht an",
+    "disclaimer": "Haftungsausschluss: Diese App ist in keiner Weise mit InnerSloth verbunden.",
+    "partOne": "Zunächst einmal danke ich <1> fuslie </ 1> für die Inspiration für dieses Projekt.",
+    "partTwo": "Vielen Dank an alle, die Verbesserungen und Fehler gemeldet haben oder uns in irgend einer anderen Form bei diesem Projekt geholfen haben.",
+    "partThree": "Vielen Dank an alle, die diese Website verwenden.",
+    "partFour": "Bitte schaut euch alle hier genannten Personen an und zeigt ihnen etwas Liebe.",
+    "partFive": "PS: Wenn ich jemanden ausgelassen habe, lass es mich wissen. Ich will niemanden vergessen."
+  },
+  "footer": {
+    "partOne": "fusliez notes gemacht mit <1 /> von der fusfam.",
+    "partTwo": "Auf Github anschauen",
+    "partThree": "Feedback hinterlassen (English only)"
   }
 }
