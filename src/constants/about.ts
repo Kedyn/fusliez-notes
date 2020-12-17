@@ -80,6 +80,10 @@ export const TRANSLATORS: Array<IPerson> = [
     name: "Nuno Lopes",
     link: "",
   },
+  {
+    name: "Jarsa132",
+    link: "https://github.com/Jarsa132",
+  },
 ];
 
 export const ARTISTS: Array<IPerson> = [

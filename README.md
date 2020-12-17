@@ -62,7 +62,8 @@ Polus in game maps)
 [Drison64](https://github.com/Drison64)  
 [Unviray](https://github.com/Unviray)  
 [Itay Kabalo](https://twitter.com/itaykabalo)  
-Nuno Lopes
+Nuno Lopes  
+[Jarsa132](https://github.com/Jarsa132)
 
 Please if you would not like to be mentioned here or your information is wrong
 let me know so I can remove it or fix it, thank you!
