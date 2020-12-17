@@ -7,6 +7,51 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Released]
 
+### [v1.0.0-beta.0] - 12/17/2020
+
+First major pre-release. Code refactoring.
+
+#### Added
+
+- Dynamic sections
+- French translation
+- Analytics disclaimer
+- Unused section by default
+- Czech translation
+- Malagasy translation
+
+#### Fixed
+
+- Initial settings data
+- Color menu
+- Map player icons size
+- Input bleeding into icon
+- NAN problem with scores
+- Remembering positions on mobile
+
+#### Removed
+
+- Unused components
+- Unused images
+- Inline styling from maps
+
+#### Changed
+
+- Map images
+- Button component
+
+### [v0.10.1] - 10/16/2020
+
+#### Added
+
+- Persian translation
+- Polish translation
+
+#### Changed
+
+- Switched to redux
+- Reverted back to save session data
+
 ### [v0.10.0] - 10/13/2020
 
 New UI revamp from chilblane. Improves not only visually, but also mobile support.

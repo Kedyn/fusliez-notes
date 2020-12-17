@@ -3,7 +3,6 @@ import {
   getCurrentMap,
   resetCharacters,
   setCharacterPosition,
-  setCharactersPositions,
   setCurrentMap,
 } from "store/slices/MapsSlice";
 import { getIsMobile, getOrientation } from "store/slices/DeviceSlice";

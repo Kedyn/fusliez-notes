@@ -35,7 +35,7 @@ export default function DesktopContent(): JSX.Element {
           />
         </Button>
 
-        <MapsContent fullMap={fullMap} />
+        <MapsContent />
       </main>
 
       <Footer />
