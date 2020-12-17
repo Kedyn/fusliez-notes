@@ -25,28 +25,30 @@ export default createUseStyles((theme: ITheme) => ({
   },
   MapsPanel: {
     flex: 1,
+    display: "flex",
+    flexDirection: "column",
     justifyContent: "center",
     padding: "1rem",
   },
-  MapsHeader: {
+  MapsPanelMapsHeader: {
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
     marginBottom: "1rem",
   },
-  MapsTitle: {
+  MapsPanelMapsTitle: {
     fontSize: "1.25rem",
     fontWeight: 500,
     letterSpacing: "0.05em",
     marginRight: "1rem",
     flex: "1 0 auto",
   },
-  MapsToggle: (props) => ({
+  MapsPanelMapsToggle: (props) => ({
     display: props.isMobile ? "flex" : "inline-flex",
     width: props.isMobile ? "100%" : "auto",
     margin: "0 0.25rem",
   }),
-  MapsToggleButton: {
+  MapsPanelMapsToggleButton: {
     flex: "1 1 auto",
     "&:not(:first-child)": {
       borderTopLeftRadius: 0,
@@ -57,18 +59,27 @@ export default createUseStyles((theme: ITheme) => ({
       borderBottomRightRadius: 0,
     },
   },
-  MapsToggleButtonActive: {
+  MapsPanelMapsToggleButtonActive: {
     opacity: "0.5",
     cursor: "default",
     "&:hover": {
       backgroundColor: theme.linkColor,
     },
   },
-  MapContainer: (props) => ({
+  MapsPanelMainContainer: {
+    flex: 1,
+    display: "flex",
+    flexDirection: "column",
     position: "relative",
-    textAlign: props.isMobile ? "center" : "left",
-  }),
-  DraggableHeader: (props) => ({
+  },
+  MapsPanelMapContainer: {
+    flex: 1,
+    backgroundColor: "#000000",
+  },
+  MapsPanelMap: {
+    maxHeight: "calc(-16.5rem + 100vh)",
+  },
+  MapsPanelDraggableHeader: (props) => ({
     display: "flex",
     flexDirection: props.isMobile ? "column" : "row",
     justifyContent: "space-between",
@@ -81,21 +92,14 @@ export default createUseStyles((theme: ITheme) => ({
       padding: "0.5rem 0",
     },
   }),
-  MapPlayerIcon: (props) => ({
+  MapsPanelMapPlayerIcons: {},
+  MapsPanelMapPlayerIcon: (props) => ({
     width: props.isMobile ? "1rem" : "2rem",
     height: "auto",
     margin: "0.5rem 0.75rem",
-    mozUserSelect: "none",
-    webkitUserSelect: "none",
-    userSelect: "none",
 
     "&:hover": {
       cursor: "grab",
     },
   }),
-  MapsButtonsContainer: {
-    display: "flex",
-    justifyContent: "flex-end",
-    flex: "1 0 auto",
-  },
 }));

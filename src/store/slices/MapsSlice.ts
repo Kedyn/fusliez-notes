@@ -13,6 +13,15 @@ const MapsSlice = createSlice({
       currentMap: action.payload,
     }),
 
+    setCharactersPositions: (
+      state: IMaps,
+      action: PayloadAction<Array<IMapsCharacter>>
+    ) => ({
+      ...state,
+
+      characters: action.payload,
+    }),
+
     setCharacterPosition: (
       state: IMaps,
       action: PayloadAction<IMapsCharacter>
@@ -49,6 +58,7 @@ const MapsSlice = createSlice({
 
 export const {
   setCurrentMap,
+  setCharactersPositions,
   setCharacterPosition,
   resetCharacters,
   reset,

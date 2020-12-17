@@ -3,6 +3,7 @@ import {
   getCurrentMap,
   resetCharacters,
   setCharacterPosition,
+  setCharactersPositions,
   setCurrentMap,
 } from "store/slices/MapsSlice";
 import { getIsMobile, getOrientation } from "store/slices/DeviceSlice";
@@ -34,35 +35,38 @@ export default function MapsPanel(): JSX.Element {
     orientation,
   });
 
-  let currentMap = <TheSkeld />;
+  let currentMap = <TheSkeld className={classes.MapsPanelMap} />;
 
   if (map === "MiraHq") {
-    currentMap = <MiraHq />;
+    currentMap = <MiraHq className={classes.MapsPanelMap} />;
   } else if (map === "Polus") {
-    currentMap = <Polus />;
+    currentMap = <Polus className={classes.MapsPanelMap} />;
   }
 
   return (
-    <div id="maps" className={classes.MapsPanel}>
-      <div className={classes.MapsHeader}>
-        {!isMobile && <h2 className={classes.MapsTitle}>{t("maps.title")}</h2>}
-        <div className={classes.MapsToggle}>
+    <div className={classes.MapsPanel}>
+      <div className={classes.MapsPanelMapsHeader}>
+        {!isMobile && (
+          <h2 className={classes.MapsPanelMapsTitle}>{t("maps.title")}</h2>
+        )}
+
+        <div className={classes.MapsPanelMapsToggle}>
           <Button
-            className={classes.MapsToggleButton}
+            className={classes.MapsPanelMapsToggleButton}
             pressed={map === "TheSkeld"}
             onClick={() => dispatch(setCurrentMap("TheSkeld"))}
           >
             The Skeld
           </Button>
           <Button
-            className={classes.MapsToggleButton}
+            className={classes.MapsPanelMapsToggleButton}
             pressed={map === "MiraHq"}
             onClick={() => dispatch(setCurrentMap("MiraHq"))}
           >
             Mira HQ
           </Button>
           <Button
-            className={classes.MapsToggleButton}
+            className={classes.MapsPanelMapsToggleButton}
             pressed={map === "Polus"}
             onClick={() => dispatch(setCurrentMap("Polus"))}
           >
@@ -70,41 +74,44 @@ export default function MapsPanel(): JSX.Element {
           </Button>
         </div>
       </div>
-      <div className={classes.MapContainer}>
-        {currentMap}
 
-        <div className={classes.DraggableHeader}>
+      <div className={classes.MapsPanelMainContainer} id="MapsContainer">
+        <div className={classes.MapsPanelMapContainer}>{currentMap}</div>
+
+        <div className={classes.MapsPanelDraggableHeader}>
           <h3>{t("maps.dragInstructions")}</h3>
           <Button onClick={() => dispatch(resetCharacters())}>
             {t("maps.removePlayers")}
           </Button>
         </div>
 
-        {players.map((player) => (
-          <Draggable
-            key={player.id}
-            bounds="parent"
-            position={{ x: player.x, y: player.y }}
-            onStop={(event, data) => {
-              dispatch(
-                setCharacterPosition({
-                  id: player.id,
-                  x: data.lastX,
-                  y: data.lastY,
-                })
-              );
-            }}
-          >
-            <img
-              src={`assets/images/playerIcons/${player.id}.png`}
-              className={classes.MapPlayerIcon}
-              onDrag={(event: React.DragEvent<HTMLImageElement>) =>
-                event.stopPropagation()
-              }
-              draggable={false}
-            />
-          </Draggable>
-        ))}
+        <div className={classes.MapsPanelMapPlayerIcons}>
+          {players.map((player) => (
+            <Draggable
+              key={player.id}
+              bounds="#MapsContainer"
+              position={{ x: player.x, y: player.y }}
+              onStop={(event, data) => {
+                dispatch(
+                  setCharacterPosition({
+                    id: player.id,
+                    x: data.lastX,
+                    y: data.lastY,
+                  })
+                );
+              }}
+            >
+              <img
+                src={`assets/images/playerIcons/${player.id}.png`}
+                className={classes.MapsPanelMapPlayerIcon}
+                onDrag={(event: React.DragEvent<HTMLImageElement>) =>
+                  event.stopPropagation()
+                }
+                draggable={false}
+              />
+            </Draggable>
+          ))}
+        </div>
       </div>
     </div>
   );

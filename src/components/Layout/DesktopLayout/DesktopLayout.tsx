@@ -1,4 +1,6 @@
+import Button from "components/common/Button";
 import ControlsContent from "components/ControlsContent";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Footer from "components/Footer";
 import MainContent from "components/MainContent";
 import MapsContent from "components/MapsPanel";
@@ -8,18 +10,32 @@ import useStyles from "./DesktopLayout.styles";
 export default function DesktopContent(): JSX.Element {
   const classes = useStyles();
 
+  const [fullMap, setFullMap] = React.useState(false);
+
   return (
     <React.Fragment>
       <main className={classes.DesktopContent}>
-        <MainContent />
+        {!fullMap && (
+          <React.Fragment>
+            <MainContent />
 
-        <div className={classes.DesktopDivider} />
+            <div className={classes.DesktopDivider} />
 
-        <ControlsContent />
+            <ControlsContent />
+          </React.Fragment>
+        )}
 
-        <div className={classes.DesktopDivider} />
+        <Button
+          className={classes.DesktopMapButton}
+          onClick={() => setFullMap(!fullMap)}
+        >
+          <FontAwesomeIcon
+            icon={fullMap ? "arrow-right" : "arrow-left"}
+            size="xs"
+          />
+        </Button>
 
-        <MapsContent />
+        <MapsContent fullMap={fullMap} />
       </main>
 
       <Footer />
