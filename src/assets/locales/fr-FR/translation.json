@@ -9,11 +9,10 @@
     "lists": {
       "innocent": "Innocent",
       "suspicious": "Suspect",
-      "evil": "Méchant",
-      "hitList": "Liste noire",
+      "evilHitList": "Liste noire",
       "dead": "Mort",
       "unknown": "Pas d'information",
-      "unused": "Unused"
+      "unused": "Inutilisé"
     },
     "brown": "Marron",
     "red": "Rouge",
@@ -26,7 +25,9 @@
     "purple": "Violet",
     "pink": "Rose",
     "white": "Blanc",
-    "black": "Noir"
+    "black": "Noir",
+    "disclaimer": "Sachez que nous utilisons Google Analytics qui collecte des données anonymes, afin de nous aider dans le développement. <1 /> Pour plus d'information sur comment Google utilise ou collecte des données, consultez <3>ce site</3>.",
+    "understand": "Je comprends"
   },
   "controls": {
     "wins": "Victoires",
@@ -34,12 +35,12 @@
     "crewmate": "Équipage",
     "impostor": "Imposteur",
     "resetScores": "Réinitialiser les scores",
-    "resetPositions": "Reset Positions",
+    "resetPositions": "Réinitialiser les positions",
     "resetAll": "Tout réinitialiser",
     "notes": "Notes",
     "resetNotes": "Réinitialiser les notes",
-    "lockEditing": "Lock Editing",
-    "unlockEditing": "Unlock Editing"
+    "lockEditing": "Verrouiller les joueurs",
+    "unlockEditing": "Déverrouiller les joueur"
   },
   "maps": {
     "title": "Cartes",
@@ -76,8 +77,8 @@
     "south": "4. Sud",
     "southwest": "5. Sud-Ouest",
     "northwest": "6. Nord-Ouest",
-    "dragInstructions": "Drag players on the map",
-    "removePlayers": "Remove All Players From Map"
+    "dragInstructions": "Déplacer les joueurs sur la carte",
+    "removePlayers": "Retirer tous les joueurs de la carte"
   },
   "settings": {
     "title": "Réglages",
@@ -88,9 +89,9 @@
     "language": "Langue",
     "done": "Valider",
     "close": "Fermer",
-    "addSection": "Add Section",
-    "resetSections": "Reset Sections",
-    "sectionsNote": "Note: changing the default section (<1 />) will only be affected after clicking Reset Positions or Reset All."
+    "addSection": "Ajouter une section",
+    "resetSections": "Réinitialiser les sections",
+    "sectionsNote": "Note: Modifier la section par défaut (<1 />) sera effectif après avoir cliqué sur 'Réinitialiser la partie' ou 'Tout réinitialiser'."
   },
   "menu": {
     "players": "Joueurs",
@@ -104,15 +105,20 @@
     "changelog": "Changements"
   },
   "about": {
-    "developers": "Developers",
-    "translators": "Translators",
-    "artists": "Artists",
-    "special": "Special Thanks To",
-    "disclaimer": "Disclaimer: this app is in no way associated with InnerSloth.",
-    "partOne": "First, thanks to <1>fuslie</1> for inspiring this project.",
-    "partTwo": "Thanks to everyone who has suggested enhancements, reported bugs, or any other support on this project.",
-    "partThree": "Thanks to everyone who uses this tool.",
-    "partFour": "Please check out everyone mentioned here and show them some love.",
-    "partFive": "PS: If I left anyone out, please let me know. I do not mean to forget anyone."
+    "developers": "Développeurs",
+    "translators": "Traducteurs",
+    "artists": "Artistes",
+    "special": "Remerciement spécial à",
+    "disclaimer": "Avertissement: Cette application n'est en aucun cas pas associée à InnerSloth.",
+    "partOne": "Tout d'abord, merci à <1>fuslie</1> d'avoir inspiré ce projet.",
+    "partTwo": "Merci à tous ceux qui ont suggéré des améliorations, rapporté des problèmes, ou supporté le projet de n'importe qu'elle façon.",
+    "partThree": "Merci à tous ceux utilisant cette outil.",
+    "partFour": "N'hésitez pas à aller voir les personnes mentionnés ici pour les encourager.",
+    "partFive": "PS: Si quelqu'un a été oublié, merci de me le faire savoir. Je n'ai pas l'intention d'oublier quelqu'un."
+  },
+  "footer": {
+    "partOne": "fusliez notes fait avec <1 /> par la fuslie family.",
+    "partTwo": "Voir sur GitHub",
+    "partThree": "Laisser une remarque (en anglais uniquement)"
   }
 }

@@ -4,6 +4,8 @@ import { DEFAULT_THEME_DATA } from "constants/theme";
 import Layout from "./Layout";
 import { Provider } from "react-redux";
 import React from "react";
+import { faArrowLeft } from "@fortawesome/free-solid-svg-icons/faArrowLeft";
+import { faArrowRight } from "@fortawesome/free-solid-svg-icons/faArrowRight";
 import { faCompactDisc } from "@fortawesome/free-solid-svg-icons/faCompactDisc";
 import { faEdit } from "@fortawesome/free-solid-svg-icons/faEdit";
 import { faEllipsisH } from "@fortawesome/free-solid-svg-icons/faEllipsisH";
@@ -32,7 +34,9 @@ library.add(
   faMap,
   faEllipsisH,
   faSort,
-  faUsers
+  faUsers,
+  faArrowRight,
+  faArrowLeft
 );
 
 export default function App(): JSX.Element {
@@ -41,7 +45,9 @@ export default function App(): JSX.Element {
       <Provider store={store}>
         <JssProvider registry={jssSetUp()}>
           <ThemeProvider theme={DEFAULT_THEME_DATA}>
-            <Layout />
+            <React.Suspense fallback="Loading...">
+              <Layout />
+            </React.Suspense>
           </ThemeProvider>
         </JssProvider>
       </Provider>

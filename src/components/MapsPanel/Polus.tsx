@@ -7,7 +7,7 @@ export default function Polus(
   const { t } = useTranslation();
 
   return (
-    <svg viewBox="0 0 1366 768" {...props}>
+    <svg viewBox="0 0 1366 768" {...props} preserveAspectRatio="xMinYMin meet">
       <title>{"Polus"}</title>
       <image href="assets/images/Polus.jpg" />
       <text y={375} x={244.5}>

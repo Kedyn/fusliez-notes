@@ -12,13 +12,13 @@
       "evilHitList": "Maus / Lista Negra",
       "dead": "Mortos",
       "unknown": "Desconhecidos",
-      "unused": "Unused"
+      "unused": "Não Utilizado"
     },
-    "brown": "Marrom",
+    "brown": "Castanho",
     "red": "Vermelho",
     "orange": "Laranja",
     "yellow": "Amarelo",
-    "lime": "Verde Limão",
+    "lime": "Lima",
     "green": "Verde",
     "cyan": "Ciano",
     "blue": "Azul",
@@ -35,15 +35,15 @@
     "crewmate": "Tripulante",
     "impostor": "Impostor",
     "resetScores": "Reiniciar Pontuação",
-    "resetPositions": "Reset Positions",
+    "resetPositions": "Reiniciar Posições",
     "resetAll": "Reiniciar Tudo",
     "notes": "Notas",
     "resetNotes": "Reiniciar Notas",
-    "lockEditing": "Lock Editing",
-    "unlockEditing": "Unlock Editing"
+    "lockEditing": "Bloquear Edição",
+    "unlockEditing": "Desbloquear Edição"
   },
   "maps": {
-    "title": "Maps",
+    "title": "Mapas",
     "vents": "Ventilação",
     "commonTasks": "Tarefas Comuns",
     "wiringTasks": "Tarefas de Cabos",
@@ -64,21 +64,21 @@
     "o2": "O2",
     "weapons": "Armas",
     "navigation": "Navegação",
-    "launchpad": "Lançamento",
+    "launchpad": "Plataforma de Lançamento",
     "laboratory": "Laboratório",
-    "lockerRoom": "Vestiário",
+    "lockerRoom": "Balneário",
     "office": "Escritório",
     "greenhouse": "Estufa",
-    "balcony": "Sacada",
+    "balcony": "Varanda",
     "specimenRoom": "Sala de Espécimes",
-    "east": "1. Leste",
+    "east": "1. Este",
     "central": "2. Central",
     "northeast": "3. Nordeste",
     "south": "4. Sul",
     "southwest": "5. Sudoeste",
     "northwest": "6. Noroeste",
-    "dragInstructions": "Drag players on the map",
-    "removePlayers": "Remove All Players From Map"
+    "dragInstructions": "Arraste Jogadores no Mapa",
+    "removePlayers": "Remover todos os jogadores do mapa"
   },
   "settings": {
     "title": "Ajustes",
@@ -106,19 +106,19 @@
   },
   "about": {
     "developers": "Developers",
-    "translators": "Translators",
-    "artists": "Artists",
-    "special": "Special Thanks To",
-    "disclaimer": "Disclaimer: this app is in no way associated with InnerSloth.",
-    "partOne": "First, thanks to <1>fuslie</1> for inspiring this project.",
-    "partTwo": "Thanks to everyone who has suggested enhancements, reported bugs, or any other support on this project.",
-    "partThree": "Thanks to everyone who uses this tool.",
-    "partFour": "Please check out everyone mentioned here and show them some love.",
-    "partFive": "PS: If I left anyone out, please let me know. I do not mean to forget anyone."
+    "translators": "tradutores",
+    "artists": "Artistas",
+    "special": "Um obrigado especial a",
+    "disclaimer": "Disclaimer: esta aplicação não está de forma alguma associado ao InnerSloth.",
+    "partOne": "Primeiro Obrigado a <1>fuslie</1> por inspirar este projecto",
+    "partTwo": "Obrigado a todos que sugeriram melhorias, relataram bugs ou qualquer outro suporte neste projeto.",
+    "partThree": "Obrigado a todos que usam esta ferramenta.",
+    "partFour": "Por favor, verifique todos os mencionados aqui e mostre-lhes um pouco de amor.",
+    "partFive": "PS: Se eu omiti alguém, por favor que me avise. Não é a minha intenção me esquecer de ninguém."
   },
   "footer": {
-    "partOne": "fusliez notes made with <1 /> by the fuslie family.",
-    "partTwo": "View on GitHub",
-    "partThree": "Leave feedback (English only)"
+    "partOne": "fusliez notes feitas com <1 /> pela família fuslie.",
+    "partTwo": "Ver no GitHub",
+    "partThree": "Deixe comentários (apenas em inglês)"
   }
 }

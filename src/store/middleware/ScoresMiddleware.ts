@@ -11,12 +11,14 @@ import {
   incrementCrewmateWins,
   incrementImpostorLosses,
   incrementImpostorWins,
+  resetScores,
   setCrewmateLosses,
   setCrewmateWins,
   setImpostorLosses,
   setImpostorWins,
 } from "store/slices/ScoresSlice";
 
+import { DEFAULT_SCORES } from "constants/scores";
 import { Middleware } from "@reduxjs/toolkit";
 import { NAMESPACE } from "constants/main";
 import { RootState } from "store";
@@ -106,6 +108,14 @@ export const ScoresMiddleware: Middleware<unknown, RootState> = (store) => (
       if (impostorLosses < 0) {
         impostorLosses - 0;
       }
+
+      break;
+
+    case resetScores.type:
+      crewmateWins = DEFAULT_SCORES.crewmateWins;
+      crewmateLosses = DEFAULT_SCORES.crewmateLosses;
+      impostorWins = DEFAULT_SCORES.impostorWins;
+      impostorLosses = DEFAULT_SCORES.impostorLosses;
 
       break;
 

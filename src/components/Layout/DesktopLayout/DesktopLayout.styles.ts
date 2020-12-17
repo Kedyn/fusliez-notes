@@ -1,5 +1,5 @@
-import { createUseStyles } from "react-jss";
 import { ITheme } from "utils/types";
+import { createUseStyles } from "react-jss";
 
 export default createUseStyles((theme: ITheme) => ({
   DesktopContent: {
@@ -9,5 +9,10 @@ export default createUseStyles((theme: ITheme) => ({
   DesktopDivider: {
     width: "1px",
     backgroundColor: theme.borderColor,
+  },
+  DesktopMapButton: {
+    width: "1rem",
+    padding: "0.25rem",
+    borderRadius: "0",
   },
 }));

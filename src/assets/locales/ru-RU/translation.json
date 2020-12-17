@@ -12,7 +12,7 @@
       "evilHitList": "Злой / Список целей",
       "dead": "Мертвый",
       "unknown": "Неизвестно",
-      "unused": "Unused"
+      "unused": "Неиспользуемый"
     },
     "brown": "Коричневый",
     "red": "Красный",
@@ -25,7 +25,9 @@
     "purple": "Фиолетовый",
     "pink": "Розовый",
     "white": "Белый",
-    "black": "Черный"
+    "black": "Черный",
+    "disclaimer": "Мы используем Google Analytics, чтобы собирать анонимные данные, которые помогают в разработке проекта. <1 /> Чтобы узнать, как Google использует или собирает данные, прочтите <3>это</3>.",
+    "understand": "Я понимаю"
   },
   "controls": {
     "wins": "Выигрышей",
@@ -33,9 +35,9 @@
     "crewmate": "Член экипажа",
     "impostor": "Предатель",
     "resetScores": "Сбросить счет",
-    "resetPositions": "Reset Positions",
+    "resetPositions": "Сбросить расположение",
     "resetAll": "Сбросить все",
-    "notes": "Записки",
+    "notes": "Заметки",
     "resetNotes": "Удалить заметки",
     "lockPlayers": "Заблокировать игроков",
     "unlockPlayers": "Разблокировать игроков"
@@ -75,21 +77,21 @@
     "south": "4. Юг",
     "southwest": "5. Юго-запад",
     "northwest": "6. Северо-запад",
-    "dragInstructions": "Drag players on the map",
-    "removePlayers": "Remove All Players From Map"
+    "dragInstructions": "Перетащите игроков на карту",
+    "removePlayers": "Убрать всех игроков с карты"
   },
   "settings": {
     "title": "Настройки",
     "uiSettings": "Настройки интерфейса",
-    "playerTiles": "Player Tiles",
+    "playerTiles": "Иконки игроков",
     "usePlayerNames": "Использовать имена игроков",
-    "colorBlindMode": "Color blind mode",
+    "colorBlindMode": "Режим для цветно-слепых",
     "language": "Язык",
     "done": "Готово",
     "close": "Закрыть",
-    "addSection": "Add Section",
-    "resetSections": "Reset Sections",
-    "sectionsNote": "Note: changing the default section (<1 />) will only be affected after clicking Reset Positions or Reset All."
+    "addSection": "Добавить раздел",
+    "resetSections": "Сбросить разделы",
+    "sectionsNote": "Примечание: изменение стандатных разделов (<1 />) применяется только после нажития Сбросить раунд или Сбросить все."
   },
   "menu": {
     "players": "Игроки",
@@ -103,15 +105,20 @@
     "changelog": "Список изменений"
   },
   "about": {
-    "developers": "Developers",
-    "translators": "Translators",
-    "artists": "Artists",
-    "special": "Special Thanks To",
-    "disclaimer": "Disclaimer: this app is in no way associated with InnerSloth.",
-    "partOne": "First, thanks to <1>fuslie</1> for inspiring this project.",
-    "partTwo": "Thanks to everyone who has suggested enhancements, reported bugs, or any other support on this project.",
-    "partThree": "Thanks to everyone who uses this tool.",
-    "partFour": "Please check out everyone mentioned here and show them some love.",
-    "partFive": "PS: If I left anyone out, please let me know. I do not mean to forget anyone."
+    "developers": "Разработчики",
+    "translators": "Переводчики",
+    "artists": "Художники",
+    "special": "Специальная благодарность",
+    "disclaimer": "Предупреждение: эта программа никаким образом не ассоциируется с InnerSloth.",
+    "partOne": "Прежде всего, спасибо <1>fuslie</1> за вдохновение для этого проекта.",
+    "partTwo": "Спасибо всем, кто предлагает улучшения, сообщает об ошибках и всячески помогает с проектом.",
+    "partThree": "Спасибо всем, кто воспользовался нашей программой.",
+    "partFour": "Пожалуйста, обратите внимание на всех упомянутых и подарите им немного любви.",
+    "partFive": "PS: Если я кого-то забыл, дайте мне знать. У меня нет желания потерять кого-либо."
+  },
+  "footer": {
+    "partOne": "fusliez notes made with <1 /> by the fuslie family.",
+    "partTwo": "Посмотреть на GitHub",
+    "partThree": "Оставить отзыв (Только на английском)"
   }
 }

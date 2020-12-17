@@ -18,8 +18,8 @@ function getInitialState(): IPlayersSectionsSlice {
     const playersSectionsObject = JSON.parse(localPlayersSectionsData);
 
     return {
-      defaultSection: playersSectionsObject.defaultSection || DEFAULT_SECTION,
-      sections: playersSectionsObject.sections || DEFAULT_SECTIONS,
+      defaultSection: playersSectionsObject.defaultSection ?? DEFAULT_SECTION,
+      sections: playersSectionsObject.sections ?? DEFAULT_SECTIONS,
     };
   }
 

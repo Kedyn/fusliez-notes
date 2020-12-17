@@ -4,11 +4,11 @@ export const NOTES = [
   {
     title: "Highlights",
     items: [
-      <>Added Persian and Polish translations</>,
-      <>UI Revamp.</>,
-      <>Added lock editing player mode.</>,
+      <>Added multiple languages</>,
+      <>Customizable sections (settings).</>,
+      <>Fixed multiple issues.</>,
       <>Better support for mobile.</>,
-      <>Color blind mode (settings).</>,
+      <>Better maps.</>,
     ],
   },
   {

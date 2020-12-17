@@ -54,7 +54,7 @@ export const TRANSLATORS: Array<IPerson> = [
   },
   {
     name: "Kinishina",
-    link: "https://github.com/danilolmoura",
+    link: "https://github.com/Kinishina",
   },
   {
     name: "Victor Pietro",
@@ -63,6 +63,26 @@ export const TRANSLATORS: Array<IPerson> = [
   {
     name: "Michał Stankiewicz",
     link: "http://fb.niezwyczajniezwyczajny.pl",
+  },
+  {
+    name: "Drison64",
+    link: "https://github.com/Drison64",
+  },
+  {
+    name: "Itay Kabalo",
+    link: "https://twitter.com/itaykabalo",
+  },
+  {
+    name: "Unviray",
+    link: "https://github.com/Unviray",
+  },
+  {
+    name: "Nuno Lopes",
+    link: "",
+  },
+  {
+    name: "Jarsa132",
+    link: "https://github.com/Jarsa132",
   },
 ];
 

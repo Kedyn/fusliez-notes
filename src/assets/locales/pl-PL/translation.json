@@ -12,7 +12,7 @@
       "evilHitList": "Zły / Lista celów",
       "dead": "Martwy",
       "unknown": "Nieznany",
-      "unused": "Unused"
+      "unused": "Nieużywany"
     },
     "brown": "Brązowy",
     "red": "Czerwony",
@@ -25,7 +25,9 @@
     "purple": "Fioletowy",
     "pink": "Różowy",
     "white": "Biały",
-    "black": "Czarny"
+    "black": "Czarny",
+    "disclaimer": "Wiedz, że używamy Google Analytics do zbierania anonimowych danych, aby móc się dalej rozwijać. <1 /> Aby dowiedzieć się więcej o narzędziach Google i zbieraniu danych, przejdź <3>tutaj</3>.",
+    "understand": "Rozumiem"
   },
   "controls": {
     "wins": "Wygrane",
@@ -33,12 +35,12 @@
     "crewmate": "Członek załogi",
     "impostor": "Zdrajca",
     "resetScores": "Zresetuj wynik",
-    "resetPositions": "Reset Positions",
+    "resetPositions": "Zresetuj pozycje",
     "resetAll": "Zresetuj wszystko",
     "notes": "Notatnik",
     "resetNotes": "Zresetuj notatnik",
-    "lockEditing": "Lock Editing",
-    "unlockEditing": "Unlock Editing"
+    "lockEditing": "Zablokuj edytowanie",
+    "unlockEditing": "Odblokuj edytowanie"
   },
   "maps": {
     "title": "Mapy",
@@ -60,7 +62,7 @@
     "communications": "Pokój komunikacyjny",
     "shields": "Ochrona",
     "o2": "O2",
-    "weapons": "Bronie",
+    "weapons": "Zbrojownia",
     "navigation": "Nawigacja",
     "launchpad": "Launchpad",
     "laboratory": "Laboratorium",
@@ -75,21 +77,21 @@
     "south": "4. Południe",
     "southwest": "5. Południowy zachód",
     "northwest": "6. Północny zachód",
-    "dragInstructions": "Drag players on the map",
-    "removePlayers": "Remove All Players From Map"
+    "dragInstructions": "Przesuń graczy na mapę",
+    "removePlayers": "Usuń wszystkich graczy z mapy"
   },
   "settings": {
     "title": "Ustawienia",
     "uiSettings": "Ustawienia interfejsu",
     "playerTiles": "Kafelki graczy",
     "usePlayerNames": "Pokaż nazwy graczy",
-    "colorBlindMode": "Color blind mode",
+    "colorBlindMode": "Tryb dla daltonistów",
     "language": "Język",
     "done": "Gotowe",
     "close": "Zamknij",
-    "addSection": "Add Section",
-    "resetSections": "Reset Sections",
-    "sectionsNote": "Note: changing the default section (<1 />) will only be affected after clicking Reset Positions or Reset All."
+    "addSection": "Dodaj sękcję",
+    "resetSections": "Zresetuj sekcje",
+    "sectionsNote": "Notatka: zmiana domyślnej sekcji (<1 />) zostanie wprowadzona dopiero po kliknięciu Zresetuj pozycje lub Zresetuj wszystko."
   },
   "menu": {
     "players": "Gracze",
@@ -103,15 +105,20 @@
     "changelog": "Dziennik zmian"
   },
   "about": {
-    "developers": "Developers",
-    "translators": "Translators",
-    "artists": "Artists",
-    "special": "Special Thanks To",
-    "disclaimer": "Disclaimer: this app is in no way associated with InnerSloth.",
-    "partOne": "First, thanks to <1>fuslie</1> for inspiring this project.",
-    "partTwo": "Thanks to everyone who has suggested enhancements, reported bugs, or any other support on this project.",
-    "partThree": "Thanks to everyone who uses this tool.",
-    "partFour": "Please check out everyone mentioned here and show them some love.",
-    "partFive": "PS: If I left anyone out, please let me know. I do not mean to forget anyone."
+    "developers": "Deweloperzy",
+    "translators": "Tłumacze",
+    "artists": "Artyści",
+    "special": "Specjalne podziękowania",
+    "disclaimer": "Uwaga: ta aplikacja nie jest w żaden sposób powiązana z InnerSloth.",
+    "partOne": "Po pierwsze, podziękowania dla <1>fuslie</1> za inspirację do stworzenia projektu.",
+    "partTwo": "Podziękowania dla tych, którzy zasugerowali ulepszenia, zgłosili błędy lub inaczej wsparli ten projekt.",
+    "partThree": "Podziękowania dla wszystkich, którzy korzystają z tego narzędzia.",
+    "partFour": "Proszę, zajrzyj do wszystkich tutaj wymienionych i okaż im trochę miłości.",
+    "partFive": "PS: Jeśli kogoś pominąłem, poinformuj mnie. Nie chcę o nikim zapomnieć."
+  },
+  "footer": {
+    "partOne": "fusliez notes stworzony przez <1 /> the fuslie family.",
+    "partTwo": "Zobacz na GitHubie",
+    "partThree": "Zostaw opinię (tylko po angielsku)"
   }
 }

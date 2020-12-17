@@ -6,3 +6,4 @@ node_modules/
 .eslintcache
 test-coverage
 .idea/
+/test-coverage

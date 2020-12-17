@@ -12,7 +12,7 @@
       "evilHitList": "Malos / Lista Negra",
       "dead": "Muertos",
       "unknown": "Desconocidos",
-      "unused": "Unused"
+      "unused": "Sin uso"
     },
     "brown": "Café",
     "red": "Rojo",
@@ -25,7 +25,9 @@
     "purple": "Morado",
     "pink": "Rosado",
     "white": "Blanco",
-    "black": "Negro"
+    "black": "Negro",
+    "disclaimer": "Utilizamos Google Analytics para recolectar datos anónimamente para que nos ayude con el desarrollo. <1 /> Para más información sobre cómo Google utiliza o recolecta esta información, haz clic <3>aqui</3>.",
+    "understand": "Acepto"
   },
   "controls": {
     "wins": "Victorias",
@@ -89,7 +91,7 @@
     "close": "Cerrar",
     "addSection": "Agregar Seccion",
     "resetSections": "Reiniciar Secciones",
-    "sectionsNote": "Nota: cambiar la seccion por defecto (<1 />) solo se vera afectada despues de Reiniciar Posiciones o Reiniciar Todo."
+    "sectionsNote": "Nota: cambiar la sección predeterminada (<1 />) solo se vera afectada después de Reiniciar Posiciones o Reiniciar Todo."
   },
   "menu": {
     "players": "Jugadores",
@@ -106,12 +108,17 @@
     "developers": "Desarrolladores",
     "translators": "Traductores",
     "artists": "Artistas",
-    "special": "Agradecimientos Especiales A",
-    "disclaimer": "Descargo de responsabilidad: esta aplicacion no esta asociada de ninguna manera con InnerSloth.",
+    "special": "Agradecimientos Especiales",
+    "disclaimer": "Descargo de responsabilidad: esta aplicacion no está asociada de ninguna manera con InnerSloth.",
     "partOne": "Primero, gracias a <1>fuslie</1> por inspirar este proyecto.",
     "partTwo": "Gracias a todos los que sugirieron mejoras, reportaron errores o dieron cualquier otro apoyo en este proyecto.",
     "partThree": "Gracias a todos los que utilizan esta herramienta.",
-    "partFour": "Por favor echen un vistazo a todas las personas mencionadas aqui y muestrenles un poco de amor.",
+    "partFour": "Por favor echen un vistazo a todas las personas mencionadas aquí y muéstrenles un poco de amor.",
     "partFive": "PS: Si he dejado alguien fuera favor de hacermelo saber. He intentado no olvidar a nadie."
+  },
+  "footer": {
+    "partOne": "fusliez notes creado con <1 /> por la familia fuslie.",
+    "partTwo": "Ver en GitHub",
+    "partThree": "Deja comentario (en Inglés)"
   }
 }
