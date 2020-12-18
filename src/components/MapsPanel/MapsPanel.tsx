@@ -5,6 +5,7 @@ import {
   setCharacterPosition,
   setCurrentMap,
 } from "store/slices/MapsSlice";
+import { getIsColorBlind, getShowNames } from "store/slices/SettingsSlice";
 import { getIsMobile, getOrientation } from "store/slices/DeviceSlice";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -14,6 +15,7 @@ import MiraHq from "./MiraHq";
 import Polus from "./Polus";
 import React from "react";
 import TheSkeld from "./TheSkeld";
+import { getAllPlayers } from "store/slices/PlayersSectionsSlice";
 import useStyles from "./MapsPanel.styles";
 import { useTranslation } from "react-i18next";
 
@@ -22,9 +24,20 @@ export default function MapsPanel(): JSX.Element {
 
   const isMobile = useSelector(getIsMobile);
   const orientation = useSelector(getOrientation);
-
+  const showNames = useSelector(getShowNames);
+  const isColorBlind = useSelector(getIsColorBlind);
+  const allPlayers = useSelector(getAllPlayers);
   const players = useSelector(getCharacters);
   const map = useSelector(getCurrentMap);
+
+  // this maps the coordinates to the player
+  const allPlayersWithCoordinates = allPlayers.map((player) => {
+    for (const { id, x, y } of players) {
+      if (player.color === id) {
+        return { ...player, x, y };
+      }
+    }
+  });
 
   const dispatch = useDispatch();
 
@@ -84,32 +97,50 @@ export default function MapsPanel(): JSX.Element {
           </Button>
         </div>
 
-        <div className={classes.MapsPanelMapPlayerIcons}>
-          {players.map((player) => (
-            <Draggable
-              key={player.id}
-              bounds="#MapsContainer"
-              position={{ x: player.x, y: player.y }}
-              onStop={(event, data) => {
-                dispatch(
-                  setCharacterPosition({
-                    id: player.id,
-                    x: data.lastX,
-                    y: data.lastY,
-                  })
-                );
-              }}
-            >
-              <img
-                src={`assets/images/playerIcons/${player.id}.png`}
-                className={classes.MapsPanelMapPlayerIcon}
-                onDrag={(event: React.DragEvent<HTMLImageElement>) =>
-                  event.stopPropagation()
-                }
-                draggable={false}
-              />
-            </Draggable>
-          ))}
+        <div>
+          {/* 
+          kind of a weird way to write it
+          but wasn't sure on how to address
+          some of the TS errors 
+        */}
+          {allPlayersWithCoordinates.length &&
+            allPlayersWithCoordinates.map((player) =>
+              player ? (
+                <Draggable
+                  key={player?.color}
+                  bounds="#MapsContainer"
+                  position={{ x: player?.x, y: player?.y }}
+                  onStop={(event, data) => {
+                    dispatch(
+                      setCharacterPosition({
+                        id: player?.color,
+                        x: data.lastX,
+                        y: data.lastY,
+                      })
+                    );
+                  }}
+                >
+                  <span className={classes.MapPlayerIconContainer}>
+                    {showNames && (
+                      <p className={classes.MapPlayerName}>
+                        {player?.playerName}
+                      </p>
+                    )}
+                    <img
+                      src={`assets/images/playerIcons/${player?.color}.png`}
+                      className={classes.MapsPanelMapPlayerIcon}
+                      onDrag={(event: React.DragEvent<HTMLImageElement>) =>
+                        event.stopPropagation()
+                      }
+                      draggable={false}
+                    />
+                    {isColorBlind && (
+                      <p className={classes.MapPlayerName}>{player?.color}</p>
+                    )}
+                  </span>
+                </Draggable>
+              ) : null
+            )}
         </div>
       </div>
     </div>

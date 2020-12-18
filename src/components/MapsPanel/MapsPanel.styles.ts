@@ -14,6 +14,7 @@ export default createUseStyles((theme: ITheme) => ({
       strokeWidth: "1px",
       stroke: "#000000",
       pointerEvents: "none",
+      userSelect: "none",
     },
     ".MapDescriptions": {
       "&>text": {
@@ -73,7 +74,6 @@ export default createUseStyles((theme: ITheme) => ({
     position: "relative",
   },
   MapsPanelMapContainer: {
-    flex: 1,
     backgroundColor: "#000000",
   },
   MapsPanelMap: {
@@ -96,7 +96,25 @@ export default createUseStyles((theme: ITheme) => ({
   MapsPanelMapPlayerIcon: (props) => ({
     width: props.isMobile ? "1rem" : "2rem",
     height: "auto",
-    margin: "0.5rem 0.75rem",
+    margin: "0 0.75rem",
+  }),
+  MapPlayerName: {
+    fontSize: "1rem",
+    margin: "0.25rem 0",
+    textShadow:
+      "-1.5px -1.5px 0 #000, 1.5px -1.5px 0 #000, -1.5px 1.5px 0 #000, 1.5px 1.5px 0 #000",
+  },
+  MapPlayerIconContainer: (props) => ({
+    alignItems: "center",
+    display: "inline-flex",
+    flex: `1 0
+     ${props.isMobile ? "2rem" : "4rem"}`,
+    flexDirection: "column",
+    height: "auto",
+    justifyContent: "center",
+    margin: "0.5rem",
+    textAlign: "center",
+    maxWidth: props.isMobile ? "1.5rem" : "3rem",
 
     "&:hover": {
       cursor: "grab",
