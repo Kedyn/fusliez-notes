@@ -205,5 +205,15 @@ function _ensure(
 
   return argument;
 }
+export const getAllPlayers = (state: IUIStoreState): Array<IPlayer> => {
+  const allPlayers = [];
+
+  for (const { players } of state.PlayersSections.sections) {
+    if (!players.length) continue;
+    allPlayers.push(...players);
+  }
+
+  return allPlayers;
+};
 
 export default PlayersSectionsSlice;

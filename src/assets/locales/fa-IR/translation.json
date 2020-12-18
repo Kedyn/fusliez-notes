@@ -26,8 +26,8 @@
     "pink": "صورتی",
     "white": "سفید",
     "black": "سیاه",
-    "disclaimer": "Please know that we utilize Google Analytics to collect anonymous data, to help us with development. <1 /> For information on how Google utilizes or collects data please check <3>here</3>.",
-    "understand": "I understand"
+    "disclaimer": "لطفا توجه داشته باشید که ما از گوگل آنالیتیکس استفاده می‌کنیم تا داده‌هایی را به صورت ناشناس جمع کنیم، این کار به ما در توسعه کمک می‌کند. <1 /> برای اطلاعات بیشتر از این که گوگل چگونه از داده‌ها استفاده یا آن‌ها را جمع‌‌آوری می‌کند لطفا بر روی <3>این جا</3> کلیک کنید.",
+    "understand": "متوجهم"
   },
   "controls": {
     "wins": "پیروزی‌ها",
@@ -35,12 +35,12 @@
     "crewmate": "خدمه",
     "impostor": "خائن",
     "resetScores": "بازنشانی امتیازها",
-    "resetPositions": "Reset Positions",
+    "resetPositions": "بازنشانی مکان‌ها",
     "resetAll": "بازنشانی همه",
     "notes": "دفترچه",
     "resetNotes": "بازنشانی دفترچه",
-    "lockEditing": "Lock Editing",
-    "unlockEditing": "Unlock Editing"
+    "lockEditing": "قفل کردن ویرایش",
+    "unlockEditing": "باز کردن قفل ویرایش"
   },
   "maps": {
     "title": "نقشه‌ها",
@@ -77,8 +77,8 @@
     "south": "۴. جنوب",
     "southwest": "۵. جنوب غربی",
     "northwest": "۶. شمال غربی",
-    "dragInstructions": "Drag players on the map",
-    "removePlayers": "Remove All Players From Map"
+    "dragInstructions": "بازیکن‌ها را روی نقشه بکشید",
+    "removePlayers": "حذف همه بازیکن‌ها از روی نقشه"
   },
   "settings": {
     "title": "تنظیمات",
@@ -105,20 +105,20 @@
     "changelog": "تغییرات"
   },
   "about": {
-    "developers": "Developers",
-    "translators": "Translators",
-    "artists": "Artists",
-    "special": "Special Thanks To",
-    "disclaimer": "Disclaimer: this app is in no way associated with InnerSloth.",
-    "partOne": "First, thanks to <1>fuslie</1> for inspiring this project.",
-    "partTwo": "Thanks to everyone who has suggested enhancements, reported bugs, or any other support on this project.",
-    "partThree": "Thanks to everyone who uses this tool.",
-    "partFour": "Please check out everyone mentioned here and show them some love.",
-    "partFive": "PS: If I left anyone out, please let me know. I do not mean to forget anyone."
+    "developers": "توسعه‌دهنده‌ها",
+    "translators": "مترجم‌ها",
+    "artists": "هنرمندان",
+    "special": "تشکر ویژه از",
+    "disclaimer": "رفع مسئولیت: این برنامه به هیچ عنوان ارتباطی با InnerSloth ندارد.",
+    "partOne": "اول از همه، تشکر ویژه از <1>fuslie</1> که باعث الهام بخشی این پروژه شد.",
+    "partTwo": "تشکر از کسانی که برای بهبودی این پروژه پیشنهاد دادند، باگ گزارش کردند و یا هر نوع پشتیبانی‌ای که می‌توانستند انجام دادند.",
+    "partThree": "تشکر از کسانی که از این ابزار استفاده کردند.",
+    "partFour": "لطفا کسانی که از آن‌ها در این جا نام برده شده است را چک کنید و از آن ها تقدیر کنید.",
+    "partFive": "پی‌نوشت: اگر کسی فراموش شده است لطفا به من یادآوری کنید. من نمی‌خواهم هیچ کس فراموش شود."
   },
   "footer": {
-    "partOne": "fusliez notes made with <1 /> by the fusfam.",
-    "partTwo": "View on GitHub",
-    "partThree": "Leave feedback (English only)"
+    "partOne": "fusliez notes ساخته شده با <1 /> توسط the fuslie family.",
+    "partTwo": "نمایش روی گیت‌هاب",
+    "partThree": "دادن بازخورد (فقط انگلیسی)"
   }
 }

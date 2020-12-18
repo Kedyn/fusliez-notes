@@ -12,7 +12,7 @@
       "evilHitList": "Böse / Hitliste",
       "dead": "Tot",
       "unknown": "Unbekannt",
-      "unused": "Unused"
+      "unused": "Nicht benutzt"
     },
     "brown": "Braun",
     "red": "Rot",
@@ -26,8 +26,8 @@
     "pink": "Pink",
     "white": "Weiß",
     "black": "Schwarz",
-    "disclaimer": "Please know that we utilize Google Analytics to collect anonymous data, to help us with development. <1 /> For information on how Google utilizes or collects data please check <3>here</3>.",
-    "understand": "I understand"
+    "disclaimer": "Bitte beachte, dass wir Google Analytics verwenden, um anonyme Daten zu sammeln die uns bei der Entwicklung unterstützen. <1 />",
+    "understand": "Ich verstehe"
   },
   "controls": {
     "wins": "Siege",
@@ -35,12 +35,12 @@
     "crewmate": "Teammitglied",
     "impostor": "Schwindler",
     "resetScores": "Punkte zurücksetzen",
-    "resetPositions": "Reset Positions",
+    "resetPositions": "Positionen Zurücksetzen",
     "resetAll": "Alles zurücksetzen",
     "notes": "Notizen",
     "resetNotes": "Notizen zurücksetzen",
-    "lockEditing": "Lock Editing",
-    "unlockEditing": "Unlock Editing"
+    "lockEditing": "Bearbeiten sperren",
+    "unlockEditing": "Bearbeiten entsperren"
   },
   "maps": {
     "title": "Spielkarte",
@@ -77,8 +77,8 @@
     "south": "4. Süden",
     "southwest": "5. Südwest",
     "northwest": "6. Nordwest",
-    "dragInstructions": "Drag players on the map",
-    "removePlayers": "Remove Players From Map"
+    "dragInstructions": "Ziehe Spieler auf die Karte",
+    "removePlayers": "Entferne Spieler von der Karte"
   },
   "settings": {
     "title": "Einstellungen",
@@ -89,9 +89,9 @@
     "language": "Sprache",
     "done": "Fertig",
     "close": "Schliessen",
-    "addSection": "Add Section",
-    "resetSections": "Reset Sections",
-    "sectionsNote": "Note: changing the default section (<1 />) will only be affected after clicking Reset Positions or Reset All."
+    "addSection": "Abschnitt hinzufügen",
+    "resetSections": "Abschnitt zurücksetzen",
+    "sectionsNote": "Hinweis: Das Ändern des Standardabschnitts (<1 />) ist nur betroffen, wenn Positionen zurücksetzen oder alle zurücksetzen angeklickt wurde."
   },
   "menu": {
     "players": "Spieler",
@@ -105,20 +105,20 @@
     "changelog": "Änderungsprotokoll"
   },
   "about": {
-    "developers": "Developers",
-    "translators": "Translators",
-    "artists": "Artists",
-    "special": "Special Thanks To",
-    "disclaimer": "Disclaimer: this app is in no way associated with InnerSloth.",
-    "partOne": "First, thanks to <1>fuslie</1> for inspiring this project.",
-    "partTwo": "Thanks to everyone who has suggested enhancements, reported bugs, or any other support on this project.",
-    "partThree": "Thanks to everyone who uses this tool.",
-    "partFour": "Please check out everyone mentioned here and show them some love.",
-    "partFive": "PS: If I left anyone out, please let me know. I do not mean to forget anyone."
+    "developers": "Entwickler",
+    "translators": "Übersetzer",
+    "artists": "Künstler",
+    "special": "Besonderer Dank geht an",
+    "disclaimer": "Haftungsausschluss: Diese App ist in keiner Weise mit InnerSloth verbunden.",
+    "partOne": "Zunächst einmal danke ich <1> fuslie </ 1> für die Inspiration für dieses Projekt.",
+    "partTwo": "Vielen Dank an alle, die Verbesserungen und Fehler gemeldet haben oder uns in irgend einer anderen Form bei diesem Projekt geholfen haben.",
+    "partThree": "Vielen Dank an alle, die diese Website verwenden.",
+    "partFour": "Bitte schaut euch alle hier genannten Personen an und zeigt ihnen etwas Liebe.",
+    "partFive": "PS: Wenn ich jemanden ausgelassen habe, lass es mich wissen. Ich will niemanden vergessen."
   },
   "footer": {
-    "partOne": "fusliez notes made with <1 /> by the fusfam.",
-    "partTwo": "View on GitHub",
-    "partThree": "Leave feedback (English only)"
+    "partOne": "fusliez notes gemacht mit <1 /> von der fusfam.",
+    "partTwo": "Auf Github anschauen",
+    "partThree": "Feedback hinterlassen (English only)"
   }
 }

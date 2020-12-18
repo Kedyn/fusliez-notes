@@ -1,6 +1,6 @@
 {
   "name": "fusliez-notes",
-  "version": "0.10.1",
+  "version": "1.0.0-beta.0",
   "description": "",
   "repository": {
     "type": "git",
@@ -24,7 +24,6 @@
     "@fortawesome/free-solid-svg-icons": "^5.15.1",
     "@fortawesome/react-fontawesome": "^0.1.11",
     "@reduxjs/toolkit": "^1.4.0",
-    "beautiful-react-hooks": "^0.30.1",
     "browserslist": "^4.14.5",
     "classnames": "^2.2.6",
     "i18next": "^19.7.0",

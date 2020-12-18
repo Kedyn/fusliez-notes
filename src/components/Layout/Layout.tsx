@@ -32,7 +32,7 @@ export default function Content(): JSX.Element {
 
   const dispatch = useDispatch();
 
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   // This is only used to load the current theme colors
   const classes = useStyles(); // eslint-disable-line
@@ -96,7 +96,10 @@ export default function Content(): JSX.Element {
       {content}
 
       {showDisclaimer === null && (
-        <div className={classes.LayoutDisclaimer}>
+        <div
+          style={{ direction: i18n.dir() }}
+          className={classes.LayoutDisclaimer}
+        >
           <p>
             <Trans i18nKey="main.disclaimer">
               Please know that we utilize Google Analytics to collect anonymous
