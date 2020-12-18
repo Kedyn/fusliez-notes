@@ -1,4 +1,9 @@
-import { DEFAULT_SECTION, DEFAULT_SECTIONS } from "constants/sections";
+import {
+  DEFAULT_DEAD_SECTION,
+  DEFAULT_SECTION,
+  DEFAULT_SECTIONS,
+  DEFAULT_UNUSED_SECTION,
+} from "constants/sections";
 import {
   IPlayer,
   IPlayersSection,
@@ -19,12 +24,18 @@ function getInitialState(): IPlayersSectionsSlice {
 
     return {
       defaultSection: playersSectionsObject.defaultSection ?? DEFAULT_SECTION,
+      defaultDeadSection:
+        playersSectionsObject.defaultDeadSection ?? DEFAULT_DEAD_SECTION,
+      defaultUnusedSection:
+        playersSectionsObject.defaultUnusedSection ?? DEFAULT_UNUSED_SECTION,
       sections: playersSectionsObject.sections ?? DEFAULT_SECTIONS,
     };
   }
 
   return {
     defaultSection: DEFAULT_SECTION,
+    defaultDeadSection: DEFAULT_DEAD_SECTION,
+    defaultUnusedSection: DEFAULT_UNUSED_SECTION,
     sections: DEFAULT_SECTIONS,
   };
 }
@@ -62,6 +73,24 @@ const PlayersSectionsSlice = createSlice({
       ...state,
 
       defaultSection: action.payload,
+    }),
+
+    setDefaultDeadSection: (
+      state: IPlayersSectionsSlice,
+      action: PayloadAction<number>
+    ) => ({
+      ...state,
+
+      defaultDeadSection: action.payload,
+    }),
+
+    setDefaultUnusedSection: (
+      state: IPlayersSectionsSlice,
+      action: PayloadAction<number>
+    ) => ({
+      ...state,
+
+      defaultUnusedSection: action.payload,
     }),
 
     setPlayersSections: (
@@ -152,6 +181,8 @@ const PlayersSectionsSlice = createSlice({
 
     resetPlayersSections: () => ({
       defaultSection: DEFAULT_SECTION,
+      defaultDeadSection: DEFAULT_DEAD_SECTION,
+      defaultUnusedSection: DEFAULT_UNUSED_SECTION,
       sections: [...DEFAULT_SECTIONS.map((section) => section)],
     }),
   },
@@ -159,6 +190,10 @@ const PlayersSectionsSlice = createSlice({
 
 export const {
   setDefaultSection,
+
+  setDefaultDeadSection,
+
+  setDefaultUnusedSection,
 
   setPlayersSections,
 
@@ -190,7 +225,18 @@ export const getDefaultPlayersSection = (
 export const getDeadPlayersSection = (state: IUIStoreState): IPlayersSection =>
   _ensure(
     state.PlayersSections.sections.find(
-      (playerSection) => playerSection.title === "main.lists.dead"
+      (playerSection) =>
+        playerSection.id === state.PlayersSections.defaultDeadSection
+    )
+  );
+
+export const getUnusedPlayersSection = (
+  state: IUIStoreState
+): IPlayersSection =>
+  _ensure(
+    state.PlayersSections.sections.find(
+      (playerSection) =>
+        playerSection.id === state.PlayersSections.defaultUnusedSection
     )
   );
 

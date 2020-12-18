@@ -1,9 +1,13 @@
 import { Trans, useTranslation } from "react-i18next";
 import {
+  getDeadPlayersSection,
   getDefaultSectionId,
   getPlayersSections,
+  getUnusedPlayersSection,
   resetPlayersSections,
+  setDefaultDeadSection,
   setDefaultSection,
+  setDefaultUnusedSection,
   setPlayersSections,
   setPlayersSectionsTitle,
 } from "store/slices/PlayersSectionsSlice";
@@ -11,6 +15,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import Button from "components/common/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { IPlayersSection } from "utils/types";
 import React from "react";
 import { ReactSortable } from "react-sortablejs";
 import { getIsMobile } from "store/slices/DeviceSlice";
@@ -20,12 +25,45 @@ export default function SettingsPlayersSections(): JSX.Element {
   const isMobile = useSelector(getIsMobile);
   const playersSections = useSelector(getPlayersSections);
   const defaultSection = useSelector(getDefaultSectionId);
+  const { id: deadSection } = useSelector(getDeadPlayersSection);
+  const { id: unusedSection } = useSelector(getUnusedPlayersSection);
 
   const classes = useStyles();
 
   const dispatch = useDispatch();
 
   const { t } = useTranslation();
+
+  function SectionButtons({ list }: { list: IPlayersSection }) {
+    return (
+      <>
+        {/* default section */}
+        <div
+          className={classes.SettingsPlayersSection}
+          data-selected={defaultSection === list.id}
+          onClick={() => dispatch(setDefaultSection(list.id as number))}
+        >
+          <FontAwesomeIcon icon="users" />
+        </div>
+        {/* default dead */}
+        <div
+          className={classes.SettingsPlayersSection}
+          data-selected={deadSection === list.id}
+          onClick={() => dispatch(setDefaultDeadSection(list.id as number))}
+        >
+          <FontAwesomeIcon icon="skull-crossbones" />
+        </div>
+        {/* default unused */}
+        <div
+          className={classes.SettingsPlayersSection}
+          data-selected={unusedSection === list.id}
+          onClick={() => dispatch(setDefaultUnusedSection(list.id as number))}
+        >
+          <FontAwesomeIcon icon="users-slash" />
+        </div>
+      </>
+    );
+  }
 
   return (
     <React.Fragment>
@@ -51,11 +89,7 @@ export default function SettingsPlayersSections(): JSX.Element {
                 disabled={list.title === "main.lists.dead"}
                 type="text"
                 placeholder="Section name"
-                className={`${classes.SettingsInput} ${
-                  list.title === "main.lists.dead"
-                    ? `${classes.DisabledEditing}`
-                    : ""
-                }`}
+                className={classes.SettingsInput}
                 onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
                   dispatch(
                     setPlayersSectionsTitle({
@@ -68,13 +102,7 @@ export default function SettingsPlayersSections(): JSX.Element {
               />
             </div>
 
-            <div
-              className={classes.SettingsPlayersSection}
-              data-selected={defaultSection === list.id}
-              onClick={() => dispatch(setDefaultSection(list.id as number))}
-            >
-              <FontAwesomeIcon icon="users" />
-            </div>
+            <SectionButtons list={list} />
 
             <div>
               <Button
