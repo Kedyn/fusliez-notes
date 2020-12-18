@@ -45,15 +45,15 @@ export function findCurrentList(
   };
 
   for (const { id, title, players } of playersSections) {
-    const player = players.filter(
+    const player = players.find(
       ({ color }: { color: string }) => color === playerColor
     );
 
-    if (player.length) {
+    if (player) {
       target = {
         sectionId: id as number,
         listName: title,
-        player: player[0],
+        player,
       };
       break;
     }
@@ -86,6 +86,9 @@ export function reassignPlayers(
       (deadPlayer) => deadPlayer.color !== player.color
     );
 
+    console.log(newDeadPlayers);
+    console.log(defaultPlayersSection);
+
     dispatch(
       setPlayersFromSection({
         sectionId: defaultPlayersSection.id as number,
@@ -100,6 +103,7 @@ export function reassignPlayers(
     const currentPlayerSection = playersSections.find(
       (playersSection) => playersSection.id === sectionId
     );
+
     if (currentPlayerSection) {
       // remove player from original section
       const newCurrentPlayers = currentPlayerSection?.players.filter(
@@ -138,15 +142,17 @@ export default function MapsPanel(): JSX.Element {
   const defaultPlayersSection = useSelector(getDefaultPlayersSection);
 
   // this maps the coordinates to the player
-  const allPlayersWithCoordinates = allPlayers.map((player) => {
-    for (const { id, x, y } of players) {
-      if (player.color === id) {
-        return { ...player, x, y };
-      }
-    }
-  });
-
-  console.log(deadPlayersSection);
+  const allPlayersWithCoordinates = React.useMemo(
+    () =>
+      allPlayers.map((player) => {
+        for (const { id, x, y } of players) {
+          if (player.color === id) {
+            return { ...player, x, y };
+          }
+        }
+      }),
+    []
+  );
 
   const dispatch = useDispatch();
 
@@ -206,110 +212,61 @@ export default function MapsPanel(): JSX.Element {
           </Button>
         </div>
 
-        {/* {players.map((player) => (
-          <Draggable
-            key={player.id}
-            bounds="parent"
-            position={{ x: player.x, y: player.y }}
-            onStop={(event, data) => {
-              dispatch(
-                setCharacterPosition({
-                  id: player.id,
-                  x: data.lastX,
-                  y: data.lastY,
-                })
-              );
-            }}
-          >
-            <img
-              alt={`${player.id} player icon`}
-              src={`assets/images/playerIcons/${
-                deadPlayersSection?.players
-                  .map((deadPlayer) => deadPlayer.color)
-                  .find((id) => id === player.id)
-                  ? `${player.id}-dead`
-                  : `${player.id}`
-              }.png`}
-              className={classes.MapsPanelMapPlayerIcon}
-              onDrag={(event: React.DragEvent<HTMLImageElement>) =>
-                event.stopPropagation()
-              }
-              draggable={false}
-              onDoubleClick={() =>
-                reassignPlayers(
-                  playersSections,
-                  player.id,
-                  defaultPlayersSection,
-                  deadPlayersSection,
-                  dispatch
-                )
-              }
-              title="Double-click to mark dead/alive"
-            />
-          </Draggable>
-        ))} */}
         <div>
-          {/* 
-          kind of a weird way to write it
-          but wasn't sure on how to address
-          some of the TS errors 
-        */}
-          {allPlayersWithCoordinates.length &&
-            allPlayersWithCoordinates.map((player) => {
-              console.log(player);
-              return player ? (
-                <Draggable
-                  key={player?.id}
-                  bounds="#MapsContainer"
-                  position={{ x: player?.x, y: player?.y }}
-                  onStop={(event, data) => {
-                    dispatch(
-                      setCharacterPosition({
-                        id: player?.color,
-                        x: data.lastX,
-                        y: data.lastY,
-                      })
-                    );
-                  }}
-                >
-                  <span className={classes.MapPlayerIconContainer}>
-                    {showNames && (
-                      <p className={classes.MapPlayerName}>
-                        {player?.playerName}
-                      </p>
-                    )}
-                    <img
-                      alt={`${player.id} player icon`}
-                      src={`assets/images/playerIcons/${
-                        deadPlayersSection?.players
-                          .map((deadPlayer) => deadPlayer.color)
-                          .find((id) => id === player.id)
-                          ? `${player.color}-dead`
-                          : `${player.color}`
-                      }.png`}
-                      className={classes.MapsPanelMapPlayerIcon}
-                      onDrag={(event: React.DragEvent<HTMLImageElement>) =>
-                        event.stopPropagation()
-                      }
-                      draggable={false}
-                      onDoubleClick={() =>
-                        reassignPlayers(
-                          playersSections,
-                          player.id as string,
-                          defaultPlayersSection,
-                          deadPlayersSection,
-                          dispatch
-                        )
-                      }
-                      title="Double-click to mark dead/alive"
-                    />
-                    {isColorBlind && (
-                      <p className={classes.MapPlayerName}>{player?.color}</p>
-                    )}
-                  </span>
-                </Draggable>
-              ) : null;
-            })}
+          {allPlayersWithCoordinates.map((player) =>
+            player ? (
+              <Draggable
+                key={`${player?.id}-draggable-icon`}
+                bounds="#MapsContainer"
+                position={{ x: player?.x, y: player?.y }}
+                onStop={(event, data) => {
+                  dispatch(
+                    setCharacterPosition({
+                      id: player?.color,
+                      x: data.lastX,
+                      y: data.lastY,
+                    })
+                  );
+                }}
+              >
+                <span className={classes.MapPlayerIconContainer}>
+                  {showNames && (
+                    <p className={classes.MapPlayerName}>
+                      {player?.playerName}
+                    </p>
+                  )}
+                  <img
+                    alt={`${player.id} player icon`}
+                    src={`assets/images/playerIcons/${
+                      deadPlayersSection?.players
+                        .map((deadPlayer) => deadPlayer.id)
+                        .find((id) => id === player.id)
+                        ? `${player.color}-dead`
+                        : `${player.color}`
+                    }.png`}
+                    className={classes.MapsPanelMapPlayerIcon}
+                    onDrag={(event: React.DragEvent<HTMLImageElement>) =>
+                      event.stopPropagation()
+                    }
+                    draggable={false}
+                    onDoubleClick={() =>
+                      reassignPlayers(
+                        playersSections,
+                        player.color as string,
+                        defaultPlayersSection,
+                        deadPlayersSection,
+                        dispatch
+                      )
+                    }
+                    title="Double-click to mark dead/alive"
+                  />
+                  {isColorBlind && (
+                    <p className={classes.MapPlayerName}>{player?.color}</p>
+                  )}
+                </span>
+              </Draggable>
+            ) : null
+          )}
         </div>
       </div>
     </div>
