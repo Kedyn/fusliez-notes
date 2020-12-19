@@ -155,9 +155,11 @@ export default function SettingsPlayersSections(): JSX.Element {
       <p>
         <small>
           <Trans i18nKey="settings.sectionsNote">
-            Note: changing the default section (
-            <FontAwesomeIcon icon="users" size="sm" />) will only be affected
-            after clicking Reset Round or Reset All.
+            Note: changing the default section will only be affected after
+            clicking Reset Round or Reset All. <br /> Default Reset -
+            <FontAwesomeIcon icon="users" size="sm" /> <br /> Default Dead -
+            <FontAwesomeIcon icon="skull-crossbones" size="sm" /> <br /> Default
+            Unused - <FontAwesomeIcon icon="users-slash" size="sm" />
           </Trans>
         </small>
       </p>
