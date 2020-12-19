@@ -133,17 +133,16 @@ export default function MapsPanel(): JSX.Element {
   const defaultPlayersSection = useSelector(getDefaultPlayersSection);
 
   // this maps the coordinates to the player
-  const allPlayersWithCoordinates = React.useMemo(
-    () =>
-      allPlayers.map((player) => {
-        for (const { id, x, y } of players) {
-          if (player.color === id) {
-            return { ...player, x, y };
-          }
-        }
-      }),
-    []
-  );
+  // had to use useMemo otherwise it keeps creating dupes when you toggle the status
+  const allPlayersWithCoordinates = React.useMemo(() => allPlayers, [
+    allPlayers,
+  ]).map((player) => {
+    for (const { id, x, y } of players) {
+      if (player.color === id) {
+        return { ...player, x, y };
+      }
+    }
+  });
 
   const dispatch = useDispatch();
 
