@@ -121,6 +121,8 @@ export interface IPlayersSection extends ItemInterface {
 
 export interface IPlayersSectionsSlice {
   defaultSection: number;
+  defaultDeadSection: number;
+  defaultUnusedSection: number;
   sections: Array<IPlayersSection>;
 }
 

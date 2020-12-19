@@ -29,3 +29,5 @@ export const DEFAULT_SECTIONS: Array<IPlayersSection> = [
 ];
 
 export const DEFAULT_SECTION = 4;
+export const DEFAULT_DEAD_SECTION = 3;
+export const DEFAULT_UNUSED_SECTION = 5;

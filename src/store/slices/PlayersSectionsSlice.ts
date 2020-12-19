@@ -1,4 +1,9 @@
-import { DEFAULT_SECTION, DEFAULT_SECTIONS } from "constants/sections";
+import {
+  DEFAULT_DEAD_SECTION,
+  DEFAULT_SECTION,
+  DEFAULT_SECTIONS,
+  DEFAULT_UNUSED_SECTION,
+} from "constants/sections";
 import {
   IPlayer,
   IPlayersSection,
@@ -19,12 +24,18 @@ function getInitialState(): IPlayersSectionsSlice {
 
     return {
       defaultSection: playersSectionsObject.defaultSection ?? DEFAULT_SECTION,
+      defaultDeadSection:
+        playersSectionsObject.defaultDeadSection ?? DEFAULT_DEAD_SECTION,
+      defaultUnusedSection:
+        playersSectionsObject.defaultUnusedSection ?? DEFAULT_UNUSED_SECTION,
       sections: playersSectionsObject.sections ?? DEFAULT_SECTIONS,
     };
   }
 
   return {
     defaultSection: DEFAULT_SECTION,
+    defaultDeadSection: DEFAULT_DEAD_SECTION,
+    defaultUnusedSection: DEFAULT_UNUSED_SECTION,
     sections: DEFAULT_SECTIONS,
   };
 }
@@ -62,6 +73,24 @@ const PlayersSectionsSlice = createSlice({
       ...state,
 
       defaultSection: action.payload,
+    }),
+
+    setDefaultDeadSection: (
+      state: IPlayersSectionsSlice,
+      action: PayloadAction<number>
+    ) => ({
+      ...state,
+
+      defaultDeadSection: action.payload,
+    }),
+
+    setDefaultUnusedSection: (
+      state: IPlayersSectionsSlice,
+      action: PayloadAction<number>
+    ) => ({
+      ...state,
+
+      defaultUnusedSection: action.payload,
     }),
 
     setPlayersSections: (
@@ -152,6 +181,8 @@ const PlayersSectionsSlice = createSlice({
 
     resetPlayersSections: () => ({
       defaultSection: DEFAULT_SECTION,
+      defaultDeadSection: DEFAULT_DEAD_SECTION,
+      defaultUnusedSection: DEFAULT_UNUSED_SECTION,
       sections: [...DEFAULT_SECTIONS.map((section) => section)],
     }),
   },
@@ -159,6 +190,10 @@ const PlayersSectionsSlice = createSlice({
 
 export const {
   setDefaultSection,
+
+  setDefaultDeadSection,
+
+  setDefaultUnusedSection,
 
   setPlayersSections,
 
@@ -171,13 +206,51 @@ export const {
   resetPlayersSections,
 } = PlayersSectionsSlice.actions;
 
-export const getDefaultSection = (state: IUIStoreState): number =>
+export const getDefaultSectionId = (state: IUIStoreState): number =>
   state.PlayersSections.defaultSection;
 
 export const getPlayersSections = (
   state: IUIStoreState
 ): Array<IPlayersSection> => state.PlayersSections.sections;
 
+export const getDefaultPlayersSection = (
+  state: IUIStoreState
+): IPlayersSection =>
+  _ensure(
+    state.PlayersSections.sections.find(
+      (playersSection) => playersSection.id === getDefaultSectionId(state)
+    )
+  );
+
+export const getDeadPlayersSection = (state: IUIStoreState): IPlayersSection =>
+  _ensure(
+    state.PlayersSections.sections.find(
+      (playerSection) =>
+        playerSection.id === state.PlayersSections.defaultDeadSection
+    )
+  );
+
+export const getUnusedPlayersSection = (
+  state: IUIStoreState
+): IPlayersSection =>
+  _ensure(
+    state.PlayersSections.sections.find(
+      (playerSection) =>
+        playerSection.id === state.PlayersSections.defaultUnusedSection
+    )
+  );
+
+// ensure Array.prototype.find will not return `undefined`
+function _ensure<T>(
+  argument: T | undefined,
+  message = "This value was promised to be there."
+): T {
+  if (argument === undefined || argument === null) {
+    throw new TypeError(message);
+  }
+
+  return argument;
+}
 export const getAllPlayers = (state: IUIStoreState): Array<IPlayer> => {
   const allPlayers = [];
 

@@ -92,7 +92,6 @@ export default createUseStyles((theme: ITheme) => ({
       padding: "0.5rem 0",
     },
   }),
-  MapsPanelMapPlayerIcons: {},
   MapsPanelMapPlayerIcon: (props) => ({
     width: props.isMobile ? "1rem" : "2rem",
     height: "auto",
