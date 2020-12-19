@@ -10,6 +10,7 @@ import {
   getDeadPlayersSection,
   getDefaultPlayersSection,
   getPlayersSections,
+  getUnusedPlayersSection,
   setPlayersFromSection,
 } from "store/slices/PlayersSectionsSlice";
 import { getIsColorBlind, getShowNames } from "store/slices/SettingsSlice";
@@ -131,6 +132,7 @@ export default function MapsPanel(): JSX.Element {
   const playersSections = useSelector(getPlayersSections);
   const deadPlayersSection = useSelector(getDeadPlayersSection);
   const defaultPlayersSection = useSelector(getDefaultPlayersSection);
+  const unusedPlayersSection = useSelector(getUnusedPlayersSection);
 
   // this maps the coordinates to the player
   // had to use useMemo otherwise it keeps creating dupes when you toggle the status
@@ -143,6 +145,10 @@ export default function MapsPanel(): JSX.Element {
       }
     }
   });
+
+  const unusedPlayers = React.useMemo(() => unusedPlayersSection.players, [
+    unusedPlayersSection,
+  ]).map(({ id }) => id);
 
   const dispatch = useDispatch();
 
@@ -204,7 +210,7 @@ export default function MapsPanel(): JSX.Element {
 
         <div>
           {allPlayersWithCoordinates.map((player) =>
-            player ? (
+            player && !unusedPlayers.includes(player.id) ? (
               <Draggable
                 key={`${player?.id}-draggable-icon`}
                 bounds="#MapsContainer"
