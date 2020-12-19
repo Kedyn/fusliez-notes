@@ -241,10 +241,10 @@ export const getUnusedPlayersSection = (
   );
 
 // ensure Array.prototype.find will not return `undefined`
-function _ensure(
-  argument: IPlayersSection | undefined,
+function _ensure<T>(
+  argument: T | undefined,
   message = "This value was promised to be there."
-): IPlayersSection {
+): T {
   if (argument === undefined || argument === null) {
     throw new TypeError(message);
   }

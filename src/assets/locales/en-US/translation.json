@@ -91,7 +91,10 @@
     "close": "Close",
     "addSection": "Add Section",
     "resetSections": "Reset Sections",
-    "sectionsNote": "Note: changing the default section will only be affected after clicking Reset Positions or Reset All. <1 /> Default Reset - <3 /> <5 /> Default Dead - <7 /> <9 /> Default Unused - <11 />"
+    "sectionsNote": "Note: changing the default section will only be affected after clicking Reset Positions or Reset All. <1 /> ",
+    "resetSection": "Default Reset - <1 /> <2 />",
+    "deadSection": "Default Dead - <1 /> <2 />",
+    "unusedSection": "Default Unused - <1 />"
   },
   "menu": {
     "players": "Players",

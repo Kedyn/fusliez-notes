@@ -86,7 +86,6 @@ export default function SettingsPlayersSections(): JSX.Element {
 
             <div className={classes.SettingsInputContainer}>
               <input
-                disabled={list.title === "main.lists.dead"}
                 type="text"
                 placeholder="Section name"
                 className={classes.SettingsInput}
@@ -156,10 +155,20 @@ export default function SettingsPlayersSections(): JSX.Element {
         <small>
           <Trans i18nKey="settings.sectionsNote">
             Note: changing the default section will only be affected after
-            clicking Reset Round or Reset All. <br /> Default Reset -
-            <FontAwesomeIcon icon="users" size="sm" /> <br /> Default Dead -
-            <FontAwesomeIcon icon="skull-crossbones" size="sm" /> <br /> Default
-            Unused - <FontAwesomeIcon icon="users-slash" size="sm" />
+            clicking Reset Round or Reset All. <br />
+          </Trans>
+          <Trans i18nKey="settings.resetSection">
+            Default Reset -
+            <FontAwesomeIcon icon="users" size="sm" />
+            <br />
+          </Trans>
+          <Trans i18nKey="settings.deadSection">
+            Default Dead -
+            <FontAwesomeIcon icon="skull-crossbones" size="sm" />
+            <br />
+          </Trans>
+          <Trans i18nKey="settings.unusedSection">
+            Default Unused - <FontAwesomeIcon icon="users-slash" size="sm" />
           </Trans>
         </small>
       </p>
