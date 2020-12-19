@@ -29,7 +29,6 @@ import { useTranslation } from "react-i18next";
 
 interface IPlayerFound {
   sectionId: number;
-  listName: string;
   player: IPlayer;
 }
 
@@ -40,11 +39,10 @@ export function findCurrentList(
 ): IPlayerFound {
   let target: IPlayerFound = {
     sectionId: 0,
-    listName: "",
     player: { color: "", playerName: "", id: "" },
   };
 
-  for (const { id, title, players } of playersSections) {
+  for (const { id, players } of playersSections) {
     const player = players.find(
       ({ color }: { color: string }) => color === playerColor
     );
@@ -52,7 +50,6 @@ export function findCurrentList(
     if (player) {
       target = {
         sectionId: id as number,
-        listName: title,
         player,
       };
       break;
@@ -71,23 +68,17 @@ export function reassignPlayers(
 ): void {
   // if already dead, set to unknown/default
   // else set to dead
-  const { sectionId, listName, player } = findCurrentList(
-    playersSections,
-    color
-  );
+  const { sectionId, player } = findCurrentList(playersSections, color);
 
   let newDeadPlayers;
 
-  if (listName === "main.lists.dead") {
+  if (sectionId === deadPlayersSection.id) {
     // if player is already in "Dead"
     // remove player from Dead
     // put player back to default section
     newDeadPlayers = deadPlayersSection.players.filter(
       (deadPlayer) => deadPlayer.color !== player.color
     );
-
-    console.log(newDeadPlayers);
-    console.log(defaultPlayersSection);
 
     dispatch(
       setPlayersFromSection({
