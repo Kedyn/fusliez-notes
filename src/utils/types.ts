@@ -1,13 +1,88 @@
 import { ItemInterface } from "react-sortablejs";
 
-export interface IPlayer extends ItemInterface {
-  playerName: string;
-  color: string;
-}
-
-export interface ISettings {
+export interface ISettingsState {
   showNames: boolean;
   isColorBlind: boolean;
+}
+
+export interface IDeviceState {
+  isMobile: boolean;
+  orientation: "portrait" | "landscape";
+}
+
+export interface IScoresState {
+  crewmateWins: number;
+  crewmateLosses: number;
+  impostorWins: number;
+  impostorLosses: number;
+}
+
+export type IPlayerColor =
+  | "brown"
+  | "red"
+  | "orange"
+  | "yellow"
+  | "lime"
+  | "green"
+  | "cyan"
+  | "blue"
+  | "purple"
+  | "pink"
+  | "white"
+  | "black";
+
+export interface ICoordinates {
+  x: number;
+  y: number;
+}
+
+export interface IPlayer {
+  name: string;
+  color: IPlayerColor;
+  position: ICoordinates;
+  isDead: boolean;
+  isUsed: boolean;
+}
+
+export interface IPlayersState {
+  brown: IPlayer;
+  red: IPlayer;
+  orange: IPlayer;
+  yellow: IPlayer;
+  lime: IPlayer;
+  green: IPlayer;
+  cyan: IPlayer;
+  blue: IPlayer;
+  purple: IPlayer;
+  pink: IPlayer;
+  white: IPlayer;
+  black: IPlayer;
+}
+
+export interface ISection extends ItemInterface {
+  title: string;
+  players: Array<ItemInterface>;
+}
+
+export interface ISectionsState {
+  resetSection: number;
+  sections: Array<ISection>;
+}
+
+export interface IMapsState {
+  currentMap: string;
+  cameraPosition: ICoordinates;
+  scale: number;
+}
+
+export interface IUIStoreState {
+  SettingsState: ISettingsState;
+  DeviceState: IDeviceState;
+  ScoresState: IScoresState;
+  PlayersState: IPlayersState;
+  PlayerEditLockState: boolean;
+  SectionsState: ISectionsState;
+  MapsState: IMapsState;
 }
 
 export interface IColorLibrary {
@@ -59,49 +134,7 @@ export interface ILanguage {
   label: string;
 }
 
-export interface IDevice {
-  isMobile: boolean;
-  orientation: "portrait" | "landscape";
-}
-
-export interface IScores {
-  crewmateWins: number;
-  crewmateLosses: number;
-  impostorWins: number;
-  impostorLosses: number;
-}
-
-export interface IUIStoreState {
-  Settings: ISettings;
-  Device: IDevice;
-  Scores: IScores;
-  PlayerEditLock: boolean;
-  PlayersSections: IPlayersSections;
-  Maps: IMaps;
-}
-
-export interface IPlayersSection extends ItemInterface {
-  title: string;
-  players: Array<IPlayer>;
-}
-
-export interface IPlayersSections {
-  defaultSection: number;
-  sections: Array<IPlayersSection>;
-}
-
 export interface IPerson {
   name: string;
   link: string;
-}
-
-export interface IMapsCharacter {
-  id: string;
-  x: number;
-  y: number;
-}
-
-export interface IMaps {
-  currentMap: string;
-  characters: Array<IMapsCharacter>;
 }
