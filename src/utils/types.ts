@@ -75,7 +75,7 @@ export interface IMapsState {
   scale: number;
 }
 
-export interface IUIStoreState {
+export interface IStoreState {
   SettingsState: ISettingsState;
   DeviceState: IDeviceState;
   ScoresState: IScoresState;

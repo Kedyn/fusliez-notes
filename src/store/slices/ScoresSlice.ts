@@ -1,10 +1,10 @@
-import { IScores, IUIStoreState } from "utils/types";
+import { IScoresState, IStoreState } from "utils/types";
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
 import { DEFAULT_SCORES } from "constants/scores";
 import { NAMESPACE } from "constants/main";
 
-function getInitialState(): IScores {
+function getInitialState(): IScoresState {
   const localScoresData: string | null = localStorage.getItem(
     `${NAMESPACE}scores`
   );
@@ -29,55 +29,61 @@ const ScoresSlice = createSlice({
   name: "Scores",
   initialState: getInitialState(),
   reducers: {
-    setCrewmateWins: (state: IScores, action: PayloadAction<number>) => ({
+    setCrewmateWins: (state: IScoresState, action: PayloadAction<number>) => ({
       ...state,
       crewmateWins: action.payload,
     }),
-    incrementCrewmateWins: (state: IScores) => ({
+    incrementCrewmateWins: (state: IScoresState) => ({
       ...state,
       crewmateWins: state.crewmateWins + 1,
     }),
-    decrementCrewmateWins: (state: IScores) => ({
+    decrementCrewmateWins: (state: IScoresState) => ({
       ...state,
       crewmateWins: state.crewmateWins ? state.crewmateWins - 1 : 0,
     }),
 
-    setCrewmateLosses: (state: IScores, action: PayloadAction<number>) => ({
+    setCrewmateLosses: (
+      state: IScoresState,
+      action: PayloadAction<number>
+    ) => ({
       ...state,
       crewmateLosses: action.payload,
     }),
-    incrementCrewmateLosses: (state: IScores) => ({
+    incrementCrewmateLosses: (state: IScoresState) => ({
       ...state,
       crewmateLosses: state.crewmateLosses + 1,
     }),
-    decrementCrewmateLosses: (state: IScores) => ({
+    decrementCrewmateLosses: (state: IScoresState) => ({
       ...state,
       crewmateLosses: state.crewmateLosses ? state.crewmateLosses - 1 : 0,
     }),
 
-    setImpostorWins: (state: IScores, action: PayloadAction<number>) => ({
+    setImpostorWins: (state: IScoresState, action: PayloadAction<number>) => ({
       ...state,
       impostorWins: action.payload,
     }),
-    incrementImpostorWins: (state: IScores) => ({
+    incrementImpostorWins: (state: IScoresState) => ({
       ...state,
       impostorWins: state.impostorWins + 1,
     }),
-    decrementImpostorWins: (state: IScores) => ({
+    decrementImpostorWins: (state: IScoresState) => ({
       ...state,
       impostorWins: state.impostorWins ? state.impostorWins - 1 : 0,
     }),
 
-    setImpostorLosses: (state: IScores, action: PayloadAction<number>) => ({
+    setImpostorLosses: (
+      state: IScoresState,
+      action: PayloadAction<number>
+    ) => ({
       ...state,
       impostorLosses: action.payload,
     }),
 
-    incrementImpostorLosses: (state: IScores) => ({
+    incrementImpostorLosses: (state: IScoresState) => ({
       ...state,
       impostorLosses: state.impostorLosses + 1,
     }),
-    decrementImpostorLosses: (state: IScores) => ({
+    decrementImpostorLosses: (state: IScoresState) => ({
       ...state,
       impostorLosses: state.impostorLosses ? state.impostorLosses - 1 : 0,
     }),
@@ -108,16 +114,16 @@ export const {
   resetScores,
 } = ScoresSlice.actions;
 
-export const getCrewmateWins = (state: IUIStoreState): number =>
-  state.Scores.crewmateWins;
+export const getCrewmateWins = (state: IStoreState): number =>
+  state.ScoresState.crewmateWins;
 
-export const getCrewmateLosses = (state: IUIStoreState): number =>
-  state.Scores.crewmateLosses;
+export const getCrewmateLosses = (state: IStoreState): number =>
+  state.ScoresState.crewmateLosses;
 
-export const getImpostorWins = (state: IUIStoreState): number =>
-  state.Scores.impostorWins;
+export const getImpostorWins = (state: IStoreState): number =>
+  state.ScoresState.impostorWins;
 
-export const getImpostorLosses = (state: IUIStoreState): number =>
-  state.Scores.impostorLosses;
+export const getImpostorLosses = (state: IStoreState): number =>
+  state.ScoresState.impostorLosses;
 
 export default ScoresSlice;
