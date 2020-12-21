@@ -10,14 +10,6 @@ export interface ISettings {
   isColorBlind: boolean;
 }
 
-export interface ISettingsContext {
-  showNames: boolean;
-  isColorBlind: boolean;
-
-  setShowNames: (value: boolean) => void;
-  setIsColorBlind: (value: boolean) => void;
-}
-
 export interface IColorLibrary {
   [key: string]: IColorEntry;
 }
@@ -56,11 +48,6 @@ export interface ITheme {
   neutralColor: string;
 }
 
-export interface IMobileContext {
-  isMobile: boolean;
-  orientation: string;
-}
-
 export interface IView {
   title: string;
   content: React.ReactNode;
@@ -68,29 +55,8 @@ export interface IView {
 }
 
 export interface ILanguage {
-  label: string;
   id: string;
-}
-
-export interface IScoresContext {
-  crewmateWins: number;
-  crewmateLosses: number;
-  impostorWins: number;
-  impostorLosses: number;
-
-  setCrewmateWins: (value: number) => void;
-  setCrewmateLosses: (value: number) => void;
-  setImpostorWins: (value: number) => void;
-  setImpostorLosses: (value: number) => void;
-
-  resetScores: () => void;
-}
-
-export interface ILockingContextProvider {
-  isLocked: boolean;
-
-  resetLock: () => void;
-  toggleLock: () => void;
+  label: string;
 }
 
 export interface IDevice {
@@ -110,7 +76,7 @@ export interface IUIStoreState {
   Device: IDevice;
   Scores: IScores;
   PlayerEditLock: boolean;
-  PlayersSections: IPlayersSectionsSlice;
+  PlayersSections: IPlayersSections;
   Maps: IMaps;
 }
 
@@ -119,10 +85,8 @@ export interface IPlayersSection extends ItemInterface {
   players: Array<IPlayer>;
 }
 
-export interface IPlayersSectionsSlice {
+export interface IPlayersSections {
   defaultSection: number;
-  defaultDeadSection: number;
-  defaultUnusedSection: number;
   sections: Array<IPlayersSection>;
 }
 
