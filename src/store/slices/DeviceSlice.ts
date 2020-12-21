@@ -1,4 +1,4 @@
-import { IDevice, IUIStoreState } from "utils/types";
+import { IDeviceState, IStoreState } from "utils/types";
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
 import { BREAKPOINT } from "constants/main";
@@ -9,15 +9,15 @@ const DeviceSlice = createSlice({
     isMobile: window.innerWidth <= BREAKPOINT,
     orientation:
       window.innerHeight > window.innerWidth ? "portrait" : "landscape",
-  } as IDevice,
+  } as IDeviceState,
   reducers: {
-    setIsMobile: (state: IDevice, action: PayloadAction<boolean>) => ({
+    setIsMobile: (state: IDeviceState, action: PayloadAction<boolean>) => ({
       ...state,
       isMobile: action.payload,
     }),
 
     setOrientation: (
-      state: IDevice,
+      state: IDeviceState,
       action: PayloadAction<"portrait" | "landscape">
     ) => ({
       ...state,
@@ -29,17 +29,16 @@ const DeviceSlice = createSlice({
         isMobile: window.innerWidth <= BREAKPOINT,
         orientation:
           window.innerHeight > window.innerWidth ? "portrait" : "landscape",
-      } as IDevice),
+      } as IDeviceState),
   },
 });
 
 export const { setIsMobile, setOrientation, resetDevice } = DeviceSlice.actions;
 
-export const getIsMobile = (state: IUIStoreState): boolean =>
-  state.Device.isMobile;
+export const getIsMobile = (state: IStoreState): boolean =>
+  state.DeviceState.isMobile;
 
-export const getOrientation = (
-  state: IUIStoreState
-): "portrait" | "landscape" => state.Device.orientation;
+export const getOrientation = (state: IStoreState): "portrait" | "landscape" =>
+  state.DeviceState.orientation;
 
 export default DeviceSlice;
