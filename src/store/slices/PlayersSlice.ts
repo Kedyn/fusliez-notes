@@ -2,15 +2,15 @@ import {
   IPlayer,
   IPlayerColor,
   IPlayersState,
-  ISetPlayerIsDeadPayload,
-  ISetPlayerIsUsedPayload,
   ISetPlayerNamePayload,
   ISetPlayerPositionPayload,
+  ISetPlayerSectionPayload,
 } from "utils/types/players";
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import {
   getDefaultPlayersState,
   getInitialPlayersState,
+  getNewPlayersState,
 } from "store/shared/players";
 
 import { IStoreState } from "utils/types/store";
@@ -22,68 +22,70 @@ const PlayersSlice = createSlice({
     setPlayerName: (
       state: IPlayersState,
       action: PayloadAction<ISetPlayerNamePayload>
-    ) => {
-      const newState = { ...state };
+    ) =>
+      getNewPlayersState((player: IPlayerColor) => {
+        if (player === action.payload.player) {
+          return {
+            ...state[player],
+            name: action.payload.newName,
+            position: { ...state[player].position },
+          };
+        }
 
-      newState[action.payload.player].name = action.payload.newName;
-
-      return newState;
-    },
+        return {
+          ...state[player],
+          position: { ...state[player].position },
+        };
+      }),
 
     setPlayerPosition: (
       state: IPlayersState,
       action: PayloadAction<ISetPlayerPositionPayload>
-    ) => {
-      const newState = { ...state };
+    ) =>
+      getNewPlayersState((player: IPlayerColor) => {
+        if (player === action.payload.player) {
+          return {
+            ...state[player],
+            position: action.payload.newPosition,
+          };
+        }
 
-      newState[action.payload.player].position = action.payload.newPosition;
+        return {
+          ...state[player],
+          position: { ...state[player].position },
+        };
+      }),
 
-      return newState;
-    },
-
-    setPlayerIsDead: (
+    setPlayerSection: (
       state: IPlayersState,
-      action: PayloadAction<ISetPlayerIsDeadPayload>
-    ) => {
-      const newState = { ...state };
+      action: PayloadAction<ISetPlayerSectionPayload>
+    ) =>
+      getNewPlayersState((player: IPlayerColor) => {
+        if (player === action.payload.player) {
+          return {
+            ...state[player],
+            section: action.payload.newSection,
+            position: { ...state[player].position },
+          };
+        }
 
-      newState[action.payload.player].isDead = action.payload.newIsDead;
+        return {
+          ...state[player],
+          position: { ...state[player].position },
+        };
+      }),
 
-      return newState;
-    },
+    setPlayer: (state: IPlayersState, action: PayloadAction<IPlayer>) =>
+      getNewPlayersState((player: IPlayerColor) => {
+        if (player === action.payload.color) {
+          return action.payload;
+        }
 
-    toggleIsDead: (
-      state: IPlayersState,
-      action: PayloadAction<IPlayerColor>
-    ) => {
-      const newState = { ...state };
-
-      newState[action.payload].isDead = !state[action.payload].isDead;
-
-      return newState;
-    },
-
-    setPlayerIsUsed: (
-      state: IPlayersState,
-      action: PayloadAction<ISetPlayerIsUsedPayload>
-    ) => {
-      const newState = { ...state };
-
-      newState[action.payload.player].isUsed = action.payload.newIsUsed;
-
-      return newState;
-    },
-
-    toggleIsUsed: (
-      state: IPlayersState,
-      action: PayloadAction<IPlayerColor>
-    ) => {
-      const newState = { ...state };
-
-      newState[action.payload].isUsed = !state[action.payload].isUsed;
-
-      return newState;
-    },
+        return {
+          ...state[player],
+          position: { ...state[player].position },
+        };
+      }),
 
     setPlayersState: (
       state: IPlayersState,
@@ -97,10 +99,8 @@ const PlayersSlice = createSlice({
 export const {
   setPlayerName,
   setPlayerPosition,
-  setPlayerIsDead,
-  toggleIsDead,
-  setPlayerIsUsed,
-  toggleIsUsed,
+  setPlayerSection,
+  setPlayer,
   setPlayersState,
   resetPlayersState,
 } = PlayersSlice.actions;

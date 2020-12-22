@@ -1,3 +1,4 @@
+import { DEFAULT_RESET_SECTION } from "./sections";
 import { IPlayersState } from "utils/types/players";
 
 export const DEFAULT_PLAYERS_STATE: IPlayersState = {
@@ -8,8 +9,7 @@ export const DEFAULT_PLAYERS_STATE: IPlayersState = {
       x: 0,
       y: 0,
     },
-    isDead: false,
-    isUsed: true,
+    section: DEFAULT_RESET_SECTION,
   },
   red: {
     name: "",
@@ -18,8 +18,7 @@ export const DEFAULT_PLAYERS_STATE: IPlayersState = {
       x: 0,
       y: 0,
     },
-    isDead: false,
-    isUsed: true,
+    section: DEFAULT_RESET_SECTION,
   },
   orange: {
     name: "",
@@ -28,8 +27,7 @@ export const DEFAULT_PLAYERS_STATE: IPlayersState = {
       x: 0,
       y: 0,
     },
-    isDead: false,
-    isUsed: true,
+    section: DEFAULT_RESET_SECTION,
   },
   yellow: {
     name: "",
@@ -38,8 +36,7 @@ export const DEFAULT_PLAYERS_STATE: IPlayersState = {
       x: 0,
       y: 0,
     },
-    isDead: false,
-    isUsed: true,
+    section: DEFAULT_RESET_SECTION,
   },
   lime: {
     name: "",
@@ -48,8 +45,7 @@ export const DEFAULT_PLAYERS_STATE: IPlayersState = {
       x: 0,
       y: 0,
     },
-    isDead: false,
-    isUsed: true,
+    section: DEFAULT_RESET_SECTION,
   },
   green: {
     name: "",
@@ -58,8 +54,7 @@ export const DEFAULT_PLAYERS_STATE: IPlayersState = {
       x: 0,
       y: 0,
     },
-    isDead: false,
-    isUsed: true,
+    section: DEFAULT_RESET_SECTION,
   },
   cyan: {
     name: "",
@@ -68,8 +63,7 @@ export const DEFAULT_PLAYERS_STATE: IPlayersState = {
       x: 0,
       y: 0,
     },
-    isDead: false,
-    isUsed: true,
+    section: DEFAULT_RESET_SECTION,
   },
   blue: {
     name: "",
@@ -78,8 +72,7 @@ export const DEFAULT_PLAYERS_STATE: IPlayersState = {
       x: 0,
       y: 0,
     },
-    isDead: false,
-    isUsed: true,
+    section: DEFAULT_RESET_SECTION,
   },
   purple: {
     name: "",
@@ -88,8 +81,7 @@ export const DEFAULT_PLAYERS_STATE: IPlayersState = {
       x: 0,
       y: 0,
     },
-    isDead: false,
-    isUsed: true,
+    section: DEFAULT_RESET_SECTION,
   },
   pink: {
     name: "",
@@ -98,8 +90,7 @@ export const DEFAULT_PLAYERS_STATE: IPlayersState = {
       x: 0,
       y: 0,
     },
-    isDead: false,
-    isUsed: true,
+    section: DEFAULT_RESET_SECTION,
   },
   white: {
     name: "",
@@ -108,8 +99,7 @@ export const DEFAULT_PLAYERS_STATE: IPlayersState = {
       x: 0,
       y: 0,
     },
-    isDead: false,
-    isUsed: true,
+    section: DEFAULT_RESET_SECTION,
   },
   black: {
     name: "",
@@ -118,7 +108,6 @@ export const DEFAULT_PLAYERS_STATE: IPlayersState = {
       x: 0,
       y: 0,
     },
-    isDead: false,
-    isUsed: true,
+    section: DEFAULT_RESET_SECTION,
   },
 };

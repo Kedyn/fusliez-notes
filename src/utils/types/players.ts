@@ -18,8 +18,7 @@ export interface IPlayer {
   name: string;
   color: IPlayerColor;
   position: ICoordinates;
-  isDead: boolean;
-  isUsed: boolean;
+  section: number;
 }
 
 export interface IPlayersState {
@@ -47,12 +46,7 @@ export interface ISetPlayerPositionPayload {
   newPosition: ICoordinates;
 }
 
-export interface ISetPlayerIsDeadPayload {
+export interface ISetPlayerSectionPayload {
   player: IPlayerColor;
-  newIsDead: boolean;
-}
-
-export interface ISetPlayerIsUsedPayload {
-  player: IPlayerColor;
-  newIsUsed: boolean;
+  newSection: number;
 }

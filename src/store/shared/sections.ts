@@ -46,11 +46,25 @@ export function getInitialSectionsState(): ISectionsState {
   if (localSectionsData) {
     const sectionsObject = JSON.parse(localSectionsData);
 
+    let sections: Array<ISection> =
+      sectionsObject.sections ?? getDefaultSections();
+
+    sections = [
+      ...sections.map((section) => ({
+        ...section,
+        players: [
+          ...section.players.map((player) => ({
+            id: (player.id as string).toLowerCase(),
+          })),
+        ],
+      })),
+    ];
+
     return {
       resetSection: sectionsObject.resetSection ?? DEFAULT_RESET_SECTION,
       deadSection: sectionsObject.deadSection ?? DEFAULT_DEAD_SECTION,
       unusedSection: sectionsObject.unusedSection ?? DEFAULT_UNUSED_SECTION,
-      sections: sectionsObject.sections ?? getDefaultSections(),
+      sections,
     };
   }
 

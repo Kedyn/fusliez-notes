@@ -1,27 +1,32 @@
 import { IPlayerColor, IPlayersState } from "utils/types/players";
 import {
+  getDefaultPlayersState,
+  getNewPlayersState,
+} from "store/shared/players";
+import {
   getPlayers,
   resetPlayersState,
-  setPlayerIsDead,
-  setPlayerIsUsed,
+  setPlayer,
   setPlayerName,
   setPlayerPosition,
+  setPlayerSection,
   setPlayersState,
-  toggleIsDead,
-  toggleIsUsed,
 } from "store/slices/PlayersSlice";
 
 import { Middleware } from "@reduxjs/toolkit";
 import { NAMESPACE } from "constants/main";
 import { RootState } from "store";
-import { getDefaultPlayersState } from "store/shared/players";
 
 export const PlayersMiddleware: Middleware<unknown, RootState> = (store) => (
   next
 ) => (action) => {
   const state = store.getState();
+  const currentPlayersState = getPlayers(state);
 
-  let players: IPlayersState = getPlayers(state);
+  let players: IPlayersState = getNewPlayersState((player: IPlayerColor) => ({
+    ...currentPlayersState[player],
+    position: { ...currentPlayersState[player].position },
+  }));
   let edit = true;
 
   switch (action.type) {
@@ -37,27 +42,14 @@ export const PlayersMiddleware: Middleware<unknown, RootState> = (store) => (
 
       break;
 
-    case setPlayerIsDead.type:
-      players[action.payload.player as IPlayerColor].isDead =
-        action.payload.newIsDead;
+    case setPlayerSection.type:
+      players[action.payload.player as IPlayerColor].section =
+        action.payload.newSection;
 
       break;
 
-    case toggleIsDead.type:
-      players[action.payload.player as IPlayerColor].isDead = !players[
-        action.payload.player as IPlayerColor
-      ].isDead;
-
-    case setPlayerIsUsed.type:
-      players[action.payload.player as IPlayerColor].isUsed =
-        action.payload.newIsUsed;
-
-      break;
-
-    case toggleIsUsed.type:
-      players[action.payload.player as IPlayerColor].isUsed = !players[
-        action.payload.player as IPlayerColor
-      ].isUsed;
+    case setPlayer.type:
+      players[action.payload.color as IPlayerColor] = action.payload;
 
       break;
 
