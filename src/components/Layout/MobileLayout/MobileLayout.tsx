@@ -1,7 +1,7 @@
 import { NAMESPACE, VERSION } from "constants/main";
 import { getIsMobile, getOrientation } from "store/slices/DeviceSlice";
 
-import { IView } from "utils/types";
+import { IView } from "utils/types/interface";
 import MainContent from "components/MainContent";
 import Navbar from "components/Navbar";
 import React from "react";
@@ -22,10 +22,7 @@ const MapsPanel = React.lazy(
   () => import(/* webpackChunkName: "maps" */ "components/MapsPanel")
 );
 const SettingsPanel = React.lazy(
-  () =>
-    import(
-      /* webpackChunkName: "settings" */ "components/Settings/SettingsPanel"
-    )
+  () => import(/* webpackChunkName: "settings" */ "components/SettingsPanel")
 );
 const AboutContent = React.lazy(
   () => import(/* webpackChunkName: "about" */ "components/About/AboutPanel")
