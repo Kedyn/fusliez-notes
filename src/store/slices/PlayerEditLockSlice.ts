@@ -1,6 +1,6 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
-import { IUIStoreState } from "utils/types";
+import { IStoreState } from "utils/types/store";
 
 const PlayerEditLockSlice = createSlice({
   name: "PlayerEditLock",
@@ -10,7 +10,7 @@ const PlayerEditLockSlice = createSlice({
       action.payload,
 
     togglePlayerEditLock: (state: boolean) => !state,
-    resetLock: () => false,
+    resetPlayerEditLockState: () => false,
   },
 });
 
@@ -19,10 +19,10 @@ export const {
 
   togglePlayerEditLock,
 
-  resetLock,
+  resetPlayerEditLockState,
 } = PlayerEditLockSlice.actions;
 
-export const getPlayerEditLock = (state: IUIStoreState): boolean =>
+export const getPlayerEditLock = (state: IStoreState): boolean =>
   state.PlayerEditLock;
 
 export default PlayerEditLockSlice;

@@ -1,7 +1,8 @@
-import { ISettingsState, IStoreState } from "utils/types";
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
-import { DEFAULT_SETTINGS } from "constants/settings";
+import { DEFAULT_SETTINGS_STATE } from "constants/settings";
+import { ISettingsState } from "utils/types/settings";
+import { IStoreState } from "utils/types/store";
 import { NAMESPACE } from "constants/main";
 
 function getInitialSate(): ISettingsState {
@@ -13,13 +14,13 @@ function getInitialSate(): ISettingsState {
     const settingsObject = JSON.parse(localSettingsData);
 
     return {
-      showNames: settingsObject.showNames ?? DEFAULT_SETTINGS.showNames,
+      showNames: settingsObject.showNames ?? DEFAULT_SETTINGS_STATE.showNames,
       isColorBlind:
-        settingsObject.isColorBlind ?? DEFAULT_SETTINGS.isColorBlind,
+        settingsObject.isColorBlind ?? DEFAULT_SETTINGS_STATE.isColorBlind,
     };
   }
 
-  return DEFAULT_SETTINGS;
+  return { ...DEFAULT_SETTINGS_STATE };
 }
 
 const SettingsSlice = createSlice({
@@ -47,8 +48,8 @@ const SettingsSlice = createSlice({
       isColorBlind: !state.isColorBlind,
     }),
 
-    resetSettings: () => ({
-      ...DEFAULT_SETTINGS,
+    resetSettingsState: () => ({
+      ...DEFAULT_SETTINGS_STATE,
     }),
   },
 });
@@ -60,13 +61,13 @@ export const {
   setIsColorBlind,
   toggleIsColorBlind,
 
-  resetSettings,
+  resetSettingsState,
 } = SettingsSlice.actions;
 
 export const getShowNames = (state: IStoreState): boolean =>
-  state.SettingsState.showNames;
+  state.Settings.showNames;
 
 export const getIsColorBlind = (state: IStoreState): boolean =>
-  state.SettingsState.isColorBlind;
+  state.Settings.isColorBlind;
 
 export default SettingsSlice;

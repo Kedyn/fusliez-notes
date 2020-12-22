@@ -11,7 +11,7 @@ import {
   incrementCrewmateWins,
   incrementImpostorLosses,
   incrementImpostorWins,
-  resetScores,
+  resetScoresState,
   setCrewmateLosses,
   setCrewmateWins,
   setImpostorLosses,
@@ -111,7 +111,7 @@ export const ScoresMiddleware: Middleware<unknown, RootState> = (store) => (
 
       break;
 
-    case resetScores.type:
+    case resetScoresState.type:
       crewmateWins = DEFAULT_SCORES.crewmateWins;
       crewmateLosses = DEFAULT_SCORES.crewmateLosses;
       impostorWins = DEFAULT_SCORES.impostorWins;

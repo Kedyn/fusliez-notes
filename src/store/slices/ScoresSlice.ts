@@ -1,7 +1,8 @@
-import { IScoresState, IStoreState } from "utils/types";
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
 import { DEFAULT_SCORES } from "constants/scores";
+import { IScoresState } from "utils/types/scores";
+import { IStoreState } from "utils/types/store";
 import { NAMESPACE } from "constants/main";
 
 function getInitialState(): IScoresState {
@@ -88,7 +89,7 @@ const ScoresSlice = createSlice({
       impostorLosses: state.impostorLosses ? state.impostorLosses - 1 : 0,
     }),
 
-    resetScores: () => ({
+    resetScoresState: () => ({
       ...DEFAULT_SCORES,
     }),
   },
@@ -111,19 +112,19 @@ export const {
   incrementImpostorLosses,
   decrementImpostorLosses,
 
-  resetScores,
+  resetScoresState,
 } = ScoresSlice.actions;
 
 export const getCrewmateWins = (state: IStoreState): number =>
-  state.ScoresState.crewmateWins;
+  state.Scores.crewmateWins;
 
 export const getCrewmateLosses = (state: IStoreState): number =>
-  state.ScoresState.crewmateLosses;
+  state.Scores.crewmateLosses;
 
 export const getImpostorWins = (state: IStoreState): number =>
-  state.ScoresState.impostorWins;
+  state.Scores.impostorWins;
 
 export const getImpostorLosses = (state: IStoreState): number =>
-  state.ScoresState.impostorLosses;
+  state.Scores.impostorLosses;
 
 export default ScoresSlice;
