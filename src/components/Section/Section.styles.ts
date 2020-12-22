@@ -1,14 +1,14 @@
-import { ITheme } from "utils/types";
+import { ITheme } from "utils/types/theme";
 import { createUseStyles } from "react-jss";
 
 export default createUseStyles((theme: ITheme) => ({
-  PlayerSection: {},
-  PlayerSectionTitle: {
+  Section: {},
+  SectionTitle: {
     fontSize: "1rem",
     letterSpacing: "0.05rem",
     fontWeight: 600,
   },
-  PlayerSectionArea: {
+  SectionArea: {
     display: "flex",
     flexWrap: "wrap",
     minHeight: "2rem",

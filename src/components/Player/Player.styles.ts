@@ -1,6 +1,6 @@
 import { contrastColor, getColorValue, hexToRGB } from "utils/colorConverter";
 
-import { ITheme } from "utils/types";
+import { ITheme } from "utils/types/theme";
 import { createUseStyles } from "react-jss";
 
 export default createUseStyles((theme: ITheme) => ({
@@ -14,12 +14,12 @@ export default createUseStyles((theme: ITheme) => ({
   PlayerTile: (props) => ({
     alignItems: "center",
     backgroundColor:
-      props.playerName || !props.showNames
+      props.name || !props.showNames
         ? `rgb(${getColorValue(props.color, "dark")})`
         : theme.backgroundColorSecondary,
     border: "1px solid",
     borderColor:
-      props.playerName || !props.showNames
+      props.name || !props.showNames
         ? `rgb(${getColorValue(props.color, "base")})`
         : theme.borderColor,
     borderRadius: "0.25rem",
@@ -32,7 +32,7 @@ export default createUseStyles((theme: ITheme) => ({
     transition: "border-color 0.2s ease",
     "&:hover": {
       borderColor: `rgba(${hexToRGB(theme.textColorSecondary)}, 0.25)`,
-      cursor: props.isReadOnly ? "grab" : "pointer",
+      cursor: props.isLocked ? "grab" : "pointer",
     },
   }),
   PlayerIcon: (props) => ({
@@ -44,14 +44,14 @@ export default createUseStyles((theme: ITheme) => ({
     justifyContent: "center",
     alignItems: "center",
     backgroundColor:
-      props.playerName || !props.showNames
+      props.name || !props.showNames
         ? `rgb(${getColorValue(props.color, "base")})`
         : "transparent",
     backgroundRepeat: "no-repeat",
     backgroundSize: "1.75rem auto",
     backgroundPosition: "center 0.25rem",
     "&:hover": {
-      cursor: props.isReadOnly ? "grab" : props.showNames ? "pointer" : "grab",
+      cursor: props.isLocked ? "grab" : props.showNames ? "pointer" : "grab",
     },
   }),
   PlayerName: (props) => ({
@@ -64,10 +64,10 @@ export default createUseStyles((theme: ITheme) => ({
     lineHeight: 1.25,
     letterSpacing: "0.05rem",
     color:
-      props.playerName !== ""
+      props.name !== ""
         ? contrastColor(getColorValue(props.color, "dark"), theme)
         : theme.textColorPrimary,
-    opacity: props.isReadOnly && props.playerName === "" ? 0.5 : 1,
+    opacity: props.isLocked && props.name === "" ? 0.5 : 1,
   }),
   PlayerInput: (props) => ({
     color: contrastColor(getColorValue(props.color, "dark"), theme),
