@@ -1,73 +1,45 @@
-import { IMaps, IMapsCharacter, IUIStoreState } from "utils/types";
+import { IMap, IMapsState } from "utils/types/maps";
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
 import { DEFAULT_MAPS_DATA } from "constants/maps";
+import { ICoordinates } from "utils/types/shared";
+import { IStoreState } from "utils/types/store";
 
 const MapsSlice = createSlice({
   name: "Maps",
   initialState: DEFAULT_MAPS_DATA,
   reducers: {
-    setCurrentMap: (state: IMaps, action: PayloadAction<string>) => ({
+    setCurrentMap: (state: IMapsState, action: PayloadAction<IMap>) => ({
       ...state,
 
       currentMap: action.payload,
     }),
 
-    setCharactersPositions: (
-      state: IMaps,
-      action: PayloadAction<Array<IMapsCharacter>>
+    setCameraPosition: (
+      state: IMapsState,
+      action: PayloadAction<ICoordinates>
     ) => ({
       ...state,
 
-      characters: action.payload,
+      cameraPosition: action.payload,
     }),
 
-    setCharacterPosition: (
-      state: IMaps,
-      action: PayloadAction<IMapsCharacter>
-    ) => ({
+    setScale: (state: IMapsState, action: PayloadAction<number>) => ({
       ...state,
 
-      characters: [
-        ...state.characters.map((character) => {
-          if (character.id === action.payload.id) {
-            return { ...action.payload };
-          }
-
-          return character;
-        }),
-      ],
-    }),
-
-    resetCharacters: (state: IMaps) => ({
-      ...state,
-
-      characters: [
-        ...DEFAULT_MAPS_DATA.characters.map((character) => ({ ...character })),
-      ],
-    }),
-
-    reset: () => ({
-      currentMap: DEFAULT_MAPS_DATA.currentMap,
-      characters: [
-        ...DEFAULT_MAPS_DATA.characters.map((character) => ({ ...character })),
-      ],
+      scale: action.payload,
     }),
   },
 });
 
-export const {
-  setCurrentMap,
-  setCharactersPositions,
-  setCharacterPosition,
-  resetCharacters,
-  reset,
-} = MapsSlice.actions;
+export const { setCurrentMap, setCameraPosition, setScale } = MapsSlice.actions;
 
-export const getCurrentMap = (state: IUIStoreState): string =>
+export const getCurrentMap = (state: IStoreState): IMap =>
   state.Maps.currentMap;
 
-export const getCharacters = (state: IUIStoreState): Array<IMapsCharacter> =>
-  state.Maps.characters;
+export const getCameraPosition = (state: IStoreState): ICoordinates =>
+  state.Maps.cameraPosition;
+
+export const getScale = (state: IStoreState): number => state.Maps.scale;
 
 export default MapsSlice;
