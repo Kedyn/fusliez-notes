@@ -20,6 +20,7 @@ import {
   setUnusedSection,
 } from "store/slices/SectionsSlice";
 
+import { ISectionsState } from "utils/types/sections";
 import { Middleware } from "@reduxjs/toolkit";
 import { NAMESPACE } from "constants/main";
 import { RootState } from "store";
@@ -28,8 +29,24 @@ export const SectionsMiddleware: Middleware<unknown, RootState> = (store) => (
   next
 ) => (action) => {
   const state = store.getState();
+  const currentSectionsState = getSectionsState(state);
 
-  let sectionsState = getSectionsState(state);
+  let sectionsState: ISectionsState = {
+    resetSection: currentSectionsState.resetSection,
+    deadSection: currentSectionsState.deadSection,
+    unusedSection: currentSectionsState.unusedSection,
+    sections: [
+      ...currentSectionsState.sections.map((section) => ({
+        id: section.id,
+        title: section.title,
+        players: [
+          ...section.players.map((player) => ({
+            id: player.id,
+          })),
+        ],
+      })),
+    ],
+  };
   let edit = true;
 
   switch (action.type) {
