@@ -1,10 +1,12 @@
 import { IPlayerColor, IPlayersState } from "utils/types/players";
 import {
+  getDefaultPlayersPositions,
   getDefaultPlayersState,
   getNewPlayersState,
 } from "store/shared/players";
 import {
   getPlayers,
+  resetPlayersPositions,
   resetPlayersState,
   setPlayer,
   setPlayerName,
@@ -55,6 +57,11 @@ export const PlayersMiddleware: Middleware<unknown, RootState> = (store) => (
 
     case setPlayersState.type:
       players = action.payload;
+
+      break;
+
+    case resetPlayersPositions.type:
+      players = getDefaultPlayersPositions(players);
 
       break;
 

@@ -26,6 +26,16 @@ export function getDefaultPlayersState(): IPlayersState {
   }));
 }
 
+export function getDefaultPlayersPositions(
+  state: IPlayersState
+): IPlayersState {
+  return getNewPlayersState((player: IPlayerColor) => ({
+    ...state[player],
+
+    position: { ...DEFAULT_PLAYERS_STATE[player].position },
+  }));
+}
+
 export function getInitialPlayersState(): IPlayersState {
   const localPlayersData: string | null = localStorage.getItem(
     `${NAMESPACE}players`

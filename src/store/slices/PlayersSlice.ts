@@ -13,6 +13,7 @@ import {
   getNewPlayersState,
 } from "store/shared/players";
 
+import { DEFAULT_PLAYERS_STATE } from "constants/players";
 import { IStoreState } from "utils/types/store";
 
 const PlayersSlice = createSlice({
@@ -92,6 +93,16 @@ const PlayersSlice = createSlice({
       action: PayloadAction<IPlayersState>
     ) => action.payload,
 
+    resetPlayersPositions: (state: IPlayersState) =>
+      getNewPlayersState((player: IPlayerColor) => {
+        return {
+          ...state[player],
+          position: {
+            ...DEFAULT_PLAYERS_STATE[player].position,
+          },
+        };
+      }),
+
     resetPlayersState: () => getDefaultPlayersState(),
   },
 });
@@ -102,6 +113,7 @@ export const {
   setPlayerSection,
   setPlayer,
   setPlayersState,
+  resetPlayersPositions,
   resetPlayersState,
 } = PlayersSlice.actions;
 
