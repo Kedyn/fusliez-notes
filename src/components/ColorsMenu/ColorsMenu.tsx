@@ -1,17 +1,17 @@
-import {
-  getPlayersSections,
-  setPlayersSections,
-} from "store/slices/PlayersSectionsSlice";
+import { getPlayers, setPlayersState } from "store/slices/PlayersSlice";
+import { getSections, setSections } from "store/slices/SectionsSlice";
 import { useDispatch, useSelector } from "react-redux";
 
 import ColorSwatch from "./ColorSwatch";
+import { IPlayerColor } from "utils/types/players";
 import React from "react";
+import { getNewPlayersState } from "store/shared/players";
 import useStyles from "./ColorsMenu.styles";
 
 export interface IColorsMenuProps {
   isMenuShowing: boolean;
   setIsMenuShowing: (state: boolean) => void;
-  currentColor: string;
+  currentColor: IPlayerColor;
 }
 
 export default function ColorsMenu(props: IColorsMenuProps): JSX.Element {
@@ -21,50 +21,68 @@ export default function ColorsMenu(props: IColorsMenuProps): JSX.Element {
 
   const classes = useStyles();
 
-  const playersSections = useSelector(getPlayersSections);
+  const players = useSelector(getPlayers);
+  const sections = useSelector(getSections);
 
   const dispatch = useDispatch();
 
-  const colors = [
-    { color: "brown" },
-    { color: "red" },
-    { color: "orange" },
-    { color: "yellow" },
-    { color: "lime" },
-    { color: "green" },
-    { color: "cyan" },
-    { color: "blue" },
-    { color: "purple" },
-    { color: "pink" },
-    { color: "white" },
-    { color: "black" },
+  const colors: Array<IPlayerColor> = [
+    "brown",
+    "red",
+    "orange",
+    "yellow",
+    "lime",
+    "green",
+    "cyan",
+    "blue",
+    "purple",
+    "pink",
+    "white",
+    "black",
   ];
 
   const swapPlayersColors = (
-    currentPlayerColor: string,
-    targetPlayerColor: string
+    currentPlayerColor: IPlayerColor,
+    targetPlayerColor: IPlayerColor
   ) => {
     if (currentPlayerColor !== targetPlayerColor) {
-      const newPlayersSections = [
-        ...playersSections.map((list) => ({
-          ...list,
+      const newPlayers = getNewPlayersState((player: IPlayerColor) => ({
+        ...players[player],
+        position: { ...players[player].position },
+      }));
+      const tempName = newPlayers[currentPlayerColor].name;
+      const tempSection = newPlayers[currentPlayerColor].section;
 
+      newPlayers[currentPlayerColor].name = newPlayers[targetPlayerColor].name;
+      newPlayers[currentPlayerColor].section =
+        newPlayers[targetPlayerColor].section;
+      newPlayers[targetPlayerColor].name = tempName;
+      newPlayers[targetPlayerColor].section = tempSection;
+
+      const newSections = [
+        ...sections.map((section) => ({
+          id: section.id,
+          title: section.title,
           players: [
-            ...list.players.map((player) => ({
-              ...player,
-
-              color:
-                player.color === currentPlayerColor
-                  ? targetPlayerColor
-                  : player.color === targetPlayerColor
-                  ? currentPlayerColor
-                  : player.color,
-            })),
+            ...section.players.map((player) => {
+              if (player.id === currentPlayerColor) {
+                return {
+                  id: targetPlayerColor,
+                };
+              } else if (player.id === targetPlayerColor) {
+                return {
+                  id: currentPlayerColor,
+                };
+              } else {
+                return { id: player.id };
+              }
+            }),
           ],
         })),
       ];
 
-      dispatch(setPlayersSections(newPlayersSections));
+      dispatch(setPlayersState(newPlayers));
+      dispatch(setSections(newSections));
     }
 
     setIsMenuShowing(false);
@@ -93,7 +111,7 @@ export default function ColorsMenu(props: IColorsMenuProps): JSX.Element {
         isMenuShowing ? "" : classes.isHidden
       }`}
     >
-      {colors.map(({ color }) => (
+      {colors.map((color) => (
         <ColorSwatch
           targetColor={color}
           key={color}

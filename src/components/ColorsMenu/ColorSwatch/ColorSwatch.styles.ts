@@ -1,6 +1,6 @@
 import { getColorValue, hexToRGB } from "utils/colorConverter";
 
-import { ITheme } from "utils/types";
+import { ITheme } from "utils/types/theme";
 import { createUseStyles } from "react-jss";
 
 export default createUseStyles((theme: ITheme) => ({
