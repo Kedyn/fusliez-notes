@@ -1,24 +1,24 @@
 {
-  "fastFolderStructure.structures": [
+  "folderTemplates.structures": [
     {
       "name": "Full Component",
       "customVariables": [],
       "omitParentDirectory": true,
       "structure": [
         {
-          "fileName": "<FFSName | pascalcase>/<FFSName | pascalcase>.tsx",
+          "fileName": "<FTName | pascalcase>/<FTName | pascalcase>.tsx",
           "template": "Full Component File"
         },
         {
-          "fileName": "<FFSName | pascalcase>/<FFSName | pascalcase>.styles.ts",
+          "fileName": "<FTName | pascalcase>/<FTName | pascalcase>.styles.ts",
           "template": "Styles Component File"
         },
         {
-          "fileName": "<FFSName | pascalcase>/<FFSName | pascalcase>.test.tsx",
+          "fileName": "<FTName | pascalcase>/<FTName | pascalcase>.test.tsx",
           "template": "Test Component File"
         },
         {
-          "fileName": "<FFSName | pascalcase>/index.ts",
+          "fileName": "<FTName | pascalcase>/index.ts",
           "template": "Index Component File"
         }
       ]
@@ -29,32 +29,32 @@
       "omitParentDirectory": true,
       "structure": [
         {
-          "fileName": "<FFSName | pascalcase>/<FFSName | pascalcase>.tsx",
+          "fileName": "<FTName | pascalcase>/<FTName | pascalcase>.tsx",
           "template": "NonStyled Component File"
         },
         {
-          "fileName": "<FFSName | pascalcase>/<FFSName | pascalcase>.test.tsx",
+          "fileName": "<FTName | pascalcase>/<FTName | pascalcase>.test.tsx",
           "template": "Test Component File"
         },
         {
-          "fileName": "<FFSName | pascalcase>/index.ts",
+          "fileName": "<FTName | pascalcase>/index.ts",
           "template": "Index Component File"
         }
       ]
     },
   ],
-  "fastFolderStructure.fileTemplates": {
+  "folderTemplates.fileTemplates": {
     "Full Component File": [
       "import React from \"react\";",
-      "import useStyles from \"./<FFSName | pascalcase>.styles\";",
+      "import useStyles from \"./<FTName | pascalcase>.styles\";",
       "",
-      "export interface I<FFSName | pascalcase>Props {}",
+      "export interface I<FTName | pascalcase>Props {}",
       "",
-      "export default function <FFSName | pascalcase>(props: I<FFSName | pascalcase>Props): JSX.Element {",
+      "export default function <FTName | pascalcase>(props: I<FTName | pascalcase>Props): JSX.Element {",
       "  const classes = useStyles();",
       "",
       "  return (",
-      "    <div className={classes.<FFSName | pascalcase>}>",
+      "    <div className={classes.<FTName | pascalcase>}>",
       "      Component content",
       "    </div>",
       "  );",
@@ -64,9 +64,9 @@
     "NonStyled Component File": [
       "import React from \"react\";",
       "",
-      "export interface I<FFSName | pascalcase>Props {}",
+      "export interface I<FTName | pascalcase>Props {}",
       "",
-      "export default function <FFSName | pascalcase>(props: I<FFSName | pascalcase>Props): JSX.Element {",
+      "export default function <FTName | pascalcase>(props: I<FTName | pascalcase>Props): JSX.Element {",
       "  return (",
       "    <React.Fragment>",
       "      Component content",
@@ -80,7 +80,7 @@
       "import { createUseStyles } from \"react-jss\";",
       "",
       "export default createUseStyles((theme: ITheme) => ({",
-      "  <FFSName | pascalcase>: {",
+      "  <FTName | pascalcase>: {",
       "",
       "  },",
       "}));",
@@ -89,19 +89,19 @@
     "Test Component File": [
       "import React from 'react';",
       "import { render, screen } from '@testing-library/react';",
-      "import <FFSName | pascalcase> from \"./<FFSName | pascalcase>\";",
+      "import <FTName | pascalcase> from \"./<FTName | pascalcase>\";",
       "",
       "test(\"Renders component\", () => {",
-      "  render(<<FFSName | pascalcase> />);",
+      "  render(<<FTName | pascalcase> />);",
       "  const element = screen.getByText(/component content/i);",
       "  expect(element).toBeInTheDocument();",
       "});",
       "",
     ],
     "Index Component File": [
-      "import <FFSName | pascalcase> from \"./<FFSName | pascalcase>\";",
+      "import <FTName | pascalcase> from \"./<FTName | pascalcase>\";",
       "",
-      "export default <FFSName | pascalcase>;",
+      "export default <FTName | pascalcase>;",
       ""
     ]
   },
