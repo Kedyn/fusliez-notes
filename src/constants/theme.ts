@@ -1,4 +1,4 @@
-import { IColorLibrary, ITheme } from "utils/types";
+import { IColorLibrary, ITheme } from "utils/types/theme";
 
 export const DEFAULT_THEME_DATA: ITheme = {
   fontFamily:

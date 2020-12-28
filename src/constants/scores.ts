@@ -1,6 +1,6 @@
-import { IScores } from "utils/types";
+import { IScoresState } from "utils/types/scores";
 
-export const DEFAULT_SCORES: IScores = {
+export const DEFAULT_SCORES_STATE: IScoresState = {
   crewmateWins: 0,
   crewmateLosses: 0,
   impostorWins: 0,
