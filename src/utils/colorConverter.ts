@@ -1,5 +1,5 @@
 import { COLOR_LIBRARY } from "constants/theme";
-import { ITheme } from "./types";
+import { ITheme } from "utils/types/theme";
 
 export function getColorValue(color: string, shade: string): string {
   if (typeof COLOR_LIBRARY[color.toLowerCase()] != "undefined") {

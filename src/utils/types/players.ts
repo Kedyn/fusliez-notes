@@ -1,18 +1,18 @@
 import { ICoordinates } from "./shared";
 
 export type IPlayerColor =
-  | "brown"
-  | "red"
-  | "orange"
-  | "yellow"
-  | "lime"
-  | "green"
-  | "cyan"
+  | "black"
   | "blue"
-  | "purple"
+  | "brown"
+  | "cyan"
+  | "green"
+  | "lime"
+  | "orange"
   | "pink"
+  | "purple"
+  | "red"
   | "white"
-  | "black";
+  | "yellow";
 
 export interface IPlayer {
   name: string;
@@ -22,18 +22,18 @@ export interface IPlayer {
 }
 
 export interface IPlayersState {
-  brown: IPlayer;
-  red: IPlayer;
-  orange: IPlayer;
-  yellow: IPlayer;
-  lime: IPlayer;
-  green: IPlayer;
-  cyan: IPlayer;
-  blue: IPlayer;
-  purple: IPlayer;
-  pink: IPlayer;
-  white: IPlayer;
   black: IPlayer;
+  blue: IPlayer;
+  brown: IPlayer;
+  cyan: IPlayer;
+  green: IPlayer;
+  lime: IPlayer;
+  orange: IPlayer;
+  pink: IPlayer;
+  purple: IPlayer;
+  red: IPlayer;
+  white: IPlayer;
+  yellow: IPlayer;
 }
 
 export interface ISetPlayerNamePayload {
@@ -49,4 +49,38 @@ export interface ISetPlayerPositionPayload {
 export interface ISetPlayerSectionPayload {
   player: IPlayerColor;
   newSection: number;
+}
+
+export interface IPlayerImage {
+  x: number;
+  y: number;
+  w: number;
+  h: number;
+}
+
+export interface IPlayersImages {
+  black: IPlayerImage;
+  blue: IPlayerImage;
+  brown: IPlayerImage;
+  cyan: IPlayerImage;
+  green: IPlayerImage;
+  lime: IPlayerImage;
+  orange: IPlayerImage;
+  pink: IPlayerImage;
+  purple: IPlayerImage;
+  red: IPlayerImage;
+  white: IPlayerImage;
+  yellow: IPlayerImage;
+  blackDead: IPlayerImage;
+  blueDead: IPlayerImage;
+  brownDead: IPlayerImage;
+  cyanDead: IPlayerImage;
+  greenDead: IPlayerImage;
+  limeDead: IPlayerImage;
+  orangeDead: IPlayerImage;
+  pinkDead: IPlayerImage;
+  purpleDead: IPlayerImage;
+  redDead: IPlayerImage;
+  whiteDead: IPlayerImage;
+  yellowDead: IPlayerImage;
 }

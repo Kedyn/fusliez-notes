@@ -1,6 +1,6 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
-import { DEFAULT_SCORES } from "constants/scores";
+import { DEFAULT_SCORES_STATE } from "constants/scores";
 import { IScoresState } from "utils/types/scores";
 import { IStoreState } from "utils/types/store";
 import { NAMESPACE } from "constants/main";
@@ -14,16 +14,18 @@ function getInitialState(): IScoresState {
     const scoresObject = JSON.parse(localScoresData);
 
     return {
-      crewmateWins: scoresObject.crewmateWins ?? DEFAULT_SCORES.crewmateWins,
+      crewmateWins:
+        scoresObject.crewmateWins ?? DEFAULT_SCORES_STATE.crewmateWins,
       crewmateLosses:
-        scoresObject.crewmateLosses ?? DEFAULT_SCORES.crewmateLosses,
-      impostorWins: scoresObject.impostorWins ?? DEFAULT_SCORES.impostorWins,
+        scoresObject.crewmateLosses ?? DEFAULT_SCORES_STATE.crewmateLosses,
+      impostorWins:
+        scoresObject.impostorWins ?? DEFAULT_SCORES_STATE.impostorWins,
       impostorLosses:
-        scoresObject.impostorLosses ?? DEFAULT_SCORES.impostorLosses,
+        scoresObject.impostorLosses ?? DEFAULT_SCORES_STATE.impostorLosses,
     };
   }
 
-  return DEFAULT_SCORES;
+  return DEFAULT_SCORES_STATE;
 }
 
 const ScoresSlice = createSlice({
@@ -90,7 +92,7 @@ const ScoresSlice = createSlice({
     }),
 
     resetScoresState: () => ({
-      ...DEFAULT_SCORES,
+      ...DEFAULT_SCORES_STATE,
     }),
   },
 });
