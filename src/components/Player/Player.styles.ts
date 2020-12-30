@@ -1,6 +1,8 @@
 import { contrastColor, getColorValue, hexToRGB } from "utils/colorConverter";
 
+import { IPlayerColor } from "utils/types/players";
 import { ITheme } from "utils/types/theme";
+import { PLAYER_IMAGE } from "constants/players";
 import { createUseStyles } from "react-jss";
 
 export default createUseStyles((theme: ITheme) => ({
@@ -47,9 +49,12 @@ export default createUseStyles((theme: ITheme) => ({
       props.name || !props.showNames
         ? `rgb(${getColorValue(props.color, "base")})`
         : "transparent",
+    backgroundImage: "url(assets/images/players.png)",
     backgroundRepeat: "no-repeat",
-    backgroundSize: "1.75rem auto",
-    backgroundPosition: "center 0.25rem",
+    backgroundSize: "1200% 240%",
+    backgroundPosition: `-${
+      (PLAYER_IMAGE[props.color as IPlayerColor].x / 148) * 2.25
+    }rem 0px`,
     "&:hover": {
       cursor: props.isLocked ? "grab" : props.showNames ? "pointer" : "grab",
     },

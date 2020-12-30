@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import ColorsMenu from "components/ColorsMenu";
 import { IPlayerColor } from "utils/types/players";
+import { PLAYER_IMAGE } from "constants/players";
 import React from "react";
 import cx from "classnames";
 import { getIsMobile } from "store/slices/DeviceSlice";
@@ -80,9 +81,6 @@ export default function Player(props: IPlayerProps): JSX.Element {
             if (showNames && !isMobile) {
               setIsMenuShowing(!isMenuShowing);
             }
-          }}
-          style={{
-            backgroundImage: `url(assets/images/playerIcons/${color}.png)`,
           }}
         ></div>
         {showNames && (
