@@ -4,10 +4,10 @@ import Button from "components/common/Button";
 import { NAMESPACE } from "constants/main";
 import React from "react";
 import { useSelector } from "react-redux";
-import useStyles from "./NotesPanel.styles";
+import useStyles from "./Notepad.styles";
 import { useTranslation } from "react-i18next";
 
-export default function NotesPanel(): JSX.Element {
+export default function Notepad(): JSX.Element {
   const namespace = `${NAMESPACE}notes`;
 
   const { t } = useTranslation();
@@ -26,12 +26,12 @@ export default function NotesPanel(): JSX.Element {
   }, [notes]);
 
   return (
-    <div className={classes.NotesPanel}>
+    <div className={classes.Notepad}>
       {!isMobile && (
-        <div className={classes.NotesHeader}>
+        <div className={classes.NotepadHeader}>
           <h2>{t("controls.notes")}</h2>
           <Button
-            className={classes.NotesReset}
+            className={classes.NotepadReset}
             onClick={() => {
               setNotes("");
             }}
@@ -40,17 +40,19 @@ export default function NotesPanel(): JSX.Element {
           </Button>
         </div>
       )}
+
       <textarea
-        className={classes.Notepad}
+        className={classes.NotepadEditor}
         name="notes"
         onChange={(event: React.ChangeEvent<HTMLTextAreaElement>) => {
           setNotes(event.target.value);
         }}
         value={notes}
       />
+
       {isMobile && (
         <Button
-          className={classes.NotesReset}
+          className={classes.NotepadReset}
           onClick={() => {
             setNotes("");
           }}

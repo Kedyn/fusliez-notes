@@ -1,17 +1,23 @@
 import { createUseStyles } from "react-jss";
 
+interface INotepadStylesProps {
+  isMobile: boolean;
+}
+
 export default createUseStyles({
-  NotesPanel: (props) => ({
+  Notepad: (props: INotepadStylesProps) => ({
     height: "100%",
     flexGrow: 1,
     display: "flex",
     flexDirection: "column",
     padding: props.isMobile ? "1rem" : "0",
     width: "100%",
+    marginTop: props.isMobile ? "0" : "1rem",
   }),
-  NotesHeader: {
+  NotepadHeader: {
     display: "flex",
     marginBottom: "0.5rem",
+
     "& h2": {
       fontSize: "1.25rem",
       fontWeight: 500,
@@ -20,11 +26,11 @@ export default createUseStyles({
       flex: "1 0 auto",
     },
   },
-  NotesReset: {
+  NotepadReset: {
     flex: "0 0 auto",
     alignSelf: "flex-start",
   },
-  Notepad: {
+  NotepadEditor: {
     flex: "1 0 auto",
     marginBottom: "1rem",
     fontSize: "1.25rem",
