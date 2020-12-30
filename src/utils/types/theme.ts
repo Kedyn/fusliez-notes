@@ -30,8 +30,8 @@ export interface ITheme {
   crewmateColorPrimary: string;
   crewmateColorSecondary: string;
 
-  imposterColorPrimary: string;
-  imposterColorSecondary: string;
+  impostorColorPrimary: string;
+  impostorColorSecondary: string;
 
   neutralColor: string;
 }

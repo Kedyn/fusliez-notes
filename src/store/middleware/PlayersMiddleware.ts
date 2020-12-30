@@ -6,6 +6,7 @@ import {
 } from "store/shared/players";
 import {
   getPlayers,
+  resetPlayersNames,
   resetPlayersPositions,
   resetPlayersState,
   setPlayer,
@@ -15,6 +16,7 @@ import {
   setPlayersState,
 } from "store/slices/PlayersSlice";
 
+import { DEFAULT_PLAYERS_STATE } from "constants/players";
 import { Middleware } from "@reduxjs/toolkit";
 import { NAMESPACE } from "constants/main";
 import { RootState } from "store";
@@ -27,6 +29,7 @@ export const PlayersMiddleware: Middleware<unknown, RootState> = (store) => (
 
   let players: IPlayersState = getNewPlayersState((player: IPlayerColor) => ({
     ...currentPlayersState[player],
+
     position: { ...currentPlayersState[player].position },
   }));
   let edit = true;
@@ -64,6 +67,13 @@ export const PlayersMiddleware: Middleware<unknown, RootState> = (store) => (
       players = getDefaultPlayersPositions(players);
 
       break;
+
+    case resetPlayersNames.type:
+      players = getNewPlayersState((player: IPlayerColor) => ({
+        ...currentPlayersState[player],
+
+        name: DEFAULT_PLAYERS_STATE[player].name,
+      }));
 
     case resetPlayersState.type:
       players = getDefaultPlayersState();

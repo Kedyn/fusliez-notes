@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from "react-redux";
 
 import ColorsMenu from "components/ColorsMenu";
 import { IPlayerColor } from "utils/types/players";
-import { PLAYER_IMAGE } from "constants/players";
 import React from "react";
 import cx from "classnames";
 import { getIsMobile } from "store/slices/DeviceSlice";
@@ -72,7 +71,7 @@ export default function Player(props: IPlayerProps): JSX.Element {
           />
         )}
         <div
-          className={cx(classes.PlayerIcon, "player-handle")}
+          className={cx(classes.PlayerIconWrapper, "player-handle")}
           onClick={() => {
             if (isLocked) {
               return;
@@ -82,7 +81,9 @@ export default function Player(props: IPlayerProps): JSX.Element {
               setIsMenuShowing(!isMenuShowing);
             }
           }}
-        ></div>
+        >
+          <div className={classes.PlayerIcon} />
+        </div>
         {showNames && (
           <div className={classes.PlayerName}>
             {!isLocked && (

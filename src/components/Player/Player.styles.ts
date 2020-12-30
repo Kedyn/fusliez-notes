@@ -5,15 +5,24 @@ import { ITheme } from "utils/types/theme";
 import { PLAYER_IMAGE } from "constants/players";
 import { createUseStyles } from "react-jss";
 
+interface IPlayerStylesProps {
+  isMobile: boolean;
+  showNames: boolean;
+  isColorBlind: boolean;
+  isLocked: boolean;
+  color: IPlayerColor;
+  name: string;
+}
+
 export default createUseStyles((theme: ITheme) => ({
-  Player: (props) => ({
+  Player: (props: IPlayerStylesProps) => ({
     display: "flex",
     flexDirection: "column",
     alignItems: "stretch",
     flex: props.showNames || props.isColorBlind ? "1 0 50%" : "0 0 2.5rem",
     maxWidth: props.showNames || props.isColorBlind ? "50%" : "none",
   }),
-  PlayerTile: (props) => ({
+  PlayerTile: (props: IPlayerStylesProps) => ({
     alignItems: "center",
     backgroundColor:
       props.name || !props.showNames
@@ -29,7 +38,6 @@ export default createUseStyles((theme: ITheme) => ({
     display: "flex",
     justifyContent: "center",
     margin: "0.375rem",
-    opacity: props.longPressed ? "0.5" : 1,
     position: "relative",
     transition: "border-color 0.2s ease",
     "&:hover": {
@@ -37,7 +45,7 @@ export default createUseStyles((theme: ITheme) => ({
       cursor: props.isLocked ? "grab" : "pointer",
     },
   }),
-  PlayerIcon: (props) => ({
+  PlayerIconWrapper: (props: IPlayerStylesProps) => ({
     display: "flex",
     flex: props.showNames || !props.isColorBlind ? "0 0 2.25rem" : "1 0 auto",
     alignSelf: "stretch",
@@ -49,15 +57,20 @@ export default createUseStyles((theme: ITheme) => ({
       props.name || !props.showNames
         ? `rgb(${getColorValue(props.color, "base")})`
         : "transparent",
+
+    "&:hover": {
+      cursor: props.isLocked ? "grab" : props.showNames ? "pointer" : "grab",
+    },
+  }),
+  PlayerIcon: (props: IPlayerStylesProps) => ({
+    width: "2.25rem",
+    height: "2rem",
     backgroundImage: "url(assets/images/players.png)",
     backgroundRepeat: "no-repeat",
     backgroundSize: "1200% 240%",
     backgroundPosition: `-${
       (PLAYER_IMAGE[props.color as IPlayerColor].x / 148) * 2.25
     }rem 0px`,
-    "&:hover": {
-      cursor: props.isLocked ? "grab" : props.showNames ? "pointer" : "grab",
-    },
   }),
   PlayerName: (props) => ({
     flexGrow: 1,
@@ -74,7 +87,7 @@ export default createUseStyles((theme: ITheme) => ({
         : theme.textColorPrimary,
     opacity: props.isLocked && props.name === "" ? 0.5 : 1,
   }),
-  PlayerInput: (props) => ({
+  PlayerInput: (props: IPlayerStylesProps) => ({
     color: contrastColor(getColorValue(props.color, "dark"), theme),
     display: "block",
     fontSize: props.isMobile ? "1rem" : props.showNames ? "1.15rem" : "1rem",
