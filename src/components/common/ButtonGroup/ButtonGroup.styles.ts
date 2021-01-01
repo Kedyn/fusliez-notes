@@ -7,6 +7,7 @@ interface IButtonGroupStylesProps {
 export default createUseStyles({
   ButtonGroup: (props: IButtonGroupStylesProps) => ({
     display: !props.inline ? "flex" : "inline-flex",
+    flexWrap: "wrap",
     margin: "0 0.25rem",
 
     "&>*": {

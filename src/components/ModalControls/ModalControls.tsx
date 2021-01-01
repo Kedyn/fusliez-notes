@@ -1,13 +1,20 @@
 import { NAMESPACE, VERSION } from "constants/main";
+import React, { Suspense } from "react";
 
-import About from "components/About";
 import Button from "components/common/Button";
-import Changelog from "components/Changelog";
 import Modal from "components/common/Modal";
-import React from "react";
-import Settings from "components/Settings";
 import useStyles from "./ModalControls.styles";
 import { useTranslation } from "react-i18next";
+
+const Settings = React.lazy(
+  () => import(/* webpackChunkName: "settings" */ "components/Settings")
+);
+const About = React.lazy(
+  () => import(/* webpackChunkName: "about" */ "components/About")
+);
+const Changelog = React.lazy(
+  () => import(/* webpackChunkName: "changelog" */ "components/Changelog")
+);
 
 export default function ModalControls(): JSX.Element {
   const { t } = useTranslation();
@@ -53,29 +60,31 @@ export default function ModalControls(): JSX.Element {
         </Button>
       </div>
 
-      <Modal
-        show={showSettings}
-        onClose={() => setShowSettings(false)}
-        title={t("settings.title")}
-      >
-        <Settings />
-      </Modal>
+      <Suspense fallback="loading...">
+        <Modal
+          show={showSettings}
+          onClose={() => setShowSettings(false)}
+          title={t("settings.title")}
+        >
+          <Settings />
+        </Modal>
 
-      <Modal
-        show={showChangelog}
-        onClose={() => setShowChangelog(false)}
-        title={`fusliez notes v${VERSION}`}
-      >
-        <Changelog />
-      </Modal>
+        <Modal
+          show={showChangelog}
+          onClose={() => setShowChangelog(false)}
+          title={`fusliez notes v${VERSION}`}
+        >
+          <Changelog />
+        </Modal>
 
-      <Modal
-        show={showAbout}
-        onClose={() => setShowAbout(false)}
-        title={t("about.title")}
-      >
-        <About />
-      </Modal>
+        <Modal
+          show={showAbout}
+          onClose={() => setShowAbout(false)}
+          title={t("about.title")}
+        >
+          <About />
+        </Modal>
+      </Suspense>
     </>
   );
 }

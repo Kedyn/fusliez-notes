@@ -76,11 +76,6 @@ export default function SlideDrawer(
             ))}
           </ul>
         </div>
-        {/* <img
-          className={classes.SlideDrawerEmote}
-          src="assets/images/amongNotes.gif"
-          alt="Among Us animated gif emote"
-        /> */}
       </div>
     </React.Fragment>
   );

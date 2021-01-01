@@ -1,7 +1,13 @@
 import { createUseStyles } from "react-jss";
 
+interface ISectionsStylesProps {
+  isMobile: boolean;
+}
+
 export default createUseStyles({
-  Sections: {},
+  Sections: (props: ISectionsStylesProps) => ({
+    padding: props.isMobile ? "1rem" : 0,
+  }),
   SectionsControls: {
     display: "flex",
     flexWrap: "wrap",
