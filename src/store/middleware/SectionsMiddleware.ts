@@ -3,11 +3,10 @@ import {
   DEFAULT_RESET_SECTION,
   DEFAULT_UNUSED_SECTION,
 } from "constants/sections";
+import { ISection, ISectionsState } from "utils/types/sections";
 import {
-  getDefaultSectionsState,
-  movePlayersToSection,
-} from "store/shared/sections";
-import {
+  addNewSection,
+  delSection,
   getSectionsState,
   movePlayersToResetSection,
   resetSectionsState,
@@ -19,8 +18,11 @@ import {
   setSections,
   setUnusedSection,
 } from "store/slices/SectionsSlice";
+import {
+  getDefaultSectionsState,
+  movePlayersToSection,
+} from "store/shared/sections";
 
-import { ISectionsState } from "utils/types/sections";
 import { Middleware } from "@reduxjs/toolkit";
 import { NAMESPACE } from "constants/main";
 import { RootState } from "store";
@@ -62,6 +64,50 @@ export const SectionsMiddleware: Middleware<unknown, RootState> = (store) => (
 
     case setUnusedSection.type:
       sectionsState.unusedSection = action.payload;
+
+      break;
+
+    case addNewSection.type:
+      sectionsState.sections = [
+        ...sectionsState.sections,
+        { id: sectionsState.sections.length, title: "", players: [] },
+      ];
+
+      break;
+
+    case delSection.type:
+      let resetSection = sectionsState.resetSection;
+      let deadSection = sectionsState.deadSection;
+      let unusedSection = sectionsState.unusedSection;
+
+      const sections: Array<ISection> = [];
+
+      sectionsState.sections.forEach((section) => {
+        if (section.id !== action.payload) {
+          if (section.id === sectionsState.resetSection) {
+            resetSection = sections.length;
+          }
+          if (section.id === sectionsState.deadSection) {
+            deadSection = sections.length;
+          }
+          if (section.id === sectionsState.unusedSection) {
+            unusedSection = sections.length;
+          }
+
+          sections.push({
+            id: sections.length,
+            title: section.title,
+            players: section.players,
+          });
+        }
+      });
+
+      sectionsState = {
+        resetSection,
+        deadSection,
+        unusedSection,
+        sections,
+      };
 
       break;
 

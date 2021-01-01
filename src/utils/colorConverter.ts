@@ -1,7 +1,7 @@
 import { COLOR_LIBRARY } from "constants/theme";
 import { ITheme } from "utils/types/theme";
 
-export function getColorValue(color: string, shade: string): string {
+export function getColorValue(color: string, shade = "base"): string {
   if (typeof COLOR_LIBRARY[color.toLowerCase()] != "undefined") {
     if (shade === "dark") {
       return hexToRGB(COLOR_LIBRARY[color.toLowerCase()].dark);

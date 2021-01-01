@@ -2,9 +2,11 @@ import { getPlayers, setPlayersState } from "store/slices/PlayersSlice";
 import { getSections, setSections } from "store/slices/SectionsSlice";
 import { useDispatch, useSelector } from "react-redux";
 
-import ColorSwatch from "./ColorSwatch";
+import { COLOR_LIBRARY } from "constants/theme";
+import { CirclePicker } from "react-color";
 import { IPlayerColor } from "utils/types/players";
 import React from "react";
+import cx from "classnames";
 import { getNewPlayersState } from "store/shared/players";
 import useStyles from "./ColorsMenu.styles";
 
@@ -26,20 +28,39 @@ export default function ColorsMenu(props: IColorsMenuProps): JSX.Element {
 
   const dispatch = useDispatch();
 
-  const colors: Array<IPlayerColor> = [
-    "brown",
-    "red",
-    "orange",
-    "yellow",
-    "lime",
-    "green",
-    "cyan",
-    "blue",
-    "purple",
-    "pink",
-    "white",
-    "black",
+  const colors = [
+    COLOR_LIBRARY["black"].base,
+    COLOR_LIBRARY["blue"].base,
+    COLOR_LIBRARY["brown"].base,
+    COLOR_LIBRARY["cyan"].base,
+    COLOR_LIBRARY["green"].base,
+    COLOR_LIBRARY["lime"].base,
+    COLOR_LIBRARY["orange"].base,
+    COLOR_LIBRARY["pink"].base,
+    COLOR_LIBRARY["purple"].base,
+    COLOR_LIBRARY["red"].base,
+    COLOR_LIBRARY["white"].base,
+    COLOR_LIBRARY["yellow"].base,
   ];
+
+  const hexToPlayerColor = (hex: string): IPlayerColor => {
+    const playerColors: Array<IPlayerColor> = [
+      "black",
+      "blue",
+      "brown",
+      "cyan",
+      "green",
+      "lime",
+      "orange",
+      "pink",
+      "purple",
+      "red",
+      "white",
+      "yellow",
+    ];
+
+    return playerColors[colors.indexOf(hex.toUpperCase())];
+  };
 
   const swapPlayersColors = (
     currentPlayerColor: IPlayerColor,
@@ -107,17 +128,15 @@ export default function ColorsMenu(props: IColorsMenuProps): JSX.Element {
   return (
     <div
       ref={ref}
-      className={`${classes.ColorMenu} ${
-        isMenuShowing ? "" : classes.isHidden
-      }`}
+      className={cx(classes.ColorMenu, { [classes.isHidden]: !isMenuShowing })}
     >
-      {colors.map((color) => (
-        <ColorSwatch
-          targetColor={color}
-          key={color}
-          swapPlayersColors={() => swapPlayersColors(currentColor, color)}
-        />
-      ))}
+      <CirclePicker
+        colors={colors}
+        color={COLOR_LIBRARY[currentColor].base}
+        onChange={(color) =>
+          swapPlayersColors(currentColor, hexToPlayerColor(color.hex))
+        }
+      />
     </div>
   );
 }

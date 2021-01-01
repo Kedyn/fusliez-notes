@@ -13,6 +13,8 @@ export default createUseStyles((theme: ITheme) => ({
     top: 0,
     right: 0,
     zIndex: 1,
+    width: "100vw",
+    height: "100vh",
   },
   Modal: {
     backgroundColor: theme.backgroundColorPrimary,
@@ -51,6 +53,7 @@ export default createUseStyles((theme: ITheme) => ({
   ModalBody: {
     padding: "1rem 0",
     overflowY: "auto",
+    height: "100%",
   },
   ModalFooter: {
     borderTop: `1px solid ${theme.borderColor}`,

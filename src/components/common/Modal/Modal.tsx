@@ -1,5 +1,6 @@
 import { CloseButton } from "components/common/Button";
 import React from "react";
+import cx from "classnames";
 import useStyles from "./Modal.styles";
 
 export interface IModalProps {
@@ -7,12 +8,13 @@ export interface IModalProps {
   title?: React.ReactNode;
   footer?: React.ReactNode;
   children?: React.ReactNode;
+  className?: string;
 
   onClose(): void;
 }
 
 export default function Modal(props: IModalProps): JSX.Element {
-  const { show, title, footer, children, onClose } = props;
+  const { show, title, footer, children, className, onClose } = props;
 
   if (show) {
     const classes = useStyles();
@@ -20,7 +22,7 @@ export default function Modal(props: IModalProps): JSX.Element {
     return (
       <div className={classes.ModalBackdrop} onClick={() => onClose()}>
         <div
-          className={classes.Modal}
+          className={cx(classes.Modal, className)}
           onClick={(event: React.MouseEvent<HTMLDivElement, MouseEvent>) =>
             event.stopPropagation()
           }

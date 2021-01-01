@@ -1,5 +1,5 @@
 import { CloseButton } from "components/common/Button";
-import { IView } from "utils/types";
+import { IView } from "utils/types/interface";
 import React from "react";
 import cx from "classnames";
 import useStyles from "./SlideDrawer.styles";

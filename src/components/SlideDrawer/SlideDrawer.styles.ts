@@ -27,6 +27,7 @@ export default createUseStyles((theme: ITheme) => ({
     left: "-100%",
     overflowY: "scroll",
     width: "calc(100vw - 2rem)",
+    maxWidth: "360px",
     position: "fixed",
     padding: "1rem",
     top: "0",

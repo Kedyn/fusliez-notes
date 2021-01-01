@@ -64,7 +64,7 @@ export default function ModalControls(): JSX.Element {
       <Modal
         show={showChangelog}
         onClose={() => setShowChangelog(false)}
-        title={t("changelog.title")}
+        title={`fusliez notes v${VERSION}`}
       >
         <Changelog />
       </Modal>

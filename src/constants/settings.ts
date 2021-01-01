@@ -13,39 +13,39 @@ export const AVAILABLE_LANGUAGES: Array<ILanguage> = [
   },
   {
     id: "es-MX",
-    label: "Spanish (MX)",
+    label: "Español (MX)",
   },
   {
     id: "pt-BR",
-    label: "Portuguese (BR)",
+    label: "Português (BR)",
   },
   {
     id: "ru-RU",
-    label: "Russian (RU)",
+    label: "Русский (RU)",
   },
   {
     id: "de-DE",
-    label: "German (DE)",
+    label: "Deutsch (DE)",
   },
   {
     id: "fa-IR",
-    label: "Persian (IR)",
+    label: "فارسی (IR)",
   },
   {
     id: "pl-PL",
-    label: "Polish (PL)",
+    label: "Polskie (PL)",
   },
   {
     id: "fr-FR",
-    label: "French (FR)",
+    label: "Français (FR)",
   },
   {
     id: "cs-CZ",
-    label: "Czech (CZ)",
+    label: "Čeština (CZ)",
   },
   {
     id: "he-IL",
-    label: "Hebrew (IL)",
+    label: "עִברִית (IL)",
   },
   {
     id: "mg-MG",
@@ -53,6 +53,6 @@ export const AVAILABLE_LANGUAGES: Array<ILanguage> = [
   },
   {
     id: "ja-JA",
-    label: "Japanese (JA)",
+    label: "日本語 (JA)",
   },
 ];

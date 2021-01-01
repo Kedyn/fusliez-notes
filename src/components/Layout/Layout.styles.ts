@@ -21,6 +21,18 @@ export default createUseStyles((theme: ITheme) => ({
     a: {
       color: theme.linkColor,
     },
+    select: {
+      display: "inline-block",
+      width: "100%",
+      cursor: "pointer",
+      padding: ".5rem 1rem",
+      outline: 0,
+      border: `1px solid ${theme.borderColor}`,
+      borderRadius: 0,
+      background: theme.backgroundColorSecondary,
+      color: theme.textColorPrimary,
+      appearance: "none",
+    },
   },
   LayoutDisclaimer: {
     position: "absolute",

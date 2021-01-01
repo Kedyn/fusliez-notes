@@ -43,6 +43,50 @@ const SectionsSlice = createSlice({
       unusedSection: action.payload,
     }),
 
+    addNewSection: (state: ISectionsState) => ({
+      ...state,
+
+      sections: [
+        ...state.sections,
+        { id: state.sections.length, title: "", players: [] },
+      ],
+    }),
+
+    delSection: (state: ISectionsState, action: PayloadAction<number>) => {
+      let resetSection = state.resetSection;
+      let deadSection = state.deadSection;
+      let unusedSection = state.unusedSection;
+
+      const sections: Array<ISection> = [];
+
+      state.sections.forEach((section) => {
+        if (section.id !== action.payload) {
+          if (section.id === state.resetSection) {
+            resetSection = sections.length;
+          }
+          if (section.id === state.deadSection) {
+            deadSection = sections.length;
+          }
+          if (section.id === state.unusedSection) {
+            unusedSection = sections.length;
+          }
+
+          sections.push({
+            id: sections.length,
+            title: section.title,
+            players: section.players,
+          });
+        }
+      });
+
+      return {
+        resetSection,
+        deadSection,
+        unusedSection,
+        sections,
+      };
+    },
+
     setSectionTitle: (
       state: ISectionsState,
       action: PayloadAction<ISetSectionTitlePayload>
@@ -109,6 +153,8 @@ export const {
   setResetSection,
   setDeadSection,
   setUnusedSection,
+  addNewSection,
+  delSection,
   setSectionTitle,
   setSectionPlayers,
   movePlayersToResetSection,
