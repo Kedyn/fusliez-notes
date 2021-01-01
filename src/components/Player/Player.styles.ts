@@ -72,7 +72,7 @@ export default createUseStyles((theme: ITheme) => ({
       (PLAYER_IMAGE[props.color as IPlayerColor].x / 148) * 2.25
     }rem 0px`,
   }),
-  PlayerName: (props) => ({
+  PlayerName: (props: IPlayerStylesProps) => ({
     flexGrow: 1,
     flexBasis: "0",
     maxWidth: "100%",

@@ -14,7 +14,10 @@ export default createUseStyles((theme: ITheme) => ({
     right: 0,
     zIndex: 1,
     width: "100vw",
-    height: "100vh",
+    height: "calc(var(--vh, 1vh) * 100)",
+    fallbacks: {
+      height: "100vh",
+    },
   },
   Modal: {
     backgroundColor: theme.backgroundColorPrimary,
