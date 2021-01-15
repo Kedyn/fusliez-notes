@@ -63,7 +63,7 @@ Polus in game maps)
 [Unviray](https://github.com/Unviray)  
 [Itay Kabalo](https://twitter.com/itaykabalo)  
 Nuno Lopes  
-[Jarsa132](https://github.com/Jarsa132)
+[Jarsa132](https://github.com/Jarsa132)  
 [Chee Murakami](https://github.com/cheemurakami)
 
 Please if you would not like to be mentioned here or your information is wrong
