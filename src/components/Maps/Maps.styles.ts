@@ -23,5 +23,13 @@ export default createUseStyles({
   },
   MapsContainer: {
     flex: 1,
+    maxHeight: "calc(var(--vh, 1vh) * 85)",
+    fallbacks: {
+      maxHeight: "85vh",
+    },
+  },
+  MapsCanvas: {
+    width: "100%",
+    height: "100%",
   },
 });
