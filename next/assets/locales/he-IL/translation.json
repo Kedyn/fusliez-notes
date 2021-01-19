@@ -91,7 +91,10 @@
     "close": "סגור",
     "addSection": "הוסף סקציה",
     "resetSections": "אפס סקציות",
-    "sectionsNote": "הערה: שינוי קטע ברירת המחדל יושפע רק לאחר לחיצה על אפס מיקומים או אפס הכל."
+    "sectionsNote": "Note: changing the default section will only be affected after clicking Reset Positions or Reset All. <1 /> ",
+    "resetSection": "Reset Section - <1 /> <2 />",
+    "deadSection": "Dead Section - <1 /> <2 />",
+    "unusedSection": "Unused Section - <1 />"
   },
   "menu": {
     "players": "שחקנים",

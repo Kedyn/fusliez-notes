@@ -91,7 +91,10 @@
     "close": "Schliessen",
     "addSection": "Abschnitt hinzufügen",
     "resetSections": "Abschnitt zurücksetzen",
-    "sectionsNote": "Hinweis: Das Ändern des Standardabschnitts (<1 />) ist nur betroffen, wenn Positionen zurücksetzen oder alle zurücksetzen angeklickt wurde."
+    "sectionsNote": "Note: changing the default section will only be affected after clicking Reset Positions or Reset All. <1 /> ",
+    "resetSection": "Reset Section - <1 /> <2 />",
+    "deadSection": "Dead Section - <1 /> <2 />",
+    "unusedSection": "Unused Section - <1 />"
   },
   "menu": {
     "players": "Spieler",
