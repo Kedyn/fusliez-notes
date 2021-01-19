@@ -7,6 +7,7 @@ A web to help keep track of among us game.
 - Score tracking
 - Draggable players between innocent/sus/hit list/evil/dead/unknown sections
 - Customizable sections
+- Special sections
 - Notes
 - Maps
 - Draggable players on the map

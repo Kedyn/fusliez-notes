@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Released]
 
+### [v1.0.0-beta.1] - 01/18/2021
+
+#### Added
+
+- Special sections
+- Map characters reflect special sections.
+- Map characters double-click change dead/alive state.
+
 ### [v1.0.0-beta.0] - 12/17/2020
 
 First major pre-release. Code refactoring.
