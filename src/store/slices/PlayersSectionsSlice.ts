@@ -1,10 +1,11 @@
 import {
   DEFAULT_DEAD_SECTION,
-  DEFAULT_SECTION,
+  DEFAULT_RESET_SECTION,
   DEFAULT_SECTIONS,
   DEFAULT_UNUSED_SECTION,
 } from "constants/sections";
 import {
+  IMapsCharacter,
   IPlayer,
   IPlayersSection,
   IPlayersSectionsSlice,
@@ -23,19 +24,18 @@ function getInitialState(): IPlayersSectionsSlice {
     const playersSectionsObject = JSON.parse(localPlayersSectionsData);
 
     return {
-      defaultSection: playersSectionsObject.defaultSection ?? DEFAULT_SECTION,
-      defaultDeadSection:
-        playersSectionsObject.defaultDeadSection ?? DEFAULT_DEAD_SECTION,
-      defaultUnusedSection:
-        playersSectionsObject.defaultUnusedSection ?? DEFAULT_UNUSED_SECTION,
+      resetSection: playersSectionsObject.resetSection ?? DEFAULT_RESET_SECTION,
+      deadSection: playersSectionsObject.deadSection ?? DEFAULT_DEAD_SECTION,
+      unusedSection:
+        playersSectionsObject.unusedSection ?? DEFAULT_UNUSED_SECTION,
       sections: playersSectionsObject.sections ?? DEFAULT_SECTIONS,
     };
   }
 
   return {
-    defaultSection: DEFAULT_SECTION,
-    defaultDeadSection: DEFAULT_DEAD_SECTION,
-    defaultUnusedSection: DEFAULT_UNUSED_SECTION,
+    resetSection: DEFAULT_RESET_SECTION,
+    deadSection: DEFAULT_DEAD_SECTION,
+    unusedSection: DEFAULT_UNUSED_SECTION,
     sections: DEFAULT_SECTIONS,
   };
 }
@@ -66,46 +66,46 @@ const PlayersSectionsSlice = createSlice({
   name: "PlayersSections",
   initialState: getInitialState(),
   reducers: {
-    setDefaultSection: (
+    setResetSection: (
       state: IPlayersSectionsSlice,
       action: PayloadAction<number>
     ) => ({
       ...state,
 
-      defaultSection: action.payload,
+      resetSection: action.payload,
     }),
 
-    setDefaultDeadSection: (
+    setDeadSection: (
       state: IPlayersSectionsSlice,
       action: PayloadAction<number>
     ) => ({
       ...state,
 
-      defaultDeadSection: action.payload,
+      deadSection: action.payload,
     }),
 
-    setDefaultUnusedSection: (
+    setUnusedSection: (
       state: IPlayersSectionsSlice,
       action: PayloadAction<number>
     ) => ({
       ...state,
 
-      defaultUnusedSection: action.payload,
+      unusedSection: action.payload,
     }),
 
     setPlayersSections: (
       state: IPlayersSectionsSlice,
       action: PayloadAction<Array<IPlayersSection>>
     ) => {
-      let newDefaultSection = -1;
+      let newResetSection = -1;
 
       return {
         ...state,
 
         sections: [
           ...action.payload.map((section, index) => {
-            if (section.id === state.defaultSection) {
-              newDefaultSection = index;
+            if (section.id === state.resetSection) {
+              newResetSection = index;
             }
 
             return {
@@ -116,7 +116,7 @@ const PlayersSectionsSlice = createSlice({
           }),
         ],
 
-        defaultSection: newDefaultSection,
+        defaultSection: newResetSection,
       };
     },
 
@@ -174,26 +174,26 @@ const PlayersSectionsSlice = createSlice({
       ...state,
 
       sections: getPlayersSectionsFromOriginalPositions(
-        state.defaultSection,
+        state.resetSection,
         state.sections
       ),
     }),
 
     resetPlayersSections: () => ({
-      defaultSection: DEFAULT_SECTION,
-      defaultDeadSection: DEFAULT_DEAD_SECTION,
-      defaultUnusedSection: DEFAULT_UNUSED_SECTION,
+      resetSection: DEFAULT_RESET_SECTION,
+      deadSection: DEFAULT_DEAD_SECTION,
+      unusedSection: DEFAULT_UNUSED_SECTION,
       sections: [...DEFAULT_SECTIONS.map((section) => section)],
     }),
   },
 });
 
 export const {
-  setDefaultSection,
+  setResetSection,
 
-  setDefaultDeadSection,
+  setDeadSection,
 
-  setDefaultUnusedSection,
+  setUnusedSection,
 
   setPlayersSections,
 
@@ -206,8 +206,14 @@ export const {
   resetPlayersSections,
 } = PlayersSectionsSlice.actions;
 
-export const getDefaultSectionId = (state: IUIStoreState): number =>
-  state.PlayersSections.defaultSection;
+export const getResetSectionId = (state: IUIStoreState): number =>
+  state.PlayersSections.resetSection;
+
+export const getDeadSectionId = (state: IUIStoreState): number =>
+  state.PlayersSections.deadSection;
+
+export const getUnusedSectionId = (state: IUIStoreState): number =>
+  state.PlayersSections.unusedSection;
 
 export const getPlayersSections = (
   state: IUIStoreState
@@ -218,15 +224,14 @@ export const getDefaultPlayersSection = (
 ): IPlayersSection =>
   _ensure(
     state.PlayersSections.sections.find(
-      (playersSection) => playersSection.id === getDefaultSectionId(state)
+      (playersSection) => playersSection.id === getResetSectionId(state)
     )
   );
 
 export const getDeadPlayersSection = (state: IUIStoreState): IPlayersSection =>
   _ensure(
     state.PlayersSections.sections.find(
-      (playerSection) =>
-        playerSection.id === state.PlayersSections.defaultDeadSection
+      (playerSection) => playerSection.id === state.PlayersSections.deadSection
     )
   );
 
@@ -236,7 +241,7 @@ export const getUnusedPlayersSection = (
   _ensure(
     state.PlayersSections.sections.find(
       (playerSection) =>
-        playerSection.id === state.PlayersSections.defaultUnusedSection
+        playerSection.id === state.PlayersSections.unusedSection
     )
   );
 
@@ -251,15 +256,26 @@ function _ensure<T>(
 
   return argument;
 }
-export const getAllPlayers = (state: IUIStoreState): Array<IPlayer> => {
-  const allPlayers = [];
+export const getPlayersAsCharacter = (
+  state: IUIStoreState
+): Array<IMapsCharacter> => {
+  const characters: Array<IMapsCharacter> = [];
 
-  for (const { players } of state.PlayersSections.sections) {
-    if (!players.length) continue;
-    allPlayers.push(...players);
+  for (const section of state.PlayersSections.sections) {
+    if (!section.players.length) continue;
+
+    section.players.forEach((player) =>
+      characters.push({
+        id: player.color,
+        playerName: player.playerName,
+        x: 0,
+        y: 0,
+        section: section.id as number,
+      })
+    );
   }
 
-  return allPlayers;
+  return characters;
 };
 
 export default PlayersSectionsSlice;

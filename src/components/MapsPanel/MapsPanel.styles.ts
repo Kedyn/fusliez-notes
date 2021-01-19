@@ -97,6 +97,9 @@ export default createUseStyles((theme: ITheme) => ({
     height: "auto",
     margin: "0 0.75rem",
   }),
+  MapsPanelMapPlayerIconNonVisible: {
+    visibility: "hidden",
+  },
   MapPlayerName: {
     fontSize: "1rem",
     margin: "0.25rem 0",

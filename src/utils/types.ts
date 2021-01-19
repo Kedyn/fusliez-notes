@@ -120,9 +120,9 @@ export interface IPlayersSection extends ItemInterface {
 }
 
 export interface IPlayersSectionsSlice {
-  defaultSection: number;
-  defaultDeadSection: number;
-  defaultUnusedSection: number;
+  resetSection: number;
+  deadSection: number;
+  unusedSection: number;
   sections: Array<IPlayersSection>;
 }
 
@@ -133,8 +133,10 @@ export interface IPerson {
 
 export interface IMapsCharacter {
   id: string;
+  playerName: string;
   x: number;
   y: number;
+  section: number;
 }
 
 export interface IMaps {

@@ -1,14 +1,23 @@
-import { DEFAULT_SECTION, DEFAULT_SECTIONS } from "constants/sections";
+import {
+  DEFAULT_DEAD_SECTION,
+  DEFAULT_RESET_SECTION,
+  DEFAULT_SECTIONS,
+  DEFAULT_UNUSED_SECTION,
+} from "constants/sections";
 import { IPlayer, IPlayersSection } from "utils/types";
 import {
-  getDefaultSectionId,
+  getDeadSectionId,
   getPlayersSections,
+  getResetSectionId,
+  getUnusedSectionId,
   resetPlayersSections,
   resetPlayersSectionsPositions,
-  setDefaultSection,
+  setDeadSection,
   setPlayersFromSection,
   setPlayersSections,
   setPlayersSectionsTitle,
+  setResetSection,
+  setUnusedSection,
 } from "store/slices/PlayersSectionsSlice";
 
 import { Middleware } from "@reduxjs/toolkit";
@@ -20,7 +29,9 @@ export const PlayersSectionsMiddleware: Middleware<unknown, RootState> = (
 ) => (next) => (action) => {
   const state = store.getState();
 
-  let defaultSection = getDefaultSectionId(state);
+  let resetSection = getResetSectionId(state);
+  let deadSection = getDeadSectionId(state);
+  let unusedSection = getUnusedSectionId(state);
   let sections = getPlayersSections(state).map((section) => ({
     id: section.id,
     title: section.title,
@@ -33,16 +44,26 @@ export const PlayersSectionsMiddleware: Middleware<unknown, RootState> = (
   let edit = true;
 
   switch (action.type) {
-    case setDefaultSection.type:
-      defaultSection = action.payload;
+    case setResetSection.type:
+      resetSection = action.payload;
+
+      break;
+
+    case setDeadSection.type:
+      deadSection = action.payload;
+
+      break;
+
+    case setUnusedSection.type:
+      unusedSection = action.payload;
 
       break;
 
     case setPlayersSections.type:
       sections = [
         ...action.payload.map((section: IPlayersSection, index: number) => {
-          if (section.id === defaultSection) {
-            defaultSection = index;
+          if (section.id === resetSection) {
+            resetSection = index;
           }
 
           return {
@@ -103,14 +124,16 @@ export const PlayersSectionsMiddleware: Middleware<unknown, RootState> = (
         players = players.concat(section.players);
       }
 
-      newSections[defaultSection].players = players;
+      newSections[resetSection].players = players;
 
       sections = newSections;
 
       break;
 
     case resetPlayersSections.type:
-      defaultSection = DEFAULT_SECTION;
+      resetSection = DEFAULT_RESET_SECTION;
+      deadSection = DEFAULT_DEAD_SECTION;
+      unusedSection = DEFAULT_UNUSED_SECTION;
       sections = DEFAULT_SECTIONS;
 
       break;
@@ -123,7 +146,9 @@ export const PlayersSectionsMiddleware: Middleware<unknown, RootState> = (
     localStorage.setItem(
       `${NAMESPACE}sections`,
       JSON.stringify({
-        defaultSection,
+        resetSection,
+        deadSection,
+        unusedSection,
         sections,
       })
     );

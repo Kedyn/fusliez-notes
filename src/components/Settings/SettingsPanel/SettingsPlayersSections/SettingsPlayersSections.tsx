@@ -1,15 +1,15 @@
 import { Trans, useTranslation } from "react-i18next";
 import {
   getDeadPlayersSection,
-  getDefaultSectionId,
   getPlayersSections,
+  getResetSectionId,
   getUnusedPlayersSection,
   resetPlayersSections,
-  setDefaultDeadSection,
-  setDefaultSection,
-  setDefaultUnusedSection,
+  setDeadSection,
   setPlayersSections,
   setPlayersSectionsTitle,
+  setResetSection,
+  setUnusedSection,
 } from "store/slices/PlayersSectionsSlice";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -24,7 +24,7 @@ import useStyles from "./SettingsPlayersSections.styles";
 export default function SettingsPlayersSections(): JSX.Element {
   const isMobile = useSelector(getIsMobile);
   const playersSections = useSelector(getPlayersSections);
-  const defaultSection = useSelector(getDefaultSectionId);
+  const defaultSection = useSelector(getResetSectionId);
   const { id: deadSection } = useSelector(getDeadPlayersSection);
   const { id: unusedSection } = useSelector(getUnusedPlayersSection);
 
@@ -41,7 +41,7 @@ export default function SettingsPlayersSections(): JSX.Element {
         <div
           className={classes.SettingsPlayersSection}
           data-selected={defaultSection === list.id}
-          onClick={() => dispatch(setDefaultSection(list.id as number))}
+          onClick={() => dispatch(setResetSection(list.id as number))}
         >
           <FontAwesomeIcon icon="users" />
         </div>
@@ -49,7 +49,7 @@ export default function SettingsPlayersSections(): JSX.Element {
         <div
           className={classes.SettingsPlayersSection}
           data-selected={deadSection === list.id}
-          onClick={() => dispatch(setDefaultDeadSection(list.id as number))}
+          onClick={() => dispatch(setDeadSection(list.id as number))}
         >
           <FontAwesomeIcon icon="skull-crossbones" />
         </div>
@@ -57,7 +57,7 @@ export default function SettingsPlayersSections(): JSX.Element {
         <div
           className={classes.SettingsPlayersSection}
           data-selected={unusedSection === list.id}
-          onClick={() => dispatch(setDefaultUnusedSection(list.id as number))}
+          onClick={() => dispatch(setUnusedSection(list.id as number))}
         >
           <FontAwesomeIcon icon="users-slash" />
         </div>

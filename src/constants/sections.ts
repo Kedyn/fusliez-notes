@@ -28,6 +28,6 @@ export const DEFAULT_SECTIONS: Array<IPlayersSection> = [
   { id: 5, title: "main.lists.unused", players: [] },
 ];
 
-export const DEFAULT_SECTION = 4;
+export const DEFAULT_RESET_SECTION = 4;
 export const DEFAULT_DEAD_SECTION = 3;
 export const DEFAULT_UNUSED_SECTION = 5;
