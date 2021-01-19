@@ -91,7 +91,10 @@
     "close": "Fermer",
     "addSection": "Ajouter une section",
     "resetSections": "Réinitialiser les sections",
-    "sectionsNote": "Note: Modifier la section par défaut (<1 />) sera effectif après avoir cliqué sur 'Réinitialiser la partie' ou 'Tout réinitialiser'."
+    "sectionsNote": "Note: changing the default section will only be affected after clicking Reset Positions or Reset All. <1 /> ",
+    "resetSection": "Reset Section - <1 /> <2 />",
+    "deadSection": "Dead Section - <1 /> <2 />",
+    "unusedSection": "Unused Section - <1 />"
   },
   "menu": {
     "players": "Joueurs",

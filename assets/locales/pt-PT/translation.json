@@ -91,7 +91,10 @@
     "close": "Fechar",
     "addSection": "Add Section",
     "resetSections": "Reset Sections",
-    "sectionsNote": "Note: changing the default section (<1 />) will only be affected after clicking Reset Positions or Reset All."
+    "sectionsNote": "Note: changing the default section will only be affected after clicking Reset Positions or Reset All. <1 /> ",
+    "resetSection": "Reset Section - <1 /> <2 />",
+    "deadSection": "Dead Section - <1 /> <2 />",
+    "unusedSection": "Unused Section - <1 />"
   },
   "menu": {
     "players": "Jogadores",
