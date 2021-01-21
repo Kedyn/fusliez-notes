@@ -60,7 +60,6 @@ export default function MapsPanel(): JSX.Element {
     }
 
     for (const character of charactersWithCoo) {
-      console.log(character);
       newCharacters.push({
         ...playersHash[character.id],
         x: character.x,
