@@ -91,7 +91,10 @@
     "close": "Zamknij",
     "addSection": "Dodaj sękcję",
     "resetSections": "Zresetuj sekcje",
-    "sectionsNote": "Notatka: zmiana domyślnej sekcji (<1 />) zostanie wprowadzona dopiero po kliknięciu Zresetuj pozycje lub Zresetuj wszystko."
+    "sectionsNote": "Note: changing the default section will only be affected after clicking Reset Positions or Reset All. <1 /> ",
+    "resetSection": "Reset Section - <1 /> <2 />",
+    "deadSection": "Dead Section - <1 /> <2 />",
+    "unusedSection": "Unused Section - <1 />"
   },
   "menu": {
     "players": "Gracze",

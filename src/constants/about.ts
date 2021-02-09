@@ -84,6 +84,10 @@ export const TRANSLATORS: Array<IPerson> = [
     name: "Jarsa132",
     link: "https://github.com/Jarsa132",
   },
+  {
+    name: "Chee Murakami",
+    link: "https://github.com/cheemurakami",
+  },
 ];
 
 export const ARTISTS: Array<IPerson> = [

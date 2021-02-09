@@ -91,7 +91,10 @@
     "close": "Cerrar",
     "addSection": "Agregar Seccion",
     "resetSections": "Reiniciar Secciones",
-    "sectionsNote": "Nota: cambiar la sección predeterminada (<1 />) solo se vera afectada después de Reiniciar Posiciones o Reiniciar Todo."
+    "sectionsNote": "Note: changing the default section will only be affected after clicking Reset Positions or Reset All. <1 /> ",
+    "resetSection": "Reset Section - <1 /> <2 />",
+    "deadSection": "Dead Section - <1 /> <2 />",
+    "unusedSection": "Unused Section - <1 />"
   },
   "menu": {
     "players": "Jugadores",

@@ -9,6 +9,9 @@ export const NOTES = [
       <>Fixed multiple issues.</>,
       <>Better support for mobile.</>,
       <>Better maps.</>,
+      <>Special sections.</>,
+      <>Map characters reflect special sections.</>,
+      <>Map characters double-click changes dead/alive state.</>,
     ],
   },
   {
