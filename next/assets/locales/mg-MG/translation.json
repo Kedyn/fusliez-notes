@@ -91,7 +91,10 @@
     "close": "Hiala",
     "addSection": "Hanampy Faritra",
     "resetSections": "Hamafa Faritra",
-    "sectionsNote": "Naoty: ny fanovana ny faritra efa misy (<1 />) dia voafafa rehefa mipotsitra \"Hamerina ny Toerana\" na \"Hamerina azy rehetra\"."
+    "sectionsNote": "Note: changing the default section will only be affected after clicking Reset Positions or Reset All. <1 /> ",
+    "resetSection": "Reset Section - <1 /> <2 />",
+    "deadSection": "Dead Section - <1 /> <2 />",
+    "unusedSection": "Unused Section - <1 />"
   },
   "menu": {
     "players": "Mpilalao",
