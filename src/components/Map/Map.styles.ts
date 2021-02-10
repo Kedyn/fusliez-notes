@@ -9,6 +9,8 @@ export default createUseStyles((theme: ITheme) => ({
     fallbacks: {
       maxHeight: "calc(100vh - 9rem)",
     },
+    overscrollBehavior: "none",
+    touchAction: "none",
   },
   MapImage: {
     display: "none",

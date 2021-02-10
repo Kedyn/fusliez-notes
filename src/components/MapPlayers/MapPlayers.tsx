@@ -41,6 +41,9 @@ export default function MapPlayers(): null {
           h: image.h * 0.4,
         };
 
+        const maxX = mapContext.canvasContext!.canvas.width - imageRect.w;
+        const maxY = mapContext.canvasContext!.canvas.height - imageRect.h;
+
         if (mapContext.mouseDown) {
           if (
             movingPlayer === "" &&
@@ -51,8 +54,14 @@ export default function MapPlayers(): null {
           ) {
             setMovingPlayer(player as IPlayerColor);
           } else if (movingPlayer === player) {
-            imageRect.x = mapContext.mousePos.x - imageRect.w / 2;
-            imageRect.y = mapContext.mousePos.y - imageRect.h / 2;
+            imageRect.x = Math.min(
+              Math.max(0, mapContext.mousePos.x - imageRect.w / 2),
+              maxX
+            );
+            imageRect.y = Math.min(
+              Math.max(0, mapContext.mousePos.y - imageRect.h / 2),
+              maxY
+            );
           }
         } else if (movingPlayer !== "" && movingPlayer === player) {
           setMovingPlayer("");
@@ -61,8 +70,14 @@ export default function MapPlayers(): null {
             setPlayerPosition({
               player: player as IPlayerColor,
               newPosition: {
-                x: mapContext.mousePos.x - imageRect.w / 2,
-                y: mapContext.mousePos.y - imageRect.h / 2,
+                x: Math.min(
+                  Math.max(0, mapContext.mousePos.x - imageRect.w / 2),
+                  maxX
+                ),
+                y: Math.min(
+                  Math.max(0, mapContext.mousePos.y - imageRect.h / 2),
+                  maxY
+                ),
               },
             })
           );

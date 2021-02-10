@@ -48,6 +48,7 @@ module.exports = {
     compress: true,
     port: 1234,
     open: true,
+    host: "0.0.0.0",
   },
 
   optimization: {

@@ -101,6 +101,15 @@ export default function Map(): JSX.Element {
     }
   }
 
+  const setMousePosition = (evt: React.TouchEvent) => {
+    const rect = evt.currentTarget.getBoundingClientRect();
+
+    setMousePos({
+      x: (evt.touches[0].clientX - rect.left) * (CANVAS_WIDTH / rect.width),
+      y: (evt.touches[0].clientY - rect.top) * (CANVAS_HEIGHT / rect.height),
+    });
+  };
+
   return (
     <MapContext.Provider
       value={{
@@ -122,15 +131,39 @@ export default function Map(): JSX.Element {
           onContextMenu={(evt) => evt.preventDefault()}
           onMouseMove={(evt) => {
             const rect = evt.currentTarget.getBoundingClientRect();
-            //console.log(rect);
 
             setMousePos({
               x: (evt.clientX - rect.left) * (CANVAS_WIDTH / rect.width),
               y: (evt.clientY - rect.top) * (CANVAS_HEIGHT / rect.height),
             });
           }}
-          onMouseDown={(evt) => setMouseDown(true)}
-          onMouseUp={(evt) => setMouseDown(false)}
+          onMouseDown={(evt) => {
+            evt.preventDefault();
+            setMouseDown(true);
+          }}
+          onMouseUp={(evt) => {
+            evt.preventDefault();
+            setMouseDown(false);
+          }}
+          onMouseLeave={(evt) => setMouseDown(false)}
+          onTouchStart={(evt) => {
+            evt.preventDefault();
+            setMousePosition(evt);
+            setMouseDown(true);
+          }}
+          onTouchEnd={(evt) => {
+            evt.preventDefault();
+            setMouseDown(false);
+          }}
+          onTouchCancel={(evt) => {
+            evt.preventDefault();
+            setMouseDown(false);
+          }}
+          onTouchMove={(evt) => {
+            evt.preventDefault();
+
+            setMousePosition(evt);
+          }}
         >
           This section is not supported on your browser.
         </canvas>
