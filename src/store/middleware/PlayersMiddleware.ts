@@ -13,6 +13,7 @@ import {
   setPlayerName,
   setPlayerPosition,
   setPlayerSection,
+  setPlayersSection,
   setPlayersState,
 } from "store/slices/PlayersSlice";
 
@@ -60,6 +61,15 @@ export const PlayersMiddleware: Middleware<unknown, RootState> = (store) => (
 
     case setPlayersState.type:
       players = action.payload;
+
+      break;
+
+    case setPlayersSection.type:
+      players = getNewPlayersState((player: IPlayerColor) => ({
+        ...currentPlayersState[player],
+
+        section: action.payload,
+      }));
 
       break;
 

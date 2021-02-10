@@ -13,7 +13,6 @@ import {
 } from "store/shared/sections";
 
 import { IStoreState } from "utils/types/store";
-import { ItemInterface } from "react-sortablejs";
 
 const SectionsSlice = createSlice({
   name: "Sections",
@@ -174,18 +173,6 @@ export const getUnusedSectionId = (state: IStoreState): number =>
 
 export const getSections = (state: IStoreState): Array<ISection> =>
   state.Sections.sections;
-
-export const getUsedPlayersIds = (state: IStoreState): Array<ItemInterface> => {
-  const usedPlayers: Array<ItemInterface> = [];
-
-  for (const section of state.Sections.sections) {
-    if (section.id !== state.Sections.unusedSection) {
-      usedPlayers.push(...section.players);
-    }
-  }
-
-  return usedPlayers;
-};
 
 export const getSectionsState = (state: IStoreState): ISectionsState =>
   state.Sections;

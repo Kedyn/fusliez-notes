@@ -6,7 +6,7 @@ export default createUseStyles({
     flexDirection: "column",
     justifyContent: "center",
     padding: "1rem",
-    height: "100%",
+    flexGrow: 1,
   },
   MapsHeader: {
     display: "flex",
@@ -22,14 +22,6 @@ export default createUseStyles({
     flex: "1 0 auto",
   },
   MapsContainer: {
-    flex: 1,
-    maxHeight: "calc(var(--vh, 1vh) * 85)",
-    fallbacks: {
-      maxHeight: "85vh",
-    },
-  },
-  MapsCanvas: {
-    width: "100%",
-    height: "100%",
+    flexGrow: 1,
   },
 });

@@ -69,7 +69,7 @@ export default createUseStyles((theme: ITheme) => ({
     backgroundRepeat: "no-repeat",
     backgroundSize: "1200% 240%",
     backgroundPosition: `-${
-      (PLAYER_IMAGE[props.color as IPlayerColor].x / 148) * 2.25
+      (PLAYER_IMAGE[props.color as IPlayerColor].alive.x / 148) * 2.25
     }rem 0px`,
   }),
   PlayerName: (props: IPlayerStylesProps) => ({

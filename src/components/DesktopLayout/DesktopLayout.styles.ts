@@ -45,6 +45,7 @@ export default createUseStyles((theme: ITheme) => ({
   },
   DesktopLayoutRightContainer: {
     flexGrow: 1,
+    display: "flex",
   },
   DesktopLayoutMapButton: {
     width: "1rem",

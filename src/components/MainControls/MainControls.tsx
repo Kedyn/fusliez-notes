@@ -18,8 +18,13 @@ import {
   setImpostorWins,
 } from "store/slices/ScoresSlice";
 import {
+  getResetSectionId,
+  movePlayersToResetSection,
+} from "store/slices/SectionsSlice";
+import {
   resetPlayersNames,
   resetPlayersState,
+  setPlayersSection,
 } from "store/slices/PlayersSlice";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -29,7 +34,6 @@ import { ITheme } from "utils/types/theme";
 import React from "react";
 import { getIsMobile } from "store/slices/DeviceSlice";
 import { getShowNames } from "store/slices/SettingsSlice";
-import { movePlayersToResetSection } from "store/slices/SectionsSlice";
 import useStyles from "./MainControls.styles";
 import { useTheme } from "react-jss";
 import { useTranslation } from "react-i18next";
@@ -41,6 +45,7 @@ export default function MainControls(): JSX.Element {
   const impostorLosses = useSelector(getImpostorLosses);
   const isMobile = useSelector(getIsMobile);
   const showNames = useSelector(getShowNames);
+  const resetSectionId = useSelector(getResetSectionId);
 
   const dispatch = useDispatch();
 
@@ -140,7 +145,10 @@ export default function MainControls(): JSX.Element {
           <>
             <Button
               className={classes.MainControlsButton}
-              onClick={() => dispatch(movePlayersToResetSection())}
+              onClick={() => {
+                dispatch(movePlayersToResetSection());
+                dispatch(setPlayersSection(resetSectionId));
+              }}
             >
               {t("controls.resetSections")}
             </Button>

@@ -93,6 +93,13 @@ const PlayersSlice = createSlice({
       action: PayloadAction<IPlayersState>
     ) => action.payload,
 
+    setPlayersSection: (state: IPlayersState, action: PayloadAction<number>) =>
+      getNewPlayersState((player: IPlayerColor) => ({
+        ...state[player],
+        position: { ...state[player].position },
+        section: action.payload,
+      })),
+
     resetPlayersPositions: (state: IPlayersState) =>
       getNewPlayersState((player: IPlayerColor) => ({
         ...state[player],
@@ -118,6 +125,7 @@ export const {
   setPlayerSection,
   setPlayer,
   setPlayersState,
+  setPlayersSection,
   resetPlayersPositions,
   resetPlayersNames,
   resetPlayersState,

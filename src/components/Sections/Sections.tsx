@@ -3,6 +3,7 @@ import {
   togglePlayerEditLock,
 } from "store/slices/PlayerEditLockSlice";
 import {
+  getResetSectionId,
   getSections,
   movePlayersToResetSection,
 } from "store/slices/SectionsSlice";
@@ -13,6 +14,7 @@ import React from "react";
 import Section from "components/Section";
 import { getIsMobile } from "store/slices/DeviceSlice";
 import { getShowNames } from "store/slices/SettingsSlice";
+import { setPlayersSection } from "store/slices/PlayersSlice";
 import useStyles from "./Sections.styles";
 import { useTranslation } from "react-i18next";
 
@@ -21,6 +23,7 @@ export default function Sections(): JSX.Element {
   const isLocked = useSelector(getPlayerEditLock);
   const isMobile = useSelector(getIsMobile);
   const sections = useSelector(getSections);
+  const resetSectionId = useSelector(getResetSectionId);
 
   const dispatch = useDispatch();
 
@@ -42,7 +45,12 @@ export default function Sections(): JSX.Element {
         )}
 
         {isMobile && (
-          <Button onClick={() => dispatch(movePlayersToResetSection())}>
+          <Button
+            onClick={() => {
+              dispatch(movePlayersToResetSection());
+              dispatch(setPlayersSection(resetSectionId));
+            }}
+          >
             {t("controls.resetSections")}
           </Button>
         )}

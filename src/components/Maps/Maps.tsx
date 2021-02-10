@@ -1,14 +1,12 @@
 import { getCurrentMap, setCurrentMap } from "store/slices/MapsSlice";
 import { useDispatch, useSelector } from "react-redux";
 
-import { AmongUsMapsInstance } from "./AmongUsMaps";
 import Button from "components/common/Button";
 import ButtonGroup from "components/common/ButtonGroup";
-import { ITheme } from "utils/types/theme";
+import Map from "components/Map";
 import React from "react";
 import { getIsMobile } from "store/slices/DeviceSlice";
 import useStyles from "./Maps.styles";
-import { useTheme } from "react-jss";
 import { useTranslation } from "react-i18next";
 
 export default function Maps(): JSX.Element {
@@ -19,37 +17,7 @@ export default function Maps(): JSX.Element {
 
   const classes = useStyles();
 
-  const theme = useTheme<ITheme>();
-
   const { t } = useTranslation();
-
-  const canvasContainerRef = React.useRef<HTMLDivElement>(null);
-  const canvasRef = React.useRef<HTMLCanvasElement>(null);
-
-  React.useEffect(() => {
-    const canvas = canvasRef.current;
-
-    if (canvas) {
-      const context = canvas.getContext("2d");
-
-      if (context) {
-        AmongUsMapsInstance.setContext(context);
-        AmongUsMapsInstance.setTheme(theme);
-
-        AmongUsMapsInstance.changeCurrentMap(currentMap);
-
-        AmongUsMapsInstance.init();
-      }
-    }
-
-    return () => {
-      window.cancelAnimationFrame(AmongUsMapsInstance.getAnimFrame());
-    };
-  }, []);
-
-  React.useEffect(() => {
-    AmongUsMapsInstance.changeCurrentMap(currentMap);
-  }, [currentMap]);
 
   return (
     <div className={classes.Maps}>
@@ -78,19 +46,8 @@ export default function Maps(): JSX.Element {
         </ButtonGroup>
       </div>
 
-      <div ref={canvasContainerRef} className={classes.MapsContainer}>
-        <canvas
-          ref={canvasRef}
-          width="1920"
-          height="1080"
-          className={classes.MapsCanvas}
-          onContextMenu={(evt) => evt.preventDefault()}
-          onMouseDown={(evt) => AmongUsMapsInstance.handleMouseDown(evt)}
-          onMouseUp={(evt) => AmongUsMapsInstance.handleMouseUp(evt)}
-          onMouseMove={(evt) => AmongUsMapsInstance.handleMouseMove(evt)}
-        >
-          This section is not supported on your browser.
-        </canvas>
+      <div className={classes.MapsContainer}>
+        <Map />
       </div>
     </div>
   );

@@ -1,4 +1,4 @@
-import { ICoordinates } from "./shared";
+import { ICoordinates, IRect } from "./shared";
 
 export type IPlayerColor =
   | "black"
@@ -52,10 +52,8 @@ export interface ISetPlayerSectionPayload {
 }
 
 export interface IPlayerImage {
-  x: number;
-  y: number;
-  w: number;
-  h: number;
+  alive: IRect;
+  dead: IRect;
 }
 
 export interface IPlayersImages {
@@ -71,16 +69,4 @@ export interface IPlayersImages {
   red: IPlayerImage;
   white: IPlayerImage;
   yellow: IPlayerImage;
-  blackDead: IPlayerImage;
-  blueDead: IPlayerImage;
-  brownDead: IPlayerImage;
-  cyanDead: IPlayerImage;
-  greenDead: IPlayerImage;
-  limeDead: IPlayerImage;
-  orangeDead: IPlayerImage;
-  pinkDead: IPlayerImage;
-  purpleDead: IPlayerImage;
-  redDead: IPlayerImage;
-  whiteDead: IPlayerImage;
-  yellowDead: IPlayerImage;
 }
