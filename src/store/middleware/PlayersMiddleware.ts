@@ -98,7 +98,5 @@ export const PlayersMiddleware: Middleware<unknown, RootState> = (store) => (
     localStorage.setItem(`${NAMESPACE}players`, JSON.stringify(players));
   }
 
-  const nextAction = next(action);
-
-  return nextAction;
+  return next(action);
 };

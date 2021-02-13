@@ -1,6 +1,15 @@
+import {
+  getDeadSectionId,
+  getResetSectionId,
+  getUnusedSectionId,
+} from "store/slices/SectionsSlice";
+
 import AmongUsCanvas from "./AmongUsCanvas";
 import { ITheme } from "utils/types/theme";
 import React from "react";
+import { getCurrentMap } from "store/slices/MapsSlice";
+import { getPlayers } from "store/slices/PlayersSlice";
+import { useSelector } from "react-redux";
 import useStyles from "./Map.styles";
 import { useTheme } from "react-jss";
 
@@ -10,6 +19,12 @@ const CANVAS_HEIGHT = 1080;
 export default function Map(): JSX.Element {
   const classes = useStyles();
   const theme = useTheme<ITheme>();
+
+  const currentMap = useSelector(getCurrentMap);
+  const players = useSelector(getPlayers);
+  const resetSectionId = useSelector(getResetSectionId);
+  const deadSectionId = useSelector(getDeadSectionId);
+  const unusedSectionId = useSelector(getUnusedSectionId);
 
   const canvasRef = React.useRef<HTMLCanvasElement>(null);
 
@@ -33,6 +48,14 @@ export default function Map(): JSX.Element {
     AmongUsCanvas.setTheme(theme);
   }, [theme]);
 
+  React.useEffect(() => {
+    AmongUsCanvas.setCurrentMap(currentMap);
+  }, [currentMap]);
+
+  React.useEffect(() => {
+    AmongUsCanvas.updatePlayers();
+  }, [players, resetSectionId, deadSectionId, unusedSectionId]);
+
   return (
     <canvas
       ref={canvasRef}
@@ -40,15 +63,16 @@ export default function Map(): JSX.Element {
       height={CANVAS_HEIGHT}
       className={classes.Map}
       onContextMenu={(evt) => evt.preventDefault()}
-      onMouseMove={(evt) => AmongUsCanvas.handleMouseMove(evt)}
-      onMouseDown={(evt) => AmongUsCanvas.handleMouseDown(evt)}
-      onMouseUp={(evt) => AmongUsCanvas.handleMouseUp(evt)}
-      onMouseLeave={(evt) => AmongUsCanvas.handleMouseLeave(evt)}
-      onDoubleClick={(evt) => AmongUsCanvas.handleDoubleClick(evt)}
-      onTouchStart={(evt) => AmongUsCanvas.handleTouchStart(evt)}
-      onTouchEnd={(evt) => AmongUsCanvas.handleTouchEnd(evt)}
-      onTouchCancel={(evt) => AmongUsCanvas.handleTouchCancel(evt)}
-      onTouchMove={(evt) => AmongUsCanvas.handleTouchMove(evt)}
+      onMouseMove={(evt) => AmongUsCanvas.onMouseMove(evt)}
+      onMouseDown={(evt) => AmongUsCanvas.onMouseDown(evt)}
+      onMouseUp={(evt) => AmongUsCanvas.onMouseUp(evt)}
+      onMouseLeave={(evt) => AmongUsCanvas.onMouseLeave(evt)}
+      onDoubleClick={(evt) => AmongUsCanvas.onDoubleClick(evt)}
+      onTouchMove={(evt) => AmongUsCanvas.onTouchMove(evt)}
+      onTouchStart={(evt) => AmongUsCanvas.onTouchStart(evt)}
+      onTouchEnd={(evt) => AmongUsCanvas.onTouchEnd(evt)}
+      onTouchCancel={(evt) => AmongUsCanvas.onTouchCancel(evt)}
+      onWheel={(evt) => AmongUsCanvas.onWheel(evt)}
     >
       This section is not supported on your browser.
     </canvas>

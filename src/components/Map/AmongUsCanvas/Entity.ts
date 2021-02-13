@@ -43,11 +43,8 @@ export default class Entity {
 
   public onMouseMove(coordinate: ICoordinates): void {
     if (this.active) {
-      const maxX = this.context.canvas.width - this.rect.w;
-      const maxY = this.context.canvas.height - this.rect.h;
-
-      this.rect.x = Math.min(Math.max(0, coordinate.x - this.rect.w / 2), maxX);
-      this.rect.y = Math.min(Math.max(0, coordinate.y - this.rect.h / 2), maxY);
+      this.rect.x = coordinate.x - this.rect.w / 2;
+      this.rect.y = coordinate.y - this.rect.h / 2;
     }
   }
 

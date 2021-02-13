@@ -70,5 +70,3 @@ export interface IPlayersImages {
   white: IPlayerImage;
   yellow: IPlayerImage;
 }
-
-export type IPlayerState = "normal" | "dead" | "hidden";

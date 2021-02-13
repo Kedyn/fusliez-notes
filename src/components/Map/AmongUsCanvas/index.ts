@@ -1,21 +1,23 @@
 import { IMap, IMapState } from "utils/types/maps";
-import { IPlayer, IPlayerColor, IPlayerState } from "utils/types/players";
 import {
   MouseEvent as ReactMouseEvent,
   TouchEvent as ReactTouchEvent,
+  WheelEvent as ReactWheelEvent,
 } from "react";
 import {
   getDeadSectionId,
+  getResetSectionId,
   getUnusedSectionId,
 } from "store/slices/SectionsSlice";
 
 import Entity from "./Entity";
+import { ICoordinates } from "utils/types/shared";
+import { IPlayerColor } from "utils/types/players";
 import { IStoreState } from "utils/types/store";
 import { ITheme } from "utils/types/theme";
 import { MOUSE_BUTTON } from "constants/mouse";
 import { PLAYER_IMAGE } from "constants/players";
 import Player from "./Player";
-import { getCurrentMap } from "store/slices/MapsSlice";
 import { getPlayers } from "store/slices/PlayersSlice";
 import store from "store";
 
@@ -46,149 +48,172 @@ class AmongUsCanvas {
     return this.animFrame;
   }
 
-  public handleMouseMove(
-    evt: ReactMouseEvent<HTMLCanvasElement, MouseEvent>
-  ): void {
-    const rect = evt.currentTarget.getBoundingClientRect();
-    const coo = {
-      x: (evt.clientX - rect.left) * (this.width / rect.width),
-      y: (evt.clientY - rect.top) * (this.height / rect.height),
-    };
+  public setCurrentMap(map: IMap): void {
+    switch (map) {
+      case "Polus":
+        this.currentMap.image = this.polus;
 
-    for (const entity in this.entities) {
-      this.entities[entity].onMouseMove(coo);
+        break;
+      case "TheSkeld":
+        this.currentMap.image = this.theSkeld;
+        break;
+      default:
+        this.currentMap.image = this.miraHQ;
+        break;
     }
+
+    this.currentMap.position.x = this.currentMap.image.width / 2;
+    this.currentMap.position.y = this.currentMap.image.height / 2;
   }
 
-  public handleMouseDown(
+  public onMouseMove(
     evt: ReactMouseEvent<HTMLCanvasElement, MouseEvent>
   ): void {
+    evt.preventDefault();
+
     const rect = evt.currentTarget.getBoundingClientRect();
     const coo = {
       x: (evt.clientX - rect.left) * (this.width / rect.width),
       y: (evt.clientY - rect.top) * (this.height / rect.height),
     };
 
-    for (const entity in this.entities) {
-      this.entities[entity].onMouseDown(evt.button, coo);
+    this.handleMouseMove(coo);
+  }
 
-      if (this.entities[entity].isActive()) {
-        break;
+  public onMouseDown(
+    evt: ReactMouseEvent<HTMLCanvasElement, MouseEvent>
+  ): void {
+    evt.preventDefault();
+
+    const rect = evt.currentTarget.getBoundingClientRect();
+    const coo = {
+      x: (evt.clientX - rect.left) * (this.width / rect.width),
+      y: (evt.clientY - rect.top) * (this.height / rect.height),
+    };
+
+    this.handleMouseDown(evt.button, coo);
+  }
+
+  public onMouseUp(evt: ReactMouseEvent<HTMLCanvasElement, MouseEvent>): void {
+    evt.preventDefault();
+
+    const rect = evt.currentTarget.getBoundingClientRect();
+    const coo = {
+      x: (evt.clientX - rect.left) * (this.width / rect.width),
+      y: (evt.clientY - rect.top) * (this.height / rect.height),
+    };
+
+    this.handleMouseUp(evt.button, coo);
+  }
+
+  public onMouseLeave(
+    evt: ReactMouseEvent<HTMLCanvasElement, MouseEvent>
+  ): void {
+    evt.preventDefault();
+
+    if (this.panning) {
+      this.panning = false;
+    } else {
+      const rect = evt.currentTarget.getBoundingClientRect();
+      const coo = {
+        x: (evt.clientX - rect.left) * (this.width / rect.width),
+        y: (evt.clientY - rect.top) * (this.height / rect.height),
+      };
+
+      const mapCoo = {
+        x: coo.x + this.currentMap.position.x,
+        y: coo.y + this.currentMap.position.y,
+      };
+
+      for (const entity in this.entities) {
+        this.entities[entity].onMouseUp(evt.button, mapCoo);
       }
     }
   }
 
-  public handleMouseUp(
+  public onDoubleClick(
     evt: ReactMouseEvent<HTMLCanvasElement, MouseEvent>
   ): void {
+    evt.preventDefault();
+
     const rect = evt.currentTarget.getBoundingClientRect();
     const coo = {
       x: (evt.clientX - rect.left) * (this.width / rect.width),
       y: (evt.clientY - rect.top) * (this.height / rect.height),
     };
 
-    for (const entity in this.entities) {
-      this.entities[entity].onMouseUp(evt.button, coo);
-    }
+    this.handleDoubleClick(coo);
   }
 
-  public handleMouseLeave(
-    evt: ReactMouseEvent<HTMLCanvasElement, MouseEvent>
-  ): void {
-    const rect = evt.currentTarget.getBoundingClientRect();
-    const coo = {
-      x: (evt.clientX - rect.left) * (this.width / rect.width),
-      y: (evt.clientY - rect.top) * (this.height / rect.height),
-    };
+  public onTouchMove(evt: ReactTouchEvent<HTMLCanvasElement>): void {
+    evt.preventDefault();
 
-    for (const entity in this.entities) {
-      this.entities[entity].onMouseUp(evt.button, coo);
-    }
-  }
-
-  public handleDoubleClick(
-    evt: ReactMouseEvent<HTMLCanvasElement, MouseEvent>
-  ): void {
-    const rect = evt.currentTarget.getBoundingClientRect();
-    const coo = {
-      x: (evt.clientX - rect.left) * (this.width / rect.width),
-      y: (evt.clientY - rect.top) * (this.height / rect.height),
-    };
-
-    for (const entity in this.entities) {
-      this.entities[entity].onDoubleClick(coo);
-    }
-  }
-
-  public handleTouchStart(evt: ReactTouchEvent<HTMLCanvasElement>): void {
     const rect = evt.currentTarget.getBoundingClientRect();
     const coo = {
       x: (evt.touches[0].clientX - rect.left) * (this.width / rect.width),
       y: (evt.touches[0].clientY - rect.top) * (this.height / rect.height),
     };
 
-    for (const entity in this.entities) {
-      this.entities[entity].onMouseDown(MOUSE_BUTTON.LEFT, coo);
+    this.handleMouseMove(coo);
 
-      if (this.entities[entity].isActive()) {
-        break;
-      }
-    }
+    this.touchCoordinates = coo;
   }
 
-  public handleTouchEnd(evt: ReactTouchEvent<HTMLCanvasElement>): void {
+  public onTouchStart(evt: ReactTouchEvent<HTMLCanvasElement>): void {
+    evt.preventDefault();
+
     const rect = evt.currentTarget.getBoundingClientRect();
     const coo = {
       x: (evt.touches[0].clientX - rect.left) * (this.width / rect.width),
       y: (evt.touches[0].clientY - rect.top) * (this.height / rect.height),
     };
+
+    this.handleMouseDown(MOUSE_BUTTON.LEFT, coo);
+
+    this.touchCoordinates = coo;
+  }
+
+  public onTouchEnd(evt: ReactTouchEvent<HTMLCanvasElement>): void {
+    evt.preventDefault();
+
     const currentTime = new Date().getTime();
     const touchLength = currentTime - this.lastTouched;
 
-    for (const entity in this.entities) {
-      this.entities[entity].onMouseUp(MOUSE_BUTTON.LEFT, coo);
+    this.handleMouseUp(MOUSE_BUTTON.LEFT, this.touchCoordinates);
 
-      if (touchLength < 500 && touchLength > 0) {
-        this.entities[entity].onDoubleClick(coo);
-      }
+    if (touchLength < 500 && touchLength > 0) {
+      this.handleDoubleClick(this.touchCoordinates);
     }
 
     this.lastTouched = currentTime;
   }
 
-  public handleTouchCancel(evt: ReactTouchEvent<HTMLCanvasElement>): void {
-    const rect = evt.currentTarget.getBoundingClientRect();
-    const coo = {
-      x: (evt.touches[0].clientX - rect.left) * (this.width / rect.width),
-      y: (evt.touches[0].clientY - rect.top) * (this.height / rect.height),
-    };
+  public onTouchCancel(evt: ReactTouchEvent<HTMLCanvasElement>): void {
+    evt.preventDefault();
 
-    for (const entity in this.entities) {
-      this.entities[entity].onMouseUp(MOUSE_BUTTON.LEFT, coo);
-    }
+    this.handleMouseUp(MOUSE_BUTTON.LEFT, this.touchCoordinates);
   }
 
-  public handleTouchMove(evt: ReactTouchEvent<HTMLCanvasElement>): void {
-    const rect = evt.currentTarget.getBoundingClientRect();
-    const coo = {
-      x: (evt.touches[0].clientX - rect.left) * (this.width / rect.width),
-      y: (evt.touches[0].clientY - rect.top) * (this.height / rect.height),
-    };
-
-    for (const entity in this.entities) {
-      this.entities[entity].onMouseMove(coo);
-    }
+  public onWheel(evt: ReactWheelEvent<HTMLCanvasElement>): void {
+    // working on it
   }
 
   public updatePlayers(): void {
     const state: IStoreState = store.getState();
     const players = getPlayers(state);
+    const resetSectionId = getResetSectionId(state);
+    const deadSectionId = getDeadSectionId(state);
+    const unusedSectionId = getUnusedSectionId(state);
 
     for (const player of Object.keys(players)) {
       const data = players[player as IPlayerColor];
       const entity: Player = this.entities[`${player}Player`] as Player;
 
-      entity.setState(this.getPlayerState(data, state));
+      entity.updatePlayer(data, [
+        resetSectionId,
+        deadSectionId,
+        unusedSectionId,
+      ]);
     }
   }
 
@@ -223,12 +248,15 @@ class AmongUsCanvas {
 
   private loading: number;
 
-  private currentMapName: IMap;
   private currentMap: IMapState;
 
   private entities: { [key: string]: Entity };
 
   private lastTouched: number;
+  private touchCoordinates: ICoordinates;
+
+  private panning: boolean;
+  private lastPanClick: ICoordinates;
 
   private constructor() {
     this.animFrame = 0;
@@ -266,72 +294,121 @@ class AmongUsCanvas {
       this.loading += 0.25;
     };
 
-    this.currentMapName = "MiraHQ";
-    this.currentMap = { position: { x: 0, y: 0 }, image: this.miraHQ };
+    this.currentMap = {
+      position: { x: this.miraHQ.width / 2, y: this.miraHQ.height / 2 },
+      image: this.miraHQ,
+    };
 
     this.entities = {};
 
     const state: IStoreState = store.getState();
     const players = getPlayers(state);
+    const resetSectionId = getResetSectionId(state);
+    const deadSectionId = getDeadSectionId(state);
+    const unusedSectionId = getUnusedSectionId(state);
 
-    for (const player of Object.keys(players)) {
+    for (const player in players) {
       const data = players[player as IPlayerColor];
       const image = PLAYER_IMAGE[player as IPlayerColor];
 
       this.entities[`${player}Player`] = new Player(
-        data.position,
+        data,
+        [resetSectionId, deadSectionId, unusedSectionId],
         this.players,
         image.alive,
-        image.dead,
-        this.getPlayerState(data, state)
+        image.dead
       );
     }
 
     this.lastTouched = 0;
+    this.touchCoordinates = { x: 0, y: 0 };
+
+    this.panning = false;
+    this.lastPanClick = { x: 0, y: 0 };
   }
 
-  private getPlayerState(
-    player: IPlayer,
-    storeState: IStoreState
-  ): IPlayerState {
-    const deadSectionId = getDeadSectionId(storeState);
-    const unusedSectionId = getUnusedSectionId(storeState);
+  private handleMouseMove(coo: ICoordinates): void {
+    const mapCoo = {
+      x: coo.x + this.currentMap.position.x,
+      y: coo.y + this.currentMap.position.y,
+    };
 
-    return player.section === deadSectionId
-      ? "dead"
-      : player.section === unusedSectionId
-      ? "hidden"
-      : "normal";
+    if (this.panning) {
+      this.currentMap.position.x += this.lastPanClick.x - coo.x;
+      this.currentMap.position.y += this.lastPanClick.y - coo.y;
+
+      this.currentMap.position.x = Math.max(
+        Math.min(
+          this.currentMap.image.width - this.width,
+          this.currentMap.position.x
+        ),
+        0
+      );
+
+      this.currentMap.position.y = Math.max(
+        Math.min(
+          this.currentMap.image.height - this.height,
+          this.currentMap.position.y
+        ),
+        0
+      );
+
+      this.lastPanClick = coo;
+    } else {
+      for (const entity in this.entities) {
+        this.entities[entity].onMouseMove(mapCoo);
+      }
+    }
   }
 
-  private setCurrentMap(state: IStoreState): void {
-    const currentMap = getCurrentMap(state);
+  private handleMouseDown(button: MOUSE_BUTTON, coo: ICoordinates): void {
+    const mapCoo = {
+      x: coo.x + this.currentMap.position.x,
+      y: coo.y + this.currentMap.position.y,
+    };
 
-    if (this.currentMapName != currentMap) {
-      switch (currentMap) {
-        case "Polus":
-          this.currentMap = { position: { x: 0, y: 0 }, image: this.polus };
+    let panning = true;
 
-          break;
-        case "TheSkeld":
-          this.currentMap = { position: { x: 0, y: 0 }, image: this.theSkeld };
+    for (const entity in this.entities) {
+      this.entities[entity].onMouseDown(button, mapCoo);
 
-          break;
-        default:
-          this.currentMap = { position: { x: 0, y: 0 }, image: this.miraHQ };
-
-          break;
+      if (this.entities[entity].isActive()) {
+        panning = false;
+        break;
       }
     }
 
-    this.currentMapName = currentMap;
+    this.panning = panning;
+    this.lastPanClick = coo;
+  }
+
+  private handleMouseUp(button: MOUSE_BUTTON, coo: ICoordinates): void {
+    if (this.panning) {
+      this.panning = false;
+    } else {
+      const mapCoo = {
+        x: coo.x + this.currentMap.position.x,
+        y: coo.y + this.currentMap.position.y,
+      };
+
+      for (const entity in this.entities) {
+        this.entities[entity].onMouseUp(button, mapCoo);
+      }
+    }
+  }
+
+  private handleDoubleClick(coo: ICoordinates): void {
+    const mapCoo = {
+      x: coo.x + this.currentMap.position.x,
+      y: coo.y + this.currentMap.position.y,
+    };
+
+    for (const entity in this.entities) {
+      this.entities[entity].onDoubleClick(mapCoo);
+    }
   }
 
   private update(step: number): void {
-    const state: IStoreState = store.getState();
-
-    this.setCurrentMap(state);
-
     for (const entity in this.entities) {
       this.entities[entity].update(step);
     }
@@ -350,21 +427,20 @@ class AmongUsCanvas {
         this.height / 2 - 10
       );
     } else {
-      this.context.drawImage(
-        this.currentMap.image,
-        this.currentMap.position.x,
-        this.currentMap.position.y,
-        this.currentMap.image.width,
-        this.currentMap.image.height,
-        0,
-        0,
-        this.width,
-        this.height - 200
+      this.context.save();
+
+      this.context.translate(
+        -this.currentMap.position.x,
+        -this.currentMap.position.y
       );
+
+      this.context.drawImage(this.currentMap.image, 0, 0);
 
       for (const entity in this.entities) {
         this.entities[entity].render();
       }
+
+      this.context.restore();
     }
   }
 

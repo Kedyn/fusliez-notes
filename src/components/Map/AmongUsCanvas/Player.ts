@@ -1,65 +1,63 @@
 import { ICoordinates, IRect } from "utils/types/shared";
+import { getSections, setSections } from "store/slices/SectionsSlice";
 
 import Entity from "./Entity";
-import { IPlayerState } from "utils/types/players";
+import { IPlayer } from "utils/types/players";
+import { pointInRect } from "utils/math";
+import { setPlayerSection } from "store/slices/PlayersSlice";
+import store from "store";
 
 export default class Player extends Entity {
   public constructor(
-    position: ICoordinates,
+    data: IPlayer,
+    sections: Array<number>,
     image: HTMLImageElement,
     aliveRect: IRect,
     deadRect: IRect,
-    state: IPlayerState,
     debug = false
   ) {
     super({ ...aliveRect }, true, debug);
 
-    this.image = image;
-
     this.aliveRect = aliveRect;
     this.deadRect = deadRect;
 
-    this.state = state;
+    this.updatePlayer(data, sections);
 
-    if (state === "dead") {
-      this.imageRect = deadRect;
-    } else {
-      this.imageRect = aliveRect;
+    this.image = image;
 
-      if (state === "hidden") {
-        this.draggable = false;
-      }
-    }
-
-    this.rect.x = position.x;
-    this.rect.y = position.y;
-    this.rect.w = this.imageRect.w * 0.4;
-    this.rect.h = this.imageRect.h * 0.4;
+    this.rect.x = data.position.x;
+    this.rect.y = data.position.y;
   }
 
-  public setState(state: IPlayerState): void {
-    this.state = state;
+  public updatePlayer(data: IPlayer, sections: Array<number>): void {
+    this.data = data;
 
-    if (state === "dead") {
+    this.resetSectionId = sections[0];
+    this.deadSectionId = sections[1];
+    this.unusedSectionId = sections[2];
+
+    this.draggable = true;
+
+    if (data.section === this.deadSectionId) {
       this.imageRect = this.deadRect;
     } else {
       this.imageRect = this.aliveRect;
 
-      if (state === "hidden") {
+      if (data.section === this.unusedSectionId) {
         this.draggable = false;
       }
     }
-  }
 
-  public update(): void {
-    // no code here
+    this.rect.w = this.imageRect.w;
+    this.rect.h = this.imageRect.h;
   }
 
   public render(): void {
     super.render();
 
-    if (this.state !== "hidden") {
+    if (this.data.section !== this.unusedSectionId) {
       this.context.save();
+
       if (this.isActive()) {
         this.context.shadowBlur = 15;
         this.context.shadowColor = "#C2D2E3";
@@ -81,11 +79,76 @@ export default class Player extends Entity {
     }
   }
 
+  public onDoubleClick(coordinate: ICoordinates): void {
+    if (
+      pointInRect(coordinate, this.rect) &&
+      this.data.section !== this.unusedSectionId
+    ) {
+      const sections = getSections(store.getState());
+
+      let newSection = this.resetSectionId;
+
+      if (this.data.section === this.deadSectionId) {
+        store.dispatch(
+          setSections(
+            sections.map((section) => ({
+              ...section,
+              players:
+                section.id === this.deadSectionId
+                  ? [
+                      ...section.players.filter(
+                        (player) => player.id !== this.data.color
+                      ),
+                    ]
+                  : section.id === this.resetSectionId
+                  ? [
+                      ...section.players,
+                      {
+                        id: this.data.color as string,
+                      },
+                    ]
+                  : [...section.players],
+            }))
+          )
+        );
+      } else {
+        store.dispatch(
+          setSections(
+            sections.map((section) => ({
+              ...section,
+              players:
+                section.id !== this.deadSectionId
+                  ? [
+                      ...section.players.filter(
+                        (player) => player.id !== this.data.color
+                      ),
+                    ]
+                  : [
+                      ...section.players,
+                      {
+                        id: this.data.color as string,
+                      },
+                    ],
+            }))
+          )
+        );
+
+        newSection = this.deadSectionId;
+      }
+
+      store.dispatch(setPlayerSection({ player: this.data.color, newSection }));
+    }
+  }
+
+  private data!: IPlayer;
+
+  private resetSectionId!: number;
+  private deadSectionId!: number;
+  private unusedSectionId!: number;
+
   private image: HTMLImageElement;
-  private imageRect: IRect;
+  private imageRect!: IRect;
 
   private aliveRect: IRect;
   private deadRect: IRect;
-
-  private state: IPlayerState;
 }
