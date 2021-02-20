@@ -25,7 +25,9 @@
     "purple": "Paars",
     "pink": "Roze",
     "white": "Wit",
-    "black": "Zwart"
+    "black": "Zwart",
+    "disclaimer": "Houd er rekening mee dat we Google Analytics gebruiken om gebruiksgegevens geanonimiseerd te verzamelen om ons te helpen bij de ontwikkeling van deze tool. <1 />Meer informatie over hoe Google gegevens gebruikt of verzamelt vind je <3>hier</3>.",
+    "understand": "Ik begrijp het"
   },
   "controls": {
     "wins": "Overwinningen",
@@ -89,7 +91,10 @@
     "close": "Sluiten",
     "addSection": "Sectie toevoegen",
     "resetSections": "Reset secties",
-    "sectionsNote": "Let op: Het wijzigen van de standaard sectie (<1 />) wordt alleen doorgevoerd door op posities resetten of alles resetten te klikken"
+    "sectionsNote": "Let op: Het wijzigen van de standaard sectie (<1 />) wordt alleen doorgevoerd door op posities resetten of alles resetten te klikken",
+    "resetSection": "Reset sectie - <1 /> <2 />",
+    "deadSection": "Doden Section - <1 /> <2 />",
+    "unusedSection": "Ongebruikt sectie - <1 />"
   },
   "menu": {
     "players": "Spelers",
@@ -113,5 +118,10 @@
     "partThree": "Bedankt aan iedereen die deze tool gebruikt.",
     "partFour": "Neem alsjeblieft een kijkje bij iedereen die aan dit project heeft gewerkt en laat ze wat liefde zien.",
     "partFive": "PS: Laat het me weten als ik iemand heb weggelaten. Ik wil niemand vergeten."
+  },
+  "footer": {
+    "partOne": "fusliez notities is gemaakt <1 /> door de fuslie familie.",
+    "partTwo": "Bekijk op GitHub",
+    "partThree": "Geef feedback"
   }
 }
