@@ -1,19 +1,19 @@
-import { getCurrentMap, setCurrentMap } from "store/slices/MapsSlice";
-import { useDispatch, useSelector } from "react-redux";
-
+import AmongUsCanvas from "components/Map/AmongUsCanvas";
 import Button from "components/common/Button";
 import ButtonGroup from "components/common/ButtonGroup";
+import { IMapName } from "utils/types/maps";
 import Map from "components/Map";
 import React from "react";
 import { getIsMobile } from "store/slices/DeviceSlice";
+import { useSelector } from "react-redux";
 import useStyles from "./Maps.styles";
 import { useTranslation } from "react-i18next";
 
 export default function Maps(): JSX.Element {
   const isMobile = useSelector(getIsMobile);
-  const currentMap = useSelector(getCurrentMap);
-
-  const dispatch = useDispatch();
+  const [currentMap, setCurrentMap] = React.useState<IMapName>(
+    AmongUsCanvas.getCurrentMap()
+  );
 
   const classes = useStyles();
 
@@ -26,28 +26,28 @@ export default function Maps(): JSX.Element {
 
         <ButtonGroup inline={!isMobile}>
           <Button
-            pressed={currentMap === "TheSkeld"}
-            onClick={() => dispatch(setCurrentMap("TheSkeld"))}
-          >
-            The Skeld
-          </Button>
-          <Button
             pressed={currentMap === "MiraHQ"}
-            onClick={() => dispatch(setCurrentMap("MiraHQ"))}
+            onClick={() => setCurrentMap("MiraHQ")}
           >
             Mira HQ
           </Button>
           <Button
             pressed={currentMap === "Polus"}
-            onClick={() => dispatch(setCurrentMap("Polus"))}
+            onClick={() => setCurrentMap("Polus")}
           >
             Polus
+          </Button>
+          <Button
+            pressed={currentMap === "TheSkeld"}
+            onClick={() => setCurrentMap("TheSkeld")}
+          >
+            The Skeld
           </Button>
         </ButtonGroup>
       </div>
 
       <div className={classes.MapsContainer}>
-        <Map />
+        <Map currentMap={currentMap} />
       </div>
     </div>
   );

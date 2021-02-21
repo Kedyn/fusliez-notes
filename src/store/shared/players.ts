@@ -21,8 +21,6 @@ export function getNewPlayersState(
 export function getDefaultPlayersState(): IPlayersState {
   return getNewPlayersState((player: IPlayerColor) => ({
     ...DEFAULT_PLAYERS_STATE[player],
-
-    position: { ...DEFAULT_PLAYERS_STATE[player].position },
   }));
 }
 
@@ -31,8 +29,6 @@ export function getDefaultPlayersPositions(
 ): IPlayersState {
   return getNewPlayersState((player: IPlayerColor) => ({
     ...state[player],
-
-    position: { ...DEFAULT_PLAYERS_STATE[player].position },
   }));
 }
 
@@ -47,14 +43,6 @@ export function getInitialPlayersState(): IPlayersState {
     return getNewPlayersState((player: IPlayerColor) => ({
       name: playersObject[player].name ?? DEFAULT_PLAYERS_STATE[player].name,
       color: DEFAULT_PLAYERS_STATE[player].color,
-      position: {
-        x:
-          playersObject[player].position.x ??
-          DEFAULT_PLAYERS_STATE[player].position.x,
-        y:
-          playersObject[player].position.y ??
-          DEFAULT_PLAYERS_STATE[player].position.y,
-      },
       section:
         playersObject[player].section ?? DEFAULT_PLAYERS_STATE[player].section,
     }));

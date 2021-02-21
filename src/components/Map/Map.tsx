@@ -5,9 +5,9 @@ import {
 } from "store/slices/SectionsSlice";
 
 import AmongUsCanvas from "./AmongUsCanvas";
+import { IMapName } from "utils/types/maps";
 import { ITheme } from "utils/types/theme";
 import React from "react";
-import { getCurrentMap } from "store/slices/MapsSlice";
 import { getPlayers } from "store/slices/PlayersSlice";
 import { useSelector } from "react-redux";
 import useStyles from "./Map.styles";
@@ -16,11 +16,15 @@ import { useTheme } from "react-jss";
 const CANVAS_WIDTH = 1920;
 const CANVAS_HEIGHT = 1080;
 
-export default function Map(): JSX.Element {
+export interface IMapProps {
+  currentMap: IMapName;
+}
+
+export default function Map(props: IMapProps): JSX.Element {
   const classes = useStyles();
   const theme = useTheme<ITheme>();
 
-  const currentMap = useSelector(getCurrentMap);
+  const currentMap = props.currentMap;
   const players = useSelector(getPlayers);
   const resetSectionId = useSelector(getResetSectionId);
   const deadSectionId = useSelector(getDeadSectionId);

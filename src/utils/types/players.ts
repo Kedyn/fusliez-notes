@@ -1,4 +1,4 @@
-import { ICoordinates, IRect } from "./shared";
+import { IRect } from "./shared";
 
 export type IPlayerColor =
   | "black"
@@ -17,7 +17,6 @@ export type IPlayerColor =
 export interface IPlayer {
   name: string;
   color: IPlayerColor;
-  position: ICoordinates;
   section: number;
 }
 
@@ -39,11 +38,6 @@ export interface IPlayersState {
 export interface ISetPlayerNamePayload {
   player: IPlayerColor;
   newName: string;
-}
-
-export interface ISetPlayerPositionPayload {
-  player: IPlayerColor;
-  newPosition: ICoordinates;
 }
 
 export interface ISetPlayerSectionPayload {

@@ -3,7 +3,6 @@ import {
   IPlayerColor,
   IPlayersState,
   ISetPlayerNamePayload,
-  ISetPlayerPositionPayload,
   ISetPlayerSectionPayload,
 } from "utils/types/players";
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
@@ -29,31 +28,11 @@ const PlayersSlice = createSlice({
           return {
             ...state[player],
             name: action.payload.newName,
-            position: { ...state[player].position },
           };
         }
 
         return {
           ...state[player],
-          position: { ...state[player].position },
-        };
-      }),
-
-    setPlayerPosition: (
-      state: IPlayersState,
-      action: PayloadAction<ISetPlayerPositionPayload>
-    ) =>
-      getNewPlayersState((player: IPlayerColor) => {
-        if (player === action.payload.player) {
-          return {
-            ...state[player],
-            position: action.payload.newPosition,
-          };
-        }
-
-        return {
-          ...state[player],
-          position: { ...state[player].position },
         };
       }),
 
@@ -66,13 +45,11 @@ const PlayersSlice = createSlice({
           return {
             ...state[player],
             section: action.payload.newSection,
-            position: { ...state[player].position },
           };
         }
 
         return {
           ...state[player],
-          position: { ...state[player].position },
         };
       }),
 
@@ -84,7 +61,6 @@ const PlayersSlice = createSlice({
 
         return {
           ...state[player],
-          position: { ...state[player].position },
         };
       }),
 
@@ -96,16 +72,7 @@ const PlayersSlice = createSlice({
     setPlayersSection: (state: IPlayersState, action: PayloadAction<number>) =>
       getNewPlayersState((player: IPlayerColor) => ({
         ...state[player],
-        position: { ...state[player].position },
         section: action.payload,
-      })),
-
-    resetPlayersPositions: (state: IPlayersState) =>
-      getNewPlayersState((player: IPlayerColor) => ({
-        ...state[player],
-        position: {
-          ...DEFAULT_PLAYERS_STATE[player].position,
-        },
       })),
 
     resetPlayersNames: (state: IPlayersState) =>
@@ -121,12 +88,10 @@ const PlayersSlice = createSlice({
 
 export const {
   setPlayerName,
-  setPlayerPosition,
   setPlayerSection,
   setPlayer,
   setPlayersState,
   setPlayersSection,
-  resetPlayersPositions,
   resetPlayersNames,
   resetPlayersState,
 } = PlayersSlice.actions;

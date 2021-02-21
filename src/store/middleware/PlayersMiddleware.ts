@@ -1,17 +1,14 @@
 import { IPlayerColor, IPlayersState } from "utils/types/players";
 import {
-  getDefaultPlayersPositions,
   getDefaultPlayersState,
   getNewPlayersState,
 } from "store/shared/players";
 import {
   getPlayers,
   resetPlayersNames,
-  resetPlayersPositions,
   resetPlayersState,
   setPlayer,
   setPlayerName,
-  setPlayerPosition,
   setPlayerSection,
   setPlayersSection,
   setPlayersState,
@@ -30,8 +27,6 @@ export const PlayersMiddleware: Middleware<unknown, RootState> = (store) => (
 
   let players: IPlayersState = getNewPlayersState((player: IPlayerColor) => ({
     ...currentPlayersState[player],
-
-    position: { ...currentPlayersState[player].position },
   }));
   let edit = true;
 
@@ -39,12 +34,6 @@ export const PlayersMiddleware: Middleware<unknown, RootState> = (store) => (
     case setPlayerName.type:
       players[action.payload.player as IPlayerColor].name =
         action.payload.newName;
-
-      break;
-
-    case setPlayerPosition.type:
-      players[action.payload.player as IPlayerColor].position =
-        action.payload.newPosition;
 
       break;
 
@@ -73,11 +62,6 @@ export const PlayersMiddleware: Middleware<unknown, RootState> = (store) => (
 
       break;
 
-    case resetPlayersPositions.type:
-      players = getDefaultPlayersPositions(players);
-
-      break;
-
     case resetPlayersNames.type:
       players = getNewPlayersState((player: IPlayerColor) => ({
         ...currentPlayersState[player],
@@ -85,8 +69,12 @@ export const PlayersMiddleware: Middleware<unknown, RootState> = (store) => (
         name: DEFAULT_PLAYERS_STATE[player].name,
       }));
 
+      break;
+
     case resetPlayersState.type:
       players = getDefaultPlayersState();
+
+      break;
 
     default:
       edit = false;

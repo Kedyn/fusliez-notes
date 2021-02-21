@@ -1,22 +1,25 @@
-import { ICoordinates, IRect } from "utils/types/shared";
 import { getSections, setSections } from "store/slices/SectionsSlice";
 
+import { COLOR_LIBRARY } from "constants/theme";
 import Entity from "./Entity";
 import { IPlayer } from "utils/types/players";
-import { pointInRect } from "utils/math";
+import { IRect } from "utils/types/shared";
+import { Rectangle } from "utils/math/Rectangle";
+import { Vector } from "utils/math/Vector";
 import { setPlayerSection } from "store/slices/PlayersSlice";
 import store from "store";
 
 export default class Player extends Entity {
   public constructor(
     data: IPlayer,
+    position: Vector,
     sections: Array<number>,
     image: HTMLImageElement,
     aliveRect: IRect,
     deadRect: IRect,
     debug = false
   ) {
-    super({ ...aliveRect }, true, debug);
+    super(new Rectangle(position, aliveRect.w, aliveRect.h), true, debug);
 
     this.aliveRect = aliveRect;
     this.deadRect = deadRect;
@@ -25,8 +28,7 @@ export default class Player extends Entity {
 
     this.image = image;
 
-    this.rect.x = data.position.x;
-    this.rect.y = data.position.y;
+    this.rect.setPosition(position);
   }
 
   public updatePlayer(data: IPlayer, sections: Array<number>): void {
@@ -48,8 +50,7 @@ export default class Player extends Entity {
       }
     }
 
-    this.rect.w = this.imageRect.w;
-    this.rect.h = this.imageRect.h;
+    this.rect.setDimensions(this.imageRect.w, this.imageRect.h);
   }
 
   public render(): void {
@@ -63,25 +64,36 @@ export default class Player extends Entity {
         this.context.shadowColor = "#C2D2E3";
       }
 
+      if (this.data.name != "") {
+        const width = this.context.measureText(this.data.name).width;
+
+        this.context.fillStyle = COLOR_LIBRARY[this.data.color].base;
+        this.context.fillText(
+          this.data.name,
+          this.rect.getX() + (this.rect.getWidth() - width) / 2,
+          this.rect.getY() - 20
+        );
+      }
+
       this.context.drawImage(
         this.image,
         this.imageRect.x,
         this.imageRect.y,
         this.imageRect.w,
         this.imageRect.h,
-        this.rect.x,
-        this.rect.y,
-        this.rect.w,
-        this.rect.h
+        this.rect.getX(),
+        this.rect.getY(),
+        this.rect.getWidth(),
+        this.rect.getHeight()
       );
 
       this.context.restore();
     }
   }
 
-  public onDoubleClick(coordinate: ICoordinates): void {
+  public onDoubleClick(coordinate: Vector): void {
     if (
-      pointInRect(coordinate, this.rect) &&
+      this.rect.isPointInside(coordinate) &&
       this.data.section !== this.unusedSectionId
     ) {
       const sections = getSections(store.getState());

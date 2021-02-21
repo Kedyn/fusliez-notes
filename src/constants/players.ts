@@ -6,109 +6,61 @@ export const DEFAULT_PLAYERS_STATE: IPlayersState = {
   black: {
     name: "",
     color: "black",
-    position: {
-      x: 0,
-      y: 880,
-    },
     section: DEFAULT_RESET_SECTION,
   },
   blue: {
     name: "",
     color: "blue",
-    position: {
-      x: 148,
-      y: 880,
-    },
     section: DEFAULT_RESET_SECTION,
   },
   brown: {
     name: "",
     color: "brown",
-    position: {
-      x: 296,
-      y: 880,
-    },
     section: DEFAULT_RESET_SECTION,
   },
   cyan: {
     name: "",
     color: "cyan",
-    position: {
-      x: 444,
-      y: 880,
-    },
     section: DEFAULT_RESET_SECTION,
   },
   green: {
     name: "",
     color: "green",
-    position: {
-      x: 592,
-      y: 880,
-    },
     section: DEFAULT_RESET_SECTION,
   },
   lime: {
     name: "",
     color: "lime",
-    position: {
-      x: 740,
-      y: 880,
-    },
     section: DEFAULT_RESET_SECTION,
   },
   orange: {
     name: "",
     color: "orange",
-    position: {
-      x: 888,
-      y: 880,
-    },
     section: DEFAULT_RESET_SECTION,
   },
   pink: {
     name: "",
     color: "pink",
-    position: {
-      x: 1036,
-      y: 880,
-    },
     section: DEFAULT_RESET_SECTION,
   },
   purple: {
     name: "",
     color: "purple",
-    position: {
-      x: 1184,
-      y: 880,
-    },
     section: DEFAULT_RESET_SECTION,
   },
   red: {
     name: "",
     color: "red",
-    position: {
-      x: 1332,
-      y: 880,
-    },
     section: DEFAULT_RESET_SECTION,
   },
   white: {
     name: "",
     color: "white",
-    position: {
-      x: 1480,
-      y: 880,
-    },
     section: DEFAULT_RESET_SECTION,
   },
   yellow: {
     name: "",
     color: "yellow",
-    position: {
-      x: 1628,
-      y: 880,
-    },
     section: DEFAULT_RESET_SECTION,
   },
 };

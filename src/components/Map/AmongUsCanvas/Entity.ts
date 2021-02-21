@@ -1,11 +1,10 @@
-import { ICoordinates, IRect } from "utils/types/shared";
-
 import { KEYCODE } from "constants/keycodes";
 import { MOUSE_BUTTON } from "constants/mouse";
-import { pointInRect } from "utils/math";
+import { Rectangle } from "utils/math/Rectangle";
+import { Vector } from "utils/math/Vector";
 
 export default class Entity {
-  public constructor(rect: IRect, draggable = false, debug = false) {
+  public constructor(rect: Rectangle, draggable = false, debug = false) {
     this.rect = rect;
     this.draggable = draggable;
     this.debug = debug;
@@ -16,18 +15,45 @@ export default class Entity {
   public setContext(context: CanvasRenderingContext2D): void {
     this.context = context;
   }
+
+  public setDebug(state: boolean): void {
+    this.debug = state;
+  }
+
+  public setPosition(position: Vector): void {
+    this.rect.setPosition(position);
+  }
+
+  public getPosition(): Vector {
+    return this.rect.getPosition();
+  }
+
   public update(step: number): void {} // eslint-disable-line
 
   public render(): void {
     if (this.debug) {
       this.context.save();
+
+      const position = `${Math.round(this.rect.getX())} - ${Math.round(
+        this.rect.getY()
+      )}`;
+
+      const width = this.context.measureText(position).width;
+
+      this.context.fillStyle = "red";
+      this.context.fillText(
+        position,
+        this.rect.getX() + (this.rect.getWidth() - width) / 2,
+        this.rect.getY() - 20
+      );
+
       this.context.lineWidth = 1;
       this.context.strokeStyle = "red";
       this.context.strokeRect(
-        this.rect.x,
-        this.rect.y,
-        this.rect.w,
-        this.rect.h
+        this.rect.getX(),
+        this.rect.getY(),
+        this.rect.getWidth(),
+        this.rect.getHeight()
       );
       this.context.restore();
     }
@@ -41,30 +67,32 @@ export default class Entity {
 
   public onKeyUp(key: KEYCODE): void {} // eslint-disable-line
 
-  public onMouseMove(coordinate: ICoordinates): void {
+  public onMouseMove(coordinate: Vector): void {
     if (this.active) {
-      this.rect.x = coordinate.x - this.rect.w / 2;
-      this.rect.y = coordinate.y - this.rect.h / 2;
+      this.rect.setPosition(
+        coordinate.x - this.rect.getWidth() / 2,
+        coordinate.y - this.rect.getHeight() / 2
+      );
     }
   }
 
-  public onMouseDown(button: MOUSE_BUTTON, coordinate: ICoordinates): void {
-    if (this.draggable && pointInRect(coordinate, this.rect)) {
+  public onMouseDown(button: MOUSE_BUTTON, coordinate: Vector): void {
+    if (this.draggable && this.rect.isPointInside(coordinate)) {
       this.active = true;
     }
   }
 
-  public onMouseUp(button: MOUSE_BUTTON, coordinate: ICoordinates): void {
-    if (this.draggable && pointInRect(coordinate, this.rect)) {
+  public onMouseUp(button: MOUSE_BUTTON, coordinate: Vector): void {
+    if (this.draggable && this.rect.isPointInside(coordinate)) {
       this.active = false;
     }
   }
 
-  public onDoubleClick(coordinate: ICoordinates): void {} // eslint-disable-line
+  public onDoubleClick(coordinate: Vector): void {} // eslint-disable-line
 
   protected context!: CanvasRenderingContext2D;
 
-  protected rect: IRect;
+  protected rect: Rectangle;
   protected draggable: boolean;
   protected debug: boolean;
 
