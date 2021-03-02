@@ -26,6 +26,7 @@ import { MOUSE_BUTTON } from "constants/mouse";
 import { PLAYER_IMAGE } from "constants/players";
 import Player from "./Player";
 import { Vector } from "utils/math/Vector";
+import { drawStrokeText } from "./tools";
 import { getPlayers } from "store/slices/PlayersSlice";
 import store from "store";
 
@@ -66,12 +67,16 @@ class AmongUsCanvas {
 
   public setCurrentMap(map: IMapName): void {
     if (map !== this.currentMap.name) {
+      const playersOffset = new Vector();
+
       switch (map) {
         case "Polus":
           this.currentMap = this.polus;
           this.currentMap.scale = POLUS_SCALE;
 
           this.offset.set(POLUS_POSITION);
+
+          playersOffset.set(POLUS_POSITION);
 
           break;
         case "TheSkeld":
@@ -80,18 +85,30 @@ class AmongUsCanvas {
 
           this.offset.set(THE_SKELD_POSITION);
 
+          playersOffset.set(THE_SKELD_POSITION);
+
           break;
         default:
           this.currentMap = this.miraHQ;
           this.currentMap.scale = MIRAHQ_SCALE;
 
           this.offset.set(MIRAHQ_POSITION);
+
+          playersOffset.set(MIRAHQ_POSITION);
+
           break;
       }
 
-      this.setInitialPlayersPositions();
+      this.setInitialPlayersPositions(playersOffset);
 
-      this.scale = 1.0;
+      // comment this out if we are using the bottom section
+      this.scale.set(1, 1);
+
+      /* this.offset.set(0, 0);
+      this.scale.x =
+        this.width / (this.currentMap.image.width * this.currentMap.scale);
+      this.scale.y =
+        this.height / (this.currentMap.image.height * this.currentMap.scale); */
     }
   }
 
@@ -165,13 +182,36 @@ class AmongUsCanvas {
   public onTouchMove(evt: ReactTouchEvent<HTMLCanvasElement>): void {
     evt.preventDefault();
 
-    this.handleMouseMove(this.getTouchPosition(evt));
+    if (evt.touches.length === 1) {
+      this.handleMouseMove(this.getTouchPosition(evt));
+    } else if (evt.touches.length === 2) {
+      const p1 = new Vector(this.getTouchPosition(evt, 0));
+      const p2 = new Vector(this.getTouchPosition(evt, 1));
+      const distance = p1.getDistance(p2);
+      const center = p1.getCenter(p2);
+
+      if (!this.lastTouchDistance) {
+        this.lastTouchDistance = distance;
+      }
+
+      const difference = this.lastTouchDistance - distance;
+
+      if (difference < 0) {
+        this.handleZoom(0.01, center);
+      } else if (difference > 0) {
+        this.handleZoom(-0.01, center);
+      }
+
+      this.lastTouchDistance = distance;
+    }
   }
 
   public onTouchStart(evt: ReactTouchEvent<HTMLCanvasElement>): void {
     evt.preventDefault();
 
-    this.handleMouseDown(MOUSE_BUTTON.LEFT, this.getTouchPosition(evt));
+    if (evt.touches.length === 1) {
+      this.handleMouseDown(MOUSE_BUTTON.LEFT, this.getTouchPosition(evt));
+    }
   }
 
   public onTouchEnd(evt: ReactTouchEvent<HTMLCanvasElement>): void {
@@ -187,12 +227,18 @@ class AmongUsCanvas {
     }
 
     this.lastTouchTime = currentTime;
+
+    this.lastTouchDistance = 0;
   }
 
   public onTouchCancel(evt: ReactTouchEvent<HTMLCanvasElement>): void {
     evt.preventDefault();
 
-    this.handleMouseUp(MOUSE_BUTTON.LEFT, this.lastTouch);
+    if (evt.touches.length === 1) {
+      this.handleMouseUp(MOUSE_BUTTON.LEFT, this.lastTouch);
+    }
+
+    this.lastTouchDistance = 0;
   }
 
   public updatePlayers(): void {
@@ -219,7 +265,7 @@ class AmongUsCanvas {
       (this.context !== undefined || this.context !== null) &&
       (this.theme !== undefined || this.theme !== null)
     ) {
-      this.setInitialPlayersPositions();
+      this.setInitialPlayersPositions(MIRAHQ_POSITION);
 
       this.loop(0);
     } else {
@@ -256,10 +302,11 @@ class AmongUsCanvas {
   private panning: boolean;
   private panningPosition: Vector;
 
-  private scale: number;
+  private scale: Vector;
 
   private lastTouch: Vector;
   private lastTouchTime: number;
+  private lastTouchDistance: number;
 
   private debug: boolean;
   private positions: { screen: Vector; map: Vector };
@@ -304,6 +351,11 @@ class AmongUsCanvas {
 
     this.miraHQ.image.onload = () => {
       this.loading += 0.25;
+
+      /* this.offset.set(0, 0);
+      this.scale.x = this.width / (this.miraHQ.image.width * this.miraHQ.scale);
+      this.scale.y =
+        this.height / (this.miraHQ.image.height * this.miraHQ.scale); */
     };
 
     this.polus.image.onload = () => {
@@ -323,10 +375,11 @@ class AmongUsCanvas {
     this.panning = false;
     this.panningPosition = new Vector();
 
-    this.scale = 1.0;
+    this.scale = new Vector(1, 1);
 
     this.lastTouch = new Vector();
     this.lastTouchTime = 0;
+    this.lastTouchDistance = 0;
 
     const state: IStoreState = store.getState();
     const players = getPlayers(state);
@@ -361,7 +414,7 @@ class AmongUsCanvas {
     this.offset.x = Math.max(
       Math.min(
         this.offset.x,
-        this.currentMap.image.width * this.scale * this.currentMap.scale -
+        this.currentMap.image.width * this.scale.x * this.currentMap.scale -
           this.width
       ),
       0
@@ -369,7 +422,7 @@ class AmongUsCanvas {
     this.offset.y = Math.max(
       Math.min(
         this.offset.y,
-        this.currentMap.image.height * this.scale * this.currentMap.scale -
+        this.currentMap.image.height * this.scale.y * this.currentMap.scale -
           this.height
       ),
       0
@@ -379,7 +432,8 @@ class AmongUsCanvas {
   private screenToMap(screen: Vector): Vector {
     const point = Vector.add(screen, this.offset);
 
-    point.scale(1 / this.scale);
+    point.x /= this.scale.x;
+    point.y /= this.scale.y;
 
     return point;
   }
@@ -393,11 +447,14 @@ class AmongUsCanvas {
     );
   }
 
-  private getTouchPosition(evt: ReactTouchEvent<HTMLCanvasElement>): Vector {
+  private getTouchPosition(
+    evt: ReactTouchEvent<HTMLCanvasElement>,
+    touch = 0
+  ): Vector {
     const rect = evt.currentTarget.getBoundingClientRect();
     const position = new Vector(
-      (evt.touches[0].clientX - rect.left) * (this.width / rect.width),
-      (evt.touches[0].clientY - rect.top) * (this.height / rect.height)
+      (evt.touches[touch].clientX - rect.left) * (this.width / rect.width),
+      (evt.touches[touch].clientY - rect.top) * (this.height / rect.height)
     );
 
     this.lastTouch.set(position);
@@ -479,25 +536,27 @@ class AmongUsCanvas {
   private handleZoom(delta: number, mousePosition: Vector): void {
     const beforeZoom = this.screenToMap(mousePosition);
 
-    this.scale += delta;
+    this.scale.x += delta;
+    this.scale.y += delta;
 
     const afterZoom = this.screenToMap(mousePosition);
 
     beforeZoom.subtract(afterZoom);
 
-    beforeZoom.scale(this.scale);
+    beforeZoom.x *= this.scale.x;
+    beforeZoom.y *= this.scale.y;
 
     this.offset.add(beforeZoom);
   }
 
-  private setInitialPlayersPositions(): void {
+  private setInitialPlayersPositions(offset: Vector): void {
     const state: IStoreState = store.getState();
     const players = getPlayers(state);
 
     let pos = -2;
     for (const player in players) {
       const angle = (Math.PI / 6) * pos;
-      const position = new Vector(this.offset);
+      const position = new Vector(offset);
 
       position.x += this.width / 2.3 + Math.cos(angle) * (this.width / 5);
       position.y += this.height / 2.7 + Math.sin(angle) * (this.height / 4);
@@ -514,48 +573,31 @@ class AmongUsCanvas {
       this.context.lineWidth = 8;
       this.context.fillStyle = "white";
 
-      this.context.strokeText(
+      drawStrokeText(
+        this.context,
+        0,
+        40,
         `Screen: x = ${Math.round(this.positions.screen.x)} y = ${Math.round(
           this.positions.screen.y
-        )}`,
-        0,
-        40
-      );
-      this.context.strokeText(
-        `Map: x = ${Math.round(this.positions.map.x)} y = ${Math.round(
-          this.positions.map.y
-        )}`,
-        0,
-        100
-      );
-      this.context.strokeText(
-        `Offset: x = ${Math.round(this.offset.x)} y = ${Math.round(
-          this.offset.y
-        )}`,
-        0,
-        160
+        )}`
       );
 
-      this.context.fillText(
-        `Screen: x = ${Math.round(this.positions.screen.x)} y = ${Math.round(
-          this.positions.screen.y
-        )}`,
+      drawStrokeText(
+        this.context,
         0,
-        40
-      );
-      this.context.fillText(
+        100,
         `Map: x = ${Math.round(this.positions.map.x)} y = ${Math.round(
           this.positions.map.y
-        )}`,
-        0,
-        100
+        )}`
       );
-      this.context.fillText(
+
+      drawStrokeText(
+        this.context,
+        0,
+        160,
         `Offset: x = ${Math.round(this.offset.x)} y = ${Math.round(
           this.offset.y
-        )}`,
-        0,
-        160
+        )}`
       );
     }
   }
@@ -584,7 +626,7 @@ class AmongUsCanvas {
       this.context.save();
 
       this.context.translate(-this.offset.x, -this.offset.y);
-      this.context.scale(this.scale, this.scale);
+      this.context.scale(this.scale.x, this.scale.y);
 
       this.context.save();
       this.context.scale(this.currentMap.scale, this.currentMap.scale);

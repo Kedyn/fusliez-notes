@@ -6,6 +6,7 @@ import { IPlayer } from "utils/types/players";
 import { IRect } from "utils/types/shared";
 import { Rectangle } from "utils/math/Rectangle";
 import { Vector } from "utils/math/Vector";
+import { drawStrokeText } from "./tools";
 import { setPlayerSection } from "store/slices/PlayersSlice";
 import store from "store";
 
@@ -67,11 +68,13 @@ export default class Player extends Entity {
       if (this.data.name != "") {
         const width = this.context.measureText(this.data.name).width;
 
-        this.context.fillStyle = COLOR_LIBRARY[this.data.color].base;
-        this.context.fillText(
-          this.data.name,
+        drawStrokeText(
+          this.context,
           this.rect.getX() + (this.rect.getWidth() - width) / 2,
-          this.rect.getY() - 20
+          this.rect.getY() - 20,
+          this.data.name
+          // "black",
+          // COLOR_LIBRARY[this.data.color].base
         );
       }
 

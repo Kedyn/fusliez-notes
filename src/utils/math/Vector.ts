@@ -61,6 +61,16 @@ export class Vector {
     return this;
   }
 
+  public getDistance(other: Vector): number {
+    return Math.sqrt(
+      Math.pow(this.x - other.x, 2) + Math.pow(this.y - other.y, 2)
+    );
+  }
+
+  public getCenter(other: Vector): Vector {
+    return new Vector((this.x + other.x) / 2, this.y / other.y / 2);
+  }
+
   public static scale(vector: Vector, factor: number): Vector {
     const newVector = new Vector(vector);
 

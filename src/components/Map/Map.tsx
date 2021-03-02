@@ -37,6 +37,7 @@ export default function Map(props: IMapProps): JSX.Element {
       const context = canvasRef.current.getContext("2d");
 
       if (context != null) {
+        AmongUsCanvas.setDebug(false);
         AmongUsCanvas.setContext(context);
         AmongUsCanvas.setTheme(theme);
         AmongUsCanvas.init();

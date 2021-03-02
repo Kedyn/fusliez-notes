@@ -1,9 +1,9 @@
 import { ITheme } from "utils/types/theme";
 import { createUseStyles } from "react-jss";
 
-const SwitchHeight = 2; // height in rem
-const SwitchWidth = 3.75; // width in rem
-const SwitchGap = 0.125; // percent of height that is not knob
+const SWITCH_HEIGHT = 2; // height in rem
+const SWITCH_WIDTH = 3.75; // width in rem
+const SWITCH_GAP = 0.125; // percent of height that is not knob
 
 export default createUseStyles((theme: ITheme) => ({
   Switch: {
@@ -19,10 +19,10 @@ export default createUseStyles((theme: ITheme) => ({
   SwitchButton: {
     appearance: "none",
     backgroundColor: theme.borderColor,
-    borderRadius: `${SwitchHeight / 2}rem/50%`,
+    borderRadius: `${SWITCH_HEIGHT / 2}rem/50%`,
     border: "none",
-    width: `${SwitchWidth}rem`,
-    height: `${SwitchHeight}rem`,
+    width: `${SWITCH_WIDTH}rem`,
+    height: `${SWITCH_HEIGHT}rem`,
     display: "inline-block",
     overflow: "hidden",
     outline: "none",
@@ -50,11 +50,11 @@ export default createUseStyles((theme: ITheme) => ({
       position: "absolute",
       content: '""',
       display: "block",
-      top: `${SwitchHeight * SwitchGap}rem`,
-      left: `${SwitchHeight * SwitchGap}rem`,
-      bottom: `${SwitchHeight * SwitchGap}rem`,
-      height: `${SwitchHeight - 2 * (SwitchHeight * SwitchGap)}rem`,
-      width: `${SwitchHeight - 2 * (SwitchHeight * SwitchGap)}rem`,
+      top: `${SWITCH_HEIGHT * SWITCH_GAP}rem`,
+      left: `${SWITCH_HEIGHT * SWITCH_GAP}rem`,
+      bottom: `${SWITCH_HEIGHT * SWITCH_GAP}rem`,
+      height: `${SWITCH_HEIGHT - 2 * (SWITCH_HEIGHT * SWITCH_GAP)}rem`,
+      width: `${SWITCH_HEIGHT - 2 * (SWITCH_HEIGHT * SWITCH_GAP)}rem`,
       borderRadius: "50%",
       background: theme.textColorSecondary,
       transition: "all cubic-bezier(0.3, 1.5, 0.7, 1) 0.3s",
@@ -66,7 +66,7 @@ export default createUseStyles((theme: ITheme) => ({
       opacity: 1,
     },
     "&:checked::after": {
-      left: `calc(100% - ${SwitchHeight - SwitchHeight * SwitchGap}rem)`,
+      left: `calc(100% - ${SWITCH_HEIGHT - SWITCH_HEIGHT * SWITCH_GAP}rem)`,
     },
   },
 }));
