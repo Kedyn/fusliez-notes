@@ -1,26 +1,21 @@
-import React from "react";
-import { useTranslation } from "react-i18next";
-import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
+import { IconProp } from "@fortawesome/fontawesome-svg-core";
+import React from "react";
 import useStyles from "./Navbar.styles";
+import { useTranslation } from "react-i18next";
 
 export interface INavbar {
   activeView: string;
   onChangeActiveView: (view: string) => void;
   setIsDrawerOpen: (state: boolean) => void;
-  orientation: string;
 }
 
 export default function Navbar(props: INavbar): JSX.Element {
   const { t } = useTranslation();
-  const {
-    activeView,
-    onChangeActiveView,
-    setIsDrawerOpen,
-    orientation,
-  } = props;
-  const classes = useStyles({ orientation });
+
+  const { activeView, onChangeActiveView, setIsDrawerOpen } = props;
+
+  const classes = useStyles();
 
   const tabs = [
     {

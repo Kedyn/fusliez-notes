@@ -1,4 +1,4 @@
-import { IPerson } from "utils/types";
+import { IPerson } from "utils/types/interface";
 
 export const DEVELOPERS: Array<IPerson> = [
   {

@@ -1,0 +1,108 @@
+{
+  "folderTemplates.structures": [
+    {
+      "name": "Full Component",
+      "customVariables": [],
+      "omitParentDirectory": true,
+      "structure": [
+        {
+          "fileName": "<FTName | pascalcase>/<FTName | pascalcase>.tsx",
+          "template": "Full Component File"
+        },
+        {
+          "fileName": "<FTName | pascalcase>/<FTName | pascalcase>.styles.ts",
+          "template": "Styles Component File"
+        },
+        {
+          "fileName": "<FTName | pascalcase>/<FTName | pascalcase>.test.tsx",
+          "template": "Test Component File"
+        },
+        {
+          "fileName": "<FTName | pascalcase>/index.ts",
+          "template": "Index Component File"
+        }
+      ]
+    },
+    {
+      "name": "Non-Styled Component",
+      "customVariables": [],
+      "omitParentDirectory": true,
+      "structure": [
+        {
+          "fileName": "<FTName | pascalcase>/<FTName | pascalcase>.tsx",
+          "template": "NonStyled Component File"
+        },
+        {
+          "fileName": "<FTName | pascalcase>/<FTName | pascalcase>.test.tsx",
+          "template": "Test Component File"
+        },
+        {
+          "fileName": "<FTName | pascalcase>/index.ts",
+          "template": "Index Component File"
+        }
+      ]
+    },
+  ],
+  "folderTemplates.fileTemplates": {
+    "Full Component File": [
+      "import React from \"react\";",
+      "import useStyles from \"./<FTName | pascalcase>.styles\";",
+      "",
+      "export interface I<FTName | pascalcase>Props {}",
+      "",
+      "export default function <FTName | pascalcase>(props: I<FTName | pascalcase>Props): JSX.Element {",
+      "  const classes = useStyles();",
+      "",
+      "  return (",
+      "    <div className={classes.<FTName | pascalcase>}>",
+      "      Component content",
+      "    </div>",
+      "  );",
+      "}",
+      "",
+    ],
+    "NonStyled Component File": [
+      "import React from \"react\";",
+      "",
+      "export interface I<FTName | pascalcase>Props {}",
+      "",
+      "export default function <FTName | pascalcase>(props: I<FTName | pascalcase>Props): JSX.Element {",
+      "  return (",
+      "    <React.Fragment>",
+      "      Component content",
+      "    </React.Fragment>",
+      "  );",
+      "}",
+      "",
+    ],
+    "Styles Component File": [
+      "import { ITheme } from \"utils/types/theme\";",
+      "import { createUseStyles } from \"react-jss\";",
+      "",
+      "export default createUseStyles((theme: ITheme) => ({",
+      "  <FTName | pascalcase>: {",
+      "",
+      "  },",
+      "}));",
+      "",
+    ],
+    "Test Component File": [
+      "import React from 'react';",
+      "import { render, screen } from '@testing-library/react';",
+      "import <FTName | pascalcase> from \"./<FTName | pascalcase>\";",
+      "",
+      "test(\"Renders component\", () => {",
+      "  render(<<FTName | pascalcase> />);",
+      "  const element = screen.getByText(/component content/i);",
+      "  expect(element).toBeInTheDocument();",
+      "});",
+      "",
+    ],
+    "Index Component File": [
+      "import <FTName | pascalcase> from \"./<FTName | pascalcase>\";",
+      "",
+      "export default <FTName | pascalcase>;",
+      ""
+    ]
+  },
+}

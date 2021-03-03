@@ -6,7 +6,7 @@ All contributions are welcome. Please feel free to submit an issue or pull
 request.
 
 The following is a set of guidelines for contributing to the project.
-These are mostly guidelines, not rules.Use your best judgment, and feel free
+These are mostly guidelines, not rules. Use your best judgment, and feel free
 to propose changes to this document in a pull request.
 
 ## Code of conduct

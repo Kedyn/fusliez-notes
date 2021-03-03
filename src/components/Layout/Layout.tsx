@@ -13,12 +13,10 @@ import React from "react";
 import useStyles from "./Layout.styles";
 
 const DesktopLayout = React.lazy(
-  () =>
-    import(/* webpackChunkName: "desktop" */ "components/Layout/DesktopLayout")
+  () => import(/* webpackChunkName: "desktop" */ "components/DesktopLayout")
 );
 const MobileLayout = React.lazy(
-  () =>
-    import(/* webpackChunkName: "mobile" */ "components/Layout/MobileLayout")
+  () => import(/* webpackChunkName: "mobile" */ "components/MobileLayout")
 );
 
 export default function Content(): JSX.Element {

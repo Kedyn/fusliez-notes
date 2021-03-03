@@ -1,4 +1,4 @@
-import { ITheme } from "utils/types";
+import { ITheme } from "utils/types/theme";
 import { createUseStyles } from "react-jss";
 import { hexToRGB } from "utils/colorConverter";
 

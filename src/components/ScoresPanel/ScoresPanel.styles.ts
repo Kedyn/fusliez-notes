@@ -6,7 +6,6 @@ export default createUseStyles({
     alignItems: "center",
     display: "flex",
     justifyContent: "space-between",
-    flex: "1 0 16rem",
     maxWidth: "20rem",
   },
 });

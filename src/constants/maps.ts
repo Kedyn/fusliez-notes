@@ -1,19 +1,9 @@
-import { IMaps } from "utils/types";
+import { Vector } from "utils/math/Vector";
 
-export const DEFAULT_MAPS_DATA: IMaps = {
-  currentMap: "TheSkeld",
-  characters: [
-    { id: "brown", playerName: "", x: 0, y: 0, section: 0 },
-    { id: "red", playerName: "", x: 0, y: 0, section: 0 },
-    { id: "orange", playerName: "", x: 0, y: 0, section: 0 },
-    { id: "yellow", playerName: "", x: 0, y: 0, section: 0 },
-    { id: "lime", playerName: "", x: 0, y: 0, section: 0 },
-    { id: "green", playerName: "", x: 0, y: 0, section: 0 },
-    { id: "cyan", playerName: "", x: 0, y: 0, section: 0 },
-    { id: "blue", playerName: "", x: 0, y: 0, section: 0 },
-    { id: "purple", playerName: "", x: 0, y: 0, section: 0 },
-    { id: "pink", playerName: "", x: 0, y: 0, section: 0 },
-    { id: "white", playerName: "", x: 0, y: 0, section: 0 },
-    { id: "black", playerName: "", x: 0, y: 0, section: 0 },
-  ],
-};
+export const MIRAHQ_POSITION: Vector = new Vector(1150, 6689);
+export const POLUS_POSITION: Vector = new Vector(3690, 475);
+export const THE_SKELD_POSITION: Vector = new Vector(3927, 574);
+
+export const MIRAHQ_SCALE = 2;
+export const POLUS_SCALE = 4;
+export const THE_SKELD_SCALE = 1;

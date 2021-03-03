@@ -1,10 +1,11 @@
-import { ISettings, IUIStoreState } from "utils/types";
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
-import { DEFAULT_SETTINGS } from "constants/settings";
+import { DEFAULT_SETTINGS_STATE } from "constants/settings";
+import { ISettingsState } from "utils/types/settings";
+import { IStoreState } from "utils/types/store";
 import { NAMESPACE } from "constants/main";
 
-function getInitialSate(): ISettings {
+function getInitialSate(): ISettingsState {
   const localSettingsData: string | null = localStorage.getItem(
     `${NAMESPACE}settings`
   );
@@ -13,39 +14,42 @@ function getInitialSate(): ISettings {
     const settingsObject = JSON.parse(localSettingsData);
 
     return {
-      showNames: settingsObject.showNames ?? DEFAULT_SETTINGS.showNames,
+      showNames: settingsObject.showNames ?? DEFAULT_SETTINGS_STATE.showNames,
       isColorBlind:
-        settingsObject.isColorBlind ?? DEFAULT_SETTINGS.isColorBlind,
+        settingsObject.isColorBlind ?? DEFAULT_SETTINGS_STATE.isColorBlind,
     };
   }
 
-  return DEFAULT_SETTINGS;
+  return { ...DEFAULT_SETTINGS_STATE };
 }
 
 const SettingsSlice = createSlice({
-  name: "Scores",
+  name: "Settings",
   initialState: getInitialSate(),
   reducers: {
-    setShowNames: (state: ISettings, action: PayloadAction<boolean>) => ({
+    setShowNames: (state: ISettingsState, action: PayloadAction<boolean>) => ({
       ...state,
       showNames: action.payload,
     }),
-    toggleShowNames: (state: ISettings) => ({
+    toggleShowNames: (state: ISettingsState) => ({
       ...state,
       showNames: !state.showNames,
     }),
 
-    setIsColorBlind: (state: ISettings, action: PayloadAction<boolean>) => ({
+    setIsColorBlind: (
+      state: ISettingsState,
+      action: PayloadAction<boolean>
+    ) => ({
       ...state,
       isColorBlind: action.payload,
     }),
-    toggleIsColorBlind: (state: ISettings) => ({
+    toggleIsColorBlind: (state: ISettingsState) => ({
       ...state,
       isColorBlind: !state.isColorBlind,
     }),
 
-    resetSettings: () => ({
-      ...DEFAULT_SETTINGS,
+    resetSettingsState: () => ({
+      ...DEFAULT_SETTINGS_STATE,
     }),
   },
 });
@@ -57,13 +61,13 @@ export const {
   setIsColorBlind,
   toggleIsColorBlind,
 
-  resetSettings,
+  resetSettingsState,
 } = SettingsSlice.actions;
 
-export const getShowNames = (state: IUIStoreState): boolean =>
+export const getShowNames = (state: IStoreState): boolean =>
   state.Settings.showNames;
 
-export const getIsColorBlind = (state: IUIStoreState): boolean =>
+export const getIsColorBlind = (state: IStoreState): boolean =>
   state.Settings.isColorBlind;
 
 export default SettingsSlice;

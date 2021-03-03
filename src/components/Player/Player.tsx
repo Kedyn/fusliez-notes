@@ -1,63 +1,48 @@
-import { IPlayer, IPlayersSection } from "utils/types";
 import { getIsColorBlind, getShowNames } from "store/slices/SettingsSlice";
-import { getIsMobile, getOrientation } from "store/slices/DeviceSlice";
+import { getPlayer, setPlayerName } from "store/slices/PlayersSlice";
 import { useDispatch, useSelector } from "react-redux";
 
 import ColorsMenu from "components/ColorsMenu";
+import { IPlayerColor } from "utils/types/players";
 import React from "react";
 import cx from "classnames";
+import { getIsMobile } from "store/slices/DeviceSlice";
 import { getPlayerEditLock } from "store/slices/PlayerEditLockSlice";
-import { setPlayersFromSection } from "store/slices/PlayersSectionsSlice";
-import usePlayerStyles from "./Player.styles";
+import useStyles from "./Player.styles";
 import { useTranslation } from "react-i18next";
 
 export interface IPlayerProps {
-  color: string;
-  playerName: string;
-  section: IPlayersSection;
-  index: number;
+  playerId: IPlayerColor;
 }
 
 export default function Player(props: IPlayerProps): JSX.Element {
-  const { t } = useTranslation();
-
+  const { playerId } = props;
+  const { name, color } = useSelector(getPlayer(playerId));
   const isMobile = useSelector(getIsMobile);
-  const orientation = useSelector(getOrientation);
   const showNames = useSelector(getShowNames);
   const isColorBlind = useSelector(getIsColorBlind);
   const isLocked = useSelector(getPlayerEditLock);
 
-  const [isMenuShowing, setIsMenuShowing] = React.useState(false);
-
   const dispatch = useDispatch();
+
+  const [isMenuShowing, setIsMenuShowing] = React.useState(false);
 
   const htmlElRef = React.useRef(null);
 
-  const classes = usePlayerStyles({
-    showNames,
+  const classes = useStyles({
     isMobile,
+    showNames,
     isColorBlind,
-    orientation,
-    ...props,
+    isLocked,
+    color,
+    name,
   });
 
-  const { color, playerName, section, index } = props;
+  const { t } = useTranslation();
 
-  const handleChange = (
-    player: number,
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    const players: Array<IPlayer> = section.players.map((value) => ({
-      ...value,
-    }));
-
-    players[player].playerName = event.currentTarget.value;
-
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     dispatch(
-      setPlayersFromSection({
-        sectionId: section.id as number,
-        players: players,
-      })
+      setPlayerName({ player: playerId, newName: event.currentTarget.value })
     );
   };
 
@@ -86,7 +71,7 @@ export default function Player(props: IPlayerProps): JSX.Element {
           />
         )}
         <div
-          className={cx(classes.PlayerIcon, "player-handle")}
+          className={cx(classes.PlayerIconWrapper, "player-handle")}
           onClick={() => {
             if (isLocked) {
               return;
@@ -96,10 +81,9 @@ export default function Player(props: IPlayerProps): JSX.Element {
               setIsMenuShowing(!isMenuShowing);
             }
           }}
-          style={{
-            backgroundImage: `url(assets/images/playerIcons/${color}.png)`,
-          }}
-        ></div>
+        >
+          <div className={classes.PlayerIcon} />
+        </div>
         {showNames && (
           <div className={classes.PlayerName}>
             {!isLocked && (
@@ -109,16 +93,14 @@ export default function Player(props: IPlayerProps): JSX.Element {
                 className={classes.PlayerInput}
                 maxLength={10}
                 onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
-                  handleChange(index, event)
+                  handleChange(event)
                 }
                 onKeyPress={handleKeyPress}
-                value={playerName}
+                value={name}
                 ref={htmlElRef}
               />
             )}
-            {isLocked && (
-              <>{playerName !== "" ? playerName : t(`main.${color}`)}</>
-            )}
+            {isLocked && <>{name !== "" ? name : t(`main.${color}`)}</>}
           </div>
         )}
       </div>

@@ -1,5 +1,5 @@
 import { CloseButton } from "components/common/Button";
-import { IView } from "utils/types";
+import { IView } from "utils/types/interface";
 import React from "react";
 import cx from "classnames";
 import useStyles from "./SlideDrawer.styles";
@@ -76,11 +76,6 @@ export default function SlideDrawer(
             ))}
           </ul>
         </div>
-        {/* <img
-          className={classes.SlideDrawerEmote}
-          src="assets/images/amongNotes.gif"
-          alt="Among Us animated gif emote"
-        /> */}
       </div>
     </React.Fragment>
   );

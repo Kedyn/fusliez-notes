@@ -1,14 +1,14 @@
 import {
   getIsColorBlind,
   getShowNames,
-  resetSettings,
+  resetSettingsState,
   setIsColorBlind,
   setShowNames,
   toggleIsColorBlind,
   toggleShowNames,
 } from "store/slices/SettingsSlice";
 
-import { DEFAULT_SETTINGS } from "constants/settings";
+import { DEFAULT_SETTINGS_STATE } from "constants/settings";
 import { Middleware } from "@reduxjs/toolkit";
 import { NAMESPACE } from "constants/main";
 import { RootState } from "store";
@@ -43,9 +43,9 @@ export const SettingsMiddleware: Middleware<unknown, RootState> = (store) => (
 
       break;
 
-    case resetSettings.type:
-      showNames = DEFAULT_SETTINGS.showNames;
-      isColorBlind = DEFAULT_SETTINGS.isColorBlind;
+    case resetSettingsState.type:
+      showNames = DEFAULT_SETTINGS_STATE.showNames;
+      isColorBlind = DEFAULT_SETTINGS_STATE.isColorBlind;
 
       break;
 

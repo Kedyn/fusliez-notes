@@ -1,4 +1,4 @@
-import { IColorLibrary, ITheme } from "utils/types";
+import { IColorLibrary, ITheme } from "utils/types/theme";
 
 export const DEFAULT_THEME_DATA: ITheme = {
   fontFamily:
@@ -24,8 +24,8 @@ export const DEFAULT_THEME_DATA: ITheme = {
   crewmateColorPrimary: "#008dfc",
   crewmateColorSecondary: "#30a4ff",
 
-  imposterColorPrimary: "#af1211",
-  imposterColorSecondary: "#dd1716",
+  impostorColorPrimary: "#af1211",
+  impostorColorSecondary: "#dd1716",
 
   neutralColor: "#8d86b7",
 };

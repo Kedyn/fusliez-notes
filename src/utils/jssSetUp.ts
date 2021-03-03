@@ -34,10 +34,6 @@ export default function jssSetUp(): SheetsRegistry {
           width: "100vw",
           overflowX: "hidden",
         },
-        footer: {
-          textAlign: "center",
-          fontSize: "smaller",
-        },
         h1: {
           fontSize: "2rem",
           margin: 0,

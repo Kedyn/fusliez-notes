@@ -5,22 +5,18 @@ import {
   getImpostorWins,
 } from "store/slices/ScoresSlice";
 
-import CircularProgressBarScores from "./CircularProgressBarScores";
 import React from "react";
+import ScorePane from "components/ScorePane";
 import { useSelector } from "react-redux";
 import useStyles from "./ScoresPanel.styles";
 
-export default function ScoresPanels(): JSX.Element {
+export default function ScoresPanel(): JSX.Element {
+  const classes = useStyles();
+
   const crewmateWins = useSelector(getCrewmateWins);
   const crewmateLosses = useSelector(getCrewmateLosses);
   const impostorWins = useSelector(getImpostorWins);
   const impostorLosses = useSelector(getImpostorLosses);
-
-  const classes = useStyles();
-
-  const getRate = (wins: number, games: number): number => {
-    return games > 0 ? Math.floor((wins / games) * 100) : 100;
-  };
 
   const crewmateWinsNumber = crewmateWins ? crewmateWins : 0;
   const crewmateLossesNumber = crewmateLosses ? crewmateLosses : 0;
@@ -29,28 +25,32 @@ export default function ScoresPanels(): JSX.Element {
 
   const overallWins = crewmateWinsNumber + impostorWinsNumber;
   const overallLosses = crewmateLossesNumber + impostorLossesNumber;
-  const overallGames = overallWins + overallLosses;
-  const overallRate = getRate(overallWins, overallGames);
-  const crewmateGames = crewmateWinsNumber + crewmateLossesNumber;
-  const crewmateRate = getRate(crewmateWinsNumber, crewmateGames);
-  const impostorGames = impostorWinsNumber + impostorLossesNumber;
-  const impostorRate = getRate(impostorWinsNumber, impostorGames);
+
+  const scorePanes = [
+    {
+      title: "main.crewmate",
+      wins: crewmateWinsNumber,
+      losses: crewmateLossesNumber,
+    },
+    {
+      title: "main.overall",
+      wins: overallWins,
+      losses: overallLosses,
+    },
+    {
+      title: "main.impostor",
+      wins: impostorWinsNumber,
+      losses: impostorLossesNumber,
+    },
+  ];
 
   return (
-    <div className={classes.ScoresPanel}>
-      <CircularProgressBarScores
-        {...{
-          overallRate,
-          overallWins,
-          overallLosses,
-          crewmateRate,
-          crewmateWins: crewmateWinsNumber,
-          crewmateLosses: crewmateLossesNumber,
-          impostorRate,
-          impostorWins: impostorWinsNumber,
-          impostorLosses: impostorLossesNumber,
-        }}
-      />
-    </div>
+    <React.Fragment>
+      <div className={classes.ScoresPanel}>
+        {scorePanes.map((scorePane, index) => (
+          <ScorePane key={index} {...scorePane} />
+        ))}
+      </div>
+    </React.Fragment>
   );
 }
