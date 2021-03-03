@@ -8,7 +8,13 @@ i18n
   .use(Backend)
   .use(initReactI18next)
   .init({
-    fallbackLng: "en-US",
+    fallbackLng: (code) => {
+      if (code === "ja") {
+        return "ja-JP";
+      }
+
+      return "en-US";
+    },
     debug: false,
     load: "currentOnly",
 
