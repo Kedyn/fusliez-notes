@@ -14,7 +14,8 @@
     "deploy": "gh-pages -d dist",
     "predeploynext": "npm run build",
     "deploynext": "gh-pages -d dist -e ./next",
-    "lint": "eslint ./src/ --cache --fix --ext .ts,.tsx"
+    "lint": "eslint ./src/ --cache --fix --ext .ts,.tsx",
+    "checkTranslations": "node ./tools/translations.js"
   },
   "homepage": "http://kedyn.github.io/fusliez-notes",
   "author": "Kedyn Macedonio",

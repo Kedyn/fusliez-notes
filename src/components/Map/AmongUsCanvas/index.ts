@@ -101,7 +101,6 @@ class AmongUsCanvas {
 
       this.setInitialPlayersPositions(playersOffset);
 
-      // comment this out if we are using the bottom section
       this.scale.set(1, 1);
 
       /* this.offset.set(0, 0);
