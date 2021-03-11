@@ -69,7 +69,6 @@ export default function ColorsMenu(props: IColorsMenuProps): JSX.Element {
     if (currentPlayerColor !== targetPlayerColor) {
       const newPlayers = getNewPlayersState((player: IPlayerColor) => ({
         ...players[player],
-        position: { ...players[player].position },
       }));
       const tempName = newPlayers[currentPlayerColor].name;
       const tempSection = newPlayers[currentPlayerColor].section;
