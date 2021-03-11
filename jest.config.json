@@ -1,0 +1,48 @@
+{
+  "roots": ["<rootDir>/src"],
+
+  "globals": {
+    "__DEV__": true
+  },
+
+  "transform": {
+    "\\.(js|jsx)?$": "babel-jest",
+    "\\.(ts|tsx)?$": "ts-jest",
+    "\\.(css|styl|less|sass|scss)$": "<rootDir>/node_modules/jest-css-modules-transform"
+  },
+
+  "transformIgnorePatterns": ["node_modules/react-circular-prgoressbar"],
+
+  "setupFiles": ["jest-localstorage-mock"],
+
+  "setupFilesAfterEnv": ["@testing-library/jest-dom/extend-expect"],
+
+  "testRegex": "(/__tests__/.*.(test|spec)).(ts|tsx|jsx|js)?$",
+
+  "moduleFileExtensions": ["ts", "tsx", "js", "jsx", "json", "node", "css"],
+
+  "moduleDirectories": ["<rootDir>/src", "node_modules"],
+
+  "moduleNameMapper": {
+    "^@root(.*)$": "<rootDir>/src$1",
+    "^@utils/(.*)$": "<rootDir>/src/utils/$1",
+    "^@context/(.*)$": "<rootDir>/src/context/$1",
+    "^@components/(.*)$": "<rootDir>/src/components/$1",
+    "^@assets/(.*)$": "<rootDir>/src/assets/$1",
+    "react-i18next": "<rootDir>/node_modules/react-i18next"
+  },
+
+  "collectCoverage": true,
+  "coverageReporters": ["lcov"],
+  "coverageDirectory": "test-coverage",
+  "coverageThreshold": {
+    "global": {
+      "branches": 0,
+      "functions": 0,
+      "lines": 0,
+      "statements": 0
+    }
+  },
+
+  "verbose": true
+}

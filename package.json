@@ -15,7 +15,10 @@
     "predeploynext": "npm run build",
     "deploynext": "gh-pages -d dist -e ./next",
     "lint": "eslint ./src/ --cache --fix --ext .ts,.tsx",
-    "checkTranslations": "node ./tools/translations.js"
+    "checkTranslations": "node ./tools/translations.js",
+    "test": "jest --config ./jest.config.json",
+    "test-watch": "npm run test -- --watch",
+    "test-coverage": "npm run test -- --coverage --watchAll=false"
   },
   "homepage": "http://kedyn.github.io/fusliez-notes",
   "author": "Kedyn Macedonio",

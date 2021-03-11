@@ -21,7 +21,7 @@ export default function DesktopLayout(): JSX.Element {
 
   return (
     <>
-      <main className={classes.DesktopLayout}>
+      <main data-testid="desktop-main" className={classes.DesktopLayout}>
         <div
           className={cx(
             {
