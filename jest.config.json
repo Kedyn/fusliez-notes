@@ -13,7 +13,10 @@
 
   "transformIgnorePatterns": ["node_modules/react-circular-prgoressbar"],
 
-  "setupFiles": ["jest-localstorage-mock"],
+  "setupFiles": [
+    "jest-localstorage-mock",
+    "<rootDir>/src/__tests__/setupTests.ts"
+  ],
 
   "setupFilesAfterEnv": ["@testing-library/jest-dom/extend-expect"],
 
