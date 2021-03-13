@@ -1,6 +1,6 @@
 import "regenerator-runtime/runtime";
 
-import { fireEvent, render, screen } from "@testing-library/react";
+import { fireEvent, render } from "@testing-library/react";
 
 import App from "../components/App";
 import { I18nextProvider } from "react-i18next";

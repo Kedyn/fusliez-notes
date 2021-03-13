@@ -1,5 +1,5 @@
 import { IDeviceState } from "./device";
-import { IMapsState } from "./maps";
+import { IMap } from "./maps";
 import { IPlayersState } from "./players";
 import { IScoresState } from "./scores";
 import { ISectionsState } from "./sections";
@@ -12,5 +12,5 @@ export interface IStoreState {
   Players: IPlayersState;
   PlayerEditLock: boolean;
   Sections: ISectionsState;
-  Maps: IMapsState;
+  Maps: IMap;
 }
