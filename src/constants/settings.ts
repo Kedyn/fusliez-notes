@@ -52,7 +52,7 @@ export const AVAILABLE_LANGUAGES: Array<ILanguage> = [
     label: "Malagasy (MG)",
   },
   {
-    id: "ja-JA",
+    id: "ja-JP",
     label: "日本語 (JA)",
   },
 ];
