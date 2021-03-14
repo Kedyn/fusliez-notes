@@ -1,7 +1,7 @@
-import { Shape } from "./Shape";
-import { Vector } from "./Vector";
+import Shape from "./Shape";
+import Vector from "./Vector";
 
-export class Rectangle extends Shape {
+export default class Rectangle extends Shape {
   public constructor(position: Vector, width: number, height: number) {
     super(position);
 

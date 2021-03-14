@@ -5,6 +5,7 @@ import {
 } from "store/slices/SectionsSlice";
 
 import AmongUsCanvas from "./AmongUsCanvas";
+import AmongUsCanvasInputHandler from "./AmongUsCanvas/InputHandler";
 import { IMapName } from "utils/types/maps";
 import { ITheme } from "utils/types/theme";
 import React from "react";
@@ -37,7 +38,7 @@ export default function Map(props: IMapProps): JSX.Element {
       const context = canvasRef.current.getContext("2d");
 
       if (context != null) {
-        AmongUsCanvas.setDebug(false);
+        AmongUsCanvas.setDebug(true);
         AmongUsCanvas.setContext(context);
         AmongUsCanvas.setTheme(theme);
         AmongUsCanvas.init();
@@ -68,16 +69,18 @@ export default function Map(props: IMapProps): JSX.Element {
       height={CANVAS_HEIGHT}
       className={classes.Map}
       onContextMenu={(evt) => evt.preventDefault()}
-      onMouseMove={(evt) => AmongUsCanvas.onMouseMove(evt)}
-      onMouseDown={(evt) => AmongUsCanvas.onMouseDown(evt)}
-      onMouseUp={(evt) => AmongUsCanvas.onMouseUp(evt)}
-      onMouseLeave={(evt) => AmongUsCanvas.onMouseLeave(evt)}
-      onDoubleClick={(evt) => AmongUsCanvas.onDoubleClick(evt)}
-      onTouchMove={(evt) => AmongUsCanvas.onTouchMove(evt)}
-      onTouchStart={(evt) => AmongUsCanvas.onTouchStart(evt)}
-      onTouchEnd={(evt) => AmongUsCanvas.onTouchEnd(evt)}
-      onTouchCancel={(evt) => AmongUsCanvas.onTouchCancel(evt)}
-      onWheel={(evt) => AmongUsCanvas.onWheel(evt)}
+      onMouseMove={(evt) => AmongUsCanvasInputHandler.onMouseMove(evt)}
+      onMouseDown={(evt) => AmongUsCanvasInputHandler.onMouseDown(evt)}
+      onMouseUp={(evt) => AmongUsCanvasInputHandler.onMouseUp(evt)}
+      onMouseLeave={(evt) => AmongUsCanvasInputHandler.onMouseLeave(evt)}
+      onDoubleClick={(evt) => AmongUsCanvasInputHandler.onDoubleClick(evt)}
+      onTouchMove={(evt) => AmongUsCanvasInputHandler.onTouchMove(evt)}
+      onTouchStart={(evt) => AmongUsCanvasInputHandler.onTouchStart(evt)}
+      onTouchEnd={(evt) => AmongUsCanvasInputHandler.onTouchEnd(evt)}
+      onTouchCancel={(evt) => AmongUsCanvasInputHandler.onTouchCancel(evt)}
+      onWheel={(evt) => AmongUsCanvasInputHandler.onWheel(evt)}
+      onKeyDown={(evt) => AmongUsCanvasInputHandler.onKeyDown(evt)}
+      onKeyUp={(evt) => AmongUsCanvasInputHandler.onKeyUp(evt)}
     >
       This section is not supported on your browser.
     </canvas>

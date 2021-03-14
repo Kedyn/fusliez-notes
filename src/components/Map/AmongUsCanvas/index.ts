@@ -1,40 +1,12 @@
-import { IMap, IMapName } from "utils/types/maps";
-import {
-  MIRAHQ_POSITION,
-  MIRAHQ_SCALE,
-  POLUS_POSITION,
-  POLUS_SCALE,
-  THE_SKELD_POSITION,
-  THE_SKELD_SCALE,
-} from "constants/maps";
-import {
-  MouseEvent as ReactMouseEvent,
-  TouchEvent as ReactTouchEvent,
-  WheelEvent as ReactWheelEvent,
-} from "react";
-import {
-  getDeadSectionId,
-  getResetSectionId,
-  getUnusedSectionId,
-} from "store/slices/SectionsSlice";
-
-import Entity from "./Entity";
-import { IPlayerColor } from "utils/types/players";
-import { IStoreState } from "utils/types/store";
+import GameMap from "./GameMap";
+import { IMapName } from "utils/types/maps";
 import { ITheme } from "utils/types/theme";
-import { MOUSE_BUTTON } from "constants/mouse";
-import { PLAYER_IMAGE } from "constants/players";
-import Player from "./Player";
-import { Vector } from "utils/math/Vector";
-import { drawStrokeText } from "./tools";
-import { getPlayers } from "store/slices/PlayersSlice";
-import store from "store";
-
-interface ICanvasEvent {
-  clientX: number;
-  clientY: number;
-  currentTarget: EventTarget & HTMLCanvasElement;
-}
+import InputHandler from "./InputHandler";
+import Layer from "./Layer";
+import MiraHQ from "./Maps/MiraHQ";
+import Polus from "./Maps/Polus";
+import TheSkeld from "./Maps/TheSkeld";
+import Vector from "utils/math/Vector";
 
 class AmongUsCanvas {
   public static GetInstance(): AmongUsCanvas {
@@ -44,219 +16,71 @@ class AmongUsCanvas {
     return AmongUsCanvas.instance;
   }
 
+  public setDebug(state: boolean): void {
+    this.debug = state;
+
+    for (const layer of this.layers) {
+      layer.setDebug(state);
+    }
+  }
+
   public setContext(context: CanvasRenderingContext2D): void {
     this.context = context;
 
-    this.width = this.context.canvas.width;
-    this.height = this.context.canvas.height;
+    this.miraHQ.setContext(context);
+    this.polus.setContext(context);
+    this.theSkeld.setContext(context);
 
-    this.forEachEntity((entity) => {
-      entity.setContext(this.context);
-
-      return true;
-    });
+    for (const layer of this.layers) {
+      layer.setContext(context);
+    }
   }
 
   public setTheme(theme: ITheme): void {
     this.theme = theme;
   }
 
+  public setCurrentMap(map: IMapName): void {
+    if (map !== (<GameMap>this.layers[0]).getName()) {
+      switch (map) {
+        case "Polus":
+          this.layers[0] = this.polus;
+
+          break;
+
+        case "TheSkeld":
+          this.layers[0] = this.theSkeld;
+
+          break;
+
+        default:
+          this.layers[0] = this.miraHQ;
+
+          break;
+      }
+
+      const currentMap = <GameMap>this.layers[0];
+
+      this.offset.set(0, 0);
+      this.scale.x =
+        this.context.canvas.width /
+        (currentMap.getImage().width * currentMap.getScale());
+      this.scale.y =
+        this.context.canvas.height /
+        (currentMap.getImage().height * currentMap.getScale());
+    }
+  }
+
+  public updatePlayers(): void {
+    // TODO - Add update players logic
+  }
+
   public getAnimFrame(): number {
     return this.animFrame;
   }
 
-  public setCurrentMap(map: IMapName): void {
-    if (map !== this.currentMap.name) {
-      const playersOffset = new Vector();
-
-      switch (map) {
-        case "Polus":
-          this.currentMap = this.polus;
-          this.currentMap.scale = POLUS_SCALE;
-
-          this.offset.set(POLUS_POSITION);
-
-          playersOffset.set(POLUS_POSITION);
-
-          break;
-        case "TheSkeld":
-          this.currentMap = this.theSkeld;
-          this.currentMap.scale = THE_SKELD_SCALE;
-
-          this.offset.set(THE_SKELD_POSITION);
-
-          playersOffset.set(THE_SKELD_POSITION);
-
-          break;
-        default:
-          this.currentMap = this.miraHQ;
-          this.currentMap.scale = MIRAHQ_SCALE;
-
-          this.offset.set(MIRAHQ_POSITION);
-
-          playersOffset.set(MIRAHQ_POSITION);
-
-          break;
-      }
-
-      this.setInitialPlayersPositions(playersOffset);
-
-      this.scale.set(1, 1);
-
-      /* this.offset.set(0, 0);
-      this.scale.x =
-        this.width / (this.currentMap.image.width * this.currentMap.scale);
-      this.scale.y =
-        this.height / (this.currentMap.image.height * this.currentMap.scale); */
-    }
-  }
-
-  public setDebug(state: boolean): void {
-    this.debug = state;
-
-    this.forEachEntity((entity) => {
-      entity.setDebug(state);
-
-      return true;
-    });
-  }
-
   public getCurrentMap(): IMapName {
-    return this.currentMap.name;
-  }
-
-  public onMouseMove(
-    evt: ReactMouseEvent<HTMLCanvasElement, MouseEvent>
-  ): void {
-    evt.preventDefault();
-
-    this.handleMouseMove(this.getMousePosition(evt));
-  }
-
-  public onMouseDown(
-    evt: ReactMouseEvent<HTMLCanvasElement, MouseEvent>
-  ): void {
-    evt.preventDefault();
-
-    this.handleMouseDown(evt.button, this.getMousePosition(evt));
-  }
-
-  public onMouseUp(evt: ReactMouseEvent<HTMLCanvasElement, MouseEvent>): void {
-    evt.preventDefault();
-
-    this.handleMouseUp(evt.button, this.getMousePosition(evt));
-  }
-
-  public onMouseLeave(
-    evt: ReactMouseEvent<HTMLCanvasElement, MouseEvent>
-  ): void {
-    evt.preventDefault();
-
-    if (this.panning) {
-      this.panning = false;
-    } else {
-      const mousePosition = this.getMousePosition(evt);
-      const mapPosition = this.screenToMap(mousePosition);
-
-      this.forEachEntity((entity) => {
-        entity.onMouseUp(evt.button, mapPosition);
-
-        return true;
-      });
-    }
-  }
-
-  public onDoubleClick(
-    evt: ReactMouseEvent<HTMLCanvasElement, MouseEvent>
-  ): void {
-    evt.preventDefault();
-
-    this.handleDoubleClick(this.getMousePosition(evt));
-  }
-
-  public onWheel(evt: ReactWheelEvent<HTMLCanvasElement>): void {
-    this.handleZoom(evt.deltaY * -0.01, this.getMousePosition(evt));
-  }
-
-  public onTouchMove(evt: ReactTouchEvent<HTMLCanvasElement>): void {
-    evt.preventDefault();
-
-    if (evt.touches.length === 1) {
-      this.handleMouseMove(this.getTouchPosition(evt));
-    } else if (evt.touches.length === 2) {
-      const p1 = new Vector(this.getTouchPosition(evt, 0));
-      const p2 = new Vector(this.getTouchPosition(evt, 1));
-      const distance = p1.getDistance(p2);
-      const center = p1.getCenter(p2);
-
-      if (!this.lastTouchDistance) {
-        this.lastTouchDistance = distance;
-      }
-
-      const difference = this.lastTouchDistance - distance;
-
-      if (difference < 0) {
-        this.handleZoom(0.01, center);
-      } else if (difference > 0) {
-        this.handleZoom(-0.01, center);
-      }
-
-      this.lastTouchDistance = distance;
-    }
-  }
-
-  public onTouchStart(evt: ReactTouchEvent<HTMLCanvasElement>): void {
-    evt.preventDefault();
-
-    if (evt.touches.length === 1) {
-      this.handleMouseDown(MOUSE_BUTTON.LEFT, this.getTouchPosition(evt));
-    }
-  }
-
-  public onTouchEnd(evt: ReactTouchEvent<HTMLCanvasElement>): void {
-    evt.preventDefault();
-
-    const currentTime = new Date().getTime();
-    const touchLength = currentTime - this.lastTouchTime;
-
-    this.handleMouseUp(MOUSE_BUTTON.LEFT, this.lastTouch);
-
-    if (touchLength < 500 && touchLength > 0) {
-      this.handleDoubleClick(this.lastTouch);
-    }
-
-    this.lastTouchTime = currentTime;
-
-    this.lastTouchDistance = 0;
-  }
-
-  public onTouchCancel(evt: ReactTouchEvent<HTMLCanvasElement>): void {
-    evt.preventDefault();
-
-    if (evt.touches.length === 1) {
-      this.handleMouseUp(MOUSE_BUTTON.LEFT, this.lastTouch);
-    }
-
-    this.lastTouchDistance = 0;
-  }
-
-  public updatePlayers(): void {
-    const state: IStoreState = store.getState();
-    const players = getPlayers(state);
-    const resetSectionId = getResetSectionId(state);
-    const deadSectionId = getDeadSectionId(state);
-    const unusedSectionId = getUnusedSectionId(state);
-
-    for (const player of Object.keys(players)) {
-      const data = players[player as IPlayerColor];
-      const entity: Player = this.entities[`${player}Player`] as Player;
-
-      entity.updatePlayer(data, [
-        resetSectionId,
-        deadSectionId,
-        unusedSectionId,
-      ]);
-    }
+    return (<GameMap>this.layers[0]).getName();
   }
 
   public init(): void {
@@ -264,7 +88,18 @@ class AmongUsCanvas {
       (this.context !== undefined || this.context !== null) &&
       (this.theme !== undefined || this.theme !== null)
     ) {
-      this.setInitialPlayersPositions(MIRAHQ_POSITION);
+      const currentMap = <GameMap>this.layers[0];
+
+      this.context.fillStyle = this.theme.textColorPrimary;
+      this.context.font = `50px ${this.theme.fontFamily}`;
+
+      this.offset.set(0, 0);
+      this.scale.x =
+        this.context.canvas.width /
+        (currentMap.getImage().width * currentMap.getScale());
+      this.scale.y =
+        this.context.canvas.height /
+        (currentMap.getImage().height * currentMap.getScale());
 
       this.loop(0);
     } else {
@@ -276,371 +111,108 @@ class AmongUsCanvas {
 
   private static instance: AmongUsCanvas;
 
-  private animFrame: number;
-
+  private debug: boolean;
+  private layers: Array<Layer>;
   private context!: CanvasRenderingContext2D;
-
   private theme!: ITheme;
-
-  private width: number;
-  private height: number;
-
-  private currentMap: IMap;
-  private miraHQ: IMap;
-  private polus: IMap;
-  private theSkeld: IMap;
-
-  private players: HTMLImageElement;
-
+  private animFrame: number;
+  private miraHQ: MiraHQ;
+  private polus: Polus;
+  private theSkeld: TheSkeld;
   private loading: number;
-
-  private entities: { [key: string]: Entity };
-
   private offset: Vector;
-
+  private scale: Vector;
   private panning: boolean;
   private panningPosition: Vector;
 
-  private scale: Vector;
-
-  private lastTouch: Vector;
-  private lastTouchTime: number;
-  private lastTouchDistance: number;
-
-  private debug: boolean;
-  private positions: { screen: Vector; map: Vector };
-
   private constructor() {
+    const miraHQ = new Image();
+    const polus = new Image();
+    const theSkeld = new Image();
+    const players = new Image();
+
+    miraHQ.src = "assets/images/MiraHQ.png";
+    polus.src = "assets/images/Polus.png";
+    theSkeld.src = "assets/images/TheSkeld.png";
+    players.src = "assets/images/players.png";
+
+    const incrementLoading = () => {
+      this.loading += 0.25;
+    };
+
+    miraHQ.onload = incrementLoading;
+    polus.onload = incrementLoading;
+    theSkeld.onload = incrementLoading;
+    players.onload = incrementLoading;
+
+    this.debug = false;
+
+    this.layers = [];
+
     this.animFrame = 0;
 
-    this.width = 0;
-    this.height = 0;
-
-    this.miraHQ = {
-      name: "MiraHQ",
-      image: new Image(),
-      scale: MIRAHQ_SCALE,
-    };
-
-    this.polus = {
-      name: "Polus",
-      image: new Image(),
-      scale: POLUS_SCALE,
-    };
-
-    this.theSkeld = {
-      name: "TheSkeld",
-      image: new Image(),
-      scale: THE_SKELD_SCALE,
-    };
-
-    this.players = new Image();
+    this.miraHQ = new MiraHQ(miraHQ, players);
+    this.polus = new Polus(polus, players);
+    this.theSkeld = new TheSkeld(theSkeld, players);
 
     this.loading = 0;
 
-    this.theSkeld.image.src = "assets/images/TheSkeld.png";
-    this.miraHQ.image.src = "assets/images/MiraHQ.png";
-    this.polus.image.src = "assets/images/Polus.png";
-
-    this.players.src = "assets/images/players.png";
-
-    this.theSkeld.image.onload = () => {
-      this.loading += 0.25;
-    };
-
-    this.miraHQ.image.onload = () => {
-      this.loading += 0.25;
-
-      /* this.offset.set(0, 0);
-      this.scale.x = this.width / (this.miraHQ.image.width * this.miraHQ.scale);
-      this.scale.y =
-        this.height / (this.miraHQ.image.height * this.miraHQ.scale); */
-    };
-
-    this.polus.image.onload = () => {
-      this.loading += 0.25;
-    };
-
-    this.players.onload = () => {
-      this.loading += 0.25;
-    };
-
-    this.currentMap = this.miraHQ;
-
-    this.entities = {};
-
-    this.offset = new Vector(MIRAHQ_POSITION);
+    this.offset = new Vector();
+    this.scale = new Vector(1, 1);
 
     this.panning = false;
     this.panningPosition = new Vector();
 
-    this.scale = new Vector(1, 1);
-
-    this.lastTouch = new Vector();
-    this.lastTouchTime = 0;
-    this.lastTouchDistance = 0;
-
-    const state: IStoreState = store.getState();
-    const players = getPlayers(state);
-    const resetSectionId = getResetSectionId(state);
-    const deadSectionId = getDeadSectionId(state);
-    const unusedSectionId = getUnusedSectionId(state);
-
-    for (const player in players) {
-      const data = players[player as IPlayerColor];
-      const image = PLAYER_IMAGE[player as IPlayerColor];
-
-      this.entities[`${player}Player`] = new Player(
-        data,
-        new Vector(),
-        [resetSectionId, deadSectionId, unusedSectionId],
-        this.players,
-        image.alive,
-        image.dead
-      );
-    }
-
-    this.debug = false;
-    this.positions = {
-      screen: new Vector(),
-      map: new Vector(),
-    };
+    this.layers.push(this.miraHQ);
   }
 
-  private checkOffset(): void {
-    // should be used if we wanna keep the map within vision,
-    // this would require a bit more
-    this.offset.x = Math.max(
-      Math.min(
-        this.offset.x,
-        this.currentMap.image.width * this.scale.x * this.currentMap.scale -
-          this.width
-      ),
-      0
-    );
-    this.offset.y = Math.max(
-      Math.min(
-        this.offset.y,
-        this.currentMap.image.height * this.scale.y * this.currentMap.scale -
-          this.height
-      ),
-      0
-    );
-  }
+  public update(step: number): void {
+    if (this.panning && InputHandler.getMouseButtons().LEFT) {
+      const position = InputHandler.getMousePosition();
 
-  private screenToMap(screen: Vector): Vector {
-    const point = Vector.add(screen, this.offset);
-
-    point.x /= this.scale.x;
-    point.y /= this.scale.y;
-
-    return point;
-  }
-
-  private getMousePosition<T extends ICanvasEvent>(evt: T): Vector {
-    const rect = evt.currentTarget.getBoundingClientRect();
-
-    return new Vector(
-      (evt.clientX - rect.left) * (this.width / rect.width),
-      (evt.clientY - rect.top) * (this.height / rect.height)
-    );
-  }
-
-  private getTouchPosition(
-    evt: ReactTouchEvent<HTMLCanvasElement>,
-    touch = 0
-  ): Vector {
-    const rect = evt.currentTarget.getBoundingClientRect();
-    const position = new Vector(
-      (evt.touches[touch].clientX - rect.left) * (this.width / rect.width),
-      (evt.touches[touch].clientY - rect.top) * (this.height / rect.height)
-    );
-
-    this.lastTouch.set(position);
-
-    return position;
-  }
-
-  private forEachEntity(cb: (entity: Entity) => boolean) {
-    for (const entity in this.entities) {
-      if (!cb(this.entities[entity])) {
-        break;
-      }
-    }
-  }
-
-  private handleMouseMove(position: Vector): void {
-    if (this.panning) {
       this.offset.subtract(Vector.subtract(position, this.panningPosition));
 
       this.panningPosition.set(position);
 
-      //this.checkOffset();
+      InputHandler.stopPropagation();
+    }
+
+    for (let i = this.layers.length - 1; i >= 0; i--) {
+      this.layers[i].update(step);
+    }
+
+    // TODO - zooming
+    // TODO - hud
+    if (InputHandler.getMouseButtons().LEFT) {
+      this.panning = true;
+
+      this.panningPosition.set(InputHandler.getMousePosition());
     } else {
-      this.forEachEntity((entity) => {
-        entity.onMouseMove(this.screenToMap(position));
-
-        return true;
-      });
-    }
-
-    const map = this.screenToMap(position);
-
-    this.positions.map.set(map);
-    this.positions.screen.set(position);
-  }
-
-  private handleMouseDown(button: MOUSE_BUTTON, position: Vector): void {
-    let panning = true;
-
-    this.forEachEntity((entity) => {
-      entity.onMouseDown(button, this.screenToMap(position));
-
-      if (entity.isActive()) {
-        panning = false;
-
-        return false;
-      }
-
-      return true;
-    });
-
-    if (button === MOUSE_BUTTON.LEFT) {
-      this.panning = panning;
-
-      this.panningPosition.set(position);
-    }
-  }
-
-  private handleMouseUp(button: MOUSE_BUTTON, position: Vector): void {
-    if (this.panning) {
       this.panning = false;
-    } else {
-      this.forEachEntity((entity) => {
-        entity.onMouseUp(button, this.screenToMap(position));
-
-        return true;
-      });
     }
+
+    InputHandler.restoreStates();
   }
 
-  private handleDoubleClick(position: Vector): void {
-    this.forEachEntity((entity) => {
-      entity.onDoubleClick(this.screenToMap(position));
+  public render(): void {
+    const width = this.context.canvas.width;
+    const height = this.context.canvas.height;
 
-      return true;
-    });
-  }
-
-  private handleZoom(delta: number, mousePosition: Vector): void {
-    const beforeZoom = this.screenToMap(mousePosition);
-
-    this.scale.x += delta;
-    this.scale.y += delta;
-
-    const afterZoom = this.screenToMap(mousePosition);
-
-    beforeZoom.subtract(afterZoom);
-
-    beforeZoom.x *= this.scale.x;
-    beforeZoom.y *= this.scale.y;
-
-    this.offset.add(beforeZoom);
-  }
-
-  private setInitialPlayersPositions(offset: Vector): void {
-    const state: IStoreState = store.getState();
-    const players = getPlayers(state);
-
-    let pos = -2;
-    for (const player in players) {
-      const angle = (Math.PI / 6) * pos;
-      const position = new Vector(offset);
-
-      position.x += this.width / 2.3 + Math.cos(angle) * (this.width / 5);
-      position.y += this.height / 2.7 + Math.sin(angle) * (this.height / 4);
-
-      this.entities[`${player}Player`].setPosition(position);
-
-      pos++;
-    }
-  }
-
-  private renderDebug(): void {
-    if (this.debug) {
-      this.context.strokeStyle = "black";
-      this.context.lineWidth = 8;
-      this.context.fillStyle = "white";
-
-      drawStrokeText(
-        this.context,
-        0,
-        40,
-        `Screen: x = ${Math.round(this.positions.screen.x)} y = ${Math.round(
-          this.positions.screen.y
-        )}`
-      );
-
-      drawStrokeText(
-        this.context,
-        0,
-        100,
-        `Map: x = ${Math.round(this.positions.map.x)} y = ${Math.round(
-          this.positions.map.y
-        )}`
-      );
-
-      drawStrokeText(
-        this.context,
-        0,
-        160,
-        `Offset: x = ${Math.round(this.offset.x)} y = ${Math.round(
-          this.offset.y
-        )}`
-      );
-    }
-  }
-
-  private update(step: number): void {
-    this.forEachEntity((entity) => {
-      entity.update(step);
-
-      return true;
-    });
-  }
-
-  private render(): void {
-    this.context.clearRect(0, 0, this.width, this.height);
+    this.context.clearRect(0, 0, width, height);
 
     if (this.loading < 1) {
-      this.context.fillStyle = this.theme.textColorPrimary;
-      this.context.font = `50px ${this.theme.fontFamily}`;
-
-      this.context.fillText(
-        "Loading...",
-        this.width / 2 - 50,
-        this.height / 2 - 10
-      );
+      this.context.fillText("Loading...", width / 2 - 50, height / 2 - 10);
     } else {
       this.context.save();
 
       this.context.translate(-this.offset.x, -this.offset.y);
       this.context.scale(this.scale.x, this.scale.y);
 
-      this.context.save();
-      this.context.scale(this.currentMap.scale, this.currentMap.scale);
-      this.context.drawImage(this.currentMap.image, 0, 0);
-      this.context.restore();
-
-      this.forEachEntity((entity) => {
-        entity.render();
-
-        return true;
-      });
+      for (const layer of this.layers) {
+        layer.render();
+      }
 
       this.context.restore();
-
-      this.renderDebug();
     }
   }
 

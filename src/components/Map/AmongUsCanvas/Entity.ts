@@ -1,35 +1,69 @@
+/* The following is disabled because this is a base class */
+/* eslint-disable @typescript-eslint/no-unused-vars */
+
+import CanvasObject from "./CanvasObject";
 import { KEYCODE } from "constants/keycodes";
 import { MOUSE_BUTTON } from "constants/mouse";
-import { Rectangle } from "utils/math/Rectangle";
-import { Vector } from "utils/math/Vector";
+import Rectangle from "utils/math/Rectangle";
+import Vector from "utils/math/Vector";
 
-export default class Entity {
-  public constructor(rect: Rectangle, draggable = false, debug = false) {
+/**
+ * Base class for all entities on the canvas.
+ *
+ * @export
+ * @abstract
+ * @class Entity
+ */
+export default class Entity extends CanvasObject {
+  /**
+   * Creates an instance of Entity.
+   * @param {Rectangle} rect The position and size of the entity.
+   * @param {boolean} [debug=false] Shows a red rectangle when true.
+   * @memberof Entity
+   */
+  public constructor(rect: Rectangle, debug = false) {
+    super();
     this.rect = rect;
-    this.draggable = draggable;
     this.debug = debug;
-
-    this.active = false;
   }
 
+  /**
+   * Sets the canvas 2d context where the entity will be drawn.
+   *
+   * @param {CanvasRenderingContext2D} context The canvas context where `this` will be drawn.
+   * @memberof Entity
+   */
   public setContext(context: CanvasRenderingContext2D): void {
     this.context = context;
   }
 
+  /**
+   * Changes the debug state of the entity.
+   *
+   * @param {boolean} state The new debug state of `this`.
+   * @memberof Entity
+   */
   public setDebug(state: boolean): void {
     this.debug = state;
   }
 
-  public setPosition(position: Vector): void {
-    this.rect.setPosition(position);
+  /**
+   * Updates the entity.
+   *
+   * @abstract
+   * @param {number} step Time since our last frame.
+   * @memberof Entity
+   */
+  public update(step: number): void {
+    // not all entities might need this
   }
 
-  public getPosition(): Vector {
-    return this.rect.getPosition();
-  }
-
-  public update(step: number): void {} // eslint-disable-line
-
+  /**
+   * Renders our entity.
+   *
+   * @abstract
+   * @memberof Entity
+   */
   public render(): void {
     if (this.debug) {
       this.context.save();
@@ -59,42 +93,76 @@ export default class Entity {
     }
   }
 
-  public isActive(): boolean {
-    return this.active;
+  /**
+   * Listens to keys pressed.
+   *
+   * @param {KEYCODE} key The key being pressed.
+   * @return {*}  {boolean} Return `true`, if the propagation of the event should stop, `false` otherwise.
+   * @memberof Entity
+   */
+  public onKeyDown(key: KEYCODE): boolean {
+    return false;
   }
 
-  public onKeyDown(key: KEYCODE): void {} // eslint-disable-line
-
-  public onKeyUp(key: KEYCODE): void {} // eslint-disable-line
-
-  public onMouseMove(coordinate: Vector): void {
-    if (this.active) {
-      this.rect.setPosition(
-        coordinate.x - this.rect.getWidth() / 2,
-        coordinate.y - this.rect.getHeight() / 2
-      );
-    }
+  /**
+   * Listens to keys unpressed.
+   *
+   * @param {KEYCODE} key The key being unpressed.
+   * @return {*}  {boolean} Return `true`, if the propagation of the event should stop, `false` otherwise.
+   * @memberof Entity
+   */
+  public onKeyUp(key: KEYCODE): boolean {
+    return false;
   }
 
-  public onMouseDown(button: MOUSE_BUTTON, coordinate: Vector): void {
-    if (this.draggable && this.rect.isPointInside(coordinate)) {
-      this.active = true;
-    }
+  /**
+   * Listens to mouse movement.
+   *
+   * @param {Vector} coordinate The position of the mouse.
+   * @return {*}  {boolean} Return `true`, if the propagation of the event should stop, `false` otherwise.
+   * @memberof Entity
+   */
+  public onMouseMove(coordinate: Vector): boolean {
+    return false;
   }
 
-  public onMouseUp(button: MOUSE_BUTTON, coordinate: Vector): void {
-    if (this.draggable && this.rect.isPointInside(coordinate)) {
-      this.active = false;
-    }
+  /**
+   * Listens to mouse being pressed.
+   *
+   * @param {MOUSE_BUTTON} button The button being pressed.
+   * @param {Vector} coordinate The position of the mouse.
+   * @return {*}  {boolean} Return `true`, if the propagation of the event should stop, `false` otherwise.
+   * @memberof Entity
+   */
+  public onMouseDown(button: MOUSE_BUTTON, coordinate: Vector): boolean {
+    return false;
   }
 
-  public onDoubleClick(coordinate: Vector): void {} // eslint-disable-line
+  /**
+   * Listens to mouse being unpressed.
+   *
+   * @param {MOUSE_BUTTON} button The button being pressed.
+   * @param {Vector} coordinate The position of the mouse.
+   * @return {*}  {boolean} Return `true`, if the propagation of the event should stop, `false` otherwise.
+   * @memberof Entity
+   */
+  public onMouseUp(button: MOUSE_BUTTON, coordinate: Vector): boolean {
+    return false;
+  }
+
+  /**
+   * Listens to mouse being double pressed.
+   *
+   * @param {Vector} coordinate
+   * @return {*}  {boolean} Return `true`, if the propagation of the event should stop, `false` otherwise.
+   * @memberof Entity
+   */
+  public onDoubleClick(coordinate: Vector): boolean {
+    return false;
+  }
 
   protected context!: CanvasRenderingContext2D;
 
   protected rect: Rectangle;
-  protected draggable: boolean;
   protected debug: boolean;
-
-  private active: boolean;
 }
