@@ -2,24 +2,19 @@ import { KeysPressed, MouseButtonsPressed } from "utils/types/input";
 import {
   KeyboardEvent as ReactKeyboardEvent,
   MouseEvent as ReactMouseEvent,
-  TouchEvent as ReactTouchEvent,
+  PointerEvent as ReactPointerEvent,
   WheelEvent as ReactWheelEvent,
 } from "react";
 
 import { MOUSE_BUTTON } from "constants/mouse";
 import Vector from "utils/math/Vector";
 
-interface IMouseEvent {
-  clientX: number;
-  clientY: number;
-  currentTarget: EventTarget & HTMLCanvasElement;
-}
-
 class InputHandler {
   public static GetInstance(): InputHandler {
     if (!InputHandler.instance) {
       InputHandler.instance = new InputHandler();
     }
+
     return InputHandler.instance;
   }
 
@@ -43,25 +38,38 @@ class InputHandler {
     return this.keys;
   }
 
+  public getWheel(): number {
+    return this.wheel;
+  }
+
+  public getDoubleClicked(): boolean {
+    return this.doubleClicked;
+  }
+
   public stopPropagation(): void {
     this.propagate = false;
   }
 
-  public restoreStates(): void {
+  public restoreState(): void {
+    this.wheel = 0;
+
+    this.doubleClicked = false;
+
     this.propagate = true;
   }
 
-  public onMouseMove(
-    evt: ReactMouseEvent<HTMLCanvasElement, MouseEvent>
-  ): void {
+  public onPointerMove(evt: ReactPointerEvent<HTMLCanvasElement>): void {
     evt.preventDefault();
 
-    this.mousePosition.set(this.getCurrentMousePosition(evt));
+    const rect = evt.currentTarget.getBoundingClientRect();
+
+    this.mousePosition.set(
+      (evt.clientX - rect.left) * (evt.currentTarget.width / rect.width),
+      (evt.clientY - rect.top) * (evt.currentTarget.height / rect.height)
+    );
   }
 
-  public onMouseDown(
-    evt: ReactMouseEvent<HTMLCanvasElement, MouseEvent>
-  ): void {
+  public onPointerDown(evt: ReactPointerEvent<HTMLCanvasElement>): void {
     evt.preventDefault();
 
     switch (evt.button) {
@@ -85,7 +93,7 @@ class InputHandler {
     }
   }
 
-  public onMouseUp(evt: ReactMouseEvent<HTMLCanvasElement, MouseEvent>): void {
+  public onPointerUp(evt: ReactPointerEvent<HTMLCanvasElement>): void {
     evt.preventDefault();
 
     switch (evt.button) {
@@ -109,9 +117,13 @@ class InputHandler {
     }
   }
 
-  public onMouseLeave(
-    evt: ReactMouseEvent<HTMLCanvasElement, MouseEvent>
-  ): void {
+  public onPointerEnter(evt: ReactPointerEvent<HTMLCanvasElement>): void {
+    evt.preventDefault();
+
+    // NOTE - Might not need it and could be deleted.
+  }
+
+  public onPointerLeave(evt: ReactPointerEvent<HTMLCanvasElement>): void {
     evt.preventDefault();
 
     this.mousePosition.set(-1, -1);
@@ -128,49 +140,25 @@ class InputHandler {
   ): void {
     evt.preventDefault();
 
-    // TODO - add logic
+    this.doubleClicked = true;
   }
 
   public onWheel(evt: ReactWheelEvent<HTMLCanvasElement>): void {
     evt.preventDefault();
 
-    // TODO - add logic
-  }
-
-  public onTouchMove(evt: ReactTouchEvent<HTMLCanvasElement>): void {
-    evt.preventDefault();
-
-    // TODO - add logic
-  }
-
-  public onTouchStart(evt: ReactTouchEvent<HTMLCanvasElement>): void {
-    evt.preventDefault();
-
-    // TODO - add logic
-  }
-
-  public onTouchEnd(evt: ReactTouchEvent<HTMLCanvasElement>): void {
-    evt.preventDefault();
-
-    // TODO - add logic
-  }
-
-  public onTouchCancel(evt: ReactTouchEvent<HTMLCanvasElement>): void {
-    evt.preventDefault();
-
-    // TODO - add logic
+    this.wheel = evt.deltaY;
   }
 
   public onKeyDown(evt: ReactKeyboardEvent<HTMLCanvasElement>): void {
     evt.preventDefault();
 
-    // TODO - add logic
+    this.keys[evt.key] = true;
   }
 
   public onKeyUp(evt: ReactKeyboardEvent<HTMLCanvasElement>): void {
     evt.preventDefault();
 
-    // TODO - add logic
+    this.keys[evt.key] = false;
   }
 
   private static instance: InputHandler;
@@ -178,6 +166,8 @@ class InputHandler {
   private mousePosition: Vector;
   private mouseButtons: MouseButtonsPressed;
   private keys: KeysPressed;
+  private wheel: number;
+  private doubleClicked: boolean;
   private propagate: boolean;
 
   private constructor() {
@@ -191,16 +181,11 @@ class InputHandler {
 
     this.keys = {};
 
+    this.wheel = 0;
+
+    this.doubleClicked = false;
+
     this.propagate = true;
-  }
-
-  private getCurrentMousePosition<T extends IMouseEvent>(evt: T): Vector {
-    const rect = evt.currentTarget.getBoundingClientRect();
-
-    return new Vector(
-      (evt.clientX - rect.left) * (evt.currentTarget.width / rect.width),
-      (evt.clientY - rect.top) * (evt.currentTarget.height / rect.height)
-    );
   }
 }
 

@@ -69,15 +69,12 @@ export default function Map(props: IMapProps): JSX.Element {
       height={CANVAS_HEIGHT}
       className={classes.Map}
       onContextMenu={(evt) => evt.preventDefault()}
-      onMouseMove={(evt) => AmongUsCanvasInputHandler.onMouseMove(evt)}
-      onMouseDown={(evt) => AmongUsCanvasInputHandler.onMouseDown(evt)}
-      onMouseUp={(evt) => AmongUsCanvasInputHandler.onMouseUp(evt)}
-      onMouseLeave={(evt) => AmongUsCanvasInputHandler.onMouseLeave(evt)}
+      onPointerMove={(evt) => AmongUsCanvasInputHandler.onPointerMove(evt)}
+      onPointerDown={(evt) => AmongUsCanvasInputHandler.onPointerDown(evt)}
+      onPointerUp={(evt) => AmongUsCanvasInputHandler.onPointerUp(evt)}
+      onPointerEnter={(evt) => AmongUsCanvasInputHandler.onPointerEnter(evt)}
+      onPointerLeave={(evt) => AmongUsCanvasInputHandler.onPointerLeave(evt)}
       onDoubleClick={(evt) => AmongUsCanvasInputHandler.onDoubleClick(evt)}
-      onTouchMove={(evt) => AmongUsCanvasInputHandler.onTouchMove(evt)}
-      onTouchStart={(evt) => AmongUsCanvasInputHandler.onTouchStart(evt)}
-      onTouchEnd={(evt) => AmongUsCanvasInputHandler.onTouchEnd(evt)}
-      onTouchCancel={(evt) => AmongUsCanvasInputHandler.onTouchCancel(evt)}
       onWheel={(evt) => AmongUsCanvasInputHandler.onWheel(evt)}
       onKeyDown={(evt) => AmongUsCanvasInputHandler.onKeyDown(evt)}
       onKeyUp={(evt) => AmongUsCanvasInputHandler.onKeyUp(evt)}

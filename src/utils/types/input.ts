@@ -5,5 +5,5 @@ export interface MouseButtonsPressed {
 }
 
 export interface KeysPressed {
-  [key: number]: boolean;
+  [key: string]: boolean;
 }

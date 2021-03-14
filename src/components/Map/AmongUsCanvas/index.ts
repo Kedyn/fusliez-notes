@@ -7,12 +7,14 @@ import MiraHQ from "./Maps/MiraHQ";
 import Polus from "./Maps/Polus";
 import TheSkeld from "./Maps/TheSkeld";
 import Vector from "utils/math/Vector";
+import i18n from "utils/i18n";
 
 class AmongUsCanvas {
   public static GetInstance(): AmongUsCanvas {
     if (!AmongUsCanvas.instance) {
       AmongUsCanvas.instance = new AmongUsCanvas();
     }
+
     return AmongUsCanvas.instance;
   }
 
@@ -164,15 +166,31 @@ class AmongUsCanvas {
     this.panningPosition = new Vector();
 
     this.layers.push(this.miraHQ);
+
+    i18n.on("languageChanged", () => {
+      // TODO - update maps default texts
+      console.log("Update maps default texts");
+    });
   }
 
-  public update(step: number): void {
+  private screenToWorld(screenPoint: Vector): Vector {
+    const point = Vector.add(screenPoint, this.offset);
+
+    point.x /= this.scale.x;
+    point.y /= this.scale.y;
+
+    return point;
+  }
+
+  private update(step: number): void {
+    const mousePosition = InputHandler.getMousePosition();
+
     if (this.panning && InputHandler.getMouseButtons().LEFT) {
-      const position = InputHandler.getMousePosition();
+      this.offset.subtract(
+        Vector.subtract(mousePosition, this.panningPosition)
+      );
 
-      this.offset.subtract(Vector.subtract(position, this.panningPosition));
-
-      this.panningPosition.set(position);
+      this.panningPosition.set(mousePosition);
 
       InputHandler.stopPropagation();
     }
@@ -181,20 +199,42 @@ class AmongUsCanvas {
       this.layers[i].update(step);
     }
 
-    // TODO - zooming
     // TODO - hud
     if (InputHandler.getMouseButtons().LEFT) {
       this.panning = true;
 
-      this.panningPosition.set(InputHandler.getMousePosition());
+      this.panningPosition.set(mousePosition);
     } else {
       this.panning = false;
     }
 
-    InputHandler.restoreStates();
+    const wheel = InputHandler.getWheel();
+
+    if (wheel) {
+      const beforeZoom = this.screenToWorld(mousePosition);
+
+      if (wheel > 0) {
+        this.scale.x *= 0.9;
+        this.scale.y *= 0.9;
+      } else if (wheel < 0) {
+        this.scale.x *= 1.1;
+        this.scale.y *= 1.1;
+      }
+
+      const afterZoom = this.screenToWorld(mousePosition);
+
+      beforeZoom.subtract(afterZoom);
+
+      beforeZoom.x *= this.scale.x;
+      beforeZoom.y *= this.scale.y;
+
+      this.offset.add(beforeZoom);
+    }
+
+    InputHandler.restoreState();
   }
 
-  public render(): void {
+  private render(): void {
     const width = this.context.canvas.width;
     const height = this.context.canvas.height;
 

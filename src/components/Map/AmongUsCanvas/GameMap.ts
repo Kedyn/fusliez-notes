@@ -35,10 +35,6 @@ export default class GameMap extends Layer {
     return this.scale;
   }
 
-  public render(): void {
-    super.render();
-  }
-
   protected name: IMapName;
   protected image: HTMLImageElement;
   protected playersImage: HTMLImageElement;

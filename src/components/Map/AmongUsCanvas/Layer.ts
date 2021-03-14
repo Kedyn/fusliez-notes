@@ -55,8 +55,8 @@ export default class Layer {
    * @memberof Layer
    */
   public update(step: number): void {
-    for (const canvasObject of this.canvasObjects) {
-      canvasObject.update(step);
+    for (let i = this.canvasObjects.length - 1; i >= 0; i--) {
+      this.canvasObjects[i].update(step);
     }
   }
 
