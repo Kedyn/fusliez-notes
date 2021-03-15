@@ -110,18 +110,15 @@ const SectionsSlice = createSlice({
       action: PayloadAction<ISetSectionPlayersPayload>
     ) => ({
       ...state,
+      sections: state.sections.map((section) => {
+        const newSection = { ...section };
 
-      sections: [
-        ...state.sections.map((section) => {
-          const newSection = { ...section };
+        if (section.id === action.payload.section) {
+          newSection.players = action.payload.newPlayers;
+        }
 
-          if (section.id === action.payload.section) {
-            newSection.players = action.payload.newPlayers;
-          }
-
-          return newSection;
-        }),
-      ],
+        return newSection;
+      }),
     }),
 
     movePlayersToResetSection: (state: ISectionsState) => ({

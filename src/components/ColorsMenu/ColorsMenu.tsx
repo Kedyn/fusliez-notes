@@ -43,8 +43,8 @@ export const swapPlayersColors = (
     newPlayers[targetPlayerColor].section = tempSection;
 
     const newSections = sections.map(({ id, title, players }) => ({
-      id: id,
-      title: title,
+      id,
+      title,
       players: players.map(({ id }) => {
         if (id === currentPlayerColor) {
           return {
@@ -62,6 +62,25 @@ export const swapPlayersColors = (
 
     return { newPlayers, newSections };
   }
+};
+
+export const hexToPlayerColor = (hex: string): IPlayerColor => {
+  const playerColors: Array<IPlayerColor> = [
+    "black",
+    "blue",
+    "brown",
+    "cyan",
+    "green",
+    "lime",
+    "orange",
+    "pink",
+    "purple",
+    "red",
+    "white",
+    "yellow",
+  ];
+
+  return playerColors[colors.indexOf(hex.toUpperCase())];
 };
 
 const colors = [
@@ -82,8 +101,6 @@ const colors = [
 export default function ColorsMenu(props: IColorsMenuProps): JSX.Element {
   const { isMenuShowing, setIsMenuShowing, currentColor } = props;
 
-  console.log(currentColor);
-
   const ref = React.useRef<HTMLDivElement>(null);
 
   const classes = useStyles();
@@ -92,25 +109,6 @@ export default function ColorsMenu(props: IColorsMenuProps): JSX.Element {
   const sections = useSelector(getSections);
 
   const dispatch = useDispatch();
-
-  const hexToPlayerColor = (hex: string): IPlayerColor => {
-    const playerColors: Array<IPlayerColor> = [
-      "black",
-      "blue",
-      "brown",
-      "cyan",
-      "green",
-      "lime",
-      "orange",
-      "pink",
-      "purple",
-      "red",
-      "white",
-      "yellow",
-    ];
-
-    return playerColors[colors.indexOf(hex.toUpperCase())];
-  };
 
   React.useEffect(() => {
     function handleHideMenu(event: Event) {
@@ -138,7 +136,6 @@ export default function ColorsMenu(props: IColorsMenuProps): JSX.Element {
         colors={colors}
         color={COLOR_LIBRARY[currentColor].base}
         onChange={(color) => {
-          console.log({ color });
           const res = swapPlayersColors(
             currentColor,
             hexToPlayerColor(color.hex),
