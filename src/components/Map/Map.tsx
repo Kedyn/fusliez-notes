@@ -5,6 +5,7 @@ import {
 } from "store/slices/SectionsSlice";
 
 import AmongUsCanvas from "./AmongUsCanvas";
+import AmongUsCanvasGlobals from "./AmongUsCanvas/CanvasGlobals";
 import AmongUsCanvasInputHandler from "./AmongUsCanvas/InputHandler";
 import { IMapName } from "utils/types/maps";
 import { ITheme } from "utils/types/theme";
@@ -38,9 +39,9 @@ export default function Map(props: IMapProps): JSX.Element {
       const context = canvasRef.current.getContext("2d");
 
       if (context != null) {
-        AmongUsCanvas.setDebug(true);
-        AmongUsCanvas.setContext(context);
-        AmongUsCanvas.setTheme(theme);
+        AmongUsCanvasGlobals.setDebug(true);
+        AmongUsCanvasGlobals.setContext(context);
+        AmongUsCanvasGlobals.setTheme(theme);
         AmongUsCanvas.init();
 
         return () => {
@@ -51,7 +52,7 @@ export default function Map(props: IMapProps): JSX.Element {
   }, []);
 
   React.useEffect(() => {
-    AmongUsCanvas.setTheme(theme);
+    AmongUsCanvasGlobals.setTheme(theme);
   }, [theme]);
 
   React.useEffect(() => {

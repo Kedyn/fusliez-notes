@@ -1,3 +1,4 @@
+import CanvasGlobals from "../CanvasGlobals";
 import CanvasObject from "../CanvasObject";
 import Vector from "utils/math/Vector";
 
@@ -6,6 +7,7 @@ export default class CanvasText extends CanvasObject {
     text: string,
     position: Vector,
     center = true,
+    fontSize = 20,
     strokeStyle = "black",
     fillStyle = "white",
     lineWidth = 8,
@@ -17,6 +19,7 @@ export default class CanvasText extends CanvasObject {
     this.text = text;
     this.position = position;
     this.center = center;
+    this.fontSize = fontSize;
     this.strokeStyle = strokeStyle;
     this.fillStyle = fillStyle;
     this.lineWidth = lineWidth;
@@ -33,49 +36,56 @@ export default class CanvasText extends CanvasObject {
   }
 
   public render(): void {
+    const context = CanvasGlobals.getContext();
+
     if (this.text != "") {
       let x = this.position.x;
+      let y = this.position.y;
 
       if (this.center) {
-        x += this.context.measureText(this.text).width / 2;
+        x += context.measureText(this.text).width / 2;
+        y += this.fontSize / 2;
       }
 
-      this.context.save();
+      context.save();
 
-      this.context.strokeStyle = this.strokeStyle;
-      this.context.fillStyle = this.fillStyle;
-      this.context.lineWidth = this.lineWidth;
+      context.textBaseline = "top";
+
+      context.font = `${this.fontSize}px ${
+        CanvasGlobals.getTheme().fontFamily
+      }`;
+
+      context.strokeStyle = this.strokeStyle;
+      context.fillStyle = this.fillStyle;
+      context.lineWidth = this.lineWidth;
 
       if (this.shadowBlur) {
-        this.context.shadowColor = this.shadowColor;
-        this.context.shadowBlur = this.shadowBlur;
+        context.shadowColor = this.shadowColor;
+        context.shadowBlur = this.shadowBlur;
       }
 
-      this.context.strokeText(this.text, x, this.position.y);
-      this.context.fillText(this.text, x, this.position.y);
+      context.strokeText(this.text, x, y);
+      context.fillText(this.text, x, y);
 
-      this.context.restore();
+      if (CanvasGlobals.getDebug()) {
+        context.strokeStyle = "red";
 
-      if (this.debug) {
-        this.context.save();
-
-        this.context.strokeStyle = "red";
-
-        this.context.strokeRect(
+        context.strokeRect(
           x,
-          this.position.y,
-          this.context.measureText(this.text).width,
-          50
+          y,
+          context.measureText(this.text).width,
+          this.fontSize
         );
-
-        this.context.restore();
       }
+
+      context.restore();
     }
   }
 
   private text: string;
   private position: Vector;
   private center: boolean;
+  private fontSize: number;
   private strokeStyle: string;
   private fillStyle: string;
   private lineWidth: number;

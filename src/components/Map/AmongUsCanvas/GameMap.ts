@@ -4,22 +4,14 @@ import Layer from "./Layer";
 import Vector from "utils/math/Vector";
 
 export default class GameMap extends Layer {
-  public constructor(
-    name: IMapName,
-    image: HTMLImageElement,
-    playersImage: HTMLImageElement,
-    scale: number,
-    debug = false
-  ) {
-    super(debug);
+  public constructor(name: IMapName, scale: number) {
+    super();
 
     this.name = name;
-    this.image = image;
-    this.playersImage = playersImage;
     this.scale = scale;
 
     this.canvasObjects.push(
-      new CanvasImage(image, undefined, undefined, new Vector(scale, scale))
+      new CanvasImage(name, undefined, undefined, new Vector(scale, scale))
     );
   }
 
@@ -27,16 +19,10 @@ export default class GameMap extends Layer {
     return this.name;
   }
 
-  public getImage(): Readonly<HTMLImageElement> {
-    return this.image;
-  }
-
   public getScale(): Readonly<number> {
     return this.scale;
   }
 
   protected name: IMapName;
-  protected image: HTMLImageElement;
-  protected playersImage: HTMLImageElement;
   protected scale: number;
 }

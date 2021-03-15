@@ -1,16 +1,17 @@
+import CanvasGlobals from "../CanvasGlobals";
 import CanvasObject from "../CanvasObject";
 import Rectangle from "utils/math/Rectangle";
 import Vector from "utils/math/Vector";
 
 export default class CanvasImage extends CanvasObject {
   public constructor(
-    image: HTMLImageElement,
+    image: string,
     srcRect?: Rectangle,
     dstRect?: Rectangle,
     scale?: Vector
   ) {
     super();
-    this.image = image;
+    this.image = CanvasGlobals.getImages()[image];
 
     if (srcRect !== undefined) {
       this.srcRect = srcRect;
@@ -90,11 +91,13 @@ export default class CanvasImage extends CanvasObject {
   }
 
   public render(): void {
-    this.context.save();
+    const context = CanvasGlobals.getContext();
 
-    this.context.scale(this.scale.x, this.scale.y);
+    context.save();
 
-    this.context.drawImage(
+    context.scale(this.scale.x, this.scale.y);
+
+    context.drawImage(
       this.image,
       this.srcRect.getX(),
       this.srcRect.getY(),
@@ -106,22 +109,22 @@ export default class CanvasImage extends CanvasObject {
       this.dstRect.getHeight()
     );
 
-    this.context.restore();
+    if (CanvasGlobals.getDebug()) {
+      context.save();
 
-    if (this.debug) {
-      this.context.save();
+      context.strokeStyle = "red";
 
-      this.context.strokeStyle = "red";
-
-      this.context.strokeRect(
+      context.strokeRect(
         this.dstRect.getX(),
         this.dstRect.getY(),
         this.dstRect.getWidth(),
         this.dstRect.getHeight()
       );
 
-      this.context.restore();
+      context.restore();
     }
+
+    context.restore();
   }
 
   private image: HTMLImageElement;
