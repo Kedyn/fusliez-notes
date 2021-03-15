@@ -7,6 +7,10 @@ import i18n from "utils/i18n";
 export default class MiraHQ extends GameMap {
   public constructor() {
     super("MiraHQ", MIRAHQ_SCALE);
+  }
+
+  public addObjects(): void {
+    const fontSize = 200;
 
     // TODO - Add map areas
     // TODO - Add map tasks
@@ -15,12 +19,51 @@ export default class MiraHQ extends GameMap {
     this.canvasObjects.push(
       new CanvasText(
         i18n.t("maps.greenhouse"),
-        new Vector(3555, 155),
+        new Vector(7100, 1750),
         true,
-        100
+        fontSize,
+        undefined,
+        undefined,
+        40,
+        undefined,
+        true
       )
     );
 
-    console.log(i18n.t("maps.greenhouse"));
+    this.canvasObjects.push(
+      new CanvasText(
+        i18n.t("maps.admin"),
+        new Vector(8300, 3050),
+        true,
+        fontSize,
+        undefined,
+        undefined,
+        40
+      )
+    );
+
+    this.canvasObjects.push(
+      new CanvasText(
+        i18n.t("maps.office"),
+        new Vector(6800, 3100),
+        true,
+        fontSize,
+        undefined,
+        undefined,
+        40
+      )
+    );
+
+    this.canvasObjects.push(
+      new CanvasText(
+        i18n.t("maps.communications"),
+        new Vector(6500, 6800),
+        true,
+        fontSize,
+        undefined,
+        undefined,
+        40
+      )
+    );
   }
 }

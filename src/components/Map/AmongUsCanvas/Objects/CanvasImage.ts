@@ -8,9 +8,11 @@ export default class CanvasImage extends CanvasObject {
     image: string,
     srcRect?: Rectangle,
     dstRect?: Rectangle,
-    scale?: Vector
+    scale?: Vector,
+    visible?: boolean,
+    draggable?: boolean
   ) {
-    super();
+    super(visible, draggable);
     this.image = CanvasGlobals.getImages()[image];
 
     if (srcRect !== undefined) {
@@ -86,45 +88,51 @@ export default class CanvasImage extends CanvasObject {
     }
   }
 
-  public update(): void {
-    // does nothing
+  public setPosition(position: Vector): void {
+    this.dstRect.setPosition(position.x, position.y);
+  }
+
+  public getRect(): Readonly<Rectangle> {
+    return this.dstRect;
   }
 
   public render(): void {
-    const context = CanvasGlobals.getContext();
+    if (this.visible) {
+      const context = CanvasGlobals.getContext();
 
-    context.save();
-
-    context.scale(this.scale.x, this.scale.y);
-
-    context.drawImage(
-      this.image,
-      this.srcRect.getX(),
-      this.srcRect.getY(),
-      this.srcRect.getWidth(),
-      this.srcRect.getHeight(),
-      this.dstRect.getX(),
-      this.dstRect.getY(),
-      this.dstRect.getWidth(),
-      this.dstRect.getHeight()
-    );
-
-    if (CanvasGlobals.getDebug()) {
       context.save();
 
-      context.strokeStyle = "red";
+      context.scale(this.scale.x, this.scale.y);
 
-      context.strokeRect(
+      context.drawImage(
+        this.image,
+        this.srcRect.getX(),
+        this.srcRect.getY(),
+        this.srcRect.getWidth(),
+        this.srcRect.getHeight(),
         this.dstRect.getX(),
         this.dstRect.getY(),
         this.dstRect.getWidth(),
         this.dstRect.getHeight()
       );
 
+      if (CanvasGlobals.getDebug()) {
+        context.save();
+
+        context.strokeStyle = "red";
+
+        context.strokeRect(
+          this.dstRect.getX(),
+          this.dstRect.getY(),
+          this.dstRect.getWidth(),
+          this.dstRect.getHeight()
+        );
+
+        context.restore();
+      }
+
       context.restore();
     }
-
-    context.restore();
   }
 
   private image: HTMLImageElement;

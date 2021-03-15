@@ -62,9 +62,13 @@ class AmongUsCanvas {
       (theme !== undefined || theme !== null)
     ) {
       context.fillStyle = theme.textColorPrimary;
-      context.font = `20px ${theme.fontFamily}`;
+      context.font = `100px ${theme.fontFamily}`;
 
       this.setOffsetAndScale();
+
+      this.miraHQ.addObjects();
+      this.polus.addObjects();
+      this.theSkeld.addObjects();
 
       this.loop(0);
     } else {
@@ -83,6 +87,9 @@ class AmongUsCanvas {
   private theSkeld: TheSkeld;
   private panning: boolean;
   private panningPosition: Vector;
+
+  private times: Array<number>;
+  private fps: number;
 
   private constructor() {
     CanvasGlobals.setImages([
@@ -113,6 +120,9 @@ class AmongUsCanvas {
       // TODO - update maps default texts
       console.log("Update maps default texts");
     });
+
+    this.times = [];
+    this.fps = 0;
   }
 
   private setOffsetAndScale(): void {
@@ -178,6 +188,13 @@ class AmongUsCanvas {
     }
 
     InputHandler.restoreState();
+
+    const now = performance.now();
+    while (this.times.length > 0 && this.times[0] <= now - 1000) {
+      this.times.shift();
+    }
+    this.times.push(now);
+    this.fps = this.times.length;
   }
 
   private render(): void {
@@ -204,6 +221,8 @@ class AmongUsCanvas {
       }
 
       context.restore();
+
+      context.fillText(`fps: ${this.fps}`, 100, 100);
     }
   }
 

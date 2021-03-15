@@ -1,5 +1,6 @@
 import CanvasGlobals from "../CanvasGlobals";
 import CanvasObject from "../CanvasObject";
+import Rectangle from "utils/math/Rectangle";
 import Vector from "utils/math/Vector";
 
 export default class CanvasText extends CanvasObject {
@@ -11,10 +12,10 @@ export default class CanvasText extends CanvasObject {
     strokeStyle = "black",
     fillStyle = "white",
     lineWidth = 8,
-    shadowColor = "white",
-    shadowBlur = 0
+    visible?: boolean,
+    draggable?: boolean
   ) {
-    super();
+    super(visible, draggable);
 
     this.text = text;
     this.position = position;
@@ -23,33 +24,59 @@ export default class CanvasText extends CanvasObject {
     this.strokeStyle = strokeStyle;
     this.fillStyle = fillStyle;
     this.lineWidth = lineWidth;
-    this.shadowColor = shadowColor;
-    this.shadowBlur = shadowBlur;
+
+    this.rect = new Rectangle(new Vector(), 0, fontSize);
+
+    this.setRect();
+  }
+
+  public setPosition(position: Vector): void {
+    this.position.set(position);
+
+    if (this.center) {
+      this.position.set(
+        position.x - this.rect.getWidth() / 2,
+        position.y - this.rect.getHeight() / 2
+      );
+    }
+
+    let x = this.position.x;
+    let y = this.position.y;
+
+    if (this.center) {
+      x -= this.rect.getWidth() / 2;
+      y -= this.fontSize / 2;
+    }
+
+    this.rect.setPosition(x, y);
+  }
+
+  public setText(text: string): void {
+    this.text = text;
+
+    this.setRect();
   }
 
   public getPosition(): Vector {
     return this.position;
   }
 
-  public update(): void {
-    // does nothing
+  public getRect(): Readonly<Rectangle> {
+    return this.rect;
   }
 
   public render(): void {
     const context = CanvasGlobals.getContext();
 
-    if (this.text != "") {
-      let x = this.position.x;
-      let y = this.position.y;
-
-      if (this.center) {
-        x += context.measureText(this.text).width / 2;
-        y += this.fontSize / 2;
-      }
-
+    if (this.text != "" && this.visible) {
       context.save();
 
       context.textBaseline = "top";
+
+      if (this.center) {
+        context.textBaseline = "middle";
+        context.textAlign = "center";
+      }
 
       context.font = `${this.fontSize}px ${
         CanvasGlobals.getTheme().fontFamily
@@ -59,22 +86,31 @@ export default class CanvasText extends CanvasObject {
       context.fillStyle = this.fillStyle;
       context.lineWidth = this.lineWidth;
 
-      if (this.shadowBlur) {
-        context.shadowColor = this.shadowColor;
-        context.shadowBlur = this.shadowBlur;
-      }
-
-      context.strokeText(this.text, x, y);
-      context.fillText(this.text, x, y);
+      context.strokeText(this.text, this.position.x, this.position.y);
+      context.fillText(this.text, this.position.x, this.position.y);
 
       if (CanvasGlobals.getDebug()) {
         context.strokeStyle = "red";
 
+        if (this.center) {
+          context.fillStyle = "red";
+
+          context.beginPath();
+          context.arc(
+            this.position.x,
+            this.position.y,
+            this.lineWidth,
+            0,
+            Math.PI * 2
+          );
+          context.fill();
+        }
+
         context.strokeRect(
-          x,
-          y,
-          context.measureText(this.text).width,
-          this.fontSize
+          this.rect.getX(),
+          this.rect.getY(),
+          this.rect.getWidth(),
+          this.rect.getHeight()
         );
       }
 
@@ -89,6 +125,28 @@ export default class CanvasText extends CanvasObject {
   private strokeStyle: string;
   private fillStyle: string;
   private lineWidth: number;
-  private shadowColor: string;
-  private shadowBlur: number;
+  private rect: Rectangle;
+
+  private setRect(): void {
+    const context = CanvasGlobals.getContext();
+
+    context.save();
+
+    context.font = `${this.fontSize}px ${CanvasGlobals.getTheme().fontFamily}`;
+
+    const width = context.measureText(this.text).width;
+
+    context.restore();
+
+    let x = this.position.x;
+    let y = this.position.y;
+
+    if (this.center) {
+      x -= width / 2;
+      y -= this.fontSize / 2;
+    }
+
+    this.rect.setPosition(x, y);
+    this.rect.setWidth(width);
+  }
 }
