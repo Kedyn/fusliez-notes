@@ -8,7 +8,7 @@ import { NAMESPACE } from "constants/main";
 import React from "react";
 import i18n from "../i18n";
 
-describe("App", () => {
+describe("App tests", () => {
   test("disclaimer should be on the page", async () => {
     const { getByText } = await render(
       <I18nextProvider i18n={i18n}>

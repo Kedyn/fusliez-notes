@@ -9,9 +9,9 @@ import {
 } from "@testing-library/react";
 
 import DefaultComponentWrapper from "./DefaultComponentWrapper";
-import ModalControls from "../components/ModalControls";
+import ModalControls from "components/ModalControls";
 import React from "react";
-import registerFaIcons from "../utils/registerFaIcons";
+import registerFaIcons from "utils/registerFaIcons";
 import store from "store";
 import userEvent from "@testing-library/user-event";
 
