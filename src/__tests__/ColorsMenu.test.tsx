@@ -1,15 +1,13 @@
 import "regenerator-runtime/runtime";
 import "@testing-library/jest-dom/extend-expect";
-import {} from "store/slices/SectionsSlice";
 
-import { fireEvent, render, screen } from "@testing-library/react";
 import {
   hexToPlayerColor,
   swapPlayersColors,
 } from "components/ColorsMenu/ColorsMenu";
+import { render, screen } from "@testing-library/react";
 import { setSectionPlayers, setSections } from "store/slices/SectionsSlice";
 
-import { COLOR_LIBRARY } from "constants/theme";
 import ColorsMenu from "components/ColorsMenu";
 import { IPlayerColor } from "utils/types/players";
 import { Provider } from "react-redux";
@@ -47,49 +45,6 @@ describe("ColorsMenu component tests", () => {
     expect(
       Object.values(colorsMenu)[0].memoizedProps.children.props.colors
     ).toHaveLength(12);
-  });
-
-  test("if current and target colors are the same", async () => {
-    const colorsMenu = await screen.getByTestId(/colors-menu/);
-
-    Object.values(colorsMenu)[0].child.memoizedProps.onChange({
-      hsl: {
-        h: 0,
-        s: 0.8411214953271029,
-        l: 0.4196078431372549,
-        a: 1,
-      },
-      hex: "#c51111",
-      rgb: {
-        r: 197,
-        g: 17,
-        b: 17,
-        a: 1,
-      },
-      hsv: {
-        h: 0,
-        s: 0.9137055837563453,
-        v: 0.7725490196078432,
-        a: 1,
-      },
-      oldHue: 0,
-      source: "hex",
-    });
-
-    expect(testStore.getState().Sections.sections[4].players).toEqual([
-      { id: "black" },
-      { id: "blue" },
-      { id: "brown" },
-      { id: "cyan" },
-      { id: "green" },
-      { id: "lime" },
-      { id: "orange" },
-      { id: "pink" },
-      { id: "purple" },
-      { id: "red" },
-      { id: "white" },
-      { id: "yellow" },
-    ]);
   });
 
   test("should not swap color if the current and target colors are the same", async () => {
@@ -224,6 +179,47 @@ describe("ColorsMenu component tests", () => {
         players: [],
       },
     ];
+
+    const colorsMenu = await screen.getByTestId(/colors-menu/);
+
+    Object.values(colorsMenu)[0].child.memoizedProps.onChange({
+      hsl: {
+        h: 0,
+        s: 0.8411214953271029,
+        l: 0.4196078431372549,
+        a: 1,
+      },
+      hex: "#c51111",
+      rgb: {
+        r: 197,
+        g: 17,
+        b: 17,
+        a: 1,
+      },
+      hsv: {
+        h: 0,
+        s: 0.9137055837563453,
+        v: 0.7725490196078432,
+        a: 1,
+      },
+      oldHue: 0,
+      source: "hex",
+    });
+
+    expect(testStore.getState().Sections.sections[4].players).toEqual([
+      { id: "black" },
+      { id: "blue" },
+      { id: "brown" },
+      { id: "cyan" },
+      { id: "green" },
+      { id: "lime" },
+      { id: "orange" },
+      { id: "pink" },
+      { id: "purple" },
+      { id: "red" },
+      { id: "white" },
+      { id: "yellow" },
+    ]);
 
     const res = swapPlayersColors("red", "red", players, sections);
 
@@ -419,6 +415,32 @@ describe("ColorsMenu component tests", () => {
         players: [],
       },
     ];
+
+    const colorsMenu = await screen.getByTestId(/colors-menu/);
+
+    Object.values(colorsMenu)[0].child.memoizedProps.onChange({
+      hsl: {
+        h: 231.20418848167537,
+        s: 0.8340611353711791,
+        l: 0.4490196078431372,
+        a: 1,
+      },
+      hex: "#132fd2",
+      rgb: {
+        r: 19,
+        g: 47,
+        b: 210,
+        a: 1,
+      },
+      hsv: {
+        h: 231.20418848167537,
+        s: 0.9095238095238096,
+        v: 0.8235294117647058,
+        a: 1,
+      },
+      oldHue: 231.20418848167537,
+      source: "hex",
+    });
 
     const res = swapPlayersColors("red", "blue", players, sections);
 
