@@ -144,8 +144,8 @@ export default function ColorsMenu(props: IColorsMenuProps): JSX.Element {
           );
 
           if (currentColor !== hexToPlayerColor(color.hex)) {
-            dispatch(setPlayersState(res?.players));
-            dispatch(setSections(res?.sections));
+            dispatch(setPlayersState(res.players));
+            dispatch(setSections(res.sections));
           }
 
           setIsMenuShowing(false);

@@ -3,6 +3,10 @@ import "@testing-library/jest-dom/extend-expect";
 import {} from "store/slices/SectionsSlice";
 
 import { fireEvent, render, screen } from "@testing-library/react";
+import {
+  hexToPlayerColor,
+  swapPlayersColors,
+} from "components/ColorsMenu/ColorsMenu";
 import { setSectionPlayers, setSections } from "store/slices/SectionsSlice";
 
 import { COLOR_LIBRARY } from "constants/theme";
@@ -13,7 +17,6 @@ import React from "react";
 import configureStore from "redux-mock-store";
 import { setPlayersState } from "store/slices/PlayersSlice";
 import store from "store";
-import { swapPlayersColors } from "components/ColorsMenu/ColorsMenu";
 
 describe("ColorsMenu component tests", () => {
   let testStore: typeof store;
@@ -399,5 +402,9 @@ describe("ColorsMenu component tests", () => {
     expect(testStore.getState().Sections.sections[4].players).toEqual(
       res.sections[4].players
     );
+  });
+
+  test("hexToPlayerColor should return 'red' if hexcode '#c51111' is provided as the argument", () => {
+    expect(hexToPlayerColor("#c51111")).toBe("red");
   });
 });
