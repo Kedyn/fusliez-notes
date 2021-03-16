@@ -49,6 +49,49 @@ describe("ColorsMenu component tests", () => {
     ).toHaveLength(12);
   });
 
+  test("if current and target colors are the same", async () => {
+    const colorsMenu = await screen.getByTestId(/colors-menu/);
+
+    Object.values(colorsMenu)[0].child.memoizedProps.onChange({
+      hsl: {
+        h: 0,
+        s: 0.8411214953271029,
+        l: 0.4196078431372549,
+        a: 1,
+      },
+      hex: "#c51111",
+      rgb: {
+        r: 197,
+        g: 17,
+        b: 17,
+        a: 1,
+      },
+      hsv: {
+        h: 0,
+        s: 0.9137055837563453,
+        v: 0.7725490196078432,
+        a: 1,
+      },
+      oldHue: 0,
+      source: "hex",
+    });
+
+    expect(testStore.getState().Sections.sections[4].players).toEqual([
+      { id: "black" },
+      { id: "blue" },
+      { id: "brown" },
+      { id: "cyan" },
+      { id: "green" },
+      { id: "lime" },
+      { id: "orange" },
+      { id: "pink" },
+      { id: "purple" },
+      { id: "red" },
+      { id: "white" },
+      { id: "yellow" },
+    ]);
+  });
+
   test("should not swap color if the current and target colors are the same", async () => {
     const players = {
       black: {
