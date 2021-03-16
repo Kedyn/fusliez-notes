@@ -17,9 +17,9 @@ export interface IColorsMenuProps {
   currentColor: IPlayerColor;
 }
 
-interface ISwapPlayersColorsRes {
-  newPlayers: IPlayersState;
-  newSections: Array<ISection>;
+interface ISwapPlayersRes {
+  players: IPlayersState;
+  sections: Array<ISection>;
 }
 
 export const swapPlayersColors = (
@@ -27,7 +27,7 @@ export const swapPlayersColors = (
   targetPlayerColor: IPlayerColor,
   players: IPlayersState,
   sections: Array<ISection>
-): ISwapPlayersColorsRes | undefined => {
+): ISwapPlayersRes => {
   if (currentPlayerColor !== targetPlayerColor) {
     const newPlayers = getNewPlayersState((player: IPlayerColor) => ({
       ...players[player],
@@ -60,8 +60,8 @@ export const swapPlayersColors = (
       }),
     }));
 
-    return { newPlayers, newSections };
-  }
+    return { players: newPlayers, sections: newSections };
+  } else return { players, sections };
 };
 
 export const hexToPlayerColor = (hex: string): IPlayerColor => {
@@ -142,9 +142,10 @@ export default function ColorsMenu(props: IColorsMenuProps): JSX.Element {
             players,
             sections
           );
-          if (res?.newPlayers && res?.newSections) {
-            dispatch(setPlayersState(res?.newPlayers));
-            dispatch(setSections(res?.newSections));
+
+          if (currentColor !== hexToPlayerColor(color.hex)) {
+            dispatch(setPlayersState(res?.players));
+            dispatch(setSections(res?.sections));
           }
 
           setIsMenuShowing(false);
