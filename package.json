@@ -82,6 +82,7 @@
     "jest-canvas-mock": "^2.3.1",
     "jest-css-modules-transform": "^4.2.0",
     "jest-localstorage-mock": "^2.4.8",
+    "jsdom": "^16.5.1",
     "lint-staged": "^10.3.0",
     "node-json-minify": "^1.0.0",
     "normalize-jss": "^4.0.0",

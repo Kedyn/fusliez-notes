@@ -39,6 +39,6 @@ export class Rectangle extends Shape {
     );
   }
 
-  private width: number;
-  private height: number;
+  public width: number;
+  public height: number;
 }
