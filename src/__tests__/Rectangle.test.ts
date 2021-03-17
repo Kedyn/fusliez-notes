@@ -5,23 +5,23 @@ describe("Rectangle tests", () => {
   const vector = new Vector(100, 100);
   const rect = new Rectangle(vector, 50, 100);
 
+  test("getWidth() should get Rectangle's width (=== 50)", () => {
+    expect(rect.getWidth()).toBe(50);
+  });
+
+  test("getHeight() should get Rectangle's height (=== 100)", () => {
+    expect(rect.getHeight()).toBe(100);
+  });
+
   test("setWidth(100) should set Rectangle's width to 100", () => {
     rect.setWidth(100);
 
-    expect(rect.width).toBe(100);
+    expect(rect.getWidth()).toBe(100);
   });
 
   test("setHeight(50) should set Rectangle's height to 50", () => {
     rect.setHeight(50);
 
-    expect(rect.height).toBe(50);
-  });
-
-  test("getWidth() should get Rectangle's width (=== 100)", () => {
-    expect(rect.getWidth()).toBe(100);
-  });
-
-  test("getHeight() should get Rectangle's height (=== 50)", () => {
     expect(rect.getHeight()).toBe(50);
   });
 
