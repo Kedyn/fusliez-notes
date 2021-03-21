@@ -3,9 +3,9 @@ import "regenerator-runtime/runtime";
 import { fireEvent, render, screen } from "@testing-library/react";
 
 import DefaultComponentWrapper from "./DefaultComponentWrapper";
-import DesktopLayout from "../components/DesktopLayout";
+import DesktopLayout from "components/DesktopLayout";
 import React from "react";
-import registerFaIcons from "../utils/registerFaIcons";
+import registerFaIcons from "utils/registerFaIcons";
 import store from "store";
 
 describe("DesktopLayout tests", () => {
