@@ -107,6 +107,7 @@ export default function SectionsSettings(): JSX.Element {
                 section.id !== deadSection &&
                 section.id !== unusedSection
               }
+              data-testid={`delete-section-${section.id}`}
               disabled={
                 section.id === resetSection ||
                 section.id === deadSection ||

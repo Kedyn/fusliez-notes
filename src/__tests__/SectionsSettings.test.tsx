@@ -3,15 +3,10 @@ import "regenerator-runtime/runtime";
 import {
   addNewSection,
   delSection,
-  getDeadSectionId,
-  getResetSectionId,
-  getSections,
-  getUnusedSectionId,
   resetSectionsState,
   setDeadSection,
   setResetSection,
   setSectionTitle,
-  setSections,
   setUnusedSection,
 } from "store/slices/SectionsSlice";
 import { fireEvent, render, screen } from "@testing-library/react";
@@ -21,7 +16,6 @@ import React from "react";
 import SectionsSettings from "components/SectionsSettings";
 import configureStore from "redux-mock-store";
 import registerFaIcons from "utils/registerFaIcons";
-import { setIsMobile } from "store/slices/DeviceSlice";
 import store from "store";
 
 describe("SectionsSettings tests", () => {
@@ -31,7 +25,6 @@ describe("SectionsSettings tests", () => {
   beforeEach(async () => {
     const mockStore = configureStore();
     testStore = mockStore(store.getState());
-    // testStore.clearActions();
     dispatchSpy = jest.spyOn(testStore, "dispatch");
 
     registerFaIcons();
@@ -61,16 +54,7 @@ describe("SectionsSettings tests", () => {
     });
   });
 
-  // sections: [
-  //   { id: 0, title: 'main.lists.innocent', players: [] },
-  //   { id: 1, title: 'main.lists.suspicious', players: [] },
-  //   { id: 2, title: 'main.lists.evilHitList', players: [] },
-  //   { id: 3, title: 'main.lists.dead', players: [] },
-  //   { id: 4, title: 'main.lists.unknown', players: [Array] },
-  //   { id: 5, title: 'main.lists.unused', players: [] }
-  // ]
-
-  test("test to change section[3] as the *default* section", async () => {
+  test("should change section[3] as the *default/reset* section", async () => {
     const setResetButton = await screen.getByTestId("section-3-reset");
 
     fireEvent.click(setResetButton);
@@ -80,6 +64,77 @@ describe("SectionsSettings tests", () => {
     expect(dispatchSpy).toHaveBeenLastCalledWith({
       payload: 3,
       type: "Sections/setResetSection",
+    });
+  });
+
+  test("should change section[0] as the *dead* section", async () => {
+    const setDeadButton = await screen.getByTestId("section-0-dead");
+
+    fireEvent.click(setDeadButton);
+
+    await testStore.dispatch(setDeadSection(0));
+
+    expect(dispatchSpy).toHaveBeenLastCalledWith({
+      payload: 0,
+      type: "Sections/setDeadSection",
+    });
+  });
+
+  test("should change section[4] as the *unused* section", async () => {
+    const setUnusedButton = await screen.getByTestId("section-4-unused");
+
+    fireEvent.click(setUnusedButton);
+
+    await testStore.dispatch(setUnusedSection(4));
+
+    expect(dispatchSpy).toHaveBeenLastCalledWith({
+      payload: 4,
+      type: "Sections/setUnusedSection",
+    });
+  });
+
+  test("should delete section[1] from the list", async () => {
+    const deleteSectionButton = await screen.getByTestId("delete-section-1");
+
+    // console.log(deleteSectionButton);
+
+    fireEvent.click(deleteSectionButton);
+
+    await testStore.dispatch(delSection(1));
+
+    expect(dispatchSpy).toHaveBeenLastCalledWith({
+      payload: 1,
+      type: "Sections/delSection",
+    });
+  });
+
+  test("should reset all sections to default", async () => {
+    const resetButton = await screen.getByRole("button", {
+      name: "settings.resetSections",
+    });
+
+    fireEvent.click(resetButton);
+
+    await testStore.dispatch(resetSectionsState());
+
+    expect(dispatchSpy).toHaveBeenLastCalledWith({
+      payload: undefined,
+      type: "Sections/resetSectionsState",
+    });
+  });
+
+  test("should add a new section to the list", async () => {
+    const addButton = await screen.getByRole("button", {
+      name: "settings.addSection",
+    });
+
+    fireEvent.click(addButton);
+
+    await testStore.dispatch(addNewSection());
+
+    expect(dispatchSpy).toHaveBeenLastCalledWith({
+      payload: undefined,
+      type: "Sections/addNewSection",
     });
   });
 });
