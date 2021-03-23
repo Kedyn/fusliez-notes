@@ -11,13 +11,11 @@ import store from "store";
 
 describe("Notepad tests", () => {
   let testStore: MockStore;
-  let dispatchSpy: any;
 
   describe("not mobile", () => {
     beforeEach(async () => {
       const mockStore = configureStore();
       testStore = mockStore(store.getState());
-      dispatchSpy = jest.spyOn(testStore, "dispatch");
 
       registerFaIcons();
       await render(
@@ -65,7 +63,6 @@ describe("Notepad tests", () => {
       const mockStore = configureStore();
       store.dispatch(setIsMobile(true));
       testStore = mockStore(store.getState());
-      dispatchSpy = jest.spyOn(testStore, "dispatch");
 
       registerFaIcons();
       await render(
