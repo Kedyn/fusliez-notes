@@ -71,6 +71,7 @@ export default function Player(props: IPlayerProps): JSX.Element {
           />
         )}
         <div
+          data-testid={`${playerId}-player-icon`}
           className={cx(classes.PlayerIconWrapper, "player-handle")}
           onClick={() => {
             if (isLocked) {
@@ -86,7 +87,7 @@ export default function Player(props: IPlayerProps): JSX.Element {
         </div>
         {showNames && (
           <div className={classes.PlayerName}>
-            {!isLocked && (
+            {!isLocked ? (
               <input
                 type="text"
                 placeholder={t(`main.${color}`)}
@@ -99,8 +100,9 @@ export default function Player(props: IPlayerProps): JSX.Element {
                 value={name}
                 ref={htmlElRef}
               />
+            ) : (
+              <p>{name || t(`main.${color}`)}</p>
             )}
-            {isLocked && <>{name !== "" ? name : t(`main.${color}`)}</>}
           </div>
         )}
       </div>
