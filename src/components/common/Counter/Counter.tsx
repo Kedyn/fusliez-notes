@@ -47,8 +47,11 @@ export default function Counter(props: ICounterProps): JSX.Element {
         max={max}
         value={value}
         onChange={(evt: React.ChangeEvent<HTMLInputElement>) =>
-          setValue(parseInt(evt.currentTarget.value) || 0)
-        }
+          parseInt(evt.currentTarget.value) > 0
+            ? setValue(parseInt(evt.currentTarget.value))
+            : setValue(0)
+        } // previous implmentation was fine
+        // needed to change it for testing purposes
         className={classes.CounterInput}
       />
 

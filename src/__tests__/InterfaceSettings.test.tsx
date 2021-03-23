@@ -1,5 +1,3 @@
-import "regenerator-runtime/runtime";
-
 import { fireEvent, render, screen } from "@testing-library/react";
 
 import { I18nextProvider } from "react-i18next";
