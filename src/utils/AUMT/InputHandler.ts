@@ -152,6 +152,8 @@ class InputHandler {
   public onKeyDown(evt: ReactKeyboardEvent<HTMLCanvasElement>): void {
     evt.preventDefault();
 
+    console.log(evt.key);
+
     this.keys[evt.key] = true;
   }
 

@@ -1,5 +1,6 @@
 import Config from "../Config";
 import Layer from "../Layer";
+import Menu from "./Menu";
 import MiraHQ from "./Maps/MiraHQ";
 import Scene from "../Scene";
 import SceneManager from "../SceneManager";
@@ -19,6 +20,8 @@ export default class Loading extends Scene {
       "assets/images/TheSkeld.png",
       "Players",
       "assets/images/players.png",
+      "Logos",
+      "assets/images/logos.png",
     ]);
 
     const context = Config.getContext();
@@ -55,13 +58,15 @@ export default class Loading extends Scene {
 
   public update(): void {
     if (Config.isLoaded()) {
+      SceneManager.addScene("Menu", new Menu());
+
       SceneManager.addScene("MiraHQ", new MiraHQ());
 
       // TODO - Add PolusHQ Scene
       // TODO - Add The Airship Scene
       // TODO - Add The Skeld Scene
 
-      SceneManager.changeScene("MiraHQ");
+      SceneManager.changeScene("Menu");
     }
   }
 }

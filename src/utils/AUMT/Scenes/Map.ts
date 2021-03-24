@@ -2,7 +2,10 @@ import Config from "../Config";
 import { IMapName } from "utils/types/maps";
 import InputHandler from "../InputHandler";
 import Layer from "../Layer";
+import { MAPS_ICON } from "constants/maps";
+import Rectangle from "utils/math/Rectangle";
 import Scene from "../Scene";
+import SceneManager from "../SceneManager";
 import Sprite from "../Entities/Sprite";
 import Vector from "utils/math/Vector";
 
@@ -23,6 +26,24 @@ export default class Map extends Scene {
 
     this.offset = new Vector(0, 0);
     this.scale = new Vector(0, 0);
+
+    this.hub = new Layer();
+
+    this.hub.entities.push(
+      new Sprite(
+        "Logos",
+        new Rectangle(
+          new Vector(MAPS_ICON.x, MAPS_ICON.y),
+          MAPS_ICON.w,
+          MAPS_ICON.h
+        ),
+        new Rectangle(
+          new Vector(1900 - MAPS_ICON.w, 20),
+          MAPS_ICON.w,
+          MAPS_ICON.h
+        )
+      )
+    );
 
     const context = Config.getContext();
 
@@ -64,9 +85,15 @@ export default class Map extends Scene {
     super.update(step);
 
     if (InputHandler.getMouseButtons().LEFT) {
-      this.panning = true;
+      if (this.hub.entities[0].getRect().isPointInside(mousePosition)) {
+        SceneManager.changeScene("Menu");
 
-      this.panningPosition.set(mousePosition);
+        InputHandler.stopPropagation();
+      } else {
+        this.panning = true;
+
+        this.panningPosition.set(mousePosition);
+      }
     } else {
       this.panning = false;
     }
@@ -94,11 +121,22 @@ export default class Map extends Scene {
       Config.getOffset().add(beforeZoom);
     }
 
+    if (InputHandler.getKeys()["M"]) {
+      SceneManager.changeScene("Menu");
+    }
+
     InputHandler.restoreState();
+  }
+
+  public render(): void {
+    super.render();
+
+    this.hub.render();
   }
 
   protected panning: boolean;
   protected panningPosition: Vector;
   protected offset: Vector;
   protected scale: Vector;
+  protected hub: Layer;
 }
