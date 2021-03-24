@@ -47,6 +47,9 @@ export default class Sprite extends Entity {
     } else {
       this.scale = new Vector(1, 1);
     }
+
+    this.dstRect.setWidth(this.dstRect.getWidth() * this.scale.x);
+    this.dstRect.setHeight(this.dstRect.getHeight() * this.scale.y);
   }
 
   public setRects(srcRect?: Rectangle, dstRect?: Rectangle): void {
@@ -112,8 +115,6 @@ export default class Sprite extends Entity {
       const context = Config.getContext();
 
       context.save();
-
-      context.scale(this.scale.x, this.scale.y);
 
       context.drawImage(
         this.image,

@@ -1,8 +1,8 @@
+import { COLOR_LIBRARY } from "constants/theme";
+import Config from "../Config";
 import { IPlayerColor } from "utils/types/players";
 import InputHandler from "../InputHandler";
 import Layer from "../Layer";
-import Player from "../Entities/Player";
-import Rectangle from "utils/math/Rectangle";
 import Vector from "utils/math/Vector";
 
 export default class RadialMenu extends Layer {
@@ -13,7 +13,98 @@ export default class RadialMenu extends Layer {
   }
 
   public openMenu(): void {
-    if (this.entities.length === 0) {
+    this.center.set(InputHandler.getMousePosition());
+
+    this.visible = true;
+  }
+
+  public getCenter(): Vector {
+    return this.center;
+  }
+
+  // Modified from: https://www.eecs.umich.edu/courses/eecs380/HANDOUTS/PROJ2/InsidePoly.html
+  public pointInPolygon(polygon: Array<Vector>, point: Vector): boolean {
+    const N = polygon.length;
+
+    let counter = 0;
+    let xinters = 0;
+    let p1 = polygon[0];
+    let p2 = polygon[0];
+
+    for (let i = 1; i <= N; i++) {
+      p2 = polygon[i % N];
+
+      if (point.y > Math.min(p1.y, p2.y)) {
+        if (point.y <= Math.max(p1.y, p2.y)) {
+          if (point.x <= Math.max(p1.x, p2.x)) {
+            if (p1.y !== p2.y) {
+              xinters =
+                ((point.y - p1.y) * (p2.x - p1.x)) / (p2.y - p1.y) + p1.x;
+              if (p1.x === p2.x || point.x <= xinters) {
+                counter++;
+              }
+            }
+          }
+        }
+      }
+
+      p1 = p2;
+    }
+
+    return !(counter % 2 === 0);
+  }
+
+  public getColorFromPosition(position: Vector): IPlayerColor | null {
+    const colors: Array<IPlayerColor> = [
+      "black",
+      "blue",
+      "brown",
+      "cyan",
+      "green",
+      "lime",
+      "orange",
+      "pink",
+      "purple",
+      "red",
+      "white",
+      "yellow",
+    ];
+
+    const size = (2 * Math.PI) / colors.length;
+
+    let currentAngle = 0;
+
+    for (const color of colors) {
+      const p1 = new Vector(
+        this.center.x + 40 * Math.sin(currentAngle),
+        this.center.y + 40 * Math.cos(currentAngle)
+      );
+      const p2 = new Vector(
+        this.center.x + 100 * Math.sin(currentAngle),
+        this.center.y + 100 * Math.cos(currentAngle)
+      );
+      const p3 = new Vector(
+        this.center.x + 100 * Math.sin(currentAngle + size),
+        this.center.y + 100 * Math.cos(currentAngle + size)
+      );
+      const p4 = new Vector(
+        this.center.x + 40 * Math.sin(currentAngle + size),
+        this.center.y + 40 * Math.cos(currentAngle + size)
+      );
+
+      if (this.pointInPolygon([p1, p2, p3, p4], position)) {
+        return color;
+      }
+
+      currentAngle += size;
+    }
+
+    return null;
+  }
+
+  public render(): void {
+    if (this.visible) {
+      const context = Config.getContext();
       const colors: Array<IPlayerColor> = [
         "black",
         "blue",
@@ -29,44 +120,42 @@ export default class RadialMenu extends Layer {
         "yellow",
       ];
 
+      const size = (2 * Math.PI) / colors.length;
+
+      let currentAngle = 0;
+
+      context.save();
+      context.lineWidth = 1;
+
       for (const color of colors) {
-        this.entities.push(
-          new Player(color, new Rectangle(new Vector(), 20, 40))
+        context.fillStyle = COLOR_LIBRARY[color].base;
+
+        context.beginPath();
+        context.moveTo(
+          this.center.x + 40 * Math.sin(currentAngle),
+          this.center.y + 40 * Math.cos(currentAngle)
         );
+        context.lineTo(
+          this.center.x + 100 * Math.sin(currentAngle),
+          this.center.y + 100 * Math.cos(currentAngle)
+        );
+        context.lineTo(
+          this.center.x + 100 * Math.sin(currentAngle + size),
+          this.center.y + 100 * Math.cos(currentAngle + size)
+        );
+        context.lineTo(
+          this.center.x + 40 * Math.sin(currentAngle + size),
+          this.center.y + 40 * Math.cos(currentAngle + size)
+        );
+        context.closePath();
+
+        context.fill();
+
+        currentAngle += size;
       }
+
+      context.restore();
     }
-
-    const center = InputHandler.getMousePosition();
-    const size = 30;
-
-    let currentAngle = 0;
-
-    for (const entity of this.entities) {
-      const position = new Vector();
-
-      position.x =
-        center.x +
-        80 * Math.sin(Math.PI - (Math.PI / 2 - currentAngle + size)) -
-        10;
-      position.y =
-        center.y +
-        80 * Math.cos(Math.PI - (Math.PI / 2 - currentAngle + size)) -
-        20;
-
-      entity.setPosition(position);
-
-      currentAngle += size;
-    }
-
-    this.center.set(center);
-  }
-
-  public getCenter(): Vector {
-    return this.center;
-  }
-
-  public render(): void {
-    super.render();
   }
 
   private center: Vector;

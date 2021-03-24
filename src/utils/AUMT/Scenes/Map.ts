@@ -3,6 +3,8 @@ import { IMapName } from "utils/types/maps";
 import InputHandler from "../InputHandler";
 import Layer from "../Layer";
 import { MAPS_ICON } from "constants/maps";
+import Players from "../Layers/Players";
+import RadialMenu from "../Layers/RadialMenu";
 import Rectangle from "utils/math/Rectangle";
 import Scene from "../Scene";
 import SceneManager from "../SceneManager";
@@ -38,12 +40,17 @@ export default class Map extends Scene {
           MAPS_ICON.h
         ),
         new Rectangle(
-          new Vector(1900 - MAPS_ICON.w, 20),
-          MAPS_ICON.w,
-          MAPS_ICON.h
+          new Vector(1900 - MAPS_ICON.w * 3, 20),
+          MAPS_ICON.w * 3,
+          MAPS_ICON.h * 3
         )
       )
     );
+
+    this.menu = new RadialMenu();
+    this.players = new Players();
+
+    this.layers.push(this.players);
 
     const context = Config.getContext();
 
@@ -70,7 +77,24 @@ export default class Map extends Scene {
   public update(step: number): void {
     const mousePosition = InputHandler.getMousePosition();
 
-    // TODO - Add RadialMenuLogic
+    if (this.menu.getVisible()) {
+      if (!InputHandler.getMouseButtons().RIGHT) {
+        const color = this.menu.getColorFromPosition(mousePosition);
+
+        if (color !== null) {
+          this.players.addPlayer(
+            color,
+            Config.screenToWorld(this.menu.getCenter())
+          );
+        }
+
+        this.menu.setVisible(false);
+      }
+
+      InputHandler.stopPropagation();
+    }
+
+    let panned = false;
 
     if (this.panning && InputHandler.getMouseButtons().LEFT) {
       Config.getOffset().subtract(
@@ -80,6 +104,8 @@ export default class Map extends Scene {
       this.panningPosition.set(mousePosition);
 
       InputHandler.stopPropagation();
+
+      panned = true;
     }
 
     super.update(step);
@@ -89,12 +115,12 @@ export default class Map extends Scene {
         SceneManager.changeScene("Menu");
 
         InputHandler.stopPropagation();
-      } else {
+      } else if (!this.panning) {
         this.panning = true;
 
         this.panningPosition.set(mousePosition);
       }
-    } else {
+    } else if (!panned && this.panning) {
       this.panning = false;
     }
 
@@ -121,6 +147,14 @@ export default class Map extends Scene {
       Config.getOffset().add(beforeZoom);
     }
 
+    if (InputHandler.getMouseButtons().RIGHT) {
+      this.menu.openMenu();
+    }
+
+    if (InputHandler.getDoubleClicked()) {
+      this.players.clear();
+    }
+
     if (InputHandler.getKeys()["M"]) {
       SceneManager.changeScene("Menu");
     }
@@ -132,6 +166,8 @@ export default class Map extends Scene {
     super.render();
 
     this.hub.render();
+
+    this.menu.render();
   }
 
   protected panning: boolean;
@@ -139,4 +175,6 @@ export default class Map extends Scene {
   protected offset: Vector;
   protected scale: Vector;
   protected hub: Layer;
+  protected menu: RadialMenu;
+  protected players: Players;
 }

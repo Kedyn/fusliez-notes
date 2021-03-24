@@ -109,8 +109,6 @@ export default abstract class Entity {
         InputHandler.stopPropagation();
       } else {
         this.active = false;
-
-        console.log(this.getRect());
       }
     }
 

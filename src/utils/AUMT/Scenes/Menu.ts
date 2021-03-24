@@ -28,7 +28,7 @@ export default class Menu extends Scene {
           LOGOS.MiraHQ.w,
           LOGOS.MiraHQ.h
         ),
-        new Rectangle(new Vector(700, 500), 200, 45)
+        new Rectangle(new Vector(500, 500), 400, 90)
       )
     );
 
@@ -40,7 +40,7 @@ export default class Menu extends Scene {
           LOGOS.Polus.w,
           LOGOS.Polus.h
         ),
-        new Rectangle(new Vector(1000, 500), 200, 45)
+        new Rectangle(new Vector(1100, 500), 400, 90)
       )
     );
 
@@ -52,7 +52,7 @@ export default class Menu extends Scene {
           LOGOS.TheAirship.w,
           LOGOS.TheAirship.h
         ),
-        new Rectangle(new Vector(700, 600), 200, 45)
+        new Rectangle(new Vector(500, 620), 400, 90)
       )
     );
 
@@ -64,7 +64,7 @@ export default class Menu extends Scene {
           LOGOS.TheSkeld.w,
           LOGOS.TheSkeld.h
         ),
-        new Rectangle(new Vector(1000, 600), 200, 45)
+        new Rectangle(new Vector(1100, 620), 400, 90)
       )
     );
 
