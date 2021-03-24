@@ -1,9 +1,9 @@
-import CanvasGlobals from "../CanvasGlobals";
-import CanvasObject from "../CanvasObject";
+import Config from "../Config";
+import Entity from "../Entity";
 import Rectangle from "utils/math/Rectangle";
 import Vector from "utils/math/Vector";
 
-export default class CanvasText extends CanvasObject {
+export default class TextLine extends Entity {
   public constructor(
     text: string,
     position: Vector,
@@ -35,8 +35,8 @@ export default class CanvasText extends CanvasObject {
 
     if (this.center) {
       this.position.set(
-        position.x - this.rect.getWidth() / 2,
-        position.y - this.rect.getHeight() / 2
+        position.x + this.rect.getWidth() / 2,
+        position.y + this.rect.getHeight() / 2
       );
     }
 
@@ -61,12 +61,12 @@ export default class CanvasText extends CanvasObject {
     return this.position;
   }
 
-  public getRect(): Readonly<Rectangle> {
+  public getRect(): Rectangle {
     return this.rect;
   }
 
   public render(): void {
-    const context = CanvasGlobals.getContext();
+    const context = Config.getContext();
 
     if (this.text != "" && this.visible) {
       context.save();
@@ -78,9 +78,7 @@ export default class CanvasText extends CanvasObject {
         context.textAlign = "center";
       }
 
-      context.font = `${this.fontSize}px ${
-        CanvasGlobals.getTheme().fontFamily
-      }`;
+      context.font = `${this.fontSize}px ${Config.getTheme().fontFamily}`;
 
       context.strokeStyle = this.strokeStyle;
       context.fillStyle = this.fillStyle;
@@ -89,7 +87,7 @@ export default class CanvasText extends CanvasObject {
       context.strokeText(this.text, this.position.x, this.position.y);
       context.fillText(this.text, this.position.x, this.position.y);
 
-      if (CanvasGlobals.getDebug()) {
+      if (Config.getDebug()) {
         context.strokeStyle = "red";
 
         if (this.center) {
@@ -128,11 +126,11 @@ export default class CanvasText extends CanvasObject {
   private rect: Rectangle;
 
   private setRect(): void {
-    const context = CanvasGlobals.getContext();
+    const context = Config.getContext();
 
     context.save();
 
-    context.font = `${this.fontSize}px ${CanvasGlobals.getTheme().fontFamily}`;
+    context.font = `${this.fontSize}px ${Config.getTheme().fontFamily}`;
 
     const width = context.measureText(this.text).width;
 

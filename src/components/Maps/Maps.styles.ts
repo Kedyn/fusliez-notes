@@ -2,26 +2,17 @@ import { createUseStyles } from "react-jss";
 
 export default createUseStyles({
   Maps: {
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
     padding: "1rem",
     flexGrow: 1,
+    maxHeight: "calc((var(--vh, 1vh) * 100) - 2.2rem)",
+    fallbacks: {
+      maxHeight: "calc(100vh - 2.2rem)",
+    },
   },
-  MapsHeader: {
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center",
-    marginBottom: "1rem",
-  },
-  MapsTitle: {
-    fontSize: "1.25rem",
-    fontWeight: 500,
-    letterSpacing: "0.05em",
-    marginRight: "1rem",
-    flex: "1 0 auto",
-  },
-  MapsContainer: {
-    flexGrow: 1,
+  MapsCanvas: {
+    width: "100%",
+    height: "100%",
+    overscrollBehavior: "none",
+    touchAction: "none",
   },
 });

@@ -1,9 +1,9 @@
-import CanvasGlobals from "../CanvasGlobals";
-import CanvasObject from "../CanvasObject";
+import Config from "../Config";
+import Entity from "../Entity";
 import Rectangle from "utils/math/Rectangle";
 import Vector from "utils/math/Vector";
 
-export default class CanvasImage extends CanvasObject {
+export default class Sprite extends Entity {
   public constructor(
     image: string,
     srcRect?: Rectangle,
@@ -13,7 +13,14 @@ export default class CanvasImage extends CanvasObject {
     draggable?: boolean
   ) {
     super(visible, draggable);
-    this.image = CanvasGlobals.getImages()[image];
+
+    const img = Config.getImages().get(image);
+
+    if (img !== undefined) {
+      this.image = img;
+    } else {
+      this.image = new Image();
+    }
 
     if (srcRect !== undefined) {
       this.srcRect = srcRect;
@@ -92,13 +99,17 @@ export default class CanvasImage extends CanvasObject {
     this.dstRect.setPosition(position.x, position.y);
   }
 
-  public getRect(): Readonly<Rectangle> {
+  public getSourceRect(): Readonly<Rectangle> {
+    return this.srcRect;
+  }
+
+  public getRect(): Rectangle {
     return this.dstRect;
   }
 
   public render(): void {
     if (this.visible) {
-      const context = CanvasGlobals.getContext();
+      const context = Config.getContext();
 
       context.save();
 
@@ -116,7 +127,7 @@ export default class CanvasImage extends CanvasObject {
         this.dstRect.getHeight()
       );
 
-      if (CanvasGlobals.getDebug()) {
+      if (Config.getDebug()) {
         context.save();
 
         context.strokeStyle = "red";

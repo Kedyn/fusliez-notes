@@ -1,19 +1,19 @@
 /* The following is a base class, therefore some vars might not be used here */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 
-import CanvasGlobals from "./CanvasGlobals";
+import Config from "./Config";
 import InputHandler from "./InputHandler";
 import Rectangle from "utils/math/Rectangle";
 import Vector from "utils/math/Vector";
 
 /**
- * Base class for all objects in the canvas.
+ * Base class for all entities in the AUMT.
  *
  * @export
  * @abstract
- * @class CanvasObject
+ * @class Entity
  */
-export default abstract class CanvasObject {
+export default abstract class Entity {
   /**
    * Creates an instance of CanvasObject.
    *
@@ -80,10 +80,10 @@ export default abstract class CanvasObject {
    * Returns the rectangle of the CanvasObject.
    *
    * @abstract
-   * @return {*}  {Readonly<Rectangle>} The rectangle of the CanvasObject.
+   * @return {*}  {Rectangle} The rectangle of the CanvasObject.
    * @memberof CanvasObject
    */
-  public abstract getRect(): Readonly<Rectangle>;
+  public abstract getRect(): Rectangle;
 
   /**
    * Updates the object.
@@ -92,9 +92,7 @@ export default abstract class CanvasObject {
    * @memberof CanvasObject
    */
   public update(step: number): void {
-    const position = CanvasGlobals.screenToWorld(
-      InputHandler.getMousePosition()
-    );
+    const position = Config.screenToWorld(InputHandler.getMousePosition());
     const mouseDown = InputHandler.getMouseButtons().LEFT;
 
     if (this.active) {
@@ -103,15 +101,17 @@ export default abstract class CanvasObject {
 
         this.setPosition(
           new Vector(
-            position.x + rect.getWidth() / 2,
-            position.y + rect.getHeight() / 2
+            position.x - rect.getWidth() / 2,
+            position.y - rect.getHeight() / 2
           )
         );
 
         InputHandler.stopPropagation();
-      }
+      } else {
+        this.active = false;
 
-      this.active = mouseDown;
+        console.log(this.getRect());
+      }
     }
 
     if (this.visible && this.draggable && mouseDown) {
