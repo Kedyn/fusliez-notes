@@ -1,4 +1,4 @@
-import { fireEvent, render, screen } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 
 import DefaultComponentWrapper from "./DefaultComponentWrapper";
 import { MockStore } from "redux-mock-store";
@@ -9,6 +9,7 @@ import registerFaIcons from "utils/registerFaIcons";
 import { setIsMobile } from "store/slices/DeviceSlice";
 import store from "store";
 import { togglePlayerEditLock } from "store/slices/PlayerEditLockSlice";
+import userEvent from "@testing-library/user-event";
 
 describe("Sections tests", () => {
   let testStore: MockStore;
@@ -33,7 +34,7 @@ describe("Sections tests", () => {
         name: "controls.lockEditing",
       });
 
-      fireEvent.click(lockEditButton);
+      userEvent.click(lockEditButton);
 
       expect(dispatchSpy).toHaveBeenLastCalledWith({
         payload: undefined,
@@ -71,7 +72,7 @@ describe("Sections tests", () => {
         name: "controls.resetSections",
       });
 
-      fireEvent.click(resetSectionButton);
+      userEvent.click(resetSectionButton);
 
       expect(dispatchSpy).toHaveBeenLastCalledWith({
         payload: 4,

@@ -8,6 +8,7 @@ import configureStore from "redux-mock-store";
 import registerFaIcons from "utils/registerFaIcons";
 import { resetAll } from "components/MainControls/MainControls";
 import store from "store";
+import userEvent from "@testing-library/user-event";
 
 describe("MainControls tests", () => {
   let testStore: MockStore;
@@ -43,7 +44,7 @@ describe("MainControls tests", () => {
         name: "crewmate-wins-increment",
       });
 
-      fireEvent.click(incrementWinButton);
+      userEvent.click(incrementWinButton);
 
       expect(dispatchSpy).toHaveBeenCalledWith({
         payload: undefined,
@@ -56,7 +57,7 @@ describe("MainControls tests", () => {
         name: "crewmate-wins-decrement",
       });
 
-      fireEvent.click(decrementWinButton);
+      userEvent.click(decrementWinButton);
 
       expect(dispatchSpy).toHaveBeenCalledWith({
         payload: undefined,
@@ -64,10 +65,10 @@ describe("MainControls tests", () => {
       });
     });
 
-    test("store should have last dispatched with setCrewmateWins onChange", () => {
+    test("store should have last dispatched with setCrewmateWins onChange", async () => {
       const setWinInput = screen.getByLabelText("set-crewmate-wins");
 
-      fireEvent.change(setWinInput, { target: { value: 17 } });
+      fireEvent.change(setWinInput, { target: { value: "17" } });
 
       expect(dispatchSpy).toHaveBeenCalledWith({
         payload: 17,
@@ -82,7 +83,7 @@ describe("MainControls tests", () => {
         name: "impostor-wins-increment",
       });
 
-      fireEvent.click(incrementWinButton);
+      userEvent.click(incrementWinButton);
 
       expect(dispatchSpy).toHaveBeenCalledWith({
         payload: undefined,
@@ -95,7 +96,7 @@ describe("MainControls tests", () => {
         name: "impostor-wins-decrement",
       });
 
-      fireEvent.click(decrementWinButton);
+      userEvent.click(decrementWinButton);
 
       expect(dispatchSpy).toHaveBeenCalledWith({
         payload: undefined,
@@ -103,10 +104,10 @@ describe("MainControls tests", () => {
       });
     });
 
-    test("store should have last dispatched with setImpostorWins onChange", () => {
+    test("store should have last dispatched with setImpostorWins onChange", async () => {
       const setWinInput = screen.getByLabelText("set-impostor-wins");
 
-      fireEvent.change(setWinInput, { target: { value: 66 } });
+      fireEvent.change(setWinInput, { target: { value: "66" } });
 
       expect(dispatchSpy).toHaveBeenCalledWith({
         payload: 66,
@@ -121,7 +122,7 @@ describe("MainControls tests", () => {
         name: "crewmate-losses-increment",
       });
 
-      fireEvent.click(incrementLossButton);
+      userEvent.click(incrementLossButton);
 
       expect(dispatchSpy).toHaveBeenCalledWith({
         payload: undefined,
@@ -134,7 +135,7 @@ describe("MainControls tests", () => {
         name: "crewmate-losses-decrement",
       });
 
-      fireEvent.click(decrementLossButton);
+      userEvent.click(decrementLossButton);
 
       expect(dispatchSpy).toHaveBeenCalledWith({
         payload: undefined,
@@ -142,10 +143,10 @@ describe("MainControls tests", () => {
       });
     });
 
-    test("store should have last dispatched with setCrewmateLosses onChange", () => {
+    test("store should have last dispatched with setCrewmateLosses onChange", async () => {
       const setWinInput = screen.getByLabelText("set-crewmate-losses");
 
-      fireEvent.change(setWinInput, { target: { value: 3 } });
+      await userEvent.type(setWinInput, " 3");
 
       expect(dispatchSpy).toHaveBeenCalledWith({
         payload: 3,
@@ -160,7 +161,7 @@ describe("MainControls tests", () => {
         name: "impostor-losses-increment",
       });
 
-      fireEvent.click(incrementLossButton);
+      userEvent.click(incrementLossButton);
 
       expect(dispatchSpy).toHaveBeenCalledWith({
         payload: undefined,
@@ -173,7 +174,7 @@ describe("MainControls tests", () => {
         name: "impostor-losses-decrement",
       });
 
-      fireEvent.click(decrementLossButton);
+      userEvent.click(decrementLossButton);
 
       expect(dispatchSpy).toHaveBeenCalledWith({
         payload: undefined,
@@ -181,10 +182,10 @@ describe("MainControls tests", () => {
       });
     });
 
-    test("store should have last dispatched with setImpostorLosses onChange", () => {
+    test("store should have last dispatched with setImpostorLosses onChange", async () => {
       const setWinInput = screen.getByLabelText("set-impostor-losses");
 
-      fireEvent.change(setWinInput, { target: { value: 10 } });
+      fireEvent.change(setWinInput, { target: { value: "10" } });
 
       expect(dispatchSpy).toHaveBeenCalledWith({
         payload: 10,
@@ -198,7 +199,7 @@ describe("MainControls tests", () => {
       name: "controls.resetScores",
     });
 
-    fireEvent.click(resetScoreButton);
+    userEvent.click(resetScoreButton);
 
     expect(dispatchSpy).toHaveBeenCalledWith({
       payload: undefined,
@@ -211,7 +212,7 @@ describe("MainControls tests", () => {
       name: "controls.resetSections",
     });
 
-    fireEvent.click(resetSectionButton);
+    userEvent.click(resetSectionButton);
 
     expect(testStore.getActions()).toEqual([
       { type: "Sections/movePlayersToResetSection", payload: undefined },
@@ -224,7 +225,7 @@ describe("MainControls tests", () => {
       name: "controls.resetNames",
     });
 
-    fireEvent.click(resetNamesButton);
+    userEvent.click(resetNamesButton);
 
     expect(dispatchSpy).toHaveBeenCalledWith({
       payload: undefined,
@@ -237,7 +238,7 @@ describe("MainControls tests", () => {
       name: "controls.resetAll",
     });
 
-    fireEvent.click(resetAllButton);
+    userEvent.click(resetAllButton);
 
     expect(testStore.getActions()).toEqual([
       { type: "Scores/resetScoresState", payload: undefined },

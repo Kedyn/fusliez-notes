@@ -1,10 +1,10 @@
-import { fireEvent, render } from "@testing-library/react";
-
 import App from "../components/App";
 import { I18nextProvider } from "react-i18next";
 import { NAMESPACE } from "constants/main";
 import React from "react";
 import i18n from "../i18n";
+import { render } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 
 describe("App tests", () => {
   test("disclaimer should be on the page", async () => {
@@ -31,7 +31,7 @@ describe("App tests", () => {
     const understandButton = await getByRole("button", {
       name: /main.understand/i,
     });
-    fireEvent.click(understandButton);
+    userEvent.click(understandButton);
 
     expect(localStorage.setItem).toHaveBeenLastCalledWith(
       `${NAMESPACE}disclaimer`,

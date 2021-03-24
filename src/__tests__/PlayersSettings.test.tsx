@@ -1,4 +1,4 @@
-import { fireEvent, render, screen } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 
 import DefaultComponentWrapper from "./DefaultComponentWrapper";
 import { MockStore } from "redux-mock-store";
@@ -7,6 +7,7 @@ import React from "react";
 import configureStore from "redux-mock-store";
 import registerFaIcons from "utils/registerFaIcons";
 import store from "store";
+import userEvent from "@testing-library/user-event";
 
 describe("PlayersSettings tests", () => {
   let testStore: MockStore;
@@ -28,7 +29,7 @@ describe("PlayersSettings tests", () => {
   test("store should have been last called with setShowNames", async () => {
     const [playerNamesSwitch] = screen.getAllByRole("checkbox");
 
-    fireEvent.click(playerNamesSwitch);
+    userEvent.click(playerNamesSwitch);
 
     expect(dispatchSpy).toHaveBeenCalledWith({
       payload: false,
@@ -39,7 +40,7 @@ describe("PlayersSettings tests", () => {
   test("store should have been last called with isColorBlind", async () => {
     const switches = screen.getAllByRole("checkbox");
 
-    fireEvent.click(switches[1]);
+    userEvent.click(switches[1]);
 
     expect(dispatchSpy).toHaveBeenCalledWith({
       payload: true,

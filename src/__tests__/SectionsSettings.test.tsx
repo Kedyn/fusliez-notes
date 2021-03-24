@@ -7,7 +7,7 @@ import {
   setSectionTitle,
   setUnusedSection,
 } from "store/slices/SectionsSlice";
-import { fireEvent, render, screen } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 
 import DefaultComponentWrapper from "./DefaultComponentWrapper";
 import { MockStore } from "redux-mock-store";
@@ -16,6 +16,7 @@ import SectionsSettings from "components/SectionsSettings";
 import configureStore from "redux-mock-store";
 import registerFaIcons from "utils/registerFaIcons";
 import store from "store";
+import userEvent from "@testing-library/user-event";
 
 describe("SectionsSettings tests", () => {
   let testStore: MockStore;
@@ -39,9 +40,7 @@ describe("SectionsSettings tests", () => {
       "settings.sectionName"
     );
 
-    fireEvent.change(sectionNameInput, {
-      target: { value: "testing-innocent" },
-    });
+    await userEvent.type(sectionNameInput, "testing-innocent");
 
     await testStore.dispatch(
       setSectionTitle({ section: 0, newTitle: "testing-innocent" })
@@ -56,7 +55,7 @@ describe("SectionsSettings tests", () => {
   test("the store should been last dispatched with the setResetSection function with section id 3", async () => {
     const setResetButton = await screen.getByTestId("section-3-reset");
 
-    fireEvent.click(setResetButton);
+    userEvent.click(setResetButton);
 
     await testStore.dispatch(setResetSection(3));
 
@@ -69,7 +68,7 @@ describe("SectionsSettings tests", () => {
   test("the store should been last dispatched with the setDeadSection function with section id 0", async () => {
     const setDeadButton = await screen.getByTestId("section-0-dead");
 
-    fireEvent.click(setDeadButton);
+    userEvent.click(setDeadButton);
 
     await testStore.dispatch(setDeadSection(0));
 
@@ -82,7 +81,7 @@ describe("SectionsSettings tests", () => {
   test("the store should been last dispatched with the setUnusedSection function with section id 4", async () => {
     const setUnusedButton = await screen.getByTestId("section-4-unused");
 
-    fireEvent.click(setUnusedButton);
+    userEvent.click(setUnusedButton);
 
     await testStore.dispatch(setUnusedSection(4));
 
@@ -95,7 +94,7 @@ describe("SectionsSettings tests", () => {
   test("the store should been last dispatched with the delSection function with section id 1", async () => {
     const deleteSectionButton = await screen.getByTestId("delete-section-1");
 
-    fireEvent.click(deleteSectionButton);
+    userEvent.click(deleteSectionButton);
 
     await testStore.dispatch(delSection(1));
 
@@ -110,7 +109,7 @@ describe("SectionsSettings tests", () => {
       name: "settings.resetSections",
     });
 
-    fireEvent.click(resetButton);
+    userEvent.click(resetButton);
 
     await testStore.dispatch(resetSectionsState());
 
@@ -125,7 +124,7 @@ describe("SectionsSettings tests", () => {
       name: "settings.addSection",
     });
 
-    fireEvent.click(addButton);
+    userEvent.click(addButton);
 
     await testStore.dispatch(addNewSection());
 

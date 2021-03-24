@@ -1,5 +1,5 @@
 import React, { KeyboardEvent } from "react";
-import { fireEvent, render, screen } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 
 import { DEFAULT_RESET_SECTION_PLAYERS } from "constants/sections";
 import DefaultComponentWrapper from "./DefaultComponentWrapper";

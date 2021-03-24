@@ -1,10 +1,11 @@
-import { fireEvent, render, screen } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 
 import DefaultComponentWrapper from "./DefaultComponentWrapper";
 import DesktopLayout from "components/DesktopLayout";
 import React from "react";
 import registerFaIcons from "utils/registerFaIcons";
 import store from "store";
+import userEvent from "@testing-library/user-event";
 
 describe("DesktopLayout tests", () => {
   beforeEach(async () => {
@@ -19,7 +20,7 @@ describe("DesktopLayout tests", () => {
   test("expand button test", async () => {
     const expandButton = await screen.findByLabelText("expand");
 
-    fireEvent.click(expandButton);
+    userEvent.click(expandButton);
 
     expect(expandButton).toBeInTheDocument();
   });

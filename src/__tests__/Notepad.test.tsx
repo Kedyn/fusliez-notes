@@ -1,4 +1,4 @@
-import { fireEvent, render, screen } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 
 import DefaultComponentWrapper from "./DefaultComponentWrapper";
 import { MockStore } from "redux-mock-store";
@@ -8,6 +8,7 @@ import configureStore from "redux-mock-store";
 import registerFaIcons from "utils/registerFaIcons";
 import { setIsMobile } from "store/slices/DeviceSlice";
 import store from "store";
+import userEvent from "@testing-library/user-event";
 
 describe("Notepad tests", () => {
   let testStore: MockStore;
@@ -27,10 +28,9 @@ describe("Notepad tests", () => {
 
     test("simulate typing in the textarea", async () => {
       const textarea = screen.getByRole("textbox");
+      userEvent.clear(textarea);
 
-      fireEvent.change(textarea, {
-        target: { value: "testing the textarea input" },
-      });
+      await userEvent.type(textarea, "testing the textarea input");
 
       expect(Object.values(textarea)[1].value).toBe(
         "testing the textarea input"
@@ -39,10 +39,8 @@ describe("Notepad tests", () => {
 
     test("simulate reset notes with button click", async () => {
       const textarea = screen.getByRole("textbox");
-
-      fireEvent.change(textarea, {
-        target: { value: "testing the textarea input" },
-      });
+      userEvent.clear(textarea);
+      await userEvent.type(textarea, "testing the textarea input");
 
       expect(Object.values(textarea)[1].value).toBe(
         "testing the textarea input"
@@ -52,7 +50,7 @@ describe("Notepad tests", () => {
         name: "controls.resetNotes",
       });
 
-      fireEvent.click(resetButton);
+      userEvent.click(resetButton);
 
       expect(Object.values(textarea)[1].value).toBe("");
     });
@@ -75,9 +73,7 @@ describe("Notepad tests", () => {
     test("simulate reset notes with button click (mobile)", async () => {
       const textarea = screen.getByRole("textbox");
 
-      fireEvent.change(textarea, {
-        target: { value: "testing the textarea input" },
-      });
+      await userEvent.type(textarea, "testing the textarea input");
 
       expect(Object.values(textarea)[1].value).toBe(
         "testing the textarea input"
@@ -87,7 +83,7 @@ describe("Notepad tests", () => {
         name: "controls.resetNotes",
       });
 
-      fireEvent.click(resetButton);
+      userEvent.click(resetButton);
 
       expect(Object.values(textarea)[1].value).toBe("");
     });

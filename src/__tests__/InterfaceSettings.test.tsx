@@ -1,4 +1,4 @@
-import { fireEvent, render, screen } from "@testing-library/react";
+import { fireEvent, render } from "@testing-library/react";
 
 import { I18nextProvider } from "react-i18next";
 import InterfaceSettings from "../components/InterfaceSettings";

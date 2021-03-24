@@ -1,4 +1,4 @@
-import { fireEvent, render, screen } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 
 import DefaultComponentWrapper from "./DefaultComponentWrapper";
 import { MockStore } from "redux-mock-store";
@@ -8,7 +8,7 @@ import configureStore from "redux-mock-store";
 import registerFaIcons from "utils/registerFaIcons";
 import { setIsMobile } from "store/slices/DeviceSlice";
 import store from "store";
-import { togglePlayerEditLock } from "store/slices/PlayerEditLockSlice";
+import userEvent from "@testing-library/user-event";
 
 describe("Settings tests", () => {
   let testStore: MockStore;
@@ -37,7 +37,7 @@ describe("Settings tests", () => {
       name: "settings.sectionsTab",
     });
 
-    fireEvent.click(sectionsTabButton);
+    userEvent.click(sectionsTabButton);
 
     expect(Object.values(sectionsTabButton)[1].className).toMatch(/pressed/);
   });

@@ -33,7 +33,7 @@ describe("Player tests", () => {
       );
     });
 
-    test("test player name input", () => {
+    test("test player name input", async () => {
       const input = screen.getByRole("textbox");
 
       fireEvent.change(input, { target: { value: "fuslie" } });
@@ -44,7 +44,7 @@ describe("Player tests", () => {
       });
     });
 
-    test("should render color menu when player icon is clicked", () => {
+    test("should render color menu when player icon is clicked", async () => {
       const input = screen.getByRole("textbox");
 
       fireEvent.change(input, { target: { value: "fuslie" } });
@@ -57,7 +57,7 @@ describe("Player tests", () => {
 
     test("should show color menu when player icon is clicked", () => {
       const icon = screen.getByTestId("orange-player-icon");
-      fireEvent.click(icon);
+      userEvent.click(icon);
 
       const colorsMenu = screen.queryByTestId("colors-menu");
 
@@ -113,7 +113,7 @@ describe("Player tests", () => {
 
     test("should NOT show color menu when player icon is clicked since it's locked", () => {
       const icon = screen.getByTestId("orange-player-icon");
-      fireEvent.click(icon);
+      userEvent.click(icon);
 
       const colorsMenu = screen.queryByTestId("colors-menu");
 
