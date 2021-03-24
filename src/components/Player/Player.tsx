@@ -15,23 +15,6 @@ export interface IPlayerProps {
   playerId: IPlayerColor;
 }
 
-export const handleKeyPress = (
-  event: React.KeyboardEvent<HTMLInputElement>,
-  htmlElRef: React.RefObject<HTMLInputElement>
-): void => {
-  if (event.key === "Enter") {
-    const currentInput = (htmlElRef.current as unknown) as HTMLInputElement;
-    const nextParent =
-      currentInput.parentElement?.parentElement?.parentElement
-        ?.nextElementSibling ??
-      currentInput.parentElement?.parentElement?.parentElement?.parentElement
-        ?.firstElementChild;
-    const nextInput = nextParent?.lastChild?.lastChild
-      ?.firstChild as HTMLInputElement;
-    nextInput?.select();
-  }
-};
-
 export default function Player(props: IPlayerProps): JSX.Element {
   const { playerId } = props;
   const { name, color } = useSelector(getPlayer(playerId));
@@ -99,7 +82,19 @@ export default function Player(props: IPlayerProps): JSX.Element {
                 onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
                   handleChange(event)
                 }
-                onKeyPress={(e) => handleKeyPress(e, htmlElRef)}
+                onKeyPress={(event) => {
+                  if (event.key === "Enter") {
+                    const currentInput = (htmlElRef.current as unknown) as HTMLInputElement;
+                    const nextParent =
+                      currentInput.parentElement?.parentElement?.parentElement
+                        ?.nextElementSibling ??
+                      currentInput.parentElement?.parentElement?.parentElement
+                        ?.parentElement?.firstElementChild;
+                    const nextInput = nextParent?.lastChild?.lastChild
+                      ?.firstChild as HTMLInputElement;
+                    nextInput?.select();
+                  }
+                }}
                 value={name}
                 ref={htmlElRef}
               />

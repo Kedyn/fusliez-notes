@@ -29,7 +29,7 @@ export default function Section(props: ISectionProps): JSX.Element {
   const dispatch = useDispatch();
 
   return (
-    <div className={classes.Section}>
+    <div className={classes.Section} data-testid={`Section${data.id}`}>
       <h2 className={classes.SectionTitle}>{t(data.title)}</h2>
 
       <ReactSortable
@@ -57,10 +57,11 @@ export default function Section(props: ISectionProps): JSX.Element {
         className={classes.SectionArea}
         forceFallback={true}
         onEnd={(evt) => {
+          console.log(evt.to.id, evt.to.id.substr(7));
           dispatch(
             setPlayerSection({
               player: evt.item.id as IPlayerColor,
-              newSection: parseInt(evt.to.id.substr(7)),
+              newSection: Number(evt.to.id.substr(7)),
             })
           );
         }}

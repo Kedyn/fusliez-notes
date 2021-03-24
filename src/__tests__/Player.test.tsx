@@ -5,7 +5,6 @@ import DefaultComponentWrapper from "./DefaultComponentWrapper";
 import { MockStore } from "redux-mock-store";
 import Player from "components/Player";
 import configureStore from "redux-mock-store";
-import { handleKeyPress } from "components/Player/Player";
 import registerFaIcons from "utils/registerFaIcons";
 import { setIsColorBlind } from "store/slices/SettingsSlice";
 import { setIsMobile } from "store/slices/DeviceSlice";

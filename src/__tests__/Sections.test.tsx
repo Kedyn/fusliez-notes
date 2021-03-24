@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 
 import DefaultComponentWrapper from "./DefaultComponentWrapper";
 import { MockStore } from "redux-mock-store";
@@ -20,6 +20,7 @@ describe("Sections tests", () => {
       const mockStore = configureStore();
       testStore = mockStore(store.getState());
       dispatchSpy = jest.spyOn(testStore, "dispatch");
+      testStore.clearActions();
 
       registerFaIcons();
       await render(
@@ -39,6 +40,29 @@ describe("Sections tests", () => {
       expect(dispatchSpy).toHaveBeenLastCalledWith({
         payload: undefined,
         type: "PlayerEditLock/togglePlayerEditLock",
+      });
+    });
+
+    test("drag and drop player into new section", async () => {
+      const yellowPlayer = screen.getByTitle("yellow");
+      const startingSection = await screen.getByTestId("Section4");
+      const endingSection = await screen.getByTestId("Section0");
+
+      fireEvent.dragStart(yellowPlayer);
+      fireEvent.dragEnter(endingSection);
+      fireEvent.dragOver(endingSection);
+      fireEvent.drop(endingSection);
+
+      Object.values(
+        endingSection
+      )[0].child.sibling.return.return.lastEffect.pendingProps.onEnd({
+        item: { id: "yellow" },
+        to: { id: "Section0" },
+      });
+
+      expect(dispatchSpy).toHaveBeenCalledWith({
+        type: "Players/setPlayerSection",
+        payload: { player: "yellow", newSection: 0 },
       });
     });
   });

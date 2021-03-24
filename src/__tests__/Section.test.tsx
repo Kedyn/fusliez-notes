@@ -1,12 +1,11 @@
 import React, { KeyboardEvent } from "react";
-import { render, screen } from "@testing-library/react";
+import { createEvent, fireEvent, render, screen } from "@testing-library/react";
 
 import { DEFAULT_RESET_SECTION_PLAYERS } from "constants/sections";
 import DefaultComponentWrapper from "./DefaultComponentWrapper";
 import { MockStore } from "redux-mock-store";
 import Section from "components/Section";
 import configureStore from "redux-mock-store";
-import { handleKeyPress } from "components/Player/Player";
 import registerFaIcons from "utils/registerFaIcons";
 import { setIsMobile } from "store/slices/DeviceSlice";
 import store from "store";
@@ -22,7 +21,6 @@ describe("SectionsSettings tests", () => {
       await store.dispatch(setIsMobile(true));
       testStore = mockStore(store.getState());
       dispatchSpy = jest.spyOn(testStore, "dispatch");
-      //   await testStore.dispatch(setIsMobile(true));
 
       registerFaIcons();
       await render(
@@ -63,13 +61,20 @@ describe("SectionsSettings tests", () => {
       );
     });
 
-    test("hitting enter should remove focus from the yellow player's input", () => {
+    test("hitting enter should remove focus from the yellow player's input", async () => {
       const yellowPlayerInput = screen.getByPlaceholderText("main.yellow");
-      // console.log(yellowPlayerInput);
       yellowPlayerInput.focus();
-      // userEvent.type(yellowPlayerInput, "{enter}");
+      const myEvent = createEvent.keyDown(yellowPlayerInput, {
+        key: "Enter",
+        code: "Enter",
+      });
 
-      console.log(yellowPlayerInput);
+      fireEvent(yellowPlayerInput, myEvent);
+
+      // const myEvent = createEvent.click(yellowPlayerInput, { button: 2 });
+      // await fireEvent(yellowPlayerInput, myEvent);
+      // console.log(myEvent);
+      // userEvent.type(yellowPlayerInput, "{enter}");
 
       // Object.values(yellowPlayerInput)[1].onKeyPress(
       //   (e: KeyboardEvent<HTMLInputElement>) => {
@@ -81,24 +86,5 @@ describe("SectionsSettings tests", () => {
       // // console.log(document.activeElement);
       // expect(document.activeElement).not.toBe(yellowPlayerInput);
     });
-
-    // test("dragging a player should set isSorting to true and adds 'dragging' to className", async () => {
-    //   //   const yellowPlayer = screen.getByTitle("yellow");
-    //   //   yellowPlayer.dispatchEvent(createBubbledEvent("dragstart"));
-    //   //   fireEvent.dragStart(yellowPlayer);
-    //   //   console.log(Object.values(yellowPlayer)[0]);
-    //   //   fireEvent.drag(yellowPlayer);
-    //   const div = document.getElementById("Section4");
-
-    //   if (div) {
-    //     const { onChoose } = Object.values(div)[2].options;
-    //     const mockFn = jest.fn(onChoose);
-    //     // mockFn();
-    //     screen.debug();
-    //   }
-    //   //   screen.debug();
-    //   //   expect(container.querySelector("body")).toHaveClass("dragging");
-    //   //   console.log(yellowPlayer);
-    // });
   });
 });
