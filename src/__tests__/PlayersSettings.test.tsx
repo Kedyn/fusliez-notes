@@ -10,7 +10,7 @@ import store from "store";
 
 describe("PlayersSettings tests", () => {
   let testStore: MockStore;
-  let dispatchSpy: any;
+  let dispatchSpy: jest.SpyInstance;
 
   beforeEach(async () => {
     const mockStore = configureStore();

@@ -19,7 +19,7 @@ import store from "store";
 
 describe("SectionsSettings tests", () => {
   let testStore: MockStore;
-  let dispatchSpy: any;
+  let dispatchSpy: jest.SpyInstance;
 
   beforeEach(async () => {
     const mockStore = configureStore();

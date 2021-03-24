@@ -12,7 +12,7 @@ import { togglePlayerEditLock } from "store/slices/PlayerEditLockSlice";
 
 describe("Sections tests", () => {
   let testStore: MockStore;
-  let dispatchSpy: any;
+  let dispatchSpy: jest.SpyInstance;
 
   describe("editing unlocked and not mobile", () => {
     beforeEach(async () => {

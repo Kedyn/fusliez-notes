@@ -15,7 +15,7 @@ import store from "store";
 
 describe("Counter tests", () => {
   let testStore: MockStore;
-  let dispatchSpy: any;
+  let dispatchSpy: jest.SpyInstance;
 
   beforeEach(async () => {
     const mockStore = configureStore();
@@ -26,6 +26,7 @@ describe("Counter tests", () => {
     await render(
       <DefaultComponentWrapper testStore={testStore}>
         <Counter
+          role="crewmate-wins"
           value={0}
           min={0}
           buttonsBackgroundColor="#008dfc"

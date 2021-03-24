@@ -1,19 +1,21 @@
+import React, { KeyboardEvent } from "react";
 import { fireEvent, render, screen } from "@testing-library/react";
 
 import DefaultComponentWrapper from "./DefaultComponentWrapper";
 import { MockStore } from "redux-mock-store";
 import Player from "components/Player";
-import React from "react";
 import configureStore from "redux-mock-store";
+import { handleKeyPress } from "components/Player/Player";
 import registerFaIcons from "utils/registerFaIcons";
 import { setIsColorBlind } from "store/slices/SettingsSlice";
 import { setIsMobile } from "store/slices/DeviceSlice";
 import { setPlayerEditLock } from "store/slices/PlayerEditLockSlice";
 import store from "store";
+import userEvent from "@testing-library/user-event";
 
 describe("Player tests", () => {
   let testStore: MockStore;
-  let dispatchSpy: any;
+  let dispatchSpy: jest.SpyInstance;
 
   describe("not locked and not mobile", () => {
     beforeEach(async () => {
@@ -61,9 +63,24 @@ describe("Player tests", () => {
 
       expect(colorsMenu).toBeInTheDocument();
     });
+
+    // test("hitting enter should remove focus from the element", () => {
+    //   const player = screen.getByRole("textbox");
+    //   player.focus();
+    //   // userEvent.type(player, "{enter}");
+
+    //   Object.values(player)[1].onKeyPress(
+    //     (e: KeyboardEvent<HTMLInputElement>) => {
+    //       e.key = "Enter";
+    //       handleKeyPress(e, Object.values(player)[0].ref.current);
+    //     }
+    //   );
+
+    //   expect(document.activeElement).not.toBe(player);
+    // });
   });
 
-  describe("locked and mobile", () => {
+  describe("locked, mobile, and colorblind === true", () => {
     beforeEach(async () => {
       const mockStore = configureStore();
       store.dispatch(setIsMobile(true));
@@ -102,20 +119,5 @@ describe("Player tests", () => {
 
       expect(colorsMenu).not.toBeInTheDocument();
     });
-
-    // test("should show p tag with player name is a name is entered", () => {
-    //   const input = screen.queryByRole("textbox");
-
-    //   if (input) fireEvent.change(input, { target: { value: "fuslie" } });
-
-    //   expect(dispatchSpy).toHaveBeenLastCalledWith({
-    //     payload: { player: "orange", newName: "fuslie" },
-    //     type: "Players/setPlayerName",
-    //   });
-
-    //   const player = screen.getByText("fuslie");
-
-    //   expect(player).toBeInTheDocument();
-    // });
   });
 });
