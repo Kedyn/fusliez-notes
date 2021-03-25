@@ -9,6 +9,8 @@ import {
 import { MOUSE_BUTTON } from "constants/mouse";
 import Vector from "utils/math/Vector";
 
+// TODO - Add Mobile support
+
 class InputHandler {
   public static GetInstance(): InputHandler {
     if (!InputHandler.instance) {

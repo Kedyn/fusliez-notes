@@ -2,9 +2,12 @@ import Config from "../Config";
 import Layer from "../Layer";
 import Menu from "./Menu";
 import MiraHQ from "./Maps/MiraHQ";
+import Polus from "./Maps/Polus";
 import Scene from "../Scene";
 import SceneManager from "../SceneManager";
 import TextLine from "../Entities/TextLine";
+import TheAirship from "./Maps/TheAirship";
+import TheSkeld from "./Maps/TheSkeld";
 import Vector from "utils/math/Vector";
 
 export default class Loading extends Scene {
@@ -61,10 +64,9 @@ export default class Loading extends Scene {
       SceneManager.addScene("Menu", new Menu());
 
       SceneManager.addScene("MiraHQ", new MiraHQ());
-
-      // TODO - Add PolusHQ Scene
-      // TODO - Add The Airship Scene
-      // TODO - Add The Skeld Scene
+      SceneManager.addScene("Polus", new Polus());
+      SceneManager.addScene("TheAirship", new TheAirship());
+      SceneManager.addScene("TheSkeld", new TheSkeld());
 
       SceneManager.changeScene("Menu");
     }

@@ -101,12 +101,12 @@ export default class Menu extends Scene {
               break;
 
             case 3:
-              SceneManager.changeScene("TheSkeld");
+              SceneManager.changeScene("TheAirship");
 
               break;
 
             default:
-              SceneManager.changeScene("TheAirship");
+              SceneManager.changeScene("TheSkeld");
 
               break;
           }
