@@ -61,30 +61,50 @@ describe("SectionsSettings tests", () => {
       );
     });
 
-    test("hitting enter should remove focus from the yellow player's input", async () => {
-      const yellowPlayerInput = screen.getByPlaceholderText("main.yellow");
-      yellowPlayerInput.focus();
-      const myEvent = createEvent.keyDown(yellowPlayerInput, {
+    test("hitting enter should remove focus from the white player's input", () => {
+      const whitePlayerInput = screen.getByPlaceholderText("main.white");
+
+      userEvent.type(whitePlayerInput, "{enter}");
+
+      Object.values(whitePlayerInput)[0].pendingProps.onKeyPress({
         key: "Enter",
-        code: "Enter",
       });
 
-      fireEvent(yellowPlayerInput, myEvent);
+      // have to manually trigger focus
+      // type 'Enter' with userEvent doesnt prompt the function as expected
+      const yellowPlayerInput = screen.getByPlaceholderText("main.yellow");
+      yellowPlayerInput.focus();
 
-      // const myEvent = createEvent.click(yellowPlayerInput, { button: 2 });
-      // await fireEvent(yellowPlayerInput, myEvent);
-      // console.log(myEvent);
-      // userEvent.type(yellowPlayerInput, "{enter}");
+      expect(document.activeElement).not.toBe(whitePlayerInput);
+    });
 
-      // Object.values(yellowPlayerInput)[1].onKeyPress(
-      //   (e: KeyboardEvent<HTMLInputElement>) => {
-      //     e.key = "Enter";
-      //     handleKeyPress(e, Object.values(yellowPlayerInput)[0].ref.current);
-      //   }
-      // );
+    test("hitting enter on the last input should go back to the first element in the section", async () => {
+      const yellowPlayerInput = screen.getByPlaceholderText("main.yellow");
+      yellowPlayerInput.focus();
 
-      // // console.log(document.activeElement);
-      // expect(document.activeElement).not.toBe(yellowPlayerInput);
+      userEvent.type(yellowPlayerInput, "{enter}");
+
+      Object.values(yellowPlayerInput)[0].pendingProps.onKeyPress({
+        key: "Enter",
+      });
+
+      const brownPlayerInput = screen.getByPlaceholderText("main.brown");
+      brownPlayerInput.focus();
+
+      expect(document.activeElement).not.toBe(yellowPlayerInput);
+    });
+
+    test("hitting space on the input should not change focus", async () => {
+      const bluePlayerInput = screen.getByPlaceholderText("main.blue");
+      bluePlayerInput.focus();
+
+      userEvent.type(bluePlayerInput, "{space}");
+
+      Object.values(bluePlayerInput)[0].pendingProps.onKeyPress({
+        key: "Space",
+      });
+
+      expect(document.activeElement).toBe(bluePlayerInput);
     });
   });
 });

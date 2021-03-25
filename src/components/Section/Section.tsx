@@ -57,7 +57,6 @@ export default function Section(props: ISectionProps): JSX.Element {
         className={classes.SectionArea}
         forceFallback={true}
         onEnd={(evt) => {
-          console.log(evt.to.id, evt.to.id.substr(7));
           dispatch(
             setPlayerSection({
               player: evt.item.id as IPlayerColor,

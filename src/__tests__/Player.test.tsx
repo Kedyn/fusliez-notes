@@ -62,21 +62,6 @@ describe("Player tests", () => {
 
       expect(colorsMenu).toBeInTheDocument();
     });
-
-    // test("hitting enter should remove focus from the element", () => {
-    //   const player = screen.getByRole("textbox");
-    //   player.focus();
-    //   // userEvent.type(player, "{enter}");
-
-    //   Object.values(player)[1].onKeyPress(
-    //     (e: KeyboardEvent<HTMLInputElement>) => {
-    //       e.key = "Enter";
-    //       handleKeyPress(e, Object.values(player)[0].ref.current);
-    //     }
-    //   );
-
-    //   expect(document.activeElement).not.toBe(player);
-    // });
   });
 
   describe("locked, mobile, and colorblind === true", () => {
