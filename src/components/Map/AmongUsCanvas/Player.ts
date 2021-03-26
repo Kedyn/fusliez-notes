@@ -155,6 +155,9 @@ export default class Player extends Entity {
     }
   }
 
+  public getImageRect = (): IRect => this.imageRect;
+  public getDraggable = (): boolean => this.draggable;
+
   private data!: IPlayer;
 
   private resetSectionId!: number;
