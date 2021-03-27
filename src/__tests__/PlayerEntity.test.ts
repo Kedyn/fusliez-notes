@@ -1,14 +1,21 @@
 import { MOUSE_BUTTON } from "constants/mouse";
+import { MockStore } from "redux-mock-store";
 import { PLAYER_IMAGE } from "constants/players";
 import Player from "components/Map/AmongUsCanvas/Player";
 import { Vector } from "utils/math/Vector";
+import configureStore from "redux-mock-store";
+import store from "store";
 
 describe("Player tests", () => {
   let player: Player;
-  let canvasSpy: jest.SpyInstance;
   let strokeTextSpy: jest.SpyInstance;
+  let testStore: MockStore;
+  let dispatchSpy: jest.SpyInstance;
 
   beforeEach(() => {
+    const mockStore = configureStore();
+    testStore = mockStore(store.getState());
+    dispatchSpy = jest.spyOn(testStore, "dispatch");
     const canvas = document.createElement("canvas").getContext("2d");
 
     player = new Player(
@@ -18,12 +25,12 @@ describe("Player tests", () => {
       [4, 3, 5],
       new Image(),
       PLAYER_IMAGE.orange.alive,
-      PLAYER_IMAGE.orange.dead
+      PLAYER_IMAGE.orange.dead,
+      testStore
     );
 
     if (canvas) {
       player.setContext(canvas);
-      canvasSpy = jest.spyOn(canvas, "drawImage");
       strokeTextSpy = jest.spyOn(canvas, "strokeText");
     }
   });
@@ -92,6 +99,46 @@ describe("Player tests", () => {
         player.render();
 
         expect(strokeTextSpy).toHaveBeenCalledTimes(0);
+      });
+    });
+  });
+
+  describe("onDoubleClick tests", () => {
+    test("coord outside of this.rect", () => {
+      player.onDoubleClick(new Vector(200, 150));
+      expect(dispatchSpy).toHaveBeenCalledTimes(0);
+    });
+
+    test("coord inside of this.rect", () => {
+      player.updatePlayer({ name: "fuslie", color: "orange", section: 4 }, [
+        4,
+        3,
+        5,
+      ]);
+
+      player.onDoubleClick(new Vector(112, 150));
+      expect(dispatchSpy).toHaveBeenLastCalledWith({
+        payload: {
+          newSection: 3,
+          player: "orange",
+        },
+        type: "Players/setPlayerSection",
+      });
+    });
+
+    test("deadSectionId === section", () => {
+      player.updatePlayer({ name: "fuslie", color: "orange", section: 3 }, [
+        4,
+        3,
+        5,
+      ]);
+      player.onDoubleClick(new Vector(112, 150));
+      expect(dispatchSpy).toHaveBeenLastCalledWith({
+        payload: {
+          newSection: 4,
+          player: "orange",
+        },
+        type: "Players/setPlayerSection",
       });
     });
   });

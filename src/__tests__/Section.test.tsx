@@ -1,9 +1,9 @@
-import React, { KeyboardEvent } from "react";
-import { createEvent, fireEvent, render, screen } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 
 import { DEFAULT_RESET_SECTION_PLAYERS } from "constants/sections";
 import DefaultComponentWrapper from "./DefaultComponentWrapper";
 import { MockStore } from "redux-mock-store";
+import React from "react";
 import Section from "components/Section";
 import configureStore from "redux-mock-store";
 import registerFaIcons from "utils/registerFaIcons";
@@ -45,7 +45,6 @@ describe("SectionsSettings tests", () => {
     beforeEach(async () => {
       const mockStore = configureStore();
       testStore = mockStore(store.getState());
-      dispatchSpy = jest.spyOn(testStore, "dispatch");
 
       registerFaIcons();
       await render(

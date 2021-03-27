@@ -45,7 +45,6 @@ describe("Sections tests", () => {
 
     test("drag and drop player into new section", async () => {
       const yellowPlayer = screen.getByTitle("yellow");
-      const startingSection = await screen.getByTestId("Section4");
       const endingSection = await screen.getByTestId("Section0");
 
       fireEvent.dragStart(yellowPlayer);

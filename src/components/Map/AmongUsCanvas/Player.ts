@@ -1,6 +1,5 @@
 import { getSections, setSections } from "store/slices/SectionsSlice";
 
-import { COLOR_LIBRARY } from "constants/theme";
 import Entity from "./Entity";
 import { IPlayer } from "utils/types/players";
 import { IRect } from "utils/types/shared";
@@ -18,13 +17,14 @@ export default class Player extends Entity {
     image: HTMLImageElement,
     aliveRect: IRect,
     deadRect: IRect,
+    stateStore = store,
     debug = false
   ) {
     super(new Rectangle(position, aliveRect.w, aliveRect.h), true, debug);
 
     this.aliveRect = aliveRect;
     this.deadRect = deadRect;
-
+    this.stateStore = stateStore;
     this.updatePlayer(data, sections);
 
     this.image = image;
@@ -99,12 +99,12 @@ export default class Player extends Entity {
       this.rect.isPointInside(coordinate) &&
       this.data.section !== this.unusedSectionId
     ) {
-      const sections = getSections(store.getState());
+      const sections = getSections(this.stateStore.getState());
 
       let newSection = this.resetSectionId;
 
       if (this.data.section === this.deadSectionId) {
-        store.dispatch(
+        this.stateStore.dispatch(
           setSections(
             sections.map((section) => ({
               ...section,
@@ -127,7 +127,7 @@ export default class Player extends Entity {
           )
         );
       } else {
-        store.dispatch(
+        this.stateStore.dispatch(
           setSections(
             sections.map((section) => ({
               ...section,
@@ -151,7 +151,9 @@ export default class Player extends Entity {
         newSection = this.deadSectionId;
       }
 
-      store.dispatch(setPlayerSection({ player: this.data.color, newSection }));
+      this.stateStore.dispatch(
+        setPlayerSection({ player: this.data.color, newSection })
+      );
     }
   }
 
@@ -169,4 +171,5 @@ export default class Player extends Entity {
 
   private aliveRect: IRect;
   private deadRect: IRect;
+  private stateStore: typeof store;
 }
