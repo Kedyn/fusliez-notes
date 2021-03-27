@@ -89,6 +89,7 @@ export default class Entity {
   }
 
   public onDoubleClick(coordinate: Vector): void {} // eslint-disable-line
+  public getContext = (): CanvasRenderingContext2D => this.context;
 
   protected context!: CanvasRenderingContext2D;
 
