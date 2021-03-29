@@ -9,31 +9,6 @@ import registerFaIcons from "utils/registerFaIcons";
 import store from "store";
 import userEvent from "@testing-library/user-event";
 
-// const Sections = React.lazy(
-//   () => import(/* webpackChunkName: "sections" */ "components/Sections")
-// );
-// const Notepad = React.lazy(
-//   () => import(/* webpackChunkName: "notepad" */ "components/Notepad")
-// );
-// const ScoresPanel = React.lazy(
-//   () => import(/* webpackChunkName: "scores" */ "components/ScoresPanel")
-// );
-// const MainControls = React.lazy(
-//   () => import(/* webpackChunkName: "maincontrols" */ "components/MainControls")
-// );
-// const Maps = React.lazy(
-//   () => import(/* webpackChunkName: "maps" */ "components/Maps")
-// );
-// const Settings = React.lazy(
-//   () => import(/* webpackChunkName: "settings" */ "components/Settings")
-// );
-// const About = React.lazy(
-//   () => import(/* webpackChunkName: "about" */ "components/About")
-// );
-// const Changelog = React.lazy(
-//   () => import(/* webpackChunkName: "changelog" */ "components/Changelog")
-// );
-
 describe("SlideDrawer tests", () => {
   const setActiveViewMock = jest.fn();
   const setDrawerMock = jest.fn();
