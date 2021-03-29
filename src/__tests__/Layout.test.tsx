@@ -1,5 +1,5 @@
 import { BREAKPOINT, NAMESPACE, VERSION } from "constants/main";
-import { fireEvent, render, screen, waitFor } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 
 import DefaultComponentWrapper from "./DefaultComponentWrapper";
 import Layout from "components/Layout";
@@ -13,14 +13,12 @@ import userEvent from "@testing-library/user-event";
 
 describe("Layout tests", () => {
   let testStore: MockStore;
-  let dispatchSpy: jest.SpyInstance;
 
   describe("not mobile", () => {
     describe("outdated version && old data", () => {
       beforeEach(async () => {
         const mockStore = configureStore();
         testStore = mockStore(store.getState());
-        dispatchSpy = jest.spyOn(testStore, "dispatch");
         localStorage.clear();
         localStorage.setItem(`${NAMESPACE}version`, "0.92");
         localStorage.setItem(
