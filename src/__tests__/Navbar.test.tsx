@@ -7,7 +7,7 @@ import { render } from "@testing-library/react";
 import store from "store";
 import userEvent from "@testing-library/user-event";
 
-describe("", () => {
+describe("Navbar tests", () => {
   const onChangeMock = jest.fn();
   const setDrawerMock = jest.fn();
 
