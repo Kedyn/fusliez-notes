@@ -37,7 +37,7 @@ export default function ModalControls(): JSX.Element {
 
   return (
     <>
-      <div className={classes.ModalControls}>
+      <div data-testid="modal-controls" className={classes.ModalControls}>
         <Button
           className={classes.ModalControlsButton}
           onClick={() => setShowSettings(true)}
