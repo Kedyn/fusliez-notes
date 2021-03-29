@@ -20,7 +20,11 @@ export default function Modal(props: IModalProps): JSX.Element {
     const classes = useStyles();
 
     return (
-      <div className={classes.ModalBackdrop} onClick={() => onClose()}>
+      <div
+        data-testid={`${title}-modal`}
+        className={classes.ModalBackdrop}
+        onClick={() => onClose()}
+      >
         <div
           className={cx(classes.Modal, className)}
           onClick={(event: React.MouseEvent<HTMLDivElement, MouseEvent>) =>
