@@ -18,6 +18,14 @@ A web to help keep track of among us game.
 
 To start using it just head over to the [Project's page](https://kedyn.github.io/fusliez-notes/).
 
+_Map functionalities:_
+
+- To change the map you may click the `map icon` or press `m`.
+- To clear the maps double click the map or press `c`.
+- To add a player to the map right click on the map and select a player color.
+- Players on the map can be dragged.
+- You can add multiple versions of the same player onto the map.
+
 ## Contributing
 
 If you would like to contribute in any way please read our

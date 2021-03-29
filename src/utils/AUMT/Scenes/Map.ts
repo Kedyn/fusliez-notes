@@ -27,7 +27,7 @@ export default class Map extends Scene {
     this.layers.push(bg);
 
     this.offset = new Vector(0, 0);
-    this.scale = new Vector(0, 0);
+    this.scale = new Vector(1, 1);
 
     this.hub = new Layer();
 
@@ -49,8 +49,6 @@ export default class Map extends Scene {
 
     this.menu = new RadialMenu();
     this.players = new Players();
-
-    this.layers.push(this.players);
 
     const context = Config.getContext();
 
@@ -155,8 +153,14 @@ export default class Map extends Scene {
       this.players.clear();
     }
 
-    if (InputHandler.getKeys()["M"]) {
+    const keys = InputHandler.getKeys();
+
+    if (keys["M"] || keys["m"]) {
       SceneManager.changeScene("Menu");
+    }
+
+    if (keys["C"] || keys["c"]) {
+      this.players.clear();
     }
 
     InputHandler.restoreState();

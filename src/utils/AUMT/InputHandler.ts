@@ -74,6 +74,8 @@ class InputHandler {
   public onPointerDown(evt: ReactPointerEvent<HTMLCanvasElement>): void {
     evt.preventDefault();
 
+    evt.currentTarget.focus();
+
     switch (evt.button) {
       case MOUSE_BUTTON.LEFT:
         this.mouseButtons.LEFT = true;

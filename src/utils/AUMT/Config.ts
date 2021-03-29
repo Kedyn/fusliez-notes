@@ -98,6 +98,11 @@ class Config {
   }
 
   public updatePlayers(): void {
+    /*
+     NOTE: Might want to switch this to the scene manager and update players by
+           scene player layer instead of this, it will solve the dstRect issue.
+    */
+
     const state: IStoreState = store.getState();
     const players = getPlayers(state);
     const deadSectionId = getDeadSectionId(state);
@@ -123,41 +128,33 @@ class Config {
         srcRect.h
       );
 
-      if (this.players.has(player as IPlayerColor)) {
-        const canvasImage = this.players.get(player as IPlayerColor);
+      const sprite = this.players.get(player as IPlayerColor);
 
-        if (canvasImage !== undefined) {
-          const oldDstRect = canvasImage.getRect();
-          const oldSrcRect = canvasImage.getSourceRect();
+      if (sprite !== undefined) {
+        const oldDstRect = sprite.getRect();
+        const oldSrcRect = sprite.getSourceRect();
 
-          if (
-            oldDstRect.getWidth() === oldSrcRect.getWidth() &&
-            oldDstRect.getHeight() === oldSrcRect.getHeight()
-          ) {
-            canvasImage.setDestinationRect(
-              new Rectangle(
-                oldDstRect.getPosition(),
-                rect.getWidth(),
-                rect.getHeight()
-              )
-            );
-
-            console.log(`${player} - setting dstrect`);
-          }
-
-          console.log(
-            `${player} - ${oldDstRect.getWidth()} === ${oldSrcRect.getWidth()} - ${rect.getWidth()}`
+        if (
+          oldDstRect.getWidth() === oldSrcRect.getWidth() &&
+          oldDstRect.getHeight() === oldSrcRect.getHeight()
+        ) {
+          sprite.setDestinationRect(
+            new Rectangle(
+              oldDstRect.getPosition(),
+              rect.getWidth(),
+              rect.getHeight()
+            )
           );
-
-          canvasImage.setSourceRect(rect);
-
-          canvasImage.setVisible(visible);
-          canvasImage.setDraggable(draggable);
         }
+
+        sprite.setSourceRect(rect);
+
+        sprite.setVisible(visible);
+        sprite.setDraggable(draggable);
       } else {
         this.players.set(
           player as IPlayerColor,
-          new Sprite("Players", rect, undefined, undefined, visible, draggable)
+          new Sprite("Players", rect, rect, undefined, visible, draggable)
         );
       }
     }

@@ -4,16 +4,62 @@ import { IPlayerColor } from "utils/types/players";
 import InputHandler from "../InputHandler";
 import Layer from "../Layer";
 import Vector from "utils/math/Vector";
+import { getPlayers } from "store/slices/PlayersSlice";
+import { getUnusedSectionId } from "store/slices/SectionsSlice";
+import store from "store";
 
 export default class RadialMenu extends Layer {
   public constructor(visible = false) {
     super(visible);
 
     this.center = new Vector();
+
+    this.colors = [
+      "black",
+      "blue",
+      "brown",
+      "cyan",
+      "green",
+      "lime",
+      "orange",
+      "pink",
+      "purple",
+      "red",
+      "white",
+      "yellow",
+    ];
   }
 
   public openMenu(): void {
     this.center.set(InputHandler.getMousePosition());
+
+    /*
+      TODO - Split logic so that is only called when players are updated
+             might want to use SceneManager for this.
+    */
+
+    const state = store.getState();
+    const players = getPlayers(state);
+    const unusedSectionId = getUnusedSectionId(state);
+
+    this.colors = [
+      "black",
+      "blue",
+      "brown",
+      "cyan",
+      "green",
+      "lime",
+      "orange",
+      "pink",
+      "purple",
+      "red",
+      "white",
+      "yellow",
+    ];
+
+    this.colors = this.colors.filter(
+      (color) => players[color].section !== unusedSectionId
+    );
 
     this.visible = true;
   }
@@ -55,26 +101,11 @@ export default class RadialMenu extends Layer {
   }
 
   public getColorFromPosition(position: Vector): IPlayerColor | null {
-    const colors: Array<IPlayerColor> = [
-      "black",
-      "blue",
-      "brown",
-      "cyan",
-      "green",
-      "lime",
-      "orange",
-      "pink",
-      "purple",
-      "red",
-      "white",
-      "yellow",
-    ];
-
-    const size = (2 * Math.PI) / colors.length;
+    const size = (2 * Math.PI) / this.colors.length;
 
     let currentAngle = 0;
 
-    for (const color of colors) {
+    for (const color of this.colors) {
       const p1 = new Vector(
         this.center.x + 40 * Math.sin(currentAngle),
         this.center.y + 40 * Math.cos(currentAngle)
@@ -105,29 +136,15 @@ export default class RadialMenu extends Layer {
   public render(): void {
     if (this.visible) {
       const context = Config.getContext();
-      const colors: Array<IPlayerColor> = [
-        "black",
-        "blue",
-        "brown",
-        "cyan",
-        "green",
-        "lime",
-        "orange",
-        "pink",
-        "purple",
-        "red",
-        "white",
-        "yellow",
-      ];
 
-      const size = (2 * Math.PI) / colors.length;
+      const size = (2 * Math.PI) / this.colors.length;
 
       let currentAngle = 0;
 
       context.save();
       context.lineWidth = 1;
 
-      for (const color of colors) {
+      for (const color of this.colors) {
         context.fillStyle = COLOR_LIBRARY[color].base;
 
         context.beginPath();
@@ -159,4 +176,5 @@ export default class RadialMenu extends Layer {
   }
 
   private center: Vector;
+  private colors: Array<IPlayerColor>;
 }

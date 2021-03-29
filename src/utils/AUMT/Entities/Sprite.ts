@@ -37,8 +37,8 @@ export default class Sprite extends Entity {
     } else {
       this.dstRect = new Rectangle(
         new Vector(),
-        this.image.width,
-        this.image.height
+        this.image.width ?? 1920,
+        this.image.height ?? 1080
       );
     }
 

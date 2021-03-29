@@ -14,5 +14,9 @@ export default createUseStyles({
     height: "100%",
     overscrollBehavior: "none",
     touchAction: "none",
+
+    "&:focus": {
+      outline: "none",
+    },
   },
 });
