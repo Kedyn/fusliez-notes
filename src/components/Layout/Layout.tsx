@@ -118,7 +118,6 @@ export default function Content(): JSX.Element {
           <Button
             onClick={() => {
               setShowDisclaimer("Understood");
-
               localStorage.setItem(`${NAMESPACE}disclaimer`, "Understood");
             }}
           >
