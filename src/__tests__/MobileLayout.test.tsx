@@ -17,6 +17,7 @@ describe("MobileLayout tests", () => {
   describe("up to date version", () => {
     beforeEach(async () => {
       const mockStore = configureStore();
+      await store.dispatch(setIsMobile(true));
       testStore = mockStore(store.getState());
       localStorage.setItem(`${NAMESPACE}version`, VERSION);
 
@@ -44,7 +45,7 @@ describe("MobileLayout tests", () => {
       else throw new Error("cannot find playersButton in the document");
 
       await waitFor(() =>
-        expect(screen.getByText(/controls/i)).toBeInTheDocument()
+        expect(screen.getByText(/controls.reset/i)).toBeInTheDocument()
       );
     });
 
@@ -89,7 +90,31 @@ describe("MobileLayout tests", () => {
       if (button) await userEvent.click(button);
 
       await waitFor(() =>
-        expect(screen.getByText(/controls/i)).toBeInTheDocument()
+        expect(screen.getByText(/controls.reset/i)).toBeInTheDocument()
+      );
+    });
+
+    test("clicking Settings button in the slide drawer should change active view to Settings", async () => {
+      const drawerButton = screen.getByLabelText("navitem-menu.menu");
+      userEvent.click(drawerButton);
+
+      const settingsButton = screen.getByText("menu.settings");
+      userEvent.click(settingsButton);
+
+      await waitFor(() =>
+        expect(screen.getByText("settings.title")).toBeInTheDocument()
+      );
+    });
+
+    test("clicking About button in the slide drawer should change active view to About", async () => {
+      const drawerButton = screen.getByLabelText("navitem-menu.menu");
+      userEvent.click(drawerButton);
+
+      const aboutButton = screen.getByText("menu.about");
+      userEvent.click(aboutButton);
+
+      await waitFor(() =>
+        expect(screen.getByText("menu.about")).toBeInTheDocument()
       );
     });
   });
