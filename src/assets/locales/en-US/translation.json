@@ -77,7 +77,8 @@
     "south": "4. South",
     "southwest": "5. Southwest",
     "northwest": "6. Northwest",
-    "decontamination": "Decontamination"
+    "decontamination": "Decontamination",
+    "dropship": "Dropship"
   },
   "settings": {
     "title": "Settings",

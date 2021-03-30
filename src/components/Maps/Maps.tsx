@@ -28,7 +28,7 @@ export default function Maps(): JSX.Element {
       const context = canvasRef.current.getContext("2d");
 
       if (context !== null) {
-        AUMT.Config.setDebug(true);
+        AUMT.Config.setDebug(false);
         AUMT.Config.setContext(context);
         AUMT.Config.setTheme(theme);
 

@@ -34,3 +34,8 @@ export const MAPS_ICON: IRect = {
   w: 45,
   h: 45,
 };
+
+export const AREAS_FONT_SIZE = 200;
+export const AREAS_STROKE_STYLE = "rgba(0, 0, 0, 0.8)";
+export const AREAS_FILL_STYLE = "rgba(255, 255, 255, 0.8)";
+export const AREAS_LINE_WIDTH = 30;
