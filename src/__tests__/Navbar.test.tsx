@@ -17,7 +17,7 @@ describe("Navbar tests", () => {
   });
 
   test("clicking the button should change the view if the title is NOT menu.menu", () => {
-    const { getByRole } = render(
+    const { getByLabelText } = render(
       <DefaultComponentWrapper testStore={store}>
         <Navbar
           activeView="menu.players"
@@ -27,14 +27,14 @@ describe("Navbar tests", () => {
       </DefaultComponentWrapper>
     );
 
-    const button = getByRole("button", { name: "menu.notes" });
+    const button = getByLabelText("navitem-menu.notes");
     userEvent.click(button);
     expect(onChangeMock).toHaveBeenCalledTimes(1);
     expect(onChangeMock).toHaveBeenCalledWith("menu.notes");
   });
 
   test("clicking the button should open the drawer if the title is menu.menu", () => {
-    const { getByRole } = render(
+    const { getByLabelText } = render(
       <DefaultComponentWrapper testStore={store}>
         <Navbar
           activeView="menu.players"
@@ -44,7 +44,7 @@ describe("Navbar tests", () => {
       </DefaultComponentWrapper>
     );
 
-    const button = getByRole("button", { name: "menu.menu" });
+    const button = getByLabelText("navitem-menu.menu");
     userEvent.click(button);
     expect(setDrawerMock).toHaveBeenCalledTimes(1);
     expect(setDrawerMock).toHaveBeenCalledWith(true);
