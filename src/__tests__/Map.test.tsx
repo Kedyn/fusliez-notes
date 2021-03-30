@@ -1,67 +1,18 @@
 import * as React from "react";
 
-import {
-  MouseEvent as ReactMouseEvent,
-  TouchEvent as ReactTouchEvent,
-  WheelEvent as ReactWheelEvent,
-} from "react";
 import { fireEvent, render, screen } from "@testing-library/react";
 
 import DefaultComponentWrapper from "./DefaultComponentWrapper";
 import Map from "components/Map";
 import registerFaIcons from "utils/registerFaIcons";
 import store from "store";
-import userEvent from "@testing-library/user-event";
 
 describe("Map tests", () => {
-  //   const setActiveViewMock = jest.fn();
-  //   onContextMenu={(evt) => evt.preventDefault()}
-  //   onMouseMove={(evt) => AmongUsCanvas.onMouseMove(evt)}
-  //   onMouseDown={(evt) => AmongUsCanvas.onMouseDown(evt)}
-  //   onMouseUp={(evt) => AmongUsCanvas.onMouseUp(evt)}
-  //   onMouseLeave={(evt) => AmongUsCanvas.onMouseLeave(evt)}
-  //   onDoubleClick={(evt) => AmongUsCanvas.onDoubleClick(evt)}
-  //   onTouchMove={(evt) => AmongUsCanvas.onTouchMove(evt)}
-  //   onTouchStart={(evt) => AmongUsCanvas.onTouchStart(evt)}
-  //   onTouchEnd={(evt) => AmongUsCanvas.onTouchEnd(evt)}
-  //   onTouchCancel={(evt) => AmongUsCanvas.onTouchCancel(evt)}
-  //   onWheel={(evt) => AmongUsCanvas.onWheel(evt)}
-
   const mockEvent = {
     preventDefault: (): void => {
       return;
     },
   } as Event;
-
-  //   const mockMouseEvent: ReactMouseEvent<HTMLCanvasElement, MouseEvent> = {
-  //     preventDefault: (): void => {
-  //       return;
-  //     },
-  //     currentTarget: {
-  //       addEventListener: (): void => {
-  //         return;
-  //       },
-  //       removeEventListener: (): void => {
-  //         return;
-  //       },
-  //       dispatchEvent: () => true,
-  //       getBoundingClientRect: () => {
-  //         return {
-  //           x: 0,
-  //           y: 0,
-  //           bottom: 0,
-  //           left: 0,
-  //           right: 0,
-  //           top: 0,
-  //           width: 1024,
-  //           height: 768,
-  //           toJSON: () => {
-  //             return;
-  //           },
-  //         } as DOMRect;
-  //       },
-  //     },
-  //   };
 
   beforeEach(() => {
     jest.clearAllMocks();
