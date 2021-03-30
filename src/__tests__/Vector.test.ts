@@ -5,24 +5,24 @@ describe("Vector tests", () => {
 
   test("scale function should return vector scaled by argument factor", () => {
     vector.scale(5);
-    expect(vector.x).toBe(250);
-    expect(vector.y).toBe(500);
+    expect(vector.x).toEqual(250);
+    expect(vector.y).toEqual(500);
   });
 
   test("add function should return vector incremented by argument vector", () => {
     vector.add(new Vector(225, 125));
-    expect(vector.x).toBe(475);
-    expect(vector.y).toBe(625);
+    expect(vector.x).toEqual(475);
+    expect(vector.y).toEqual(625);
   });
 
   test("subtract function should return vector decremented by argument vector", () => {
     vector.subtract(new Vector(50, 75));
-    expect(vector.x).toBe(425);
-    expect(vector.y).toBe(550);
+    expect(vector.x).toEqual(425);
+    expect(vector.y).toEqual(550);
   });
 
   test("getDistance function should return the distance between itself and another vector", () => {
-    expect(vector.getDistance(new Vector(125, 500))).toBe(
+    expect(vector.getDistance(new Vector(125, 500))).toEqual(
       Math.sqrt(Math.pow(300, 2) + Math.pow(50, 2))
     );
   });
@@ -54,14 +54,14 @@ describe("Vector tests", () => {
   test("set if/else paths: if the argument is a new Vector", () => {
     vector.set(new Vector(20, 50));
 
-    expect(vector.x).toBe(20);
-    expect(vector.y).toBe(50);
+    expect(vector.x).toEqual(20);
+    expect(vector.y).toEqual(50);
   });
 
   test("set if/else paths: if the args are 2 numbers && both args are numbers", () => {
     vector.set(200, 570);
 
-    expect(vector.x).toBe(200);
-    expect(vector.y).toBe(570);
+    expect(vector.x).toEqual(200);
+    expect(vector.y).toEqual(570);
   });
 });

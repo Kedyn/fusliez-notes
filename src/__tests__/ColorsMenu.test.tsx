@@ -469,6 +469,6 @@ describe("ColorsMenu component tests", () => {
   });
 
   test("hexToPlayerColor should return 'red' if hexcode '#c51111' is provided as the argument", () => {
-    expect(hexToPlayerColor("#c51111")).toBe("red");
+    expect(hexToPlayerColor("#c51111")).toEqual("red");
   });
 });

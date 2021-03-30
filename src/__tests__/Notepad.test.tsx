@@ -32,7 +32,7 @@ describe("Notepad tests", () => {
 
       await userEvent.type(textarea, "testing the textarea input");
 
-      expect(Object.values(textarea)[1].value).toBe(
+      expect(Object.values(textarea)[1].value).toEqual(
         "testing the textarea input"
       );
     });
@@ -42,7 +42,7 @@ describe("Notepad tests", () => {
       userEvent.clear(textarea);
       await userEvent.type(textarea, "testing the textarea input");
 
-      expect(Object.values(textarea)[1].value).toBe(
+      expect(Object.values(textarea)[1].value).toEqual(
         "testing the textarea input"
       );
 
@@ -52,7 +52,7 @@ describe("Notepad tests", () => {
 
       userEvent.click(resetButton);
 
-      expect(Object.values(textarea)[1].value).toBe("");
+      expect(Object.values(textarea)[1].value).toEqual("");
     });
   });
 
@@ -75,7 +75,7 @@ describe("Notepad tests", () => {
 
       await userEvent.type(textarea, "testing the textarea input");
 
-      expect(Object.values(textarea)[1].value).toBe(
+      expect(Object.values(textarea)[1].value).toEqual(
         "testing the textarea input"
       );
 
@@ -85,7 +85,7 @@ describe("Notepad tests", () => {
 
       userEvent.click(resetButton);
 
-      expect(Object.values(textarea)[1].value).toBe("");
+      expect(Object.values(textarea)[1].value).toEqual("");
     });
   });
 });
