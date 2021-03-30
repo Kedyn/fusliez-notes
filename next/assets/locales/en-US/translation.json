@@ -44,7 +44,6 @@
     "unlockEditing": "Unlock Editing"
   },
   "maps": {
-    "title": "Maps",
     "vents": "Vents",
     "commonTasks": "Common Tasks",
     "wiringTasks": "Wiring Tasks",
@@ -78,8 +77,8 @@
     "south": "4. South",
     "southwest": "5. Southwest",
     "northwest": "6. Northwest",
-    "dragInstructions": "Drag players on the map",
-    "removePlayers": "Remove All Players From Map"
+    "decontamination": "Decontamination",
+    "dropship": "Dropship"
   },
   "settings": {
     "title": "Settings",
