@@ -24,6 +24,10 @@ export default class Map extends Scene {
       new Sprite(name, undefined, undefined, new Vector(scale, scale))
     );
 
+    bg.entities.push(
+      new Sprite(name + "Vents", undefined, undefined, new Vector(scale, scale))
+    );
+
     this.layers.push(bg);
 
     this.offset = new Vector(0, 0);

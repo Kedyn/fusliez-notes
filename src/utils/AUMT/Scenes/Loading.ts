@@ -17,10 +17,20 @@ export default class Loading extends Scene {
     Config.setImages([
       "MiraHQ",
       "assets/images/MiraHQ.png",
+      "MiraHQVents",
+      "assets/images/MiraHQVents.png",
       "Polus",
       "assets/images/Polus.png",
+      "PolusVents",
+      "assets/images/PolusVents.png",
+      "TheAirship",
+      "assets/images/TheAirship.png",
+      "TheAirshipVents",
+      "assets/images/TheAirshipVents.png",
       "TheSkeld",
       "assets/images/TheSkeld.png",
+      "TheSkeldVents",
+      "assets/images/TheSkeldVents.png",
       "Players",
       "assets/images/players.png",
       "Logos",
@@ -41,7 +51,7 @@ export default class Loading extends Scene {
 
     layer.entities.push(
       new TextLine(
-        "fusliez notes created by the fuslie family",
+        "chasing some Sock",
         new Vector(context.canvas.width / 2, context.canvas.height / 2 + 50),
         true,
         20

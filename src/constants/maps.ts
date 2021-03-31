@@ -3,7 +3,7 @@ import { IRect } from "utils/types/shared";
 
 export const MIRAHQ_SCALE = 2;
 export const POLUS_SCALE = 4;
-export const THE_AIRSHIP_SCALE = 1;
+export const THE_AIRSHIP_SCALE = 2;
 export const THE_SKELD_SCALE = 1;
 
 export const LOGOS: IMapLogos = {

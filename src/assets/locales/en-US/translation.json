@@ -78,7 +78,22 @@
     "southwest": "5. Southwest",
     "northwest": "6. Northwest",
     "decontamination": "Decontamination",
-    "dropship": "Dropship"
+    "dropship": "Dropship",
+    "meetingRoom": "Meeting Room",
+    "vault": "Vault",
+    "brig": "Brig",
+    "gapRoom": "Gap Room",
+    "records": "Records",
+    "lounge": "Lounge",
+    "cockpit": "Cockpit",
+    "engineRoom": "Engine Room",
+    "mainHall": "Main Hall",
+    "showers": "Showers",
+    "cargoBay": "Cargo Bay",
+    "armory": "Armory",
+    "viewingDeck": "Viewing Deck",
+    "kitchen": "Kitchen",
+    "medical": "Medical"
   },
   "settings": {
     "title": "Settings",
@@ -93,7 +108,8 @@
     "resetSection": "Reset Section",
     "deadSection": "Dead Section",
     "unusedSection": "Unused Section",
-    "language": "Language"
+    "language": "Language",
+    "sectionName": "Section Name"
   },
   "menu": {
     "players": "Players",
