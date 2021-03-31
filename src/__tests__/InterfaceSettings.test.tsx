@@ -3,7 +3,7 @@ import { fireEvent, render } from "@testing-library/react";
 import { I18nextProvider } from "react-i18next";
 import InterfaceSettings from "../components/InterfaceSettings";
 import React from "react";
-import i18n from "../i18n";
+import i18n from "utils/i18n";
 
 describe("InterfaceSettings tests", () => {
   beforeAll(() => {

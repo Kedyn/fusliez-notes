@@ -1,40 +1,63 @@
 import * as React from "react";
 
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 
 import DefaultComponentWrapper from "./DefaultComponentWrapper";
 import Maps from "components/Maps";
 import registerFaIcons from "utils/registerFaIcons";
 import store from "store";
-import userEvent from "@testing-library/user-event";
 
-describe("", () => {
-  const onClickMock = jest.fn();
+describe("Map tests", () => {
+  let canvas: HTMLCanvasElement;
 
-  describe("show === true", () => {
-    beforeEach(async () => {
-      registerFaIcons();
-      onClickMock.mockReset();
-      await render(
-        <DefaultComponentWrapper testStore={store}>
-          <Maps />
-        </DefaultComponentWrapper>
-      );
-    });
+  beforeEach(() => {
+    registerFaIcons();
+    render(
+      <DefaultComponentWrapper testStore={store}>
+        <Maps />
+      </DefaultComponentWrapper>
+    );
 
-    test("onClick Mira HQ button should set current map to Mira HQ", () => {
-      const miraHQButton = screen.getByRole("button", { name: "Mira HQ" });
-      userEvent.click(miraHQButton);
-    });
+    canvas = screen.getByText(/This section is not/) as HTMLCanvasElement;
+  });
 
-    test("onClick Polus button should set current map to Polus", () => {
-      const polusButton = screen.getByRole("button", { name: "Polus" });
-      userEvent.click(polusButton);
-    });
+  test("should preventDefault on onContextMenu call", () => {
+    fireEvent.contextMenu(canvas);
+  });
 
-    test("onClick The Skeld button should set current map to The Skeld", () => {
-      const skeldButton = screen.getByRole("button", { name: "The Skeld" });
-      userEvent.click(skeldButton);
-    });
+  test("should call onPointerMove", () => {
+    fireEvent.pointerMove(canvas);
+  });
+
+  test("should call onPointerDown", () => {
+    fireEvent.pointerDown(canvas);
+  });
+
+  test("should call onPointerUp", () => {
+    fireEvent.pointerUp(canvas);
+  });
+
+  test("should call onPointerEnter", () => {
+    fireEvent.pointerEnter(canvas);
+  });
+
+  test("should call onPointerLeave", () => {
+    fireEvent.pointerLeave(canvas);
+  });
+
+  test("should call onWheel", () => {
+    fireEvent.wheel(canvas);
+  });
+
+  test("should call onDoubleClick", () => {
+    fireEvent.dblClick(canvas);
+  });
+
+  test("should call onKeyUp", () => {
+    fireEvent.keyUp(canvas);
+  });
+
+  test("should call onKeyDown", () => {
+    fireEvent.keyDown(canvas);
   });
 });

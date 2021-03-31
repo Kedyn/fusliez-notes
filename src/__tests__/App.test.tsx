@@ -2,7 +2,7 @@ import App from "../components/App";
 import { I18nextProvider } from "react-i18next";
 import { NAMESPACE } from "constants/main";
 import React from "react";
-import i18n from "../i18n";
+import i18n from "utils/i18n";
 import { render } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 

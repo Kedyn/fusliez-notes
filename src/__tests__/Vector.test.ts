@@ -1,4 +1,4 @@
-import { Vector } from "utils/math/Vector";
+import Vector from "utils/math/Vector";
 
 describe("Vector tests", () => {
   const vector = new Vector(50, 100);

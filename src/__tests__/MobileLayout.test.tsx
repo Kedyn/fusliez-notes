@@ -78,9 +78,7 @@ describe("MobileLayout tests", () => {
       else throw new Error("cannot find button in the document");
 
       await waitFor(() =>
-        expect(
-          screen.queryByRole("button", { name: "Mira HQ" })
-        ).toBeInTheDocument()
+        expect(screen.queryByTestId("map-canvas")).toBeInTheDocument()
       );
     });
 

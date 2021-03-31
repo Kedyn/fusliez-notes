@@ -1,5 +1,5 @@
-import { Rectangle } from "utils/math/Rectangle";
-import { Vector } from "utils/math/Vector";
+import Rectangle from "utils/math/Rectangle";
+import Vector from "utils/math/Vector";
 
 describe("Rectangle tests", () => {
   const vector = new Vector(100, 100);

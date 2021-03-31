@@ -52,6 +52,7 @@ export default function Maps(): JSX.Element {
   return (
     <div className={classes.Maps}>
       <canvas
+        data-testid="map-canvas"
         tabIndex={1}
         ref={canvasRef}
         width={1920}

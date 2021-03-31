@@ -1,5 +1,5 @@
-import { Shape } from "utils/math/Shape";
-import { Vector } from "utils/math/Vector";
+import Shape from "utils/math/Shape";
+import Vector from "utils/math/Vector";
 
 describe("Shape tests", () => {
   const shape = new Shape(new Vector(50, 100));
