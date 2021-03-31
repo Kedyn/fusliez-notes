@@ -12,9 +12,15 @@ import { useSelector } from "react-redux";
 import useStyles from "./Maps.styles";
 import { useTheme } from "theming";
 
-export default function Maps(): JSX.Element {
+interface IMapsProps {
+  testing?: boolean;
+}
+
+export default function Maps(props: IMapsProps): JSX.Element {
   const classes = useStyles();
   const theme = useTheme<ITheme>();
+
+  const { testing } = props;
 
   const players = useSelector(getPlayers);
   const resetSectionId = useSelector(getResetSectionId);
@@ -51,26 +57,28 @@ export default function Maps(): JSX.Element {
 
   return (
     <div className={classes.Maps}>
-      <canvas
-        data-testid="map-canvas"
-        tabIndex={1}
-        ref={canvasRef}
-        width={1920}
-        height={1080}
-        className={classes.MapsCanvas}
-        onContextMenu={(evt) => evt.preventDefault()}
-        onPointerMove={(evt) => AUMT.InputHandler.onPointerMove(evt)}
-        onPointerDown={(evt) => AUMT.InputHandler.onPointerDown(evt)}
-        onPointerUp={(evt) => AUMT.InputHandler.onPointerUp(evt)}
-        onPointerEnter={(evt) => AUMT.InputHandler.onPointerEnter(evt)}
-        onPointerLeave={(evt) => AUMT.InputHandler.onPointerLeave(evt)}
-        onDoubleClick={(evt) => AUMT.InputHandler.onDoubleClick(evt)}
-        onWheel={(evt) => AUMT.InputHandler.onWheel(evt)}
-        onKeyDown={(evt) => AUMT.InputHandler.onKeyDown(evt)}
-        onKeyUp={(evt) => AUMT.InputHandler.onKeyUp(evt)}
-      >
-        This section is not supported on your browser.
-      </canvas>
+      {!testing && (
+        <canvas
+          data-testid="map-canvas"
+          tabIndex={1}
+          ref={canvasRef}
+          width={1920}
+          height={1080}
+          className={classes.MapsCanvas}
+          onContextMenu={(evt) => evt.preventDefault()}
+          onPointerMove={(evt) => AUMT.InputHandler.onPointerMove(evt)}
+          onPointerDown={(evt) => AUMT.InputHandler.onPointerDown(evt)}
+          onPointerUp={(evt) => AUMT.InputHandler.onPointerUp(evt)}
+          onPointerEnter={(evt) => AUMT.InputHandler.onPointerEnter(evt)}
+          onPointerLeave={(evt) => AUMT.InputHandler.onPointerLeave(evt)}
+          onDoubleClick={(evt) => AUMT.InputHandler.onDoubleClick(evt)}
+          onWheel={(evt) => AUMT.InputHandler.onWheel(evt)}
+          onKeyDown={(evt) => AUMT.InputHandler.onKeyDown(evt)}
+          onKeyUp={(evt) => AUMT.InputHandler.onKeyUp(evt)}
+        >
+          This section is not supported on your browser.
+        </canvas>
+      )}
     </div>
   );
 }
