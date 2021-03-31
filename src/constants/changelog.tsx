@@ -6,9 +6,10 @@ export const NOTES = [
     items: [
       <>Improved map functionality.</>,
       <>Right click to add characters to map.</>,
-      <>Double click to clear the map.</>,
+      <>Double click or press &quot;c&quot; to clear the map.</>,
       <>Pan and Zoom maps.</>,
-      <>Maps do not work on mobile.</>,
+      <>Press map icon or &quot;m&quot; to switch between maps</>,
+      <>Maps do not fully work on mobile.</>,
     ],
   },
   {

@@ -7,6 +7,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Released]
 
+### [v1.0.0-beta.2] - 3/31/2021
+
+Full refactoring of the structure of the project. Removed draggable component in
+favor of canvas.
+
+#### Added
+
+- Zoom and pan capabilities to map
+- Map radial character menu to add characters to map
+- New map functionalities keyboard shortcuts and double click to clear
+
+#### Changed
+
+- Settings into multiple sections
+
 ### [v1.0.0-beta.1] - 01/18/2021
 
 #### Added
@@ -236,19 +251,6 @@ Project fusliez notes begins, prototype release.
 Features included draggable players and progress bar for score.
 
 ## [Unreleased]
-
-### [v1.0.0-beta.2] - X/X/X
-
-Full refactoring of the structure of the project. Removed draggable component in
-favor of canvas.
-
-#### Added
-
-- Zoom and pan capabilities to map
-
-#### Changed
-
-- Settings into multiple sections
 
 ### [vX.X.X] - X/X/X
 
