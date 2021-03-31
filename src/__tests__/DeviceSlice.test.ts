@@ -4,25 +4,37 @@ import DeviceSlice, {
   setOrientation,
 } from "store/slices/DeviceSlice";
 
+import { IOrientation } from "utils/types/device";
 import store from "store";
 
 describe("DeviceSlice tests", () => {
-  //   describe("landscape orientation", () => {
-  //     test("", () => {
-  //       console.log("placeholder");
-  //     });
-  //   });
+  const state = store.getState();
 
-  describe("portrait orientation", () => {
-    beforeEach(() => {
-      global.innerHeight = 1024;
-      global.innerWidth = 768;
+  describe("landscape orientation", () => {
+    test("mock setOrientation", () => {
+      const mockSetOrientation = jest.fn(
+        DeviceSlice.caseReducers.setOrientation
+      );
+
+      mockSetOrientation(state, {
+        payload: "portrait" as IOrientation,
+        type: "string",
+      });
+
+      expect(mockSetOrientation).toHaveBeenLastCalledWith(state, {
+        payload: "portrait" as IOrientation,
+        type: "string",
+      });
     });
 
-    test("device orientation should be portrait after reset", () => {
-      resetDeviceState();
-      console.log(store.getState().Device);
-      //   expect(getOrientation(store.getState())).toEqual("portrait");
+    test("mock resetDeviceState", () => {
+      const mockResetDeviceState = jest.fn(
+        DeviceSlice.caseReducers.resetDeviceState
+      );
+
+      mockResetDeviceState();
+
+      expect(mockResetDeviceState).toHaveBeenCalledTimes(1);
     });
   });
 });
