@@ -9,11 +9,11 @@ describe("Shape tests", () => {
   });
 
   test("getX function should return current X", () => {
-    expect(shape.getX()).toBe(50);
+    expect(shape.getX()).toEqual(50);
   });
 
   test("getY function should return current Y", () => {
-    expect(shape.getY()).toBe(100);
+    expect(shape.getY()).toEqual(100);
   });
 
   test("set position with 2 nums as args should set the current position to x and y, respectively", () => {

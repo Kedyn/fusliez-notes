@@ -35,7 +35,7 @@ describe("Layout tests", () => {
       });
 
       test("version should NOT be {VERSION}", () => {
-        expect(localStorage.getItem("version")).not.toBe(VERSION);
+        expect(localStorage.getItem("version")).not.toEqual(VERSION);
       });
     });
 
@@ -63,7 +63,7 @@ describe("Layout tests", () => {
         global.innerWidth = BREAKPOINT;
         fireEvent(global.window, new Event("resize"));
 
-        expect(global.innerWidth).toBe(BREAKPOINT);
+        expect(global.innerWidth).toEqual(BREAKPOINT);
       });
 
       test("orientation change should be handled = portrait", () => {
@@ -107,7 +107,9 @@ describe("Layout tests", () => {
     test("clicking the Understood button should set disclaimer to Understood in storage", () => {
       const understoodButton = screen.getByText("main.understand");
       userEvent.click(understoodButton);
-      expect(localStorage.getItem(`${NAMESPACE}disclaimer`)).toBe("Understood");
+      expect(localStorage.getItem(`${NAMESPACE}disclaimer`)).toEqual(
+        "Understood"
+      );
     });
   });
 });
