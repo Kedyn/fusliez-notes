@@ -99,7 +99,7 @@ export default function Player(props: IPlayerProps): JSX.Element {
                 ref={htmlElRef}
               />
             ) : (
-              <p>{name || t(`main.${color}`)}</p>
+              <span>{name || t(`main.${color}`)}</span>
             )}
           </div>
         )}

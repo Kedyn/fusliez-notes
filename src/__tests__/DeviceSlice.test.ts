@@ -1,9 +1,4 @@
-import DeviceSlice, {
-  getOrientation,
-  resetDeviceState,
-  setOrientation,
-} from "store/slices/DeviceSlice";
-
+import DeviceSlice from "store/slices/DeviceSlice";
 import { IOrientation } from "utils/types/device";
 import store from "store";
 
