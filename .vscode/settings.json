@@ -41,7 +41,7 @@
           "template": "Index Component File"
         }
       ]
-    },
+    }
   ],
   "folderTemplates.fileTemplates": {
     "Full Component File": [
@@ -59,7 +59,7 @@
       "    </div>",
       "  );",
       "}",
-      "",
+      ""
     ],
     "NonStyled Component File": [
       "import React from \"react\";",
@@ -73,7 +73,7 @@
       "    </React.Fragment>",
       "  );",
       "}",
-      "",
+      ""
     ],
     "Styles Component File": [
       "import { ITheme } from \"utils/types/theme\";",
@@ -84,7 +84,7 @@
       "",
       "  },",
       "}));",
-      "",
+      ""
     ],
     "Test Component File": [
       "import React from 'react';",
@@ -96,7 +96,7 @@
       "  const element = screen.getByText(/component content/i);",
       "  expect(element).toBeInTheDocument();",
       "});",
-      "",
+      ""
     ],
     "Index Component File": [
       "import <FTName | pascalcase> from \"./<FTName | pascalcase>\";",
@@ -105,4 +105,5 @@
       ""
     ]
   },
+  "todo-tree.general.tags": ["TODO", "FIXME", "BUG", "NOTE"]
 }

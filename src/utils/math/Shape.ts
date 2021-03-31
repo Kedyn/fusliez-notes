@@ -1,6 +1,6 @@
-import { Vector } from "./Vector";
+import Vector from "./Vector";
 
-export class Shape {
+export default class Shape {
   public constructor(position: Vector) {
     this.position = new Vector(position);
   }

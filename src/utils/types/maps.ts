@@ -1,7 +1,10 @@
-export type IMapName = "MiraHQ" | "Polus" | "TheSkeld";
+import { IRect } from "./shared";
 
-export interface IMap {
-  name: IMapName;
-  image: HTMLImageElement;
-  scale: number;
+export type IMapName = "MiraHQ" | "Polus" | "TheAirship" | "TheSkeld";
+
+export interface IMapLogos {
+  MiraHQ: IRect;
+  Polus: IRect;
+  TheAirship: IRect;
+  TheSkeld: IRect;
 }

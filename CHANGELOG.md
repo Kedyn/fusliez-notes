@@ -237,6 +237,19 @@ Features included draggable players and progress bar for score.
 
 ## [Unreleased]
 
+### [v1.0.0-beta.2] - X/X/X
+
+Full refactoring of the structure of the project. Removed draggable component in
+favor of canvas.
+
+#### Added
+
+- Zoom and pan capabilities to map
+
+#### Changed
+
+- Settings into multiple sections
+
 ### [vX.X.X] - X/X/X
 
 Next update changes will go here.
