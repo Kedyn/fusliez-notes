@@ -9,7 +9,7 @@ import { NAMESPACE } from "constants/main";
 import store from "store";
 
 describe("SettingsSlice tests", () => {
-  const state = store.getState();
+  const state = store.getState().Settings;
 
   beforeEach(() => {
     localStorage.clear();

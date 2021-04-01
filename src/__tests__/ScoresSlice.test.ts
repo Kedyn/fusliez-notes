@@ -11,7 +11,7 @@ import { NAMESPACE } from "constants/main";
 import store from "store";
 
 describe("ScoresSlice tests", () => {
-  const state = store.getState();
+  const state = store.getState().Scores;
 
   beforeEach(() => {
     localStorage.clear();
