@@ -5,7 +5,7 @@ import { ISettingsState } from "utils/types/settings";
 import { IStoreState } from "utils/types/store";
 import { NAMESPACE } from "constants/main";
 
-function getInitialSate(): ISettingsState {
+export function getInitialState(): ISettingsState {
   const localSettingsData: string | null = localStorage.getItem(
     `${NAMESPACE}settings`
   );
@@ -25,7 +25,7 @@ function getInitialSate(): ISettingsState {
 
 const SettingsSlice = createSlice({
   name: "Settings",
-  initialState: getInitialSate(),
+  initialState: getInitialState(),
   reducers: {
     setShowNames: (state: ISettingsState, action: PayloadAction<boolean>) => ({
       ...state,
