@@ -226,18 +226,26 @@ describe("ScoresSlice tests", () => {
   });
 
   test("getCrewmateWins should return the current crewmate wins", () => {
-    expect(getCrewmateWins(state)).toEqual(state.Scores.crewmateWins);
+    expect(getCrewmateWins(store.getState())).toEqual(
+      store.getState().Scores.crewmateWins
+    );
   });
 
   test("getCrewmateLosses should return the current crewmate losses", () => {
-    expect(getCrewmateLosses(state)).toEqual(state.Scores.crewmateLosses);
+    expect(getCrewmateLosses(store.getState())).toEqual(
+      store.getState().Scores.crewmateLosses
+    );
   });
 
   test("getImpostorWins should return the current impostor wins", () => {
-    expect(getImpostorWins(state)).toEqual(state.Scores.impostorWins);
+    expect(getImpostorWins(store.getState())).toEqual(
+      store.getState().Scores.impostorWins
+    );
   });
 
   test("getImpostorLosses should return the current impostor losses", () => {
-    expect(getImpostorLosses(state)).toEqual(state.Scores.impostorLosses);
+    expect(getImpostorLosses(store.getState())).toEqual(
+      store.getState().Scores.impostorLosses
+    );
   });
 });

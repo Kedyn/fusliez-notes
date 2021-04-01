@@ -9,7 +9,7 @@ import { NAMESPACE } from "constants/main";
 import store from "store";
 
 describe("SettingsSlice tests", () => {
-  const state = store.getState().Settings;
+  const state = store.getState();
 
   beforeEach(() => {
     localStorage.clear();
@@ -40,27 +40,29 @@ describe("SettingsSlice tests", () => {
   });
 
   test("toggleShowNames should return !state", () => {
-    expect(SettingsSlice.caseReducers.toggleShowNames(state)).toEqual({
-      ...state,
-      showNames: true,
+    expect(SettingsSlice.caseReducers.toggleShowNames(state.Settings)).toEqual({
+      ...state.Settings,
+      showNames: !state.Settings.showNames,
     });
   });
 
   test("setIsColorBlind should return true", () => {
     expect(
-      SettingsSlice.caseReducers.setIsColorBlind(state, {
+      SettingsSlice.caseReducers.setIsColorBlind(state.Settings, {
         payload: true,
         type: "string",
       })
     ).toEqual({
-      ...state,
+      ...state.Settings,
       isColorBlind: true,
     });
   });
 
   test("toggleIsColorBlind should return true", () => {
-    expect(SettingsSlice.caseReducers.toggleIsColorBlind(state)).toEqual({
-      ...state,
+    expect(
+      SettingsSlice.caseReducers.toggleIsColorBlind(state.Settings)
+    ).toEqual({
+      ...state.Settings,
       isColorBlind: true,
     });
   });
