@@ -38,6 +38,8 @@ export default function Maps(props: IMapsProps): JSX.Element {
         AUMT.Config.setContext(context);
         AUMT.Config.setTheme(theme);
 
+        console.log(theme);
+
         AUMT.Main.init();
 
         return () => {
