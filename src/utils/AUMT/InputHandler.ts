@@ -36,6 +36,10 @@ class InputHandler {
     };
   }
 
+  public getPropagate(): boolean {
+    return this.propagate;
+  }
+
   public getKeys(): KeysPressed {
     return this.keys;
   }
