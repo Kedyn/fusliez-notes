@@ -6,12 +6,8 @@ import Sprite from "./Sprite";
 import Vector from "utils/math/Vector";
 
 export default class Player extends Entity {
-  public constructor(
-    color: IPlayerColor,
-    rect?: Rectangle,
-    draggable?: boolean
-  ) {
-    super(true, draggable);
+  public constructor(color: IPlayerColor, position: Vector) {
+    super(true, true);
 
     const image = Config.getPlayers().get(color);
 
@@ -20,28 +16,23 @@ export default class Player extends Entity {
     if (image !== undefined) {
       this.image = image;
 
-      if (rect === undefined) {
-        const imgRect = image.getSourceRect();
+      const imgRect = image.getSourceRect();
 
-        this.rect = new Rectangle(
-          new Vector(),
-          imgRect.getWidth(),
-          imgRect.getHeight()
-        );
-      } else {
-        this.rect = rect;
-      }
+      this.position = new Vector(
+        position.x - imgRect.getWidth() / 2,
+        position.y - imgRect.getHeight() / 2
+      );
     } else {
       throw new Error(`${color} has no image.`);
     }
   }
 
   public setPosition(position: Vector): void {
-    this.rect.setPosition(position);
+    this.position = position;
   }
 
   public getRect(): Rectangle {
-    return this.rect;
+    return this.image.getRect();
   }
 
   public getColor(): IPlayerColor {
@@ -49,20 +40,16 @@ export default class Player extends Entity {
   }
 
   public isPointInRect(point: Vector): boolean {
-    return this.visible && this.rect.isPointInside(point);
+    return this.visible && this.image.getRect().isPointInside(point);
   }
 
   public render(): void {
-    const originalRect = this.image.getRect();
-
-    this.image.setDestinationRect(this.rect);
+    this.image.setPosition(this.position);
 
     this.image.render();
-
-    this.image.setDestinationRect(originalRect);
   }
 
   public color: IPlayerColor;
   public image: Sprite;
-  public rect: Rectangle;
+  public position: Vector;
 }

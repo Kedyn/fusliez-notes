@@ -1,17 +1,10 @@
-import {
-  getDeadSectionId,
-  getUnusedSectionId,
-} from "store/slices/SectionsSlice";
+import { IPlayerColor, IPlayersState } from "utils/types/players";
 
-import { IPlayerColor } from "utils/types/players";
-import { IStoreState } from "utils/types/store";
 import { ITheme } from "utils/types/theme";
 import { PLAYER_IMAGE } from "constants/players";
 import Rectangle from "utils/math/Rectangle";
 import Sprite from "./Entities/Sprite";
 import Vector from "utils/math/Vector";
-import { getPlayers } from "store/slices/PlayersSlice";
-import store from "store";
 
 class Config {
   public static GetInstance(): Config {
@@ -97,17 +90,12 @@ class Config {
     return point;
   }
 
-  public updatePlayers(): void {
-    /*
-     NOTE: Might want to switch this to the scene manager and update players by
-           scene player layer instead of this, it will solve the dstRect issue.
-    */
-
-    const state: IStoreState = store.getState();
-    const players = getPlayers(state);
-    const deadSectionId = getDeadSectionId(state);
-    const unusedSectionId = getUnusedSectionId(state);
-
+  public updatePlayers(
+    players: IPlayersState,
+    deadSectionId: number,
+    unusedSectionId: number,
+    scale: number
+  ): void {
     for (const player of Object.keys(players)) {
       const data = players[player as IPlayerColor];
 
@@ -131,30 +119,27 @@ class Config {
       const sprite = this.players.get(player as IPlayerColor);
 
       if (sprite !== undefined) {
-        const oldDstRect = sprite.getRect();
-        const oldSrcRect = sprite.getSourceRect();
-
-        if (
-          oldDstRect.getWidth() === oldSrcRect.getWidth() &&
-          oldDstRect.getHeight() === oldSrcRect.getHeight()
-        ) {
-          sprite.setDestinationRect(
-            new Rectangle(
-              oldDstRect.getPosition(),
-              rect.getWidth(),
-              rect.getHeight()
-            )
-          );
-        }
-
+        sprite
+          .getRect()
+          .setDimensions(rect.getWidth() * scale, rect.getHeight() * scale);
         sprite.setSourceRect(rect);
-
         sprite.setVisible(visible);
         sprite.setDraggable(draggable);
       } else {
         this.players.set(
           player as IPlayerColor,
-          new Sprite("Players", rect, rect, undefined, visible, draggable)
+          new Sprite(
+            "Players",
+            rect,
+            new Rectangle(
+              new Vector(rect.getPosition()),
+              rect.getWidth(),
+              rect.getHeight()
+            ),
+            new Vector(scale, scale),
+            visible,
+            draggable
+          )
         );
       }
     }

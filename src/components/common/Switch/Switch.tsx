@@ -1,9 +1,9 @@
 import React from "react";
 import useStyles from "./Switch.styles";
 
-export interface ISwitchProps {
+export interface ISwitchProps
+  extends React.InputHTMLAttributes<HTMLInputElement> {
   label: string;
-  [unknown: string]: any; // eslint-disable-line
 }
 
 export default function Switch(props: ISwitchProps): JSX.Element {

@@ -29,7 +29,7 @@ export const LOGOS: IMapLogos = {
 };
 
 export const MAPS_ICON: IRect = {
-  x: 756,
+  x: 757,
   y: 0,
   w: 45,
   h: 45,

@@ -51,7 +51,7 @@ export default class Loading extends Scene {
 
     layer.entities.push(
       new TextLine(
-        "chasing some Sock",
+        "chasing a Sock",
         new Vector(context.canvas.width / 2, context.canvas.height / 2 + 50),
         true,
         20

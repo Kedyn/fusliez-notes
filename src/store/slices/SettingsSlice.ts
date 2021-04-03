@@ -17,6 +17,9 @@ function getInitialSate(): ISettingsState {
       showNames: settingsObject.showNames ?? DEFAULT_SETTINGS_STATE.showNames,
       isColorBlind:
         settingsObject.isColorBlind ?? DEFAULT_SETTINGS_STATE.isColorBlind,
+      mapPlayersScale:
+        settingsObject.mapPlayersScale ??
+        DEFAULT_SETTINGS_STATE.mapPlayersScale,
     };
   }
 
@@ -48,6 +51,11 @@ const SettingsSlice = createSlice({
       isColorBlind: !state.isColorBlind,
     }),
 
+    setMapPlayersScale: (
+      state: ISettingsState,
+      action: PayloadAction<number>
+    ) => ({ ...state, mapPlayersScale: action.payload }),
+
     resetSettingsState: () => ({
       ...DEFAULT_SETTINGS_STATE,
     }),
@@ -61,6 +69,8 @@ export const {
   setIsColorBlind,
   toggleIsColorBlind,
 
+  setMapPlayersScale,
+
   resetSettingsState,
 } = SettingsSlice.actions;
 
@@ -69,5 +79,8 @@ export const getShowNames = (state: IStoreState): boolean =>
 
 export const getIsColorBlind = (state: IStoreState): boolean =>
   state.Settings.isColorBlind;
+
+export const getMapPlayersScale = (state: IStoreState): number =>
+  state.Settings.mapPlayersScale;
 
 export default SettingsSlice;

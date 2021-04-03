@@ -1,12 +1,12 @@
 import {
   getDeadSectionId,
-  getResetSectionId,
   getUnusedSectionId,
 } from "store/slices/SectionsSlice";
 
 import AUMT from "utils/AUMT";
 import { ITheme } from "utils/types/theme";
 import React from "react";
+import { getMapPlayersScale } from "store/slices/SettingsSlice";
 import { getPlayers } from "store/slices/PlayersSlice";
 import { useSelector } from "react-redux";
 import useStyles from "./Maps.styles";
@@ -17,9 +17,9 @@ export default function Maps(): JSX.Element {
   const theme = useTheme<ITheme>();
 
   const players = useSelector(getPlayers);
-  const resetSectionId = useSelector(getResetSectionId);
   const deadSectionId = useSelector(getDeadSectionId);
   const unusedSectionId = useSelector(getUnusedSectionId);
+  const mapPlayersScale = useSelector(getMapPlayersScale);
 
   const canvasRef = React.useRef<HTMLCanvasElement>(null);
 
@@ -28,7 +28,7 @@ export default function Maps(): JSX.Element {
       const context = canvasRef.current.getContext("2d");
 
       if (context !== null) {
-        AUMT.Config.setDebug(false);
+        AUMT.Config.setDebug(true);
         AUMT.Config.setContext(context);
         AUMT.Config.setTheme(theme);
 
@@ -46,8 +46,13 @@ export default function Maps(): JSX.Element {
   }, [theme]);
 
   React.useEffect(() => {
-    AUMT.Config.updatePlayers();
-  }, [players, resetSectionId, deadSectionId, unusedSectionId]);
+    AUMT.Config.updatePlayers(
+      players,
+      deadSectionId,
+      unusedSectionId,
+      mapPlayersScale
+    );
+  }, [players, deadSectionId, unusedSectionId, mapPlayersScale]);
 
   return (
     <div className={classes.Maps}>

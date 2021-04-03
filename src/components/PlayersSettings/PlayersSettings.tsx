@@ -1,11 +1,14 @@
 import {
   getIsColorBlind,
+  getMapPlayersScale,
   getShowNames,
   setIsColorBlind,
+  setMapPlayersScale,
   setShowNames,
 } from "store/slices/SettingsSlice";
 import { useDispatch, useSelector } from "react-redux";
 
+import Input from "components/common/Input";
 import React from "react";
 import Switch from "components/common/Switch";
 import useStyles from "./PlayersSettings.styles";
@@ -16,6 +19,7 @@ export default function PlayersSettings(): JSX.Element {
 
   const showNames = useSelector(getShowNames);
   const isColorBlind = useSelector(getIsColorBlind);
+  const mapPlayerScale = useSelector(getMapPlayersScale);
 
   const dispatch = useDispatch();
 
@@ -36,6 +40,16 @@ export default function PlayersSettings(): JSX.Element {
           dispatch(setIsColorBlind(event.currentTarget.checked));
         }}
         checked={isColorBlind}
+      />
+      <Input
+        label={t("settings.mapPlayerScale")}
+        type="number"
+        min="0"
+        step="0.1"
+        defaultValue={mapPlayerScale}
+        onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+          dispatch(setMapPlayersScale(parseFloat(event.currentTarget.value)));
+        }}
       />
     </div>
   );

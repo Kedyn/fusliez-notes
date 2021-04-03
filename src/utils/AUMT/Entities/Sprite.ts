@@ -96,10 +96,25 @@ export default class Sprite extends Entity {
         this.image.height
       );
     }
+
+    this.dstRect.setWidth(this.dstRect.getWidth() * this.scale.x);
+    this.dstRect.setHeight(this.dstRect.getHeight() * this.scale.y);
   }
 
   public setPosition(position: Vector): void {
     this.dstRect.setPosition(position.x, position.y);
+  }
+
+  public setScale(scale: Vector): void {
+    const width = this.dstRect.getWidth();
+    const height = this.dstRect.getHeight();
+
+    this.dstRect.setDimensions(
+      (width / this.scale.x) * scale.x,
+      (height / this.scale.y) * scale.y
+    );
+
+    this.scale = scale;
   }
 
   public getSourceRect(): Readonly<Rectangle> {
@@ -108,6 +123,10 @@ export default class Sprite extends Entity {
 
   public getRect(): Rectangle {
     return this.dstRect;
+  }
+
+  public getPosition(): Vector {
+    return this.dstRect.getPosition();
   }
 
   public render(): void {
@@ -132,6 +151,7 @@ export default class Sprite extends Entity {
         context.save();
 
         context.strokeStyle = "red";
+        context.lineWidth = 10;
 
         context.strokeRect(
           this.dstRect.getX(),

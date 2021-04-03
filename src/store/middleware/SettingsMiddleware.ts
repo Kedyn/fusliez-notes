@@ -1,8 +1,10 @@
 import {
   getIsColorBlind,
+  getMapPlayersScale,
   getShowNames,
   resetSettingsState,
   setIsColorBlind,
+  setMapPlayersScale,
   setShowNames,
   toggleIsColorBlind,
   toggleShowNames,
@@ -20,6 +22,7 @@ export const SettingsMiddleware: Middleware<unknown, RootState> = (store) => (
 
   let showNames = getShowNames(state);
   let isColorBlind = getIsColorBlind(state);
+  let mapPlayersScale = getMapPlayersScale(state);
   let edit = true;
 
   switch (action.type) {
@@ -43,9 +46,15 @@ export const SettingsMiddleware: Middleware<unknown, RootState> = (store) => (
 
       break;
 
+    case setMapPlayersScale.type:
+      mapPlayersScale = action.payload;
+
+      break;
+
     case resetSettingsState.type:
       showNames = DEFAULT_SETTINGS_STATE.showNames;
       isColorBlind = DEFAULT_SETTINGS_STATE.isColorBlind;
+      mapPlayersScale = DEFAULT_SETTINGS_STATE.mapPlayersScale;
 
       break;
 
@@ -60,6 +69,8 @@ export const SettingsMiddleware: Middleware<unknown, RootState> = (store) => (
         showNames,
 
         isColorBlind,
+
+        mapPlayersScale,
       })
     );
   }

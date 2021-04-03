@@ -109,7 +109,8 @@
     "deadSection": "Dead Section",
     "unusedSection": "Unused Section",
     "language": "Language",
-    "sectionName": "Section Name"
+    "sectionName": "Section Name",
+    "mapPlayerScale": "Map Player Scaling Factor"
   },
   "menu": {
     "players": "Players",
