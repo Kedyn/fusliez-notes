@@ -96,21 +96,6 @@ describe("Sprite tests", () => {
     });
   });
 
-  describe("invalid image, srcRect, dstRect, scale", () => {
-    const sprite = new Sprite(
-      "image",
-      undefined,
-      undefined,
-      undefined,
-      true,
-      false
-    );
-
-    test("", () => {
-      console.log(sprite);
-    });
-  });
-
   describe("sprite.visible === false", () => {
     let contextRestoreSpy: jest.SpyInstance;
 
