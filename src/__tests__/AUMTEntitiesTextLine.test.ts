@@ -111,20 +111,6 @@ describe("TextLine tests", () => {
       expect(textLine.getPosition()).toEqual({ x: -100, y: -100 });
     });
 
-    // test("setText should set the text", () => {
-    //   textLine.setText("testing");
-
-    //   expect(textLine.getText()).toEqual("testing");
-    // });
-
-    // test("getRect should return the rectangle", () => {
-    //   expect(textLine.getRect()).toEqual({
-    //     height: 20,
-    //     position: { x: 0, y: -10 },
-    //     width: 0,
-    //   });
-    // });
-
     test("render should have drawn the text on canvas, debug === true", () => {
       Config.setDebug(true);
       textLine.setText("testing");
@@ -142,16 +128,5 @@ describe("TextLine tests", () => {
       expect(contextRestoreSpy).toHaveBeenCalledTimes(1);
       expect(contextStrokeTextSpy).toHaveBeenCalledTimes(0);
     });
-
-    // test("render should have drawn the text on canvas, debug === true", () => {
-    //   Config.setDebug(true);
-    //   textLine.setText("testing");
-    //   textLine.render();
-
-    //   const { x, y } = textLine.getPosition();
-    //   expect(contextRestoreSpy).toHaveBeenCalledTimes(3);
-    //   expect(contextStrokeTextSpy).toHaveBeenLastCalledWith("testing", x, y);
-    //   expect(contextFillSpy).toHaveBeenCalledTimes(1);
-    // });
   });
 });

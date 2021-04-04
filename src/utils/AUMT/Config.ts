@@ -84,6 +84,11 @@ class Config {
     return this.players;
   }
 
+  // FOR TESTING ONLY
+  public setLoaded(): void {
+    this.loaded = this.images.size;
+  }
+
   public isLoaded(): boolean {
     return this.loaded === this.images.size;
   }

@@ -35,6 +35,11 @@ class SceneManager {
     return this.currentScene;
   }
 
+  // FOR TESTING ONLY
+  public getAllScenes(): Map<string, Scene> {
+    return this.scenes;
+  }
+
   public update(step: number): void {
     const currentScene = this.scenes.get(this.currentScene);
 
