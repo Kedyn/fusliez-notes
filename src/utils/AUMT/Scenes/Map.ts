@@ -79,8 +79,6 @@ export default class Map extends Scene {
       if (!InputHandler.getMouseButtons().RIGHT) {
         const color = this.menu.getColorFromPosition(mousePosition);
 
-        console.log(color);
-
         if (color !== null) {
           this.players.addPlayer(
             color,

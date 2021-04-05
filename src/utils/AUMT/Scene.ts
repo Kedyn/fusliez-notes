@@ -10,7 +10,6 @@ export default abstract class Scene {
   public abstract onExit(): void;
 
   public update(step: number): void {
-    console.log(this.layers);
     for (let i = this.layers.length - 1; i >= 0; i--) {
       this.layers[i].update(step);
     }
