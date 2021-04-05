@@ -7,7 +7,7 @@ import {
   waitForElementToBeRemoved,
 } from "@testing-library/react";
 
-import DefaultComponentWrapper from "./DefaultComponentWrapper";
+import DefaultComponentWrapper from "../DefaultComponentWrapper";
 import ModalControls from "components/ModalControls";
 import React from "react";
 import registerFaIcons from "utils/registerFaIcons";

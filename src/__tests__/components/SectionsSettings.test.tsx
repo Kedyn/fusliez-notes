@@ -9,7 +9,7 @@ import {
 } from "store/slices/SectionsSlice";
 import { render, screen } from "@testing-library/react";
 
-import DefaultComponentWrapper from "./DefaultComponentWrapper";
+import DefaultComponentWrapper from "../DefaultComponentWrapper";
 import { MockStore } from "redux-mock-store";
 import React from "react";
 import SectionsSettings from "components/SectionsSettings";

@@ -16,7 +16,7 @@
     "deploynext": "gh-pages -d dist -e ./next",
     "lint": "eslint ./src/ --cache --fix --ext .ts,.tsx",
     "checkTranslations": "node ./tools/translations.js",
-    "test": "jest --config ./jest.config.json",
+    "test": "jest --config ./jest.config.json --coverage",
     "test-watch": "npm run test -- --watch",
     "test-coverage": "npm run test -- --coverage --watchAll=false"
   },

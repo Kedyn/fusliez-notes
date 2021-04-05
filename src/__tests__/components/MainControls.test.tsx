@@ -1,6 +1,6 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 
-import DefaultComponentWrapper from "./DefaultComponentWrapper";
+import DefaultComponentWrapper from "../DefaultComponentWrapper";
 import MainControls from "components/MainControls";
 import { MockStore } from "redux-mock-store";
 import React from "react";

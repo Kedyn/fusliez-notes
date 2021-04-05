@@ -1,7 +1,7 @@
 import React, { KeyboardEvent } from "react";
 import { fireEvent, render, screen } from "@testing-library/react";
 
-import DefaultComponentWrapper from "./DefaultComponentWrapper";
+import DefaultComponentWrapper from "../DefaultComponentWrapper";
 import { MockStore } from "redux-mock-store";
 import Player from "components/Player";
 import configureStore from "redux-mock-store";

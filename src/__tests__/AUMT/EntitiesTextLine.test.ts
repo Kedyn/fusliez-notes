@@ -2,8 +2,6 @@ import Config from "utils/AUMT/Config";
 import TextLine from "utils/AUMT/Entities/TextLine";
 import Vector from "utils/math/Vector";
 
-// import Rectangle from "utils/math/Rectangle";
-
 const theme = {
   fontFamily:
     "Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",

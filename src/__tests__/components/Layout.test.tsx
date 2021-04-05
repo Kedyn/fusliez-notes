@@ -1,7 +1,7 @@
 import { BREAKPOINT, NAMESPACE, VERSION } from "constants/main";
 import { fireEvent, render, screen } from "@testing-library/react";
 
-import DefaultComponentWrapper from "./DefaultComponentWrapper";
+import DefaultComponentWrapper from "../DefaultComponentWrapper";
 import Layout from "components/Layout";
 import { MockStore } from "redux-mock-store";
 import React from "react";

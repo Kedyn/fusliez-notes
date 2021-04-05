@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import DefaultComponentWrapper from "./DefaultComponentWrapper";
+import DefaultComponentWrapper from "../DefaultComponentWrapper";
 import Navbar from "components/Navbar";
 import registerFaIcons from "utils/registerFaIcons";
 import { render } from "@testing-library/react";

@@ -42,6 +42,10 @@ export default class Layer {
     return this.visible;
   }
 
+  public getEntities(): Array<Entity> {
+    return this.entities;
+  }
+
   /**
    * Updates the layer.
    *

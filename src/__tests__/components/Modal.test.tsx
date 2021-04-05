@@ -2,7 +2,7 @@ import * as React from "react";
 
 import { render, screen } from "@testing-library/react";
 
-import DefaultComponentWrapper from "./DefaultComponentWrapper";
+import DefaultComponentWrapper from "../DefaultComponentWrapper";
 import Modal from "components/common/Modal";
 import registerFaIcons from "utils/registerFaIcons";
 import store from "store";

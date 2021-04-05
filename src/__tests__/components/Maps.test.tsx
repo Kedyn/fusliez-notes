@@ -2,7 +2,7 @@ import * as React from "react";
 
 import { fireEvent, render, screen } from "@testing-library/react";
 
-import DefaultComponentWrapper from "./DefaultComponentWrapper";
+import DefaultComponentWrapper from "../DefaultComponentWrapper";
 import Maps from "components/Maps";
 import registerFaIcons from "utils/registerFaIcons";
 import store from "store";

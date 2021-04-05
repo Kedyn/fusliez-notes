@@ -1,7 +1,7 @@
 import { NAMESPACE, VERSION } from "constants/main";
 import { render, screen, waitFor } from "@testing-library/react";
 
-import DefaultComponentWrapper from "./DefaultComponentWrapper";
+import DefaultComponentWrapper from "../DefaultComponentWrapper";
 import MobileLayout from "components/MobileLayout";
 import { MockStore } from "redux-mock-store";
 import React from "react";

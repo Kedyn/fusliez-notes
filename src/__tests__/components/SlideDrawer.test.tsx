@@ -2,7 +2,7 @@ import * as React from "react";
 
 import { render, screen } from "@testing-library/react";
 
-import DefaultComponentWrapper from "./DefaultComponentWrapper";
+import DefaultComponentWrapper from "../DefaultComponentWrapper";
 import { IView } from "utils/types/interface";
 import SlideDrawer from "components/SlideDrawer";
 import registerFaIcons from "utils/registerFaIcons";

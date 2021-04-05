@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 
-import DefaultComponentWrapper from "./DefaultComponentWrapper";
+import DefaultComponentWrapper from "../DefaultComponentWrapper";
 import DesktopLayout from "components/DesktopLayout";
 import React from "react";
 import registerFaIcons from "utils/registerFaIcons";

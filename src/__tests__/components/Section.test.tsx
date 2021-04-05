@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 
 import { DEFAULT_RESET_SECTION_PLAYERS } from "constants/sections";
-import DefaultComponentWrapper from "./DefaultComponentWrapper";
+import DefaultComponentWrapper from "../DefaultComponentWrapper";
 import { MockStore } from "redux-mock-store";
 import React from "react";
 import Section from "components/Section";

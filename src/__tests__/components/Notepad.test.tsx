@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 
-import DefaultComponentWrapper from "./DefaultComponentWrapper";
+import DefaultComponentWrapper from "../DefaultComponentWrapper";
 import { MockStore } from "redux-mock-store";
 import Notepad from "components/Notepad";
 import React from "react";
