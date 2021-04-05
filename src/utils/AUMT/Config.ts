@@ -77,6 +77,10 @@ class Config {
     return this.players;
   }
 
+  public getPlayersNames(): Map<IPlayerColor, string> {
+    return this.playersNames;
+  }
+
   public isLoaded(): boolean {
     return this.loaded === this.images.size;
   }
@@ -142,6 +146,8 @@ class Config {
           )
         );
       }
+
+      this.playersNames.set(player as IPlayerColor, data.name);
     }
   }
 
@@ -155,6 +161,7 @@ class Config {
   private offset: Vector;
   private scale: Vector;
   private players: Map<IPlayerColor, Sprite>;
+  private playersNames: Map<IPlayerColor, string>;
 
   private constructor() {
     this.debug = false;
@@ -167,6 +174,7 @@ class Config {
     this.scale = new Vector(1, 1);
 
     this.players = new Map<IPlayerColor, Sprite>();
+    this.playersNames = new Map<IPlayerColor, string>();
   }
 }
 

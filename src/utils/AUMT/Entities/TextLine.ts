@@ -51,7 +51,7 @@ export default class TextLine extends Entity {
     this.rect.setPosition(x, y);
   }
 
-  public setText(text: string): void {
+  public setText(text = ""): void {
     this.text = text;
 
     this.setRect();
@@ -63,6 +63,10 @@ export default class TextLine extends Entity {
 
   public getRect(): Rectangle {
     return this.rect;
+  }
+
+  public getText(): string {
+    return this.text;
   }
 
   public render(): void {

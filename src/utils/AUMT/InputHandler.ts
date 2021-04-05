@@ -45,7 +45,7 @@ class InputHandler {
   }
 
   public getDoubleClicked(): boolean {
-    return this.doubleClicked;
+    return this.propagate && this.doubleClicked;
   }
 
   public stopPropagation(): void {
