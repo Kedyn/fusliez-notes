@@ -17,6 +17,8 @@ favor of canvas.
 - Zoom and pan capabilities to map
 - Map radial character menu to add characters to map
 - New map functionalities keyboard shortcuts and double click to clear
+- Map player scaling
+- Start with all map players
 
 #### Changed
 

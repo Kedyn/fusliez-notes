@@ -103,6 +103,18 @@ export const ARTISTS: Array<IPerson> = [
     name: "mooseknuckle_king",
     link: "https://www.reddit.com/user/mooseknuckle_king/",
   },
+  {
+    name: "Caburum",
+    link: "https://among-us.fandom.com/wiki/User:Caburum",
+  },
+  {
+    name: "F-sharp",
+    link: "https://among-us.fandom.com/wiki/User:F-sharp",
+  },
+  {
+    name: "VEGANS-SavageSlayer",
+    link: "https://among-us.fandom.com/wiki/User:VEGANS-SavageSlayer",
+  },
 ];
 
 export const SPECIAL: Array<IPerson> = [
