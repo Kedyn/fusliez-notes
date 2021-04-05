@@ -93,7 +93,9 @@
     "armory": "Armory",
     "viewingDeck": "Viewing Deck",
     "kitchen": "Kitchen",
-    "medical": "Medical"
+    "medical": "Medical",
+    "loading": "Loading...",
+    "chooseMap": "Choose a map:"
   },
   "settings": {
     "title": "Settings",
@@ -110,6 +112,7 @@
     "unusedSection": "Unused Section",
     "language": "Language",
     "sectionName": "Section Name",
+    "initMapWithAllPlayers": "Initialize map with all players on it.",
     "mapPlayerScale": "Map Player Scaling Factor"
   },
   "menu": {
