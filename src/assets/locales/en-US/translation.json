@@ -112,6 +112,7 @@
     "unusedSection": "Unused Section",
     "language": "Language",
     "sectionName": "Section Name",
+    "initMapWithAllPlayers": "Initialize map with all players on it.",
     "mapPlayerScale": "Map Player Scaling Factor"
   },
   "menu": {

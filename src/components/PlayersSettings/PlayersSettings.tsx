@@ -1,7 +1,9 @@
 import {
+  getInitMapWithAllPlayers,
   getIsColorBlind,
   getMapPlayersScale,
   getShowNames,
+  setInitMapWithAllPlayers,
   setIsColorBlind,
   setMapPlayersScale,
   setShowNames,
@@ -19,6 +21,7 @@ export default function PlayersSettings(): JSX.Element {
 
   const showNames = useSelector(getShowNames);
   const isColorBlind = useSelector(getIsColorBlind);
+  const initMapWithAllPlayers = useSelector(getInitMapWithAllPlayers);
   const mapPlayerScale = useSelector(getMapPlayersScale);
 
   const dispatch = useDispatch();
@@ -40,6 +43,13 @@ export default function PlayersSettings(): JSX.Element {
           dispatch(setIsColorBlind(event.currentTarget.checked));
         }}
         checked={isColorBlind}
+      />
+      <Switch
+        label={t("settings.initMapWithAllPlayers")}
+        onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+          dispatch(setInitMapWithAllPlayers(event.currentTarget.checked));
+        }}
+        checked={initMapWithAllPlayers}
       />
       <Input
         label={t("settings.mapPlayerScale")}

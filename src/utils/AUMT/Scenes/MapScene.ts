@@ -86,7 +86,7 @@ export default class MapScene extends Scene {
     this.texts = new Map<string, TextLine>();
 
     this.menu = new RadialMenu();
-    this.players = new Players();
+    this.players = new Players(bg.entities[0].getRect().getHeight());
 
     const context = Config.getContext();
 
@@ -192,7 +192,7 @@ export default class MapScene extends Scene {
     }
 
     if (InputHandler.getDoubleClicked()) {
-      this.players.clear();
+      this.players.clear(this.layers[0].entities[0].getRect().getHeight());
     }
 
     const keys = InputHandler.getKeys();
@@ -202,7 +202,7 @@ export default class MapScene extends Scene {
     }
 
     if (keys["C"] || keys["c"]) {
-      this.players.clear();
+      this.players.clear(this.layers[0].entities[0].getRect().getHeight());
     }
 
     InputHandler.restoreState();

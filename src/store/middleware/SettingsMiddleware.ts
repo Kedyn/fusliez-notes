@@ -1,11 +1,14 @@
 import {
+  getInitMapWithAllPlayers,
   getIsColorBlind,
   getMapPlayersScale,
   getShowNames,
   resetSettingsState,
+  setInitMapWithAllPlayers,
   setIsColorBlind,
   setMapPlayersScale,
   setShowNames,
+  toggleInitMapWithAllPlayers,
   toggleIsColorBlind,
   toggleShowNames,
 } from "store/slices/SettingsSlice";
@@ -22,6 +25,7 @@ export const SettingsMiddleware: Middleware<unknown, RootState> = (store) => (
 
   let showNames = getShowNames(state);
   let isColorBlind = getIsColorBlind(state);
+  let initMapWithAllPlayers = getInitMapWithAllPlayers(state);
   let mapPlayersScale = getMapPlayersScale(state);
   let edit = true;
 
@@ -32,7 +36,7 @@ export const SettingsMiddleware: Middleware<unknown, RootState> = (store) => (
       break;
 
     case toggleShowNames.type:
-      showNames = !getShowNames(state);
+      showNames = !showNames;
 
       break;
 
@@ -42,7 +46,17 @@ export const SettingsMiddleware: Middleware<unknown, RootState> = (store) => (
       break;
 
     case toggleIsColorBlind.type:
-      isColorBlind = !getIsColorBlind(state);
+      isColorBlind = !isColorBlind;
+
+      break;
+
+    case setInitMapWithAllPlayers.type:
+      initMapWithAllPlayers = action.payload;
+
+      break;
+
+    case toggleInitMapWithAllPlayers.type:
+      initMapWithAllPlayers = !initMapWithAllPlayers;
 
       break;
 
@@ -54,6 +68,7 @@ export const SettingsMiddleware: Middleware<unknown, RootState> = (store) => (
     case resetSettingsState.type:
       showNames = DEFAULT_SETTINGS_STATE.showNames;
       isColorBlind = DEFAULT_SETTINGS_STATE.isColorBlind;
+      initMapWithAllPlayers = DEFAULT_SETTINGS_STATE.initMapWithAllPlayers;
       mapPlayersScale = DEFAULT_SETTINGS_STATE.mapPlayersScale;
 
       break;
@@ -69,6 +84,8 @@ export const SettingsMiddleware: Middleware<unknown, RootState> = (store) => (
         showNames,
 
         isColorBlind,
+
+        initMapWithAllPlayers,
 
         mapPlayersScale,
       })
