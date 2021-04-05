@@ -1,4 +1,5 @@
 import Scene from "./Scene";
+import i18n from "utils/i18n";
 
 class SceneManager {
   public static GetInstance(): SceneManager {
@@ -60,6 +61,10 @@ class SceneManager {
     this.scenes = new Map<string, Scene>();
 
     this.currentScene = "";
+
+    i18n.on("languageChanged", () => {
+      this.scenes.forEach((scene) => scene.updateText());
+    });
   }
 }
 

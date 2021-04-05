@@ -93,7 +93,9 @@
     "armory": "Armory",
     "viewingDeck": "Viewing Deck",
     "kitchen": "Kitchen",
-    "medical": "Medical"
+    "medical": "Medical",
+    "loading": "Loading...",
+    "chooseMap": "Choose a map:"
   },
   "settings": {
     "title": "Settings",
