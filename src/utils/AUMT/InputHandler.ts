@@ -64,6 +64,14 @@ class InputHandler {
     this.propagate = true;
   }
 
+  public resetMouseButtons(): void {
+    this.mouseButtons = {
+      LEFT: false,
+      MIDDLE: false,
+      RIGHT: false,
+    };
+  }
+
   public onPointerMove(evt: ReactPointerEvent<HTMLCanvasElement>): void {
     evt.preventDefault();
 

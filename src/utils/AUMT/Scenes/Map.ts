@@ -174,6 +174,26 @@ export default class Map extends Scene {
     this.menu.render();
   }
 
+  public getMenu(): RadialMenu {
+    return this.menu;
+  }
+
+  public getPanningPosition(): Vector {
+    return this.panningPosition;
+  }
+
+  public getMenuVisible(): boolean {
+    return this.menu.getVisible();
+  }
+
+  public setMenuVisible(state: boolean): void {
+    this.menu.setVisible(state);
+  }
+
+  public getPlayers(): Players {
+    return this.players;
+  }
+
   protected panning: boolean;
   protected panningPosition: Vector;
   protected offset: Vector;
