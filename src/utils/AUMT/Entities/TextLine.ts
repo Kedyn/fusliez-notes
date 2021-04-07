@@ -51,7 +51,7 @@ export default class TextLine extends Entity {
     this.rect.setPosition(x, y);
   }
 
-  public setText(text: string): void {
+  public setText(text = ""): void {
     this.text = text;
 
     this.setRect();

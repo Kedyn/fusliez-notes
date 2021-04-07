@@ -17,6 +17,12 @@ export function getInitialState(): ISettingsState {
       showNames: settingsObject.showNames ?? DEFAULT_SETTINGS_STATE.showNames,
       isColorBlind:
         settingsObject.isColorBlind ?? DEFAULT_SETTINGS_STATE.isColorBlind,
+      initMapWithAllPlayers:
+        settingsObject.initMapWithAllPlayers ??
+        DEFAULT_SETTINGS_STATE.initMapWithAllPlayers,
+      mapPlayersScale:
+        settingsObject.mapPlayersScale ??
+        DEFAULT_SETTINGS_STATE.mapPlayersScale,
     };
   }
 
@@ -48,6 +54,23 @@ const SettingsSlice = createSlice({
       isColorBlind: !state.isColorBlind,
     }),
 
+    setInitMapWithAllPlayers: (
+      state: ISettingsState,
+      action: PayloadAction<boolean>
+    ) => ({
+      ...state,
+      initMapWithAllPlayers: action.payload,
+    }),
+    toggleInitMapWithAllPlayers: (state: ISettingsState) => ({
+      ...state,
+      initMapWithAllPlayers: !state.initMapWithAllPlayers,
+    }),
+
+    setMapPlayersScale: (
+      state: ISettingsState,
+      action: PayloadAction<number>
+    ) => ({ ...state, mapPlayersScale: action.payload }),
+
     resetSettingsState: () => ({
       ...DEFAULT_SETTINGS_STATE,
     }),
@@ -61,6 +84,11 @@ export const {
   setIsColorBlind,
   toggleIsColorBlind,
 
+  setInitMapWithAllPlayers,
+  toggleInitMapWithAllPlayers,
+
+  setMapPlayersScale,
+
   resetSettingsState,
 } = SettingsSlice.actions;
 
@@ -69,5 +97,11 @@ export const getShowNames = (state: IStoreState): boolean =>
 
 export const getIsColorBlind = (state: IStoreState): boolean =>
   state.Settings.isColorBlind;
+
+export const getInitMapWithAllPlayers = (state: IStoreState): boolean =>
+  state.Settings.initMapWithAllPlayers;
+
+export const getMapPlayersScale = (state: IStoreState): number =>
+  state.Settings.mapPlayersScale;
 
 export default SettingsSlice;

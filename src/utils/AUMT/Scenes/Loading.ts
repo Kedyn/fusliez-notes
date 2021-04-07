@@ -9,6 +9,7 @@ import TextLine from "../Entities/TextLine";
 import TheAirship from "./Maps/TheAirship";
 import TheSkeld from "./Maps/TheSkeld";
 import Vector from "utils/math/Vector";
+import i18n from "utils/i18n";
 
 export default class Loading extends Scene {
   public constructor() {
@@ -17,10 +18,28 @@ export default class Loading extends Scene {
     Config.setImages([
       "MiraHQ",
       "assets/images/MiraHQ.png",
+      "MiraHQSensors",
+      "assets/images/MiraHQSensors.png",
+      "MiraHQVents",
+      "assets/images/MiraHQVents.png",
       "Polus",
       "assets/images/Polus.png",
+      "PolusCameras",
+      "assets/images/PolusCameras.png",
+      "PolusVents",
+      "assets/images/PolusVents.png",
+      "TheAirship",
+      "assets/images/TheAirship.png",
+      "TheAirshipCameras",
+      "assets/images/TheAirshipCameras.png",
+      "TheAirshipVents",
+      "assets/images/TheAirshipVents.png",
       "TheSkeld",
       "assets/images/TheSkeld.png",
+      "TheSkeldCameras",
+      "assets/images/TheSkeldCameras.png",
+      "TheSkeldVents",
+      "assets/images/TheSkeldVents.png",
       "Players",
       "assets/images/players.png",
       "Logos",
@@ -32,19 +51,10 @@ export default class Loading extends Scene {
 
     layer.entities.push(
       new TextLine(
-        "Loading...",
-        new Vector(context.canvas.width / 2, context.canvas.height / 2 - 50),
+        i18n.t("maps.loading"),
+        new Vector(context.canvas.width / 2, context.canvas.height / 2),
         true,
         100
-      )
-    );
-
-    layer.entities.push(
-      new TextLine(
-        "fusliez notes created by the fuslie family",
-        new Vector(context.canvas.width / 2, context.canvas.height / 2 + 50),
-        true,
-        20
       )
     );
 
@@ -57,6 +67,10 @@ export default class Loading extends Scene {
 
   public onExit(): void {
     // nothing to do here
+  }
+
+  public updateText(): void {
+    (<TextLine>this.layers[0].entities[0]).setText(i18n.t("maps.loading"));
   }
 
   public update(): void {

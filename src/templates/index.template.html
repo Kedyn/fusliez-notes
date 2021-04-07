@@ -51,11 +51,24 @@
     <meta name="application-name" content="fusliez notes" />
     <meta name="theme-color" content="#282b2f" />
 
-    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
     <link
+      rel="preload"
+      as="style"
       href="https://fonts.googleapis.com/css?family=Inter:wght@200,400;500;600&display=swap"
-      rel="stylesheet"
     />
+    <link
+      rel="stylesheet"
+      media="print"
+      onload="this.onload=null;this.removeAttribute('media');"
+      href="https://fonts.googleapis.com/css?family=Inter:wght@200,400;500;600&display=swap"
+    />
+    <noscript>
+      <link
+        href="https://fonts.googleapis.com/css?family=Inter:wght@200,400;500;600&display=swap"
+        rel="stylesheet"
+      />
+    </noscript>
 
     <link
       rel="apple-touch-icon"
@@ -75,6 +88,11 @@
       href="./favicon-16x16.png"
     />
     <!-- Global site tag (gtag.js) - Google Analytics -->
+    <link
+      rel="preconnect"
+      href="https://www.googletagmanager.com"
+      crossorigin
+    />
     <script
       async
       src="https://www.googletagmanager.com/gtag/js?id=UA-178235837-1"
