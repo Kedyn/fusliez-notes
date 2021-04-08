@@ -6,7 +6,6 @@ import SettingsSlice, {
 
 import { DEFAULT_SETTINGS_STATE } from "constants/settings";
 import { NAMESPACE } from "constants/main";
-import { getInitMapWithAllPlayers } from "./../../../store/slices/SettingsSlice";
 import store from "store";
 
 describe("SettingsSlice tests", () => {

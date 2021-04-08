@@ -31,6 +31,12 @@ describe("TextLine tests", () => {
       expect(textLine.getPosition()).toEqual({ x: -100, y: -90 });
     });
 
+    test("setText should set the text to '' if no argument is provided", () => {
+      textLine.setText();
+
+      expect(textLine.getText()).toEqual("");
+    });
+
     test("setText should set the text", () => {
       textLine.setText("testing");
 

@@ -7,6 +7,7 @@ import { MOUSE_BUTTON } from "constants/mouse";
 import Menu from "utils/AUMT/Scenes/Menu";
 import { PointerEvent as ReactPointerEvent } from "react";
 import SceneManager from "utils/AUMT/SceneManager";
+import TextLine from "utils/AUMT/Entities/TextLine";
 
 describe("Scenes/Menu tests", () => {
   let loading: Loading;
@@ -29,6 +30,12 @@ describe("Scenes/Menu tests", () => {
 
   test("onExit should do nothing", () => {
     expect(menu.onExit()).toBeUndefined();
+  });
+
+  test("updateText should set entities' text to maps.loading", () => {
+    menu.updateText();
+    const textline = menu.getLayers()[0].entities[0] as TextLine;
+    expect(textline.getText()).toEqual("maps.chooseMap");
   });
 
   test("update should do nothing if no mouse button is clicked", () => {
