@@ -110,6 +110,10 @@ export default class MapScene extends Scene {
     this.scale.set(Config.getScale());
   }
 
+  public getTexts(): Map<string, TextLine> {
+    return this.texts;
+  }
+
   public updateText(): void {
     this.texts.forEach((value, key) => value.setText(i18n.t(`maps.${key}`)));
   }

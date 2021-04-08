@@ -11,6 +11,7 @@ import InputHandler from "utils/AUMT/InputHandler";
 import Loading from "utils/AUMT/Scenes/Loading";
 import { MOUSE_BUTTON } from "constants/mouse";
 import MapScene from "utils/AUMT/Scenes/MapScene";
+import MiraHQ from "utils/AUMT/Scenes/Maps/MiraHQ";
 import SceneManager from "utils/AUMT/SceneManager";
 import Vector from "utils/math/Vector";
 
@@ -54,6 +55,14 @@ describe("Scenes/Map tests", () => {
   test("render should have called context.restore 63 times", () => {
     map.render();
     expect(contextRestoreSpy).toHaveBeenCalledTimes(63);
+  });
+
+  test("updateText should set entities' text to maps.loading", () => {
+    const mira = new MiraHQ();
+    mira.updateText();
+    mira
+      .getTexts()
+      .forEach((value, key) => expect(value.getText()).toEqual(`maps.${key}`));
   });
 
   describe("update() tests", () => {
