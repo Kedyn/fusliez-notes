@@ -5,8 +5,13 @@ import { SettingsMiddleware } from "store/middleware/SettingsMiddleware";
 import store from "store";
 
 describe("SettingsMiddleware tests", () => {
-  //   let middleware: typeof SettingsMiddleware;
-  const action = ({ type, payload }: { type: string; payload?: boolean }) => {
+  const action = ({
+    type,
+    payload,
+  }: {
+    type: string;
+    payload?: boolean | number;
+  }) => {
     return {
       type,
       payload,
@@ -51,7 +56,7 @@ describe("SettingsMiddleware tests", () => {
     });
   });
 
-  test("action type of Settings/setIsColorBlind should set showNames in localStorage to true", () => {
+  test("action type of Settings/setIsColorBlind should set isColorBlind in localStorage to true", () => {
     SettingsMiddleware(store)(next)(
       action({ type: "Settings/setIsColorBlind", payload: true })
     );
@@ -78,6 +83,51 @@ describe("SettingsMiddleware tests", () => {
       mapPlayersScale: 1,
       showNames: true,
       isColorBlind: true,
+    });
+  });
+
+  test("action type of Settings/setInitMapWithAllPlayers should set showNames in localStorage to true", () => {
+    SettingsMiddleware(store)(next)(
+      action({ type: "Settings/setInitMapWithAllPlayers", payload: true })
+    );
+
+    const settings = localStorage.getItem(`${NAMESPACE}settings`);
+
+    expect(JSON.parse(settings as string)).toStrictEqual({
+      initMapWithAllPlayers: true,
+      mapPlayersScale: 1,
+      showNames: true,
+      isColorBlind: false,
+    });
+  });
+
+  test("action type of Settings/toggleInitMapWithAllPlayers should set initMapWithAllPlayers in localStorage to not current state (true)", () => {
+    SettingsMiddleware(store)(next)(
+      action({ type: "Settings/toggleInitMapWithAllPlayers" })
+    );
+
+    const settings = localStorage.getItem(`${NAMESPACE}settings`);
+
+    expect(JSON.parse(settings as string)).toStrictEqual({
+      initMapWithAllPlayers: true,
+      mapPlayersScale: 1,
+      showNames: true,
+      isColorBlind: false,
+    });
+  });
+
+  test("action type of Settings/setMapPlayersScale should set mapPlayersScale in localStorage to payload", () => {
+    SettingsMiddleware(store)(next)(
+      action({ type: "Settings/setMapPlayersScale", payload: 5 })
+    );
+
+    const settings = localStorage.getItem(`${NAMESPACE}settings`);
+
+    expect(JSON.parse(settings as string)).toStrictEqual({
+      initMapWithAllPlayers: false,
+      mapPlayersScale: 5,
+      showNames: true,
+      isColorBlind: false,
     });
   });
 
