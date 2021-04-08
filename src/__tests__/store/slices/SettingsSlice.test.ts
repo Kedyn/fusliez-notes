@@ -6,6 +6,7 @@ import SettingsSlice, {
 
 import { DEFAULT_SETTINGS_STATE } from "constants/settings";
 import { NAMESPACE } from "constants/main";
+import { getInitMapWithAllPlayers } from "./../../../store/slices/SettingsSlice";
 import store from "store";
 
 describe("SettingsSlice tests", () => {
@@ -79,6 +80,39 @@ describe("SettingsSlice tests", () => {
     ).toEqual({
       ...state.Settings,
       isColorBlind: true,
+    });
+  });
+
+  test("setInitMapWithAllPlayers should return true", () => {
+    expect(
+      SettingsSlice.caseReducers.setInitMapWithAllPlayers(state.Settings, {
+        payload: true,
+        type: "string",
+      })
+    ).toEqual({
+      ...state.Settings,
+      initMapWithAllPlayers: true,
+    });
+  });
+
+  test("toggleInitMapWithAllPlayers should return true", () => {
+    expect(
+      SettingsSlice.caseReducers.toggleInitMapWithAllPlayers(state.Settings)
+    ).toEqual({
+      ...state.Settings,
+      initMapWithAllPlayers: true,
+    });
+  });
+
+  test("setMapPlayersScale should return true", () => {
+    expect(
+      SettingsSlice.caseReducers.setMapPlayersScale(state.Settings, {
+        payload: 2,
+        type: "string",
+      })
+    ).toEqual({
+      ...state.Settings,
+      mapPlayersScale: 2,
     });
   });
 
