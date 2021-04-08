@@ -12,6 +12,7 @@ import { IPlayerColor } from "utils/types/players";
 import { Provider } from "react-redux";
 import React from "react";
 import configureStore from "redux-mock-store";
+import { players } from "../default";
 import { setPlayersState } from "store/slices/PlayersSlice";
 import store from "store";
 
@@ -47,68 +48,6 @@ describe("ColorsMenu component tests", () => {
   });
 
   test("should not swap color if the current and target colors are the same", async () => {
-    const players = {
-      black: {
-        name: "",
-        color: "black" as IPlayerColor,
-        section: 4,
-      },
-      blue: {
-        name: "",
-        color: "blue" as IPlayerColor,
-        section: 4,
-      },
-      brown: {
-        name: "",
-        color: "brown" as IPlayerColor,
-        section: 4,
-      },
-      cyan: {
-        name: "",
-        color: "cyan" as IPlayerColor,
-        section: 4,
-      },
-      green: {
-        name: "",
-        color: "green" as IPlayerColor,
-        section: 4,
-      },
-      lime: {
-        name: "",
-        color: "lime" as IPlayerColor,
-        section: 4,
-      },
-      orange: {
-        name: "",
-        color: "orange" as IPlayerColor,
-        section: 4,
-      },
-      pink: {
-        name: "",
-        color: "pink" as IPlayerColor,
-        section: 4,
-      },
-      purple: {
-        name: "",
-        color: "purple" as IPlayerColor,
-        section: 4,
-      },
-      red: {
-        name: "",
-        color: "red" as IPlayerColor,
-        section: 4,
-      },
-      white: {
-        name: "",
-        color: "white" as IPlayerColor,
-        section: 4,
-      },
-      yellow: {
-        name: "",
-        color: "yellow" as IPlayerColor,
-        section: 4,
-      },
-    };
     const sections = [
       {
         id: 0,

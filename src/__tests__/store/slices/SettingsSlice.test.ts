@@ -18,16 +18,31 @@ describe("SettingsSlice tests", () => {
   test("getInitialState should return state from local storage if the key exists", () => {
     localStorage.setItem(
       `${NAMESPACE}settings`,
-      JSON.stringify({ showNames: false, isColorBlind: true })
+      JSON.stringify({
+        initMapWithAllPlayers: false,
+        mapPlayersScale: 1,
+        showNames: false,
+        isColorBlind: true,
+      })
     );
 
-    expect(getInitialState()).toEqual({ showNames: false, isColorBlind: true });
+    expect(getInitialState()).toEqual({
+      initMapWithAllPlayers: false,
+      mapPlayersScale: 1,
+      showNames: false,
+      isColorBlind: true,
+    });
   });
 
   test("getInitialState should return state from local storage if the key exists (no values provided)", () => {
     localStorage.setItem(`${NAMESPACE}settings`, JSON.stringify(""));
 
-    expect(getInitialState()).toEqual({ showNames: true, isColorBlind: false });
+    expect(getInitialState()).toEqual({
+      initMapWithAllPlayers: false,
+      showNames: true,
+      isColorBlind: false,
+      mapPlayersScale: 1,
+    });
   });
 
   test("setShowNames should return showNames", () => {

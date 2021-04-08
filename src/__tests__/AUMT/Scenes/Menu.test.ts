@@ -1,3 +1,5 @@
+import { players, theme } from "../../default";
+
 import Config from "utils/AUMT/Config";
 import InputHandler from "utils/AUMT/InputHandler";
 import Loading from "utils/AUMT/Scenes/Loading";
@@ -5,27 +7,6 @@ import { MOUSE_BUTTON } from "constants/mouse";
 import Menu from "utils/AUMT/Scenes/Menu";
 import { PointerEvent as ReactPointerEvent } from "react";
 import SceneManager from "utils/AUMT/SceneManager";
-
-const theme = {
-  fontFamily:
-    "Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
-  baseFontSize: 16,
-  textColorPrimary: "#eeeeee",
-  textColorSecondary: "#ffffff",
-  backgroundColorPrimary: "#202225",
-  backgroundColorSecondary: "#282b2f",
-  linkColor: "#9EC4D5",
-  linkColorHover: "#C2D2E3",
-  dangerColor: "#8B0000",
-  dangerColorHover: "#be0000",
-  activeColor: "#667c84",
-  borderColor: "#36383a",
-  crewmateColorPrimary: "#008dfc",
-  crewmateColorSecondary: "#30a4ff",
-  impostorColorPrimary: "#af1211",
-  impostorColorSecondary: "#dd1716",
-  neutralColor: "#8d86b7",
-};
 
 describe("Scenes/Menu tests", () => {
   let loading: Loading;
@@ -38,7 +19,7 @@ describe("Scenes/Menu tests", () => {
       Config.setTheme(theme);
       //   clearRectSpy = jest.spyOn(Config.getContext(), "clearRect");
 
-      Config.updatePlayers();
+      Config.updatePlayers(players, 3, 5, 1);
       loading = new Loading();
       Config.setLoaded();
       loading.update();

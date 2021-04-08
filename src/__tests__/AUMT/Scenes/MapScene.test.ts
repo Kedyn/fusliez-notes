@@ -4,39 +4,19 @@ import {
   PointerEvent as ReactPointerEvent,
   WheelEvent as ReactWheelEvent,
 } from "react";
+import { players, theme } from "../../default";
 
 import Config from "utils/AUMT/Config";
 import InputHandler from "utils/AUMT/InputHandler";
 import Loading from "utils/AUMT/Scenes/Loading";
 import { MOUSE_BUTTON } from "constants/mouse";
-import Map from "utils/AUMT/Scenes/Map";
+import MapScene from "utils/AUMT/Scenes/MapScene";
 import SceneManager from "utils/AUMT/SceneManager";
 import Vector from "utils/math/Vector";
 
-const theme = {
-  fontFamily:
-    "Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
-  baseFontSize: 16,
-  textColorPrimary: "#eeeeee",
-  textColorSecondary: "#ffffff",
-  backgroundColorPrimary: "#202225",
-  backgroundColorSecondary: "#282b2f",
-  linkColor: "#9EC4D5",
-  linkColorHover: "#C2D2E3",
-  dangerColor: "#8B0000",
-  dangerColorHover: "#be0000",
-  activeColor: "#667c84",
-  borderColor: "#36383a",
-  crewmateColorPrimary: "#008dfc",
-  crewmateColorSecondary: "#30a4ff",
-  impostorColorPrimary: "#af1211",
-  impostorColorSecondary: "#dd1716",
-  neutralColor: "#8d86b7",
-};
-
 describe("Scenes/Map tests", () => {
   let loading: Loading;
-  let map: Map;
+  let map: MapScene;
   let contextRestoreSpy: jest.SpyInstance;
   const mockFn = jest.fn();
 
@@ -47,11 +27,11 @@ describe("Scenes/Map tests", () => {
       Config.setContext(canvas);
       contextRestoreSpy = jest.spyOn(Config.getContext(), "restore");
       Config.setTheme(theme);
-      Config.updatePlayers();
+      Config.updatePlayers(players, 3, 5, 1);
       loading = new Loading();
       Config.setLoaded();
       loading.update();
-      map = new Map("MiraHQ", 1);
+      map = new MapScene("MiraHQ", 1);
     }
   });
 
@@ -71,9 +51,9 @@ describe("Scenes/Map tests", () => {
     expect(map.getMenuVisible()).toBeFalsy();
   });
 
-  test("render should have called context.restore 45 times", () => {
+  test("render should have called context.restore 63 times", () => {
     map.render();
-    expect(contextRestoreSpy).toHaveBeenCalledTimes(45);
+    expect(contextRestoreSpy).toHaveBeenCalledTimes(63);
   });
 
   describe("update() tests", () => {
@@ -173,7 +153,7 @@ describe("Scenes/Map tests", () => {
       InputHandler.onPointerDown(mouseEvent(MOUSE_BUTTON.LEFT));
 
       map.update(4);
-      expect(screenToWorldSpy).toHaveBeenCalledTimes(2);
+      expect(screenToWorldSpy).toHaveBeenCalledTimes(4);
       expect(restoreStateSpy).toHaveBeenCalledTimes(1);
     });
 
@@ -192,7 +172,7 @@ describe("Scenes/Map tests", () => {
       const screenToWorldSpy = jest.spyOn(Config, "screenToWorld");
 
       map.update(4);
-      expect(screenToWorldSpy).toHaveBeenCalledTimes(3);
+      expect(screenToWorldSpy).toHaveBeenCalledTimes(5);
       expect(map.getPanningPosition()).toStrictEqual(
         InputHandler.getMousePosition()
       );
@@ -213,7 +193,7 @@ describe("Scenes/Map tests", () => {
       const screenToWorldSpy = jest.spyOn(Config, "screenToWorld");
 
       map.update(4);
-      expect(screenToWorldSpy).toHaveBeenCalledTimes(3);
+      expect(screenToWorldSpy).toHaveBeenCalledTimes(5);
       expect(map.getPanningPosition()).toStrictEqual(
         InputHandler.getMousePosition()
       );

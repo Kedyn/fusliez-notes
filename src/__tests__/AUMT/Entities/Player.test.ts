@@ -1,6 +1,8 @@
+import { players, theme } from "../../default";
+
 import Config from "utils/AUMT/Config";
+import { IPlayerColor } from "utils/types/players";
 import Player from "utils/AUMT/Entities/Player";
-import Rectangle from "utils/math/Rectangle";
 import Vector from "utils/math/Vector";
 
 describe("player tests", () => {
@@ -9,7 +11,9 @@ describe("player tests", () => {
 
   describe("invalid image(Sprite)", () => {
     test("an error should be thrown to warn an image for that color does not exist", () => {
-      expect(() => new Player("orange")).toThrow("orange has no image.");
+      expect(() => new Player("orange", new Vector(100, 100))).toThrow(
+        "orange has no image or name."
+      );
     });
   });
 
@@ -28,15 +32,19 @@ describe("player tests", () => {
         "Logos",
         "assets/images/logos.png",
       ]);
-      Config.updatePlayers();
-      player = new Player("orange");
+      Config.updatePlayers(players, 3, 5, 1);
+      const canvas = document.createElement("canvas").getContext("2d");
+      if (canvas) {
+        Config.setContext(canvas);
+        Config.setTheme(theme);
+      }
     });
 
     test("a default rect should be created", () => {
-      expect(player.getRect()).toEqual({
+      expect(new Player("orange", new Vector(0, 0)).getRect()).toEqual({
         height: 198,
         position: {
-          x: 0,
+          x: 888,
           y: 0,
         },
         width: 148,
@@ -59,13 +67,14 @@ describe("player tests", () => {
         "Logos",
         "assets/images/logos.png",
       ]);
-      Config.updatePlayers();
+      Config.updatePlayers(players, 3, 5, 1);
       const canvas = document.createElement("canvas").getContext("2d");
       if (canvas) {
         Config.setContext(canvas);
+        Config.setTheme(theme);
         contextRestoreSpy = jest.spyOn(Config.getContext(), "restore");
       }
-      player = new Player("orange", new Rectangle(new Vector(), 0, 0), true);
+      player = new Player("orange", new Vector(160, 150));
     });
 
     test("getColor should return player's color", () => {
@@ -75,12 +84,12 @@ describe("player tests", () => {
     test("setPosition should set rect position", () => {
       player.setPosition(new Vector(20, 100));
       expect(player.getRect()).toEqual({
-        height: 0,
+        height: 198,
         position: {
-          x: 20,
-          y: 100,
+          x: 888,
+          y: 0,
         },
-        width: 0,
+        width: 148,
       });
     });
 
@@ -88,9 +97,9 @@ describe("player tests", () => {
       expect(player.isPointInRect(new Vector(115, 169))).toBeFalsy();
     });
 
-    test("should render", () => {
-      player.render();
-      expect(contextRestoreSpy).toHaveBeenCalledTimes(1);
+    test("render should have called context.restore 3 times", () => {
+      new Player("orange", new Vector(192, 150)).render();
+      expect(contextRestoreSpy).toHaveBeenCalledTimes(3);
     });
   });
 });

@@ -1,28 +1,9 @@
+import { players, theme } from "../default";
+
 import Config from "utils/AUMT/Config";
 import Vector from "utils/math/Vector";
 import { setPlayerSection } from "store/slices/PlayersSlice";
 import store from "store";
-
-const theme = {
-  fontFamily:
-    "Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
-  baseFontSize: 16,
-  textColorPrimary: "#eeeeee",
-  textColorSecondary: "#ffffff",
-  backgroundColorPrimary: "#202225",
-  backgroundColorSecondary: "#282b2f",
-  linkColor: "#9EC4D5",
-  linkColorHover: "#C2D2E3",
-  dangerColor: "#8B0000",
-  dangerColorHover: "#be0000",
-  activeColor: "#667c84",
-  borderColor: "#36383a",
-  crewmateColorPrimary: "#008dfc",
-  crewmateColorSecondary: "#30a4ff",
-  impostorColorPrimary: "#af1211",
-  impostorColorSecondary: "#dd1716",
-  neutralColor: "#8d86b7",
-};
 
 describe("Config tests", () => {
   beforeAll(() => {
@@ -91,13 +72,14 @@ describe("Config tests", () => {
 
   test("updatePlayers should check rectangle sizes and set visible/draggable", () => {
     // first instance to load this.players with data
-    Config.updatePlayers();
+    Config.updatePlayers(players, 3, 5, 1);
 
     // dead
     store.dispatch(setPlayerSection({ player: "orange", newSection: 3 }));
     // unused
     store.dispatch(setPlayerSection({ player: "pink", newSection: 5 }));
-    Config.updatePlayers();
+
+    Config.updatePlayers(store.getState().Players, 3, 5, 1);
     const orange = Config.getPlayers().get("orange");
     const pink = Config.getPlayers().get("pink");
 

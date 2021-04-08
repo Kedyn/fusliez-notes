@@ -29,6 +29,8 @@ describe("SettingsMiddleware tests", () => {
     const settings = localStorage.getItem(`${NAMESPACE}settings`);
 
     expect(JSON.parse(settings as string)).toStrictEqual({
+      initMapWithAllPlayers: false,
+      mapPlayersScale: 1,
       showNames: true,
       isColorBlind: false,
     });
@@ -42,6 +44,8 @@ describe("SettingsMiddleware tests", () => {
     const settings = localStorage.getItem(`${NAMESPACE}settings`);
 
     expect(JSON.parse(settings as string)).toStrictEqual({
+      initMapWithAllPlayers: false,
+      mapPlayersScale: 1,
       showNames: false,
       isColorBlind: false,
     });
@@ -55,6 +59,8 @@ describe("SettingsMiddleware tests", () => {
     const settings = localStorage.getItem(`${NAMESPACE}settings`);
 
     expect(JSON.parse(settings as string)).toStrictEqual({
+      initMapWithAllPlayers: false,
+      mapPlayersScale: 1,
       showNames: true,
       isColorBlind: true,
     });
@@ -68,6 +74,8 @@ describe("SettingsMiddleware tests", () => {
     const settings = localStorage.getItem(`${NAMESPACE}settings`);
 
     expect(JSON.parse(settings as string)).toStrictEqual({
+      initMapWithAllPlayers: false,
+      mapPlayersScale: 1,
       showNames: true,
       isColorBlind: true,
     });
@@ -81,6 +89,8 @@ describe("SettingsMiddleware tests", () => {
     const settings = localStorage.getItem(`${NAMESPACE}settings`);
 
     expect(JSON.parse(settings as string)).toStrictEqual({
+      initMapWithAllPlayers: false,
+      mapPlayersScale: 1,
       showNames: true,
       isColorBlind: false,
     });
