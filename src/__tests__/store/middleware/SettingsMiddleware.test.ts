@@ -26,7 +26,7 @@ describe("SettingsMiddleware tests", () => {
     jest.clearAllMocks();
   });
 
-  test("action type of Settings/setShowNames should set showNames in localStorage to true", () => {
+  test("Settings/setShowNames should set showNames in localStorage to true", () => {
     SettingsMiddleware(store)(next)(
       action({ type: "Settings/setShowNames", payload: true })
     );
@@ -41,7 +41,7 @@ describe("SettingsMiddleware tests", () => {
     });
   });
 
-  test("action type of Settings/toggleShowNames should set showNames in localStorage to not current state (false)", () => {
+  test("Settings/toggleShowNames should set showNames in localStorage to not current state (false)", () => {
     SettingsMiddleware(store)(next)(
       action({ type: "Settings/toggleShowNames" })
     );
@@ -56,7 +56,7 @@ describe("SettingsMiddleware tests", () => {
     });
   });
 
-  test("action type of Settings/setIsColorBlind should set isColorBlind in localStorage to true", () => {
+  test("Settings/setIsColorBlind should set isColorBlind in localStorage to true", () => {
     SettingsMiddleware(store)(next)(
       action({ type: "Settings/setIsColorBlind", payload: true })
     );
@@ -71,7 +71,7 @@ describe("SettingsMiddleware tests", () => {
     });
   });
 
-  test("action type of Settings/toggleIsColorBlind should set isColorBlind in localStorage to not current state (true)", () => {
+  test("Settings/toggleIsColorBlind should set isColorBlind in localStorage to not current state (true)", () => {
     SettingsMiddleware(store)(next)(
       action({ type: "Settings/toggleIsColorBlind" })
     );
@@ -86,7 +86,7 @@ describe("SettingsMiddleware tests", () => {
     });
   });
 
-  test("action type of Settings/setInitMapWithAllPlayers should set showNames in localStorage to true", () => {
+  test("Settings/setInitMapWithAllPlayers should set showNames in localStorage to true", () => {
     SettingsMiddleware(store)(next)(
       action({ type: "Settings/setInitMapWithAllPlayers", payload: true })
     );
@@ -101,7 +101,7 @@ describe("SettingsMiddleware tests", () => {
     });
   });
 
-  test("action type of Settings/toggleInitMapWithAllPlayers should set initMapWithAllPlayers in localStorage to not current state (true)", () => {
+  test("Settings/toggleInitMapWithAllPlayers should set initMapWithAllPlayers in localStorage to not current state (true)", () => {
     SettingsMiddleware(store)(next)(
       action({ type: "Settings/toggleInitMapWithAllPlayers" })
     );
@@ -116,7 +116,7 @@ describe("SettingsMiddleware tests", () => {
     });
   });
 
-  test("action type of Settings/setMapPlayersScale should set mapPlayersScale in localStorage to payload", () => {
+  test("Settings/setMapPlayersScale should set mapPlayersScale in localStorage to payload", () => {
     SettingsMiddleware(store)(next)(
       action({ type: "Settings/setMapPlayersScale", payload: 5 })
     );
@@ -131,7 +131,7 @@ describe("SettingsMiddleware tests", () => {
     });
   });
 
-  test("action type of Settings/resetSettingsState should reset defaul state", () => {
+  test("Settings/resetSettingsState should reset defaul state", () => {
     SettingsMiddleware(store)(next)(
       action({ type: "Settings/resetSettingsState" })
     );

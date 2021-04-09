@@ -1,5 +1,6 @@
 import { Action, AnyAction, Dispatch } from "redux";
 
+import { DEFAULT_PLAYERS_STATE } from "constants/players";
 import { IPlayersState } from "utils/types/players";
 import { NAMESPACE } from "constants/main";
 import { PlayersMiddleware } from "store/middleware/PlayersMiddleware";
@@ -13,21 +14,6 @@ interface IPlayerAction {
   newSection?: number;
   color?: string;
 }
-
-const defaultPlayers = {
-  black: { name: "", color: "black", section: 4 },
-  blue: { name: "", color: "blue", section: 4 },
-  brown: { name: "", color: "brown", section: 4 },
-  cyan: { name: "", color: "cyan", section: 4 },
-  green: { name: "", color: "green", section: 4 },
-  lime: { name: "", color: "lime", section: 4 },
-  orange: { name: "", color: "orange", section: 4 },
-  pink: { name: "", color: "pink", section: 4 },
-  purple: { name: "", color: "purple", section: 4 },
-  red: { name: "", color: "red", section: 4 },
-  white: { name: "", color: "white", section: 4 },
-  yellow: { name: "", color: "yellow", section: 4 },
-};
 
 describe("PlayersMiddleware tests", () => {
   const action = ({
@@ -51,7 +37,7 @@ describe("PlayersMiddleware tests", () => {
     jest.clearAllMocks();
   });
 
-  test("action type of Players/setPlayerName should set orange's name as fuslie and store in localStorage", () => {
+  test("Players/setPlayerName should set orange's name as fuslie and store in localStorage", () => {
     PlayersMiddleware(store)(next)(
       action({
         type: "Players/setPlayerName",
@@ -62,12 +48,12 @@ describe("PlayersMiddleware tests", () => {
     const players = localStorage.getItem(`${NAMESPACE}players`);
 
     expect(JSON.parse(players as string)).toStrictEqual({
-      ...defaultPlayers,
+      ...DEFAULT_PLAYERS_STATE,
       orange: { name: "fuslie", color: "orange", section: 4 },
     });
   });
 
-  test("action type of Players/setPlayerSection should set orange's section to 2", () => {
+  test("Players/setPlayerSection should set orange's section to 2", () => {
     PlayersMiddleware(store)(next)(
       action({
         type: "Players/setPlayerSection",
@@ -78,12 +64,12 @@ describe("PlayersMiddleware tests", () => {
     const players = localStorage.getItem(`${NAMESPACE}players`);
 
     expect(JSON.parse(players as string)).toStrictEqual({
-      ...defaultPlayers,
+      ...DEFAULT_PLAYERS_STATE,
       orange: { name: "", color: "orange", section: 2 },
     });
   });
 
-  test("action type of Players/setPlayer should set the specific player with the payload's color, name, and section", () => {
+  test("Players/setPlayer should set the specific player with the payload's color, name, and section", () => {
     PlayersMiddleware(store)(next)(
       action({
         type: "Players/setPlayer",
@@ -94,12 +80,12 @@ describe("PlayersMiddleware tests", () => {
     const players = localStorage.getItem(`${NAMESPACE}players`);
 
     expect(JSON.parse(players as string)).toStrictEqual({
-      ...defaultPlayers,
+      ...DEFAULT_PLAYERS_STATE,
       brown: { color: "brown", name: "peter", section: 1 },
     });
   });
 
-  test("action type of Players/setPlayersState should set all players to the payload", () => {
+  test("Players/setPlayersState should set all players to the payload", () => {
     PlayersMiddleware(store)(next)(
       action({
         type: "Players/setPlayersState",
@@ -138,7 +124,7 @@ describe("PlayersMiddleware tests", () => {
     });
   });
 
-  test("action type of Players/setPlayersSection should set all players to the specified section", () => {
+  test("Players/setPlayersSection should set all players to the specified section", () => {
     PlayersMiddleware(store)(next)(
       action({
         type: "Players/setPlayersSection",
@@ -164,7 +150,7 @@ describe("PlayersMiddleware tests", () => {
     });
   });
 
-  test("action type of Players/resetPlayersNames should reset all players' names", () => {
+  test("Players/resetPlayersNames should reset all players' names", () => {
     PlayersMiddleware(store)(next)(
       action({
         type: "Players/setPlayersState",
@@ -198,10 +184,10 @@ describe("PlayersMiddleware tests", () => {
 
     const players = localStorage.getItem(`${NAMESPACE}players`);
 
-    expect(JSON.parse(players as string)).toStrictEqual(defaultPlayers);
+    expect(JSON.parse(players as string)).toStrictEqual(DEFAULT_PLAYERS_STATE);
   });
 
-  test("action type of Players/resetPlayersState should reset all players' names", () => {
+  test("Players/resetPlayersState should reset all players' names", () => {
     PlayersMiddleware(store)(next)(
       action({
         type: "Players/setPlayersState",
@@ -229,7 +215,7 @@ describe("PlayersMiddleware tests", () => {
 
     const players = localStorage.getItem(`${NAMESPACE}players`);
 
-    expect(JSON.parse(players as string)).toStrictEqual(defaultPlayers);
+    expect(JSON.parse(players as string)).toStrictEqual(DEFAULT_PLAYERS_STATE);
   });
 
   test("invalid action type should not have called local storage's setItem", () => {
