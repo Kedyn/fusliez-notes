@@ -61,7 +61,7 @@ describe("Sprite tests", () => {
       });
     });
 
-    test("setDestinationRect should set the dst rect", () => {
+    test("setDestinationRect should set should set this.dstRect to dstRect dstRect is undefined", () => {
       sprite.setDestinationRect();
 
       expect(sprite.getRect()).toEqual({
@@ -71,14 +71,38 @@ describe("Sprite tests", () => {
       });
     });
 
+    test("setDestinationRect should set this.dstRect to dstRect if it is NOT undefined", () => {
+      sprite.setDestinationRect(new Rectangle(new Vector(50, 165), 20, 10));
+
+      expect(sprite.getRect()).toEqual({
+        height: 500,
+        position: { x: 50, y: 165 },
+        width: 1000,
+      });
+    });
+
+    test("setScale(new Vector(2,2)) should set this.dstRect to the scale and set this.scale to the new scale", () => {
+      sprite.setScale(new Vector(2, 2));
+      expect(sprite.getRect()).toEqual({
+        height: 20,
+        position: { x: 50, y: 165 },
+        width: 40,
+      });
+      expect(sprite.getScale()).toEqual(new Vector(2, 2));
+    });
+
     test("setPosition should set the dst rect's position", () => {
       sprite.setPosition(new Vector(50, 50));
 
       expect(sprite.getRect()).toEqual({
-        height: 0,
+        width: 40,
         position: { x: 50, y: 50 },
-        width: 0,
+        height: 20,
       });
+    });
+
+    test("getPosition should return this.dstRect's position", () => {
+      expect(sprite.getPosition()).toEqual({ x: 50, y: 50 });
     });
 
     describe("render method tests", () => {

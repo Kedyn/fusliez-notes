@@ -14,6 +14,7 @@ import Rectangle from "utils/math/Rectangle";
 import Sprite from "./Sprite";
 import TextLine from "./TextLine";
 import Vector from "utils/math/Vector";
+import { players } from "./../../../__tests__/default";
 import store from "store";
 
 export default class Player extends Entity {
