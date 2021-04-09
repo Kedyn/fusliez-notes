@@ -8,19 +8,9 @@ import {
 } from "store/slices/ScoresSlice";
 
 import { DEFAULT_SCORES_STATE } from "constants/scores";
-import { IPlayersState } from "utils/types/players";
 import { NAMESPACE } from "constants/main";
 import { ScoresMiddleware } from "store/middleware/ScoresMiddleware";
 import store from "store";
-
-interface IPlayerAction {
-  player?: string;
-  name?: string;
-  newName?: string;
-  section?: number;
-  newSection?: number;
-  color?: string;
-}
 
 describe("ScoresMiddleware tests", () => {
   const action = ({
@@ -28,7 +18,7 @@ describe("ScoresMiddleware tests", () => {
     payload,
   }: {
     type: string;
-    payload?: number | string | IPlayerAction | IPlayersState;
+    payload?: number | string;
   }) => {
     return {
       type,
