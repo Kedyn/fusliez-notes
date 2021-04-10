@@ -115,6 +115,8 @@ export default class Menu extends Scene {
               break;
           }
         }
+
+        break;
       }
     }
   }

@@ -133,8 +133,6 @@ export const ScoresMiddleware: Middleware<unknown, RootState> = (store) => (
         impostorLosses,
       })
     );
-
-    console.log(localStorage.getItem(`${NAMESPACE}scores`));
   }
 
   return next(action);

@@ -1,9 +1,9 @@
-import React, { KeyboardEvent } from "react";
 import { fireEvent, render, screen } from "@testing-library/react";
 
 import DefaultComponentWrapper from "../DefaultComponentWrapper";
 import { MockStore } from "redux-mock-store";
 import Player from "components/Player";
+import React from "react";
 import configureStore from "redux-mock-store";
 import registerFaIcons from "utils/registerFaIcons";
 import { setIsColorBlind } from "store/slices/SettingsSlice";

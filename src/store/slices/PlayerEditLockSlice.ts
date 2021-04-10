@@ -10,13 +10,14 @@ const PlayerEditLockSlice = createSlice({
       action.payload,
 
     togglePlayerEditLock: (state: boolean) => !state,
+    resetPlayerEditLockState: () => false,
   },
 });
 
 export const {
   setPlayerEditLock,
-
   togglePlayerEditLock,
+  resetPlayerEditLockState,
 } = PlayerEditLockSlice.actions;
 
 export const getPlayerEditLock = (state: IStoreState): boolean =>

@@ -1,7 +1,5 @@
 import { getColorValue, lightenDarkenColor } from "utils/colorConverter";
 
-import { COLOR_LIBRARY } from "constants/theme";
-
 describe("colorConverter tests", () => {
   test("getColorValue('teal') should return '0, 0, 0' ", () => {
     expect(getColorValue("teal")).toEqual("0, 0, 0");

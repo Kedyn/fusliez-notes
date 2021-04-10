@@ -27,7 +27,7 @@ i18n
     },
 
     react: {
-      useSuspense: (global as any).__DEV__ ? false : true,
+      useSuspense: (global as any).__DEV__ ? false : true, // eslint-disable-line
       wait: true,
     },
   });

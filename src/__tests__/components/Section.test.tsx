@@ -13,14 +13,12 @@ import userEvent from "@testing-library/user-event";
 
 describe("SectionsSettings tests", () => {
   let testStore: MockStore;
-  let dispatchSpy: jest.SpyInstance;
 
   describe("isMobile === true", () => {
     beforeEach(async () => {
       const mockStore = configureStore();
       await store.dispatch(setIsMobile(true));
       testStore = mockStore(store.getState());
-      dispatchSpy = jest.spyOn(testStore, "dispatch");
 
       registerFaIcons();
       await render(
