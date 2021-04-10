@@ -47,4 +47,27 @@ describe("PlayersSettings tests", () => {
       type: "Settings/setIsColorBlind",
     });
   });
+
+  test("store should have been last called with setInitMapWithAllPlayers", async () => {
+    const switches = screen.getAllByRole("checkbox");
+
+    userEvent.click(switches[2]);
+
+    expect(dispatchSpy).toHaveBeenCalledWith({
+      payload: true,
+      type: "Settings/setInitMapWithAllPlayers",
+    });
+  });
+
+  test("store should have been last called with setMapPlayersScale", async () => {
+    const input = screen.getByRole("spinbutton");
+
+    userEvent.clear(input);
+    userEvent.type(input, "3");
+
+    expect(dispatchSpy).toHaveBeenCalledWith({
+      payload: 3,
+      type: "Settings/setMapPlayersScale",
+    });
+  });
 });
