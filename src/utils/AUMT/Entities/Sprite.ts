@@ -121,6 +121,10 @@ export default class Sprite extends Entity {
     return this.srcRect;
   }
 
+  public getScale(): Vector {
+    return this.scale;
+  }
+
   public getRect(): Rectangle {
     return this.dstRect;
   }

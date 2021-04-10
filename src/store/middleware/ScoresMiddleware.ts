@@ -106,7 +106,7 @@ export const ScoresMiddleware: Middleware<unknown, RootState> = (store) => (
       impostorLosses--;
 
       if (impostorLosses < 0) {
-        impostorLosses - 0;
+        impostorLosses = 0;
       }
 
       break;

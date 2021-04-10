@@ -1,7 +1,6 @@
-import { ITheme } from "utils/types/theme";
 import { createUseStyles } from "react-jss";
 
-export default createUseStyles((theme: ITheme) => ({
+export default createUseStyles(() => ({
   Input: {
     display: "flex",
     margin: "0.5rem 0",

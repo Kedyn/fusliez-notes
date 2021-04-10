@@ -46,20 +46,6 @@ export default function Player(props: IPlayerProps): JSX.Element {
     );
   };
 
-  const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
-    if (event.key === "Enter") {
-      const currentInput = (htmlElRef.current as unknown) as HTMLInputElement;
-      const nextParent =
-        currentInput.parentElement?.parentElement?.parentElement
-          ?.nextElementSibling ??
-        currentInput.parentElement?.parentElement?.parentElement?.parentElement
-          ?.firstElementChild;
-      const nextInput = nextParent?.lastChild?.lastChild
-        ?.firstChild as HTMLInputElement;
-      nextInput?.select();
-    }
-  };
-
   return (
     <div className={classes.Player} id={color} title={color}>
       <div className={`${classes.PlayerTile} player-handle`}>
@@ -71,6 +57,7 @@ export default function Player(props: IPlayerProps): JSX.Element {
           />
         )}
         <div
+          data-testid={`${playerId}-player-icon`}
           className={cx(classes.PlayerIconWrapper, "player-handle")}
           onClick={() => {
             if (isLocked) {
@@ -86,7 +73,7 @@ export default function Player(props: IPlayerProps): JSX.Element {
         </div>
         {showNames && (
           <div className={classes.PlayerName}>
-            {!isLocked && (
+            {!isLocked ? (
               <input
                 type="text"
                 placeholder={t(`main.${color}`)}
@@ -95,12 +82,25 @@ export default function Player(props: IPlayerProps): JSX.Element {
                 onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
                   handleChange(event)
                 }
-                onKeyPress={handleKeyPress}
+                onKeyPress={(event) => {
+                  if (event.key === "Enter") {
+                    const currentInput = (htmlElRef.current as unknown) as HTMLInputElement;
+                    const nextParent =
+                      currentInput.parentElement?.parentElement?.parentElement
+                        ?.nextElementSibling ??
+                      currentInput.parentElement?.parentElement?.parentElement
+                        ?.parentElement?.firstElementChild;
+                    const nextInput = nextParent?.lastChild?.lastChild
+                      ?.firstChild as HTMLInputElement;
+                    nextInput?.select();
+                  }
+                }}
                 value={name}
                 ref={htmlElRef}
               />
+            ) : (
+              <span>{name || t(`main.${color}`)}</span>
             )}
-            {isLocked && <>{name !== "" ? name : t(`main.${color}`)}</>}
           </div>
         )}
       </div>

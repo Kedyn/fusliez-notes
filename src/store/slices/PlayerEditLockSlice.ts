@@ -16,9 +16,7 @@ const PlayerEditLockSlice = createSlice({
 
 export const {
   setPlayerEditLock,
-
   togglePlayerEditLock,
-
   resetPlayerEditLockState,
 } = PlayerEditLockSlice.actions;
 

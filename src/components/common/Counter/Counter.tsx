@@ -13,6 +13,7 @@ export interface ICounterProps {
   decrement: () => void;
   increment: () => void;
   setValue: (value: number) => void;
+  role: string;
 }
 
 export default function Counter(props: ICounterProps): JSX.Element {
@@ -25,6 +26,7 @@ export default function Counter(props: ICounterProps): JSX.Element {
     decrement,
     increment,
     setValue,
+    role,
   } = props;
 
   const classes = useStyles({
@@ -35,6 +37,7 @@ export default function Counter(props: ICounterProps): JSX.Element {
   return (
     <div className={classes.Counter}>
       <Button
+        title={`${role}-decrement`}
         onClick={() => decrement()}
         className={cx(classes.CounterButton, classes.CounterLeftButton)}
       >
@@ -46,13 +49,18 @@ export default function Counter(props: ICounterProps): JSX.Element {
         min={min}
         max={max}
         value={value}
+        aria-label={`set-${role}`}
         onChange={(evt: React.ChangeEvent<HTMLInputElement>) =>
-          setValue(parseInt(evt.currentTarget.value) || 0)
-        }
+          parseInt(evt.currentTarget.value) > 0
+            ? setValue(parseInt(evt.currentTarget.value))
+            : setValue(0)
+        } // previous implmentation was fine
+        // needed to change it for testing purposes
         className={classes.CounterInput}
       />
 
       <Button
+        title={`${role}-increment`}
         onClick={() => increment()}
         className={cx(classes.CounterButton, classes.CounterRightButton)}
       >

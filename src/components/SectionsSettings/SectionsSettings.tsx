@@ -48,7 +48,11 @@ export default function SectionsSettings(): JSX.Element {
         className={classes.SectionsSettingsList}
       >
         {sections.map((section) => (
-          <div key={section.id} className={classes.SectionsSettingsItem}>
+          <div
+            data-testid={`section${section.id}`}
+            key={section.id}
+            className={classes.SectionsSettingsItem}
+          >
             <div className={cx("list-handle", classes.SectionsSettingsHandle)}>
               <FontAwesomeIcon icon="sort" size="lg" />
             </div>
@@ -73,6 +77,7 @@ export default function SectionsSettings(): JSX.Element {
             <div
               className={classes.SectionsSettingsOption}
               data-selected={resetSection === section.id}
+              data-testid={`section-${section.id}-reset`}
               onClick={() => dispatch(setResetSection(section.id as number))}
             >
               <FontAwesomeIcon icon="users" />
@@ -81,6 +86,7 @@ export default function SectionsSettings(): JSX.Element {
             <div
               className={classes.SectionsSettingsOption}
               data-selected={deadSection === section.id}
+              data-testid={`section-${section.id}-dead`}
               onClick={() => dispatch(setDeadSection(section.id as number))}
             >
               <FontAwesomeIcon icon="skull-crossbones" />
@@ -89,6 +95,7 @@ export default function SectionsSettings(): JSX.Element {
             <div
               className={classes.SectionsSettingsOption}
               data-selected={unusedSection === section.id}
+              data-testid={`section-${section.id}-unused`}
               onClick={() => dispatch(setUnusedSection(section.id as number))}
             >
               <FontAwesomeIcon icon="users-slash" />
@@ -100,6 +107,7 @@ export default function SectionsSettings(): JSX.Element {
                 section.id !== deadSection &&
                 section.id !== unusedSection
               }
+              data-testid={`delete-section-${section.id}`}
               disabled={
                 section.id === resetSection ||
                 section.id === deadSection ||

@@ -36,6 +36,10 @@ class InputHandler {
     };
   }
 
+  public getPropagate(): boolean {
+    return this.propagate;
+  }
+
   public getKeys(): KeysPressed {
     return this.keys;
   }
@@ -58,6 +62,14 @@ class InputHandler {
     this.doubleClicked = false;
 
     this.propagate = true;
+  }
+
+  public resetMouseButtons(): void {
+    this.mouseButtons = {
+      LEFT: false,
+      MIDDLE: false,
+      RIGHT: false,
+    };
   }
 
   public onPointerMove(evt: ReactPointerEvent<HTMLCanvasElement>): void {

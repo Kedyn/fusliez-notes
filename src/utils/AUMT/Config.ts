@@ -77,6 +77,11 @@ class Config {
     return this.players;
   }
 
+  // FOR TESTING ONLY
+  public setLoaded(): void {
+    this.loaded = this.images.size;
+  }
+
   public getPlayersNames(): Map<IPlayerColor, string> {
     return this.playersNames;
   }

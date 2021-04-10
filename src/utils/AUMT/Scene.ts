@@ -11,6 +11,10 @@ export default abstract class Scene {
 
   public abstract updateText(): void;
 
+  public getLayers(): Array<Layer> {
+    return this.layers;
+  }
+
   public update(step: number): void {
     for (let i = this.layers.length - 1; i >= 0; i--) {
       this.layers[i].update(step);

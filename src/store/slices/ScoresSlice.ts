@@ -5,7 +5,7 @@ import { IScoresState } from "utils/types/scores";
 import { IStoreState } from "utils/types/store";
 import { NAMESPACE } from "constants/main";
 
-function getInitialState(): IScoresState {
+export function getInitialState(): IScoresState {
   const localScoresData: string | null = localStorage.getItem(
     `${NAMESPACE}scores`
   );

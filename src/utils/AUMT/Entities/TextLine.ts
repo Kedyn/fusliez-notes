@@ -57,16 +57,16 @@ export default class TextLine extends Entity {
     this.setRect();
   }
 
+  public getText(): string {
+    return this.text;
+  }
+
   public getPosition(): Vector {
     return this.position;
   }
 
   public getRect(): Rectangle {
     return this.rect;
-  }
-
-  public getText(): string {
-    return this.text;
   }
 
   public render(): void {

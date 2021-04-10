@@ -68,6 +68,10 @@ export default class RadialMenu extends Layer {
     return this.center;
   }
 
+  public setCenter(position: Vector): void {
+    this.center = position;
+  }
+
   // Modified from: https://www.eecs.umich.edu/courses/eecs380/HANDOUTS/PROJ2/InsidePoly.html
   public pointInPolygon(polygon: Array<Vector>, point: Vector): boolean {
     const N = polygon.length;

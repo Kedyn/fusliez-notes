@@ -110,6 +110,10 @@ export default class MapScene extends Scene {
     this.scale.set(Config.getScale());
   }
 
+  public getTexts(): Map<string, TextLine> {
+    return this.texts;
+  }
+
   public updateText(): void {
     this.texts.forEach((value, key) => value.setText(i18n.t(`maps.${key}`)));
   }
@@ -214,6 +218,26 @@ export default class MapScene extends Scene {
     this.hub.render();
 
     this.menu.render();
+  }
+
+  public getMenu(): RadialMenu {
+    return this.menu;
+  }
+
+  public getPanningPosition(): Vector {
+    return this.panningPosition;
+  }
+
+  public getMenuVisible(): boolean {
+    return this.menu.getVisible();
+  }
+
+  public setMenuVisible(state: boolean): void {
+    this.menu.setVisible(state);
+  }
+
+  public getPlayers(): Players {
+    return this.players;
   }
 
   protected panning: boolean;

@@ -1,4 +1,5 @@
 import Entity from "./Entity";
+import TextLine from "utils/AUMT/Entities/TextLine";
 
 /**
  * Base class for all layers on the canvas.
@@ -40,6 +41,14 @@ export default class Layer {
    */
   public getVisible(): boolean {
     return this.visible;
+  }
+
+  public getEntities(): Array<Entity> {
+    return this.entities;
+  }
+
+  public setEntities(entities: Array<TextLine>): void {
+    this.entities = entities;
   }
 
   /**

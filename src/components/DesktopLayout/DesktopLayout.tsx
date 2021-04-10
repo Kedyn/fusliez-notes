@@ -21,7 +21,7 @@ export default function DesktopLayout(): JSX.Element {
 
   return (
     <>
-      <main className={classes.DesktopLayout}>
+      <main data-testid="desktop-main" className={classes.DesktopLayout}>
         <div
           className={cx(
             {
@@ -54,7 +54,8 @@ export default function DesktopLayout(): JSX.Element {
 
         <Button
           className={classes.DesktopLayoutMapButton}
-          onClick={() => setFullMap(!fullMap)}
+          aria-label={fullMap ? "collapse" : "expand"}
+          onClick={() => setFullMap((prevState) => !prevState)}
         >
           <FontAwesomeIcon
             icon={fullMap ? "arrow-right" : "arrow-left"}
