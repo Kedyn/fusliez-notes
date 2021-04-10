@@ -49,6 +49,7 @@ export default function Navbar(props: INavbar): JSX.Element {
   }): JSX.Element {
     return (
       <button
+        aria-label={`navitem-${name}`}
         className={`${classes.NavbarItem} ${
           name === activeView && classes.isActive
         }`}

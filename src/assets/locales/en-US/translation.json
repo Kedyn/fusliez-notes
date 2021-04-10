@@ -44,7 +44,6 @@
     "unlockEditing": "Unlock Editing"
   },
   "maps": {
-    "title": "Maps",
     "vents": "Vents",
     "commonTasks": "Common Tasks",
     "wiringTasks": "Wiring Tasks",
@@ -78,8 +77,25 @@
     "south": "4. South",
     "southwest": "5. Southwest",
     "northwest": "6. Northwest",
-    "dragInstructions": "Drag players on the map",
-    "removePlayers": "Remove All Players From Map"
+    "decontamination": "Decontamination",
+    "dropship": "Dropship",
+    "meetingRoom": "Meeting Room",
+    "vault": "Vault",
+    "brig": "Brig",
+    "gapRoom": "Gap Room",
+    "records": "Records",
+    "lounge": "Lounge",
+    "cockpit": "Cockpit",
+    "engineRoom": "Engine Room",
+    "mainHall": "Main Hall",
+    "showers": "Showers",
+    "cargoBay": "Cargo Bay",
+    "armory": "Armory",
+    "viewingDeck": "Viewing Deck",
+    "kitchen": "Kitchen",
+    "medical": "Medical",
+    "loading": "Loading...",
+    "chooseMap": "Choose a map:"
   },
   "settings": {
     "title": "Settings",
@@ -94,7 +110,10 @@
     "resetSection": "Reset Section",
     "deadSection": "Dead Section",
     "unusedSection": "Unused Section",
-    "language": "Language"
+    "language": "Language",
+    "sectionName": "Section Name",
+    "initMapWithAllPlayers": "Initialize map with all players on it.",
+    "mapPlayerScale": "Map Player Scaling Factor"
   },
   "menu": {
     "players": "Players",

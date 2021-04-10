@@ -31,9 +31,13 @@ export default function InterfaceSettings(): JSX.Element {
     <div className={classes.InterfaceSettings}>
       <h4>{t("settings.language")}</h4>
 
-      <select value={language} onChange={handleSwitchLanguage}>
-        {AVAILABLE_LANGUAGES.map((option, index) => (
-          <option key={index} value={option.id}>
+      <select
+        value={language}
+        onChange={handleSwitchLanguage}
+        data-testid="language-options"
+      >
+        {AVAILABLE_LANGUAGES.map((option) => (
+          <option key={option.id} value={option.id}>
             {option.label}
           </option>
         ))}

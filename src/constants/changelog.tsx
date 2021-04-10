@@ -4,14 +4,18 @@ export const NOTES = [
   {
     title: "Highlights",
     items: [
-      <>Added multiple languages</>,
-      <>Customizable sections (settings).</>,
-      <>Fixed multiple issues.</>,
-      <>Better support for mobile.</>,
-      <>Better maps.</>,
-      <>Special sections.</>,
-      <>Map characters reflect special sections.</>,
-      <>Map characters double-click changes dead/alive state.</>,
+      <>Improved map functionality.</>,
+      <>Right click to add characters to map.</>,
+      <>Double click or press &quot;c&quot; to clear the map.</>,
+      <>Pan and Zoom maps.</>,
+      <>Press map icon or &quot;m&quot; to switch between maps</>,
+      <>Maps do not fully work on mobile.</>,
+    ],
+  },
+  {
+    title: "Note",
+    items: [
+      <>This is mostly a preview release to add the new The Airship map</>,
     ],
   },
   {

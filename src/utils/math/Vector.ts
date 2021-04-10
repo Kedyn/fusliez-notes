@@ -1,4 +1,4 @@
-export class Vector {
+export default class Vector {
   public x!: number;
   public y!: number;
 
@@ -14,6 +14,8 @@ export class Vector {
       this.set(args[0], args[1]);
     } else if (args.length === 1 && args[0] instanceof Vector) {
       this.set(args[0]);
+    } else {
+      this.set(0, 0);
     }
   }
 

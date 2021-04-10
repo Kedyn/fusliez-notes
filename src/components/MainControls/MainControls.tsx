@@ -30,6 +30,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import Button from "components/common/Button";
 import Counter from "components/common/Counter";
+import { Dispatch } from "redux";
 import { ITheme } from "utils/types/theme";
 import React from "react";
 import { getIsMobile } from "store/slices/DeviceSlice";
@@ -37,6 +38,16 @@ import { getShowNames } from "store/slices/SettingsSlice";
 import useStyles from "./MainControls.styles";
 import { useTheme } from "react-jss";
 import { useTranslation } from "react-i18next";
+
+export const resetAll = (dispatch: Dispatch): void => {
+  dispatch(resetScoresState());
+
+  dispatch(movePlayersToResetSection());
+
+  dispatch(resetPlayersState());
+
+  // might need to add more stuff here
+};
 
 export default function MainControls(): JSX.Element {
   const crewmateWins = useSelector(getCrewmateWins);
@@ -54,16 +65,6 @@ export default function MainControls(): JSX.Element {
   const { t } = useTranslation();
 
   const theme = useTheme<ITheme>();
-
-  const resetAll = () => {
-    dispatch(resetScoresState());
-
-    dispatch(movePlayersToResetSection());
-
-    dispatch(resetPlayersState());
-
-    // might need to add more stuff here
-  };
 
   return (
     <div className={classes.MainControls}>
@@ -85,6 +86,7 @@ export default function MainControls(): JSX.Element {
             </h4>
 
             <Counter
+              role="crewmate-wins"
               value={crewmateWins}
               min={0}
               buttonsBackgroundColor={theme.crewmateColorPrimary}
@@ -95,6 +97,7 @@ export default function MainControls(): JSX.Element {
             />
 
             <Counter
+              role="impostor-wins"
               value={impostorWins}
               min={0}
               buttonsBackgroundColor={theme.impostorColorPrimary}
@@ -111,6 +114,7 @@ export default function MainControls(): JSX.Element {
             </h4>
 
             <Counter
+              role="crewmate-losses"
               value={crewmateLosses}
               min={0}
               buttonsBackgroundColor={theme.crewmateColorPrimary}
@@ -121,6 +125,7 @@ export default function MainControls(): JSX.Element {
             />
 
             <Counter
+              role="impostor-losses"
               value={impostorLosses}
               min={0}
               buttonsBackgroundColor={theme.impostorColorPrimary}
@@ -165,7 +170,7 @@ export default function MainControls(): JSX.Element {
             <Button
               className={classes.MainControlsButton}
               danger
-              onClick={() => resetAll()}
+              onClick={() => resetAll(dispatch)}
             >
               {t("controls.resetAll")}
             </Button>

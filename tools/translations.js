@@ -45,6 +45,8 @@ fs.readdir(translationsPath, function (err, items) {
       console.log(`${item} \x1b[32mis up-to-date`);
     }
 
+    // TODO - show extra keys
+
     console.log("\x1b[0m\n");
   }
 });

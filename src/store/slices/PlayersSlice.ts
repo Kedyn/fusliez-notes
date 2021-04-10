@@ -74,7 +74,6 @@ const PlayersSlice = createSlice({
         ...state[player],
         section: action.payload,
       })),
-
     resetPlayersNames: (state: IPlayersState) =>
       getNewPlayersState((player: IPlayerColor) => ({
         ...state[player],

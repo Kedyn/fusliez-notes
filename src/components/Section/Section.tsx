@@ -20,8 +20,6 @@ export default function Section(props: ISectionProps): JSX.Element {
   const showNames = useSelector(getShowNames);
   const isMobile = useSelector(getIsMobile);
 
-  const [isSorting, setIsSorting] = React.useState(false);
-
   const classes = useStyles({ showNames });
 
   const { data } = props;
@@ -30,18 +28,8 @@ export default function Section(props: ISectionProps): JSX.Element {
 
   const dispatch = useDispatch();
 
-  React.useEffect(() => {
-    if (!isMobile) {
-      if (isSorting) {
-        document.querySelector("body")!.classList.add("dragging"); // eslint-disable-line
-      } else {
-        document.querySelector("body")!.classList.remove("dragging"); // eslint-disable-line
-      }
-    }
-  }, [isSorting]);
-
   return (
-    <div className={classes.Section}>
+    <div className={classes.Section} data-testid={`Section${data.id}`}>
       <h2 className={classes.SectionTitle}>{t(data.title)}</h2>
 
       <ReactSortable
@@ -68,13 +56,11 @@ export default function Section(props: ISectionProps): JSX.Element {
         }}
         className={classes.SectionArea}
         forceFallback={true}
-        onChoose={() => setIsSorting(true)}
-        onUnchoose={() => setIsSorting(false)}
         onEnd={(evt) => {
           dispatch(
             setPlayerSection({
               player: evt.item.id as IPlayerColor,
-              newSection: parseInt(evt.to.id.substr(7)),
+              newSection: Number(evt.to.id.substr(7)),
             })
           );
         }}
