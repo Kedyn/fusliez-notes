@@ -22,7 +22,7 @@ export default class TheSkeld extends MapScene {
       "upperEngine",
       new TextLine(
         i18n.t("maps.upperEngine"),
-        new Vector(1800, 1400),
+        new Vector(1800 * 1.5, 1400 * 1.5),
         true,
         AREAS_FONT_SIZE,
         AREAS_STROKE_STYLE,
@@ -35,7 +35,7 @@ export default class TheSkeld extends MapScene {
       "cafeteria",
       new TextLine(
         i18n.t("maps.cafeteria"),
-        new Vector(4800, 1400),
+        new Vector(4800 * 1.5, 1400 * 1.5),
         true,
         AREAS_FONT_SIZE,
         AREAS_STROKE_STYLE,
@@ -48,7 +48,7 @@ export default class TheSkeld extends MapScene {
       "weapons",
       new TextLine(
         i18n.t("maps.weapons"),
-        new Vector(6600, 1100),
+        new Vector(6600 * 1.5, 1100 * 1.5),
         true,
         AREAS_FONT_SIZE,
         AREAS_STROKE_STYLE,
@@ -61,7 +61,7 @@ export default class TheSkeld extends MapScene {
       "reactor",
       new TextLine(
         i18n.t("maps.reactor"),
-        new Vector(1200, 2200),
+        new Vector(1200 * 1.5, 2200 * 1.5),
         true,
         AREAS_FONT_SIZE,
         AREAS_STROKE_STYLE,
@@ -74,7 +74,7 @@ export default class TheSkeld extends MapScene {
       "security",
       new TextLine(
         i18n.t("maps.security"),
-        new Vector(2600, 2200),
+        new Vector(2600 * 1.5, 2200 * 1.5),
         true,
         AREAS_FONT_SIZE,
         AREAS_STROKE_STYLE,
@@ -87,7 +87,7 @@ export default class TheSkeld extends MapScene {
       "medBay",
       new TextLine(
         i18n.t("maps.medBay"),
-        new Vector(3400, 1800),
+        new Vector(3400 * 1.5, 1800 * 1.5),
         true,
         AREAS_FONT_SIZE,
         AREAS_STROKE_STYLE,
@@ -100,7 +100,7 @@ export default class TheSkeld extends MapScene {
       "o2",
       new TextLine(
         i18n.t("maps.o2"),
-        new Vector(6200, 1900),
+        new Vector(6200 * 1.5, 1900 * 1.5),
         true,
         AREAS_FONT_SIZE,
         AREAS_STROKE_STYLE,
@@ -113,7 +113,7 @@ export default class TheSkeld extends MapScene {
       "navigation",
       new TextLine(
         i18n.t("maps.navigation"),
-        new Vector(7600, 2100),
+        new Vector(7600 * 1.5, 2100 * 1.5),
         true,
         AREAS_FONT_SIZE,
         AREAS_STROKE_STYLE,
@@ -126,7 +126,7 @@ export default class TheSkeld extends MapScene {
       "lowerEngine",
       new TextLine(
         i18n.t("maps.lowerEngine"),
-        new Vector(1800, 3000),
+        new Vector(1800 * 1.5, 3000 * 1.5),
         true,
         AREAS_FONT_SIZE,
         AREAS_STROKE_STYLE,
@@ -139,7 +139,7 @@ export default class TheSkeld extends MapScene {
       "electrical",
       new TextLine(
         i18n.t("maps.electrical"),
-        new Vector(3600, 2800),
+        new Vector(3600 * 1.5, 2800 * 1.5),
         true,
         AREAS_FONT_SIZE,
         AREAS_STROKE_STYLE,
@@ -152,7 +152,7 @@ export default class TheSkeld extends MapScene {
       "storage",
       new TextLine(
         i18n.t("maps.storage"),
-        new Vector(4700, 3300),
+        new Vector(4700 * 1.5, 3300 * 1.5),
         true,
         AREAS_FONT_SIZE,
         AREAS_STROKE_STYLE,
@@ -165,7 +165,7 @@ export default class TheSkeld extends MapScene {
       "admin",
       new TextLine(
         i18n.t("maps.admin"),
-        new Vector(5800, 3000),
+        new Vector(5800 * 1.5, 3000 * 1.5),
         true,
         AREAS_FONT_SIZE,
         AREAS_STROKE_STYLE,
@@ -178,7 +178,7 @@ export default class TheSkeld extends MapScene {
       "communications",
       new TextLine(
         i18n.t("maps.communications"),
-        new Vector(5800, 4000),
+        new Vector(5800 * 1.5, 4000 * 1.5),
         true,
         AREAS_FONT_SIZE,
         AREAS_STROKE_STYLE,
@@ -191,7 +191,7 @@ export default class TheSkeld extends MapScene {
       "shields",
       new TextLine(
         i18n.t("maps.shields"),
-        new Vector(6400, 3500),
+        new Vector(6400 * 1.5, 3500 * 1.5),
         true,
         AREAS_FONT_SIZE,
         AREAS_STROKE_STYLE,
