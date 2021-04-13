@@ -88,16 +88,7 @@ export default class MapScene extends Scene {
     this.menu = new RadialMenu();
     this.players = new Players(bg.entities[0].getRect().getHeight());
 
-    const context = Config.getContext();
-
-    const width = context.canvas.width;
-    const height = context.canvas.height;
-    const img = Config.getImages().get(name);
-
-    if (img != undefined) {
-      this.scale.x = width / (img.width * scale);
-      this.scale.y = height / (img.height * scale);
-    }
+    this.reset();
   }
 
   public onEnter(): void {
@@ -196,7 +187,7 @@ export default class MapScene extends Scene {
     }
 
     if (InputHandler.getDoubleClicked()) {
-      this.players.clear(this.layers[0].entities[0].getRect().getHeight());
+      this.reset();
     }
 
     const keys = InputHandler.getKeys();
@@ -205,8 +196,8 @@ export default class MapScene extends Scene {
       SceneManager.changeScene("Menu");
     }
 
-    if (keys["C"] || keys["c"]) {
-      this.players.clear(this.layers[0].entities[0].getRect().getHeight());
+    if (keys["R"] || keys["r"]) {
+      this.reset();
     }
 
     InputHandler.restoreState();
@@ -248,4 +239,27 @@ export default class MapScene extends Scene {
   protected texts: Map<string, TextLine>;
   protected menu: RadialMenu;
   protected players: Players;
+
+  private reset(): void {
+    this.offset.set(0, 0);
+
+    const context = Config.getContext();
+
+    const width = context.canvas.width;
+    const height = context.canvas.height;
+    const bg = <Sprite>this.layers[0].entities[0];
+    const img = bg.getSourceRect();
+
+    if (img != undefined) {
+      const ratio = img.getWidth() / img.getHeight();
+
+      this.scale.x = width / (img.getHeight() * ratio * bg.getScale().x);
+      this.scale.y = height / ((img.getWidth() / ratio) * bg.getScale().y);
+    }
+
+    this.players.clear(bg.getRect().getHeight());
+
+    Config.setOffset(this.offset.x, this.offset.y);
+    Config.setScale(this.scale.x, this.scale.y);
+  }
 }

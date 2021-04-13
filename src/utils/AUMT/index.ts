@@ -26,8 +26,10 @@ class AmongUsMapTool {
       (context !== undefined || context !== null) &&
       (theme !== undefined || theme !== null)
     ) {
-      SceneManager.addScene("Loading", new Loading());
-      SceneManager.changeScene("Loading");
+      if (SceneManager.getCurrentScene() === "") {
+        SceneManager.addScene("Loading", new Loading());
+        SceneManager.changeScene("Loading");
+      }
 
       this.loop(0);
     } else {

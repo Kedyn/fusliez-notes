@@ -21,6 +21,8 @@ export default class Layer {
     this.entities = [];
 
     this.visible = visible;
+
+    this.lastActive = null;
   }
 
   /**
@@ -58,8 +60,24 @@ export default class Layer {
    * @memberof Layer
    */
   public update(step: number): void {
+    if (this.lastActive !== null) {
+      this.lastActive.update(step);
+
+      if (!this.lastActive.getActive()) {
+        this.lastActive = null;
+      }
+    }
+
     for (let i = this.entities.length - 1; i >= 0; i--) {
-      this.entities[i].update(step);
+      const entity = this.entities[i];
+
+      if (entity !== this.lastActive) {
+        entity.update(step);
+      }
+
+      if (entity.getActive()) {
+        this.lastActive = entity;
+      }
     }
   }
 
@@ -77,4 +95,6 @@ export default class Layer {
   }
 
   protected visible: boolean;
+
+  private lastActive: Entity | null;
 }

@@ -9,7 +9,7 @@ import {
 import { MOUSE_BUTTON } from "constants/mouse";
 import Vector from "utils/math/Vector";
 
-// TODO - Add Mobile support
+// Mobile support is added using a modified version of https://developer.mozilla.org/en-US/docs/Web/API/Pointer_events/Pinch_zoom_gestures
 
 class InputHandler {
   public static GetInstance(): InputHandler {
@@ -75,12 +75,33 @@ class InputHandler {
   public onPointerMove(evt: ReactPointerEvent<HTMLCanvasElement>): void {
     evt.preventDefault();
 
-    const rect = evt.currentTarget.getBoundingClientRect();
+    if (this.pointers.length <= 1) {
+      this.mousePosition.set(this.getMousePositionFromEvent(evt));
+    } else if (this.pointers.length === 2) {
+      this.pointers[0].currentTarget = evt.currentTarget;
+      this.pointers[1].currentTarget = evt.currentTarget;
 
-    this.mousePosition.set(
-      (evt.clientX - rect.left) * (evt.currentTarget.width / rect.width),
-      (evt.clientY - rect.top) * (evt.currentTarget.height / rect.height)
-    );
+      const p1 = new Vector(this.getMousePositionFromEvent(this.pointers[0]));
+      const p2 = new Vector(this.getMousePositionFromEvent(this.pointers[1]));
+      const distance = p1.getDistance(p2);
+      const center = p1.getCenter(p2);
+
+      if (!this.previousDistance) {
+        this.previousDistance = distance;
+      }
+
+      const difference = this.previousDistance - distance;
+
+      if (difference > 0) {
+        this.wheel = 1;
+      } else if (difference < 0) {
+        this.wheel = -1;
+      }
+
+      this.previousDistance = distance;
+
+      this.mousePosition.set(center);
+    }
   }
 
   public onPointerDown(evt: ReactPointerEvent<HTMLCanvasElement>): void {
@@ -91,6 +112,11 @@ class InputHandler {
     switch (evt.button) {
       case MOUSE_BUTTON.LEFT:
         this.mouseButtons.LEFT = true;
+
+        this.pointers.push(evt);
+        evt.persist();
+
+        this.mousePosition.set(this.getMousePositionFromEvent(evt));
 
         break;
 
@@ -115,6 +141,15 @@ class InputHandler {
     switch (evt.button) {
       case MOUSE_BUTTON.LEFT:
         this.mouseButtons.LEFT = false;
+
+        this.removePointer(evt);
+
+        const currentTime = new Date().getTime();
+        const timeUp = currentTime - this.previousPointerUpTime;
+
+        if (timeUp < 500 && timeUp > 0) {
+          this.doubleClicked = true;
+        }
 
         break;
 
@@ -149,6 +184,8 @@ class InputHandler {
       MIDDLE: false,
       RIGHT: false,
     };
+
+    this.removePointer(evt);
   }
 
   public onDoubleClick(
@@ -185,6 +222,9 @@ class InputHandler {
   private wheel: number;
   private doubleClicked: boolean;
   private propagate: boolean;
+  private pointers: Array<ReactPointerEvent<HTMLCanvasElement>>;
+  private previousDistance: number;
+  private previousPointerUpTime: number;
 
   private constructor() {
     this.mousePosition = new Vector();
@@ -202,6 +242,37 @@ class InputHandler {
     this.doubleClicked = false;
 
     this.propagate = true;
+
+    this.pointers = [];
+
+    this.previousDistance = -1;
+
+    this.previousPointerUpTime = 0;
+  }
+
+  private removePointer(evt: ReactPointerEvent<HTMLCanvasElement>): void {
+    for (let i = 0; i < this.pointers.length; i++) {
+      if (evt.pointerId === this.pointers[i].pointerId) {
+        this.pointers.splice(i, 1);
+
+        break;
+      }
+    }
+
+    if (this.pointers.length < 2) {
+      this.previousDistance = -1;
+    }
+  }
+
+  private getMousePositionFromEvent(
+    evt: ReactPointerEvent<HTMLCanvasElement>
+  ): Vector {
+    const rect = evt.currentTarget.getBoundingClientRect();
+
+    return new Vector(
+      (evt.clientX - rect.left) * (evt.currentTarget.width / rect.width),
+      (evt.clientY - rect.top) * (evt.currentTarget.height / rect.height)
+    );
   }
 }
 

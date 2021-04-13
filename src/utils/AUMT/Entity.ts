@@ -15,11 +15,11 @@ import Vector from "utils/math/Vector";
  */
 export default abstract class Entity {
   /**
-   * Creates an instance of CanvasObject.
+   * Creates an instance of Entity.
    *
    * @param {boolean} [visible=true] `true` if the object should be render, `false` otherwise.
    * @param {boolean} [draggable=false] `true if the object can be moved using the mouse, `false` otherwise.
-   * @memberof CanvasObject
+   * @memberof Entity
    */
   public constructor(visible = true, draggable = false) {
     this.visible = visible;
@@ -28,39 +28,39 @@ export default abstract class Entity {
   }
 
   /**
-   * Changes the visibility state of the CanvasObject.
+   * Changes the visibility state of the Entity.
    *
    * @param {boolean} state `true` if the object should be render, `false` otherwise.
-   * @memberof CanvasObject
+   * @memberof Entity
    */
   public setVisible(state: boolean): void {
     this.visible = state;
   }
 
   /**
-   * Changes the draggability state of the CanvasObject.
+   * Changes the draggability state of the Entity.
    *
    * @param {boolean} state `true` if the object should be draggable, `false` otherwise.
-   * @memberof CanvasObject
+   * @memberof Entity
    */
   public setDraggable(state: boolean): void {
     this.draggable = state;
   }
 
   /**
-   * Sets the position of the CanvasObject.
+   * Sets the position of the Entity.
    *
    * @abstract
-   * @param {Vector} position The new position of the CanvasObject.
-   * @memberof CanvasObject
+   * @param {Vector} position The new position of the Entity.
+   * @memberof Entity
    */
   public abstract setPosition(position: Vector): void;
 
   /**
-   * Returns the visibility state of the CanvasObject.
+   * Returns the visibility state of the Entity.
    *
    * @return {*}  {boolean} `true` if is visible, `false` otherwise.
-   * @memberof CanvasObject
+   * @memberof Entity
    */
   public getVisible(): boolean {
     return this.visible;
@@ -70,18 +70,28 @@ export default abstract class Entity {
    * Returns the draggability state of the CanvasObect.
    *
    * @return {*}  {boolean} `true` if draggable, `false` otherwise.
-   * @memberof CanvasObject
+   * @memberof Entity
    */
   public getDraggable(): boolean {
     return this.draggable;
   }
 
   /**
-   * Returns the rectangle of the CanvasObject.
+   * Returns the active/focus state of the Entity.
+   *
+   * @return {*}  {boolean}
+   * @memberof Entity
+   */
+  public getActive(): boolean {
+    return this.active;
+  }
+
+  /**
+   * Returns the rectangle of the Entity.
    *
    * @abstract
-   * @return {*}  {Rectangle} The rectangle of the CanvasObject.
-   * @memberof CanvasObject
+   * @return {*}  {Rectangle} The rectangle of the Entity.
+   * @memberof Entity
    */
   public abstract getRect(): Rectangle;
 
@@ -89,7 +99,7 @@ export default abstract class Entity {
    * Updates the object.
    *
    * @param {number} step Time since our last frame.
-   * @memberof CanvasObject
+   * @memberof Entity
    */
   public update(step: number): void {
     const position = Config.screenToWorld(InputHandler.getMousePosition());
@@ -125,7 +135,7 @@ export default abstract class Entity {
    * Renders our object.
    *
    * @abstract
-   * @memberof CanvasObject
+   * @memberof Entity
    */
   public abstract render(): void;
 
