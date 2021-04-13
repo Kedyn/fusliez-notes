@@ -12,11 +12,11 @@
         {
           "fileName": "<FTName | pascalcase>/<FTName | pascalcase>.styles.ts",
           "template": "Styles Component File"
-        },
+        } /*,
         {
           "fileName": "<FTName | pascalcase>/<FTName | pascalcase>.test.tsx",
           "template": "Test Component File"
-        },
+        } */,
         {
           "fileName": "<FTName | pascalcase>/index.ts",
           "template": "Index Component File"
@@ -31,11 +31,11 @@
         {
           "fileName": "<FTName | pascalcase>/<FTName | pascalcase>.tsx",
           "template": "NonStyled Component File"
-        },
+        } /* ,
         {
           "fileName": "<FTName | pascalcase>/<FTName | pascalcase>.test.tsx",
           "template": "Test Component File"
-        },
+        } */,
         {
           "fileName": "<FTName | pascalcase>/index.ts",
           "template": "Index Component File"
