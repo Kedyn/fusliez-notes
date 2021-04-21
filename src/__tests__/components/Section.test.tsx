@@ -2,10 +2,10 @@ import { render, screen } from "@testing-library/react";
 
 import { DEFAULT_RESET_SECTION_PLAYERS } from "constants/sections";
 import DefaultComponentWrapper from "../DefaultComponentWrapper";
-import { MockStore } from "redux-mock-store";
+import configureStore, { MockStore } from "redux-mock-store";
 import React from "react";
 import Section from "components/Section";
-import configureStore from "redux-mock-store";
+
 import registerFaIcons from "utils/registerFaIcons";
 import { setIsMobile } from "store/slices/DeviceSlice";
 import store from "store";

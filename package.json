@@ -1,12 +1,13 @@
 {
   "name": "fusliez-notes",
+  "productName": "fusliez-notes",
   "version": "1.0.0-beta.2",
-  "description": "",
+  "description": "A companion notes app for Among Us social deduction game. Lets you track of your thoughts and your winning record, and includes a notepad and maps.",
   "repository": {
     "type": "git",
     "url": "https://github.com/Kedyn/fusliez-notes.git"
   },
-  "main": "index.js",
+  "main": ".webpack/main",
   "scripts": {
     "start": "webpack-dev-server",
     "build": "cross-env NODE_ENV=production webpack",
@@ -14,6 +15,10 @@
     "deploy": "gh-pages -d dist",
     "predeploynext": "npm run build",
     "deploynext": "gh-pages -d dist -e ./next",
+    "desktop": "electron-forge start",
+    "package": "electron-forge package",
+    "make": "electron-forge make",
+    "publish": "electron-forge publish",
     "lint": "eslint ./src/ --cache --fix --ext .ts,.tsx",
     "checkTranslations": "node ./tools/translations.js",
     "test": "jest --config ./jest.config.json --coverage",
@@ -21,8 +26,50 @@
     "test-coverage": "npm run test -- --coverage --watchAll=false"
   },
   "homepage": "http://kedyn.github.io/fusliez-notes",
-  "author": "Kedyn Macedonio",
+  "author": {
+    "name": "Kedyn Macedonio",
+    "email": "mkedyn@gmail.com"
+  },
   "license": "MIT",
+  "config": {
+    "forge": {
+      "packagerConfig": {
+        "icon": "./src/assets/images/app/favicon.ico"
+      },
+      "makers": [
+        {
+          "name": "@electron-forge/maker-squirrel",
+          "config": {
+            "name": "fusliez-notes",
+            "iconUrl": "https://kedyn.github.io/fusliez-notes/favicon.ico",
+            "setupIcon": "./src/assets/images/app/favicon.ico",
+            "noMsi": "false"
+          }
+        },
+        {
+          "name": "@electron-forge/maker-zip"
+        }
+      ],
+      "plugins": [
+        [
+          "@electron-forge/plugin-webpack",
+          {
+            "mainConfig": "./webpack.electron.main.config.js",
+            "renderer": {
+              "config": "./webpack.electron.renderer.config.js",
+              "entryPoints": [
+                {
+                  "html": "./src/electron/index.html",
+                  "js": "./src/electron/renderer.ts",
+                  "name": "main_window"
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    }
+  },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.32",
     "@fortawesome/free-solid-svg-icons": "^5.15.1",
@@ -30,6 +77,8 @@
     "@reduxjs/toolkit": "^1.5.0",
     "browserslist": "^4.14.5",
     "classnames": "^2.2.6",
+    "electron-overlay-window": "^1.0.4",
+    "electron-squirrel-startup": "^1.0.0",
     "i18next": "^19.7.0",
     "i18next-browser-languagedetector": "^6.0.1",
     "i18next-http-backend": "^1.0.21",
@@ -51,6 +100,13 @@
     "@babel/preset-env": "^7.13.10",
     "@babel/preset-react": "^7.12.13",
     "@babel/preset-typescript": "^7.13.0",
+    "@electron-forge/cli": "^6.0.0-beta.54",
+    "@electron-forge/maker-deb": "^6.0.0-beta.54",
+    "@electron-forge/maker-rpm": "^6.0.0-beta.54",
+    "@electron-forge/maker-squirrel": "^6.0.0-beta.54",
+    "@electron-forge/maker-zip": "^6.0.0-beta.54",
+    "@electron-forge/plugin-webpack": "^6.0.0-beta.54",
+    "@marshallofsound/webpack-asset-relocator-loader": "^0.5.0",
     "@testing-library/dom": "^7.30.0",
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.5",
@@ -71,10 +127,14 @@
     "copy-webpack-plugin": "^6.2.1",
     "cross-env": "^7.0.2",
     "css-loader": "^4.3.0",
+    "electron": "12.0.2",
     "eslint": "^7.9.0",
     "eslint-config-prettier": "^6.11.0",
+    "eslint-import-resolver-typescript": "^2.4.0",
+    "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-prettier": "^3.1.4",
     "eslint-plugin-react": "^7.21.3",
+    "fork-ts-checker-webpack-plugin": "^5.2.1",
     "gh-pages": "^3.1.0",
     "html-webpack-plugin": "^4.5.0",
     "husky": "^4.3.0",
@@ -85,6 +145,7 @@
     "jsdom": "^16.5.1",
     "lint-staged": "^10.3.0",
     "node-json-minify": "^1.0.0",
+    "node-loader": "^1.0.3",
     "normalize-jss": "^4.0.0",
     "prettier": "^2.1.1",
     "redux-mock-store": "^1.5.4",

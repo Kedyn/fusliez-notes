@@ -10,10 +10,10 @@ import {
 import { render, screen } from "@testing-library/react";
 
 import DefaultComponentWrapper from "../DefaultComponentWrapper";
-import { MockStore } from "redux-mock-store";
+import configureStore, { MockStore } from "redux-mock-store";
 import React from "react";
 import SectionsSettings from "components/SectionsSettings";
-import configureStore from "redux-mock-store";
+
 import registerFaIcons from "utils/registerFaIcons";
 import store from "store";
 import userEvent from "@testing-library/user-event";

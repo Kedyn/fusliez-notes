@@ -3,9 +3,9 @@ import { render, screen, waitFor } from "@testing-library/react";
 
 import DefaultComponentWrapper from "../DefaultComponentWrapper";
 import MobileLayout from "components/MobileLayout";
-import { MockStore } from "redux-mock-store";
+import configureStore, { MockStore } from "redux-mock-store";
 import React from "react";
-import configureStore from "redux-mock-store";
+
 import registerFaIcons from "utils/registerFaIcons";
 import { setIsMobile } from "store/slices/DeviceSlice";
 import store from "store";
