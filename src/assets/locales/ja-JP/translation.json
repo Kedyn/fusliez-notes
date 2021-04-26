@@ -93,8 +93,10 @@
     "armory": "武器庫",
     "viewingDeck": "展望デッキ",
     "kitchen": "キッチン",
-    "medical": "診察室"
-    },
+    "medical": "診察室",
+    "loading": "Loading...",
+    "chooseMap": "マップを選択"
+  },
   "settings": {
     "title": "設定",
     "playersTab": "プレイヤー表示",
@@ -109,7 +111,9 @@
     "deadSection": "死亡",
     "unusedSection": "不参加",
     "language": "言語",
-    "sectionName": "分類名"
+    "sectionName": "分類名",
+    "initMapWithAllPlayers": "マップ初期化時に全てのプレイヤーを配置",
+    "mapPlayerScale": "マップ上のプレイヤー表示の大きさ"
   },
   "menu": {
     "players": "プレイヤー",
