@@ -5,6 +5,7 @@ import { PLAYER_IMAGE } from "constants/players";
 import Rectangle from "utils/math/Rectangle";
 import Sprite from "./Entities/Sprite";
 import Vector from "utils/math/Vector";
+import { i18n } from "i18next";
 
 class Config {
   public static GetInstance(): Config {
@@ -49,6 +50,10 @@ class Config {
     this.scale.set(x, y);
   }
 
+  public setI18n(i18n: i18n): void {
+    this.i18n = i18n;
+  }
+
   public getDebug(): boolean {
     return this.debug;
   }
@@ -75,6 +80,10 @@ class Config {
 
   public getPlayers(): Map<IPlayerColor, Sprite> {
     return this.players;
+  }
+
+  public getI18n(): i18n {
+    return this.i18n;
   }
 
   // FOR TESTING ONLY
@@ -167,6 +176,7 @@ class Config {
   private scale: Vector;
   private players: Map<IPlayerColor, Sprite>;
   private playersNames: Map<IPlayerColor, string>;
+  private i18n!: i18n;
 
   private constructor() {
     this.debug = false;

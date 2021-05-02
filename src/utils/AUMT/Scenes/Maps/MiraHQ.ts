@@ -6,11 +6,11 @@ import {
   MIRAHQ_SCALE,
 } from "constants/maps";
 
+import Config from "utils/AUMT/Config";
 import Layer from "utils/AUMT/Layer";
 import MapScene from "../MapScene";
 import TextLine from "utils/AUMT/Entities/TextLine";
 import Vector from "utils/math/Vector";
-import i18n from "utils/i18n";
 
 export default class MiraHQ extends MapScene {
   public constructor() {
@@ -21,7 +21,7 @@ export default class MiraHQ extends MapScene {
     this.texts.set(
       "greenhouse",
       new TextLine(
-        i18n.t("maps.greenhouse"),
+        Config.getI18n().t("maps.greenhouse"),
         new Vector(8000, 1900),
         true,
         AREAS_FONT_SIZE,
@@ -34,7 +34,7 @@ export default class MiraHQ extends MapScene {
     this.texts.set(
       "office",
       new TextLine(
-        i18n.t("maps.office"),
+        Config.getI18n().t("maps.office"),
         new Vector(7200, 3300),
         true,
         AREAS_FONT_SIZE,
@@ -47,7 +47,7 @@ export default class MiraHQ extends MapScene {
     this.texts.set(
       "admin",
       new TextLine(
-        i18n.t("maps.admin"),
+        Config.getI18n().t("maps.admin"),
         new Vector(8750, 3300),
         true,
         AREAS_FONT_SIZE,
@@ -60,7 +60,7 @@ export default class MiraHQ extends MapScene {
     this.texts.set(
       "reactor",
       new TextLine(
-        i18n.t("maps.reactor"),
+        Config.getI18n().t("maps.reactor"),
         new Vector(4000, 5200),
         true,
         AREAS_FONT_SIZE,
@@ -73,7 +73,7 @@ export default class MiraHQ extends MapScene {
     this.texts.set(
       "laboratory",
       new TextLine(
-        i18n.t("maps.laboratory"),
+        Config.getI18n().t("maps.laboratory"),
         new Vector(5800, 5200),
         true,
         AREAS_FONT_SIZE,
@@ -86,7 +86,7 @@ export default class MiraHQ extends MapScene {
     this.texts.set(
       "decontamination",
       new TextLine(
-        i18n.t("maps.decontamination"),
+        Config.getI18n().t("maps.decontamination"),
         new Vector(4900, 6000),
         true,
         AREAS_FONT_SIZE,
@@ -99,7 +99,7 @@ export default class MiraHQ extends MapScene {
     this.texts.set(
       "launchpad",
       new TextLine(
-        i18n.t("maps.launchpad"),
+        Config.getI18n().t("maps.launchpad"),
         new Vector(2000, 7100),
         true,
         AREAS_FONT_SIZE,
@@ -112,7 +112,7 @@ export default class MiraHQ extends MapScene {
     this.texts.set(
       "lockerRoom",
       new TextLine(
-        i18n.t("maps.lockerRoom"),
+        Config.getI18n().t("maps.lockerRoom"),
         new Vector(5900, 6800),
         true,
         AREAS_FONT_SIZE,
@@ -125,7 +125,7 @@ export default class MiraHQ extends MapScene {
     this.texts.set(
       "communications",
       new TextLine(
-        i18n.t("maps.communications"),
+        Config.getI18n().t("maps.communications"),
         new Vector(7300, 7100),
         true,
         AREAS_FONT_SIZE,
@@ -138,7 +138,7 @@ export default class MiraHQ extends MapScene {
     this.texts.set(
       "medBay",
       new TextLine(
-        i18n.t("maps.medBay"),
+        Config.getI18n().t("maps.medBay"),
         new Vector(7300, 8000),
         true,
         AREAS_FONT_SIZE,
@@ -151,7 +151,7 @@ export default class MiraHQ extends MapScene {
     this.texts.set(
       "storage",
       new TextLine(
-        i18n.t("maps.storage"),
+        Config.getI18n().t("maps.storage"),
         new Vector(8425, 6650),
         true,
         AREAS_FONT_SIZE,
@@ -164,7 +164,7 @@ export default class MiraHQ extends MapScene {
     this.texts.set(
       "cafeteria",
       new TextLine(
-        i18n.t("maps.cafeteria"),
+        Config.getI18n().t("maps.cafeteria"),
         new Vector(10000, 6650),
         true,
         AREAS_FONT_SIZE,
@@ -177,7 +177,7 @@ export default class MiraHQ extends MapScene {
     this.texts.set(
       "balcony",
       new TextLine(
-        i18n.t("maps.balcony"),
+        Config.getI18n().t("maps.balcony"),
         new Vector(9550, 8450),
         true,
         AREAS_FONT_SIZE,

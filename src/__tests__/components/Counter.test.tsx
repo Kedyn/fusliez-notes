@@ -7,9 +7,9 @@ import { fireEvent, render, screen } from "@testing-library/react";
 
 import Counter from "components/common/Counter";
 import DefaultComponentWrapper from "../DefaultComponentWrapper";
-import { MockStore } from "redux-mock-store";
+import configureStore, { MockStore } from "redux-mock-store";
 import React from "react";
-import configureStore from "redux-mock-store";
+
 import registerFaIcons from "utils/registerFaIcons";
 import store from "store";
 import userEvent from "@testing-library/user-event";

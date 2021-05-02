@@ -9,7 +9,6 @@ import TextLine from "../Entities/TextLine";
 import TheAirship from "./Maps/TheAirship";
 import TheSkeld from "./Maps/TheSkeld";
 import Vector from "utils/math/Vector";
-import i18n from "utils/i18n";
 
 export default class Loading extends Scene {
   public constructor() {
@@ -51,7 +50,7 @@ export default class Loading extends Scene {
 
     layer.entities.push(
       new TextLine(
-        i18n.t("maps.loading"),
+        Config.getI18n().t("maps.loading"),
         new Vector(context.canvas.width / 2, context.canvas.height / 2),
         true,
         100
@@ -70,7 +69,9 @@ export default class Loading extends Scene {
   }
 
   public updateText(): void {
-    (<TextLine>this.layers[0].entities[0]).setText(i18n.t("maps.loading"));
+    (<TextLine>this.layers[0].entities[0]).setText(
+      Config.getI18n().t("maps.loading")
+    );
   }
 
   public update(): void {

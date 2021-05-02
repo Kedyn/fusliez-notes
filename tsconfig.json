@@ -1,17 +1,25 @@
 {
   "compilerOptions": {
-    "target": "es6",
-    "module": "esnext",
-    "lib": ["es6", "dom", "es2017"],
-    "jsx": "react",
-    "strict": true,
-    "noImplicitAny": true,
-    "baseUrl": "./src/",
-    "esModuleInterop": true,
+    "allowJs": true,
+    "module": "commonjs",
     "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true,
-    "removeComments": false,
+    "esModuleInterop": true,
+    "noImplicitAny": true,
+    "sourceMap": true,
+    "baseUrl": ".",
+    "outDir": "dist",
     "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "paths": {
+      "assets/*": ["src/assets/*"],
+      "components/*": ["src/components/*"],
+      "constants/*": ["src/constants/*"],
+      "store": ["src/store"],
+      "store/*": ["src/store/*"],
+      "utils/*": ["src/utils/*"],
+      "*": ["node_modules/*"]
+    },
+    "jsx": "react"
   },
-  "exclude": [".cache", "android", "build", "dist"]
+  "include": ["src/**/*"]
 }

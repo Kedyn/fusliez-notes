@@ -8,7 +8,6 @@ import SceneManager from "../SceneManager";
 import Sprite from "../Entities/Sprite";
 import TextLine from "../Entities/TextLine";
 import Vector from "utils/math/Vector";
-import i18n from "utils/i18n";
 
 export default class Menu extends Scene {
   public constructor() {
@@ -17,7 +16,12 @@ export default class Menu extends Scene {
     const buttons = new Layer();
 
     buttons.entities.push(
-      new TextLine(i18n.t("maps.chooseMap"), new Vector(960, 400), true, 60)
+      new TextLine(
+        Config.getI18n().t("maps.chooseMap"),
+        new Vector(960, 400),
+        true,
+        60
+      )
     );
 
     buttons.entities.push(
@@ -81,7 +85,9 @@ export default class Menu extends Scene {
   }
 
   public updateText(): void {
-    (<TextLine>this.layers[0].entities[0]).setText(i18n.t("maps.chooseMap"));
+    (<TextLine>this.layers[0].entities[0]).setText(
+      Config.getI18n().t("maps.chooseMap")
+    );
   }
 
   public update(): void {
