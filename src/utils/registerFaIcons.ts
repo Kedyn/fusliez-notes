@@ -1,9 +1,11 @@
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons/faArrowLeft";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons/faArrowRight";
+import { faCog } from "@fortawesome/free-solid-svg-icons/faCog";
 import { faCompactDisc } from "@fortawesome/free-solid-svg-icons/faCompactDisc";
 import { faEdit } from "@fortawesome/free-solid-svg-icons/faEdit";
 import { faEllipsisH } from "@fortawesome/free-solid-svg-icons/faEllipsisH";
 import { faHeart } from "@fortawesome/free-solid-svg-icons/faHeart";
+import { faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 import { faMap } from "@fortawesome/free-solid-svg-icons/faMap";
 import { faMinus } from "@fortawesome/free-solid-svg-icons/faMinus";
 import { faPlus } from "@fortawesome/free-solid-svg-icons/faPlus";
@@ -33,6 +35,8 @@ export default function registerFaIcons(): void {
     faUsersSlash,
     faArrowRight,
     faArrowLeft,
-    faSkullCrossbones
+    faSkullCrossbones,
+    faCog,
+    faInfoCircle
   );
 }

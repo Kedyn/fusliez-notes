@@ -61,7 +61,10 @@
                 {
                   "html": "./src/electron/index.html",
                   "js": "./src/electron/renderer.ts",
-                  "name": "main_window"
+                  "name": "main_window",
+                  "preload": {
+                    "js": "./src/electron/renderer/preload.ts"
+                  }
                 }
               ]
             }

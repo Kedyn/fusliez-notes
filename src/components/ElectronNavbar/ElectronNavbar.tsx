@@ -1,19 +1,21 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import NavbarItem from "components/common/NavbarItem";
 import React from "react";
-import useStyles from "./Navbar.styles";
+import useStyles from "./ElectronNavbar.styles";
 import { useTranslation } from "react-i18next";
 
-export interface INavbar {
+export interface IElectronNavbarProps {
   activeView: string;
   onChangeActiveView: (view: string) => void;
-  setIsDrawerOpen: (state: boolean) => void;
 }
 
-export default function Navbar(props: INavbar): JSX.Element {
+export default function ElectronNavbar(
+  props: IElectronNavbarProps
+): JSX.Element {
   const { t } = useTranslation();
 
-  const { activeView, onChangeActiveView, setIsDrawerOpen } = props;
+  const { activeView, onChangeActiveView } = props;
 
   const classes = useStyles();
 
@@ -35,25 +37,29 @@ export default function Navbar(props: INavbar): JSX.Element {
       icon: "map",
     },
     {
-      name: t("menu.menu"),
-      icon: "ellipsis-h",
+      name: t("menu.settings"),
+      icon: "cog",
+    },
+    {
+      name: t("menu.changelog"),
+      icon: "info-circle",
+    },
+    {
+      name: t("menu.about"),
+      icon: "heart",
     },
   ];
 
   return (
-    <div className={classes.Navbar}>
-      <div className={classes.NavbarContainer}>
+    <div className={classes.ElectronNavbar}>
+      <div className={classes.ElectronNavbarContainer}>
         {tabs.map(({ name, icon }) => (
           <NavbarItem
             key={name}
             name={name}
             icon={icon as IconProp}
             active={name === activeView}
-            onClick={() =>
-              name === t("menu.menu")
-                ? setIsDrawerOpen(true)
-                : onChangeActiveView(name)
-            }
+            onClick={() => onChangeActiveView(name)}
           />
         ))}
       </div>
