@@ -6,6 +6,7 @@ import ElectronNavbar from "components/ElectronNavbar";
 import ElectronTitlebar from "components/ElectronTitlebar";
 import { IView } from "utils/types/interface";
 import MainControls from "components/MainControls";
+import Maps from "components/Maps";
 import Notepad from "components/Notepad";
 import React from "react";
 import ScoresPanel from "components/ScoresPanel";
@@ -15,8 +16,6 @@ import { setIsMobile } from "store/slices/DeviceSlice";
 import { useDispatch } from "react-redux";
 import useStyles from "./ElectronLayout.styles";
 import { useTranslation } from "react-i18next";
-
-//import Maps from "components/Maps";
 
 export default function ElectronLayout(): JSX.Element {
   const classes = useStyles();
@@ -46,11 +45,11 @@ export default function ElectronLayout(): JSX.Element {
       ),
       minor: false,
     },
-    /* {
+    {
       title: t("menu.maps"),
       content: <Maps />,
       minor: false,
-    }, */
+    },
     {
       title: t("menu.settings"),
       content: <Settings />,

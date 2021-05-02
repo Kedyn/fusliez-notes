@@ -11,7 +11,6 @@ import SceneManager from "../SceneManager";
 import Sprite from "../Entities/Sprite";
 import TextLine from "../Entities/TextLine";
 import Vector from "utils/math/Vector";
-import i18n from "utils/i18n";
 
 export default class MapScene extends Scene {
   public constructor(name: IMapName, scale: number) {
@@ -106,7 +105,9 @@ export default class MapScene extends Scene {
   }
 
   public updateText(): void {
-    this.texts.forEach((value, key) => value.setText(i18n.t(`maps.${key}`)));
+    this.texts.forEach((value, key) =>
+      value.setText(Config.getI18n().t(`maps.${key}`))
+    );
   }
 
   public update(step: number): void {

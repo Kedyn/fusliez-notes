@@ -22,14 +22,14 @@ const createWindow = (): void => {
     height: 1080,
     webPreferences: {
       preload: MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY,
+      devTools: false,
     },
-    //...overlayWindow.WINDOW_OPTS,
+    ...overlayWindow.WINDOW_OPTS,
   });
 
   mainWindow.loadURL(MAIN_WINDOW_WEBPACK_ENTRY);
 
-  //overlayWindow.attachTo(mainWindow, "Among Us");
-  //mainWindow.show();
+  overlayWindow.attachTo(mainWindow, "Among Us");
 
   //mainWindow.webContents.openDevTools();
 

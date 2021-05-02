@@ -11,6 +11,7 @@ import { getPlayers } from "store/slices/PlayersSlice";
 import { useSelector } from "react-redux";
 import useStyles from "./Maps.styles";
 import { useTheme } from "theming";
+import { useTranslation } from "react-i18next";
 
 interface IMapsProps {
   testing?: boolean;
@@ -19,6 +20,7 @@ interface IMapsProps {
 export default function Maps(props: IMapsProps): JSX.Element {
   const classes = useStyles();
   const theme = useTheme<ITheme>();
+  const { i18n } = useTranslation();
 
   const { testing } = props;
 
@@ -34,6 +36,7 @@ export default function Maps(props: IMapsProps): JSX.Element {
       const context = canvasRef.current.getContext("2d");
 
       if (context !== null) {
+        AUMT.Config.setI18n(i18n);
         AUMT.Config.setDebug(false);
         AUMT.Config.setContext(context);
         AUMT.Config.setTheme(theme);
@@ -45,6 +48,16 @@ export default function Maps(props: IMapsProps): JSX.Element {
         };
       }
     }
+
+    const changeScenesLanguage = () => {
+      AUMT.SceneManager.changeLanguage();
+    };
+
+    i18n.on("languageChanged", changeScenesLanguage);
+
+    return () => {
+      i18n.off("languageChanged", changeScenesLanguage);
+    };
   }, []);
 
   React.useEffect(() => {
