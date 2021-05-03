@@ -88,6 +88,10 @@ export const TRANSLATORS: Array<IPerson> = [
     name: "Chee Murakami",
     link: "https://github.com/cheemurakami",
   },
+  {
+    name: "tokkiyaa",
+    link: "https://github.com/tokkiyaa",
+  },
 ];
 
 export const ARTISTS: Array<IPerson> = [
