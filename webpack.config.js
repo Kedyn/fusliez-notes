@@ -34,10 +34,9 @@ module.exports = {
   resolve: {
     alias: {
       components: path.resolve(__dirname, "src", "components"),
-      themes: path.resolve(__dirname, "src", "themes"),
-      utils: path.resolve(__dirname, "src", "utils"),
-      store: path.resolve(__dirname, "src", "store"),
       constants: path.resolve(__dirname, "src", "constants"),
+      store: path.resolve(__dirname, "src", "store"),
+      utils: path.resolve(__dirname, "src", "utils"),
     },
     extensions: [".js", ".jsx", ".ts", ".tsx"],
   },

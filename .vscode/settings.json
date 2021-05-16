@@ -68,9 +68,9 @@
       "",
       "export default function <FTName | pascalcase>(props: I<FTName | pascalcase>Props): JSX.Element {",
       "  return (",
-      "    <React.Fragment>",
+      "    <>",
       "      Component content",
-      "    </React.Fragment>",
+      "    </>",
       "  );",
       "}",
       ""
