@@ -78,7 +78,7 @@
     "@fortawesome/free-solid-svg-icons": "^5.15.1",
     "@fortawesome/react-fontawesome": "^0.1.11",
     "@reduxjs/toolkit": "^1.5.0",
-    "browserslist": "^4.14.5",
+    "browserslist": "^4.16.5",
     "classnames": "^2.2.6",
     "electron-overlay-window": "^1.0.4",
     "electron-squirrel-startup": "^1.0.0",
