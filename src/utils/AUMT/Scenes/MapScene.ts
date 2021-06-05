@@ -249,13 +249,26 @@ export default class MapScene extends Scene {
     const width = context.canvas.width;
     const height = context.canvas.height;
     const bg = <Sprite>this.layers[0].entities[0];
-    const img = bg.getSourceRect();
+    const img = bg.getRect();
 
     if (img != undefined) {
-      const ratio = img.getWidth() / img.getHeight();
+      const imgWidth = img.getWidth();
+      const imgHeight = img.getHeight();
+      const ratio = imgWidth / imgHeight;
 
-      this.scale.x = width / (img.getHeight() * ratio * bg.getScale().x);
-      this.scale.y = height / ((img.getWidth() / ratio) * bg.getScale().y);
+      let newWidth = width;
+      let newHeight = newWidth / ratio;
+
+      if (newHeight > height) {
+        newHeight = height;
+        newWidth = newHeight * ratio;
+      }
+
+      this.scale.x = newWidth / (imgHeight * ratio);
+      this.scale.y = newHeight / (imgWidth / ratio);
+
+      this.offset.x = (width - newWidth) / -2;
+      this.offset.y = (height - newHeight) / -2;
     }
 
     this.players.clear(bg.getRect().getHeight());
