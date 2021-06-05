@@ -7,61 +7,73 @@ export const DEFAULT_PLAYERS_STATE: IPlayersState = {
     name: "",
     color: "black",
     section: DEFAULT_RESET_SECTION,
+    usedEmergencyButton: false,
   },
   blue: {
     name: "",
     color: "blue",
     section: DEFAULT_RESET_SECTION,
+    usedEmergencyButton: false,
   },
   brown: {
     name: "",
     color: "brown",
     section: DEFAULT_RESET_SECTION,
+    usedEmergencyButton: false,
   },
   cyan: {
     name: "",
     color: "cyan",
     section: DEFAULT_RESET_SECTION,
+    usedEmergencyButton: false,
   },
   green: {
     name: "",
     color: "green",
     section: DEFAULT_RESET_SECTION,
+    usedEmergencyButton: false,
   },
   lime: {
     name: "",
     color: "lime",
     section: DEFAULT_RESET_SECTION,
+    usedEmergencyButton: false,
   },
   orange: {
     name: "",
     color: "orange",
     section: DEFAULT_RESET_SECTION,
+    usedEmergencyButton: false,
   },
   pink: {
     name: "",
     color: "pink",
     section: DEFAULT_RESET_SECTION,
+    usedEmergencyButton: false,
   },
   purple: {
     name: "",
     color: "purple",
     section: DEFAULT_RESET_SECTION,
+    usedEmergencyButton: false,
   },
   red: {
     name: "",
     color: "red",
     section: DEFAULT_RESET_SECTION,
+    usedEmergencyButton: false,
   },
   white: {
     name: "",
     color: "white",
     section: DEFAULT_RESET_SECTION,
+    usedEmergencyButton: false,
   },
   yellow: {
     name: "",
     color: "yellow",
     section: DEFAULT_RESET_SECTION,
+    usedEmergencyButton: false,
   },
 };
 

@@ -9,6 +9,12 @@ import { useTranslation } from "react-i18next";
 const SlideDrawer = React.lazy(
   () => import(/* webpackChunkName: "slidedrawer" */ "components/SlideDrawer")
 );
+const EmergencyButtonUsages = React.lazy(
+  () =>
+    import(
+      /* webpackChunkName: "emergencyButtonUsages" */ "components/EmergencyButtonUsages"
+    )
+);
 const Sections = React.lazy(
   () => import(/* webpackChunkName: "sections" */ "components/Sections")
 );
@@ -42,7 +48,12 @@ export default function MobileLayout(): JSX.Element {
   const views: Array<IView> = [
     {
       title: t("menu.players"),
-      content: <Sections />,
+      content: (
+        <div>
+          <EmergencyButtonUsages />
+          <Sections />
+        </div>
+      ),
       minor: false,
     },
     {

@@ -1,6 +1,7 @@
 import { Trans, useTranslation } from "react-i18next";
 
 import Button from "components/common/Button";
+import EmergencyButtonUsages from "components/EmergencyButtonUsages";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import MainControls from "components/MainControls";
 import Maps from "components/Maps";
@@ -33,6 +34,8 @@ export default function DesktopLayout(): JSX.Element {
         >
           <div className={classes.DesktopLayoutScoresAndSections}>
             <ScoresPanel />
+
+            <EmergencyButtonUsages />
 
             <Sections />
           </div>

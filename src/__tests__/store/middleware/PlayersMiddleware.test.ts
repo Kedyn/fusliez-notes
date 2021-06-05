@@ -10,6 +10,7 @@ interface IPlayerAction {
   player?: string;
   name?: string;
   newName?: string;
+  usedEmergencyButton?: boolean;
   section?: number;
   newSection?: number;
   color?: string;
@@ -49,7 +50,12 @@ describe("PlayersMiddleware tests", () => {
 
     expect(JSON.parse(players as string)).toStrictEqual({
       ...DEFAULT_PLAYERS_STATE,
-      orange: { name: "fuslie", color: "orange", section: 4 },
+      orange: {
+        name: "fuslie",
+        color: "orange",
+        section: 4,
+        usedEmergencyButton: false,
+      },
     });
   });
 
@@ -65,15 +71,20 @@ describe("PlayersMiddleware tests", () => {
 
     expect(JSON.parse(players as string)).toStrictEqual({
       ...DEFAULT_PLAYERS_STATE,
-      orange: { name: "", color: "orange", section: 2 },
+      orange: {
+        name: "",
+        color: "orange",
+        section: 2,
+        usedEmergencyButton: false,
+      },
     });
   });
 
-  test("Players/setPlayer should set the specific player with the payload's color, name, and section", () => {
+  test("Players/setPlayerUsedEmergencyButton should set orange's usedEmergencyButton as true and store in localStorage", () => {
     PlayersMiddleware(store)(next)(
       action({
-        type: "Players/setPlayer",
-        payload: { color: "brown", name: "peter", section: 1 },
+        type: "Players/setPlayerUsedEmergencyButton",
+        payload: { player: "orange", usedEmergencyButton: true },
       })
     );
 
@@ -81,7 +92,38 @@ describe("PlayersMiddleware tests", () => {
 
     expect(JSON.parse(players as string)).toStrictEqual({
       ...DEFAULT_PLAYERS_STATE,
-      brown: { color: "brown", name: "peter", section: 1 },
+      orange: {
+        name: "",
+        color: "orange",
+        section: 4,
+        usedEmergencyButton: true,
+      },
+    });
+  });
+
+  test("Players/setPlayer should set the specific player with the payload's color, name, and section", () => {
+    PlayersMiddleware(store)(next)(
+      action({
+        type: "Players/setPlayer",
+        payload: {
+          color: "brown",
+          name: "peter",
+          section: 1,
+          usedEmergencyButton: true,
+        },
+      })
+    );
+
+    const players = localStorage.getItem(`${NAMESPACE}players`);
+
+    expect(JSON.parse(players as string)).toStrictEqual({
+      ...DEFAULT_PLAYERS_STATE,
+      brown: {
+        color: "brown",
+        name: "peter",
+        section: 1,
+        usedEmergencyButton: true,
+      },
     });
   });
 
@@ -90,18 +132,78 @@ describe("PlayersMiddleware tests", () => {
       action({
         type: "Players/setPlayersState",
         payload: {
-          black: { name: "corpse", color: "black", section: 2 },
-          blue: { name: "edison", color: "blue", section: 1 },
-          brown: { name: "peter", color: "brown", section: 3 },
-          cyan: { name: "toast", color: "cyan", section: 4 },
-          green: { name: "sykkuno", color: "green", section: 4 },
-          lime: { name: "masayoshi", color: "lime", section: 1 },
-          orange: { name: "fuslie", color: "orange", section: 4 },
-          pink: { name: "quarterjad", color: "pink", section: 2 },
-          purple: { name: "wondy", color: "purple", section: 2 },
-          red: { name: "rae", color: "red", section: 4 },
-          white: { name: "", color: "white", section: 4 },
-          yellow: { name: "", color: "yellow", section: 4 },
+          black: {
+            name: "corpse",
+            color: "black",
+            section: 2,
+            usedEmergencyButton: true,
+          },
+          blue: {
+            name: "edison",
+            color: "blue",
+            section: 1,
+            usedEmergencyButton: false,
+          },
+          brown: {
+            name: "peter",
+            color: "brown",
+            section: 3,
+            usedEmergencyButton: true,
+          },
+          cyan: {
+            name: "toast",
+            color: "cyan",
+            section: 4,
+            usedEmergencyButton: false,
+          },
+          green: {
+            name: "sykkuno",
+            color: "green",
+            section: 4,
+            usedEmergencyButton: true,
+          },
+          lime: {
+            name: "masayoshi",
+            color: "lime",
+            section: 1,
+            usedEmergencyButton: false,
+          },
+          orange: {
+            name: "fuslie",
+            color: "orange",
+            section: 4,
+            usedEmergencyButton: true,
+          },
+          pink: {
+            name: "quarterjad",
+            color: "pink",
+            section: 2,
+            usedEmergencyButton: false,
+          },
+          purple: {
+            name: "wondy",
+            color: "purple",
+            section: 2,
+            usedEmergencyButton: true,
+          },
+          red: {
+            name: "rae",
+            color: "red",
+            section: 4,
+            usedEmergencyButton: false,
+          },
+          white: {
+            name: "",
+            color: "white",
+            section: 4,
+            usedEmergencyButton: true,
+          },
+          yellow: {
+            name: "",
+            color: "yellow",
+            section: 4,
+            usedEmergencyButton: false,
+          },
         },
       })
     );
@@ -109,18 +211,78 @@ describe("PlayersMiddleware tests", () => {
     const players = localStorage.getItem(`${NAMESPACE}players`);
 
     expect(JSON.parse(players as string)).toStrictEqual({
-      black: { name: "corpse", color: "black", section: 2 },
-      blue: { name: "edison", color: "blue", section: 1 },
-      brown: { name: "peter", color: "brown", section: 3 },
-      cyan: { name: "toast", color: "cyan", section: 4 },
-      green: { name: "sykkuno", color: "green", section: 4 },
-      lime: { name: "masayoshi", color: "lime", section: 1 },
-      orange: { name: "fuslie", color: "orange", section: 4 },
-      pink: { name: "quarterjad", color: "pink", section: 2 },
-      purple: { name: "wondy", color: "purple", section: 2 },
-      red: { name: "rae", color: "red", section: 4 },
-      white: { name: "", color: "white", section: 4 },
-      yellow: { name: "", color: "yellow", section: 4 },
+      black: {
+        name: "corpse",
+        color: "black",
+        section: 2,
+        usedEmergencyButton: true,
+      },
+      blue: {
+        name: "edison",
+        color: "blue",
+        section: 1,
+        usedEmergencyButton: false,
+      },
+      brown: {
+        name: "peter",
+        color: "brown",
+        section: 3,
+        usedEmergencyButton: true,
+      },
+      cyan: {
+        name: "toast",
+        color: "cyan",
+        section: 4,
+        usedEmergencyButton: false,
+      },
+      green: {
+        name: "sykkuno",
+        color: "green",
+        section: 4,
+        usedEmergencyButton: true,
+      },
+      lime: {
+        name: "masayoshi",
+        color: "lime",
+        section: 1,
+        usedEmergencyButton: false,
+      },
+      orange: {
+        name: "fuslie",
+        color: "orange",
+        section: 4,
+        usedEmergencyButton: true,
+      },
+      pink: {
+        name: "quarterjad",
+        color: "pink",
+        section: 2,
+        usedEmergencyButton: false,
+      },
+      purple: {
+        name: "wondy",
+        color: "purple",
+        section: 2,
+        usedEmergencyButton: true,
+      },
+      red: {
+        name: "rae",
+        color: "red",
+        section: 4,
+        usedEmergencyButton: false,
+      },
+      white: {
+        name: "",
+        color: "white",
+        section: 4,
+        usedEmergencyButton: true,
+      },
+      yellow: {
+        name: "",
+        color: "yellow",
+        section: 4,
+        usedEmergencyButton: false,
+      },
     });
   });
 
@@ -135,18 +297,53 @@ describe("PlayersMiddleware tests", () => {
     const players = localStorage.getItem(`${NAMESPACE}players`);
 
     expect(JSON.parse(players as string)).toStrictEqual({
-      black: { name: "", color: "black", section: 5 },
-      blue: { name: "", color: "blue", section: 5 },
-      brown: { name: "", color: "brown", section: 5 },
-      cyan: { name: "", color: "cyan", section: 5 },
-      green: { name: "", color: "green", section: 5 },
-      lime: { name: "", color: "lime", section: 5 },
-      orange: { name: "", color: "orange", section: 5 },
-      pink: { name: "", color: "pink", section: 5 },
-      purple: { name: "", color: "purple", section: 5 },
-      red: { name: "", color: "red", section: 5 },
-      white: { name: "", color: "white", section: 5 },
-      yellow: { name: "", color: "yellow", section: 5 },
+      black: {
+        name: "",
+        color: "black",
+        section: 5,
+        usedEmergencyButton: false,
+      },
+      blue: { name: "", color: "blue", section: 5, usedEmergencyButton: false },
+      brown: {
+        name: "",
+        color: "brown",
+        section: 5,
+        usedEmergencyButton: false,
+      },
+      cyan: { name: "", color: "cyan", section: 5, usedEmergencyButton: false },
+      green: {
+        name: "",
+        color: "green",
+        section: 5,
+        usedEmergencyButton: false,
+      },
+      lime: { name: "", color: "lime", section: 5, usedEmergencyButton: false },
+      orange: {
+        name: "",
+        color: "orange",
+        section: 5,
+        usedEmergencyButton: false,
+      },
+      pink: { name: "", color: "pink", section: 5, usedEmergencyButton: false },
+      purple: {
+        name: "",
+        color: "purple",
+        section: 5,
+        usedEmergencyButton: false,
+      },
+      red: { name: "", color: "red", section: 5, usedEmergencyButton: false },
+      white: {
+        name: "",
+        color: "white",
+        section: 5,
+        usedEmergencyButton: false,
+      },
+      yellow: {
+        name: "",
+        color: "yellow",
+        section: 5,
+        usedEmergencyButton: false,
+      },
     });
   });
 
@@ -155,18 +352,78 @@ describe("PlayersMiddleware tests", () => {
       action({
         type: "Players/setPlayersState",
         payload: {
-          black: { name: "corpse", color: "black", section: 2 },
-          blue: { name: "edison", color: "blue", section: 1 },
-          brown: { name: "peter", color: "brown", section: 3 },
-          cyan: { name: "toast", color: "cyan", section: 4 },
-          green: { name: "sykkuno", color: "green", section: 4 },
-          lime: { name: "masayoshi", color: "lime", section: 1 },
-          orange: { name: "fuslie", color: "orange", section: 4 },
-          pink: { name: "quarterjad", color: "pink", section: 2 },
-          purple: { name: "wondy", color: "purple", section: 2 },
-          red: { name: "rae", color: "red", section: 4 },
-          white: { name: "", color: "white", section: 4 },
-          yellow: { name: "", color: "yellow", section: 4 },
+          black: {
+            name: "corpse",
+            color: "black",
+            section: 2,
+            usedEmergencyButton: false,
+          },
+          blue: {
+            name: "edison",
+            color: "blue",
+            section: 1,
+            usedEmergencyButton: false,
+          },
+          brown: {
+            name: "peter",
+            color: "brown",
+            section: 3,
+            usedEmergencyButton: false,
+          },
+          cyan: {
+            name: "toast",
+            color: "cyan",
+            section: 4,
+            usedEmergencyButton: false,
+          },
+          green: {
+            name: "sykkuno",
+            color: "green",
+            section: 4,
+            usedEmergencyButton: false,
+          },
+          lime: {
+            name: "masayoshi",
+            color: "lime",
+            section: 1,
+            usedEmergencyButton: false,
+          },
+          orange: {
+            name: "fuslie",
+            color: "orange",
+            section: 4,
+            usedEmergencyButton: false,
+          },
+          pink: {
+            name: "quarterjad",
+            color: "pink",
+            section: 2,
+            usedEmergencyButton: false,
+          },
+          purple: {
+            name: "wondy",
+            color: "purple",
+            section: 2,
+            usedEmergencyButton: false,
+          },
+          red: {
+            name: "rae",
+            color: "red",
+            section: 4,
+            usedEmergencyButton: false,
+          },
+          white: {
+            name: "",
+            color: "white",
+            section: 4,
+            usedEmergencyButton: false,
+          },
+          yellow: {
+            name: "",
+            color: "yellow",
+            section: 4,
+            usedEmergencyButton: false,
+          },
         },
       })
     );
@@ -187,23 +444,115 @@ describe("PlayersMiddleware tests", () => {
     expect(JSON.parse(players as string)).toStrictEqual(DEFAULT_PLAYERS_STATE);
   });
 
-  test("Players/resetPlayersState should reset all players' names", () => {
+  test("Players/resetPlayersUsedEmergencyButton should reset all players' usedEmergencyButton", () => {
+    PlayersMiddleware(store)(next)(
+      action({
+        type: "Players/resetPlayersState",
+      })
+    );
+
+    PlayersMiddleware(store)(next)(
+      action({
+        type: "Players/setPlayerUsedEmergencyButton",
+        payload: { player: "orange", usedEmergencyButton: true },
+      })
+    );
+
+    PlayersMiddleware(store)(next)(
+      action({
+        type: "Players/setPlayerUsedEmergencyButton",
+        payload: { player: "red", usedEmergencyButton: true },
+      })
+    );
+
+    PlayersMiddleware(store)(next)(
+      action({
+        type: "Players/resetPlayersUsedEmergencyButton",
+      })
+    );
+
+    const players = localStorage.getItem(`${NAMESPACE}players`);
+
+    expect(JSON.parse(players as string)).toStrictEqual(DEFAULT_PLAYERS_STATE);
+  });
+
+  test("Players/resetPlayersState should reset all players' state", () => {
     PlayersMiddleware(store)(next)(
       action({
         type: "Players/setPlayersState",
         payload: {
-          black: { name: "corpse", color: "black", section: 2 },
-          blue: { name: "edison", color: "blue", section: 1 },
-          brown: { name: "peter", color: "brown", section: 3 },
-          cyan: { name: "toast", color: "cyan", section: 4 },
-          green: { name: "sykkuno", color: "green", section: 4 },
-          lime: { name: "masayoshi", color: "lime", section: 1 },
-          orange: { name: "fuslie", color: "orange", section: 4 },
-          pink: { name: "quarterjad", color: "pink", section: 2 },
-          purple: { name: "wondy", color: "purple", section: 2 },
-          red: { name: "rae", color: "red", section: 4 },
-          white: { name: "", color: "white", section: 4 },
-          yellow: { name: "", color: "yellow", section: 4 },
+          black: {
+            name: "corpse",
+            color: "black",
+            section: 2,
+            usedEmergencyButton: true,
+          },
+          blue: {
+            name: "edison",
+            color: "blue",
+            section: 1,
+            usedEmergencyButton: false,
+          },
+          brown: {
+            name: "peter",
+            color: "brown",
+            section: 3,
+            usedEmergencyButton: true,
+          },
+          cyan: {
+            name: "toast",
+            color: "cyan",
+            section: 4,
+            usedEmergencyButton: false,
+          },
+          green: {
+            name: "sykkuno",
+            color: "green",
+            section: 4,
+            usedEmergencyButton: true,
+          },
+          lime: {
+            name: "masayoshi",
+            color: "lime",
+            section: 1,
+            usedEmergencyButton: false,
+          },
+          orange: {
+            name: "fuslie",
+            color: "orange",
+            section: 4,
+            usedEmergencyButton: true,
+          },
+          pink: {
+            name: "quarterjad",
+            color: "pink",
+            section: 2,
+            usedEmergencyButton: false,
+          },
+          purple: {
+            name: "wondy",
+            color: "purple",
+            section: 2,
+            usedEmergencyButton: true,
+          },
+          red: {
+            name: "rae",
+            color: "red",
+            section: 4,
+            usedEmergencyButton: false,
+          },
+          white: {
+            name: "",
+            color: "white",
+            section: 4,
+            usedEmergencyButton: true,
+          },
+          yellow: {
+            name: "",
+            color: "yellow",
+            section: 4,
+            usedEmergencyButton: false,
+          },
         },
       })
     );

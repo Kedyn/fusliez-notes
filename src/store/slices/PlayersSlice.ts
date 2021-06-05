@@ -4,6 +4,7 @@ import {
   IPlayersState,
   ISetPlayerNamePayload,
   ISetPlayerSectionPayload,
+  ISetPlayerUsedEmergencyButton,
 } from "utils/types/players";
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import {
@@ -28,6 +29,22 @@ const PlayersSlice = createSlice({
           return {
             ...state[player],
             name: action.payload.newName,
+          };
+        }
+
+        return {
+          ...state[player],
+        };
+      }),
+    setPlayerUsedEmergencyButton: (
+      state: IPlayersState,
+      action: PayloadAction<ISetPlayerUsedEmergencyButton>
+    ) =>
+      getNewPlayersState((player: IPlayerColor) => {
+        if (player === action.payload.player) {
+          return {
+            ...state[player],
+            usedEmergencyButton: action.payload.usedEmergencyButton,
           };
         }
 
@@ -74,11 +91,18 @@ const PlayersSlice = createSlice({
         ...state[player],
         section: action.payload,
       })),
+
     resetPlayersNames: (state: IPlayersState) =>
       getNewPlayersState((player: IPlayerColor) => ({
         ...state[player],
 
         name: DEFAULT_PLAYERS_STATE[player].name,
+      })),
+
+    resetPlayersUsedEmergencyButton: (state: IPlayersState) =>
+      getNewPlayersState((player: IPlayerColor) => ({
+        ...state[player],
+        usedEmergencyButton: DEFAULT_PLAYERS_STATE[player].usedEmergencyButton,
       })),
 
     resetPlayersState: () => getDefaultPlayersState(),
@@ -87,11 +111,13 @@ const PlayersSlice = createSlice({
 
 export const {
   setPlayerName,
+  setPlayerUsedEmergencyButton,
   setPlayerSection,
   setPlayer,
   setPlayersState,
   setPlayersSection,
   resetPlayersNames,
+  resetPlayersUsedEmergencyButton,
   resetPlayersState,
 } = PlayersSlice.actions;
 

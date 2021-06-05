@@ -19,17 +19,19 @@ describe("SettingsSlice tests", () => {
     localStorage.setItem(
       `${NAMESPACE}settings`,
       JSON.stringify({
-        initMapWithAllPlayers: false,
-        mapPlayersScale: 1,
+        initMapWithAllPlayers: true,
+        mapPlayersScale: 2,
         showNames: false,
+        trackEmergencyButtonUsages: false,
         isColorBlind: true,
       })
     );
 
     expect(getInitialState()).toEqual({
-      initMapWithAllPlayers: false,
-      mapPlayersScale: 1,
+      initMapWithAllPlayers: true,
+      mapPlayersScale: 2,
       showNames: false,
+      trackEmergencyButtonUsages: false,
       isColorBlind: true,
     });
   });
@@ -40,6 +42,7 @@ describe("SettingsSlice tests", () => {
     expect(getInitialState()).toEqual({
       initMapWithAllPlayers: false,
       showNames: true,
+      trackEmergencyButtonUsages: true,
       isColorBlind: false,
       mapPlayersScale: 1,
     });
@@ -52,6 +55,15 @@ describe("SettingsSlice tests", () => {
         type: "string",
       })
     ).toEqual({ ...state, showNames: false });
+  });
+
+  test("setTrackEmergencyButtonUsages should return state with updated trackEmergencyButtonUsages", () => {
+    expect(
+      SettingsSlice.caseReducers.setTrackEmergencyButtonUsages(state, {
+        payload: true,
+        type: "string",
+      })
+    ).toEqual({ ...state, trackEmergencyButtonUsages: true });
   });
 
   test("toggleShowNames should return !state", () => {

@@ -40,12 +40,19 @@ export function getInitialPlayersState(): IPlayersState {
   if (localPlayersData) {
     const playersObject = JSON.parse(localPlayersData);
 
-    return getNewPlayersState((player: IPlayerColor) => ({
-      name: playersObject[player].name ?? DEFAULT_PLAYERS_STATE[player].name,
-      color: DEFAULT_PLAYERS_STATE[player].color,
-      section:
-        playersObject[player].section ?? DEFAULT_PLAYERS_STATE[player].section,
-    }));
+    return getNewPlayersState((player: IPlayerColor) => {
+      const playerState = playersObject[player];
+      const defaultPlayerState = DEFAULT_PLAYERS_STATE[player];
+
+      return {
+        name: playerState.name ?? defaultPlayerState.name,
+        color: defaultPlayerState.color,
+        section: playerState.section ?? defaultPlayerState.section,
+        usedEmergencyButton:
+          playerState.usedEmergencyButton ??
+          defaultPlayerState.usedEmergencyButton,
+      };
+    });
   }
 
   return getDefaultPlayersState();
