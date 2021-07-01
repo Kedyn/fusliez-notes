@@ -15,6 +15,9 @@ export function getInitialState(): ISettingsState {
 
     return {
       showNames: settingsObject.showNames ?? DEFAULT_SETTINGS_STATE.showNames,
+      trackEmergencyButtonUsages:
+        settingsObject.trackEmergencyButtonUsages ??
+        DEFAULT_SETTINGS_STATE.trackEmergencyButtonUsages,
       isColorBlind:
         settingsObject.isColorBlind ?? DEFAULT_SETTINGS_STATE.isColorBlind,
       initMapWithAllPlayers:
@@ -41,7 +44,13 @@ const SettingsSlice = createSlice({
       ...state,
       showNames: !state.showNames,
     }),
-
+    setTrackEmergencyButtonUsages: (
+      state: ISettingsState,
+      action: PayloadAction<boolean>
+    ) => ({
+      ...state,
+      trackEmergencyButtonUsages: action.payload,
+    }),
     setIsColorBlind: (
       state: ISettingsState,
       action: PayloadAction<boolean>
@@ -81,6 +90,8 @@ export const {
   setShowNames,
   toggleShowNames,
 
+  setTrackEmergencyButtonUsages,
+
   setIsColorBlind,
   toggleIsColorBlind,
 
@@ -94,6 +105,9 @@ export const {
 
 export const getShowNames = (state: IStoreState): boolean =>
   state.Settings.showNames;
+
+export const getTrackEmergencyButtonUsages = (state: IStoreState): boolean =>
+  state.Settings.trackEmergencyButtonUsages;
 
 export const getIsColorBlind = (state: IStoreState): boolean =>
   state.Settings.isColorBlind;

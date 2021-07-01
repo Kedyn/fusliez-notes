@@ -18,6 +18,7 @@ export interface IPlayer {
   name: string;
   color: IPlayerColor;
   section: number;
+  usedEmergencyButton: boolean;
 }
 
 export interface IPlayersState {
@@ -43,6 +44,11 @@ export interface ISetPlayerNamePayload {
 export interface ISetPlayerSectionPayload {
   player: IPlayerColor;
   newSection: number;
+}
+
+export interface ISetPlayerUsedEmergencyButton {
+  player: IPlayerColor;
+  usedEmergencyButton: boolean;
 }
 
 export interface IPlayerImage {

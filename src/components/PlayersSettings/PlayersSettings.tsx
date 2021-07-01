@@ -3,10 +3,12 @@ import {
   getIsColorBlind,
   getMapPlayersScale,
   getShowNames,
+  getTrackEmergencyButtonUsages,
   setInitMapWithAllPlayers,
   setIsColorBlind,
   setMapPlayersScale,
   setShowNames,
+  setTrackEmergencyButtonUsages,
 } from "store/slices/SettingsSlice";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -20,6 +22,7 @@ export default function PlayersSettings(): JSX.Element {
   const { t } = useTranslation();
 
   const showNames = useSelector(getShowNames);
+  const trackEmergencyButtonUsages = useSelector(getTrackEmergencyButtonUsages);
   const isColorBlind = useSelector(getIsColorBlind);
   const initMapWithAllPlayers = useSelector(getInitMapWithAllPlayers);
   const mapPlayerScale = useSelector(getMapPlayersScale);
@@ -36,6 +39,13 @@ export default function PlayersSettings(): JSX.Element {
           dispatch(setShowNames(event.currentTarget.checked));
         }}
         checked={showNames}
+      />
+      <Switch
+        label={t("settings.trackEmergencyButtonUsages")}
+        onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+          dispatch(setTrackEmergencyButtonUsages(event.currentTarget.checked));
+        }}
+        checked={trackEmergencyButtonUsages}
       />
       <Switch
         label={t("settings.colorBlindMode")}

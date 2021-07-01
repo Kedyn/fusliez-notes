@@ -1,10 +1,9 @@
+import configureStore, { MockStore } from "redux-mock-store";
 import { render, screen } from "@testing-library/react";
 
 import DefaultComponentWrapper from "../DefaultComponentWrapper";
-import configureStore, { MockStore } from "redux-mock-store";
 import PlayersSettings from "components/PlayersSettings";
 import React from "react";
-
 import registerFaIcons from "utils/registerFaIcons";
 import store from "store";
 import userEvent from "@testing-library/user-event";
@@ -37,10 +36,21 @@ describe("PlayersSettings tests", () => {
     });
   });
 
-  test("store should have been last called with isColorBlind", async () => {
+  test("store should have been last called with setTrackEmergencyButtonUsages", async () => {
     const switches = screen.getAllByRole("checkbox");
 
     userEvent.click(switches[1]);
+
+    expect(dispatchSpy).toHaveBeenCalledWith({
+      payload: false,
+      type: "Settings/setTrackEmergencyButtonUsages",
+    });
+  });
+
+  test("store should have been last called with setIsColorBlind", async () => {
+    const switches = screen.getAllByRole("checkbox");
+
+    userEvent.click(switches[2]);
 
     expect(dispatchSpy).toHaveBeenCalledWith({
       payload: true,
@@ -51,7 +61,7 @@ describe("PlayersSettings tests", () => {
   test("store should have been last called with setInitMapWithAllPlayers", async () => {
     const switches = screen.getAllByRole("checkbox");
 
-    userEvent.click(switches[2]);
+    userEvent.click(switches[3]);
 
     expect(dispatchSpy).toHaveBeenCalledWith({
       payload: true,

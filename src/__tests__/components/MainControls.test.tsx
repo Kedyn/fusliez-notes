@@ -1,10 +1,9 @@
+import configureStore, { MockStore } from "redux-mock-store";
 import { fireEvent, render, screen } from "@testing-library/react";
 
 import DefaultComponentWrapper from "../DefaultComponentWrapper";
 import MainControls from "components/MainControls";
-import configureStore, { MockStore } from "redux-mock-store";
 import React from "react";
-
 import registerFaIcons from "utils/registerFaIcons";
 import { resetAll } from "components/MainControls/MainControls";
 import store from "store";
@@ -230,6 +229,18 @@ describe("MainControls tests", () => {
     expect(dispatchSpy).toHaveBeenCalledWith({
       payload: undefined,
       type: "Players/resetPlayersNames",
+    });
+  });
+
+  test("store should be last dispatched with resetPlayersUsedEmergencyButton on button click", () => {
+    const resetPlayersUsedEmergencyButtonButton = screen.getByRole("button", {
+      name: "controls.resetEmergencyButtonUsages",
+    });
+
+    userEvent.click(resetPlayersUsedEmergencyButtonButton);
+
+    expect(dispatchSpy).toHaveBeenCalledWith({
+      type: "Players/resetPlayersUsedEmergencyButton",
     });
   });
 

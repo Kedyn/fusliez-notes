@@ -1,11 +1,10 @@
 import { NAMESPACE, VERSION } from "constants/main";
+import configureStore, { MockStore } from "redux-mock-store";
 import { render, screen, waitFor } from "@testing-library/react";
 
 import DefaultComponentWrapper from "../DefaultComponentWrapper";
 import MobileLayout from "components/MobileLayout";
-import configureStore, { MockStore } from "redux-mock-store";
 import React from "react";
-
 import registerFaIcons from "utils/registerFaIcons";
 import { setIsMobile } from "store/slices/DeviceSlice";
 import store from "store";
@@ -44,9 +43,12 @@ describe("MobileLayout tests", () => {
       if (playersButton) await userEvent.click(playersButton);
       else throw new Error("cannot find playersButton in the document");
 
-      await waitFor(() =>
-        expect(screen.getByText(/controls.reset/i)).toBeInTheDocument()
-      );
+      await waitFor(() => {
+        expect(screen.getByText("controls.resetSections")).toBeInTheDocument();
+        expect(
+          screen.getByText("controls.resetEmergencyButtonUsages")
+        ).toBeInTheDocument();
+      });
     });
 
     test("testing handleChangeActiveView for menu.notes", async () => {
@@ -88,7 +90,7 @@ describe("MobileLayout tests", () => {
       if (button) await userEvent.click(button);
 
       await waitFor(() =>
-        expect(screen.getByText(/controls.reset/i)).toBeInTheDocument()
+        expect(screen.getByText("controls.resetSections")).toBeInTheDocument()
       );
     });
 

@@ -7,9 +7,11 @@ import {
   getPlayers,
   resetPlayersNames,
   resetPlayersState,
+  resetPlayersUsedEmergencyButton,
   setPlayer,
   setPlayerName,
   setPlayerSection,
+  setPlayerUsedEmergencyButton,
   setPlayersSection,
   setPlayersState,
 } from "store/slices/PlayersSlice";
@@ -34,6 +36,12 @@ export const PlayersMiddleware: Middleware<unknown, RootState> = (store) => (
     case setPlayerName.type:
       players[action.payload.player as IPlayerColor].name =
         action.payload.newName;
+
+      break;
+
+    case setPlayerUsedEmergencyButton.type:
+      players[action.payload.player as IPlayerColor].usedEmergencyButton =
+        action.payload.usedEmergencyButton;
 
       break;
 
@@ -67,6 +75,15 @@ export const PlayersMiddleware: Middleware<unknown, RootState> = (store) => (
         ...currentPlayersState[player],
 
         name: DEFAULT_PLAYERS_STATE[player].name,
+      }));
+
+      break;
+
+    case resetPlayersUsedEmergencyButton.type:
+      players = getNewPlayersState((player: IPlayerColor) => ({
+        ...currentPlayersState[player],
+
+        usedEmergencyButton: DEFAULT_PLAYERS_STATE[player].usedEmergencyButton,
       }));
 
       break;

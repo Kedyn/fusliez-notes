@@ -3,11 +3,13 @@ import {
   getIsColorBlind,
   getMapPlayersScale,
   getShowNames,
+  getTrackEmergencyButtonUsages,
   resetSettingsState,
   setInitMapWithAllPlayers,
   setIsColorBlind,
   setMapPlayersScale,
   setShowNames,
+  setTrackEmergencyButtonUsages,
   toggleInitMapWithAllPlayers,
   toggleIsColorBlind,
   toggleShowNames,
@@ -24,6 +26,7 @@ export const SettingsMiddleware: Middleware<unknown, RootState> = (store) => (
   const state = store.getState();
 
   let showNames = getShowNames(state);
+  let trackEmergencyButtonUsages = getTrackEmergencyButtonUsages(state);
   let isColorBlind = getIsColorBlind(state);
   let initMapWithAllPlayers = getInitMapWithAllPlayers(state);
   let mapPlayersScale = getMapPlayersScale(state);
@@ -37,6 +40,11 @@ export const SettingsMiddleware: Middleware<unknown, RootState> = (store) => (
 
     case toggleShowNames.type:
       showNames = !showNames;
+
+      break;
+
+    case setTrackEmergencyButtonUsages.type:
+      trackEmergencyButtonUsages = action.payload;
 
       break;
 
@@ -67,6 +75,8 @@ export const SettingsMiddleware: Middleware<unknown, RootState> = (store) => (
 
     case resetSettingsState.type:
       showNames = DEFAULT_SETTINGS_STATE.showNames;
+      trackEmergencyButtonUsages =
+        DEFAULT_SETTINGS_STATE.trackEmergencyButtonUsages;
       isColorBlind = DEFAULT_SETTINGS_STATE.isColorBlind;
       initMapWithAllPlayers = DEFAULT_SETTINGS_STATE.initMapWithAllPlayers;
       mapPlayersScale = DEFAULT_SETTINGS_STATE.mapPlayersScale;
@@ -82,6 +92,8 @@ export const SettingsMiddleware: Middleware<unknown, RootState> = (store) => (
       `${NAMESPACE}settings`,
       JSON.stringify({
         showNames,
+
+        trackEmergencyButtonUsages,
 
         isColorBlind,
 

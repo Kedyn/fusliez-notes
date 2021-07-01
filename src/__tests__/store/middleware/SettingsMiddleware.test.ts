@@ -26,9 +26,9 @@ describe("SettingsMiddleware tests", () => {
     jest.clearAllMocks();
   });
 
-  test("Settings/setShowNames should set showNames in localStorage to true", () => {
+  test("Settings/setShowNames should set showNames in localStorage to false", () => {
     SettingsMiddleware(store)(next)(
-      action({ type: "Settings/setShowNames", payload: true })
+      action({ type: "Settings/setShowNames", payload: false })
     );
 
     const settings = localStorage.getItem(`${NAMESPACE}settings`);
@@ -36,7 +36,8 @@ describe("SettingsMiddleware tests", () => {
     expect(JSON.parse(settings as string)).toStrictEqual({
       initMapWithAllPlayers: false,
       mapPlayersScale: 1,
-      showNames: true,
+      showNames: false,
+      trackEmergencyButtonUsages: true,
       isColorBlind: false,
     });
   });
@@ -52,6 +53,26 @@ describe("SettingsMiddleware tests", () => {
       initMapWithAllPlayers: false,
       mapPlayersScale: 1,
       showNames: false,
+      trackEmergencyButtonUsages: true,
+      isColorBlind: false,
+    });
+  });
+
+  test("Settings/setTrackEmergencyButtonUsages should set trackEmergencyButtonUsages in localStorage to false", () => {
+    SettingsMiddleware(store)(next)(
+      action({
+        type: "Settings/setTrackEmergencyButtonUsages",
+        payload: false,
+      })
+    );
+
+    const settings = localStorage.getItem(`${NAMESPACE}settings`);
+
+    expect(JSON.parse(settings as string)).toStrictEqual({
+      initMapWithAllPlayers: false,
+      mapPlayersScale: 1,
+      showNames: true,
+      trackEmergencyButtonUsages: false,
       isColorBlind: false,
     });
   });
@@ -67,6 +88,7 @@ describe("SettingsMiddleware tests", () => {
       initMapWithAllPlayers: false,
       mapPlayersScale: 1,
       showNames: true,
+      trackEmergencyButtonUsages: true,
       isColorBlind: true,
     });
   });
@@ -82,6 +104,7 @@ describe("SettingsMiddleware tests", () => {
       initMapWithAllPlayers: false,
       mapPlayersScale: 1,
       showNames: true,
+      trackEmergencyButtonUsages: true,
       isColorBlind: true,
     });
   });
@@ -97,6 +120,7 @@ describe("SettingsMiddleware tests", () => {
       initMapWithAllPlayers: true,
       mapPlayersScale: 1,
       showNames: true,
+      trackEmergencyButtonUsages: true,
       isColorBlind: false,
     });
   });
@@ -112,6 +136,7 @@ describe("SettingsMiddleware tests", () => {
       initMapWithAllPlayers: true,
       mapPlayersScale: 1,
       showNames: true,
+      trackEmergencyButtonUsages: true,
       isColorBlind: false,
     });
   });
@@ -127,6 +152,7 @@ describe("SettingsMiddleware tests", () => {
       initMapWithAllPlayers: false,
       mapPlayersScale: 5,
       showNames: true,
+      trackEmergencyButtonUsages: true,
       isColorBlind: false,
     });
   });
@@ -142,6 +168,7 @@ describe("SettingsMiddleware tests", () => {
       initMapWithAllPlayers: false,
       mapPlayersScale: 1,
       showNames: true,
+      trackEmergencyButtonUsages: true,
       isColorBlind: false,
     });
   });

@@ -22,8 +22,13 @@ import {
   movePlayersToResetSection,
 } from "store/slices/SectionsSlice";
 import {
+  getShowNames,
+  getTrackEmergencyButtonUsages,
+} from "store/slices/SettingsSlice";
+import {
   resetPlayersNames,
   resetPlayersState,
+  resetPlayersUsedEmergencyButton,
   setPlayersSection,
 } from "store/slices/PlayersSlice";
 import { useDispatch, useSelector } from "react-redux";
@@ -34,7 +39,6 @@ import { Dispatch } from "redux";
 import { ITheme } from "utils/types/theme";
 import React from "react";
 import { getIsMobile } from "store/slices/DeviceSlice";
-import { getShowNames } from "store/slices/SettingsSlice";
 import useStyles from "./MainControls.styles";
 import { useTheme } from "react-jss";
 import { useTranslation } from "react-i18next";
@@ -56,6 +60,7 @@ export default function MainControls(): JSX.Element {
   const impostorLosses = useSelector(getImpostorLosses);
   const isMobile = useSelector(getIsMobile);
   const showNames = useSelector(getShowNames);
+  const trackEmergencyButtonUsages = useSelector(getTrackEmergencyButtonUsages);
   const resetSectionId = useSelector(getResetSectionId);
 
   const dispatch = useDispatch();
@@ -164,6 +169,14 @@ export default function MainControls(): JSX.Element {
                 onClick={() => dispatch(resetPlayersNames())}
               >
                 {t("controls.resetNames")}
+              </Button>
+            )}
+            {trackEmergencyButtonUsages && (
+              <Button
+                className={classes.MainControlsButton}
+                onClick={() => dispatch(resetPlayersUsedEmergencyButton())}
+              >
+                {t("controls.resetEmergencyButtonUsages")}
               </Button>
             )}
 

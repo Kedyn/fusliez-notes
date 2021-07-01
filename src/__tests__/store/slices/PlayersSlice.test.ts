@@ -20,61 +20,158 @@ describe("PlayersSlice tests", () => {
         color: "black",
         name: "",
         section: 4,
+        usedEmergencyButton: false,
       },
       blue: {
         color: "blue",
         name: "",
         section: 4,
+        usedEmergencyButton: false,
       },
       brown: {
         color: "brown",
         name: "",
         section: 4,
+        usedEmergencyButton: false,
       },
       cyan: {
         color: "cyan",
         name: "",
         section: 4,
+        usedEmergencyButton: false,
       },
       green: {
         color: "green",
         name: "",
         section: 4,
+        usedEmergencyButton: false,
       },
       lime: {
         color: "lime",
         name: "",
         section: 4,
+        usedEmergencyButton: false,
       },
       orange: {
         color: "orange",
         name: "fuslie",
         section: 4,
+        usedEmergencyButton: false,
       },
       pink: {
         color: "pink",
         name: "",
         section: 4,
+        usedEmergencyButton: false,
       },
       purple: {
         color: "purple",
         name: "",
         section: 4,
+        usedEmergencyButton: false,
       },
       red: {
         color: "red",
         name: "",
         section: 4,
+        usedEmergencyButton: false,
       },
       white: {
         color: "white",
         name: "",
         section: 4,
+        usedEmergencyButton: false,
       },
       yellow: {
         color: "yellow",
         name: "",
         section: 4,
+        usedEmergencyButton: false,
+      },
+    });
+  });
+
+  test("setPlayerUsedEmergencyButton(state, payload) should return object with the player with updated usedEmergencyButton", () => {
+    expect(
+      PlayersSlice.caseReducers.setPlayerUsedEmergencyButton(state.Players, {
+        payload: {
+          player: "orange" as IPlayerColor,
+          usedEmergencyButton: true,
+        },
+        type: "string",
+      })
+    ).toStrictEqual({
+      black: {
+        color: "black",
+        name: "",
+        section: 4,
+        usedEmergencyButton: false,
+      },
+      blue: {
+        color: "blue",
+        name: "",
+        section: 4,
+        usedEmergencyButton: false,
+      },
+      brown: {
+        color: "brown",
+        name: "",
+        section: 4,
+        usedEmergencyButton: false,
+      },
+      cyan: {
+        color: "cyan",
+        name: "",
+        section: 4,
+        usedEmergencyButton: false,
+      },
+      green: {
+        color: "green",
+        name: "",
+        section: 4,
+        usedEmergencyButton: false,
+      },
+      lime: {
+        color: "lime",
+        name: "",
+        section: 4,
+        usedEmergencyButton: false,
+      },
+      orange: {
+        color: "orange",
+        name: "",
+        section: 4,
+        usedEmergencyButton: true,
+      },
+      pink: {
+        color: "pink",
+        name: "",
+        section: 4,
+        usedEmergencyButton: false,
+      },
+      purple: {
+        color: "purple",
+        name: "",
+        section: 4,
+        usedEmergencyButton: false,
+      },
+      red: {
+        color: "red",
+        name: "",
+        section: 4,
+        usedEmergencyButton: false,
+      },
+      white: {
+        color: "white",
+        name: "",
+        section: 4,
+        usedEmergencyButton: false,
+      },
+      yellow: {
+        color: "yellow",
+        name: "",
+        section: 4,
+        usedEmergencyButton: false,
       },
     });
   });
@@ -93,61 +190,73 @@ describe("PlayersSlice tests", () => {
         color: "black",
         name: "",
         section: 4,
+        usedEmergencyButton: false,
       },
       blue: {
         color: "blue",
         name: "",
         section: 4,
+        usedEmergencyButton: false,
       },
       brown: {
         color: "brown",
         name: "",
         section: 4,
+        usedEmergencyButton: false,
       },
       cyan: {
         color: "cyan",
         name: "",
         section: 4,
+        usedEmergencyButton: false,
       },
       green: {
         color: "green",
         name: "",
         section: 4,
+        usedEmergencyButton: false,
       },
       lime: {
         color: "lime",
         name: "",
         section: 4,
+        usedEmergencyButton: false,
       },
       orange: {
         color: "orange",
         name: "",
         section: 0,
+        usedEmergencyButton: false,
       },
       pink: {
         color: "pink",
         name: "",
         section: 4,
+        usedEmergencyButton: false,
       },
       purple: {
         color: "purple",
         name: "",
         section: 4,
+        usedEmergencyButton: false,
       },
       red: {
         color: "red",
         name: "",
         section: 4,
+        usedEmergencyButton: false,
       },
       white: {
         color: "white",
         name: "",
         section: 4,
+        usedEmergencyButton: false,
       },
       yellow: {
         color: "yellow",
         name: "",
         section: 4,
+        usedEmergencyButton: false,
       },
     });
   });
@@ -159,6 +268,7 @@ describe("PlayersSlice tests", () => {
           color: "orange" as IPlayerColor,
           name: "fuslie",
           section: 2,
+          usedEmergencyButton: true,
         },
         type: "string",
       })
@@ -167,61 +277,73 @@ describe("PlayersSlice tests", () => {
         color: "black",
         name: "",
         section: 4,
+        usedEmergencyButton: false,
       },
       blue: {
         color: "blue",
         name: "",
         section: 4,
+        usedEmergencyButton: false,
       },
       brown: {
         color: "brown",
         name: "",
         section: 4,
+        usedEmergencyButton: false,
       },
       cyan: {
         color: "cyan",
         name: "",
         section: 4,
+        usedEmergencyButton: false,
       },
       green: {
         color: "green",
         name: "",
         section: 4,
+        usedEmergencyButton: false,
       },
       lime: {
         color: "lime",
         name: "",
         section: 4,
+        usedEmergencyButton: false,
       },
       orange: {
         color: "orange",
         name: "fuslie",
         section: 2,
+        usedEmergencyButton: true,
       },
       pink: {
         color: "pink",
         name: "",
         section: 4,
+        usedEmergencyButton: false,
       },
       purple: {
         color: "purple",
         name: "",
         section: 4,
+        usedEmergencyButton: false,
       },
       red: {
         color: "red",
         name: "",
         section: 4,
+        usedEmergencyButton: false,
       },
       white: {
         color: "white",
         name: "",
         section: 4,
+        usedEmergencyButton: false,
       },
       yellow: {
         color: "yellow",
         name: "",
         section: 4,
+        usedEmergencyButton: false,
       },
     });
   });
@@ -234,61 +356,73 @@ describe("PlayersSlice tests", () => {
             color: "black",
             name: "",
             section: 4,
+            usedEmergencyButton: false,
           },
           blue: {
             color: "blue",
             name: "",
             section: 4,
+            usedEmergencyButton: false,
           },
           brown: {
             color: "brown",
             name: "",
             section: 4,
+            usedEmergencyButton: false,
           },
           cyan: {
             color: "cyan",
             name: "",
             section: 4,
+            usedEmergencyButton: false,
           },
           green: {
             color: "green",
             name: "",
             section: 4,
+            usedEmergencyButton: false,
           },
           lime: {
             color: "lime",
             name: "",
             section: 4,
+            usedEmergencyButton: false,
           },
           orange: {
             color: "orange",
             name: "fuslie",
             section: 2,
+            usedEmergencyButton: true,
           },
           pink: {
             color: "pink",
             name: "",
             section: 4,
+            usedEmergencyButton: false,
           },
           purple: {
             color: "purple",
             name: "",
             section: 4,
+            usedEmergencyButton: false,
           },
           red: {
             color: "red",
             name: "",
             section: 4,
+            usedEmergencyButton: false,
           },
           white: {
             color: "white",
             name: "",
             section: 4,
+            usedEmergencyButton: false,
           },
           yellow: {
             color: "yellow",
             name: "",
             section: 4,
+            usedEmergencyButton: false,
           },
         },
         type: "string",
@@ -298,61 +432,73 @@ describe("PlayersSlice tests", () => {
         color: "black",
         name: "",
         section: 4,
+        usedEmergencyButton: false,
       },
       blue: {
         color: "blue",
         name: "",
         section: 4,
+        usedEmergencyButton: false,
       },
       brown: {
         color: "brown",
         name: "",
         section: 4,
+        usedEmergencyButton: false,
       },
       cyan: {
         color: "cyan",
         name: "",
         section: 4,
+        usedEmergencyButton: false,
       },
       green: {
         color: "green",
         name: "",
         section: 4,
+        usedEmergencyButton: false,
       },
       lime: {
         color: "lime",
         name: "",
         section: 4,
+        usedEmergencyButton: false,
       },
       orange: {
         color: "orange",
         name: "fuslie",
         section: 2,
+        usedEmergencyButton: true,
       },
       pink: {
         color: "pink",
         name: "",
         section: 4,
+        usedEmergencyButton: false,
       },
       purple: {
         color: "purple",
         name: "",
         section: 4,
+        usedEmergencyButton: false,
       },
       red: {
         color: "red",
         name: "",
         section: 4,
+        usedEmergencyButton: false,
       },
       white: {
         color: "white",
         name: "",
         section: 4,
+        usedEmergencyButton: false,
       },
       yellow: {
         color: "yellow",
         name: "",
         section: 4,
+        usedEmergencyButton: false,
       },
     });
   });
@@ -368,61 +514,73 @@ describe("PlayersSlice tests", () => {
         color: "black",
         name: "",
         section: 2,
+        usedEmergencyButton: false,
       },
       blue: {
         color: "blue",
         name: "",
         section: 2,
+        usedEmergencyButton: false,
       },
       brown: {
         color: "brown",
         name: "",
         section: 2,
+        usedEmergencyButton: false,
       },
       cyan: {
         color: "cyan",
         name: "",
         section: 2,
+        usedEmergencyButton: false,
       },
       green: {
         color: "green",
         name: "",
         section: 2,
+        usedEmergencyButton: false,
       },
       lime: {
         color: "lime",
         name: "",
         section: 2,
+        usedEmergencyButton: false,
       },
       orange: {
         color: "orange",
         name: "",
         section: 2,
+        usedEmergencyButton: false,
       },
       pink: {
         color: "pink",
         name: "",
         section: 2,
+        usedEmergencyButton: false,
       },
       purple: {
         color: "purple",
         name: "",
         section: 2,
+        usedEmergencyButton: false,
       },
       red: {
         color: "red",
         name: "",
         section: 2,
+        usedEmergencyButton: false,
       },
       white: {
         color: "white",
         name: "",
         section: 2,
+        usedEmergencyButton: false,
       },
       yellow: {
         color: "yellow",
         name: "",
         section: 2,
+        usedEmergencyButton: false,
       },
     });
   });
@@ -443,61 +601,160 @@ describe("PlayersSlice tests", () => {
         color: "black",
         name: "",
         section: 4,
+        usedEmergencyButton: false,
       },
       blue: {
         color: "blue",
         name: "",
         section: 4,
+        usedEmergencyButton: false,
       },
       brown: {
         color: "brown",
         name: "",
         section: 4,
+        usedEmergencyButton: false,
       },
       cyan: {
         color: "cyan",
         name: "",
         section: 4,
+        usedEmergencyButton: false,
       },
       green: {
         color: "green",
         name: "",
         section: 4,
+        usedEmergencyButton: false,
       },
       lime: {
         color: "lime",
         name: "",
         section: 4,
+        usedEmergencyButton: false,
       },
       orange: {
         color: "orange",
         name: "",
         section: 4,
+        usedEmergencyButton: false,
       },
       pink: {
         color: "pink",
         name: "",
         section: 4,
+        usedEmergencyButton: false,
       },
       purple: {
         color: "purple",
         name: "",
         section: 4,
+        usedEmergencyButton: false,
       },
       red: {
         color: "red",
         name: "",
         section: 4,
+        usedEmergencyButton: false,
       },
       white: {
         color: "white",
         name: "",
         section: 4,
+        usedEmergencyButton: false,
       },
       yellow: {
         color: "yellow",
         name: "",
         section: 4,
+        usedEmergencyButton: false,
+      },
+    });
+  });
+
+  test("resetPlayersUsedEmergencyButton(state) should reset all players' names", () => {
+    PlayersSlice.caseReducers.setPlayerUsedEmergencyButton(state.Players, {
+      payload: {
+        player: "orange" as IPlayerColor,
+        usedEmergencyButton: true,
+      },
+      type: "string",
+    });
+
+    expect(
+      PlayersSlice.caseReducers.resetPlayersUsedEmergencyButton(state.Players)
+    ).toStrictEqual({
+      black: {
+        color: "black",
+        name: "",
+        section: 4,
+        usedEmergencyButton: false,
+      },
+      blue: {
+        color: "blue",
+        name: "",
+        section: 4,
+        usedEmergencyButton: false,
+      },
+      brown: {
+        color: "brown",
+        name: "",
+        section: 4,
+        usedEmergencyButton: false,
+      },
+      cyan: {
+        color: "cyan",
+        name: "",
+        section: 4,
+        usedEmergencyButton: false,
+      },
+      green: {
+        color: "green",
+        name: "",
+        section: 4,
+        usedEmergencyButton: false,
+      },
+      lime: {
+        color: "lime",
+        name: "",
+        section: 4,
+        usedEmergencyButton: false,
+      },
+      orange: {
+        color: "orange",
+        name: "",
+        section: 4,
+        usedEmergencyButton: false,
+      },
+      pink: {
+        color: "pink",
+        name: "",
+        section: 4,
+        usedEmergencyButton: false,
+      },
+      purple: {
+        color: "purple",
+        name: "",
+        section: 4,
+        usedEmergencyButton: false,
+      },
+      red: {
+        color: "red",
+        name: "",
+        section: 4,
+        usedEmergencyButton: false,
+      },
+      white: {
+        color: "white",
+        name: "",
+        section: 4,
+        usedEmergencyButton: false,
+      },
+      yellow: {
+        color: "yellow",
+        name: "",
+        section: 4,
+        usedEmergencyButton: false,
       },
     });
   });
@@ -508,61 +765,73 @@ describe("PlayersSlice tests", () => {
         color: "black",
         name: "",
         section: 4,
+        usedEmergencyButton: false,
       },
       blue: {
         color: "blue",
         name: "",
         section: 4,
+        usedEmergencyButton: false,
       },
       brown: {
         color: "brown",
         name: "",
         section: 4,
+        usedEmergencyButton: false,
       },
       cyan: {
         color: "cyan",
         name: "",
         section: 4,
+        usedEmergencyButton: false,
       },
       green: {
         color: "green",
         name: "",
         section: 4,
+        usedEmergencyButton: false,
       },
       lime: {
         color: "lime",
         name: "",
         section: 4,
+        usedEmergencyButton: false,
       },
       orange: {
         color: "orange",
         name: "",
         section: 4,
+        usedEmergencyButton: false,
       },
       pink: {
         color: "pink",
         name: "",
         section: 4,
+        usedEmergencyButton: false,
       },
       purple: {
         color: "purple",
         name: "",
         section: 4,
+        usedEmergencyButton: false,
       },
       red: {
         color: "red",
         name: "",
         section: 4,
+        usedEmergencyButton: false,
       },
       white: {
         color: "white",
         name: "",
         section: 4,
+        usedEmergencyButton: false,
       },
       yellow: {
         color: "yellow",
         name: "",
         section: 4,
+        usedEmergencyButton: false,
       },
     });
   });
@@ -572,6 +841,7 @@ describe("PlayersSlice tests", () => {
       color: "black",
       name: "",
       section: 4,
+      usedEmergencyButton: false,
     });
   });
 
@@ -581,61 +851,73 @@ describe("PlayersSlice tests", () => {
         color: "black",
         name: "",
         section: 4,
+        usedEmergencyButton: false,
       },
       blue: {
         color: "blue",
         name: "",
         section: 4,
+        usedEmergencyButton: false,
       },
       brown: {
         color: "brown",
         name: "",
         section: 4,
+        usedEmergencyButton: false,
       },
       cyan: {
         color: "cyan",
         name: "",
         section: 4,
+        usedEmergencyButton: false,
       },
       green: {
         color: "green",
         name: "",
         section: 4,
+        usedEmergencyButton: false,
       },
       lime: {
         color: "lime",
         name: "",
         section: 4,
+        usedEmergencyButton: false,
       },
       orange: {
         color: "orange",
         name: "",
         section: 4,
+        usedEmergencyButton: false,
       },
       pink: {
         color: "pink",
         name: "",
         section: 4,
+        usedEmergencyButton: false,
       },
       purple: {
         color: "purple",
         name: "",
         section: 4,
+        usedEmergencyButton: false,
       },
       red: {
         color: "red",
         name: "",
         section: 4,
+        usedEmergencyButton: false,
       },
       white: {
         color: "white",
         name: "",
         section: 4,
+        usedEmergencyButton: false,
       },
       yellow: {
         color: "yellow",
         name: "",
         section: 4,
+        usedEmergencyButton: false,
       },
     });
   });

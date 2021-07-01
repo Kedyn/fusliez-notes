@@ -27,7 +27,7 @@ export default function ElectronLayout(): JSX.Element {
   const views: Array<IView> = [
     {
       title: t("menu.players"),
-      content: <Sections />,
+      content: <Sections />, // fixme: add EmergencyButtonUsages
       minor: false,
     },
     {
