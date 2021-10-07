@@ -39,12 +39,12 @@ describe("ColorsMenu component tests", () => {
     expect(component).toBeInTheDocument();
   });
 
-  test("should render all 12 color circles", async () => {
+  test("should render all 18 color circles", async () => {
     const colorsMenu = await screen.getByTestId(/colors-menu/);
 
     expect(
       Object.values(colorsMenu)[0].memoizedProps.children.props.colors
-    ).toHaveLength(12);
+    ).toHaveLength(18);
   });
 
   test("should not swap color if the current and target colors are the same", async () => {
@@ -74,6 +74,9 @@ describe("ColorsMenu component tests", () => {
         title: "main.lists.unknown",
         players: [
           {
+            id: "banana",
+          },
+          {
             id: "black",
           },
           {
@@ -83,13 +86,22 @@ describe("ColorsMenu component tests", () => {
             id: "brown",
           },
           {
+            id: "coral",
+          },
+          {
             id: "cyan",
+          },
+          {
+            id: "gray",
           },
           {
             id: "green",
           },
           {
             id: "lime",
+          },
+          {
+            id: "maroon",
           },
           {
             id: "orange",
@@ -102,6 +114,12 @@ describe("ColorsMenu component tests", () => {
           },
           {
             id: "red",
+          },
+          {
+            id: "rose",
+          },
+          {
+            id: "tan",
           },
           {
             id: "white",
@@ -145,16 +163,22 @@ describe("ColorsMenu component tests", () => {
     });
 
     expect(testStore.getState().Sections.sections[4].players).toEqual([
+      { id: "banana" },
       { id: "black" },
       { id: "blue" },
       { id: "brown" },
+      { id: "coral" },
       { id: "cyan" },
+      { id: "gray" },
       { id: "green" },
       { id: "lime" },
+      { id: "maroon" },
       { id: "orange" },
       { id: "pink" },
       { id: "purple" },
       { id: "red" },
+      { id: "rose" },
+      { id: "tan" },
       { id: "white" },
       { id: "yellow" },
     ]);
@@ -221,6 +245,12 @@ describe("ColorsMenu component tests", () => {
     );
 
     const players = {
+      banana: {
+        name: "",
+        color: "banana" as IPlayerColor,
+        section: 4,
+        usedEmergencyButton: false,
+      },
       black: {
         name: "",
         color: "black" as IPlayerColor,
@@ -239,9 +269,21 @@ describe("ColorsMenu component tests", () => {
         section: 1,
         usedEmergencyButton: false,
       },
+      coral: {
+        name: "",
+        color: "coral" as IPlayerColor,
+        section: 4,
+        usedEmergencyButton: false,
+      },
       cyan: {
         name: "",
         color: "cyan" as IPlayerColor,
+        section: 4,
+        usedEmergencyButton: false,
+      },
+      gray: {
+        name: "",
+        color: "gray" as IPlayerColor,
         section: 4,
         usedEmergencyButton: false,
       },
@@ -254,6 +296,12 @@ describe("ColorsMenu component tests", () => {
       lime: {
         name: "",
         color: "lime" as IPlayerColor,
+        section: 4,
+        usedEmergencyButton: false,
+      },
+      maroon: {
+        name: "",
+        color: "maroon" as IPlayerColor,
         section: 4,
         usedEmergencyButton: false,
       },
@@ -278,6 +326,18 @@ describe("ColorsMenu component tests", () => {
       red: {
         name: "",
         color: "red" as IPlayerColor,
+        section: 4,
+        usedEmergencyButton: false,
+      },
+      rose: {
+        name: "",
+        color: "rose" as IPlayerColor,
+        section: 4,
+        usedEmergencyButton: false,
+      },
+      tan: {
+        name: "",
+        color: "tan" as IPlayerColor,
         section: 4,
         usedEmergencyButton: false,
       },

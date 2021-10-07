@@ -86,6 +86,9 @@ describe("SectionsSlice tests", () => {
           id: 4,
           players: [
             {
+              id: "banana",
+            },
+            {
               id: "black",
             },
             {
@@ -95,13 +98,22 @@ describe("SectionsSlice tests", () => {
               id: "brown",
             },
             {
+              id: "coral",
+            },
+            {
               id: "cyan",
+            },
+            {
+              id: "gray",
             },
             {
               id: "green",
             },
             {
               id: "lime",
+            },
+            {
+              id: "maroon",
             },
             {
               id: "orange",
@@ -114,6 +126,12 @@ describe("SectionsSlice tests", () => {
             },
             {
               id: "red",
+            },
+            {
+              id: "rose",
+            },
+            {
+              id: "tan",
             },
             {
               id: "white",

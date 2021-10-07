@@ -3,6 +3,12 @@ import { IPlayersImages, IPlayersState } from "utils/types/players";
 import { DEFAULT_RESET_SECTION } from "./sections";
 
 export const DEFAULT_PLAYERS_STATE: IPlayersState = {
+  banana: {
+    name: "",
+    color: "banana",
+    section: DEFAULT_RESET_SECTION,
+    usedEmergencyButton: false,
+  },
   black: {
     name: "",
     color: "black",
@@ -21,9 +27,21 @@ export const DEFAULT_PLAYERS_STATE: IPlayersState = {
     section: DEFAULT_RESET_SECTION,
     usedEmergencyButton: false,
   },
+  coral: {
+    name: "",
+    color: "coral",
+    section: DEFAULT_RESET_SECTION,
+    usedEmergencyButton: false,
+  },
   cyan: {
     name: "",
     color: "cyan",
+    section: DEFAULT_RESET_SECTION,
+    usedEmergencyButton: false,
+  },
+  gray: {
+    name: "",
+    color: "gray",
     section: DEFAULT_RESET_SECTION,
     usedEmergencyButton: false,
   },
@@ -36,6 +54,12 @@ export const DEFAULT_PLAYERS_STATE: IPlayersState = {
   lime: {
     name: "",
     color: "lime",
+    section: DEFAULT_RESET_SECTION,
+    usedEmergencyButton: false,
+  },
+  maroon: {
+    name: "",
+    color: "maroon",
     section: DEFAULT_RESET_SECTION,
     usedEmergencyButton: false,
   },
@@ -60,6 +84,18 @@ export const DEFAULT_PLAYERS_STATE: IPlayersState = {
   red: {
     name: "",
     color: "red",
+    section: DEFAULT_RESET_SECTION,
+    usedEmergencyButton: false,
+  },
+  rose: {
+    name: "",
+    color: "rose",
+    section: DEFAULT_RESET_SECTION,
+    usedEmergencyButton: false,
+  },
+  tan: {
+    name: "",
+    color: "tan",
     section: DEFAULT_RESET_SECTION,
     usedEmergencyButton: false,
   },
@@ -241,6 +277,90 @@ export const PLAYER_IMAGE: IPlayersImages = {
     },
     dead: {
       x: 1364,
+      y: 198,
+      w: 124,
+      h: 117,
+    },
+  },
+  banana: {
+    alive: {
+      x: 1776,
+      y: 0,
+      w: 148,
+      h: 198,
+    },
+    dead: {
+      x: 1488,
+      y: 198,
+      w: 124,
+      h: 117,
+    },
+  },
+  coral: {
+    alive: {
+      x: 1924,
+      y: 0,
+      w: 148,
+      h: 198,
+    },
+    dead: {
+      x: 1612,
+      y: 198,
+      w: 124,
+      h: 117,
+    },
+  },
+  gray: {
+    alive: {
+      x: 2072,
+      y: 0,
+      w: 148,
+      h: 198,
+    },
+    dead: {
+      x: 1736,
+      y: 198,
+      w: 124,
+      h: 117,
+    },
+  },
+  maroon: {
+    alive: {
+      x: 2220,
+      y: 0,
+      w: 148,
+      h: 198,
+    },
+    dead: {
+      x: 1860,
+      y: 198,
+      w: 124,
+      h: 117,
+    },
+  },
+  rose: {
+    alive: {
+      x: 2368,
+      y: 0,
+      w: 148,
+      h: 198,
+    },
+    dead: {
+      x: 1984,
+      y: 198,
+      w: 124,
+      h: 117,
+    },
+  },
+  tan: {
+    alive: {
+      x: 2516,
+      y: 0,
+      w: 148,
+      h: 198,
+    },
+    dead: {
+      x: 2108,
       y: 198,
       w: 124,
       h: 117,

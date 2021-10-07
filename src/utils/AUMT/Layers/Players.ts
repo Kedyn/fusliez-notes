@@ -27,16 +27,22 @@ export default class Players extends Layer {
 
     if (getInitMapWithAllPlayers(state)) {
       const colors: Array<IPlayerColor> = [
+        "banana",
         "black",
         "blue",
         "brown",
+        "coral",
         "cyan",
+        "gray",
         "green",
         "lime",
+        "maroon",
         "orange",
         "pink",
         "purple",
         "red",
+        "rose",
+        "tan",
         "white",
         "yellow",
       ];

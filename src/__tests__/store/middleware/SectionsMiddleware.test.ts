@@ -188,7 +188,7 @@ describe("SectionsMiddleware tests", () => {
 
     expect(storageSpy).toHaveBeenLastCalledWith(
       "fusliez-notes-sections",
-      '{"resetSection":4,"deadSection":3,"unusedSection":5,"sections":[{"id":0,"title":"main.lists.innocent","players":[]},{"id":1,"title":"main.lists.suspicious","players":[{"id":"black"},{"id":"blue"},{"id":"brown"},{"id":"cyan"},{"id":"green"},{"id":"lime"},{"id":"orange"},{"id":"pink"},{"id":"purple"},{"id":"red"},{"id":"white"},{"id":"yellow"}]},{"id":2,"title":"main.lists.evilHitList","players":[]},{"id":3,"title":"main.lists.dead","players":[]},{"id":4,"title":"main.lists.unknown","players":[{"id":"black"},{"id":"blue"},{"id":"brown"},{"id":"cyan"},{"id":"green"},{"id":"lime"},{"id":"orange"},{"id":"pink"},{"id":"purple"},{"id":"red"},{"id":"white"},{"id":"yellow"}]},{"id":5,"title":"main.lists.unused","players":[]}]}'
+      '{"resetSection":4,"deadSection":3,"unusedSection":5,"sections":[{"id":0,"title":"main.lists.innocent","players":[]},{"id":1,"title":"main.lists.suspicious","players":[{"id":"banana"},{"id":"black"},{"id":"blue"},{"id":"brown"},{"id":"coral"},{"id":"cyan"},{"id":"gray"},{"id":"green"},{"id":"lime"},{"id":"maroon"},{"id":"orange"},{"id":"pink"},{"id":"purple"},{"id":"red"},{"id":"rose"},{"id":"tan"},{"id":"white"},{"id":"yellow"}]},{"id":2,"title":"main.lists.evilHitList","players":[]},{"id":3,"title":"main.lists.dead","players":[]},{"id":4,"title":"main.lists.unknown","players":[{"id":"banana"},{"id":"black"},{"id":"blue"},{"id":"brown"},{"id":"coral"},{"id":"cyan"},{"id":"gray"},{"id":"green"},{"id":"lime"},{"id":"maroon"},{"id":"orange"},{"id":"pink"},{"id":"purple"},{"id":"red"},{"id":"rose"},{"id":"tan"},{"id":"white"},{"id":"yellow"}]},{"id":5,"title":"main.lists.unused","players":[]}]}'
     );
   });
 
@@ -213,7 +213,7 @@ describe("SectionsMiddleware tests", () => {
 
     expect(storageSpy).toHaveBeenLastCalledWith(
       "fusliez-notes-sections",
-      '{"resetSection":4,"deadSection":3,"unusedSection":5,"sections":[{"id":0,"title":"main.lists.innocent","players":[]},{"id":1,"title":"main.lists.suspicious","players":[]},{"id":2,"title":"main.lists.evilHitList","players":[]},{"id":3,"title":"main.lists.dead","players":[]},{"id":4,"title":"main.lists.unknown","players":[{"id":"black"},{"id":"blue"},{"id":"brown"},{"id":"cyan"},{"id":"green"},{"id":"lime"},{"id":"orange"},{"id":"pink"},{"id":"purple"},{"id":"red"},{"id":"white"},{"id":"yellow"}]},{"id":5,"title":"main.lists.unused","players":[]}]}'
+      '{"resetSection":4,"deadSection":3,"unusedSection":5,"sections":[{"id":0,"title":"main.lists.innocent","players":[]},{"id":1,"title":"main.lists.suspicious","players":[]},{"id":2,"title":"main.lists.evilHitList","players":[]},{"id":3,"title":"main.lists.dead","players":[]},{"id":4,"title":"main.lists.unknown","players":[{"id":"banana"},{"id":"black"},{"id":"blue"},{"id":"brown"},{"id":"coral"},{"id":"cyan"},{"id":"gray"},{"id":"green"},{"id":"lime"},{"id":"maroon"},{"id":"orange"},{"id":"pink"},{"id":"purple"},{"id":"red"},{"id":"rose"},{"id":"tan"},{"id":"white"},{"id":"yellow"}]},{"id":5,"title":"main.lists.unused","players":[]}]}'
     );
   });
 
@@ -228,16 +228,22 @@ describe("SectionsMiddleware tests", () => {
             id: 2,
             title: "main.lists.evilHitList",
             players: [
+              { id: "banana" },
               { id: "black" },
               { id: "blue" },
               { id: "brown" },
+              { id: "coral" },
               { id: "cyan" },
+              { id: "gray" },
               { id: "green" },
               { id: "lime" },
+              { id: "maroon" },
               { id: "orange" },
               { id: "pink" },
               { id: "purple" },
               { id: "red" },
+              { id: "rose" },
+              { id: "tan" },
               { id: "white" },
               { id: "yellow" },
             ],
@@ -255,7 +261,7 @@ describe("SectionsMiddleware tests", () => {
 
     expect(storageSpy).toHaveBeenLastCalledWith(
       "fusliez-notes-sections",
-      '{"resetSection":4,"deadSection":3,"unusedSection":5,"sections":[{"id":0,"title":"main.lists.innocent","players":[]},{"id":1,"title":"main.lists.suspicious","players":[]},{"id":2,"title":"main.lists.evilHitList","players":[{"id":"black"},{"id":"blue"},{"id":"brown"},{"id":"cyan"},{"id":"green"},{"id":"lime"},{"id":"orange"},{"id":"pink"},{"id":"purple"},{"id":"red"},{"id":"white"},{"id":"yellow"}]},{"id":3,"title":"main.lists.dead","players":[]},{"id":4,"title":"main.lists.unknown","players":[]},{"id":5,"title":"main.lists.unused","players":[]}]}'
+      '{"resetSection":4,"deadSection":3,"unusedSection":5,"sections":[{"id":0,"title":"main.lists.innocent","players":[]},{"id":1,"title":"main.lists.suspicious","players":[]},{"id":2,"title":"main.lists.evilHitList","players":[{"id":"banana"},{"id":"black"},{"id":"blue"},{"id":"brown"},{"id":"coral"},{"id":"cyan"},{"id":"gray"},{"id":"green"},{"id":"lime"},{"id":"maroon"},{"id":"orange"},{"id":"pink"},{"id":"purple"},{"id":"red"},{"id":"rose"},{"id":"tan"},{"id":"white"},{"id":"yellow"}]},{"id":3,"title":"main.lists.dead","players":[]},{"id":4,"title":"main.lists.unknown","players":[]},{"id":5,"title":"main.lists.unused","players":[]}]}'
     );
   });
 
@@ -268,7 +274,7 @@ describe("SectionsMiddleware tests", () => {
 
     expect(storageSpy).toHaveBeenLastCalledWith(
       "fusliez-notes-sections",
-      '{"resetSection":4,"deadSection":3,"unusedSection":5,"sections":[{"id":0,"title":"main.lists.innocent","players":[]},{"id":1,"title":"main.lists.suspicious","players":[]},{"id":2,"title":"main.lists.evilHitList","players":[]},{"id":3,"title":"main.lists.dead","players":[]},{"id":4,"title":"main.lists.unknown","players":[{"id":"black"},{"id":"blue"},{"id":"brown"},{"id":"cyan"},{"id":"green"},{"id":"lime"},{"id":"orange"},{"id":"pink"},{"id":"purple"},{"id":"red"},{"id":"white"},{"id":"yellow"}]},{"id":5,"title":"main.lists.unused","players":[]}]}'
+      '{"resetSection":4,"deadSection":3,"unusedSection":5,"sections":[{"id":0,"title":"main.lists.innocent","players":[]},{"id":1,"title":"main.lists.suspicious","players":[]},{"id":2,"title":"main.lists.evilHitList","players":[]},{"id":3,"title":"main.lists.dead","players":[]},{"id":4,"title":"main.lists.unknown","players":[{"id":"banana"},{"id":"black"},{"id":"blue"},{"id":"brown"},{"id":"coral"},{"id":"cyan"},{"id":"gray"},{"id":"green"},{"id":"lime"},{"id":"maroon"},{"id":"orange"},{"id":"pink"},{"id":"purple"},{"id":"red"},{"id":"rose"},{"id":"tan"},{"id":"white"},{"id":"yellow"}]},{"id":5,"title":"main.lists.unused","players":[]}]}'
     );
   });
 

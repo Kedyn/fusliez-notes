@@ -16,6 +16,12 @@ describe("PlayersSlice tests", () => {
         type: "string",
       })
     ).toStrictEqual({
+      banana: {
+        name: "",
+        color: "banana",
+        section: 4,
+        usedEmergencyButton: false,
+      },
       black: {
         color: "black",
         name: "",
@@ -34,9 +40,21 @@ describe("PlayersSlice tests", () => {
         section: 4,
         usedEmergencyButton: false,
       },
+      coral: {
+        name: "",
+        color: "coral",
+        section: 4,
+        usedEmergencyButton: false,
+      },
       cyan: {
         color: "cyan",
         name: "",
+        section: 4,
+        usedEmergencyButton: false,
+      },
+      gray: {
+        name: "",
+        color: "gray",
         section: 4,
         usedEmergencyButton: false,
       },
@@ -49,6 +67,12 @@ describe("PlayersSlice tests", () => {
       lime: {
         color: "lime",
         name: "",
+        section: 4,
+        usedEmergencyButton: false,
+      },
+      maroon: {
+        name: "",
+        color: "maroon",
         section: 4,
         usedEmergencyButton: false,
       },
@@ -73,6 +97,18 @@ describe("PlayersSlice tests", () => {
       red: {
         color: "red",
         name: "",
+        section: 4,
+        usedEmergencyButton: false,
+      },
+      rose: {
+        name: "",
+        color: "rose",
+        section: 4,
+        usedEmergencyButton: false,
+      },
+      tan: {
+        name: "",
+        color: "tan",
         section: 4,
         usedEmergencyButton: false,
       },
@@ -101,6 +137,12 @@ describe("PlayersSlice tests", () => {
         type: "string",
       })
     ).toStrictEqual({
+      banana: {
+        name: "",
+        color: "banana",
+        section: 4,
+        usedEmergencyButton: false,
+      },
       black: {
         color: "black",
         name: "",
@@ -119,6 +161,12 @@ describe("PlayersSlice tests", () => {
         section: 4,
         usedEmergencyButton: false,
       },
+      coral: {
+        name: "",
+        color: "coral",
+        section: 4,
+        usedEmergencyButton: false,
+      },
       cyan: {
         color: "cyan",
         name: "",
@@ -131,9 +179,21 @@ describe("PlayersSlice tests", () => {
         section: 4,
         usedEmergencyButton: false,
       },
+      gray: {
+        name: "",
+        color: "gray",
+        section: 4,
+        usedEmergencyButton: false,
+      },
       lime: {
         color: "lime",
         name: "",
+        section: 4,
+        usedEmergencyButton: false,
+      },
+      maroon: {
+        name: "",
+        color: "maroon",
         section: 4,
         usedEmergencyButton: false,
       },
@@ -158,6 +218,18 @@ describe("PlayersSlice tests", () => {
       red: {
         color: "red",
         name: "",
+        section: 4,
+        usedEmergencyButton: false,
+      },
+      rose: {
+        name: "",
+        color: "rose",
+        section: 4,
+        usedEmergencyButton: false,
+      },
+      tan: {
+        name: "",
+        color: "tan",
         section: 4,
         usedEmergencyButton: false,
       },
@@ -186,6 +258,12 @@ describe("PlayersSlice tests", () => {
         type: "string",
       })
     ).toStrictEqual({
+      banana: {
+        name: "",
+        color: "banana",
+        section: 4,
+        usedEmergencyButton: false,
+      },
       black: {
         color: "black",
         name: "",
@@ -204,9 +282,21 @@ describe("PlayersSlice tests", () => {
         section: 4,
         usedEmergencyButton: false,
       },
+      coral: {
+        name: "",
+        color: "coral",
+        section: 4,
+        usedEmergencyButton: false,
+      },
       cyan: {
         color: "cyan",
         name: "",
+        section: 4,
+        usedEmergencyButton: false,
+      },
+      gray: {
+        name: "",
+        color: "gray",
         section: 4,
         usedEmergencyButton: false,
       },
@@ -219,6 +309,12 @@ describe("PlayersSlice tests", () => {
       lime: {
         color: "lime",
         name: "",
+        section: 4,
+        usedEmergencyButton: false,
+      },
+      maroon: {
+        name: "",
+        color: "maroon",
         section: 4,
         usedEmergencyButton: false,
       },
@@ -243,6 +339,18 @@ describe("PlayersSlice tests", () => {
       red: {
         color: "red",
         name: "",
+        section: 4,
+        usedEmergencyButton: false,
+      },
+      rose: {
+        name: "",
+        color: "rose",
+        section: 4,
+        usedEmergencyButton: false,
+      },
+      tan: {
+        name: "",
+        color: "tan",
         section: 4,
         usedEmergencyButton: false,
       },
@@ -273,6 +381,12 @@ describe("PlayersSlice tests", () => {
         type: "string",
       })
     ).toStrictEqual({
+      banana: {
+        name: "",
+        color: "banana",
+        section: 4,
+        usedEmergencyButton: false,
+      },
       black: {
         color: "black",
         name: "",
@@ -291,9 +405,21 @@ describe("PlayersSlice tests", () => {
         section: 4,
         usedEmergencyButton: false,
       },
+      coral: {
+        name: "",
+        color: "coral",
+        section: 4,
+        usedEmergencyButton: false,
+      },
       cyan: {
         color: "cyan",
         name: "",
+        section: 4,
+        usedEmergencyButton: false,
+      },
+      gray: {
+        name: "",
+        color: "gray",
         section: 4,
         usedEmergencyButton: false,
       },
@@ -306,6 +432,12 @@ describe("PlayersSlice tests", () => {
       lime: {
         color: "lime",
         name: "",
+        section: 4,
+        usedEmergencyButton: false,
+      },
+      maroon: {
+        name: "",
+        color: "maroon",
         section: 4,
         usedEmergencyButton: false,
       },
@@ -333,6 +465,18 @@ describe("PlayersSlice tests", () => {
         section: 4,
         usedEmergencyButton: false,
       },
+      rose: {
+        name: "",
+        color: "rose",
+        section: 4,
+        usedEmergencyButton: false,
+      },
+      tan: {
+        name: "",
+        color: "tan",
+        section: 4,
+        usedEmergencyButton: false,
+      },
       white: {
         color: "white",
         name: "",
@@ -352,6 +496,12 @@ describe("PlayersSlice tests", () => {
     expect(
       PlayersSlice.caseReducers.setPlayersState(state.Players, {
         payload: {
+          banana: {
+            name: "",
+            color: "banana",
+            section: 4,
+            usedEmergencyButton: false,
+          },
           black: {
             color: "black",
             name: "",
@@ -370,9 +520,21 @@ describe("PlayersSlice tests", () => {
             section: 4,
             usedEmergencyButton: false,
           },
+          coral: {
+            name: "",
+            color: "coral",
+            section: 4,
+            usedEmergencyButton: false,
+          },
           cyan: {
             color: "cyan",
             name: "",
+            section: 4,
+            usedEmergencyButton: false,
+          },
+          gray: {
+            name: "",
+            color: "gray",
             section: 4,
             usedEmergencyButton: false,
           },
@@ -385,6 +547,12 @@ describe("PlayersSlice tests", () => {
           lime: {
             color: "lime",
             name: "",
+            section: 4,
+            usedEmergencyButton: false,
+          },
+          maroon: {
+            name: "",
+            color: "maroon",
             section: 4,
             usedEmergencyButton: false,
           },
@@ -412,6 +580,18 @@ describe("PlayersSlice tests", () => {
             section: 4,
             usedEmergencyButton: false,
           },
+          rose: {
+            name: "",
+            color: "rose",
+            section: 4,
+            usedEmergencyButton: false,
+          },
+          tan: {
+            name: "",
+            color: "tan",
+            section: 4,
+            usedEmergencyButton: false,
+          },
           white: {
             color: "white",
             name: "",
@@ -428,6 +608,12 @@ describe("PlayersSlice tests", () => {
         type: "string",
       })
     ).toStrictEqual({
+      banana: {
+        name: "",
+        color: "banana",
+        section: 4,
+        usedEmergencyButton: false,
+      },
       black: {
         color: "black",
         name: "",
@@ -446,9 +632,21 @@ describe("PlayersSlice tests", () => {
         section: 4,
         usedEmergencyButton: false,
       },
+      coral: {
+        name: "",
+        color: "coral",
+        section: 4,
+        usedEmergencyButton: false,
+      },
       cyan: {
         color: "cyan",
         name: "",
+        section: 4,
+        usedEmergencyButton: false,
+      },
+      gray: {
+        name: "",
+        color: "gray",
         section: 4,
         usedEmergencyButton: false,
       },
@@ -461,6 +659,12 @@ describe("PlayersSlice tests", () => {
       lime: {
         color: "lime",
         name: "",
+        section: 4,
+        usedEmergencyButton: false,
+      },
+      maroon: {
+        name: "",
+        color: "maroon",
         section: 4,
         usedEmergencyButton: false,
       },
@@ -488,6 +692,18 @@ describe("PlayersSlice tests", () => {
         section: 4,
         usedEmergencyButton: false,
       },
+      rose: {
+        name: "",
+        color: "rose",
+        section: 4,
+        usedEmergencyButton: false,
+      },
+      tan: {
+        name: "",
+        color: "tan",
+        section: 4,
+        usedEmergencyButton: false,
+      },
       white: {
         color: "white",
         name: "",
@@ -510,6 +726,12 @@ describe("PlayersSlice tests", () => {
         type: "string",
       })
     ).toStrictEqual({
+      banana: {
+        name: "",
+        color: "banana",
+        section: 2,
+        usedEmergencyButton: false,
+      },
       black: {
         color: "black",
         name: "",
@@ -528,9 +750,21 @@ describe("PlayersSlice tests", () => {
         section: 2,
         usedEmergencyButton: false,
       },
+      coral: {
+        name: "",
+        color: "coral",
+        section: 2,
+        usedEmergencyButton: false,
+      },
       cyan: {
         color: "cyan",
         name: "",
+        section: 2,
+        usedEmergencyButton: false,
+      },
+      gray: {
+        name: "",
+        color: "gray",
         section: 2,
         usedEmergencyButton: false,
       },
@@ -543,6 +777,12 @@ describe("PlayersSlice tests", () => {
       lime: {
         color: "lime",
         name: "",
+        section: 2,
+        usedEmergencyButton: false,
+      },
+      maroon: {
+        name: "",
+        color: "maroon",
         section: 2,
         usedEmergencyButton: false,
       },
@@ -567,6 +807,18 @@ describe("PlayersSlice tests", () => {
       red: {
         color: "red",
         name: "",
+        section: 2,
+        usedEmergencyButton: false,
+      },
+      rose: {
+        name: "",
+        color: "rose",
+        section: 2,
+        usedEmergencyButton: false,
+      },
+      tan: {
+        name: "",
+        color: "tan",
         section: 2,
         usedEmergencyButton: false,
       },
@@ -597,6 +849,12 @@ describe("PlayersSlice tests", () => {
     expect(
       PlayersSlice.caseReducers.resetPlayersNames(state.Players)
     ).toStrictEqual({
+      banana: {
+        name: "",
+        color: "banana",
+        section: 4,
+        usedEmergencyButton: false,
+      },
       black: {
         color: "black",
         name: "",
@@ -615,9 +873,21 @@ describe("PlayersSlice tests", () => {
         section: 4,
         usedEmergencyButton: false,
       },
+      coral: {
+        name: "",
+        color: "coral",
+        section: 4,
+        usedEmergencyButton: false,
+      },
       cyan: {
         color: "cyan",
         name: "",
+        section: 4,
+        usedEmergencyButton: false,
+      },
+      gray: {
+        name: "",
+        color: "gray",
         section: 4,
         usedEmergencyButton: false,
       },
@@ -630,6 +900,12 @@ describe("PlayersSlice tests", () => {
       lime: {
         color: "lime",
         name: "",
+        section: 4,
+        usedEmergencyButton: false,
+      },
+      maroon: {
+        name: "",
+        color: "maroon",
         section: 4,
         usedEmergencyButton: false,
       },
@@ -654,6 +930,18 @@ describe("PlayersSlice tests", () => {
       red: {
         color: "red",
         name: "",
+        section: 4,
+        usedEmergencyButton: false,
+      },
+      rose: {
+        name: "",
+        color: "rose",
+        section: 4,
+        usedEmergencyButton: false,
+      },
+      tan: {
+        name: "",
+        color: "tan",
         section: 4,
         usedEmergencyButton: false,
       },
@@ -684,6 +972,12 @@ describe("PlayersSlice tests", () => {
     expect(
       PlayersSlice.caseReducers.resetPlayersUsedEmergencyButton(state.Players)
     ).toStrictEqual({
+      banana: {
+        name: "",
+        color: "banana",
+        section: 4,
+        usedEmergencyButton: false,
+      },
       black: {
         color: "black",
         name: "",
@@ -702,9 +996,21 @@ describe("PlayersSlice tests", () => {
         section: 4,
         usedEmergencyButton: false,
       },
+      coral: {
+        name: "",
+        color: "coral",
+        section: 4,
+        usedEmergencyButton: false,
+      },
       cyan: {
         color: "cyan",
         name: "",
+        section: 4,
+        usedEmergencyButton: false,
+      },
+      gray: {
+        name: "",
+        color: "gray",
         section: 4,
         usedEmergencyButton: false,
       },
@@ -717,6 +1023,12 @@ describe("PlayersSlice tests", () => {
       lime: {
         color: "lime",
         name: "",
+        section: 4,
+        usedEmergencyButton: false,
+      },
+      maroon: {
+        name: "",
+        color: "maroon",
         section: 4,
         usedEmergencyButton: false,
       },
@@ -741,6 +1053,18 @@ describe("PlayersSlice tests", () => {
       red: {
         color: "red",
         name: "",
+        section: 4,
+        usedEmergencyButton: false,
+      },
+      rose: {
+        name: "",
+        color: "rose",
+        section: 4,
+        usedEmergencyButton: false,
+      },
+      tan: {
+        name: "",
+        color: "tan",
         section: 4,
         usedEmergencyButton: false,
       },
@@ -761,6 +1085,12 @@ describe("PlayersSlice tests", () => {
 
   test("resetPlayersState() should reset players state", () => {
     expect(PlayersSlice.caseReducers.resetPlayersState()).toStrictEqual({
+      banana: {
+        name: "",
+        color: "banana",
+        section: 4,
+        usedEmergencyButton: false,
+      },
       black: {
         color: "black",
         name: "",
@@ -779,9 +1109,21 @@ describe("PlayersSlice tests", () => {
         section: 4,
         usedEmergencyButton: false,
       },
+      coral: {
+        name: "",
+        color: "coral",
+        section: 4,
+        usedEmergencyButton: false,
+      },
       cyan: {
         color: "cyan",
         name: "",
+        section: 4,
+        usedEmergencyButton: false,
+      },
+      gray: {
+        name: "",
+        color: "gray",
         section: 4,
         usedEmergencyButton: false,
       },
@@ -794,6 +1136,12 @@ describe("PlayersSlice tests", () => {
       lime: {
         color: "lime",
         name: "",
+        section: 4,
+        usedEmergencyButton: false,
+      },
+      maroon: {
+        name: "",
+        color: "maroon",
         section: 4,
         usedEmergencyButton: false,
       },
@@ -818,6 +1166,18 @@ describe("PlayersSlice tests", () => {
       red: {
         color: "red",
         name: "",
+        section: 4,
+        usedEmergencyButton: false,
+      },
+      rose: {
+        name: "",
+        color: "rose",
+        section: 4,
+        usedEmergencyButton: false,
+      },
+      tan: {
+        name: "",
+        color: "tan",
         section: 4,
         usedEmergencyButton: false,
       },
@@ -847,6 +1207,12 @@ describe("PlayersSlice tests", () => {
 
   test("getPlayers(state) should get all players", () => {
     expect(getPlayers(state)).toStrictEqual({
+      banana: {
+        name: "",
+        color: "banana",
+        section: 4,
+        usedEmergencyButton: false,
+      },
       black: {
         color: "black",
         name: "",
@@ -865,9 +1231,21 @@ describe("PlayersSlice tests", () => {
         section: 4,
         usedEmergencyButton: false,
       },
+      coral: {
+        name: "",
+        color: "coral",
+        section: 4,
+        usedEmergencyButton: false,
+      },
       cyan: {
         color: "cyan",
         name: "",
+        section: 4,
+        usedEmergencyButton: false,
+      },
+      gray: {
+        name: "",
+        color: "gray",
         section: 4,
         usedEmergencyButton: false,
       },
@@ -880,6 +1258,12 @@ describe("PlayersSlice tests", () => {
       lime: {
         color: "lime",
         name: "",
+        section: 4,
+        usedEmergencyButton: false,
+      },
+      maroon: {
+        name: "",
+        color: "maroon",
         section: 4,
         usedEmergencyButton: false,
       },
@@ -904,6 +1288,18 @@ describe("PlayersSlice tests", () => {
       red: {
         color: "red",
         name: "",
+        section: 4,
+        usedEmergencyButton: false,
+      },
+      rose: {
+        name: "",
+        color: "rose",
+        section: 4,
+        usedEmergencyButton: false,
+      },
+      tan: {
+        name: "",
+        color: "tan",
         section: 4,
         usedEmergencyButton: false,
       },

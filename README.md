@@ -75,6 +75,7 @@ Nuno Lopes
 [Jarsa132](https://github.com/Jarsa132)  
 [Chee Murakami](https://github.com/cheemurakami)  
 [tokkiyaa](https://github.com/tokkiyaa)
+[Anusien](https://github.com/anusien)
 
 Please if you would not like to be mentioned here or your information is wrong
 let me know so I can remove it or fix it, thank you!

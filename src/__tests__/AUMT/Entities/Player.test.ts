@@ -51,7 +51,7 @@ describe("player tests", () => {
       expect(new Player("orange", new Vector(0, 0)).getRect()).toEqual({
         height: 198,
         position: {
-          x: 888,
+          x: 1480,
           y: 0,
         },
         width: 148,
@@ -93,7 +93,7 @@ describe("player tests", () => {
       expect(player.getRect()).toEqual({
         height: 198,
         position: {
-          x: 888,
+          x: 1480,
           y: 0,
         },
         width: 148,
@@ -104,7 +104,7 @@ describe("player tests", () => {
       expect(player.getRect()).toEqual({
         height: 198,
         width: 148,
-        position: new Vector(888, 0),
+        position: new Vector(1480, 0),
       });
     });
 

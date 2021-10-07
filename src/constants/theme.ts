@@ -31,6 +31,10 @@ export const DEFAULT_THEME_DATA: ITheme = {
 };
 
 export const COLOR_LIBRARY: IColorLibrary = {
+  banana: {
+    base: "#FFFFBE",
+    dark: "#D2BC89",
+  },
   black: {
     base: "#3F484E",
     dark: "#1E1F25",
@@ -43,9 +47,17 @@ export const COLOR_LIBRARY: IColorLibrary = {
     base: "#72491E",
     dark: "#5E2614",
   },
+  coral: {
+    base: "#EC7578",
+    dark: "#B44362",
+  },
   cyan: {
     base: "#39FEDB",
     dark: "#24A9BE",
+  },
+  gray: {
+    base: "#8397A7",
+    dark: "#465664",
   },
   green: {
     base: "#127F2D",
@@ -54,6 +66,10 @@ export const COLOR_LIBRARY: IColorLibrary = {
   lime: {
     base: "#50EF3A",
     dark: "#16A843",
+  },
+  maroon: {
+    base: "#6C2B3D",
+    dark: "#410F1A",
   },
   orange: {
     base: "#EF7D0E",
@@ -70,6 +86,14 @@ export const COLOR_LIBRARY: IColorLibrary = {
   red: {
     base: "#C51111",
     dark: "#7B0838",
+  },
+  rose: {
+    base: "#FFD6EC",
+    dark: "#DE92B3",
+  },
+  tan: {
+    base: "#9F9989",
+    dark: "#51413E",
   },
   white: {
     base: "#D5E0EF",

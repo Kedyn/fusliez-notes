@@ -1,6 +1,12 @@
 import { IPlayerColor, IPlayersState } from "utils/types/players";
 
 export const players: IPlayersState = {
+  banana: {
+    name: "",
+    color: "banana" as IPlayerColor,
+    section: 4,
+    usedEmergencyButton: false,
+  },
   black: {
     name: "",
     color: "black" as IPlayerColor,
@@ -19,9 +25,21 @@ export const players: IPlayersState = {
     section: 4,
     usedEmergencyButton: false,
   },
+  coral: {
+    name: "",
+    color: "coral" as IPlayerColor,
+    section: 4,
+    usedEmergencyButton: false,
+  },
   cyan: {
     name: "",
     color: "cyan" as IPlayerColor,
+    section: 4,
+    usedEmergencyButton: false,
+  },
+  gray: {
+    name: "",
+    color: "gray" as IPlayerColor,
     section: 4,
     usedEmergencyButton: false,
   },
@@ -34,6 +52,12 @@ export const players: IPlayersState = {
   lime: {
     name: "",
     color: "lime" as IPlayerColor,
+    section: 4,
+    usedEmergencyButton: false,
+  },
+  maroon: {
+    name: "",
+    color: "maroon" as IPlayerColor,
     section: 4,
     usedEmergencyButton: false,
   },
@@ -58,6 +82,18 @@ export const players: IPlayersState = {
   red: {
     name: "",
     color: "red" as IPlayerColor,
+    section: 4,
+    usedEmergencyButton: false,
+  },
+  rose: {
+    name: "",
+    color: "rose" as IPlayerColor,
+    section: 4,
+    usedEmergencyButton: false,
+  },
+  tan: {
+    name: "",
+    color: "tan" as IPlayerColor,
     section: 4,
     usedEmergencyButton: false,
   },

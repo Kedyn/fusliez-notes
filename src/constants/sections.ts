@@ -6,16 +6,22 @@ export const DEFAULT_DEAD_SECTION = 3;
 export const DEFAULT_UNUSED_SECTION = 5;
 
 export const DEFAULT_RESET_SECTION_PLAYERS: Array<ItemInterface> = [
+  { id: "banana" },
   { id: "black" },
   { id: "blue" },
   { id: "brown" },
+  { id: "coral" },
   { id: "cyan" },
+  { id: "gray" },
   { id: "green" },
   { id: "lime" },
+  { id: "maroon" },
   { id: "orange" },
   { id: "pink" },
   { id: "purple" },
   { id: "red" },
+  { id: "rose" },
+  { id: "tan" },
   { id: "white" },
   { id: "yellow" },
 ];
