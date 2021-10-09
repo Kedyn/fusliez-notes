@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Released]
 
+### [v1.0.0-beta.3] - 10/7/2021
+
+Added the six new colors: banana, coral, gray, maroon, rose, tan
+
 ### [v1.0.0-beta.2] - 3/31/2021
 
 Full refactoring of the structure of the project. Removed draggable component in

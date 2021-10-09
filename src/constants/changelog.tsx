@@ -4,6 +4,7 @@ export const NOTES = [
   {
     title: "Highlights",
     items: [
+      <>Added the 6 new colors.</>,
       <>Improved map functionality.</>,
       <>Right click to add characters to map.</>,
       <>Double click or press &quot;c&quot; to clear the map.</>,

@@ -132,6 +132,12 @@ describe("PlayersMiddleware tests", () => {
       action({
         type: "Players/setPlayersState",
         payload: {
+          banana: {
+            name: "",
+            color: "banana",
+            section: 4,
+            usedEmergencyButton: false,
+          },
           black: {
             name: "corpse",
             color: "black",
@@ -150,9 +156,21 @@ describe("PlayersMiddleware tests", () => {
             section: 3,
             usedEmergencyButton: true,
           },
+          coral: {
+            name: "",
+            color: "coral",
+            section: 4,
+            usedEmergencyButton: false,
+          },
           cyan: {
             name: "toast",
             color: "cyan",
+            section: 4,
+            usedEmergencyButton: false,
+          },
+          gray: {
+            name: "",
+            color: "gray",
             section: 4,
             usedEmergencyButton: false,
           },
@@ -166,6 +184,12 @@ describe("PlayersMiddleware tests", () => {
             name: "masayoshi",
             color: "lime",
             section: 1,
+            usedEmergencyButton: false,
+          },
+          maroon: {
+            name: "",
+            color: "maroon",
+            section: 4,
             usedEmergencyButton: false,
           },
           orange: {
@@ -192,6 +216,18 @@ describe("PlayersMiddleware tests", () => {
             section: 4,
             usedEmergencyButton: false,
           },
+          rose: {
+            name: "",
+            color: "rose",
+            section: 4,
+            usedEmergencyButton: false,
+          },
+          tan: {
+            name: "",
+            color: "tan",
+            section: 4,
+            usedEmergencyButton: false,
+          },
           white: {
             name: "",
             color: "white",
@@ -211,6 +247,12 @@ describe("PlayersMiddleware tests", () => {
     const players = localStorage.getItem(`${NAMESPACE}players`);
 
     expect(JSON.parse(players as string)).toStrictEqual({
+      banana: {
+        name: "",
+        color: "banana",
+        section: 4,
+        usedEmergencyButton: false,
+      },
       black: {
         name: "corpse",
         color: "black",
@@ -229,9 +271,21 @@ describe("PlayersMiddleware tests", () => {
         section: 3,
         usedEmergencyButton: true,
       },
+      coral: {
+        name: "",
+        color: "coral",
+        section: 4,
+        usedEmergencyButton: false,
+      },
       cyan: {
         name: "toast",
         color: "cyan",
+        section: 4,
+        usedEmergencyButton: false,
+      },
+      gray: {
+        name: "",
+        color: "gray",
         section: 4,
         usedEmergencyButton: false,
       },
@@ -245,6 +299,12 @@ describe("PlayersMiddleware tests", () => {
         name: "masayoshi",
         color: "lime",
         section: 1,
+        usedEmergencyButton: false,
+      },
+      maroon: {
+        name: "",
+        color: "maroon",
+        section: 4,
         usedEmergencyButton: false,
       },
       orange: {
@@ -268,6 +328,18 @@ describe("PlayersMiddleware tests", () => {
       red: {
         name: "rae",
         color: "red",
+        section: 4,
+        usedEmergencyButton: false,
+      },
+      rose: {
+        name: "",
+        color: "rose",
+        section: 4,
+        usedEmergencyButton: false,
+      },
+      tan: {
+        name: "",
+        color: "tan",
         section: 4,
         usedEmergencyButton: false,
       },
@@ -297,6 +369,12 @@ describe("PlayersMiddleware tests", () => {
     const players = localStorage.getItem(`${NAMESPACE}players`);
 
     expect(JSON.parse(players as string)).toStrictEqual({
+      banana: {
+        name: "",
+        color: "banana",
+        section: 5,
+        usedEmergencyButton: false,
+      },
       black: {
         name: "",
         color: "black",
@@ -310,7 +388,19 @@ describe("PlayersMiddleware tests", () => {
         section: 5,
         usedEmergencyButton: false,
       },
+      coral: {
+        name: "",
+        color: "coral",
+        section: 5,
+        usedEmergencyButton: false,
+      },
       cyan: { name: "", color: "cyan", section: 5, usedEmergencyButton: false },
+      gray: {
+        name: "",
+        color: "gray",
+        section: 5,
+        usedEmergencyButton: false,
+      },
       green: {
         name: "",
         color: "green",
@@ -318,6 +408,12 @@ describe("PlayersMiddleware tests", () => {
         usedEmergencyButton: false,
       },
       lime: { name: "", color: "lime", section: 5, usedEmergencyButton: false },
+      maroon: {
+        name: "",
+        color: "maroon",
+        section: 5,
+        usedEmergencyButton: false,
+      },
       orange: {
         name: "",
         color: "orange",
@@ -332,6 +428,18 @@ describe("PlayersMiddleware tests", () => {
         usedEmergencyButton: false,
       },
       red: { name: "", color: "red", section: 5, usedEmergencyButton: false },
+      rose: {
+        name: "",
+        color: "rose",
+        section: 5,
+        usedEmergencyButton: false,
+      },
+      tan: {
+        name: "",
+        color: "tan",
+        section: 5,
+        usedEmergencyButton: false,
+      },
       white: {
         name: "",
         color: "white",
@@ -352,6 +460,12 @@ describe("PlayersMiddleware tests", () => {
       action({
         type: "Players/setPlayersState",
         payload: {
+          banana: {
+            name: "",
+            color: "banana",
+            section: 4,
+            usedEmergencyButton: false,
+          },
           black: {
             name: "corpse",
             color: "black",
@@ -370,9 +484,21 @@ describe("PlayersMiddleware tests", () => {
             section: 3,
             usedEmergencyButton: false,
           },
+          coral: {
+            name: "",
+            color: "coral",
+            section: 4,
+            usedEmergencyButton: false,
+          },
           cyan: {
             name: "toast",
             color: "cyan",
+            section: 4,
+            usedEmergencyButton: false,
+          },
+          gray: {
+            name: "",
+            color: "gray",
             section: 4,
             usedEmergencyButton: false,
           },
@@ -386,6 +512,12 @@ describe("PlayersMiddleware tests", () => {
             name: "masayoshi",
             color: "lime",
             section: 1,
+            usedEmergencyButton: false,
+          },
+          maroon: {
+            name: "",
+            color: "maroon",
+            section: 4,
             usedEmergencyButton: false,
           },
           orange: {
@@ -409,6 +541,18 @@ describe("PlayersMiddleware tests", () => {
           red: {
             name: "rae",
             color: "red",
+            section: 4,
+            usedEmergencyButton: false,
+          },
+          rose: {
+            name: "",
+            color: "rose",
+            section: 4,
+            usedEmergencyButton: false,
+          },
+          tan: {
+            name: "",
+            color: "tan",
             section: 4,
             usedEmergencyButton: false,
           },
@@ -481,6 +625,12 @@ describe("PlayersMiddleware tests", () => {
       action({
         type: "Players/setPlayersState",
         payload: {
+          banana: {
+            name: "",
+            color: "banana",
+            section: 4,
+            usedEmergencyButton: false,
+          },
           black: {
             name: "corpse",
             color: "black",
@@ -499,9 +649,21 @@ describe("PlayersMiddleware tests", () => {
             section: 3,
             usedEmergencyButton: true,
           },
+          coral: {
+            name: "",
+            color: "coral",
+            section: 4,
+            usedEmergencyButton: false,
+          },
           cyan: {
             name: "toast",
             color: "cyan",
+            section: 4,
+            usedEmergencyButton: false,
+          },
+          gray: {
+            name: "",
+            color: "gray",
             section: 4,
             usedEmergencyButton: false,
           },
@@ -515,6 +677,12 @@ describe("PlayersMiddleware tests", () => {
             name: "masayoshi",
             color: "lime",
             section: 1,
+            usedEmergencyButton: false,
+          },
+          maroon: {
+            name: "",
+            color: "maroon",
+            section: 4,
             usedEmergencyButton: false,
           },
           orange: {
@@ -538,6 +706,18 @@ describe("PlayersMiddleware tests", () => {
           red: {
             name: "rae",
             color: "red",
+            section: 4,
+            usedEmergencyButton: false,
+          },
+          rose: {
+            name: "",
+            color: "rose",
+            section: 4,
+            usedEmergencyButton: false,
+          },
+          tan: {
+            name: "",
+            color: "tan",
             section: 4,
             usedEmergencyButton: false,
           },

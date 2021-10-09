@@ -66,16 +66,22 @@ export const swapPlayersColors = (
 
 export const hexToPlayerColor = (hex: string): IPlayerColor => {
   const playerColors: Array<IPlayerColor> = [
+    "banana",
     "black",
     "blue",
     "brown",
+    "coral",
     "cyan",
+    "gray",
     "green",
     "lime",
+    "maroon",
     "orange",
     "pink",
     "purple",
     "red",
+    "rose",
+    "tan",
     "white",
     "yellow",
   ];
@@ -84,16 +90,22 @@ export const hexToPlayerColor = (hex: string): IPlayerColor => {
 };
 
 const colors = [
+  COLOR_LIBRARY["banana"].base,
   COLOR_LIBRARY["black"].base,
   COLOR_LIBRARY["blue"].base,
   COLOR_LIBRARY["brown"].base,
+  COLOR_LIBRARY["coral"].base,
   COLOR_LIBRARY["cyan"].base,
+  COLOR_LIBRARY["gray"].base,
   COLOR_LIBRARY["green"].base,
   COLOR_LIBRARY["lime"].base,
+  COLOR_LIBRARY["maroon"].base,
   COLOR_LIBRARY["orange"].base,
   COLOR_LIBRARY["pink"].base,
   COLOR_LIBRARY["purple"].base,
   COLOR_LIBRARY["red"].base,
+  COLOR_LIBRARY["rose"].base,
+  COLOR_LIBRARY["tan"].base,
   COLOR_LIBRARY["white"].base,
   COLOR_LIBRARY["yellow"].base,
 ];

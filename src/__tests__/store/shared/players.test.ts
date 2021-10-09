@@ -16,6 +16,12 @@ describe("shared/players tests", () => {
 
   test("getInitialPlayerState should parse existing data if it exists in localStorage", () => {
     const players: IPlayersState = {
+      banana: {
+        name: "",
+        color: "banana" as IPlayerColor,
+        section: 4,
+        usedEmergencyButton: false,
+      },
       black: {
         name: "",
         color: "black" as IPlayerColor,
@@ -34,9 +40,21 @@ describe("shared/players tests", () => {
         section: 5,
         usedEmergencyButton: false,
       },
+      coral: {
+        name: "",
+        color: "coral" as IPlayerColor,
+        section: 4,
+        usedEmergencyButton: false,
+      },
       cyan: {
         name: "",
         color: "cyan" as IPlayerColor,
+        section: 4,
+        usedEmergencyButton: false,
+      },
+      gray: {
+        name: "",
+        color: "gray" as IPlayerColor,
         section: 4,
         usedEmergencyButton: false,
       },
@@ -49,6 +67,12 @@ describe("shared/players tests", () => {
       lime: {
         name: "",
         color: "lime" as IPlayerColor,
+        section: 4,
+        usedEmergencyButton: false,
+      },
+      maroon: {
+        name: "",
+        color: "maroon" as IPlayerColor,
         section: 4,
         usedEmergencyButton: false,
       },
@@ -73,6 +97,18 @@ describe("shared/players tests", () => {
       red: {
         name: "",
         color: "red" as IPlayerColor,
+        section: 4,
+        usedEmergencyButton: false,
+      },
+      rose: {
+        name: "",
+        color: "rose" as IPlayerColor,
+        section: 4,
+        usedEmergencyButton: false,
+      },
+      tan: {
+        name: "",
+        color: "tan" as IPlayerColor,
         section: 4,
         usedEmergencyButton: false,
       },
@@ -93,6 +129,12 @@ describe("shared/players tests", () => {
     localStorage.setItem(`${NAMESPACE}players`, JSON.stringify(players));
 
     expect(getInitialPlayersState()).toStrictEqual({
+      banana: {
+        name: "",
+        color: "banana" as IPlayerColor,
+        section: 4,
+        usedEmergencyButton: false,
+      },
       black: {
         name: "",
         color: "black" as IPlayerColor,
@@ -111,9 +153,21 @@ describe("shared/players tests", () => {
         section: 5,
         usedEmergencyButton: false,
       },
+      coral: {
+        name: "",
+        color: "coral" as IPlayerColor,
+        section: 4,
+        usedEmergencyButton: false,
+      },
       cyan: {
         name: "",
         color: "cyan" as IPlayerColor,
+        section: 4,
+        usedEmergencyButton: false,
+      },
+      gray: {
+        name: "",
+        color: "gray" as IPlayerColor,
         section: 4,
         usedEmergencyButton: false,
       },
@@ -126,6 +180,12 @@ describe("shared/players tests", () => {
       lime: {
         name: "",
         color: "lime" as IPlayerColor,
+        section: 4,
+        usedEmergencyButton: false,
+      },
+      maroon: {
+        name: "",
+        color: "maroon" as IPlayerColor,
         section: 4,
         usedEmergencyButton: false,
       },
@@ -150,6 +210,18 @@ describe("shared/players tests", () => {
       red: {
         name: "",
         color: "red" as IPlayerColor,
+        section: 4,
+        usedEmergencyButton: false,
+      },
+      rose: {
+        name: "",
+        color: "rose" as IPlayerColor,
+        section: 4,
+        usedEmergencyButton: false,
+      },
+      tan: {
+        name: "",
+        color: "tan" as IPlayerColor,
         section: 4,
         usedEmergencyButton: false,
       },

@@ -67,7 +67,7 @@ export default createUseStyles((theme: ITheme) => ({
     height: "2rem",
     backgroundImage: "url(assets/images/players.png)",
     backgroundRepeat: "no-repeat",
-    backgroundSize: "1200% 240%",
+    backgroundSize: "1800% 240%",
     backgroundPosition: `-${
       (PLAYER_IMAGE[props.color as IPlayerColor].alive.x / 148) * 2.25
     }rem 0px`,
