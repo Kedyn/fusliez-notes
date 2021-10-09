@@ -11,6 +11,7 @@ export default createUseStyles((theme: ITheme) => ({
     transform: "translateX(-45rem)",
     width: 0,
     transition: "200ms ease-in",
+    maxHeight: "calc(100vh - 2.5rem)",
   },
   DesktopLayoutLeftContainerShown: {
     transform: "translateX(0)",
@@ -34,6 +35,7 @@ export default createUseStyles((theme: ITheme) => ({
     flexDirection: "column",
     padding: "1rem 1rem 0",
     width: "22.5rem",
+    overflowY: "auto",
   },
   DesktopLayoutControlsAndNotepad: {
     padding: "1rem 1rem 0",
